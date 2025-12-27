@@ -1,10 +1,10 @@
 # Root Cause Analysis
 
-Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms—it's about finding the actual source.
+Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.
 
 ## The Principle
 
-> "For every complex problem, there is an answer that is clear, simple, and wrong." — H.L. Mencken
+> "For every complex problem, there is an answer that is clear, simple, and wrong." - H.L. Mencken
 
 Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don't need the hose.
 
@@ -26,7 +26,7 @@ Ask "why" at each step. Don't stop at the comfortable answer.
 - *Why* was there no timeout? → Default settings copied from prototype
 - *Why* were prototype settings used? → No deployment checklist
 
-The root cause isn't "memory leak"—it's "no deployment checklist."
+The root cause isn't "memory leak." It's "no deployment checklist."
 
 ## Common Traps
 

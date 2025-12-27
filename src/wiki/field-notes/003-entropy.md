@@ -14,15 +14,15 @@ The Second Law of Thermodynamics, translated for business:
 
 > Every system tends toward disorder unless energy is continuously applied to maintain order.
 
-Your documentation will rot. Your processes will drift. Your culture will dilute. Not because anyone wants it to—because entropy is the universe's default setting.
+Your documentation will rot. Your processes will drift. Your culture will dilute. Not because anyone wants it to. Entropy is the universe's default setting.
 
 ## The Observation
 
 Organizations that stop actively maintaining their systems don't stay the same. They get worse:
 
-- **Undocumented processes** don't stay undocumented—they become *inconsistent* processes
-- **Unclear ownership** doesn't stay unclear—it becomes *contested* ownership
-- **Deferred maintenance** doesn't stay deferred—it becomes *emergency* maintenance
+- **Undocumented processes** don't stay undocumented. They become *inconsistent* processes.
+- **Unclear ownership** doesn't stay unclear. It becomes *contested* ownership.
+- **Deferred maintenance** doesn't stay deferred. It becomes *emergency* maintenance.
 
 ## The Math
 
@@ -40,9 +40,9 @@ Most organizations budget for correction and pay for crisis.
 
 Build maintenance into the system:
 
-- **Scheduled reviews** — Don't wait for problems to surface
-- **Forcing functions** — Make decay visible before it's critical
-- **Ownership rituals** — Someone must be responsible for fighting entropy
+- **Scheduled reviews**: Don't wait for problems to surface
+- **Forcing functions**: Make decay visible before it's critical
+- **Ownership rituals**: Someone must be responsible for fighting entropy
 
 You can't stop entropy. But you can budget for it.
 

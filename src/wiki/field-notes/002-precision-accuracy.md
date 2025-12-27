@@ -6,7 +6,7 @@
 
 ---
 
-In CNC machining, precision and accuracy are different things. Understanding this distinction changes how you diagnose problems—in manufacturing and everywhere else.
+In CNC machining, precision and accuracy are different things. Understanding this distinction changes how you diagnose problems, in manufacturing and everywhere else.
 
 ## The Definitions
 

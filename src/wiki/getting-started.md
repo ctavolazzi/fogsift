@@ -6,9 +6,9 @@ Welcome to the Fogsift knowledge base. This wiki contains documentation, concept
 
 Fogsift provides independent consulting for complex, ambiguous problems. We specialize in:
 
-- **Root Cause Analysis** — Tracing symptoms back to their source
-- **System Diagnostics** — Understanding how components interact
-- **Strategic Clarity** — Cutting through organizational fog
+- **Root Cause Analysis**: Tracing symptoms back to their source
+- **System Diagnostics**: Understanding how components interact
+- **Strategic Clarity**: Cutting through organizational fog
 
 ## How to Use This Wiki
 
