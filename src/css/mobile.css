@@ -1,0 +1,407 @@
+/* ============================================
+   FOGSIFT MOBILE STYLES
+   Mobile-first responsive overrides
+   Imported LAST to override base styles
+   ============================================ */
+
+/* === MOBILE BREAKPOINT: 768px and below === */
+@media (max-width: 768px) {
+
+    /* --- BOX MODEL FOUNDATION ---
+       All components use consistent box-sizing
+       and self-contained spacing
+    ------------------------------------------------ */
+
+    /* === TOUCH TARGETS ===
+       WCAG 2.1 requires 44x44px minimum for touch
+    ------------------------------------------------ */
+
+    /* Buttons and interactive elements */
+    .btn,
+    .btn-primary,
+    .btn-secondary,
+    .cta-button,
+    .hotline-button,
+    .menu-toggle,
+    .theme-toggle,
+    button,
+    [role="button"] {
+        min-height: 44px;
+        min-width: 44px;
+        padding: 12px 20px;
+        /* Ensure touch target includes padding */
+        box-sizing: border-box;
+    }
+
+    /* Checkbox/radio touch areas */
+    .check-item {
+        min-height: 44px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        /* Touch-friendly cursor area */
+        cursor: pointer;
+        /* Prevent text selection on tap */
+        -webkit-user-select: none;
+        user-select: none;
+    }
+
+    .check-item input[type="checkbox"] {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        cursor: pointer;
+        /* Accent color for better visibility */
+        accent-color: var(--primary);
+    }
+
+    /* Links in navigation */
+    .nav-link,
+    .mobile-nav a,
+    .breadcrumb-bar a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+    }
+
+    /* Menu toggle button - explicit sizing */
+    .menu-toggle {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Theme toggle - explicit sizing */
+    .theme-toggle {
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+    }
+
+    /* === LABELS & BADGES ===
+       Remove tilt on mobile for better readability
+    ------------------------------------------------ */
+
+    .label {
+        transform: none !important;
+        position: static;
+        display: inline-block;
+        margin-bottom: 8px;
+    }
+
+    .section-label {
+        transform: none;
+        writing-mode: horizontal-tb;
+        text-orientation: mixed;
+    }
+
+    /* === TYPOGRAPHY MOBILE SCALE ===
+       Slightly smaller but still readable
+    ------------------------------------------------ */
+
+    :root {
+        --text-hero: clamp(2rem, 8vw, 3rem);
+        --text-section: clamp(1.5rem, 6vw, 2rem);
+        --text-card: clamp(1.125rem, 4vw, 1.25rem);
+    }
+
+    .hero h1 {
+        font-size: var(--text-hero);
+        line-height: 1.1;
+    }
+
+    .section-header h2 {
+        font-size: var(--text-section);
+    }
+
+    /* === SPACING MOBILE SCALE ===
+       Tighter vertical rhythm on small screens
+    ------------------------------------------------ */
+
+    /* Section spacing - self-contained box model */
+    section,
+    .section {
+        padding: var(--space-lg) var(--space-md);
+        margin-bottom: var(--space-lg);
+        /* Prevent margin collapse */
+        overflow: visible;
+    }
+
+    /* Card spacing - consistent padding */
+    .card,
+    .mechanism-card,
+    .pricing-card,
+    .team-card,
+    .deliverable-item,
+    .check-item {
+        padding: var(--space-md);
+        margin-bottom: var(--space-sm);
+        /* Self-contained box model */
+        box-sizing: border-box;
+    }
+
+    /* Grid gaps - tighter on mobile */
+    .grid,
+    .mechanism-grid,
+    .capabilities-grid,
+    .deliverables-grid {
+        gap: var(--space-md);
+    }
+
+    /* === NAVIGATION MOBILE ===
+       Full-screen overlay menu
+    ------------------------------------------------ */
+
+    .main-nav {
+        position: fixed;
+        padding: var(--space-sm) var(--space-md);
+    }
+
+    .nav-brand {
+        font-size: var(--text-base);
+    }
+
+    .breadcrumb-bar {
+        font-size: var(--text-sm);
+        padding: var(--space-xs) var(--space-md);
+    }
+
+    /* === HERO MOBILE ===
+       Stack elements, center content
+    ------------------------------------------------ */
+
+    .hero {
+        padding: var(--space-xl) var(--space-md);
+        text-align: center;
+        min-height: auto;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero .tagline {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-md);
+    }
+
+    /* Hero CTA - full width on mobile */
+    .hero .hotline-button {
+        width: 100%;
+        justify-content: center;
+        padding: 16px 24px;
+        font-size: var(--text-base);
+    }
+
+    /* === DIAGNOSTIC SECTION ===
+       Stack checklist items vertically
+    ------------------------------------------------ */
+
+    .diagnostic-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-sm);
+    }
+
+    .check-item label {
+        font-size: var(--text-base);
+        line-height: 1.4;
+    }
+
+    /* === MECHANISM SECTION ===
+       Stack cards vertically with clear numbering
+    ------------------------------------------------ */
+
+    .mechanism-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mechanism-card {
+        padding: var(--space-lg);
+    }
+
+    .mechanism-card .step-number {
+        font-size: var(--text-xl);
+        margin-bottom: var(--space-sm);
+    }
+
+    /* IO boxes - stack on mobile */
+    .io-example {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    .io-box {
+        width: 100%;
+        max-width: none;
+    }
+
+    .io-arrow {
+        transform: rotate(90deg);
+        margin: var(--space-sm) 0;
+    }
+
+    /* === CREDENTIALS SECTION ===
+       Stack all cards vertically
+    ------------------------------------------------ */
+
+    .team-grid,
+    .capabilities-grid,
+    .tech-stack {
+        grid-template-columns: 1fr;
+    }
+
+    .team-card {
+        text-align: center;
+    }
+
+    .team-card img {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto var(--space-md);
+    }
+
+    /* === PRICING SECTION ===
+       Full width cards, clear CTA
+    ------------------------------------------------ */
+
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card {
+        padding: var(--space-lg);
+    }
+
+    .pricing-card .price {
+        font-size: var(--text-xl);
+    }
+
+    /* === CONTACT/CTA SECTION ===
+       Prominent, full-width buttons
+    ------------------------------------------------ */
+
+    .contact-section {
+        padding: var(--space-xl) var(--space-md);
+        text-align: center;
+    }
+
+    .contact-section .hotline-button,
+    .contact-section .cta-button {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto var(--space-md);
+    }
+
+    /* === FOOTER MOBILE ===
+       Stack columns, center content
+    ------------------------------------------------ */
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-lg);
+    }
+
+    .footer-column {
+        width: 100%;
+    }
+
+    .footer-links {
+        justify-content: center;
+    }
+
+    /* === FLOATING CTA ===
+       Smaller on mobile, stick to bottom
+    ------------------------------------------------ */
+
+    .floating-cta {
+        bottom: 16px;
+        right: 16px;
+        left: 16px;
+        width: auto;
+        justify-content: center;
+        padding: 14px 20px;
+        border-radius: 12px;
+    }
+
+    /* Hide floating CTA when contact section visible */
+    .floating-cta.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(20px);
+    }
+
+    /* === MODAL MOBILE ===
+       Full screen on small devices
+    ------------------------------------------------ */
+
+    .modal-content {
+        width: 100%;
+        max-width: none;
+        height: 100%;
+        max-height: none;
+        border-radius: 0;
+        margin: 0;
+    }
+
+    .modal-close {
+        width: 44px;
+        height: 44px;
+        top: 8px;
+        right: 8px;
+    }
+}
+
+/* === SMALL MOBILE: 375px and below === */
+@media (max-width: 375px) {
+
+    /* Even tighter spacing for small phones */
+    section,
+    .section {
+        padding: var(--space-md) var(--space-sm);
+    }
+
+    .hero h1 {
+        font-size: 1.75rem;
+    }
+
+    /* Ensure buttons don't overflow */
+    .btn,
+    .hotline-button,
+    .cta-button {
+        font-size: var(--text-sm);
+        padding: 12px 16px;
+    }
+}
+
+/* === TABLET: 769px to 1024px === */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    /* 2-column grids where appropriate */
+    .mechanism-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .diagnostic-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Labels can tilt slightly on tablet */
+    .label {
+        transform: rotate(-2deg);
+    }
+}
+

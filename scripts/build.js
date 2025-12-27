@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 /**
- * FOGSIFT BUILD SCRIPT v2
+ * FOGSIFT BUILD SCRIPT v3
  * - Concatenates CSS and JS from src/
  * - Processes HTML template with version injection
+ * - Builds markdown wiki pages
  * - Copies static assets to dist/
- * No external dependencies - uses Node.js built-ins
  */
 
 const fs = require('fs');
 const path = require('path');
+const { marked } = require('marked');
 
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -23,6 +24,7 @@ const CSS_FILES = [
     'src/css/tokens.css',
     'src/css/base.css',
     'src/css/components.css',
+    'src/css/mobile.css',  // Mobile-first overrides - must be last
 ];
 
 const JS_FILES = [
@@ -110,6 +112,189 @@ function ensureDir(dir) {
     }
 }
 
+// ============================================
+// WIKI BUILD FUNCTIONS
+// ============================================
+
+const WIKI_SRC = path.join(SRC, 'wiki');
+const WIKI_DIST = path.join(DIST, 'wiki');
+
+// Configure marked for better output
+marked.setOptions({
+    gfm: true,
+    breaks: false,
+    headerIds: true,
+    mangle: false
+});
+
+function getMarkdownFiles(dir, baseDir = dir) {
+    const files = [];
+    if (!fs.existsSync(dir)) return files;
+
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+        const fullPath = path.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            files.push(...getMarkdownFiles(fullPath, baseDir));
+        } else if (entry.name.endsWith('.md')) {
+            const relativePath = path.relative(baseDir, fullPath);
+            const slug = relativePath.replace(/\.md$/, '');
+            files.push({ fullPath, slug, filename: entry.name });
+        }
+    }
+    return files;
+}
+
+function extractTitle(markdown) {
+    const match = markdown.match(/^#\s+(.+)$/m);
+    return match ? match[1] : 'Untitled';
+}
+
+function extractDescription(markdown) {
+    // Get first paragraph after title
+    const lines = markdown.split('\n');
+    let foundTitle = false;
+    for (const line of lines) {
+        if (line.startsWith('# ')) {
+            foundTitle = true;
+            continue;
+        }
+        if (foundTitle && line.trim() && !line.startsWith('#') && !line.startsWith('**')) {
+            return line.trim().substring(0, 160);
+        }
+    }
+    return 'Fogsift Wiki';
+}
+
+function generateWikiNav(wikiIndex, currentSlug = '') {
+    let nav = '';
+    for (const category of wikiIndex.categories) {
+        nav += `<div class="wiki-nav-category">\n`;
+        nav += `  <h4 class="wiki-nav-title">${category.icon} ${category.title}</h4>\n`;
+        nav += `  <ul class="wiki-nav-list">\n`;
+        for (const page of category.pages) {
+            const isActive = page.slug === currentSlug ? ' class="active"' : '';
+            const href = page.slug.includes('/')
+                ? `${page.slug}.html`
+                : `${page.slug}.html`;
+            nav += `    <li${isActive}><a href="${href}">${page.title}</a></li>\n`;
+        }
+        nav += `  </ul>\n`;
+        nav += `</div>\n`;
+    }
+    return nav;
+}
+
+function generateCategoryCards(wikiIndex) {
+    let html = '';
+    for (const category of wikiIndex.categories) {
+        html += `<div class="wiki-category-card">\n`;
+        html += `  <div class="wiki-category-icon">${category.icon}</div>\n`;
+        html += `  <h2 class="wiki-category-title">${category.title}</h2>\n`;
+        html += `  <ul class="wiki-category-pages">\n`;
+        for (const page of category.pages) {
+            const href = page.slug.includes('/')
+                ? `${page.slug}.html`
+                : `${page.slug}.html`;
+            html += `    <li><a href="${href}">${page.title}</a></li>\n`;
+        }
+        html += `  </ul>\n`;
+        html += `</div>\n`;
+    }
+    return html;
+}
+
+function buildWiki() {
+    const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
+    const pageTemplatePath = path.join(SRC, 'wiki-template.html');
+    const indexTemplatePath = path.join(SRC, 'wiki-index-template.html');
+
+    if (!fs.existsSync(wikiIndexPath)) {
+        console.log('  ⚠ No wiki/index.json found, skipping wiki build');
+        return 0;
+    }
+
+    if (!fs.existsSync(pageTemplatePath)) {
+        console.log('  ⚠ No wiki-template.html found, skipping wiki build');
+        return 0;
+    }
+
+    const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+    const pageTemplate = fs.readFileSync(pageTemplatePath, 'utf8');
+    const indexTemplate = fs.existsSync(indexTemplatePath)
+        ? fs.readFileSync(indexTemplatePath, 'utf8')
+        : null;
+
+    const today = new Date().toISOString().split('T')[0];
+    const mdFiles = getMarkdownFiles(WIKI_SRC);
+
+    ensureDir(WIKI_DIST);
+
+    let pagesBuilt = 0;
+
+    // Build each markdown file
+    for (const { fullPath, slug } of mdFiles) {
+        const markdown = fs.readFileSync(fullPath, 'utf8');
+        const htmlContent = marked(markdown);
+        const title = extractTitle(markdown);
+        const description = extractDescription(markdown);
+
+        // Calculate depth for relative paths
+        const depth = slug.split('/').length - 1;
+        const prefix = depth > 0 ? '../'.repeat(depth) : '';
+
+        // Generate nav for this page
+        const wikiNav = generateWikiNav(wikiIndex, slug);
+
+        // Build breadcrumb
+        const breadcrumbParts = slug.split('/');
+        const breadcrumb = breadcrumbParts[breadcrumbParts.length - 1]
+            .replace(/-/g, ' ')
+            .replace(/^\d+\s*/, '')
+            .toUpperCase();
+
+        // Process template
+        let html = pageTemplate
+            .replace(/\{\{PAGE_TITLE\}\}/g, title)
+            .replace(/\{\{PAGE_DESCRIPTION\}\}/g, description)
+            .replace(/\{\{PAGE_SLUG\}\}/g, slug)
+            .replace(/\{\{BREADCRUMB\}\}/g, breadcrumb)
+            .replace(/\{\{WIKI_NAV\}\}/g, wikiNav)
+            .replace(/\{\{CONTENT\}\}/g, htmlContent)
+            .replace(/\{\{BUILD_DATE\}\}/g, today);
+
+        // Adjust relative paths for nested pages
+        if (depth > 0) {
+            html = html.replace(/href="index\.html"/g, `href="${prefix}index.html"`);
+            html = html.replace(/href="\.\.\/index\.html"/g, `href="${'../'.repeat(depth + 1)}index.html"`);
+            html = html.replace(/href="\.\.\/styles\.css"/g, `href="${'../'.repeat(depth + 1)}styles.css"`);
+            html = html.replace(/href="\.\.\/manifest\.json"/g, `href="${'../'.repeat(depth + 1)}manifest.json"`);
+            html = html.replace(/href="\.\.\/favicon\.png"/g, `href="${'../'.repeat(depth + 1)}favicon.png"`);
+            html = html.replace(/src="\.\.\/assets\//g, `src="${'../'.repeat(depth + 1)}assets/`);
+        }
+
+        // Ensure output directory exists
+        const outputPath = path.join(WIKI_DIST, `${slug}.html`);
+        ensureDir(path.dirname(outputPath));
+
+        fs.writeFileSync(outputPath, html);
+        pagesBuilt++;
+    }
+
+    // Build wiki index page
+    if (indexTemplate) {
+        const categoryCards = generateCategoryCards(wikiIndex);
+        let indexHtml = indexTemplate
+            .replace(/\{\{CATEGORIES\}\}/g, categoryCards)
+            .replace(/\{\{BUILD_DATE\}\}/g, today);
+
+        fs.writeFileSync(path.join(WIKI_DIST, 'index.html'), indexHtml);
+        pagesBuilt++;
+    }
+
+    return pagesBuilt;
+}
+
 function build() {
     console.log(`\n🔧 Building Fogsift v${VERSION}...\n`);
 
@@ -145,6 +330,13 @@ function build() {
             console.log(`  ✓ dist/${asset.dest}`);
         }
     });
+
+    // Build wiki
+    console.log('\n📚 Wiki:');
+    const wikiPages = buildWiki();
+    if (wikiPages > 0) {
+        console.log(`  ✓ Built ${wikiPages} wiki pages`);
+    }
 
     console.log(`\n✨ Build complete! v${VERSION}`);
     console.log('   Run: npm run dev\n');

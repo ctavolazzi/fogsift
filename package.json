@@ -16,5 +16,8 @@
   },
   "keywords": ["consulting", "fogsift"],
   "author": "Christopher Tavolazzi",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "dependencies": {
+    "marked": "^15.0.4"
+  }
 }

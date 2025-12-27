@@ -1,0 +1,33 @@
+{
+  "title": "Fogsift Wiki",
+  "description": "Knowledge base, documentation, and field notes",
+  "categories": [
+    {
+      "id": "docs",
+      "title": "Documentation",
+      "icon": "📋",
+      "pages": [
+        { "slug": "getting-started", "title": "Getting Started" }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Concepts",
+      "icon": "💡",
+      "pages": [
+        { "slug": "concepts/root-cause", "title": "Root Cause Analysis" }
+      ]
+    },
+    {
+      "id": "field-notes",
+      "title": "Field Notes",
+      "icon": "📝",
+      "pages": [
+        { "slug": "field-notes/001-map-territory", "title": "The Map Is Not The Territory" },
+        { "slug": "field-notes/002-precision-accuracy", "title": "Precision vs Accuracy" },
+        { "slug": "field-notes/003-entropy", "title": "Entropy" }
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki | Fogsift</title>
+    <meta name="description" content="Fogsift knowledge base - documentation, concepts, and field notes from our consulting work.">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f4f4f5">
+    <link rel="canonical" href="https://fogsift.com/wiki/">
+
+    <link rel="manifest" href="../manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Fogsift Wiki">
+    <meta property="og:description" content="Knowledge base, documentation, and field notes">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/wiki/">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="../favicon.png">
+
+    <!-- Theme detection - inline to prevent FOUC -->
+    <script>
+        (function() {
+            var localTheme = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', localTheme || 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="wiki-body">
+
+    <div id="toast-container"></div>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="mobile-close" onclick="Nav.toggleMobile()">[CLOSE]</div>
+        <a href="../index.html" class="mobile-link">HOME</a>
+        <a href="index.html" class="mobile-link wiki-nav-active">WIKI</a>
+        <a href="../index.html#mechanism" class="mobile-link">HOW IT WORKS</a>
+        <a href="../index.html#credentials" class="mobile-link">ABOUT</a>
+        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
+        <a href="../index.html#contact" class="mobile-link">CONTACT</a>
+    </div>
+
+    <div class="nav-wrapper">
+        <div class="main-nav">
+            <a href="../index.html" class="brand">
+                <img src="../assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+
+            <div class="menu-items">
+                <div class="menu-item"><a href="index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
+                <div class="menu-item"><a href="../index.html#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
+                <div class="menu-item"><a href="../index.html#credentials" class="menu-link direct">ABOUT</a></div>
+                <div class="menu-item"><a href="../index.html#pricing" class="menu-link direct">PRICING</a></div>
+                <div class="menu-item"><a href="../index.html#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="Theme.toggle()" aria-label="Toggle Dark Mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="mobile-toggle" onclick="Nav.toggleMobile()">[MENU]</div>
+            </div>
+        </div>
+
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <ol class="crumb-list">
+                <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><span class="crumb-current">WIKI</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="wiki-index-layout">
+        <header class="wiki-index-header">
+            <h1 class="wiki-index-title">Fogsift Wiki</h1>
+            <p class="wiki-index-desc">Knowledge base, documentation, and field notes from our consulting work.</p>
+        </header>
+
+        <div class="wiki-categories">
+            <div class="wiki-category-card">
+  <div class="wiki-category-icon">📋</div>
+  <h2 class="wiki-category-title">Documentation</h2>
+  <ul class="wiki-category-pages">
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul>
+</div>
+<div class="wiki-category-card">
+  <div class="wiki-category-icon">💡</div>
+  <h2 class="wiki-category-title">Concepts</h2>
+  <ul class="wiki-category-pages">
+    <li><a href="concepts/root-cause.html">Root Cause Analysis</a></li>
+  </ul>
+</div>
+<div class="wiki-category-card">
+  <div class="wiki-category-icon">📝</div>
+  <h2 class="wiki-category-title">Field Notes</h2>
+  <ul class="wiki-category-pages">
+    <li><a href="field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
+    <li><a href="field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
+    <li><a href="field-notes/003-entropy.html">Entropy</a></li>
+  </ul>
+</div>
+
+        </div>
+
+        <footer class="wiki-index-footer">
+            <p>Last updated: 2025-12-27</p>
+            <a href="../index.html" class="wiki-back-link">← Back to Fogsift</a>
+        </footer>
+    </div>
+
+    <!-- Minimal JS for wiki pages -->
+    <script>
+        // Theme toggle
+        const Theme = {
+            toggle() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            }
+        };
+
+        // Mobile nav
+        const Nav = {
+            toggleMobile() {
+                const drawer = document.getElementById('mobile-drawer');
+                drawer?.classList.toggle('open');
+            }
+        };
+    </script>
+</body>
+</html>
+

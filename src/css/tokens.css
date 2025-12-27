@@ -1,6 +1,7 @@
 /* ============================================
    FOGSIFT DESIGN TOKENS
    Single source of truth for all design values
+   Modular architecture: Change values here to update entire site
    ============================================ */
 
 :root {
@@ -8,51 +9,64 @@
     --ink: #18181b;
     --paper: #fafafa;
     --canvas: #f4f4f5;
-    
-    /* Primary brand colors - richer palette */
-    --primary: #c2410c;       /* Burnt orange - sophisticated */
+
+    /* Primary brand colors - semantically named */
+    --primary: #c2410c;       /* CTA orange - calls to action */
     --primary-hover: #9a3412; /* Darker for hover states */
     --secondary: #78350f;     /* Deep brown - warmth, trust */
-    --accent: #0d9488;        /* Teal - contrast pop */
+    --accent: #0d9488;        /* Teal - interactive elements */
     --accent-light: #14b8a6;  /* Lighter teal for hover */
-    --highlight: #fbbf24;     /* Gold - premium feel */
-    
+    --highlight: #fbbf24;     /* Gold - premium highlights */
+
     /* Legacy compatibility */
     --copper: var(--primary);
     --electric: var(--accent);
-    
-    /* Text colors - improved contrast */
-    --muted: #71717a;         /* Higher contrast (was #52525b) */
-    --muted-light: #a1a1aa;   /* For subtle elements */
+
+    /* Text colors - WCAG AA compliant contrast ratios
+       Muted on canvas (#f4f4f5): #52525b = 5.6:1 ✓
+       Muted on paper (#fafafa): #52525b = 5.8:1 ✓ */
+    --muted: #52525b;         /* WCAG AA compliant (4.5:1 min) */
+    --muted-light: #a1a1aa;   /* For decorative/non-essential only */
     --line: #d4d4d8;
+
+    /* Status colors - with pattern alternatives for colorblind */
+    --success: #059669;       /* Green - also uses ✓ icon */
+    --warning: #d97706;       /* Orange - also uses ⚠ icon */
+    --error: #dc2626;         /* Red - also uses ✕ icon */
+    --info: #0284c7;          /* Blue - also uses ℹ icon */
+
+    /* === FOCUS & ACCESSIBILITY === */
+    --focus-ring: var(--accent);
+    --focus-ring-width: 3px;
+    --focus-ring-offset: 2px;
 
     /* === BREADCRUMB BAR === */
     --bar-bg: #f4f4f5;
     --bar-text: #18181b;
     --bar-border: #d4d4d8;
 
-    /* === SPACING === */
-    --space-xs: 0.25rem;
-    --space-sm: 0.5rem;
-    --space-md: 1rem;
-    --space-lg: 2rem;
-    --space-xl: 4rem;
-    --space-2xl: 6rem;
-    --space-3xl: 8rem;
+    /* === SPACING - 8px base grid === */
+    --space-xs: 0.25rem;   /* 4px */
+    --space-sm: 0.5rem;    /* 8px */
+    --space-md: 1rem;      /* 16px */
+    --space-lg: 2rem;      /* 32px */
+    --space-xl: 4rem;      /* 64px */
+    --space-2xl: 6rem;     /* 96px */
+    --space-3xl: 8rem;     /* 128px */
 
     /* === TYPOGRAPHY === */
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    
-    /* Enhanced type scale - more readable */
-    --text-xs: 0.75rem;
-    --text-sm: 0.875rem;
-    --text-base: 1.125rem;    /* 18px base (was 1rem/16px) */
-    --text-lg: 1.25rem;
-    --text-xl: 1.5rem;
-    --text-2xl: 2rem;
+
+    /* Type scale - readable sizes */
+    --text-xs: 0.75rem;       /* 12px */
+    --text-sm: 0.875rem;      /* 14px */
+    --text-base: 1.125rem;    /* 18px base for readability */
+    --text-lg: 1.25rem;       /* 20px */
+    --text-xl: 1.5rem;        /* 24px */
+    --text-2xl: 2rem;         /* 32px */
     --text-headline: clamp(2.5rem, 5vw, 3.5rem);
-    
+
     /* Line heights */
     --leading-tight: 1.2;
     --leading-normal: 1.6;
@@ -62,6 +76,7 @@
     --border-width: 2px;
     --radius: 4px;
     --radius-lg: 8px;
+    --radius-full: 9999px;
 
     /* === SHADOWS === */
     --shadow-hard: 4px 4px 0 var(--ink);
@@ -79,6 +94,9 @@
     --nav-height: 70px;
     --breadcrumb-height: 44px;
     --frame-max-width: 800px;
+
+    /* === TOUCH TARGETS (WCAG 2.1) === */
+    --touch-min: 44px;
 }
 
 /* === PALETTE: DARK MODE === */
@@ -86,23 +104,31 @@
     --ink: #f4f4f5;
     --paper: #18181b;
     --canvas: #09090b;
-    
-    /* Dark mode brand colors */
+
+    /* Dark mode brand colors - brighter for contrast */
     --primary: #fb923c;       /* Lighter orange for dark bg */
     --primary-hover: #fdba74;
     --secondary: #d97706;     /* Warmer brown */
     --accent: #2dd4bf;        /* Brighter teal */
     --accent-light: #5eead4;
     --highlight: #fcd34d;     /* Brighter gold */
-    
+
     /* Legacy compatibility */
     --copper: var(--primary);
     --electric: var(--accent);
-    
-    /* Dark mode text */
+
+    /* Dark mode text - WCAG AA compliant
+       Muted on canvas (#09090b): #a1a1aa = 7.3:1 ✓
+       Muted on paper (#18181b): #a1a1aa = 6.5:1 ✓ */
     --muted: #a1a1aa;
     --muted-light: #71717a;
     --line: #27272a;
+
+    /* Status colors - adjusted for dark mode */
+    --success: #34d399;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --info: #38bdf8;
 
     --bar-bg: #27272a;
     --bar-text: #f4f4f5;
@@ -112,4 +138,27 @@
     --shadow-hover: 6px 6px 0 var(--primary);
     --shadow-soft: 0 4px 20px rgba(0,0,0,0.3);
     --shadow-elevated: 0 8px 30px rgba(0,0,0,0.4);
+}
+
+/* === HIGH CONTRAST MODE (Accessibility) === */
+@media (prefers-contrast: high) {
+    :root {
+        --muted: #3f3f46;
+        --line: #71717a;
+        --focus-ring-width: 4px;
+    }
+
+    [data-theme="dark"] {
+        --muted: #d4d4d8;
+        --line: #52525b;
+    }
+}
+
+/* === REDUCED MOTION (Accessibility) === */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --snap: 0s;
+        --ease-out: 0s;
+        --ease-bounce: 0s;
+    }
 }

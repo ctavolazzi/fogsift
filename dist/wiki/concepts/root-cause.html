@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Cause Analysis | Fogsift Wiki</title>
+    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms—it's about finding the actual source.">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f4f4f5">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
+    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms—it's about finding the actual source.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="../../favicon.png">
+
+    <!-- Theme detection - inline to prevent FOUC -->
+    <script>
+        (function() {
+            var localTheme = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', localTheme || 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="wiki-body">
+
+    <div id="toast-container"></div>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="mobile-close" onclick="Nav.toggleMobile()">[CLOSE]</div>
+        <a href="../../index.html" class="mobile-link">HOME</a>
+        <a href="../../index.html" class="mobile-link">WIKI</a>
+        <a href="../index.html#mechanism" class="mobile-link">HOW IT WORKS</a>
+        <a href="../index.html#credentials" class="mobile-link">ABOUT</a>
+        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
+        <a href="../index.html#contact" class="mobile-link">CONTACT</a>
+    </div>
+
+    <div class="nav-wrapper">
+        <div class="main-nav">
+            <a href="../../index.html" class="brand">
+                <img src="../../assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+
+            <div class="menu-items">
+                <div class="menu-item"><a href="../../index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
+                <div class="menu-item"><a href="../index.html#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
+                <div class="menu-item"><a href="../index.html#credentials" class="menu-link direct">ABOUT</a></div>
+                <div class="menu-item"><a href="../index.html#pricing" class="menu-link direct">PRICING</a></div>
+                <div class="menu-item"><a href="../index.html#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="Theme.toggle()" aria-label="Toggle Dark Mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="mobile-toggle" onclick="Nav.toggleMobile()">[MENU]</div>
+            </div>
+        </div>
+
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <ol class="crumb-list">
+                <li class="crumb-item"><a href="../../index.html" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><a href="../../index.html" class="crumb-link">WIKI</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="wiki-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="wiki-sidebar">
+            <div class="wiki-sidebar-header">
+                <a href="../../index.html" class="wiki-home-link">← Wiki Home</a>
+            </div>
+            <div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📋 Documentation</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">💡 Concepts</h4>
+  <ul class="wiki-nav-list">
+    <li class="active"><a href="concepts/root-cause.html">Root Cause Analysis</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📝 Field Notes</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
+    <li><a href="field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
+    <li><a href="field-notes/003-entropy.html">Entropy</a></li>
+  </ul>
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="wiki-main">
+            <article class="wiki-content">
+                <h1>Root Cause Analysis</h1>
+<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms—it&#39;s about finding the actual source.</p>
+<h2>The Principle</h2>
+<blockquote>
+<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; — H.L. Mencken</p>
+</blockquote>
+<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
+<h2>The Method</h2>
+<h3>1. Document the Symptom</h3>
+<p>What exactly is happening? When did it start? Who noticed it first?</p>
+<h3>2. Trace the Wire</h3>
+<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
+<h3>3. Apply the 5 Whys</h3>
+<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li><em>Why</em> did the server crash? → Memory leak</li>
+<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
+<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
+<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
+<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+</ul>
+<p>The root cause isn&#39;t &quot;memory leak&quot;—it&#39;s &quot;no deployment checklist.&quot;</p>
+<h2>Common Traps</h2>
+<h3>Premature Closure</h3>
+<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
+<h3>Blame Assignment</h3>
+<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
+<h3>Confirmation Bias</h3>
+<p>Looking for evidence that supports your initial theory instead of testing it.</p>
+<h2>When to Use This</h2>
+<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<ul>
+<li>The same problem keeps recurring</li>
+<li>The cost of the problem justifies the investigation</li>
+<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+</ul>
+<hr>
+<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+
+            </article>
+
+            <footer class="wiki-footer">
+                <div class="wiki-meta">
+                    <span>Last updated: 2025-12-27</span>
+                </div>
+                <div class="wiki-nav-footer">
+                    <a href="../../index.html">← Back to Wiki Index</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Minimal JS for wiki pages -->
+    <script>
+        // Theme toggle
+        const Theme = {
+            toggle() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            }
+        };
+
+        // Mobile nav
+        const Nav = {
+            toggleMobile() {
+                const drawer = document.getElementById('mobile-drawer');
+                drawer?.classList.toggle('open');
+            }
+        };
+
+        // Toast (minimal)
+        const Toast = {
+            show(msg) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.textContent = msg;
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+        };
+    </script>
+</body>
+</html>
+

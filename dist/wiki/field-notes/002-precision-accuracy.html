@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Note: Precision vs Accuracy | Fogsift Wiki</title>
+    <meta name="description" content="---">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f4f4f5">
+    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/002-precision-accuracy.html">
+
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Field Note: Precision vs Accuracy | Fogsift Wiki">
+    <meta property="og:description" content="---">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/002-precision-accuracy.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="../../favicon.png">
+
+    <!-- Theme detection - inline to prevent FOUC -->
+    <script>
+        (function() {
+            var localTheme = localStorage.getItem('theme');
+            document.documentElement.setAttribute('data-theme', localTheme || 'light');
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+<body class="wiki-body">
+
+    <div id="toast-container"></div>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="mobile-close" onclick="Nav.toggleMobile()">[CLOSE]</div>
+        <a href="../../index.html" class="mobile-link">HOME</a>
+        <a href="../../index.html" class="mobile-link">WIKI</a>
+        <a href="../index.html#mechanism" class="mobile-link">HOW IT WORKS</a>
+        <a href="../index.html#credentials" class="mobile-link">ABOUT</a>
+        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
+        <a href="../index.html#contact" class="mobile-link">CONTACT</a>
+    </div>
+
+    <div class="nav-wrapper">
+        <div class="main-nav">
+            <a href="../../index.html" class="brand">
+                <img src="../../assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+
+            <div class="menu-items">
+                <div class="menu-item"><a href="../../index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
+                <div class="menu-item"><a href="../index.html#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
+                <div class="menu-item"><a href="../index.html#credentials" class="menu-link direct">ABOUT</a></div>
+                <div class="menu-item"><a href="../index.html#pricing" class="menu-link direct">PRICING</a></div>
+                <div class="menu-item"><a href="../index.html#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="Theme.toggle()" aria-label="Toggle Dark Mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="mobile-toggle" onclick="Nav.toggleMobile()">[MENU]</div>
+            </div>
+        </div>
+
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <ol class="crumb-list">
+                <li class="crumb-item"><a href="../../index.html" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><a href="../../index.html" class="crumb-link">WIKI</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><span class="crumb-current">PRECISION ACCURACY</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="wiki-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="wiki-sidebar">
+            <div class="wiki-sidebar-header">
+                <a href="../../index.html" class="wiki-home-link">← Wiki Home</a>
+            </div>
+            <div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📋 Documentation</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="getting-started.html">Getting Started</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">💡 Concepts</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="concepts/root-cause.html">Root Cause Analysis</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📝 Field Notes</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
+    <li class="active"><a href="field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
+    <li><a href="field-notes/003-entropy.html">Entropy</a></li>
+  </ul>
+</div>
+
+        </aside>
+
+        <!-- Main Content -->
+        <main class="wiki-main">
+            <article class="wiki-content">
+                <h1>Field Note: Precision vs Accuracy</h1>
+<p><strong>Date:</strong> 2025-01-08<br><strong>Sector:</strong> FABRICATION<br><strong>Read Time:</strong> 4 minutes</p>
+<hr>
+<p>In CNC machining, precision and accuracy are different things. Understanding this distinction changes how you diagnose problems—in manufacturing and everywhere else.</p>
+<h2>The Definitions</h2>
+<p><strong>Precision</strong> is repeatability. Can you hit the same spot every time?</p>
+<p><strong>Accuracy</strong> is correctness. Is that spot the <em>right</em> spot?</p>
+<p>You can be precise without being accurate (hitting the same wrong spot every time). You can be accurate without being precise (hitting near the right spot but inconsistently).</p>
+<h2>The Manufacturing Example</h2>
+<p>A CNC mill that consistently cuts 0.002&quot; too deep has a precision problem <em>and</em> an accuracy problem. But they have different causes:</p>
+<ul>
+<li><strong>Precision issues</strong> → mechanical wear, thermal expansion, vibration</li>
+<li><strong>Accuracy issues</strong> → calibration, tool measurement, coordinate systems</li>
+</ul>
+<p>Fixing vibration won&#39;t fix a calibration error. Recalibrating won&#39;t fix a worn bearing.</p>
+<h2>The Strategic Parallel</h2>
+<p>Organizations have the same distinction:</p>
+<ul>
+<li><strong>Precise but inaccurate</strong>: Consistent processes that produce the wrong outcome</li>
+<li><strong>Accurate but imprecise</strong>: Right goals, inconsistent execution</li>
+<li><strong>Neither</strong>: Chaos</li>
+</ul>
+<h2>The Diagnostic Question</h2>
+<p>When something&#39;s not working, ask:</p>
+<ol>
+<li>Is it <em>consistently</em> wrong? (Precision is fine, accuracy is off)</li>
+<li>Is it <em>inconsistently</em> wrong? (Accuracy might be fine, precision is off)</li>
+<li>Is it <em>randomly</em> wrong? (Both are off, or you&#39;re measuring wrong)</li>
+</ol>
+<p>The answer tells you where to look.</p>
+<h2>The Action</h2>
+<p>Before you start fixing, measure twice:</p>
+<ul>
+<li>Are you hitting the same spot? (Precision check)</li>
+<li>Is that spot where you intended? (Accuracy check)</li>
+</ul>
+<p>Different problems. Different solutions.</p>
+<hr>
+<p><em>This applies to: budgets, schedules, quality metrics, hiring, strategy execution, and anything else you measure.</em></p>
+
+            </article>
+
+            <footer class="wiki-footer">
+                <div class="wiki-meta">
+                    <span>Last updated: 2025-12-27</span>
+                </div>
+                <div class="wiki-nav-footer">
+                    <a href="../../index.html">← Back to Wiki Index</a>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Minimal JS for wiki pages -->
+    <script>
+        // Theme toggle
+        const Theme = {
+            toggle() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                localStorage.setItem('theme', next);
+            }
+        };
+
+        // Mobile nav
+        const Nav = {
+            toggleMobile() {
+                const drawer = document.getElementById('mobile-drawer');
+                drawer?.classList.toggle('open');
+            }
+        };
+
+        // Toast (minimal)
+        const Toast = {
+            show(msg) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.textContent = msg;
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
+            }
+        };
+    </script>
+</body>
+</html>
+
