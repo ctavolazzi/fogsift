@@ -6,11 +6,24 @@
 :root {
     /* === PALETTE: LIGHT MODE === */
     --ink: #18181b;
-    --paper: #f4f4f5;
-    --canvas: #e4e4e7;
-    --copper: #d97706;
-    --electric: #0891b2;
-    --muted: #52525b;
+    --paper: #fafafa;
+    --canvas: #f4f4f5;
+    
+    /* Primary brand colors - richer palette */
+    --primary: #c2410c;       /* Burnt orange - sophisticated */
+    --primary-hover: #9a3412; /* Darker for hover states */
+    --secondary: #78350f;     /* Deep brown - warmth, trust */
+    --accent: #0d9488;        /* Teal - contrast pop */
+    --accent-light: #14b8a6;  /* Lighter teal for hover */
+    --highlight: #fbbf24;     /* Gold - premium feel */
+    
+    /* Legacy compatibility */
+    --copper: var(--primary);
+    --electric: var(--accent);
+    
+    /* Text colors - improved contrast */
+    --muted: #71717a;         /* Higher contrast (was #52525b) */
+    --muted-light: #a1a1aa;   /* For subtle elements */
     --line: #d4d4d8;
 
     /* === BREADCRUMB BAR === */
@@ -24,25 +37,38 @@
     --space-md: 1rem;
     --space-lg: 2rem;
     --space-xl: 4rem;
+    --space-2xl: 6rem;
+    --space-3xl: 8rem;
 
     /* === TYPOGRAPHY === */
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
-    --text-xs: 0.7rem;
-    --text-sm: 0.8rem;
-    --text-base: 1rem;
+    
+    /* Enhanced type scale - more readable */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1.125rem;    /* 18px base (was 1rem/16px) */
     --text-lg: 1.25rem;
     --text-xl: 1.5rem;
+    --text-2xl: 2rem;
     --text-headline: clamp(2.5rem, 5vw, 3.5rem);
+    
+    /* Line heights */
+    --leading-tight: 1.2;
+    --leading-normal: 1.6;
+    --leading-relaxed: 1.75;
 
     /* === BORDERS & RADIUS === */
     --border-width: 2px;
     --radius: 4px;
+    --radius-lg: 8px;
 
     /* === SHADOWS === */
     --shadow-hard: 4px 4px 0 var(--ink);
-    --shadow-hover: 6px 6px 0 var(--electric);
+    --shadow-hover: 6px 6px 0 var(--accent);
     --shadow-active: 0px 0px 0 var(--ink);
+    --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
+    --shadow-elevated: 0 8px 30px rgba(0,0,0,0.12);
 
     /* === MOTION === */
     --snap: 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -60,16 +86,30 @@
     --ink: #f4f4f5;
     --paper: #18181b;
     --canvas: #09090b;
-    --copper: #fbbf24;
-    --electric: #22d3ee;
+    
+    /* Dark mode brand colors */
+    --primary: #fb923c;       /* Lighter orange for dark bg */
+    --primary-hover: #fdba74;
+    --secondary: #d97706;     /* Warmer brown */
+    --accent: #2dd4bf;        /* Brighter teal */
+    --accent-light: #5eead4;
+    --highlight: #fcd34d;     /* Brighter gold */
+    
+    /* Legacy compatibility */
+    --copper: var(--primary);
+    --electric: var(--accent);
+    
+    /* Dark mode text */
     --muted: #a1a1aa;
+    --muted-light: #71717a;
     --line: #27272a;
 
     --bar-bg: #27272a;
     --bar-text: #f4f4f5;
     --bar-border: #27272a;
 
-    --shadow-hard: 4px 4px 0 var(--electric);
-    --shadow-hover: 6px 6px 0 var(--copper);
+    --shadow-hard: 4px 4px 0 var(--accent);
+    --shadow-hover: 6px 6px 0 var(--primary);
+    --shadow-soft: 0 4px 20px rgba(0,0,0,0.3);
+    --shadow-elevated: 0 8px 30px rgba(0,0,0,0.4);
 }
-

@@ -7,6 +7,8 @@
     "dev": "npx wrangler pages dev dist --port 5050",
     "build": "node scripts/build.js",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift",
+    "quick-deploy": "node scripts/deploy.js",
+    "deploy:dry": "node scripts/deploy.js --dry-run",
     "preview": "npm run build && npm run dev",
     "version:patch": "node scripts/version.js patch",
     "version:minor": "node scripts/version.js minor",
