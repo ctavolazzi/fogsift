@@ -1,0 +1,30 @@
+{
+  "lastUpdated": "2025-12-27T10:59:00-08:00",
+  "servers": [
+    { "name": "sequential-thinking", "status": "online", "statusText": "Online" },
+    { "name": "memory", "status": "online", "statusText": "Online" },
+    { "name": "filesystem", "status": "online", "statusText": "Online" },
+    { "name": "docs-maintainer", "status": "online", "statusText": "Online" },
+    { "name": "browser", "status": "online", "statusText": "Online" },
+    { "name": "work-efforts", "status": "online", "statusText": "v0.3.0" }
+  ],
+  "pipeline": [
+    { "id": "plan", "label": "Plan", "status": "complete" },
+    { "id": "ticket", "label": "Ticket", "status": "complete" },
+    { "id": "execute", "label": "Execute", "status": "complete" },
+    { "id": "verify", "label": "Verify", "status": "complete" },
+    { "id": "done", "label": "Done", "status": "complete" }
+  ],
+  "activeWorkEffort": {
+    "id": "WE-251227-fmhx",
+    "title": "MCP System Dashboard",
+    "status": "completed",
+    "progress": "All 4 tickets completed. Dashboard live!",
+    "tickets": [
+      { "id": "TKT-fmhx-001", "title": "Create dashboard HTML page", "status": "completed" },
+      { "id": "TKT-fmhx-002", "title": "Add footer link to dashboard", "status": "completed" },
+      { "id": "TKT-fmhx-003", "title": "Create status.json data file", "status": "completed" },
+      { "id": "TKT-fmhx-004", "title": "Verify dashboard with browser", "status": "completed" }
+    ]
+  }
+}
