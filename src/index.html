@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fogsift | Straight answers to complicated questions</title>
+    <title>Fogsift | Clear answers to complicated questions</title>
     <meta name="description" content="Independent consulting for complex problems. Trace root causes. Get clarity. Based in Chico, CA.">
     <meta name="author" content="Christopher Tavolazzi">
-    <meta name="theme-color" content="#f4f4f5">
+    <meta name="theme-color" content="#f5f0e6">
     <link rel="canonical" href="https://fogsift.com">
 
     <link rel="manifest" href="manifest.json">
@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <meta property="og:title" content="Fogsift">
-    <meta property="og:description" content="Straight answers to complicated questions.">
+    <meta property="og:description" content="Clear answers to complicated questions.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -54,7 +54,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- External Stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -63,17 +63,8 @@
     <!-- Skip to main content (accessibility) -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <div id="progress-bar" role="progressbar" aria-label="Page scroll progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <!-- Toast notifications (kept - useful feedback) -->
     <div id="toast-container" role="status" aria-live="polite" aria-atomic="true"></div>
-
-    <!-- Floating CTA - appears after scrolling past hero -->
-    <a href="mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline"
-       class="floating-cta"
-       id="floating-cta"
-       aria-label="Send a question via email">
-        <span class="floating-cta-icon" aria-hidden="true">?</span>
-        <span class="floating-cta-text">Ask a Question</span>
-    </a>
 
     <!-- Article Modal -->
     <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
@@ -94,13 +85,12 @@
         </button>
         <a href="#hero" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
-        <a href="#mechanism" class="mobile-link" onclick="Nav.toggleMobile()">HOW IT WORKS</a>
-        <a href="#credentials" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="#process" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="#about" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
         <a href="#pricing" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
-        <a href="#contact" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
-    <!-- Main Navigation -->
+    <!-- Main Navigation - Minimal top bar -->
     <header class="nav-wrapper" role="banner">
         <div class="main-nav">
             <a href="#" class="brand" onclick="window.scrollTo(0,0); return false;" aria-label="Fogsift home">
@@ -108,11 +98,11 @@
             </a>
 
             <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="wiki/index.html" class="menu-link direct">WIKI</a></div>
-                <div class="menu-item"><a href="#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
-                <div class="menu-item"><a href="#credentials" class="menu-link direct">ABOUT</a></div>
-                <div class="menu-item"><a href="#pricing" class="menu-link direct">PRICING</a></div>
-                <div class="menu-item"><a href="#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
+                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
+                <div class="menu-item"><a href="#process" class="menu-link">PROCESS</a></div>
+                <div class="menu-item"><a href="#about" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="#pricing" class="menu-link">PRICING</a></div>
+                <div class="menu-item"><a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="menu-link cta-link">CONTACT</a></div>
             </nav>
 
             <div class="nav-controls">
@@ -125,273 +115,138 @@
                 </button>
             </div>
         </div>
-
-        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
-            <ol class="crumb-list">
-                <li class="crumb-item"><a href="#hero" class="crumb-link">FOGSIFT</a></li>
-                <li class="crumb-item crumb-separator" aria-hidden="true">/</li>
-                <li class="crumb-item" id="crumb-category" style="display:none;"><a href="#" class="crumb-link">HOME</a></li>
-                <li class="crumb-item crumb-separator" id="sep-1" style="display:none;" aria-hidden="true">/</li>
-                <li class="crumb-item" id="crumb-section"><span class="crumb-current" aria-current="location">HOME</span></li>
-            </ol>
-        </nav>
     </header>
 
     <main class="frame" id="main-content">
 
         <!-- ========================================
-             SECTION 1: HERO + PRIMARY CTA
+             SECTION 1: HERO
+             Badge-style centered card with primary CTA
              ======================================== -->
-        <section id="hero" data-crumb="HOME" class="section section-hero" aria-labelledby="hero-heading">
-            <h1 id="hero-heading" class="headline">Straight answers to complicated questions.</h1>
-            <p class="subhead">You have a problem that doesn't fit in a standard box. You need someone to trace the root cause and hand you the fix.</p>
-
-            <div class="hero-cta-wrapper">
-                <a href="mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline" class="hotline-button">
-                    <span aria-hidden="true">?</span> Weird Question Hotline
+        <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
+            <div class="hero-badge">
+                <h1 id="hero-heading" class="headline">Clear answers to complicated questions.</h1>
+                <p class="subhead">You have a problem that doesn't fit in a standard box. I trace the root cause and hand you the fix.</p>
+                <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="cta-button">
+                    Send a Question
                 </a>
-                <p class="hotline-subtext">Click to email your weirdest question. Let's solve it together.</p>
             </div>
         </section>
 
-        <!-- ========================================
-             SECTION 2: DIAGNOSTIC (QUALIFIER)
-             ======================================== -->
-        <section class="card section-qualifier" id="diagnostic" data-crumb="DIAGNOSTIC" aria-labelledby="diagnostic-heading">
-            <h2 id="diagnostic-heading" class="label">DOES THIS SOUND LIKE YOU?</h2>
-            <fieldset class="diagnostic-list">
-                <legend class="sr-only">Select the statements that apply to you</legend>
-                <label class="check-item">
-                    <input type="checkbox" aria-describedby="check-desc-1">
-                    <span class="check-indicator" aria-hidden="true">
-                        <span class="check-unchecked">☐</span>
-                        <span class="check-checked">☑</span>
-                    </span>
-                    <span id="check-desc-1">You have plenty of data, but no narrative.</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" aria-describedby="check-desc-2">
-                    <span class="check-indicator" aria-hidden="true">
-                        <span class="check-unchecked">☐</span>
-                        <span class="check-checked">☑</span>
-                    </span>
-                    <span id="check-desc-2">You suspect the "technical" issue is actually "people."</span>
-                </label>
-                <label class="check-item">
-                    <input type="checkbox" aria-describedby="check-desc-3">
-                    <span class="check-indicator" aria-hidden="true">
-                        <span class="check-unchecked">☐</span>
-                        <span class="check-checked">☑</span>
-                    </span>
-                    <span id="check-desc-3">You want the truth, even if it's annoying.</span>
-                </label>
-            </fieldset>
-            <p class="qualifier-note" role="status" aria-live="polite">If you checked any of these, we should talk.</p>
-        </section>
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
-             SECTION 3: THE MECHANISM (HOW IT WORKS)
+             SECTION 2: THE PROCESS
+             3 numbered badges in a row
              ======================================== -->
-        <section class="section section-mechanism" id="mechanism" data-crumb="HOW IT WORKS" aria-labelledby="mechanism-heading">
-            <h2 id="mechanism-heading" class="label" style="border: none;">THE MECHANISM</h2>
-            <p class="section-intro">A systematic approach to cutting through complexity.</p>
+        <section id="process" class="section section-process" aria-labelledby="process-heading">
+            <h2 id="process-heading" class="section-label">THE PROCESS</h2>
 
-            <ol class="timeline-grid" role="list">
-                <div class="timeline-line" aria-hidden="true"></div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Deconstruct</h3>
+                    <p>We dump the box. No assumptions. Just raw parts laid out clearly.</p>
+                </div>
 
-                <li class="timeline-step">
-                    <div class="timeline-marker shape-circle" aria-hidden="true">01</div>
-                    <div class="timeline-content">
-                        <h3>Deconstruct</h3>
-                        <p>We dump the box. No assumptions. Just raw parts.</p>
-                        <div class="io-box" role="list" aria-label="Process inputs and outputs">
-                            <div class="io-item" role="listitem"><strong>INPUT</strong>Messy Data</div>
-                            <div class="io-item" role="listitem"><strong>OUTPUT</strong>Component List</div>
-                        </div>
-                    </div>
-                </li>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Trace</h3>
+                    <p>I follow the wire. Code, invoices, or people—I trace it to the source.</p>
+                </div>
 
-                <li class="timeline-step">
-                    <div class="timeline-marker shape-square" aria-hidden="true">02</div>
-                    <div class="timeline-content">
-                        <h3>Trace</h3>
-                        <p>I follow the wire. Code, invoices, or people—I trace it to the source.</p>
-                        <div class="io-box" role="list" aria-label="Process inputs and outputs">
-                            <div class="io-item" role="listitem"><strong>INPUT</strong>Symptoms</div>
-                            <div class="io-item" role="listitem"><strong>OUTPUT</strong>Root Cause</div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="timeline-step">
-                    <div class="timeline-marker shape-circle" aria-hidden="true">03</div>
-                    <div class="timeline-content">
-                        <h3>Synthesize</h3>
-                        <p>We reassemble the system. I hand you the fix.</p>
-                        <div class="io-box" role="list" aria-label="Process inputs and outputs">
-                            <div class="io-item" role="listitem"><strong>INPUT</strong>The Truth</div>
-                            <div class="io-item" role="listitem"><strong>OUTPUT</strong>The Solution</div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
-
-            <!-- Deliverables (collapsed from Outputs) -->
-            <div class="deliverables-summary">
-                <h4>What You Get</h4>
-                <div class="deliv-inline" role="list">
-                    <span class="deliv-tag" role="listitem">📋 The Diagnosis</span>
-                    <span class="deliv-tag" role="listitem">🗺️ The Map</span>
-                    <span class="deliv-tag" role="listitem">✅ The Plan</span>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Synthesize</h3>
+                    <p>We reassemble the system with clarity. You get the fix.</p>
                 </div>
             </div>
         </section>
 
-        <!-- ========================================
-             SECTION 4: CREDENTIALS (WHO + WHAT)
-             ======================================== -->
-        <section class="section section-credentials" id="credentials" data-crumb="ABOUT" aria-labelledby="credentials-heading">
-            <h2 id="credentials-heading" class="label" style="border: none;">WHO IS FOGSIFT</h2>
-
-            <!-- Team (solo card) -->
-            <div class="team-solo">
-                <article class="team-card-featured">
-                    <div class="team-avatar">
-                        <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi, Owner" loading="lazy" width="100" height="100">
-                    </div>
-                    <div class="team-info">
-                        <span class="team-id">OPERATIVE 001</span>
-                        <h3 class="team-name">Christopher</h3>
-                        <span class="team-role">Owner</span>
-                        <p class="team-bio">Root cause analyst. System diagnostician. I trace the wire until I find the break.</p>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Capabilities (merged from Theatres + Inventory) -->
-            <div class="capabilities-grid" role="list">
-                <article class="capability-card" role="listitem">
-                    <h4>💻 Digital Infrastructure</h4>
-                    <p>SaaS, Cloud Architecture, API Integration, Process Automation</p>
-                </article>
-                <article class="capability-card" role="listitem">
-                    <h4>⚙️ Physical Manufacturing</h4>
-                    <p>CNC Workflows, Supply Chain Logistics, Prototyping, Fabrication</p>
-                </article>
-                <article class="capability-card" role="listitem">
-                    <h4>📖 Narrative Systems</h4>
-                    <p>Strategic Messaging, Brand Architecture, Content Operations</p>
-                </article>
-            </div>
-
-            <!-- Technical stack (compact) -->
-            <div class="tech-stack" role="list" aria-label="Technologies used">
-                <span class="tech-tag" role="listitem">Python</span>
-                <span class="tech-tag" role="listitem">SQL</span>
-                <span class="tech-tag" role="listitem">GraphQL</span>
-                <span class="tech-tag" role="listitem">Obsidian</span>
-                <span class="tech-tag" role="listitem">Fusion 360</span>
-                <span class="tech-tag" role="listitem">Data Scraping</span>
-            </div>
-        </section>
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
-             SECTION 5: PRICING (PROTOCOL)
+             SECTION 3: ABOUT
+             Photo + bio in badge card
              ======================================== -->
-        <section class="section section-pricing" id="pricing" data-crumb="PRICING" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="label">PROTOCOL</h2>
+        <section id="about" class="section section-about" aria-labelledby="about-heading">
+            <h2 id="about-heading" class="section-label">WHO IS FOGSIFT</h2>
 
-            <div class="pricing-cards" role="list">
-                <article class="pricing-card" role="listitem">
-                    <div class="pricing-header">
-                        <h4>The Call</h4>
-                        <span class="price-tag free">
-                            <span aria-hidden="true">🆓</span> FREE
-                        </span>
-                    </div>
-                    <p class="pricing-desc">15-30 minutes. Triage your problem. No pitch, no pressure.</p>
-                </article>
-
-                <article class="pricing-card featured" role="listitem">
-                    <div class="pricing-header">
-                        <h4>Deep Dive</h4>
-                        <span class="price-tag">
-                            <span aria-hidden="true">⭐</span> $20
-                        </span>
-                    </div>
-                    <p class="pricing-desc">The first hour of actual work. See if we're a fit.</p>
-                    <span class="featured-badge" aria-label="Most popular option">POPULAR</span>
-                </article>
-
-                <article class="pricing-card" role="listitem">
-                    <div class="pricing-header">
-                        <h4>Engagement</h4>
-                        <span class="price-tag">
-                            <span aria-hidden="true">📝</span> CONTRACT
-                        </span>
-                    </div>
-                    <p class="pricing-desc">Defined scope. No surprises. You own the output.</p>
-                </article>
-            </div>
-
-            <!-- Parameters (merged) -->
-            <div class="ops-params" role="list">
-                <div class="ops-item" role="listitem">
-                    <h5>🔒 Security</h5>
-                    <p>All communications encrypted. NDAs on request.</p>
+            <div class="about-card">
+                <div class="about-avatar">
+                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
                 </div>
-                <div class="ops-item" role="listitem">
-                    <h5>💬 Modality</h5>
-                    <p>Async default. I work on the problem, not on the call.</p>
-                </div>
-                <div class="ops-item" role="listitem">
-                    <h5>📄 Ownership</h5>
-                    <p>You own the output. All IP transfers on payment.</p>
+                <div class="about-info">
+                    <h3 class="about-name">Christopher Tavolazzi</h3>
+                    <span class="about-role">Owner &amp; Operator</span>
+                    <p class="about-bio">Root cause analyst. System diagnostician. I trace the wire until I find the break. Based in Chico, CA.</p>
                 </div>
             </div>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
         <!-- ========================================
-             SECTION 6: FINAL CTA (CONTACT)
+             SECTION 4: PRICING
+             3 tier cards, horizontal
              ======================================== -->
-        <section class="contact-box section-cta" id="contact" data-crumb="CONTACT" aria-labelledby="contact-heading">
+        <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
+            <h2 id="pricing-heading" class="section-label">PRICING</h2>
+
+            <div class="pricing-cards">
+                <article class="pricing-card">
+                    <h4>The Call</h4>
+                    <span class="price">FREE</span>
+                    <p>15-30 minutes. Triage your problem. No pitch, no pressure.</p>
+                </article>
+
+                <article class="pricing-card featured">
+                    <span class="featured-tag">POPULAR</span>
+                    <h4>Deep Dive</h4>
+                    <span class="price">$20</span>
+                    <p>The first hour of actual work. See if we're a fit.</p>
+                </article>
+
+                <article class="pricing-card">
+                    <h4>Engagement</h4>
+                    <span class="price">CONTRACT</span>
+                    <p>Defined scope. No surprises. You own the output.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 5: FOOTER + FINAL CTA
+             Minimal, clean
+             ======================================== -->
+        <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
             <h3 id="contact-heading">Ready to cut through the fog?</h3>
-            <p>Send me your weirdest question. Let's crack it together.</p>
-            <!-- Honeypot for spam bots -->
-            <input type="text" name="website_url" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
-            <a href="mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline" class="hotline-button final-cta">
-                <span aria-hidden="true">?</span> Weird Question Hotline
+            <p>Send your question. Let's figure it out together.</p>
+            <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="cta-button">
+                Get in Touch
             </a>
-            <span class="contact-alt">or email directly: <a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a></span>
         </section>
 
         <footer role="contentinfo">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h5>NAVIGATION</h5>
-                    <nav aria-label="Footer navigation">
-                        <a href="#hero" class="footer-link">Home</a>
-                        <a href="#mechanism" class="footer-link">How It Works</a>
-                        <a href="#credentials" class="footer-link">About</a>
-                        <a href="#pricing" class="footer-link">Pricing</a>
-                    </nav>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#hero">Home</a>
+                    <a href="#process">Process</a>
+                    <a href="#about">About</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="wiki/index.html">Wiki</a>
                 </div>
-                <div class="footer-col">
-                    <h5>RESOURCES</h5>
-                    <a href="wiki/index.html" class="footer-link">Wiki</a>
-                    <a href="#" class="footer-link" onclick="Modal.open('001'); return false;">Field Notes</a>
-                    <a href="#contact" class="footer-link">Contact</a>
+                <div class="footer-bottom">
+                    <span>&copy; 2025 FOGSIFT v{{VERSION}}</span>
+                    <span class="footer-sep" aria-hidden="true">//</span>
+                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
                 </div>
-                <div class="footer-col">
-                    <h5>CONNECT</h5>
-                    <a href="mailto:christopher@fogsift.com" class="footer-link">Email</a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <div>&copy; 2025 FOGSIFT v{{VERSION}} <span style="margin: 0 10px; color: var(--line);" aria-hidden="true">//</span> <span id="utc-clock" aria-label="Current UTC time">LOADING...</span></div>
-                <div aria-label="Location">39.72° N, 121.83° W</div>
-                <button class="copy-btn" id="copy-btn" aria-label="Copy page transcript to clipboard">[COPY]</button>
             </div>
         </footer>
 

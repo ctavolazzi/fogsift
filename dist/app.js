@@ -207,7 +207,7 @@ const Modal = {
 
 /* ============================================
    FOGSIFT NAVIGATION MODULE
-   Mobile menu + breadcrumb tracker
+   Mobile menu handling
    ============================================ */
 
 const Nav = {
@@ -226,75 +226,24 @@ const Nav = {
         }
     },
 
-    initBreadcrumbs() {
-        const pathCat = document.getElementById('crumb-category');
-        const pathSec = document.getElementById('crumb-section');
-        const sep1 = document.getElementById('sep-1');
-
-        if (!pathCat || !pathSec) return;
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
-
-                const crumbData = entry.target.getAttribute('data-crumb');
-                if (!crumbData) return;
-
-                if (crumbData.includes('/')) {
-                    const [category, section] = crumbData.split('/').map(s => s.trim());
-                    pathCat.innerHTML = `<a href="#${entry.target.id}" class="crumb-link">${category}</a>`;
-                    pathCat.style.display = 'flex';
-                    sep1.style.display = 'block';
-                    pathSec.innerHTML = `<span class="crumb-current">${section}</span>`;
-                } else {
-                    pathCat.style.display = 'none';
-                    sep1.style.display = 'none';
-                    pathSec.innerHTML = `<span class="crumb-current">${crumbData}</span>`;
-                }
-            });
-        }, { threshold: 0.3, rootMargin: '-10% 0px -50% 0px' });
-
-        document.querySelectorAll('section, .card, .contact-box').forEach(el => {
-            observer.observe(el);
-        });
-    },
-
-    initProgressBar() {
-        const bar = document.getElementById('progress-bar');
-        if (!bar) return;
-
-        window.addEventListener('scroll', () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const progress = (scrollTop / scrollHeight) * 100;
-            bar.style.width = `${progress}%`;
-        });
-    },
-
     init() {
-        this.initBreadcrumbs();
-        this.initProgressBar();
+        // Navigation initialized
     }
 };
 
 
-
 /* ============================================
    FOGSIFT MAIN
-   App initialization and event bindings
+   Minimal app initialization
    ============================================ */
 
 const App = {
-    version: '0.0.1',
+    version: '0.0.2',
 
     init() {
-        // Initialize modules
         Nav.init();
         Modal.init();
         this.initClock();
-        this.initDiagnostic();
-        this.initFloatingCTA();
-        this.initEventBindings();
         this.initAccessibility();
         this.logBoot();
     },
@@ -312,113 +261,6 @@ const App = {
         setInterval(update, 1000);
     },
 
-    initDiagnostic() {
-        const checkboxes = document.querySelectorAll('.check-item input[type="checkbox"]');
-        const qualifierNote = document.querySelector('.qualifier-note');
-        let checkedCount = 0;
-
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                // Count checked items
-                checkedCount = document.querySelectorAll('.check-item input[type="checkbox"]:checked').length;
-
-                // Show toast on check
-                if (checkbox.checked) {
-                    Toast.show('CRITERION VERIFIED');
-                }
-
-                // Update qualifier note based on count
-                if (qualifierNote) {
-                    if (checkedCount === 0) {
-                        qualifierNote.textContent = 'If any of these sound like you, we should talk.';
-                    } else if (checkedCount === 1) {
-                        qualifierNote.textContent = '1 match. Interesting...';
-                    } else if (checkedCount === 2) {
-                        qualifierNote.textContent = '2 matches. We should probably talk.';
-                    } else if (checkedCount === 3) {
-                        qualifierNote.textContent = '3/3 matches. You found the right place.';
-                        Toast.show('PROFILE MATCH: HIGH PROBABILITY');
-                    }
-                }
-
-                // Pulse effect on hotline button when all checked
-                const hotline = document.querySelector('.hotline-button');
-                if (checkedCount === 3) {
-                    hotline?.classList.add('pulse');
-                } else {
-                    hotline?.classList.remove('pulse');
-                }
-            });
-        });
-    },
-
-    initFloatingCTA() {
-        const floatingCTA = document.getElementById('floating-cta');
-        const hero = document.getElementById('hero');
-        const contact = document.getElementById('contact');
-
-        if (!floatingCTA || !hero) return;
-
-        // Show floating CTA after scrolling past hero section
-        const heroObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Hero is visible - hide floating CTA
-                    floatingCTA.classList.remove('visible');
-                } else {
-                    // Hero is not visible - show floating CTA (unless contact visible)
-                    if (!contact || !contact.classList.contains('in-view')) {
-                        floatingCTA.classList.add('visible');
-                    }
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '-100px 0px 0px 0px'
-        });
-
-        heroObserver.observe(hero);
-
-        // Hide floating CTA when contact section is visible
-        if (contact) {
-            const contactObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        contact.classList.add('in-view');
-                        floatingCTA.classList.remove('visible');
-                    } else {
-                        contact.classList.remove('in-view');
-                    }
-                });
-            }, {
-                threshold: 0.3
-            });
-
-            contactObserver.observe(contact);
-        }
-    },
-
-    initEventBindings() {
-        // Copy button
-        const copyBtn = document.getElementById('copy-btn');
-        copyBtn?.addEventListener('click', () => {
-            navigator.clipboard.writeText(document.body.innerText)
-                .then(() => Toast.show('TRANSCRIPT COPIED TO CLIPBOARD'));
-        });
-
-        // Hotline hover (only on desktop)
-        const hotline = document.querySelector('.hotline-button');
-        if (hotline && window.matchMedia('(min-width: 800px)').matches) {
-            let hasShownToast = false;
-            hotline.addEventListener('mouseenter', () => {
-                if (!hasShownToast) {
-                    Toast.show('CHANNEL: DIRECT / PRIORITY');
-                    hasShownToast = true;
-                }
-            });
-        }
-    },
-
     initAccessibility() {
         // Update theme toggle aria-pressed state
         const themeToggle = document.querySelector('.theme-toggle');
@@ -429,7 +271,6 @@ const App = {
             };
             updateAriaPressed();
 
-            // Observer for theme changes
             const observer = new MutationObserver(updateAriaPressed);
             observer.observe(document.documentElement, {
                 attributes: true,
@@ -446,7 +287,6 @@ const App = {
                 menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
             };
 
-            // Observer for drawer state changes
             const observer = new MutationObserver(updateAriaExpanded);
             observer.observe(mobileDrawer, {
                 attributes: true,
@@ -454,22 +294,17 @@ const App = {
             });
         }
 
-        // Focus trap for mobile drawer
+        // Escape key handlers
         if (mobileDrawer) {
             mobileDrawer.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    Nav.toggleMobile();
-                }
+                if (e.key === 'Escape') Nav.toggleMobile();
             });
         }
 
-        // Focus trap for modal
         const modal = document.getElementById('article-modal');
         if (modal) {
             modal.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    Modal.close();
-                }
+                if (e.key === 'Escape') Modal.close();
             });
         }
     },
@@ -477,10 +312,9 @@ const App = {
     logBoot() {
         console.log(
             '%c FOGSIFT v' + this.version + ' // SYSTEMS NOMINAL ',
-            'background: #18181b; color: #c2410c; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #0d9488;'
+            'background: #4a2c2a; color: #e07b3c; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #0d9488;'
         );
     }
 };
 
-// Boot on DOM ready
 document.addEventListener('DOMContentLoaded', () => App.init());

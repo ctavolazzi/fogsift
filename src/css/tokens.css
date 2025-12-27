@@ -1,49 +1,56 @@
 /* ============================================
-   FOGSIFT DESIGN TOKENS
+   FOGSIFT DESIGN TOKENS - 70's/80's RETRO-MODERN
    Single source of truth for all design values
-   Modular architecture: Change values here to update entire site
+   Matches the warm badge/logo aesthetic
    ============================================ */
 
 :root {
-    /* === PALETTE: LIGHT MODE === */
-    --ink: #18181b;
-    --paper: #fafafa;
-    --canvas: #f4f4f5;
+    /* === 70's/80's RETRO PALETTE: LIGHT MODE === */
+    --cream: #f5f0e6;           /* Primary background */
+    --cream-dark: #e8e0d0;      /* Secondary background */
+    --chocolate: #4a2c2a;       /* Primary text, borders */
+    --chocolate-light: #6b4423; /* Secondary text */
+    --burnt-orange: #e07b3c;    /* CTA, primary accent */
+    --rust: #c2410c;            /* Hover states */
+    --earth-mid: #8b5a2b;       /* Decorative */
+    --earth-dark: #5c3d2e;      /* Decorative */
+    --teal: #0d9488;            /* Secondary accent (keep for links) */
 
-    /* Primary brand colors - semantically named */
-    --primary: #c2410c;       /* CTA orange - calls to action */
-    --primary-hover: #9a3412; /* Darker for hover states */
-    --secondary: #78350f;     /* Deep brown - warmth, trust */
-    --accent: #0d9488;        /* Teal - interactive elements */
-    --accent-light: #14b8a6;  /* Lighter teal for hover */
-    --highlight: #fbbf24;     /* Gold - premium highlights */
+    /* Semantic mappings */
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: var(--teal);
+    --accent-light: #14b8a6;
+    --highlight: #fbbf24;       /* Gold for badges */
 
     /* Legacy compatibility */
     --copper: var(--primary);
     --electric: var(--accent);
 
-    /* Text colors - WCAG AA compliant contrast ratios
-       Muted on canvas (#f4f4f5): #52525b = 5.6:1 ✓
-       Muted on paper (#fafafa): #52525b = 5.8:1 ✓ */
-    --muted: #52525b;         /* WCAG AA compliant (4.5:1 min) */
-    --muted-light: #a1a1aa;   /* For decorative/non-essential only */
-    --line: #d4d4d8;
+    /* Text colors */
+    --muted: var(--chocolate-light);
+    --muted-light: #8b7355;
+    --line: #d4c4a8;
 
-    /* Status colors - with pattern alternatives for colorblind */
-    --success: #059669;       /* Green - also uses ✓ icon */
-    --warning: #d97706;       /* Orange - also uses ⚠ icon */
-    --error: #dc2626;         /* Red - also uses ✕ icon */
-    --info: #0284c7;          /* Blue - also uses ℹ icon */
+    /* Status colors */
+    --success: #059669;
+    --warning: #d97706;
+    --error: #dc2626;
+    --info: var(--teal);
 
     /* === FOCUS & ACCESSIBILITY === */
-    --focus-ring: var(--accent);
+    --focus-ring: var(--burnt-orange);
     --focus-ring-width: 3px;
     --focus-ring-offset: 2px;
 
-    /* === BREADCRUMB BAR === */
-    --bar-bg: #f4f4f5;
-    --bar-text: #18181b;
-    --bar-border: #d4d4d8;
+    /* === BREADCRUMB BAR (removed but kept for transition) === */
+    --bar-bg: var(--cream-dark);
+    --bar-text: var(--chocolate);
+    --bar-border: var(--line);
 
     /* === SPACING - 8px base grid === */
     --space-xs: 0.25rem;   /* 4px */
@@ -55,35 +62,43 @@
     --space-3xl: 8rem;     /* 128px */
 
     /* === TYPOGRAPHY === */
+    --font-display: 'Outfit', 'Inter', system-ui, sans-serif;
     --font-sans: 'Inter', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 
-    /* Type scale - readable sizes */
+    /* Type scale - confident, readable */
     --text-xs: 0.75rem;       /* 12px */
     --text-sm: 0.875rem;      /* 14px */
-    --text-base: 1.125rem;    /* 18px base for readability */
+    --text-base: 1.125rem;    /* 18px base */
     --text-lg: 1.25rem;       /* 20px */
     --text-xl: 1.5rem;        /* 24px */
     --text-2xl: 2rem;         /* 32px */
-    --text-headline: clamp(2.5rem, 5vw, 3.5rem);
+    --text-headline: clamp(2.5rem, 6vw, 4rem);
+
+    /* Letter spacing */
+    --letter-tight: -0.02em;
+    --letter-wide: 0.1em;
 
     /* Line heights */
     --leading-tight: 1.2;
     --leading-normal: 1.6;
     --leading-relaxed: 1.75;
 
-    /* === BORDERS & RADIUS === */
-    --border-width: 2px;
-    --radius: 4px;
-    --radius-lg: 8px;
+    /* === BORDERS & RADIUS (Badge aesthetic) === */
+    --border-width: 3px;
+    --radius: 8px;
+    --radius-lg: 16px;
+    --radius-badge: 24px;
     --radius-full: 9999px;
 
-    /* === SHADOWS === */
-    --shadow-hard: 4px 4px 0 var(--ink);
-    --shadow-hover: 6px 6px 0 var(--accent);
-    --shadow-active: 0px 0px 0 var(--ink);
-    --shadow-soft: 0 4px 20px rgba(0,0,0,0.08);
-    --shadow-elevated: 0 8px 30px rgba(0,0,0,0.12);
+    /* === SHADOWS (Soft, warm - not harsh) === */
+    --shadow-soft: 0 4px 20px rgba(74, 44, 42, 0.1);
+    --shadow-card: 0 8px 30px rgba(74, 44, 42, 0.15);
+    --shadow-elevated: 0 12px 40px rgba(74, 44, 42, 0.2);
+    /* Keep hard shadow for hover but make it warmer */
+    --shadow-hard: 4px 4px 0 var(--chocolate);
+    --shadow-hover: 6px 6px 0 var(--burnt-orange);
+    --shadow-active: 2px 2px 0 var(--chocolate);
 
     /* === MOTION === */
     --snap: 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -92,8 +107,8 @@
 
     /* === LAYOUT === */
     --nav-height: 70px;
-    --breadcrumb-height: 44px;
-    --frame-max-width: 800px;
+    --breadcrumb-height: 0px; /* Removed breadcrumbs */
+    --frame-max-width: 900px;
 
     /* === TOUCH TARGETS (WCAG 2.1) === */
     --touch-min: 44px;
@@ -101,56 +116,54 @@
 
 /* === PALETTE: DARK MODE === */
 [data-theme="dark"] {
-    --ink: #f4f4f5;
-    --paper: #18181b;
-    --canvas: #09090b;
+    --cream: #1a1412;           /* Dark chocolate background */
+    --cream-dark: #0f0b09;      /* Darker background */
+    --chocolate: #f5f0e6;       /* Inverted - cream text */
+    --chocolate-light: #d4c4a8; /* Lighter text */
+    --burnt-orange: #fb923c;    /* Brighter orange for dark */
+    --rust: #fdba74;            /* Lighter rust for hover */
+    --earth-mid: #c4956a;       /* Lighter earth */
+    --earth-dark: #a67c52;      /* Lighter dark earth */
 
-    /* Dark mode brand colors - brighter for contrast */
-    --primary: #fb923c;       /* Lighter orange for dark bg */
-    --primary-hover: #fdba74;
-    --secondary: #d97706;     /* Warmer brown */
-    --accent: #2dd4bf;        /* Brighter teal */
+    /* Semantic mappings */
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #2dd4bf;          /* Brighter teal */
     --accent-light: #5eead4;
-    --highlight: #fcd34d;     /* Brighter gold */
+    --highlight: #fcd34d;       /* Brighter gold */
 
-    /* Legacy compatibility */
-    --copper: var(--primary);
-    --electric: var(--accent);
+    /* Text colors */
+    --muted: #a8998a;
+    --muted-light: #7a6b5c;
+    --line: #3d2e26;
 
-    /* Dark mode text - WCAG AA compliant
-       Muted on canvas (#09090b): #a1a1aa = 7.3:1 ✓
-       Muted on paper (#18181b): #a1a1aa = 6.5:1 ✓ */
-    --muted: #a1a1aa;
-    --muted-light: #71717a;
-    --line: #27272a;
+    --bar-bg: var(--cream-dark);
+    --bar-text: var(--chocolate);
+    --bar-border: var(--line);
 
-    /* Status colors - adjusted for dark mode */
-    --success: #34d399;
-    --warning: #fbbf24;
-    --error: #f87171;
-    --info: #38bdf8;
-
-    --bar-bg: #27272a;
-    --bar-text: #f4f4f5;
-    --bar-border: #27272a;
-
-    --shadow-hard: 4px 4px 0 var(--accent);
-    --shadow-hover: 6px 6px 0 var(--primary);
-    --shadow-soft: 0 4px 20px rgba(0,0,0,0.3);
-    --shadow-elevated: 0 8px 30px rgba(0,0,0,0.4);
+    /* Shadows for dark mode */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-hard: 4px 4px 0 var(--burnt-orange);
+    --shadow-hover: 6px 6px 0 var(--accent);
 }
 
 /* === HIGH CONTRAST MODE (Accessibility) === */
 @media (prefers-contrast: high) {
     :root {
-        --muted: #3f3f46;
-        --line: #71717a;
+        --muted: #3d2e26;
+        --line: #8b7355;
         --focus-ring-width: 4px;
     }
 
     [data-theme="dark"] {
-        --muted: #d4d4d8;
-        --line: #52525b;
+        --muted: #e8e0d0;
+        --line: #6b5542;
     }
 }
 
