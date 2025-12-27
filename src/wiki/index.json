@@ -5,7 +5,7 @@
     {
       "id": "docs",
       "title": "Documentation",
-      "icon": "📋",
+      "icon": "book",
       "pages": [
         { "slug": "getting-started", "title": "Getting Started" },
         { "slug": "how-we-work", "title": "How We Work" },
@@ -16,7 +16,7 @@
     {
       "id": "concepts",
       "title": "Concepts",
-      "icon": "💡",
+      "icon": "lightbulb",
       "pages": [
         { "slug": "concepts/root-cause", "title": "Root Cause Analysis" },
         { "slug": "concepts/mental-models", "title": "Mental Models" },
@@ -29,7 +29,7 @@
     {
       "id": "frameworks",
       "title": "Frameworks",
-      "icon": "🔧",
+      "icon": "compass",
       "pages": [
         { "slug": "frameworks/trace-protocol", "title": "The TRACE Protocol" },
         { "slug": "frameworks/decision-matrix", "title": "Decision Matrix" },
@@ -40,7 +40,7 @@
     {
       "id": "field-notes",
       "title": "Field Notes",
-      "icon": "📝",
+      "icon": "pencil",
       "pages": [
         { "slug": "field-notes/001-map-territory", "title": "The Map Is Not The Territory" },
         { "slug": "field-notes/002-precision-accuracy", "title": "Precision vs Accuracy" },
@@ -54,7 +54,7 @@
     {
       "id": "case-studies",
       "title": "Case Studies",
-      "icon": "📊",
+      "icon": "chart",
       "pages": [
         { "slug": "case-studies/manufacturing-throughput", "title": "Manufacturing Throughput Crisis" },
         { "slug": "case-studies/communication-breakdown", "title": "The Communication Breakdown" },
@@ -64,7 +64,7 @@
     {
       "id": "tools",
       "title": "Tools & Techniques",
-      "icon": "🛠️",
+      "icon": "wrench",
       "pages": [
         { "slug": "tools/five-whys", "title": "The Five Whys" },
         { "slug": "tools/fishbone-diagram", "title": "Fishbone Diagrams" },

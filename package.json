@@ -4,7 +4,9 @@
   "description": "Straight answers to complicated questions",
   "private": true,
   "scripts": {
-    "dev": "npx wrangler pages dev dist --port 5050",
+    "dev": "npm run build && npm-run-all --parallel serve watch",
+    "serve": "browser-sync start --server dist --port 5050 --no-open --files 'dist/**/*'",
+    "watch": "chokidar 'src/**/*' -c 'node scripts/build.js'",
     "build": "node scripts/build.js",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift",
     "quick-deploy": "node scripts/deploy.js",
@@ -22,5 +24,10 @@
   "license": "UNLICENSED",
   "dependencies": {
     "marked": "^15.0.4"
+  },
+  "devDependencies": {
+    "browser-sync": "^3.0.4",
+    "chokidar-cli": "^3.0.0",
+    "npm-run-all": "^4.1.5"
   }
 }

@@ -19,11 +19,29 @@ const DIST = path.join(ROOT, 'dist');
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const VERSION = pkg.version || '0.0.0';
 
+// SVG Icons for wiki categories
+const WIKI_ICONS = {
+    book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg>`,
+    lightbulb: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"></path></svg>`,
+    pencil: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>`,
+    folder: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`,
+    file: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>`,
+    wrench: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>`,
+    chart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`,
+    tools: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>`,
+    compass: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg>`,
+};
+
+function getWikiIcon(iconName) {
+    return WIKI_ICONS[iconName] || WIKI_ICONS.file;
+}
+
 // Files to concatenate (order matters)
 const CSS_FILES = [
     'src/css/tokens.css',
     'src/css/base.css',
     'src/css/components.css',
+    'src/css/wiki.css',    // Wiki page styles
     'src/css/mobile.css',  // Mobile-first overrides - must be last
 ];
 
@@ -174,8 +192,9 @@ function generateWikiNav(wikiIndex, currentSlug = '', depth = 0) {
     const prefix = depth > 0 ? '../'.repeat(depth) : '';
     let nav = '';
     for (const category of wikiIndex.categories) {
+        const iconSvg = getWikiIcon(category.icon);
         nav += `<div class="wiki-nav-category">\n`;
-        nav += `  <h4 class="wiki-nav-title">${category.icon} ${category.title}</h4>\n`;
+        nav += `  <h4 class="wiki-nav-title"><span class="wiki-nav-icon">${iconSvg}</span>${category.title}</h4>\n`;
         nav += `  <ul class="wiki-nav-list">\n`;
         for (const page of category.pages) {
             const isActive = page.slug === currentSlug;
@@ -192,8 +211,9 @@ function generateWikiNav(wikiIndex, currentSlug = '', depth = 0) {
 function generateCategoryCards(wikiIndex) {
     let html = '';
     for (const category of wikiIndex.categories) {
+        const iconSvg = getWikiIcon(category.icon);
         html += `<div class="wiki-category-card">\n`;
-        html += `  <div class="wiki-category-icon">${category.icon}</div>\n`;
+        html += `  <div class="wiki-category-icon">${iconSvg}</div>\n`;
         html += `  <h2 class="wiki-category-title">${category.title}</h2>\n`;
         html += `  <ul class="wiki-category-pages">\n`;
         for (const page of category.pages) {
@@ -205,6 +225,61 @@ function generateCategoryCards(wikiIndex) {
         html += `  </ul>\n`;
         html += `</div>\n`;
     }
+    return html;
+}
+
+// Johnny Decimal range assignments for categories
+const JD_RANGES = {
+    'docs': { start: 10, name: 'Documentation' },
+    'concepts': { start: 20, name: 'Concepts' },
+    'frameworks': { start: 30, name: 'Frameworks' },
+    'field-notes': { start: 40, name: 'Field Notes' },
+    'case-studies': { start: 50, name: 'Case Studies' },
+    'tools': { start: 60, name: 'Tools & Techniques' }
+};
+
+function generateJDSitemap(wikiIndex, depth = 0) {
+    const prefix = depth > 0 ? '../'.repeat(depth) : '';
+
+    let html = `<div class="jd-sitemap">\n`;
+    html += `  <div class="jd-sitemap-header">\n`;
+    html += `    <h3 class="jd-sitemap-title">Sitemap</h3>\n`;
+    html += `  </div>\n`;
+    html += `  <div class="jd-sitemap-grid">\n`;
+
+    for (const category of wikiIndex.categories) {
+        const jdConfig = JD_RANGES[category.id] || { start: 90, name: category.title };
+        const rangeStart = jdConfig.start;
+        const rangeEnd = rangeStart + 9;
+
+        html += `    <div class="jd-category">\n`;
+        html += `      <div class="jd-category-header">\n`;
+        html += `        <span class="jd-range">${rangeStart}-${rangeEnd}</span>\n`;
+        html += `        <h4 class="jd-category-name">${category.title}</h4>\n`;
+        html += `      </div>\n`;
+        html += `      <ul class="jd-pages">\n`;
+
+        category.pages.forEach((page, index) => {
+            const jdNumber = `${rangeStart}.${String(index + 1).padStart(2, '0')}`;
+            const href = `${prefix}${page.slug}.html`;
+            html += `        <li>\n`;
+            html += `          <a href="${href}" class="jd-page-link">\n`;
+            html += `            <span class="jd-number">${jdNumber}</span>\n`;
+            html += `            <span class="jd-page-title">${page.title}</span>\n`;
+            html += `          </a>\n`;
+            html += `        </li>\n`;
+        });
+
+        html += `      </ul>\n`;
+        html += `    </div>\n`;
+    }
+
+    html += `  </div>\n`;
+    html += `  <div class="jd-sitemap-footer">\n`;
+    html += `    <p class="jd-sitemap-note">Organized using the <a href="https://johnnydecimal.com/" target="_blank" rel="noopener">Johnny Decimal</a> system</p>\n`;
+    html += `  </div>\n`;
+    html += `</div>\n`;
+
     return html;
 }
 
@@ -265,6 +340,9 @@ function buildWiki() {
         const manifestPath = `${'../'.repeat(depth + 1)}manifest.json`;
         const faviconPath = `${'../'.repeat(depth + 1)}favicon.png`;
 
+        // Generate JD sitemap for this page depth
+        const jdSitemap = generateJDSitemap(wikiIndex, depth);
+
         // Process template
         let html = pageTemplate
             .replace(/\{\{PAGE_TITLE\}\}/g, title)
@@ -279,6 +357,7 @@ function buildWiki() {
             .replace(/\{\{MANIFEST_PATH\}\}/g, manifestPath)
             .replace(/\{\{FAVICON_PATH\}\}/g, faviconPath)
             .replace(/\{\{CONTENT\}\}/g, htmlContent)
+            .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemap)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
 
 
@@ -293,8 +372,10 @@ function buildWiki() {
     // Build wiki index page
     if (indexTemplate) {
         const categoryCards = generateCategoryCards(wikiIndex);
+        const jdSitemapIndex = generateJDSitemap(wikiIndex, 0);
         let indexHtml = indexTemplate
             .replace(/\{\{CATEGORIES\}\}/g, categoryCards)
+            .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemapIndex)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
 
         fs.writeFileSync(path.join(WIKI_DIST, 'index.html'), indexHtml);
