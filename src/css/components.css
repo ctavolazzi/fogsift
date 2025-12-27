@@ -1036,41 +1036,41 @@ footer {
     .menu-items {
         display: none;
     }
-    
+
     .mobile-toggle {
         display: block;
     }
-    
+
     .deliv-grid,
     .log-grid,
     .timeline-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .timeline-grid {
         grid-template-columns: 3rem 1fr;
         gap: 0 1rem;
     }
-    
+
     .timeline-marker {
         width: 2.5rem;
         height: 2.5rem;
         left: 0;
         font-size: 0.75rem;
     }
-    
+
     .wire-line {
         margin-right: 1rem;
     }
-    
+
     .breadcrumb-bar {
         padding: 0 1rem;
     }
-    
+
     header {
         padding: 0 1rem;
     }
-    
+
     .footer-bottom {
         flex-direction: column;
         gap: 1rem;

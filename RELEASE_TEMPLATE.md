@@ -6,7 +6,7 @@ Use this template when creating release notes for major versions.
 
 # Fogsift v[X.X.X] Release Notes
 
-**Release Date:** YYYY-MM-DD  
+**Release Date:** YYYY-MM-DD
 **Release Type:** [Major | Minor | Patch]
 
 ## Overview

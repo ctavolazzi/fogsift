@@ -2,12 +2,12 @@
 /**
  * FOGSIFT VERSION MANAGER
  * Handles semantic versioning with changelog and git integration
- * 
+ *
  * Usage:
  *   npm run version:patch  - Bug fixes, new components, deletions (0.0.X)
  *   npm run version:minor  - New pages, major features (0.X.0)
  *   npm run version:major  - Breaking changes, redesigns (X.0.0)
- * 
+ *
  * No external dependencies - uses Node.js built-ins
  */
 
@@ -55,7 +55,7 @@ function writeJSON(filepath, data) {
 
 function bumpVersion(version, type) {
     const [major, minor, patch] = version.split('.').map(Number);
-    
+
     switch (type) {
         case 'major':
             return `${major + 1}.0.0`;
@@ -96,13 +96,13 @@ function updateChangelog(version, description, type) {
         minor: 'Minor Release',
         major: 'Major Release'
     };
-    
+
     const newEntry = `
 ## [${version}] - ${today}
 ### ${typeLabels[type]}
 ${description.split('\n').map(line => `- ${line}`).join('\n')}
 `;
-    
+
     let changelog = '';
     if (fs.existsSync(CHANGELOG_PATH)) {
         changelog = fs.readFileSync(CHANGELOG_PATH, 'utf8');
@@ -123,7 +123,7 @@ All notable changes to Fogsift will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 ${newEntry}`;
     }
-    
+
     fs.writeFileSync(CHANGELOG_PATH, changelog);
 }
 
@@ -132,7 +132,7 @@ async function prompt(question) {
         input: process.stdin,
         output: process.stdout
     });
-    
+
     return new Promise(resolve => {
         rl.question(question, answer => {
             rl.close();
@@ -143,26 +143,26 @@ async function prompt(question) {
 
 async function main() {
     console.log('\n🔧 FOGSIFT VERSION MANAGER\n');
-    
+
     // Read current version
     const pkg = readJSON(PKG_PATH);
     const currentVersion = pkg.version;
     const newVersion = bumpVersion(currentVersion, bumpType);
-    
+
     console.log(`  Current: v${currentVersion}`);
     console.log(`  New:     v${newVersion} (${bumpType})\n`);
-    
+
     // Get change description
     const description = await prompt('📝 Describe the changes (or press Enter for default): ');
     const finalDescription = description.trim() || `${bumpType.charAt(0).toUpperCase() + bumpType.slice(1)} release`;
-    
+
     console.log('\n⏳ Processing...\n');
-    
+
     // Update package.json
     pkg.version = newVersion;
     writeJSON(PKG_PATH, pkg);
     console.log('  ✓ Updated package.json');
-    
+
     // Update or create version.json
     let versionData = { version: newVersion, released: getToday(), history: [] };
     if (fs.existsSync(VERSION_PATH)) {
@@ -177,31 +177,31 @@ async function main() {
     versionData.released = getToday();
     writeJSON(VERSION_PATH, versionData);
     console.log('  ✓ Updated version.json');
-    
+
     // Update changelog
     updateChangelog(newVersion, finalDescription, bumpType);
     console.log('  ✓ Updated CHANGELOG.md');
-    
+
     // Run build
     console.log('\n📦 Running build...');
     exec('node scripts/build.js');
     console.log('  ✓ Build complete');
-    
+
     // Git operations
     console.log('\n📌 Git operations...');
-    
+
     const changes = gitStatus();
     if (changes.length > 0) {
         exec('git add -A');
         exec(`git commit -m "release: v${newVersion}"`);
         console.log(`  ✓ Committed: release: v${newVersion}`);
-        
+
         exec(`git tag -a v${newVersion} -m "Release v${newVersion}"`);
         console.log(`  ✓ Tagged: v${newVersion}`);
     } else {
         console.log('  ⚠ No changes to commit');
     }
-    
+
     console.log(`
 ╔═══════════════════════════════════════════════════════════╗
 ║  ✨ Released v${newVersion.padEnd(44)}║

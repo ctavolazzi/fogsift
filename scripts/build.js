@@ -59,33 +59,33 @@ function concat(files) {
 function copyFile(srcPath, destPath) {
     const fullSrc = path.join(ROOT, srcPath);
     const fullDest = path.join(DIST, destPath);
-    
+
     if (!fs.existsSync(fullSrc)) {
         console.warn(`  ⚠ Missing: ${srcPath}`);
         return false;
     }
-    
+
     fs.copyFileSync(fullSrc, fullDest);
     return true;
 }
 
 function processHtml() {
     const templatePath = path.join(SRC, 'index.html');
-    
+
     if (!fs.existsSync(templatePath)) {
         console.error('  ✗ src/index.html template not found!');
         return false;
     }
-    
+
     let html = fs.readFileSync(templatePath, 'utf8');
-    
+
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
-    
+
     // Update lastmod in any inline schema
     const today = new Date().toISOString().split('T')[0];
     html = html.replace(/<lastmod>.*?<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
-    
+
     fs.writeFileSync(path.join(DIST, 'index.html'), html);
     return true;
 }

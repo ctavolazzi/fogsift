@@ -36,7 +36,7 @@ dist/
 
 | ID | Issue | Impact |
 |----|-------|--------|
-| TD-004 | **Inline manifest** — Base64 PWA manifest in `<head>` | Hard to update, not cacheable |
+| ~~TD-004~~ | ~~**Inline manifest** — Base64 PWA manifest in `<head>`~~ | ✅ Fixed 2025-12-26 |
 | TD-005 | **No build process** — Unminified CSS/JS | Larger payload (~40KB vs ~15KB) |
 | ~~TD-006~~ | ~~**Fake email form** — Subscription shows "DB_FULL" toast~~ | ✅ Fixed 2025-12-26 |
 | ~~TD-007~~ | ~~**Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text~~ | ✅ Fixed 2025-12-26 |
@@ -139,9 +139,9 @@ content/
 
 ## QUICK WINS (< 30 min each)
 
-- [ ] Remove console.log statements (TD-012)
-- [ ] Add version comment to HTML `<!-- v0.0.1 -->`
-- [ ] Add real manifest.json file (TD-004)
+- [x] Remove console.log statements (TD-012) ✅ Already clean - only styled branding remains
+- [x] Add version comment to HTML ✅ Already present in footer (v0.0.1)
+- [x] Add real manifest.json file (TD-004) ✅ 2025-12-26
 - [x] Hide email form or add "coming soon" (TD-006) ✅ 2025-12-26
 - [x] Replace Calendly placeholder with mailto link (TD-007) ✅ 2025-12-26
 

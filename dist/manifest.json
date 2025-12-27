@@ -1,0 +1,17 @@
+{
+  "name": "Fogsift",
+  "short_name": "Fogsift",
+  "description": "Straight answers to complicated questions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#18181b",
+  "theme_color": "#d97706",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}
+
