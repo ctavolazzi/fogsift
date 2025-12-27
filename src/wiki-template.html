@@ -86,26 +86,32 @@
 
     <div class="wiki-layout">
         <!-- Sidebar Navigation -->
-        <aside class="wiki-sidebar">
+        <aside class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
             <div class="wiki-sidebar-header">
-                <a href="index.html" class="wiki-home-link">← Wiki Home</a>
+                <a href="index.html" class="wiki-home-link">
+                    <span aria-hidden="true">←</span> Wiki Home
+                </a>
             </div>
-            {{WIKI_NAV}}
+            <div class="wiki-sidebar-content">
+                {{WIKI_NAV}}
+            </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="wiki-main">
+        <main class="wiki-main" role="main">
             <article class="wiki-content">
                 {{CONTENT}}
             </article>
 
             <footer class="wiki-footer">
                 <div class="wiki-meta">
-                    <span>Last updated: {{BUILD_DATE}}</span>
+                    <span>Updated: {{BUILD_DATE}}</span>
                 </div>
-                <div class="wiki-nav-footer">
-                    <a href="index.html">← Back to Wiki Index</a>
-                </div>
+                <nav class="wiki-nav-footer" aria-label="Wiki navigation">
+                    <a href="index.html">
+                        <span aria-hidden="true">←</span> Back to Wiki
+                    </a>
+                </nav>
             </footer>
         </main>
     </div>

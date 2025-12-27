@@ -6,8 +6,22 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 
 ## [0.0.2] - 2025-12-27
-### Patch
-- Enhanced toast system with copyable errors, wiki system, conversion-focused redesign, quick-deploy script, mobile CSS improvements
+### Patch Release - "Infrastructure & Polish"
+
+#### New Features
+- **Wiki System**: Markdown-based documentation at `/wiki/` with 6 initial pages
+- **Quick Deploy Script**: `npm run quick-deploy` with pre-flight checks, file tree visualization, and deployment manifest
+- **Enhanced Toast System**: Error toasts with 5-second duration and `[COPY]` button for clipboard support
+
+#### Improvements
+- **Conversion-Focused Redesign**: Streamlined hero section and CTAs
+- **Mobile CSS**: New `mobile.css` with responsive improvements
+- **Deploy Manifest**: Tracks version, commit hash, checksums, and bundle sizes
+
+#### Technical
+- Toast API expanded: `Toast.show()`, `Toast.error()`, `Toast.info()`
+- Build script now processes wiki markdown to HTML
+- Deployment includes critical file verification
 
 ## [0.0.1] - 2025-12-26
 ### Initial Release
