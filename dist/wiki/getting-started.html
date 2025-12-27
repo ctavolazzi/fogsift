@@ -86,11 +86,14 @@
 
     <div class="wiki-layout">
         <!-- Sidebar Navigation -->
-        <aside class="wiki-sidebar">
+        <aside class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
             <div class="wiki-sidebar-header">
-                <a href="index.html" class="wiki-home-link">← Wiki Home</a>
+                <a href="index.html" class="wiki-home-link">
+                    <span aria-hidden="true">←</span> Wiki Home
+                </a>
             </div>
-            <div class="wiki-nav-category">
+            <div class="wiki-sidebar-content">
+                <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">📋 Documentation</h4>
   <ul class="wiki-nav-list">
     <li class="active"><a href="getting-started.html">Getting Started</a></li>
@@ -111,10 +114,11 @@
   </ul>
 </div>
 
+            </div>
         </aside>
 
         <!-- Main Content -->
-        <main class="wiki-main">
+        <main class="wiki-main" role="main">
             <article class="wiki-content">
                 <h1>Getting Started with Fogsift</h1>
 <p>Welcome to the Fogsift knowledge base. This wiki contains documentation, concepts, and field notes from our consulting work.</p>
@@ -139,11 +143,13 @@
 
             <footer class="wiki-footer">
                 <div class="wiki-meta">
-                    <span>Last updated: 2025-12-27</span>
+                    <span>Updated: 2025-12-27</span>
                 </div>
-                <div class="wiki-nav-footer">
-                    <a href="index.html">← Back to Wiki Index</a>
-                </div>
+                <nav class="wiki-nav-footer" aria-label="Wiki navigation">
+                    <a href="index.html">
+                        <span aria-hidden="true">←</span> Back to Wiki
+                    </a>
+                </nav>
             </footer>
         </main>
     </div>
