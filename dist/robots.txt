@@ -1,0 +1,16 @@
+# Fogsift Access Control
+User-agent: *
+Allow: /
+
+# Block AI Scrapers
+User-agent: GPTBot
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+
+Sitemap: https://fogsift.com/sitemap.xml
+

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fogsift | Straight answers to complicated questions</title>
+    <meta name="description" content="Independent consulting for complex problems. Trace root causes. Get clarity. Based in Chico, CA.">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f4f4f5">
+    <link rel="canonical" href="https://fogsift.com">
+
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiRnVnc2lmdCIsIndob3J0X25hbWUiOiJGb2dzaWZ0Iiwic3RhcnRfdXJsIjoiLyIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMxODE4MWIiLCJ0aGVtZV9jb2xvciI6IiNkOTc3MDYiLCJpY29ucyI6W3sic3JjIjoiZmF2aWNvbi5wbmciLCJzaXplcyI6IjE5MngxOTIiLCJ0eXBlIjoiaW1hZ2UvcG5nIn1dfQ==">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Fogsift">
+    <meta property="og:description" content="Straight answers to complicated questions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Fogsift",
+      "image": "https://fogsift.com/og-image.png",
+      "description": "Independent consulting for complex, ambiguous problems.",
+      "url": "https://fogsift.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Chico",
+        "addressRegion": "CA",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.7285,
+        "longitude": -121.8375
+      },
+      "priceRange": "$$"
+    }
+    </script>
+
+    <script>
+        (function() {
+            var localTheme = localStorage.getItem('theme');
+            var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (localTheme === 'dark' || (!localTheme && supportDarkMode)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. DESIGN TOKENS --- */
+        :root {
+            /* DAY MODE PALETTE */
+            --ink: #18181b;
+            --paper: #f4f4f5;
+            --canvas: #e4e4e7;
+            --copper: #d97706;
+            --electric: #0891b2;
+            --muted: #52525b;
+            --line: #d4d4d8;
+
+            /* BREADCRUMB TOKENS */
+            --bar-bg: #f4f4f5;
+            --bar-text: #18181b;
+            --bar-border: #d4d4d8;
+
+            /* PHYSICS */
+            --border-width: 2px;
+            --radius: 4px;
+
+            --shadow-hard: 4px 4px 0 var(--ink);
+            --shadow-hover: 6px 6px 0 var(--electric);
+            --shadow-active: 0px 0px 0 var(--ink);
+
+            --snap: 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            /* NAV VARS */
+            --nav-height: 70px;
+            --breadcrumb-height: 44px;
+        }
+
+        /* DARK MODE OVERRIDES */
+        [data-theme="dark"] {
+            --ink: #f4f4f5;
+            --paper: #18181b;
+            --canvas: #09090b;
+            --copper: #fbbf24;
+            --electric: #22d3ee;
+            --muted: #a1a1aa;
+            --line: #27272a;
+
+            /* DARK MODE BREADCRUMBS */
+            --bar-bg: #27272a;
+            --bar-text: #f4f4f5;
+            --bar-border: #27272a;
+
+            --shadow-hard: 4px 4px 0 var(--electric);
+            --shadow-hover: 6px 6px 0 var(--copper);
+        }
+
+        /* --- 2. BASE --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 140px;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--canvas);
+            color: var(--ink);
+            font-size: 18px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            background-image: radial-gradient(var(--muted) 1px, transparent 1px);
+            background-size: 24px 24px;
+            padding-top: calc(var(--nav-height) + var(--breadcrumb-height) + 20px);
+            padding-bottom: 5vh;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body.scroll-locked { overflow: hidden; }
+
+        ::selection { background: var(--electric); color: var(--paper); }
+        a { text-decoration: none; color: inherit; }
+
+        /* SCROLL PROGRESS */
+        #progress-bar {
+            position: fixed; top: 0; left: 0; height: 3px; background: var(--copper);
+            z-index: 2001; width: 0%; transition: width 0.1s;
+        }
+
+        /* --- 3. COMPONENTS --- */
+        h1, h2, h3, h4, h5 { font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 1rem; color: var(--ink); }
+        .headline { font-size: clamp(2.5rem, 5vw, 3.5rem); cursor: help; }
+        .subhead { font-size: 1.25rem; color: var(--muted); max-width: 60ch; margin-bottom: 2rem; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .label {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; text-transform: uppercase; font-weight: 700;
+            background: var(--ink); color: var(--paper); padding: 4px 8px; display: inline-block; margin-bottom: 1rem;
+            box-shadow: 3px 3px 0 var(--copper); transform: rotate(-1deg); border-radius: var(--radius); cursor: default;
+        }
+
+        /* --- 4. NAVIGATION SYSTEM --- */
+        .nav-wrapper {
+            position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Top Bar */
+        .main-nav {
+            height: var(--nav-height); background: var(--paper); border-bottom: var(--border-width) solid var(--line);
+            display: flex; justify-content: space-between; align-items: center; padding: 0 2rem;
+        }
+
+        .brand {
+            font-weight: 900; font-size: 1.5rem; letter-spacing: -0.05em; color: var(--ink);
+            border: var(--border-width) solid var(--line); padding: 4px 12px;
+            box-shadow: 3px 3px 0 var(--electric); background: var(--paper); border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+        .menu-items { display: flex; gap: 2rem; align-items: center; height: 100%; }
+        .menu-item { position: relative; height: 100%; display: flex; align-items: center; }
+        .menu-link {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; font-weight: 700; color: var(--muted);
+            cursor: pointer; padding: 8px 12px; transition: all 0.2s; border-radius: var(--radius);
+        }
+        .menu-link:hover, .menu-item:hover .menu-link { color: var(--ink); background: rgba(0,0,0,0.05); }
+        .menu-link::after { content: '+'; margin-left: 5px; opacity: 0.5; }
+        .menu-link.direct::after { content: ''; }
+
+        .dropdown {
+            position: absolute; top: 100%; left: 0; min-width: 220px;
+            background: var(--paper); border: var(--border-width) solid var(--line);
+            box-shadow: var(--shadow-hard); border-radius: var(--radius);
+            opacity: 0; visibility: hidden; transform: translateY(10px);
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); padding: 0.5rem;
+        }
+        .menu-item:hover .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-link {
+            display: block; padding: 10px 12px; font-family: 'Inter', sans-serif; font-size: 0.9rem;
+            color: var(--ink); border-radius: 2px; font-weight: 500;
+        }
+        .dropdown-link:hover { background: var(--electric); color: var(--paper); }
+        .dropdown-link span { display: block; font-size: 0.75rem; opacity: 0.7; font-weight: 400; margin-top: 2px; }
+
+        /* BREADCRUMB BAR */
+        .breadcrumb-bar {
+            height: var(--breadcrumb-height); background: var(--bar-bg); color: var(--bar-text);
+            display: flex; align-items: center; padding: 0 2rem;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            border-bottom: var(--border-width) solid var(--bar-border);
+            white-space: nowrap; overflow-x: auto;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .crumb-list { list-style: none; display: flex; align-items: center; padding: 0; margin: 0; }
+        .crumb-item { display: flex; align-items: center; }
+
+        .crumb-link {
+            color: var(--bar-text); text-decoration: none; font-weight: 700;
+            padding: 4px 6px; border-radius: 2px; transition: all 0.2s;
+        }
+        .crumb-link:hover { background: var(--electric); color: var(--paper); }
+        .crumb-separator { margin: 0 4px; color: var(--electric); font-weight: 900; }
+        .crumb-current {
+            color: var(--copper); font-weight: 900; background: rgba(0,0,0,0.05);
+            padding: 2px 6px; border-radius: 2px; letter-spacing: 0.05em;
+        }
+        [data-theme="dark"] .crumb-current { color: var(--electric); background: rgba(255,255,255,0.1); }
+
+        /* CONTROLS (SUN/MOON) */
+        .nav-controls { display: flex; align-items: center; gap: 1rem; }
+        .theme-toggle {
+            background: transparent; border: 1px solid var(--line); padding: 8px; cursor: pointer;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 2px 2px 0 var(--copper); transition: transform 0.1s; color: var(--ink);
+            width: 36px; height: 36px;
+        }
+        .theme-toggle:active { transform: translate(1px, 1px); box-shadow: none; }
+        .icon-sun, .icon-moon { width: 18px; height: 18px; stroke: currentColor; stroke-width: 2; fill: none; }
+        [data-theme="dark"] .icon-moon { display: block; fill: var(--electric); stroke: var(--electric); }
+        [data-theme="dark"] .icon-sun { display: none; }
+        [data-theme="light"] .icon-sun { display: block; fill: var(--copper); stroke: var(--copper); }
+        [data-theme="light"] .icon-moon { display: none; }
+        .mobile-toggle { display: none; font-family: 'JetBrains Mono', monospace; font-weight: 700; cursor: pointer; border: 2px solid var(--line); padding: 4px 8px; }
+
+        /* --- 5. FRAME & SECTIONS --- */
+        .frame {
+            max-width: 800px; margin: 0 auto; background: var(--paper);
+            border: var(--border-width) solid var(--line); box-shadow: 10px 10px 0 var(--shadow-hard);
+            padding: 4rem 3rem; position: relative; border-radius: var(--radius);
+        }
+        section { margin-bottom: 8rem; scroll-margin-top: 140px; }
+
+        /* Buttons */
+        .hotline-button {
+            display: flex; align-items: center; justify-content: center; width: 100%;
+            background: var(--copper); color: #fff; border: var(--border-width) solid var(--line);
+            padding: 1.5rem; font-size: 1.2rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.05em; box-shadow: var(--shadow-hard); transition: transform var(--snap), box-shadow var(--snap);
+            cursor: pointer; border-radius: var(--radius);
+        }
+        .hotline-button:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--electric); color: #fff; }
+        .hotline-button:active { transform: translate(2px, 2px); box-shadow: var(--shadow-active); }
+        [data-theme="dark"] .hotline-button { color: #000; }
+        .hotline-subtext { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; margin-top: 1rem; display: block; text-align: center; color: var(--muted); }
+
+        .btn-secondary {
+            display: inline-block; margin-top: 1.5rem; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+            color: var(--muted); border-bottom: 2px solid var(--line); padding-bottom: 2px; transition: color 0.2s; font-size: 0.9rem; cursor: pointer; width: 100%; text-align: center;
+        }
+        .btn-secondary:hover { color: var(--ink); border-color: var(--electric); }
+
+        /* The Wire */
+        .timeline-grid { display: grid; grid-template-columns: 4rem 1fr; gap: 0 2rem; position: relative; }
+        .timeline-line { grid-column: 1; grid-row: 1 / -1; width: 3px; background: var(--line); justify-self: center; }
+        .timeline-marker {
+            grid-column: 1; width: 3rem; height: 3rem; background: var(--paper); border: var(--border-width) solid var(--line);
+            z-index: 2; justify-self: center; display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem;
+            box-shadow: 4px 4px 0 var(--electric); margin-top: 0.25rem; color: var(--ink); cursor: crosshair;
+        }
+        .shape-circle { border-radius: 50%; } .shape-square { border-radius: var(--radius); }
+        .timeline-content { grid-column: 2; padding-bottom: 5rem; }
+        .io-box {
+            display: flex; gap: 2rem; margin-top: 1.5rem; padding: 1rem; background: var(--canvas); color: var(--ink);
+            border: var(--border-width) solid var(--line); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+            box-shadow: 4px 4px 0 var(--muted); border-radius: var(--radius); cursor: help;
+        }
+        .io-item strong { display: block; color: var(--electric); font-size: 0.7rem; margin-bottom: 0.25rem; }
+
+        /* Grids & Cards */
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; }
+        .spec-item {
+            border: var(--border-width) solid var(--line); padding: 1.5rem; background: var(--paper);
+            box-shadow: 4px 4px 0 var(--muted); border-radius: var(--radius); cursor: crosshair; transition: transform 0.1s;
+        }
+        .spec-item:hover { transform: translate(-1px, -1px); }
+        .spec-item h4 {
+            font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; background: var(--electric);
+            color: var(--ink); display: inline-block; padding: 2px 6px; margin-bottom: 1rem; border-radius: 2px;
+        }
+
+        .deliv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .deliv-card {
+            border: var(--border-width) solid var(--line); padding: 1.5rem; background: var(--paper);
+            transition: transform 0.2s; box-shadow: var(--shadow-hard); border-radius: var(--radius); cursor: pointer;
+        }
+        .deliv-card:hover { transform: translate(-3px, -3px); box-shadow: 8px 8px 0 var(--electric); }
+        .deliv-icon { width: 40px; height: 40px; border: var(--border-width) solid var(--line); background: var(--copper); margin-bottom: 1rem; border-radius: var(--radius); position: relative; }
+
+        .icon-map::before { content: ''; position: absolute; left: 8px; top: 20px; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+        .icon-map::after { content: ''; position: absolute; right: 8px; top: 12px; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+        .icon-map span { content: ''; position: absolute; bottom: 8px; right: 14px; width: 6px; height: 6px; background: #fff; border-radius: 50%; }
+
+        .deliv-card h4 { color: var(--ink); font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; margin-bottom: 0.5rem; }
+
+        /* THEATRES (NEW) */
+        .theatre-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+        .theatre-card {
+            background: var(--paper); border: var(--border-width) solid var(--line); padding: 1.5rem;
+            box-shadow: var(--shadow-hard); position: relative; border-radius: var(--radius);
+        }
+        .theatre-header { display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 1rem; margin-bottom: 1rem; align-items: center; }
+        .theatre-id { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--muted); }
+        .theatre-status { font-family: 'JetBrains Mono'; font-size: 0.6rem; background: var(--electric); color: var(--paper); padding: 2px 4px; border-radius: 2px; }
+        .theatre-card h4 { margin: 0; font-size: 1.1rem; }
+        .theatre-card p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+
+        /* TRANSMISSION (BLOG) */
+        .log-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .log-entry {
+            border: var(--border-width) solid var(--line); background: var(--paper); padding: 1.5rem;
+            box-shadow: 4px 4px 0 var(--muted); cursor: pointer; transition: all 0.1s; position: relative; border-top-width: 4px;
+        }
+        .band-strategy { border-top-color: var(--copper); }
+        .band-fab { border-top-color: var(--ink); }
+        .band-systems { border-top-color: var(--electric); }
+
+        .log-entry:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--copper); }
+        .log-header { display: flex; justify-content: space-between; font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--muted); margin-bottom: 0.8rem; }
+        .log-time { background: var(--canvas); padding: 2px 4px; border-radius: 2px; }
+        .log-title { font-weight: 700; font-size: 1.15rem; line-height: 1.3; margin-bottom: 1rem; color: var(--ink); }
+        .log-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; border-top: 1px solid var(--line); padding-top: 0.8rem; }
+        .log-id { font-family: 'JetBrains Mono'; font-size: 0.7rem; color: var(--electric); font-weight: 700; }
+        .log-arrow { font-family: 'JetBrains Mono'; font-weight: 700; color: var(--copper); }
+
+        /* Pricing & Contact */
+        .pricing-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px dashed var(--line); padding: 1.5rem 0; cursor: pointer; }
+        .pricing-row:hover { background-color: rgba(6, 182, 212, 0.05); }
+        .pricing-row:last-child { border-bottom: none; }
+        .price-tag {
+            font-family: 'JetBrains Mono', monospace; font-weight: 700; background: var(--electric);
+            color: var(--ink); padding: 4px 8px; border: 2px solid var(--line); box-shadow: 2px 2px 0 var(--line); border-radius: var(--radius);
+        }
+
+        .contact-box {
+            background: var(--paper); color: var(--ink); padding: 3rem;
+            border: var(--border-width) solid var(--line); box-shadow: 12px 12px 0 var(--copper);
+            text-align: center; position: relative; margin-top: 4rem; border-radius: var(--radius); cursor: cell;
+        }
+        .contact-box::after {
+            content: ''; position: absolute; top: -10px; left: -10px; width: 20px; height: 20px;
+            background: var(--electric); border: var(--border-width) solid var(--line); border-radius: 50%;
+        }
+        .contact-box a { color: var(--electric); text-decoration: underline; font-weight: 700;}
+
+        /* Panels */
+        .exclusion-panel {
+            background: var(--paper); padding: 2rem; border-radius: var(--radius);
+            border: var(--border-width) solid var(--line); border-left: 8px solid var(--muted);
+            box-shadow: var(--shadow-hard); margin-top: 2rem; opacity: 0.9;
+        }
+        .cross-box { color: var(--muted); font-weight: 900; font-family: 'JetBrains Mono', monospace; }
+
+        .diagnostic-panel {
+            background: var(--paper); padding: 2rem; border-radius: var(--radius);
+            border: var(--border-width) solid var(--line); border-left: 8px solid var(--accent);
+            box-shadow: var(--shadow-hard);
+        }
+        .check-item { display: flex; gap: 1rem; margin-bottom: 1rem; font-family: var(--font-mono); font-size: 0.9rem; cursor: pointer; transition: color 0.1s;}
+        .check-item:hover { color: var(--copper); }
+        .check-box { color: var(--signal); font-weight: 900; }
+        .check-box.checked { color: var(--copper); }
+
+        /* Ops Grid */
+        .ops-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+        .ops-item { cursor: help; }
+        .ops-item h5 { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--copper); margin-bottom: 0.5rem; text-transform: uppercase; }
+        .ops-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.4; }
+
+        /* Comms Panel */
+        .comms-panel { background: var(--canvas); border: var(--border-width) solid var(--line); padding: 2rem; display: flex; flex-direction: column; gap: 1rem; margin-top: 4rem; }
+        .comms-input { padding: 1rem; background: var(--paper); border: var(--border-width) solid var(--line); font-family: 'JetBrains Mono', monospace; color: var(--ink); outline: none; }
+        .comms-btn { padding: 1rem; background: var(--ink); color: var(--paper); border: none; font-weight: 700; font-family: 'JetBrains Mono', monospace; cursor: pointer; text-transform: uppercase; }
+        .comms-btn:hover { background: var(--copper); }
+
+        /* Assets */
+        .asset-link { display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 1px solid var(--line); margin-bottom: 0.5rem; background: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; cursor: alias; }
+        .asset-link:hover { border-color: var(--electric); color: var(--electric); }
+
+        /* Footer */
+        footer {
+            margin-top: 6rem; padding-top: 4rem; border-top: 4px solid var(--line);
+            font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--muted); cursor: crosshair;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+        .footer-col h5 { font-size: 0.85rem; color: var(--ink); margin-bottom: 1rem; border-bottom: 2px solid var(--copper); display: inline-block; padding-bottom: 4px; }
+        .footer-link { display: block; margin-bottom: 0.5rem; color: var(--muted); transition: color 0.2s; }
+        .footer-link:hover { color: var(--electric); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--line); padding-top: 2rem; width: 100%; }
+        .copy-btn { background: var(--paper); border: var(--border-width) solid var(--line); padding: 8px 16px; cursor: pointer; color: var(--ink); box-shadow: 4px 4px 0 var(--electric); font-family: inherit; font-weight: 700; text-transform: uppercase; border-radius: var(--radius); }
+        .copy-btn:active { transform: translate(2px, 2px); box-shadow: none; }
+
+        /* Toast */
+        #toast-container { position: fixed; bottom: 24px; right: 24px; z-index: 10000; display: flex; flex-direction: column; gap: 12px; pointer-events: none; }
+        .toast {
+            background: var(--ink); color: var(--paper); font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+            padding: 12px 16px; border: 2px solid var(--electric); box-shadow: 4px 4px 0 var(--copper);
+            min-width: 200px; max-width: 300px; animation: slideIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: auto; display: flex; align-items: center; justify-content: space-between; opacity: 0.95;
+        }
+        .toast::before { content: '>'; color: var(--electric); margin-right: 8px; font-weight: 700; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 0.95; } }
+        @keyframes slideOut { to { transform: translateX(100%); opacity: 0; } }
+
+        /* Mobile Drawer */
+        .mobile-drawer { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--paper); z-index: 2000; padding: 2rem; display: flex; flex-direction: column; justify-content: center; transform: translateX(100%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .mobile-drawer.open { transform: translateX(0); }
+        .mobile-link { font-size: 1.5rem; font-weight: 900; color: var(--ink); margin-bottom: 1.5rem; display: block; border-bottom: 2px solid var(--line); padding-bottom: 0.5rem; }
+        .mobile-close { position: absolute; top: 1rem; right: 1rem; font-family: 'JetBrains Mono'; font-weight: 700; padding: 1rem; cursor: pointer; border: 2px solid var(--ink); }
+
+        .hp-field { display: none; visibility: hidden; }
+
+        /* MODAL */
+        #article-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; backdrop-filter: blur(4px); opacity: 0; transition: opacity 0.3s; }
+        .modal-content { background: var(--paper); width: 90%; max-width: 700px; height: 90vh; margin: 5vh auto; padding: 3rem; border: var(--border-width) solid var(--line); box-shadow: 0 0 50px rgba(0,0,0,0.5); overflow-y: auto; position: relative; border-radius: var(--radius); }
+        .close-modal { position: absolute; top: 1rem; right: 1rem; background: var(--ink); color: var(--paper); border: none; padding: 0.5rem 1rem; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+        /* PRINT STYLES */
+        @media print {
+            body { background: #fff !important; color: #000 !important; background-image: none !important; padding: 0 !important; }
+            .frame {
+                box-shadow: none !important; border: 2px solid #000 !important; margin: 0 !important; width: 100% !important; max-width: 100% !important;
+                padding: 40px !important; border-radius: 0 !important;
+            }
+            .nav-wrapper, .hotline-wrapper, .copy-btn, .contact-box, #toast-container, footer, .comms-panel, #article-modal, #progress-bar, .theme-toggle { display: none !important; }
+            a { text-decoration: none !important; color: #000 !important; }
+            .timeline-marker, .pricing-node, .card, .diagnostic-panel, .exclusion-panel, .deliv-card, .spec-item, .log-entry, .asset-link, .theatre-card {
+                box-shadow: none !important; border: 1px solid #000 !important; background: #fff !important; color: #000 !important;
+            }
+            .label, .price-tag, .spec-item h4, .log-tag, .io-label, .theatre-status, .log-time {
+                background: #fff !important; color: #000 !important; border: 1px solid #000 !important; box-shadow: none !important; transform: none !important;
+            }
+            .wire-line, .pricing-node::before { background: #000 !important; border-color: #000 !important; }
+            a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; font-family: monospace; }
+        }
+
+        @media (max-width: 800px) {
+            .menu-items { display: none; }
+            .mobile-toggle { display: block; }
+            .frame { padding: 40px 20px; border: none; box-shadow: none; width: 100%; }
+            .deliv-grid, .log-grid, .timeline-grid { grid-template-columns: 1fr; }
+            .timeline-grid { grid-template-columns: 3rem 1fr; gap: 0 1rem; }
+            .timeline-marker { width: 2.5rem; height: 2.5rem; left: 0; font-size: 0.75rem; }
+            .wire-line { margin-right: 1rem; }
+            .breadcrumb-bar { padding: 0 1rem; }
+            header { padding: 0 1rem; }
+            .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
+        }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            var current = document.documentElement.getAttribute('data-theme');
+            var target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            localStorage.setItem('theme', target);
+            showToast(`VISUAL MODE: ${target.toUpperCase()}`);
+        }
+
+        function toggleMobileMenu() {
+            var drawer = document.getElementById('mobile-drawer');
+            var body = document.body;
+            if (drawer.classList.contains('open')) {
+                drawer.classList.remove('open');
+                body.classList.remove('scroll-locked'); // Unlock
+            } else {
+                drawer.classList.add('open');
+                body.classList.add('scroll-locked'); // Lock
+            }
+        }
+
+        function updateTime() {
+            var now = new Date();
+            var timeString = now.toISOString().replace('T', ' ').substring(0, 19) + ' UTC';
+            var clock = document.getElementById('utc-clock');
+            if(clock) clock.textContent = timeString;
+        }
+
+        function showToast(message, duration = 2500) {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerText = message;
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.style.animation = 'slideOut 0.2s ease forwards';
+                setTimeout(() => toast.remove(), 200);
+            }, duration);
+        }
+
+        function openArticle(id) {
+            const modal = document.getElementById('article-modal');
+            const title = document.getElementById('modal-title');
+            const content = document.getElementById('modal-body');
+            document.body.classList.add('scroll-locked'); // LOCK SCROLL
+
+            title.innerText = "RETRIEVING LOG " + id + "...";
+            content.innerHTML = "<p>Decryption in progress...</p>";
+            modal.style.display = 'block';
+            setTimeout(() => { modal.style.opacity = 1; }, 10);
+
+            setTimeout(() => {
+                if (id === '001') {
+                    title.innerText = "FIELD NOTE: THE MAP IS NOT THE TERRITORY";
+                    content.innerHTML = `<p class="mono" style="color:var(--muted)">TIMESTAMP: 2025-01-14 // SECTOR: STRATEGY</p><hr style="border:0; border-top:1px solid var(--line); margin: 2rem 0;"><p>Most organizations confuse their organizational chart with their actual communication network. When we deploy the Trace protocol, we find the critical node is often a Scheduler in a basement office.</p>`;
+                } else if (id === '002') {
+                    title.innerText = "FIELD NOTE: PRECISION VS ACCURACY";
+                    content.innerHTML = `<p class="mono" style="color:var(--muted)">TIMESTAMP: 2025-01-08 // FABRICATION</p><hr style="border:0; border-top:1px solid var(--line); margin: 2rem 0;"><p>In CNC, precision is repeatability. Accuracy is hitting the mark. You can be precise (hitting the same wrong spot every time) without being accurate. Strategy works the same way.</p>`;
+                } else {
+                    title.innerText = "FIELD NOTE: ENTROPY";
+                    content.innerHTML = `<p class="mono" style="color:var(--muted)">TIMESTAMP: 2024-12-22 // SYSTEMS</p><hr style="border:0; border-top:1px solid var(--line); margin: 2rem 0;"><p>Chaos is the default state. Order requires energy injection. If you stop pushing, the system decays.</p>`;
+                }
+            }, 500);
+        }
+
+        function closeArticle() {
+            const modal = document.getElementById('article-modal');
+            modal.style.opacity = 0;
+            document.body.classList.remove('scroll-locked'); // UNLOCK SCROLL
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal Click-Outside Logic
+            const modal = document.getElementById('article-modal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeArticle();
+                }
+            });
+
+            // Live Path Tracker
+            const pathCat = document.getElementById('crumb-category');
+            const pathSec = document.getElementById('crumb-section');
+            const progressBar = document.getElementById('progress-bar');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const crumbData = entry.target.getAttribute('data-crumb');
+                        if(crumbData) {
+                            if(crumbData.includes('/')) {
+                                const parts = crumbData.split('/').map(s => s.trim());
+                                pathCat.innerHTML = `<a href="#${entry.target.id}" class="crumb-link">${parts[0]}</a>`;
+                                pathCat.style.display = 'flex';
+                                document.getElementById('sep-1').style.display = 'block';
+                                pathSec.innerHTML = `<span class="crumb-current">${parts[1]}</span>`;
+                            } else {
+                                pathCat.style.display = 'none';
+                                document.getElementById('sep-1').style.display = 'none';
+                                pathSec.innerHTML = `<span class="crumb-current">${crumbData}</span>`;
+                            }
+                        }
+                    }
+                });
+            }, { threshold: 0.3, rootMargin: "-10% 0px -50% 0px" });
+
+            document.querySelectorAll('section, .card, .contact-box').forEach(section => { observer.observe(section); });
+
+            // Scroll Progress
+            window.addEventListener('scroll', () => {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const progress = (scrollTop / scrollHeight) * 100;
+                progressBar.style.width = progress + "%";
+            });
+
+            setInterval(updateTime, 1000);
+            updateTime();
+
+            document.getElementById('copy-btn').addEventListener('click', function() {
+                var text = document.body.innerText;
+                navigator.clipboard.writeText(text).then(function() { showToast("SYSTEM LOG: TRANSCRIPT EXTRACTED"); });
+            });
+            document.querySelector('.hotline-button').addEventListener('mouseenter', () => showToast('CHANNEL: DIRECT / PRIORITY'));
+            document.getElementById('sub-btn').addEventListener('click', () => showToast('SUBSCRIPTION PROTOCOL: INACTIVE [DB_FULL]'));
+
+            // Interactive Diagnostic Logic
+            const checkboxes = document.querySelectorAll('.check-item');
+            let checkedCount = 0;
+
+            checkboxes.forEach(item => {
+                item.addEventListener('click', () => {
+                    const box = item.querySelector('.check-box');
+                    if (box.innerText === '[x]') {
+                        box.innerText = '[ ]';
+                        box.classList.remove('checked');
+                        checkedCount--;
+                    } else {
+                        box.innerText = '[x]';
+                        box.classList.add('checked');
+                        checkedCount++;
+                        showToast('CRITERION VERIFIED');
+                    }
+
+                    if (checkedCount === 3) {
+                        showToast('PROFILE MATCH: HIGH PROBABILITY');
+                        document.querySelector('.hotline-button').classList.add('pulse');
+                    } else {
+                         document.querySelector('.hotline-button').classList.remove('pulse');
+                    }
+                });
+            });
+
+            // Console Graffiti
+            console.log("%c FOGSIFT // SYSTEMS NOMINAL ", "background: #18181b; color: #d97706; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #06b6d4;");
+            console.log("Operator: Christopher Tavolazzi");
+            console.log("Coordinates: 39.72° N, 121.83° W");
+        });
+    </script>
+</head>
+<body>
+
+    <div id="progress-bar"></div>
+    <div id="toast-container"></div>
+
+    <div id="article-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeArticle()">[CLOSE]</button>
+            <h2 id="modal-title" class="headline" style="font-size: 1.5rem; margin-top: 2rem;">LOADING...</h2>
+            <div id="modal-body" style="line-height: 1.8;"></div>
+        </div>
+    </div>
+
+    <div id="mobile-drawer" class="mobile-drawer">
+        <div class="mobile-close" onclick="toggleMobileMenu()">[CLOSE]</div>
+        <a href="#hero" class="mobile-link" onclick="toggleMobileMenu()">HOME</a>
+        <a href="#mechanism" class="mobile-link" onclick="toggleMobileMenu()">MECHANISM</a>
+        <a href="#theatres" class="mobile-link" onclick="toggleMobileMenu()">THEATRES</a>
+        <a href="#inventory" class="mobile-link" onclick="toggleMobileMenu()">INVENTORY</a>
+        <a href="#outputs" class="mobile-link" onclick="toggleMobileMenu()">OUTPUTS</a>
+        <a href="#transmission" class="mobile-link" onclick="toggleMobileMenu()">TRANSMISSION</a>
+        <a href="#pricing" class="mobile-link" onclick="toggleMobileMenu()">PROTOCOL</a>
+        <a href="#contact" class="mobile-link" onclick="toggleMobileMenu()">CONTACT</a>
+    </div>
+
+    <div class="nav-wrapper">
+        <div class="main-nav">
+            <div class="brand" onclick="window.scrollTo(0,0)">FOGSIFT</div>
+
+            <div class="menu-items">
+                <div class="menu-item">
+                    <span class="menu-link">OPERATIONS</span>
+                    <div class="dropdown">
+                        <a href="#mechanism" class="dropdown-link">The Mechanism <span>Process & Flow</span></a>
+                        <a href="#theatres" class="dropdown-link">Theatres <span>Active Sectors</span></a>
+                        <a href="#inventory" class="dropdown-link">Inventory <span>Technical Specs</span></a>
+                        <a href="#outputs" class="dropdown-link">Deliverables <span>Artifacts</span></a>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <span class="menu-link">INTEL</span>
+                    <div class="dropdown">
+                        <a href="#transmission" class="dropdown-link">Field Notes <span>Transmission Log</span></a>
+                        <a href="#assets" class="dropdown-link">Secure Assets <span>Downloads</span></a>
+                    </div>
+                </div>
+                <div class="menu-item"><a href="#pricing" class="menu-link direct">PROTOCOL</a></div>
+                <div class="menu-item"><a href="#contact" class="menu-link direct">CONTACT</a></div>
+            </div>
+
+            <div class="nav-controls">
+                <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">
+                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                </button>
+                <div class="mobile-toggle" onclick="toggleMobileMenu()">[MENU]</div>
+            </div>
+        </div>
+
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <ol class="crumb-list">
+                <li class="crumb-item"><a href="#hero" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item" id="crumb-category" style="display:none;"><a href="#" class="crumb-link">HOME</a></li>
+                <li class="crumb-item crumb-separator" id="sep-1" style="display:none;">/</li>
+                <li class="crumb-item" id="crumb-section"><span class="crumb-current">HOME</span></li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="frame">
+
+        <section id="hero" data-crumb="HOME" class="section">
+            <h1 class="headline">Straight answers to complicated questions.</h1>
+            <p class="subhead">You have a problem that doesn't fit in a standard box. You need someone to trace the root cause and hand you the fix.</p>
+
+            <div class="hotline-wrapper">
+                <a href="mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline" class="hotline-button">
+                    Weird Question Hotline
+                </a>
+                <div class="hotline-subtext">Got a random weird question? I bet I can answer it in under an hour.</div>
+                <a href="#mechanism" class="btn-secondary">Or inspect the mechanism &darr;</a>
+            </div>
+        </section>
+
+        <section class="card" id="diagnostic" data-crumb="DIAGNOSTIC">
+            <span class="label">DIAGNOSTIC CHECK</span>
+            <ul style="list-style: none; padding: 0;">
+                <li class="check-item"><span class="check-box">[ ]</span> You have plenty of data, but no narrative.</li>
+                <li class="check-item"><span class="check-box">[ ]</span> You suspect the "technical" issue is actually "people."</li>
+                <li class="check-item"><span class="check-box">[ ]</span> You want the truth, even if it's annoying.</li>
+            </ul>
+        </section>
+
+        <section class="exclusion-panel" data-crumb="EXCLUSION">
+            <span class="label" style="background: var(--muted); border:none; box-shadow:none;">SYSTEM REJECTION CRITERIA</span>
+            <ul style="list-style: none; padding: 0;">
+                <li class="check-item" style="cursor:default;"><span class="cross-box">[!]</span> You are looking for a "Yes Man" to validate bad data.</li>
+                <li class="check-item" style="cursor:default;"><span class="cross-box">[!]</span> You care more about optics than operations.</li>
+                <li class="check-item" style="cursor:default;"><span class="cross-box">[!]</span> You aren't authorized to implement the fix.</li>
+            </ul>
+        </section>
+
+        <div class="section" id="mechanism" data-crumb="OPERATIONS / MECHANISM">
+            <span class="label" style="border: none;">THE MECHANISM</span>
+
+            <div class="timeline-grid">
+                <div class="timeline-line"></div>
+
+                <div class="timeline-marker shape-circle">01</div>
+                <div class="timeline-content">
+                    <h3>Deconstruct</h3>
+                    <p>We dump the box. No assumptions. Just raw parts.</p>
+                    <div class="io-box">
+                        <div class="io-item"><strong>INPUT</strong>Messy Data</div>
+                        <div class="io-item"><strong>OUTPUT</strong>Component List</div>
+                    </div>
+                </div>
+
+                <div class="timeline-marker shape-square">02</div>
+                <div class="timeline-content">
+                    <h3>Trace</h3>
+                    <p>I follow the wire. Code, invoices, or people—I trace it to the source.</p>
+                    <div class="io-box">
+                        <div class="io-item"><strong>INPUT</strong>Symptoms</div>
+                        <div class="io-item"><strong>OUTPUT</strong>Root Cause</div>
+                    </div>
+                </div>
+
+                <div class="timeline-marker shape-circle">03</div>
+                <div class="timeline-content">
+                    <h3>Synthesize</h3>
+                    <p>We reassemble the system. I hand you the fix.</p>
+                    <div class="io-box">
+                        <div class="io-item"><strong>INPUT</strong>The Truth</div>
+                        <div class="io-item"><strong>OUTPUT</strong>The Solution</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="section" id="theatres" data-crumb="OPERATIONS / THEATRES">
+            <span class="label" style="border: none;">OPERATIONAL THEATRES</span>
+            <div class="theatre-grid">
+                <div class="theatre-card">
+                    <div class="theatre-header">
+                        <span class="theatre-id">SECTOR 01</span>
+                        <span class="theatre-status">ACTIVE</span>
+                    </div>
+                    <h4>Digital Infrastructure</h4>
+                    <p>SaaS, Cloud Architecture, API Integration.</p>
+                </div>
+                <div class="theatre-card">
+                    <div class="theatre-header">
+                        <span class="theatre-id">SECTOR 02</span>
+                        <span class="theatre-status">ACTIVE</span>
+                    </div>
+                    <h4>Physical Manufacturing</h4>
+                    <p>CNC Workflows, Supply Chain Logistics, Hardware.</p>
+                </div>
+                <div class="theatre-card">
+                    <div class="theatre-header">
+                        <span class="theatre-id">SECTOR 03</span>
+                        <span class="theatre-status">ACTIVE</span>
+                    </div>
+                    <h4>Narrative Systems</h4>
+                    <p>Strategic Messaging, Brand Architecture, Content Ops.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="inventory" data-crumb="OPERATIONS / INVENTORY">
+            <span class="label" style="border: none; margin-bottom: 2rem;">INVENTORY</span>
+            <div class="specs-grid">
+                <div class="spec-item">
+                    <h4>Strategy</h4>
+                    <p style="font-size: 0.9rem;">Root Cause Analysis, Revenue Modeling, System Diagnostics.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>Technical</h4>
+                    <p style="font-size: 0.9rem;">Python, SQL, GraphQL, Data Scraping, Process Automation, Obsidian.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>Fabrication</h4>
+                    <p style="font-size: 0.9rem;">Laser Cutting, CNC (Fusion 360), Prototyping.</p>
+                </div>
+                <div class="spec-item">
+                    <h4>Creative</h4>
+                    <p style="font-size: 0.9rem;">Narrative Design, Video Production, Analog Synthesis.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="outputs" data-crumb="OPERATIONS / OUTPUTS">
+            <span class="label">DELIVERABLES</span>
+            <div class="deliv-grid">
+                <div class="deliv-card card">
+                    <div class="deliv-icon"></div>
+                    <h4>The Diagnosis</h4>
+                    <p class="mono" style="font-size: 0.8rem; color: var(--muted);">One-page root cause memo.</p>
+                </div>
+                <div class="deliv-card card">
+                    <div class="deliv-icon icon-map"><span></span></div>
+                    <h4>The Map</h4>
+                    <p class="mono" style="font-size: 0.8rem; color: var(--muted);">Logic flow diagram.</p>
+                </div>
+                <div class="deliv-card card">
+                    <div class="deliv-icon"></div>
+                    <h4>The Plan</h4>
+                    <p class="mono" style="font-size: 0.8rem; color: var(--muted);">Action checklist.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="transmission" data-crumb="INTEL / FIELD NOTES">
+            <span class="label" style="border: none; margin-bottom: 2rem;">FIELD NOTES</span>
+            <div class="log-grid">
+                <div class="log-entry band-strategy" onclick="openArticle('001')">
+                    <div class="log-header">
+                        <span class="log-time">READ: 2M</span>
+                        <span>LOG: 001</span>
+                    </div>
+                    <span class="log-date">2025-01-14 // STRATEGY</span>
+                    <div class="log-title">The Map Is Not The Territory</div>
+                    <div class="log-footer">
+                        <span class="log-id">SEC-A</span>
+                        <span class="log-arrow">&rarr;</span>
+                    </div>
+                </div>
+
+                <div class="log-entry band-fab" onclick="openArticle('002')">
+                    <div class="log-header">
+                        <span class="log-time">READ: 4M</span>
+                        <span>LOG: 002</span>
+                    </div>
+                    <span class="log-date">2025-01-08 // FABRICATION</span>
+                    <div class="log-title">Why Precision Matters More Than Accuracy</div>
+                    <div class="log-footer">
+                        <span class="log-id">SEC-B</span>
+                        <span class="log-arrow">&rarr;</span>
+                    </div>
+                </div>
+
+                <div class="log-entry band-systems" onclick="openArticle('003')">
+                    <div class="log-header">
+                        <span class="log-time">READ: 3M</span>
+                        <span>LOG: 003</span>
+                    </div>
+                    <span class="log-date">2024-12-22 // SYSTEMS</span>
+                    <div class="log-title">Entropy Is The Default State</div>
+                    <div class="log-footer">
+                        <span class="log-id">SEC-C</span>
+                        <span class="log-arrow">&rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="assets" data-crumb="INTEL / ASSETS">
+            <span class="label">SECURE ASSETS</span>
+            <a href="#" class="asset-link" onclick="showToast('ACCESS DENIED: AUTHORIZATION REQUIRED')">
+                <span>[PDF] FOGSIFT_LETTERHEAD_V1.tex</span>
+                <span>42KB</span>
+            </a>
+            <a href="#" class="asset-link" onclick="showToast('ACCESS DENIED: AUTHORIZATION REQUIRED')">
+                <span>[KEY] PGP_PUBLIC_KEY.asc</span>
+                <span>2KB</span>
+            </a>
+        </section>
+
+        <section class="section" style="margin-top: 6rem;" data-crumb="PROTOCOL / PARAMETERS">
+            <span class="label" style="border: none; margin-bottom: 2rem;">OPERATIONAL PARAMETERS</span>
+            <div class="ops-grid">
+                <div class="ops-item">
+                    <h5>Security</h5>
+                    <p>All communications encrypted. Non-Disclosure Agreements signed upon request.</p>
+                </div>
+                <div class="ops-item">
+                    <h5>Modality</h5>
+                    <p>Async default. Sync only when critical. I work on the problem, not on the call.</p>
+                </div>
+                <div class="ops-item">
+                    <h5>Ownership</h5>
+                    <p>You own the output. I own the method. All IP transfers on payment.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card" id="pricing" data-crumb="PROTOCOL / PRICING">
+            <span class="label">PROTOCOL</span>
+            <div class="pricing-row">
+                <h4>Phase 1: The Call</h4>
+                <span class="price-tag">FREE</span>
+            </div>
+            <p class="mono" style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--muted);">15-30m. Triage. No Pitch.</p>
+            <div class="pricing-row" style="margin-top: 1rem;">
+                <h4>Phase 2: Deep Dive</h4>
+                <span class="price-tag">$20</span>
+            </div>
+            <p class="mono" style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--muted);">The first hour of actual work.</p>
+            <div class="pricing-row" style="margin-top: 1rem;">
+                <h4>Phase 3: Engagement</h4>
+                <span class="price-tag">CONTRACT</span>
+            </div>
+            <p class="mono" style="font-size: 0.85rem; margin-top: 0.5rem; color: var(--muted);">Defined scope. No surprises.</p>
+        </section>
+
+        <section class="comms-panel" id="comms" data-crumb="CONTACT / COMMS">
+            <span class="label" style="background:transparent; color:var(--ink); padding:0; border:none; box-shadow:none;">JOIN THE FREQUENCY</span>
+            <p style="font-size: 0.9rem; margin:0;">Receive field notes and diagnostic reports. Irregular cadence.</p>
+            <input type="email" placeholder="ENTER_COMMS_ID" class="comms-input">
+            <button class="comms-btn" id="sub-btn">INITIATE_LINK</button>
+        </section>
+
+        <div class="contact-box" id="contact" data-crumb="CONTACT">
+            <h3>Ready?</h3>
+            <p>Email me at <a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a></p>
+            <input type="text" name="website_url" class="hp-field" tabindex="-1" autocomplete="off">
+            <div style="margin-top: 2rem; border: 1px dashed var(--line); padding: 2rem; font-family: var(--font-mono); font-size: 0.8rem; opacity: 0.5;">
+                [CALENDLY EMBED]
+            </div>
+        </div>
+
+        <footer>
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h5>SITE INDEX</h5>
+                    <a href="#hero" class="footer-link">00 // Home</a>
+                    <a href="#mechanism" class="footer-link">01 // Mechanism</a>
+                    <a href="#inventory" class="footer-link">02 // Inventory</a>
+                    <a href="#pricing" class="footer-link">03 // Protocol</a>
+                </div>
+                <div class="footer-col">
+                    <h5>INTEL</h5>
+                    <a href="#transmission" class="footer-link">Field Notes</a>
+                    <a href="#assets" class="footer-link">Secure Assets</a>
+                </div>
+                <div class="footer-col">
+                    <h5>CONTACT</h5>
+                    <a href="#contact" class="footer-link">Secure Channel</a>
+                    <a href="mailto:christopher@fogsift.com" class="footer-link">Email</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2025 FOGSIFT <span style="margin: 0 10px; color: var(--line);">//</span> <span id="utc-clock">LOADING...</span></div>
+                <div>39.72° N, 121.83° W</div>
+                <button class="copy-btn" id="copy-btn" aria-label="Copy Transcript">[COPY]</button>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
