@@ -1,7 +1,7 @@
 # MCP Integration Test Process Document
 
-**Document ID:** workflow.02  
-**Created:** 2025-12-27T10:49:40-08:00  
+**Document ID:** workflow.02
+**Created:** 2025-12-27T10:49:40-08:00
 **Purpose:** Define the expected workflow, stages, gates, and pass/fail criteria for MCP tool orchestration testing
 
 ---
@@ -99,7 +99,7 @@ GATE_1_CRITERIA:
   - localhost:5050 responds to HTTP request
   - Response contains "FogSift" or expected homepage content
   - Browser snapshot returns valid accessibility tree
-  
+
 EVIDENCE_REQUIRED:
   - Browser snapshot output
   - Server process confirmation
@@ -121,7 +121,7 @@ SCORING:
   5/6 = PASS (proceed with workaround)
   3-4/6 = PARTIAL (limited testing)
   <3/6 = FAIL (abort test)
-  
+
 EVIDENCE_REQUIRED:
   - Tool response for each server
   - Error messages if any

@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status | Fogsift</title>
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        :root {
+            --bg-dark: #1a1a1a;
+            --bg-panel: #252525;
+            --bg-card: #2d2d2d;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888;
+            --accent: #e07b3c;
+            --green: #4ade80;
+            --yellow: #facc15;
+            --red: #f87171;
+            --border: #404040;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        #auth-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+            gap: 1rem;
+        }
+
+        #auth-screen h1 {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        #auth-screen input {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.75rem 1rem;
+            font-family: inherit;
+            font-size: 1rem;
+            width: 250px;
+            text-align: center;
+        }
+
+        #auth-screen input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        #auth-screen button {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: inherit;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        #auth-screen button:hover { opacity: 0.9; }
+
+        #auth-error {
+            color: var(--red);
+            font-size: 0.875rem;
+            height: 1.5rem;
+        }
+
+        #dashboard {
+            display: none;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            color: var(--accent);
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .badge {
+            background: var(--bg-panel);
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .panel {
+            background: var(--bg-panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .panel h2 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .server-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .server-card {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .status-indicator.online { background: var(--green); box-shadow: 0 0 8px var(--green); }
+        .status-indicator.checking { background: var(--yellow); animation: pulse 1s infinite; }
+        .status-indicator.offline { background: var(--red); }
+        .status-indicator.unknown { background: var(--text-secondary); }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .server-name {
+            font-size: 0.875rem;
+            color: var(--text-primary);
+        }
+
+        .server-status {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-left: auto;
+        }
+
+        .pipeline {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .pipeline-stage .stage-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            border: 2px solid var(--border);
+        }
+
+        .pipeline-stage.complete .stage-indicator { border-color: var(--green); background: rgba(74, 222, 128, 0.1); }
+        .pipeline-stage.active .stage-indicator { border-color: var(--yellow); background: rgba(250, 204, 21, 0.1); animation: pulse 1s infinite; }
+        .pipeline-stage.pending .stage-indicator { border-color: var(--border); }
+
+        .pipeline-stage .stage-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .pipeline-connector {
+            width: 30px;
+            height: 2px;
+            background: var(--border);
+            flex-shrink: 0;
+        }
+
+        .work-effort {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .work-effort-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .work-effort-id {
+            font-size: 0.875rem;
+            color: var(--accent);
+        }
+
+        .work-effort-status {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+
+        .work-effort-status.active { background: rgba(250, 204, 21, 0.2); color: var(--yellow); }
+        .work-effort-status.completed { background: rgba(74, 222, 128, 0.2); color: var(--green); }
+
+        .work-effort-title {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .work-effort-progress {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        .tickets-list {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .ticket {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            padding: 0.5rem;
+            background: var(--bg-panel);
+            border-radius: 4px;
+        }
+
+        .ticket-status {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .ticket-status.completed { background: var(--green); }
+        .ticket-status.in_progress { background: var(--yellow); }
+        .ticket-status.pending { background: var(--text-secondary); }
+
+        .ticket-id {
+            color: var(--accent);
+            font-size: 0.7rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        #refresh-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            font-family: inherit;
+            font-size: 0.75rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        #refresh-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .last-updated {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Authentication Screen -->
+    <div id="auth-screen">
+        <h1>🔒 SYSTEM STATUS</h1>
+        <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter access code</p>
+        <input type="password" id="password-input" placeholder="••••••••••••" autofocus>
+        <button onclick="authenticate()">ACCESS</button>
+        <div id="auth-error"></div>
+    </div>
+
+    <!-- Dashboard (hidden until authenticated) -->
+    <div id="dashboard">
+        <header>
+            <h1>⚡ MCP SYSTEM STATUS</h1>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <span class="last-updated">Last updated: <span id="last-updated">--</span></span>
+                <button id="refresh-btn" onclick="loadStatus()">↻ Refresh</button>
+            </div>
+        </header>
+
+        <!-- Server Status Panel -->
+        <div class="panel">
+            <h2>MCP Servers</h2>
+            <div class="server-grid" id="server-grid">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Workflow Pipeline Panel -->
+        <div class="panel">
+            <h2>Workflow Pipeline</h2>
+            <div class="pipeline" id="pipeline">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Active Work Effort Panel -->
+        <div class="panel">
+            <h2>Active Work Effort</h2>
+            <div id="work-effort-container">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <footer>
+            <a href="index.html">← Back to Fogsift</a> · MCP System Dashboard v1.0
+        </footer>
+    </div>
+
+    <script>
+        const CORRECT_PASSWORD = 'courtneyishot';
+
+        // Check if already authenticated this session
+        if (sessionStorage.getItem('mcp-auth') === 'true') {
+            showDashboard();
+        }
+
+        // Handle Enter key on password input
+        document.getElementById('password-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') authenticate();
+        });
+
+        function authenticate() {
+            const input = document.getElementById('password-input');
+            const error = document.getElementById('auth-error');
+
+            if (input.value === CORRECT_PASSWORD) {
+                sessionStorage.setItem('mcp-auth', 'true');
+                showDashboard();
+            } else {
+                error.textContent = 'Access denied';
+                input.value = '';
+                input.focus();
+                setTimeout(() => error.textContent = '', 2000);
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('auth-screen').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            loadStatus();
+        }
+
+        async function loadStatus() {
+            try {
+                const response = await fetch('content/status.json?' + Date.now());
+                const data = await response.json();
+                renderServers(data.servers);
+                renderPipeline(data.pipeline);
+                renderWorkEffort(data.activeWorkEffort);
+                document.getElementById('last-updated').textContent = data.lastUpdated || 'Unknown';
+            } catch (e) {
+                console.error('Failed to load status:', e);
+                renderOfflineState();
+            }
+        }
+
+        function renderServers(servers) {
+            const grid = document.getElementById('server-grid');
+            grid.innerHTML = servers.map(s => `
+                <div class="server-card">
+                    <div class="status-indicator ${s.status}"></div>
+                    <span class="server-name">${s.name}</span>
+                    <span class="server-status">${s.statusText || s.status}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderPipeline(stages) {
+            const pipeline = document.getElementById('pipeline');
+            const icons = { plan: '📋', ticket: '🎫', execute: '⚡', verify: '✓', done: '✅' };
+
+            pipeline.innerHTML = stages.map((stage, i) => `
+                <div class="pipeline-stage ${stage.status}">
+                    <div class="stage-indicator">${icons[stage.id] || '○'}</div>
+                    <span class="stage-label">${stage.label}</span>
+                </div>
+                ${i < stages.length - 1 ? '<div class="pipeline-connector"></div>' : ''}
+            `).join('');
+        }
+
+        function renderWorkEffort(we) {
+            const container = document.getElementById('work-effort-container');
+
+            if (!we || !we.id) {
+                container.innerHTML = '<p style="color: var(--text-secondary);">No active work effort</p>';
+                return;
+            }
+
+            const ticketsHtml = we.tickets ? we.tickets.map(t => `
+                <div class="ticket">
+                    <div class="ticket-status ${t.status}"></div>
+                    <span class="ticket-id">${t.id}</span>
+                    <span>${t.title}</span>
+                </div>
+            `).join('') : '';
+
+            container.innerHTML = `
+                <div class="work-effort">
+                    <div class="work-effort-header">
+                        <span class="work-effort-id">${we.id}</span>
+                        <span class="work-effort-status ${we.status}">${we.status}</span>
+                    </div>
+                    <div class="work-effort-title">${we.title}</div>
+                    <div class="work-effort-progress">${we.progress || ''}</div>
+                    ${ticketsHtml ? `<div class="tickets-list">${ticketsHtml}</div>` : ''}
+                </div>
+            `;
+        }
+
+        function renderOfflineState() {
+            document.getElementById('server-grid').innerHTML = `
+                <div class="server-card">
+                    <div class="status-indicator offline"></div>
+                    <span class="server-name">Status unavailable</span>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
+
