@@ -2103,3 +2103,120 @@ body.page-waking main {
         transform: translateX(-50%) scale(1) translateY(0);
     }
 }
+
+/* ============================================
+   ACCESSIBILITY & BROWSER COMPATIBILITY
+   ============================================ */
+
+/* Reduced motion: disable all sleep animations */
+@media (prefers-reduced-motion: reduce) {
+    .sleepy,
+    .sleepy-breathing,
+    .startled,
+    .sleep-z,
+    .element-zzz,
+    .sleep-cap,
+    .snore-bubble,
+    .sleep-icon,
+    .sleep-message,
+    .startled-mark {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    #sleep-overlay {
+        transition: opacity 0.1s ease !important;
+    }
+
+    #sleep-overlay.waking {
+        animation: none !important;
+    }
+}
+
+/* Prevent overflow on mobile during sleep animations */
+body.page-sleeping {
+    overflow: hidden;
+}
+
+body.page-sleeping .hero-badge,
+body.page-sleeping .process-step,
+body.page-sleeping .pricing-card,
+body.page-sleeping .about-card {
+    overflow: visible;
+}
+
+/* Ensure parent containers don't clip sleeping elements */
+body.page-sleeping main,
+body.page-sleeping .process-steps,
+body.page-sleeping .pricing-cards {
+    overflow: visible;
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    /* Reduce rotation intensity on mobile to prevent overflow */
+    .cta-button.sleepy,
+    .pricing-cta.sleepy {
+        animation: buttonSleepMobile 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes buttonSleepMobile {
+        0% {
+            transform: rotate(0deg) translateY(0);
+        }
+        30% {
+            transform: rotate(-3deg) translateY(-3px);
+        }
+        100% {
+            transform: rotate(45deg) translateY(5px);
+        }
+    }
+
+    .sleepy-breathing {
+        animation: breatheMobile 3s ease-in-out infinite !important;
+    }
+
+    @keyframes breatheMobile {
+        0%, 100% {
+            transform: rotate(45deg) translateY(5px) scale(1);
+        }
+        50% {
+            transform: rotate(45deg) translateY(5px) scale(1.03);
+        }
+    }
+
+    .startled {
+        animation: startledJumpMobile 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+    }
+
+    @keyframes startledJumpMobile {
+        0% {
+            transform: rotate(45deg) translateY(5px);
+        }
+        20% {
+            transform: rotate(-10deg) translateY(-15px) scale(1.05);
+        }
+        50% {
+            transform: rotate(5deg) translateY(-5px);
+        }
+        100% {
+            transform: rotate(0deg) translateY(0) scale(1);
+        }
+    }
+
+    /* Smaller decorations on mobile */
+    .sleep-cap {
+        font-size: 1rem !important;
+        top: -12px !important;
+        right: -8px !important;
+    }
+
+    .element-zzz {
+        font-size: 0.9rem !important;
+    }
+
+    .snore-bubble {
+        font-size: 0.7rem !important;
+        padding: 5px 8px !important;
+    }
+}

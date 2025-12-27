@@ -30,6 +30,8 @@ const SleepMode = {
     sleepyElements: [],
     decorations: [],
     breathingTimeout: null,
+    resizeHandler: null,
+    wakeHandler: null,
 
     // Element selectors for sleeping
     SLEEPY_SELECTORS: {
@@ -38,6 +40,11 @@ const SleepMode = {
         text: '.headline, .subhead, .section-label, .about-name, main h1, main h2, main h3',
         nav: '.menu-link',
         logo: '.brand-logo'
+    },
+
+    // Check for reduced motion preference
+    prefersReducedMotion() {
+        return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     },
 
     init() {
@@ -58,10 +65,10 @@ const SleepMode = {
             this.lastActivityTime = Date.now();
         };
 
-        document.addEventListener('mousemove', resetActivity);
-        document.addEventListener('keydown', resetActivity);
-        document.addEventListener('scroll', resetActivity);
-        document.addEventListener('touchstart', resetActivity);
+        document.addEventListener('mousemove', resetActivity, { passive: true });
+        document.addEventListener('keydown', resetActivity, { passive: true });
+        document.addEventListener('scroll', resetActivity, { passive: true });
+        document.addEventListener('touchstart', resetActivity, { passive: true });
     },
 
     startChecking() {
@@ -93,18 +100,26 @@ const SleepMode = {
         // Add body class
         document.body.classList.add('page-sleeping');
 
-        // Make page elements fall asleep
-        this.putElementsToSleep();
+        // For reduced motion users, skip element animations
+        if (!this.prefersReducedMotion()) {
+            this.putElementsToSleep();
+        }
 
         // Create overlay (after elements start sleeping for better effect)
         setTimeout(() => {
             this.createOverlay();
-            this.initToasters();
-            this.initZs();
-            this.startAnimation();
 
-            // Bind wake-up click
-            this.overlay.addEventListener('click', () => this.wakeUp());
+            // Skip canvas animations for reduced motion
+            if (!this.prefersReducedMotion()) {
+                this.initToasters();
+                this.initZs();
+                this.startAnimation();
+            }
+
+            // Bind wake-up handlers (both click and touch)
+            this.wakeHandler = () => this.wakeUp();
+            this.overlay.addEventListener('click', this.wakeHandler);
+            this.overlay.addEventListener('touchend', this.wakeHandler, { passive: true });
         }, 300);
     },
 
@@ -115,6 +130,7 @@ const SleepMode = {
         // Put buttons to sleep
         document.querySelectorAll(this.SLEEPY_SELECTORS.buttons).forEach((el, i) => {
             setTimeout(() => {
+                this.prepareElement(el);
                 el.classList.add('sleepy');
                 this.sleepyElements.push({ element: el, type: 'button' });
 
@@ -128,8 +144,8 @@ const SleepMode = {
         // Put cards to sleep
         document.querySelectorAll(this.SLEEPY_SELECTORS.cards).forEach((el, i) => {
             setTimeout(() => {
+                this.prepareElement(el);
                 el.classList.add('sleepy');
-                el.style.position = 'relative';
                 this.sleepyElements.push({ element: el, type: 'card' });
 
                 // Add sleep cap to first few cards
@@ -167,8 +183,8 @@ const SleepMode = {
         const logo = document.querySelector(this.SLEEPY_SELECTORS.logo);
         if (logo) {
             setTimeout(() => {
+                this.prepareElement(logo);
                 logo.classList.add('sleepy');
-                logo.style.position = 'relative';
                 this.sleepyElements.push({ element: logo, type: 'logo' });
                 this.addZzzToElement(logo);
                 this.addSleepCap(logo);
@@ -181,8 +197,27 @@ const SleepMode = {
         }, 1500);
     },
 
+    // Prepare element for animation (save original styles)
+    prepareElement(el) {
+        const computed = window.getComputedStyle(el);
+        // Save original position if not already relative/absolute
+        if (computed.position === 'static') {
+            el.dataset.sleepOriginalPosition = 'static';
+            el.style.position = 'relative';
+        }
+    },
+
+    // Restore element to original state
+    restoreElement(el) {
+        if (el.dataset.sleepOriginalPosition === 'static') {
+            el.style.position = '';
+            delete el.dataset.sleepOriginalPosition;
+        }
+    },
+
     startBreathing() {
-        this.sleepyElements.forEach(({ element, type }) => {
+        if (!this.isAsleep) return;
+        this.sleepyElements.forEach(({ element }) => {
             element.classList.remove('sleepy');
             element.classList.add('sleepy-breathing');
         });
@@ -217,7 +252,7 @@ const SleepMode = {
     addSnoreBubble(element) {
         const bubble = document.createElement('div');
         bubble.className = 'snore-bubble';
-        bubble.innerHTML = 'zzz...';
+        bubble.textContent = 'zzz...';
         element.appendChild(bubble);
         this.decorations.push(bubble);
     },
@@ -232,7 +267,7 @@ const SleepMode = {
             <div class="sleep-zs-container"></div>
             <div class="sleep-message">
                 <span class="sleep-icon">💤</span>
-                <span class="sleep-text">click to wake</span>
+                <span class="sleep-text">tap to wake</span>
             </div>
         `;
 
@@ -242,7 +277,10 @@ const SleepMode = {
         this.canvas = document.getElementById('sleep-canvas');
         this.ctx = this.canvas.getContext('2d');
         this.resizeCanvas();
-        window.addEventListener('resize', () => this.resizeCanvas());
+
+        // Store handler reference for cleanup
+        this.resizeHandler = () => this.resizeCanvas();
+        window.addEventListener('resize', this.resizeHandler, { passive: true });
 
         // Trigger animation after brief delay for CSS transition
         requestAnimationFrame(() => {
@@ -310,7 +348,9 @@ const SleepMode = {
 
     initToasters() {
         this.toasters = [];
-        const count = Math.floor(window.innerWidth / 200) + 2;
+        // Fewer toasters on mobile for performance
+        const isMobile = window.innerWidth < 768;
+        const count = isMobile ? 2 : Math.floor(window.innerWidth / 200) + 2;
 
         for (let i = 0; i < count; i++) {
             this.toasters.push({
@@ -325,9 +365,13 @@ const SleepMode = {
 
     initZs() {
         const container = this.overlay.querySelector('.sleep-zs-container');
-        const sizes = ['small', 'medium', 'large'];
+        if (!container) return;
 
-        for (let i = 0; i < 8; i++) {
+        const sizes = ['small', 'medium', 'large'];
+        // Fewer Zs on mobile
+        const count = window.innerWidth < 768 ? 4 : 8;
+
+        for (let i = 0; i < count; i++) {
             const z = document.createElement('div');
             z.className = `sleep-z ${sizes[i % 3]}`;
             z.textContent = 'Z';
@@ -342,7 +386,7 @@ const SleepMode = {
         let frameCount = 0;
 
         const animate = () => {
-            if (!this.isAsleep) return;
+            if (!this.isAsleep || !this.ctx) return;
 
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -380,11 +424,11 @@ const SleepMode = {
     wakeUp() {
         if (!this.isAsleep) return;
 
-        // TV turn-on flash effect
-        this.overlay.classList.add('waking');
-
-        // Startle all elements!
-        this.startleElements();
+        // TV turn-on flash effect (skip for reduced motion)
+        if (!this.prefersReducedMotion()) {
+            this.overlay.classList.add('waking');
+            this.startleElements();
+        }
 
         setTimeout(() => {
             this.isAsleep = false;
@@ -393,11 +437,19 @@ const SleepMode = {
             // Cancel breathing timeout if still pending
             if (this.breathingTimeout) {
                 clearTimeout(this.breathingTimeout);
+                this.breathingTimeout = null;
             }
 
             // Cancel animation
             if (this.animationFrame) {
                 cancelAnimationFrame(this.animationFrame);
+                this.animationFrame = null;
+            }
+
+            // Remove resize listener
+            if (this.resizeHandler) {
+                window.removeEventListener('resize', this.resizeHandler);
+                this.resizeHandler = null;
             }
 
             // Remove body class and add waking
@@ -405,8 +457,10 @@ const SleepMode = {
             document.body.classList.add('page-waking');
 
             // Remove overlay with fade
-            this.overlay.classList.remove('active');
-            this.overlay.classList.add('fading');
+            if (this.overlay) {
+                this.overlay.classList.remove('active');
+                this.overlay.classList.add('fading');
+            }
 
             setTimeout(() => {
                 if (this.overlay && this.overlay.parentNode) {
@@ -415,6 +469,7 @@ const SleepMode = {
                 this.overlay = null;
                 this.canvas = null;
                 this.ctx = null;
+                this.wakeHandler = null;
 
                 // Clean up decorations
                 this.cleanupDecorations();
@@ -432,7 +487,7 @@ const SleepMode = {
                 '%c ☀️ Good morning! FOGSIFT is awake and ready. ',
                 'background: #f5f0e6; color: #4a2c2a; padding: 10px; font-family: monospace; font-weight: bold;'
             );
-        }, 150);
+        }, this.prefersReducedMotion() ? 0 : 150);
     },
 
     startleElements() {
@@ -480,9 +535,10 @@ const SleepMode = {
     },
 
     cleanupElementClasses() {
-        // Remove all sleep-related classes
+        // Remove all sleep-related classes and restore original styles
         this.sleepyElements.forEach(({ element }) => {
             element.classList.remove('sleepy', 'sleepy-breathing', 'startled');
+            this.restoreElement(element);
         });
         this.sleepyElements = [];
     }
