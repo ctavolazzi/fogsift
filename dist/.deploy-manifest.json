@@ -1,21 +1,21 @@
 {
   "version": "0.0.1",
-  "deployedAt": "2025-12-27T06:03:10.471Z",
-  "gitCommit": "6a08c7d",
+  "deployedAt": "2025-12-27T06:04:45.404Z",
+  "gitCommit": "a80e38c",
   "gitBranch": "main",
-  "totalSize": 5406320,
+  "totalSize": 5408952,
   "fileCount": 21,
   "checksums": {
     "index.html": "21da9428",
-    "styles.css": "414ace7d",
-    "app.js": "594fa8fc",
+    "styles.css": "abcc522d",
+    "app.js": "74b9ec55",
     "favicon.png": "871e8f15",
     "manifest.json": "6cfd5386",
     "404.html": "106e1b28"
   },
   "bundles": {
-    "css": 57465,
-    "js": 14698,
+    "css": 58513,
+    "js": 16282,
     "html": 21563
   }
 }
