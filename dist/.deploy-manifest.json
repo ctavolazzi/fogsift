@@ -1,0 +1,21 @@
+{
+  "version": "0.0.1",
+  "deployedAt": "2025-12-27T05:35:18.862Z",
+  "gitCommit": "09a01c7",
+  "gitBranch": "main",
+  "totalSize": 5321673,
+  "fileCount": 14,
+  "checksums": {
+    "index.html": "9614ac7c",
+    "styles.css": "620084c5",
+    "app.js": "91ba09ac",
+    "favicon.png": "871e8f15",
+    "manifest.json": "6cfd5386",
+    "404.html": "106e1b28"
+  },
+  "bundles": {
+    "css": 29724,
+    "js": 10241,
+    "html": 23755
+  }
+}
