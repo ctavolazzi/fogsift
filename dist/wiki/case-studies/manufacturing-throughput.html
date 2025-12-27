@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Case Study: Manufacturing Throughput Crisis | Fogsift Wiki</title>
+    <meta name="description" content="---">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/case-studies/manufacturing-throughput.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Case Study: Manufacturing Throughput Crisis | Fogsift Wiki">
+    <meta property="og:description" content="---">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/case-studies/manufacturing-throughput.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">MANUFACTURING THROUGHPUT</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -141,7 +141,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">📊 Case Studies</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../case-studies/manufacturing-throughput.html">Manufacturing Throughput Crisis</a></li>
+    <li><a href="../case-studies/manufacturing-throughput.html" class="active">Manufacturing Throughput Crisis</a></li>
     <li><a href="../case-studies/communication-breakdown.html">The Communication Breakdown</a></li>
     <li><a href="../case-studies/the-invisible-process.html">The Invisible Process</a></li>
   </ul>
@@ -162,45 +162,142 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
-<ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
-</ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
-<ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
-</ul>
+                <h1>Case Study: Manufacturing Throughput Crisis</h1>
+<p><strong>Industry:</strong> Precision Manufacturing
+<strong>Problem Type:</strong> Operations
+<strong>Duration:</strong> 6 weeks
+<strong>Outcome:</strong> 45% throughput increase</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<h2>The Situation</h2>
+<p>A precision manufacturing company producing aerospace components faced a throughput crisis. Despite significant investment in new CNC equipment, output had plateaued. Customer orders were backlogging, and the company was at risk of losing key contracts.</p>
+<p><strong>What we heard initially:</strong></p>
+<ul>
+<li>&quot;The new machines aren&#39;t performing to spec&quot;</li>
+<li>&quot;We need to add a night shift&quot;</li>
+<li>&quot;The operators need more training&quot;</li>
+</ul>
+<h2>The Investigation</h2>
+<h3>Week 1-2: Symptom Mapping</h3>
+<p>We started by documenting exactly what &quot;throughput crisis&quot; meant:</p>
+<ul>
+<li>Output: 850 units/week (target: 1,200)</li>
+<li>Utilization: 62% (claimed), actual TBD</li>
+<li>Backlog: 6 weeks and growing</li>
+<li>Quality: 4.2% rejection rate</li>
+</ul>
+<h3>Week 2-3: Process Tracing</h3>
+<p>We followed the flow from raw material to shipping:</p>
+<ol>
+<li><strong>Material receiving:</strong> No delays observed</li>
+<li><strong>Machining (3 CNC cells):</strong> High variability in cycle times</li>
+<li><strong>Deburring:</strong> Manual, consistent pace</li>
+<li><strong>Inspection:</strong> Significant queuing observed</li>
+<li><strong>Assembly:</strong> Waiting for inspected parts</li>
+<li><strong>Shipping:</strong> On-time once parts available</li>
+</ol>
+<p>The inspection queue was the first clue. Parts were piling up waiting for quality verification.</p>
+<h3>Week 3-4: Root Cause Analysis</h3>
+<p><strong>Inspection Bottleneck</strong></p>
+<p>The quality department had three inspectors. Inspection time averaged 12 minutes per part. Capacity: ~120 parts per day across all inspectors.</p>
+<p>Production was capable of ~200 parts per day.</p>
+<p>No matter how fast production ran, inspection could only process 120 parts daily. The gap accumulated as backlog.</p>
+<p><strong>But why was inspection so slow?</strong></p>
+<p>We dug deeper. Inspectors were following an outdated procedure that required:</p>
+<ul>
+<li>23-point manual measurement</li>
+<li>Full documentation on paper forms</li>
+<li>Secondary verification for every part</li>
+</ul>
+<p>This procedure was written when the company produced 15 different part numbers. They now produced 180. The procedure had never been updated.</p>
+<p><strong>Secondary finding: Setup time waste</strong></p>
+<p>While investigating, we noticed machine setup times varied wildly: 45 minutes to 4 hours for the same part. Tribal knowledge problem. Some operators knew the tricks; others didn&#39;t. See <a href="/wiki/field-notes/005-tribal-knowledge.html">Field Note: Tribal Knowledge</a>.</p>
+<h2>The Findings</h2>
+<p><strong>Root cause 1:</strong> Inspection procedure misaligned with current production volume and part variety. Designed for a different era.</p>
+<p><strong>Root cause 2:</strong> Undocumented setup procedures leading to variable machine utilization.</p>
+<p><strong>Contributing factors:</strong></p>
+<ul>
+<li>No capacity planning across departments</li>
+<li>Inspection treated as separate from production</li>
+<li>Resistance to procedure changes due to aerospace certification concerns</li>
+</ul>
+<h2>The Recommendations</h2>
+<h3>Immediate (Week 1-2)</h3>
+<ol>
+<li><p><strong>Risk-stratify inspection</strong></p>
+<ul>
+<li>Not all parts need 23 measurement points</li>
+<li>Implement tiered inspection based on part criticality and history</li>
+<li>Predicted reduction: 23 points → average of 8 points</li>
+</ul>
+</li>
+<li><p><strong>Cross-train for flexibility</strong></p>
+<ul>
+<li>Train two production supervisors on basic inspection</li>
+<li>Allow overflow capacity during peaks</li>
+</ul>
+</li>
+</ol>
+<h3>Short-term (Month 1-2)</h3>
+<ol start="3">
+<li><p><strong>Document setup procedures</strong></p>
+<ul>
+<li>Capture best practices from experienced operators</li>
+<li>Create standardized setup sheets per part family</li>
+<li>Target: 90-minute maximum setup time</li>
+</ul>
+</li>
+<li><p><strong>Digital inspection forms</strong></p>
+<ul>
+<li>Eliminate paper documentation</li>
+<li>Reduce transcription errors</li>
+<li>Enable real-time quality tracking</li>
+</ul>
+</li>
+</ol>
+<h3>Medium-term (Month 2-4)</h3>
+<ol start="5">
+<li><p><strong>Capacity alignment</strong></p>
+<ul>
+<li>Match production scheduling to inspection capacity</li>
+<li>Eliminate production of parts that will sit in queue</li>
+</ul>
+</li>
+<li><p><strong>Quality engineering review</strong></p>
+<ul>
+<li>With aerospace auditor present</li>
+<li>Formally revise inspection procedures</li>
+<li>Certify the streamlined process</li>
+</ul>
+</li>
+</ol>
+<h2>The Implementation</h2>
+<p>The client implemented recommendations 1-4. Recommendation 5 was partially implemented. Recommendation 6 was deferred due to an upcoming customer audit.</p>
+<h2>The Outcome</h2>
+<p><strong>After 3 months:</strong></p>
+<ul>
+<li>Output: 1,240 units/week (target exceeded)</li>
+<li>Utilization: 78%</li>
+<li>Backlog: 2 weeks (within normal)</li>
+<li>Quality: 3.8% rejection rate (improved)</li>
+</ul>
+<p><strong>Quantified impact:</strong></p>
+<ul>
+<li>45% throughput increase</li>
+<li>$2.1M additional annual revenue capacity</li>
+<li>0 new equipment purchases needed</li>
+<li>0 additional headcount required</li>
+</ul>
+<h2>Key Lessons</h2>
+<h3>The bottleneck was invisible</h3>
+<p>Everyone was looking at production. The constraint was in quality. See <a href="/wiki/field-notes/004-bottlenecks.html">Field Note: Finding the Bottleneck</a>.</p>
+<h3>Procedures fossilize</h3>
+<p>What was appropriate 10 years ago wasn&#39;t appropriate today. But no one had questioned it. &quot;That&#39;s how we&#39;ve always done it.&quot;</p>
+<h3>Documentation matters</h3>
+<p>The setup time variability was pure tribal knowledge. Once captured, the benefit was immediate.</p>
+<h3>Systems, not people</h3>
+<p>The inspectors weren&#39;t slow. The procedure was wrong. The operators weren&#39;t inconsistent. The knowledge transfer was missing.</p>
+<hr>
+<p><em>The solution to a production problem was found in the quality lab.</em></p>
 
             </article>
 

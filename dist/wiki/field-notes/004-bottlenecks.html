@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Field Note: Finding the Bottleneck | Fogsift Wiki</title>
+    <meta name="description" content="---">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/004-bottlenecks.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Field Note: Finding the Bottleneck | Fogsift Wiki">
+    <meta property="og:description" content="---">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/004-bottlenecks.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">BOTTLENECKS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -132,7 +132,7 @@
     <li><a href="../field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
     <li><a href="../field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
     <li><a href="../field-notes/003-entropy.html">Entropy</a></li>
-    <li><a href="../field-notes/004-bottlenecks.html">Finding the Bottleneck</a></li>
+    <li><a href="../field-notes/004-bottlenecks.html" class="active">Finding the Bottleneck</a></li>
     <li><a href="../field-notes/005-tribal-knowledge.html">Tribal Knowledge</a></li>
     <li><a href="../field-notes/006-incentive-alignment.html">Incentive Alignment</a></li>
     <li><a href="../field-notes/007-documentation-debt.html">Documentation Debt</a></li>
@@ -162,45 +162,55 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
-<ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
-</ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
-<ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
-</ul>
+                <h1>Field Note: Finding the Bottleneck</h1>
+<p><strong>Date:</strong> 2025-01-20
+<strong>Sector:</strong> OPERATIONS
+<strong>Read Time:</strong> 4 minutes</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p>Every system has a bottleneck. The constraint that limits throughput. The thing that, if you improved it, would improve everything. The thing that, if you ignore it, makes all other improvements irrelevant.</p>
+<h2>The Observation</h2>
+<p>Client had a manufacturing operation. They&#39;d invested heavily in automation on the production floor. State-of-the-art equipment. Impressive cycle times. And yet, output was flat.</p>
+<p>Everyone had theories:</p>
+<ul>
+<li>&quot;We need more floor space&quot;</li>
+<li>&quot;The equipment isn&#39;t running at capacity&quot;</li>
+<li>&quot;We need more shifts&quot;</li>
+</ul>
+<p>We walked the floor. Watched the flow. Asked one question at every station: &quot;What are you waiting for?&quot;</p>
+<p>The bottleneck wasn&#39;t on the production floor. It was in the quality lab. Every batch needed certification. The lab was understaffed, working overtime, and still couldn&#39;t keep up. Production sat waiting. All that automation produced material that queued for inspection.</p>
+<h2>The Principle</h2>
+<p><strong>The Theory of Constraints:</strong> A chain is only as strong as its weakest link. A system only produces as fast as its slowest process.</p>
+<p>Investing anywhere except the bottleneck is waste. No matter how fast the other stations get, the bottleneck determines output. If inspection can handle 100 units per day, you can never ship more than 100 units per day, no matter how much production capacity you have.</p>
+<h2>Finding Your Bottleneck</h2>
+<h3>Method 1: Follow the Queue</h3>
+<p>Where does work pile up? Where do people wait? Where do things sit before moving to the next step? That&#39;s probably the bottleneck.</p>
+<h3>Method 2: Calculate Capacity</h3>
+<p>For each step in your process, calculate how much it can handle per unit time. The step with the lowest capacity is the bottleneck.</p>
+<h3>Method 3: Ask the People</h3>
+<p>The people doing the work usually know. Ask: &quot;What&#39;s the biggest barrier to getting more done?&quot; Listen without defending.</p>
+<h2>What to Do With the Bottleneck</h2>
+<p>Once you&#39;ve found it:</p>
+<ol>
+<li><p><strong>Exploit it:</strong> Make sure the bottleneck is never starved for input or blocked from output. It should never wait.</p>
+</li>
+<li><p><strong>Subordinate to it:</strong> All other processes should operate at the pace the bottleneck can handle. Producing faster upstream just creates inventory.</p>
+</li>
+<li><p><strong>Elevate it:</strong> If you need more capacity, invest in the bottleneck first. Not elsewhere.</p>
+</li>
+<li><p><strong>Repeat:</strong> Once you fix this bottleneck, something else becomes the bottleneck. Find it and start again.</p>
+</li>
+</ol>
+<h2>The Resolution</h2>
+<p>The client didn&#39;t need more production equipment. They needed two more lab technicians and a faster testing protocol.</p>
+<p>Cost: ~$200K per year in salary
+Result: 40% increase in output
+ROI: Measured in weeks</p>
+<p>The automation investment was fine. It just couldn&#39;t realize its value until the bottleneck moved.</p>
+<h2>The Meta-Lesson</h2>
+<p>The bottleneck is often not where you expect it. And it&#39;s almost never where the organization is investing.</p>
+<p>High-performing operations don&#39;t ask &quot;how do we improve?&quot; They ask &quot;what&#39;s the bottleneck?&quot; and then improve only that.</p>
+<hr>
+<p><em>Efficiency everywhere is waste. Efficiency at the bottleneck is leverage.</em></p>
 
             </article>
 

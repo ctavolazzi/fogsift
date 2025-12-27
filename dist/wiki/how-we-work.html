@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki | Fogsift</title>
-    <meta name="description" content="Fogsift knowledge base - documentation, concepts, and field notes from our consulting work.">
+    <title>How We Work | Fogsift Wiki</title>
+    <meta name="description" content="Fogsift operates differently from traditional consulting. We don't bring pre-packaged solutions. We bring diagnostic capability.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/">
+    <link rel="canonical" href="https://fogsift.com/wiki/how-we-work.html">
 
     <link rel="manifest" href="../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Fogsift Wiki">
-    <meta property="og:description" content="Knowledge base, documentation, and field notes">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fogsift.com/wiki/">
+    <meta property="og:title" content="How We Work | Fogsift Wiki">
+    <meta property="og:description" content="Fogsift operates differently from traditional consulting. We don't bring pre-packaged solutions. We bring diagnostic capability.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/wiki/how-we-work.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../favicon.png">
@@ -45,7 +45,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="../index.html" class="mobile-link">HOME</a>
-        <a href="index.html" class="mobile-link wiki-nav-active">WIKI</a>
+        <a href="index.html" class="mobile-link">WIKI</a>
         <a href="../index.html#process" class="mobile-link">PROCESS</a>
         <a href="../index.html#about" class="mobile-link">ABOUT</a>
         <a href="../index.html#pricing" class="mobile-link">PRICING</a>
@@ -81,32 +81,34 @@
             <ol class="crumb-list">
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">WIKI</span></li>
+                <li class="crumb-item"><a href="index.html" class="crumb-link">WIKI</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><span class="crumb-current">HOW WE WORK</span></li>
             </ol>
         </nav>
     </div>
 
-    <div class="wiki-index-layout">
-        <header class="wiki-index-header">
-            <h1 class="wiki-index-title">Fogsift Wiki</h1>
-            <p class="wiki-index-desc">Knowledge base, documentation, and field notes from our consulting work.</p>
-        </header>
-
-        <div class="wiki-categories">
-            <div class="wiki-category-card">
-  <div class="wiki-category-icon">📋</div>
-  <h2 class="wiki-category-title">Documentation</h2>
-  <ul class="wiki-category-pages">
+    <div class="wiki-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
+            <div class="wiki-sidebar-header">
+                <a href="index.html" class="wiki-home-link">
+                    <span aria-hidden="true">←</span> Wiki Home
+                </a>
+            </div>
+            <div class="wiki-sidebar-content">
+                <div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📋 Documentation</h4>
+  <ul class="wiki-nav-list">
     <li><a href="getting-started.html">Getting Started</a></li>
-    <li><a href="how-we-work.html">How We Work</a></li>
+    <li><a href="how-we-work.html" class="active">How We Work</a></li>
     <li><a href="diagnostic-process.html">The Diagnostic Process</a></li>
     <li><a href="faq.html">Frequently Asked Questions</a></li>
   </ul>
 </div>
-<div class="wiki-category-card">
-  <div class="wiki-category-icon">💡</div>
-  <h2 class="wiki-category-title">Concepts</h2>
-  <ul class="wiki-category-pages">
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">💡 Concepts</h4>
+  <ul class="wiki-nav-list">
     <li><a href="concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="concepts/mental-models.html">Mental Models</a></li>
     <li><a href="concepts/systems-thinking.html">Systems Thinking</a></li>
@@ -115,20 +117,18 @@
     <li><a href="concepts/signal-vs-noise.html">Signal vs Noise</a></li>
   </ul>
 </div>
-<div class="wiki-category-card">
-  <div class="wiki-category-icon">🔧</div>
-  <h2 class="wiki-category-title">Frameworks</h2>
-  <ul class="wiki-category-pages">
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">🔧 Frameworks</h4>
+  <ul class="wiki-nav-list">
     <li><a href="frameworks/trace-protocol.html">The TRACE Protocol</a></li>
     <li><a href="frameworks/decision-matrix.html">Decision Matrix</a></li>
     <li><a href="frameworks/constraint-mapping.html">Constraint Mapping</a></li>
     <li><a href="frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
   </ul>
 </div>
-<div class="wiki-category-card">
-  <div class="wiki-category-icon">📝</div>
-  <h2 class="wiki-category-title">Field Notes</h2>
-  <ul class="wiki-category-pages">
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📝 Field Notes</h4>
+  <ul class="wiki-nav-list">
     <li><a href="field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
     <li><a href="field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
     <li><a href="field-notes/003-entropy.html">Entropy</a></li>
@@ -138,19 +138,17 @@
     <li><a href="field-notes/007-documentation-debt.html">Documentation Debt</a></li>
   </ul>
 </div>
-<div class="wiki-category-card">
-  <div class="wiki-category-icon">📊</div>
-  <h2 class="wiki-category-title">Case Studies</h2>
-  <ul class="wiki-category-pages">
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">📊 Case Studies</h4>
+  <ul class="wiki-nav-list">
     <li><a href="case-studies/manufacturing-throughput.html">Manufacturing Throughput Crisis</a></li>
     <li><a href="case-studies/communication-breakdown.html">The Communication Breakdown</a></li>
     <li><a href="case-studies/the-invisible-process.html">The Invisible Process</a></li>
   </ul>
 </div>
-<div class="wiki-category-card">
-  <div class="wiki-category-icon">🛠️</div>
-  <h2 class="wiki-category-title">Tools & Techniques</h2>
-  <ul class="wiki-category-pages">
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title">🛠️ Tools & Techniques</h4>
+  <ul class="wiki-nav-list">
     <li><a href="tools/five-whys.html">The Five Whys</a></li>
     <li><a href="tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
     <li><a href="tools/pareto-analysis.html">Pareto Analysis</a></li>
@@ -158,12 +156,61 @@
   </ul>
 </div>
 
-        </div>
+            </div>
+        </aside>
 
-        <footer class="wiki-index-footer">
-            <p>Last updated: 2025-12-27</p>
-            <a href="../index.html" class="wiki-back-link">← Back to Fogsift</a>
-        </footer>
+        <!-- Main Content -->
+        <main class="wiki-main" role="main">
+            <article class="wiki-content">
+                <h1>How We Work</h1>
+<p>Fogsift operates differently from traditional consulting. We don&#39;t bring pre-packaged solutions. We bring diagnostic capability.</p>
+<h2>The Approach</h2>
+<h3>We Listen First</h3>
+<p>Most problems are explained wrong. Not because people are bad at explaining, but because the symptoms they&#39;re experiencing aren&#39;t the actual problem. We spend the first part of any engagement just listening, asking questions, and mapping the terrain.</p>
+<h3>We Follow the Evidence</h3>
+<p>We don&#39;t have favorite solutions. We don&#39;t push frameworks. We trace the wires from symptom to source, and we let the evidence tell us where to look next.</p>
+<h3>We Transfer Knowledge</h3>
+<p>Our goal is to make ourselves unnecessary. Every engagement includes knowledge transfer so your team can maintain and extend the solutions we develop together.</p>
+<h2>Engagement Types</h2>
+<h3>Diagnostic Sessions</h3>
+<p><strong>Duration:</strong> 2-4 hours
+<strong>Format:</strong> Intensive Q&amp;A and analysis
+<strong>Output:</strong> Written diagnosis with recommendations</p>
+<p>Best for: Specific problems where you need an outside perspective.</p>
+<h3>Deep Dives</h3>
+<p><strong>Duration:</strong> 1-2 weeks
+<strong>Format:</strong> Embedded investigation
+<strong>Output:</strong> Root cause analysis with implementation roadmap</p>
+<p>Best for: Complex, systemic issues that require thorough investigation.</p>
+<h3>Retainer</h3>
+<p><strong>Duration:</strong> Ongoing
+<strong>Format:</strong> On-call access with monthly check-ins
+<strong>Output:</strong> Continuous advisory support</p>
+<p>Best for: Organizations that need ongoing access to diagnostic expertise.</p>
+<h2>What We Don&#39;t Do</h2>
+<ul>
+<li>We don&#39;t do the work for you (we help you understand what work to do)</li>
+<li>We don&#39;t provide &quot;best practices&quot; without context</li>
+<li>We don&#39;t pretend to know your business better than you do</li>
+<li>We don&#39;t sell solutions looking for problems</li>
+</ul>
+<h2>Ready to Start?</h2>
+<p>The first conversation is free. We&#39;ll talk about what&#39;s going on, and if it&#39;s something we can help with, we&#39;ll figure out the right format together.</p>
+<p><a href="mailto:christopher@fogsift.com?subject=Inquiry%20from%20Wiki">Get in touch</a></p>
+
+            </article>
+
+            <footer class="wiki-footer">
+                <div class="wiki-meta">
+                    <span>Updated: 2025-12-27</span>
+                </div>
+                <nav class="wiki-nav-footer" aria-label="Wiki navigation">
+                    <a href="index.html">
+                        <span aria-hidden="true">←</span> Back to Wiki
+                    </a>
+                </nav>
+            </footer>
+        </main>
     </div>
 
     <!-- Minimal JS for wiki pages -->
@@ -184,6 +231,19 @@
             toggleMobile() {
                 const drawer = document.getElementById('mobile-drawer');
                 drawer?.classList.toggle('open');
+            }
+        };
+
+        // Toast (minimal)
+        const Toast = {
+            show(msg) {
+                const container = document.getElementById('toast-container');
+                if (!container) return;
+                const toast = document.createElement('div');
+                toast.className = 'toast';
+                toast.textContent = msg;
+                container.appendChild(toast);
+                setTimeout(() => toast.remove(), 3000);
             }
         };
     </script>

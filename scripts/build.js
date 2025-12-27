@@ -175,9 +175,10 @@ function generateWikiNav(wikiIndex, currentSlug = '', depth = 0) {
         nav += `  <h4 class="wiki-nav-title">${category.icon} ${category.title}</h4>\n`;
         nav += `  <ul class="wiki-nav-list">\n`;
         for (const page of category.pages) {
-            const isActive = page.slug === currentSlug ? ' class="active"' : '';
+            const isActive = page.slug === currentSlug;
+            const activeClass = isActive ? ' class="active"' : '';
             const href = `${prefix}${page.slug}.html`;
-            nav += `    <li${isActive}><a href="${href}">${page.title}</a></li>\n`;
+            nav += `    <li><a href="${href}"${activeClass}>${page.title}</a></li>\n`;
         }
         nav += `  </ul>\n`;
         nav += `</div>\n`;

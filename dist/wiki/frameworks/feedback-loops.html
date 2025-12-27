@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Feedback Loop Analysis | Fogsift Wiki</title>
+    <meta name="description" content="Feedback loops are circular chains of cause and effect where the output of a system influences its own input. Understanding them is essential for diagnosing per">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/feedback-loops.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Feedback Loop Analysis | Fogsift Wiki">
+    <meta property="og:description" content="Feedback loops are circular chains of cause and effect where the output of a system influences its own input. Understanding them is essential for diagnosing per">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/feedback-loops.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">FEEDBACK LOOPS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -123,7 +123,7 @@
     <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
     <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
     <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
-    <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
+    <li><a href="../frameworks/feedback-loops.html" class="active">Feedback Loop Analysis</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -162,45 +162,137 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Feedback Loop Analysis</h1>
+<p>Feedback loops are circular chains of cause and effect where the output of a system influences its own input. Understanding them is essential for diagnosing persistent problems and designing effective interventions.</p>
+<h2>The Basics</h2>
+<h3>What is a Feedback Loop?</h3>
+<p>A → B → C → A</p>
+<p>The output (C) influences the input (A), which changes B, which changes C, which changes A again. The cycle continues.</p>
+<h3>Two Types of Loops</h3>
+<p><strong>Reinforcing loops</strong> amplify change. They make things grow or decline exponentially.</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Success breeds success</li>
+<li>Debt creates more debt</li>
+<li>Panic causes more panic</li>
+<li>Growth enables more growth</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p><strong>Balancing loops</strong> resist change. They stabilize systems around a target.</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Thermostat maintains temperature</li>
+<li>Hunger prompts eating</li>
+<li>Inventory triggers reordering</li>
+<li>Fatigue forces rest</li>
 </ul>
+<h2>Why Loops Matter for Diagnosis</h2>
+<h3>Persistent Problems</h3>
+<p>If a problem keeps coming back despite interventions, look for a reinforcing loop that&#39;s working against you.</p>
+<p><strong>Example:</strong> High turnover</p>
+<ul>
+<li>Turnover increases workload on remaining staff</li>
+<li>Increased workload leads to burnout</li>
+<li>Burnout leads to more turnover</li>
+</ul>
+<p>Breaking this loop requires intervention at multiple points, not just hiring faster.</p>
+<h3>Unexpected Resistance</h3>
+<p>If a change doesn&#39;t stick, look for a balancing loop that&#39;s resisting it.</p>
+<p><strong>Example:</strong> Process improvement</p>
+<ul>
+<li>New process is introduced</li>
+<li>Extra effort required to follow new process</li>
+<li>Under deadline pressure, people revert to old habits</li>
+<li>System returns to previous state</li>
+</ul>
+<p>The balancing loop around &quot;minimize effort under pressure&quot; defeats the change.</p>
+<h3>Delayed Effects</h3>
+<p>Loops often have delays. Today&#39;s cause produces tomorrow&#39;s effect, making the connection hard to see.</p>
+<p><strong>Example:</strong> Quality investment</p>
+<ul>
+<li>Invest in quality → improved products (6-month delay)</li>
+<li>Improved products → higher customer satisfaction (3-month delay)</li>
+<li>Higher satisfaction → more referrals (6-month delay)</li>
+<li>More referrals → higher revenue (3-month delay)</li>
+<li>Higher revenue → more investment capacity</li>
+</ul>
+<p>Total loop time: 18 months. In the meantime, the investment looks like pure cost.</p>
+<h2>Analysis Process</h2>
+<h3>Step 1: Map the Variables</h3>
+<p>Identify all the factors involved in the system. Don&#39;t worry about connections yet.</p>
+<h3>Step 2: Trace the Connections</h3>
+<p>For each variable, ask: &quot;What does this directly influence?&quot;</p>
+<p>Draw arrows from cause to effect. Label each arrow:</p>
+<ul>
+<li><strong>+</strong> if an increase in the cause leads to an increase in the effect</li>
+<li><strong>-</strong> if an increase in the cause leads to a decrease in the effect</li>
+</ul>
+<h3>Step 3: Identify Loops</h3>
+<p>Follow the arrows around. When you return to a starting point, you&#39;ve found a loop.</p>
+<p><strong>Determine loop type:</strong></p>
+<ul>
+<li>Count the negative (-) arrows in the loop</li>
+<li>Even number (including zero) = Reinforcing loop</li>
+<li>Odd number = Balancing loop</li>
+</ul>
+<h3>Step 4: Find Delays</h3>
+<p>For each connection, estimate the delay. Significant delays change how the loop behaves and how interventions should be designed.</p>
+<h3>Step 5: Identify Leverage Points</h3>
+<p>Where in the loop can you intervene?</p>
+<p><strong>High leverage points:</strong></p>
+<ul>
+<li>Where you can break a reinforcing loop that&#39;s causing harm</li>
+<li>Where you can strengthen a balancing loop that&#39;s maintaining dysfunction</li>
+<li>Where you can change the direction of an arrow</li>
+</ul>
+<h2>Intervention Strategies</h2>
+<h3>Breaking Reinforcing Loops</h3>
+<p>You don&#39;t need to break every link. Find the weakest point and intervene there.</p>
+<p><strong>Example:</strong> For the turnover loop, possible interventions:</p>
+<ul>
+<li>Reduce workload impact (cross-training)</li>
+<li>Increase burnout resilience (support programs)</li>
+<li>Speed up replacement (hiring pipeline)</li>
+<li>Change the base state (proactive staffing)</li>
+</ul>
+<h3>Modifying Balancing Loops</h3>
+<p>To enable change, you need to shift what the loop is balancing toward.</p>
+<p><strong>Example:</strong> For the process adoption loop, possible interventions:</p>
+<ul>
+<li>Change the target (make new process the expected default)</li>
+<li>Reduce resistance (make new process easier)</li>
+<li>Add accountability (create cost for reverting)</li>
+<li>Allow the transition (temporary performance dip expected)</li>
+</ul>
+<h3>Adding New Loops</h3>
+<p>Sometimes the solution is to create a new loop that counteracts the problematic one.</p>
+<h2>Common Patterns</h2>
+<h3>The Fixes That Fail</h3>
+<ul>
+<li>Problem occurs</li>
+<li>Quick fix applied</li>
+<li>Symptoms subside</li>
+<li>Root cause unaddressed</li>
+<li>Problem returns, often worse</li>
+</ul>
+<p>The quick fix creates a balancing loop that masks the problem without solving it.</p>
+<h3>Shifting the Burden</h3>
+<ul>
+<li>Problem occurs</li>
+<li>Symptomatic solution applied</li>
+<li>Side effect undermines fundamental solution</li>
+<li>Dependency on symptomatic solution grows</li>
+<li>Capability for fundamental solution atrophies</li>
+</ul>
+<p><strong>Example:</strong> Outsourcing expertise instead of building it internally.</p>
+<h3>Eroding Goals</h3>
+<ul>
+<li>Performance falls short of goal</li>
+<li>Pressure to close the gap</li>
+<li>Goal is lowered instead of performance raised</li>
+<li>New goal becomes the standard</li>
+<li>Repeat</li>
+</ul>
+<p>The balancing loop works, but toward the wrong target.</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>Systems resist change. Understanding why tells you where to push.</em></p>
 
             </article>
 
