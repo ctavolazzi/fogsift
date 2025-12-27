@@ -48,12 +48,7 @@
     <script>
         (function() {
             var localTheme = localStorage.getItem('theme');
-            var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            if (localTheme === 'dark' || (!localTheme && supportDarkMode)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
-                document.documentElement.setAttribute('data-theme', 'light');
-            }
+            document.documentElement.setAttribute('data-theme', localTheme || 'light');
         })();
     </script>
 

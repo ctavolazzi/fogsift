@@ -42,9 +42,7 @@ const Theme = {
     STORAGE_KEY: 'theme',
 
     init() {
-        const saved = localStorage.getItem(this.STORAGE_KEY);
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = saved || (prefersDark ? 'dark' : 'light');
+        const theme = localStorage.getItem(this.STORAGE_KEY) || 'light';
         this.set(theme, false);
     },
 
