@@ -38,6 +38,7 @@ const STATIC_ASSETS = [
     { src: 'src/404.html', dest: '404.html' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
+    { src: 'src/manifest.json', dest: 'manifest.json' },
     { src: 'src/favicon.png', dest: 'favicon.png' },
     { src: 'src/og-image.png', dest: 'og-image.png' },
 ];
