@@ -245,6 +245,7 @@ const App = {
         Modal.init();
         this.initClock();
         this.initAccessibility();
+        this.initRotatingWords();
         this.logBoot();
     },
 
@@ -307,6 +308,23 @@ const App = {
                 if (e.key === 'Escape') Modal.close();
             });
         }
+    },
+
+    initRotatingWords() {
+        const elements = document.querySelectorAll('[data-words]');
+        elements.forEach(el => {
+            const words = JSON.parse(el.dataset.words);
+            let index = 0;
+
+            setInterval(() => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    index = (index + 1) % words.length;
+                    el.textContent = words[index];
+                    el.style.opacity = '1';
+                }, 300);
+            }, 2500);
+        });
     },
 
     logBoot() {

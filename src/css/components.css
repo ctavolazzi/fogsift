@@ -277,6 +277,28 @@
     font-size: var(--text-lg);
 }
 
+/* Rotating word effect */
+[data-words] {
+    display: inline-block;
+    min-width: 5em;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    color: var(--burnt-orange);
+    font-weight: 700;
+}
+
+.rotating-highlight {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    margin: var(--space-sm) 0;
+    color: var(--burnt-orange);
+}
+
+.rotating-highlight [data-words] {
+    min-width: 6em;
+}
+
 /* === PROCESS SECTION === */
 .section-process {
     text-align: center;
