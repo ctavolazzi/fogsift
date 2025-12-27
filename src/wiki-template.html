@@ -9,7 +9,7 @@
     <meta name="theme-color" content="#f4f4f5">
     <link rel="canonical" href="https://fogsift.com/wiki/{{PAGE_SLUG}}.html">
 
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="{{MANIFEST_PATH}}">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -19,7 +19,7 @@
     <meta property="og:url" content="https://fogsift.com/wiki/{{PAGE_SLUG}}.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
-    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="icon" type="image/png" href="{{FAVICON_PATH}}">
 
     <!-- Theme detection - inline to prevent FOUC -->
     <script>
@@ -34,7 +34,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
     <!-- External Stylesheet -->
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="{{STYLES_PATH}}">
 </head>
 <body class="wiki-body">
 
@@ -42,26 +42,26 @@
 
     <div id="mobile-drawer" class="mobile-drawer">
         <div class="mobile-close" onclick="Nav.toggleMobile()">[CLOSE]</div>
-        <a href="../index.html" class="mobile-link">HOME</a>
-        <a href="index.html" class="mobile-link">WIKI</a>
-        <a href="../index.html#mechanism" class="mobile-link">HOW IT WORKS</a>
-        <a href="../index.html#credentials" class="mobile-link">ABOUT</a>
-        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
-        <a href="../index.html#contact" class="mobile-link">CONTACT</a>
+        <a href="{{ROOT_PATH}}" class="mobile-link">HOME</a>
+        <a href="{{WIKI_INDEX_PATH}}" class="mobile-link">WIKI</a>
+        <a href="{{ROOT_PATH}}#mechanism" class="mobile-link">HOW IT WORKS</a>
+        <a href="{{ROOT_PATH}}#credentials" class="mobile-link">ABOUT</a>
+        <a href="{{ROOT_PATH}}#pricing" class="mobile-link">PRICING</a>
+        <a href="{{ROOT_PATH}}#contact" class="mobile-link">CONTACT</a>
     </div>
 
     <div class="nav-wrapper">
         <div class="main-nav">
-            <a href="../index.html" class="brand">
-                <img src="../assets/logo.png" alt="Fogsift" class="brand-logo">
+            <a href="{{ROOT_PATH}}" class="brand">
+                <img src="{{ASSETS_PATH}}logo.png" alt="Fogsift" class="brand-logo">
             </a>
 
             <div class="menu-items">
-                <div class="menu-item"><a href="index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
-                <div class="menu-item"><a href="../index.html#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
-                <div class="menu-item"><a href="../index.html#credentials" class="menu-link direct">ABOUT</a></div>
-                <div class="menu-item"><a href="../index.html#pricing" class="menu-link direct">PRICING</a></div>
-                <div class="menu-item"><a href="../index.html#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
+                <div class="menu-item"><a href="{{WIKI_INDEX_PATH}}" class="menu-link direct wiki-nav-active">WIKI</a></div>
+                <div class="menu-item"><a href="{{ROOT_PATH}}#mechanism" class="menu-link direct">HOW IT WORKS</a></div>
+                <div class="menu-item"><a href="{{ROOT_PATH}}#credentials" class="menu-link direct">ABOUT</a></div>
+                <div class="menu-item"><a href="{{ROOT_PATH}}#pricing" class="menu-link direct">PRICING</a></div>
+                <div class="menu-item"><a href="{{ROOT_PATH}}#contact" class="menu-link direct cta-link">GET IN TOUCH</a></div>
             </div>
 
             <div class="nav-controls">
@@ -75,9 +75,9 @@
 
         <nav class="breadcrumb-bar" aria-label="Breadcrumb">
             <ol class="crumb-list">
-                <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item"><a href="{{ROOT_PATH}}" class="crumb-link">FOGSIFT</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><a href="index.html" class="crumb-link">WIKI</a></li>
+                <li class="crumb-item"><a href="{{WIKI_INDEX_PATH}}" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><span class="crumb-current">{{BREADCRUMB}}</span></li>
             </ol>
@@ -88,7 +88,7 @@
         <!-- Sidebar Navigation -->
         <aside class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
             <div class="wiki-sidebar-header">
-                <a href="index.html" class="wiki-home-link">
+                <a href="{{WIKI_INDEX_PATH}}" class="wiki-home-link">
                     <span aria-hidden="true">←</span> Wiki Home
                 </a>
             </div>
@@ -108,7 +108,7 @@
                     <span>Updated: {{BUILD_DATE}}</span>
                 </div>
                 <nav class="wiki-nav-footer" aria-label="Wiki navigation">
-                    <a href="index.html">
+                    <a href="{{WIKI_INDEX_PATH}}">
                         <span aria-hidden="true">←</span> Back to Wiki
                     </a>
                 </nav>

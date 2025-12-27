@@ -166,7 +166,8 @@ function extractDescription(markdown) {
     return 'Fogsift Wiki';
 }
 
-function generateWikiNav(wikiIndex, currentSlug = '') {
+function generateWikiNav(wikiIndex, currentSlug = '', depth = 0) {
+    const prefix = depth > 0 ? '../'.repeat(depth) : '';
     let nav = '';
     for (const category of wikiIndex.categories) {
         nav += `<div class="wiki-nav-category">\n`;
@@ -174,9 +175,7 @@ function generateWikiNav(wikiIndex, currentSlug = '') {
         nav += `  <ul class="wiki-nav-list">\n`;
         for (const page of category.pages) {
             const isActive = page.slug === currentSlug ? ' class="active"' : '';
-            const href = page.slug.includes('/')
-                ? `${page.slug}.html`
-                : `${page.slug}.html`;
+            const href = `${prefix}${page.slug}.html`;
             nav += `    <li${isActive}><a href="${href}">${page.title}</a></li>\n`;
         }
         nav += `  </ul>\n`;
@@ -243,8 +242,8 @@ function buildWiki() {
         const depth = slug.split('/').length - 1;
         const prefix = depth > 0 ? '../'.repeat(depth) : '';
 
-        // Generate nav for this page
-        const wikiNav = generateWikiNav(wikiIndex, slug);
+        // Generate nav for this page (with correct relative paths)
+        const wikiNav = generateWikiNav(wikiIndex, slug, depth);
 
         // Build breadcrumb
         const breadcrumbParts = slug.split('/');
@@ -253,6 +252,14 @@ function buildWiki() {
             .replace(/^\d+\s*/, '')
             .toUpperCase();
 
+        // Calculate paths relative to current page
+        const wikiIndexPath = depth > 0 ? `${'../'.repeat(depth)}index.html` : 'index.html';
+        const rootPath = `${'../'.repeat(depth + 1)}index.html`;
+        const assetsPath = `${'../'.repeat(depth + 1)}assets/`;
+        const stylesPath = `${'../'.repeat(depth + 1)}styles.css`;
+        const manifestPath = `${'../'.repeat(depth + 1)}manifest.json`;
+        const faviconPath = `${'../'.repeat(depth + 1)}favicon.png`;
+
         // Process template
         let html = pageTemplate
             .replace(/\{\{PAGE_TITLE\}\}/g, title)
@@ -260,18 +267,15 @@ function buildWiki() {
             .replace(/\{\{PAGE_SLUG\}\}/g, slug)
             .replace(/\{\{BREADCRUMB\}\}/g, breadcrumb)
             .replace(/\{\{WIKI_NAV\}\}/g, wikiNav)
+            .replace(/\{\{WIKI_INDEX_PATH\}\}/g, wikiIndexPath)
+            .replace(/\{\{ROOT_PATH\}\}/g, rootPath)
+            .replace(/\{\{ASSETS_PATH\}\}/g, assetsPath)
+            .replace(/\{\{STYLES_PATH\}\}/g, stylesPath)
+            .replace(/\{\{MANIFEST_PATH\}\}/g, manifestPath)
+            .replace(/\{\{FAVICON_PATH\}\}/g, faviconPath)
             .replace(/\{\{CONTENT\}\}/g, htmlContent)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
 
-        // Adjust relative paths for nested pages
-        if (depth > 0) {
-            html = html.replace(/href="index\.html"/g, `href="${prefix}index.html"`);
-            html = html.replace(/href="\.\.\/index\.html"/g, `href="${'../'.repeat(depth + 1)}index.html"`);
-            html = html.replace(/href="\.\.\/styles\.css"/g, `href="${'../'.repeat(depth + 1)}styles.css"`);
-            html = html.replace(/href="\.\.\/manifest\.json"/g, `href="${'../'.repeat(depth + 1)}manifest.json"`);
-            html = html.replace(/href="\.\.\/favicon\.png"/g, `href="${'../'.repeat(depth + 1)}favicon.png"`);
-            html = html.replace(/src="\.\.\/assets\//g, `src="${'../'.repeat(depth + 1)}assets/`);
-        }
 
         // Ensure output directory exists
         const outputPath = path.join(WIKI_DIST, `${slug}.html`);
