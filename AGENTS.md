@@ -4,8 +4,8 @@
 
 FogSift is a web application for cutting through noise and finding signal. This document provides AI agent instructions for working with this project.
 
-**Repository:** `fogsift`  
-**Location:** `/Users/ctavolazzi/Code/fogsift`  
+**Repository:** `fogsift`
+**Location:** `/Users/ctavolazzi/Code/fogsift`
 **Stack:** HTML, CSS, JavaScript (vanilla)
 
 ---
