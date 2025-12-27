@@ -1,0 +1,16 @@
+{
+  "name": "fogsift",
+  "version": "0.0.1",
+  "description": "Straight answers to complicated questions",
+  "private": true,
+  "scripts": {
+    "dev": "npx wrangler pages dev dist --port 5050",
+    "build": "node scripts/build.js",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift",
+    "preview": "npm run build && npm run dev"
+  },
+  "keywords": ["consulting", "fogsift"],
+  "author": "Christopher Tavolazzi",
+  "license": "UNLICENSED"
+}
+

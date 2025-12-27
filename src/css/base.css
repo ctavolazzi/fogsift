@@ -1,0 +1,140 @@
+/* ============================================
+   FOGSIFT BASE STYLES
+   Reset, typography, and utility classes
+   ============================================ */
+
+/* === RESET === */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 140px;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--canvas);
+    color: var(--ink);
+    font-size: 18px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(var(--muted) 1px, transparent 1px);
+    background-size: 24px 24px;
+    padding-top: calc(var(--nav-height) + var(--breadcrumb-height) + 20px);
+    padding-bottom: 5vh;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body.scroll-locked {
+    overflow: hidden;
+}
+
+/* === SELECTION === */
+::selection {
+    background: var(--electric);
+    color: var(--paper);
+}
+
+/* === LINKS === */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* === TYPOGRAPHY === */
+h1, h2, h3, h4, h5 {
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--space-md);
+    color: var(--ink);
+}
+
+.headline {
+    font-size: var(--text-headline);
+    cursor: help;
+}
+
+.subhead {
+    font-size: var(--text-lg);
+    color: var(--muted);
+    max-width: 60ch;
+    margin-bottom: var(--space-lg);
+}
+
+.mono {
+    font-family: var(--font-mono);
+}
+
+/* === LABEL TAG === */
+.label {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    font-weight: 700;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 4px 8px;
+    display: inline-block;
+    margin-bottom: var(--space-md);
+    box-shadow: 3px 3px 0 var(--copper);
+    transform: rotate(-1deg);
+    border-radius: var(--radius);
+    cursor: default;
+}
+
+/* === LAYOUT === */
+.frame {
+    max-width: var(--frame-max-width);
+    margin: 0 auto;
+    background: var(--paper);
+    border: var(--border-width) solid var(--line);
+    box-shadow: 10px 10px 0 var(--shadow-hard);
+    padding: var(--space-xl) 3rem;
+    position: relative;
+    border-radius: var(--radius);
+}
+
+section {
+    margin-bottom: 8rem;
+    scroll-margin-top: 140px;
+}
+
+/* === PRINT === */
+@media print {
+    body {
+        background: #fff !important;
+        color: #000 !important;
+        background-image: none !important;
+        padding: 0 !important;
+    }
+    .frame {
+        box-shadow: none !important;
+        border: 2px solid #000 !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 40px !important;
+        border-radius: 0 !important;
+    }
+    .nav-wrapper, .hotline-wrapper, .copy-btn, .contact-box,
+    #toast-container, footer, .comms-panel, #article-modal,
+    #progress-bar, .theme-toggle {
+        display: none !important;
+    }
+}
+
+/* === MOBILE === */
+@media (max-width: 800px) {
+    .frame {
+        padding: 40px 20px;
+        border: none;
+        box-shadow: none;
+        width: 100%;
+    }
+}
+
