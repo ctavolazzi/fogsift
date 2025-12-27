@@ -45,6 +45,9 @@ const STATIC_ASSETS = [
     { src: 'src/favicon.png', dest: 'favicon.png' },
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
+    // Security files
+    { src: 'src/_headers', dest: '_headers' },
+    { src: 'src/.well-known/security.txt', dest: '.well-known/security.txt' },
     // Brand assets
     { src: 'src/assets/icon-512.png', dest: 'assets/icon-512.png' },
     { src: 'src/assets/logo-color-transparent.png', dest: 'assets/logo.png' },

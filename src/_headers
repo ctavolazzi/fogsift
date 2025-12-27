@@ -1,0 +1,28 @@
+# Cloudflare Pages Security Headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+
+/*
+  # Prevent MIME type sniffing
+  X-Content-Type-Options: nosniff
+
+  # Prevent clickjacking
+  X-Frame-Options: DENY
+
+  # Control referrer information
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # XSS Protection (legacy, but still useful for older browsers)
+  X-XSS-Protection: 1; mode=block
+
+  # Permissions Policy - restrict browser features
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+
+  # Content Security Policy
+  # - default-src 'self': Only allow resources from same origin by default
+  # - script-src 'self': Scripts only from our domain
+  # - style-src 'self' https://fonts.googleapis.com: Styles from us + Google Fonts
+  # - font-src 'self' https://fonts.gstatic.com: Fonts from us + Google
+  # - img-src 'self' data:: Images from us + inline data URIs
+  # - connect-src 'self': XHR/fetch only to our domain
+  # - frame-ancestors 'none': Prevent embedding in iframes
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'

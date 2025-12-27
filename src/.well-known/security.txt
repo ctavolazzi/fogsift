@@ -1,0 +1,24 @@
+# Security Policy for Fogsift
+# https://securitytxt.org/ (RFC 9116)
+
+# Contact for reporting security vulnerabilities
+Contact: mailto:christopher@fogsift.com
+Contact: https://fogsift.com
+
+# Preferred language for security reports
+Preferred-Languages: en
+
+# Encryption key for secure communication (optional - add if you have one)
+# Encryption: https://fogsift.com/.well-known/pgp-key.txt
+
+# Policy expiration date (update annually)
+Expires: 2026-12-31T23:59:59.000Z
+
+# Acknowledgments page (optional - add if you have one)
+# Acknowledgments: https://fogsift.com/security/acknowledgments
+
+# Hiring security researchers (optional)
+# Hiring: https://fogsift.com/careers
+
+# Canonical URL
+Canonical: https://fogsift.com/.well-known/security.txt

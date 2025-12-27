@@ -58,14 +58,31 @@ const Modal = {
         if (article) {
             const meta = `TIMESTAMP: ${article.date} // ${article.sector}`;
             titleEl.innerText = article.title;
-            contentEl.innerHTML = `
-                <p class="mono" style="color:var(--muted)">${meta}</p>
-                <hr style="border:0; border-top:1px solid var(--line); margin: 2rem 0;">
-                <p>${article.body}</p>
-            `;
+
+            // Clear content safely
+            contentEl.textContent = '';
+
+            // Build DOM elements safely to prevent XSS
+            const metaP = document.createElement('p');
+            metaP.className = 'mono';
+            metaP.style.color = 'var(--muted)';
+            metaP.textContent = meta;
+
+            const hr = document.createElement('hr');
+            hr.style.cssText = 'border:0; border-top:1px solid var(--line); margin: 2rem 0;';
+
+            const bodyP = document.createElement('p');
+            bodyP.textContent = article.body;
+
+            contentEl.appendChild(metaP);
+            contentEl.appendChild(hr);
+            contentEl.appendChild(bodyP);
         } else {
             titleEl.innerText = 'LOG NOT FOUND';
-            contentEl.innerHTML = '<p>The requested field note could not be retrieved.</p>';
+            contentEl.textContent = '';
+            const errorP = document.createElement('p');
+            errorP.textContent = 'The requested field note could not be retrieved.';
+            contentEl.appendChild(errorP);
         }
     },
 
