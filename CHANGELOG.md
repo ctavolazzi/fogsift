@@ -6,6 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 
 
+## [0.1.0] - 2025-12-27
+### Minor Release - "Trust & Credibility"
+
+This release marks a significant milestone: FogSift now includes social proof and trust signals,
+addressing the #1 priority from the Feature Void Audit. The site is now ready for lead generation.
+
+#### Milestone Highlights
+- **Testimonials Section**: Complete social proof implementation
+- **Feature Void Audit**: Comprehensive analysis of 42 missing features
+- **Documentation**: Full feature specification and implementation guides
+- **Quality**: Fully tested, accessible, and responsive
+
+#### What's New Since v0.0.3
+- Testimonials section with 3 client quotes
+- Stats row (15+ engagements, 100% satisfaction, 8+ industries)
+- Feature void audit documentation
+- Feature development workflow and tracking
+
+#### Next Steps (from Feature Void Audit)
+- Email capture with lead magnet
+- Calendly/booking integration
+- Contact form
+- Analytics integration
+
+---
+
 ## [0.0.4] - 2025-12-27
 ### Patch Release - "Social Proof"
 
