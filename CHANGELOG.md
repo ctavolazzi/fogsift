@@ -6,6 +6,36 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 
 
+## [0.0.4] - 2025-12-27
+### Patch Release - "Social Proof"
+
+#### New Features
+- **Testimonials Section**: Added social proof section between About and Pricing
+  - Three client testimonial cards with quotes, names, and industries
+  - Animated hover effects matching the retro-modern design system
+  - Decorative quote marks in burnt-orange accent color
+  - Stats row showing: 15+ Engagements, 100% Satisfaction, 8+ Industries
+
+#### Design
+- Semantic HTML with `<blockquote>`, `<cite>`, and `<footer>` elements
+- Full dark mode support
+- Responsive grid layout:
+  - Desktop: 3-column grid
+  - Tablet: 2-column grid with centered third card
+  - Mobile: Single column stack
+
+#### Accessibility
+- ARIA labels for section and stats
+- Proper heading hierarchy
+- Semantic blockquote structure for screen readers
+
+#### Technical
+- Added `.section-testimonials`, `.testimonial-card`, `.testimonials-stats` components
+- Added responsive styles for testimonials in mobile.css
+- Feature void audit addressed: #1 priority item (social proof)
+
+---
+
 ## [0.0.3] - 2025-12-27
 ### Patch Release - "Secret Sleep Mode"
 
