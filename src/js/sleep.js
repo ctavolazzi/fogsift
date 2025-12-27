@@ -270,12 +270,6 @@ const SleepMode = {
                 'background: #f5f0e6; color: #4a2c2a; padding: 10px; font-family: monospace; font-weight: bold;'
             );
         }, 150);
-    },
-
-    // Debug method to trigger sleep immediately (for testing)
-    _debugSleep() {
-        console.log('Debug: Forcing sleep mode...');
-        this.enterSleepMode();
     }
 };
 
