@@ -1,13 +1,16 @@
 {
   "title": "Fogsift Wiki",
-  "description": "Knowledge base, documentation, and field notes",
+  "description": "Knowledge base, documentation, and field notes from the fog",
   "categories": [
     {
       "id": "docs",
       "title": "Documentation",
       "icon": "📋",
       "pages": [
-        { "slug": "getting-started", "title": "Getting Started" }
+        { "slug": "getting-started", "title": "Getting Started" },
+        { "slug": "how-we-work", "title": "How We Work" },
+        { "slug": "diagnostic-process", "title": "The Diagnostic Process" },
+        { "slug": "faq", "title": "Frequently Asked Questions" }
       ]
     },
     {
@@ -15,7 +18,23 @@
       "title": "Concepts",
       "icon": "💡",
       "pages": [
-        { "slug": "concepts/root-cause", "title": "Root Cause Analysis" }
+        { "slug": "concepts/root-cause", "title": "Root Cause Analysis" },
+        { "slug": "concepts/mental-models", "title": "Mental Models" },
+        { "slug": "concepts/systems-thinking", "title": "Systems Thinking" },
+        { "slug": "concepts/cognitive-biases", "title": "Cognitive Biases" },
+        { "slug": "concepts/second-order-effects", "title": "Second-Order Effects" },
+        { "slug": "concepts/signal-vs-noise", "title": "Signal vs Noise" }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "title": "Frameworks",
+      "icon": "🔧",
+      "pages": [
+        { "slug": "frameworks/trace-protocol", "title": "The TRACE Protocol" },
+        { "slug": "frameworks/decision-matrix", "title": "Decision Matrix" },
+        { "slug": "frameworks/constraint-mapping", "title": "Constraint Mapping" },
+        { "slug": "frameworks/feedback-loops", "title": "Feedback Loop Analysis" }
       ]
     },
     {
@@ -25,9 +44,33 @@
       "pages": [
         { "slug": "field-notes/001-map-territory", "title": "The Map Is Not The Territory" },
         { "slug": "field-notes/002-precision-accuracy", "title": "Precision vs Accuracy" },
-        { "slug": "field-notes/003-entropy", "title": "Entropy" }
+        { "slug": "field-notes/003-entropy", "title": "Entropy" },
+        { "slug": "field-notes/004-bottlenecks", "title": "Finding the Bottleneck" },
+        { "slug": "field-notes/005-tribal-knowledge", "title": "Tribal Knowledge" },
+        { "slug": "field-notes/006-incentive-alignment", "title": "Incentive Alignment" },
+        { "slug": "field-notes/007-documentation-debt", "title": "Documentation Debt" }
+      ]
+    },
+    {
+      "id": "case-studies",
+      "title": "Case Studies",
+      "icon": "📊",
+      "pages": [
+        { "slug": "case-studies/manufacturing-throughput", "title": "Manufacturing Throughput Crisis" },
+        { "slug": "case-studies/communication-breakdown", "title": "The Communication Breakdown" },
+        { "slug": "case-studies/the-invisible-process", "title": "The Invisible Process" }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools & Techniques",
+      "icon": "🛠️",
+      "pages": [
+        { "slug": "tools/five-whys", "title": "The Five Whys" },
+        { "slug": "tools/fishbone-diagram", "title": "Fishbone Diagrams" },
+        { "slug": "tools/pareto-analysis", "title": "Pareto Analysis" },
+        { "slug": "tools/process-mapping", "title": "Process Mapping" }
       ]
     }
   ]
 }
-

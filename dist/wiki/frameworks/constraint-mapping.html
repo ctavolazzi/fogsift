@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Constraint Mapping | Fogsift Wiki</title>
+    <meta name="description" content="Constraint mapping identifies and visualizes the boundaries within which a solution must operate. It prevents wasted effort on solutions that can't be implement">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/constraint-mapping.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Constraint Mapping | Fogsift Wiki">
+    <meta property="og:description" content="Constraint mapping identifies and visualizes the boundaries within which a solution must operate. It prevents wasted effort on solutions that can't be implement">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/constraint-mapping.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">CONSTRAINT MAPPING</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -122,7 +122,7 @@
   <ul class="wiki-nav-list">
     <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
     <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
-    <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
+    <li><a href="../frameworks/constraint-mapping.html" class="active">Constraint Mapping</a></li>
     <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
   </ul>
 </div>
@@ -162,45 +162,172 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
+                <h1>Constraint Mapping</h1>
+<p>Constraint mapping identifies and visualizes the boundaries within which a solution must operate. It prevents wasted effort on solutions that can&#39;t be implemented and reveals hidden degrees of freedom.</p>
 <h2>The Principle</h2>
 <blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
+<p>Every problem exists within a constraint envelope. Understand the envelope before you design the solution.</p>
 </blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+<p>Constraints aren&#39;t obstacles. They&#39;re design parameters. Once you know them, they guide you toward viable solutions.</p>
+<h2>Types of Constraints</h2>
+<h3>Hard Constraints</h3>
+<p>Absolute limits that cannot be violated.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Legal requirements</li>
+<li>Physical laws</li>
+<li>Non-negotiable deadlines</li>
+<li>Budget caps</li>
+<li>Safety requirements</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p><strong>Characteristic:</strong> Breaking them isn&#39;t an option, no matter how good the solution.</p>
+<h3>Soft Constraints</h3>
+<p>Strong preferences that can be violated under sufficient justification.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Internal policies</li>
+<li>Historical practices</li>
+<li>Stakeholder preferences</li>
+<li>Resource availability</li>
+<li>Timeline targets</li>
 </ul>
+<p><strong>Characteristic:</strong> Can be challenged, negotiated, or waived if the tradeoff is worth it.</p>
+<h3>Hidden Constraints</h3>
+<p>Limits that aren&#39;t explicitly stated but become apparent during implementation.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Political dynamics</li>
+<li>Unwritten rules</li>
+<li>Legacy system dependencies</li>
+<li>Cultural norms</li>
+<li>Institutional knowledge gaps</li>
+</ul>
+<p><strong>Characteristic:</strong> Often the cause of &quot;good ideas&quot; that fail to launch.</p>
+<h3>Self-Imposed Constraints</h3>
+<p>Limits we assume exist but don&#39;t actually.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>&quot;We&#39;ve always done it this way&quot;</li>
+<li>&quot;They&#39;ll never approve that&quot;</li>
+<li>&quot;That&#39;s not possible with our tools&quot;</li>
+<li>&quot;The team wouldn&#39;t accept that change&quot;</li>
+</ul>
+<p><strong>Characteristic:</strong> Often invisible until challenged.</p>
+<h2>The Mapping Process</h2>
+<h3>Step 1: Gather Stated Constraints</h3>
+<p>Ask stakeholders directly:</p>
+<ul>
+<li>What can&#39;t change?</li>
+<li>What&#39;s non-negotiable?</li>
+<li>What limits exist?</li>
+<li>What has been tried and rejected?</li>
+</ul>
+<p>Document everything, even constraints that seem obvious.</p>
+<h3>Step 2: Classify by Type</h3>
+<p>For each constraint, determine:</p>
+<ul>
+<li>Is it hard or soft?</li>
+<li>Is it explicit or hidden?</li>
+<li>Is it real or self-imposed?</li>
+</ul>
+<h3>Step 3: Test Validity</h3>
+<p>For soft and self-imposed constraints, ask:</p>
+<ul>
+<li>Who says this is a constraint?</li>
+<li>What evidence supports it?</li>
+<li>What would it take to change it?</li>
+<li>What&#39;s the cost of violating it?</li>
+</ul>
+<p>You&#39;ll often find that &quot;constraints&quot; are actually preferences or outdated assumptions.</p>
+<h3>Step 4: Map Dependencies</h3>
+<p>Constraints interact. Understanding these dependencies reveals:</p>
+<ul>
+<li>Which constraints are load-bearing</li>
+<li>Which constraints can be moved together</li>
+<li>Where changing one constraint affects others</li>
+</ul>
+<h3>Step 5: Identify Degrees of Freedom</h3>
+<p>The space <em>between</em> constraints is your solution space. Map it:</p>
+<ul>
+<li>What can change?</li>
+<li>What can be combined?</li>
+<li>What can be sequenced differently?</li>
+<li>What can be eliminated?</li>
+</ul>
+<h2>Visualization</h2>
+<p>A constraint map can take several forms:</p>
+<h3>Boundary Diagram</h3>
+<p>Draw the solution space as an area, with constraints as boundaries. Hard constraints are solid lines. Soft constraints are dashed.</p>
+<h3>Constraint Table</h3>
+<table>
+<thead>
+<tr>
+<th>Constraint</th>
+<th>Type</th>
+<th>Source</th>
+<th>Negotiable?</th>
+<th>Dependencies</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Q4 deadline</td>
+<td>Hard</td>
+<td>Board</td>
+<td>No</td>
+<td>Budget</td>
+</tr>
+<tr>
+<td>Existing platform</td>
+<td>Soft</td>
+<td>IT</td>
+<td>Yes, with justification</td>
+<td>Timeline</td>
+</tr>
+<tr>
+<td>Current team only</td>
+<td>Self-imposed</td>
+<td>Assumption</td>
+<td>Test with sponsor</td>
+<td>None</td>
+</tr>
+</tbody></table>
+<h3>Dependency Graph</h3>
+<p>Show constraints as nodes and dependencies as arrows. Highlight constraints that affect many others.</p>
+<h2>Common Patterns</h2>
+<h3>Over-Constrained Problems</h3>
+<p>When constraints leave no viable solution space:</p>
+<ul>
+<li>Challenge soft constraints</li>
+<li>Test self-imposed constraints</li>
+<li>Look for creative interpretations</li>
+<li>Escalate genuine conflicts</li>
+</ul>
+<h3>Under-Constrained Problems</h3>
+<p>When too much is possible:</p>
+<ul>
+<li>Add design principles</li>
+<li>Define quality criteria</li>
+<li>Set optimization targets</li>
+<li>Prioritize ruthlessly</li>
+</ul>
+<h3>Constraint Migration</h3>
+<p>When stakeholders keep adding constraints after work begins:</p>
+<ul>
+<li>Trace new constraints to their source</li>
+<li>Document impact on solution space</li>
+<li>Force explicit tradeoff decisions</li>
+</ul>
+<h2>Application</h2>
+<p>Before designing solutions:</p>
+<ol>
+<li>Map all known constraints</li>
+<li>Test self-imposed constraints</li>
+<li>Identify hidden constraints through investigation</li>
+<li>Document the viable solution space</li>
+<li>Design solutions that fit within the envelope</li>
+</ol>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>Understanding what you can&#39;t do clarifies what you can.</em></p>
 
             </article>
 

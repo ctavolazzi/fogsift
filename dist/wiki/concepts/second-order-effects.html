@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Second-Order Effects | Fogsift Wiki</title>
+    <meta name="description" content="First-order effects are the direct, immediate consequences of an action. Second-order effects are the consequences of those consequences. Most strategic mistake">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/second-order-effects.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Second-Order Effects | Fogsift Wiki">
+    <meta property="og:description" content="First-order effects are the direct, immediate consequences of an action. Second-order effects are the consequences of those consequences. Most strategic mistake">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/second-order-effects.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">SECOND ORDER EFFECTS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,11 +109,11 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
-    <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
+    <li><a href="../concepts/second-order-effects.html" class="active">Second-Order Effects</a></li>
     <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
   </ul>
 </div>
@@ -162,45 +162,126 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Second-Order Effects</h1>
+<p>First-order effects are the direct, immediate consequences of an action. Second-order effects are the consequences of those consequences. Most strategic mistakes come from ignoring second-order effects.</p>
+<h2>The Concept</h2>
+<p>When you do something, ask:</p>
+<ol>
+<li><strong>First order:</strong> What happens next?</li>
+<li><strong>Second order:</strong> And then what?</li>
+<li><strong>Third order:</strong> And after that?</li>
+</ol>
+<p>Keep going until the effects become negligible or unpredictable.</p>
+<h2>Why Second-Order Thinking Matters</h2>
+<h3>First-Order Thinking is Easy</h3>
+<p>&quot;If we lower prices, we&#39;ll sell more.&quot; That&#39;s first-order.</p>
+<p>&quot;If we lower prices, competitors will respond, margins will shrink across the industry, and we&#39;ll need to cut costs, which might affect quality.&quot; That&#39;s second-order.</p>
+<p>The first analysis tells you what you want to hear. The second tells you what will actually happen.</p>
+<h3>Most Decisions Stop at First Order</h3>
+<p>People stop thinking when they reach a satisfying answer. Satisfying doesn&#39;t mean correct.</p>
+<p><strong>Example:</strong> &quot;Let&#39;s add this feature because users requested it.&quot;</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>First order: Users get the feature</li>
+<li>Second order: Product complexity increases</li>
+<li>Third order: Support costs rise, other features get delayed</li>
+<li>Fourth order: Core product identity becomes unclear</li>
+<li>Fifth order: You&#39;ve built a bloated product that satisfies no one well</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<h3>Failures Come from Later Orders</h3>
+<p>The policies that fail spectacularly are usually fine at the first order. It&#39;s the second, third, and fourth orders where things break.</p>
+<h2>Patterns to Watch</h2>
+<h3>Compensating Behavior</h3>
+<p>When you change something, people adjust. Their adjustments often offset your change.</p>
+<p><strong>Example:</strong> Speed bumps to slow traffic</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>First order: Cars slow down at the bump</li>
+<li>Second order: Drivers compensate by speeding between bumps</li>
+<li>Third order: Average speed unchanged, but speed variance increases</li>
+<li>Result: Possibly more dangerous than before</li>
 </ul>
+<h3>Resource Reallocation</h3>
+<p>When you add resources in one place, they often come from another place.</p>
+<p><strong>Example:</strong> Hiring more people for a struggling project</p>
+<ul>
+<li>First order: More capacity on this project</li>
+<li>Second order: Other projects lose people or priority</li>
+<li>Third order: Those projects fall behind</li>
+<li>Fourth order: Organization is no better off, just redistributed problems</li>
+</ul>
+<h3>Incentive Distortion</h3>
+<p>When you incentivize something, you get more of it, including gaming the incentive.</p>
+<p><strong>Example:</strong> Bonuses for hitting sales targets</p>
+<ul>
+<li>First order: Sales team pushes harder</li>
+<li>Second order: Sales team games timing (pull forward, push back deals)</li>
+<li>Third order: Customers learn to wait for quarter-end deals</li>
+<li>Fourth order: Consistent sales become impossible; everything bunches at quarter-end</li>
+<li>Fifth order: Revenue becomes unpredictable</li>
+</ul>
+<h3>Capability Atrophy</h3>
+<p>When you solve a problem externally, internal capability to solve it declines.</p>
+<p><strong>Example:</strong> Outsourcing IT</p>
+<ul>
+<li>First order: IT costs decrease</li>
+<li>Second order: Internal IT knowledge erodes</li>
+<li>Third order: Dependence on vendor increases</li>
+<li>Fourth order: Negotiating leverage decreases</li>
+<li>Fifth order: IT costs increase above original level</li>
+</ul>
+<h2>How to Think Second-Order</h2>
+<h3>Ask &quot;And Then What?&quot;</h3>
+<p>After every consequence you identify, ask what happens next. Don&#39;t stop until you&#39;ve gone at least three levels deep.</p>
+<h3>Consider All Stakeholders</h3>
+<p>Each stakeholder will respond to your action. What do competitors do? What do customers do? What do employees do? What do regulators do?</p>
+<h3>Look for Feedback</h3>
+<p>Will the consequences feed back into the original cause? Will they amplify or dampen the effect?</p>
+<h3>Consider Time Horizons</h3>
+<p>Second-order effects often unfold over longer timescales. A quarterly decision might have annual consequences.</p>
+<h3>Invert</h3>
+<p>Ask: &quot;What would make this fail?&quot; The answer is often a second-order effect you haven&#39;t considered.</p>
+<h2>Example: Full Analysis</h2>
+<p><strong>Decision:</strong> Reduce inventory to cut costs</p>
+<p><strong>First-order effects:</strong></p>
+<ul>
+<li>Carrying costs decrease</li>
+<li>Cash flow improves</li>
+</ul>
+<p><strong>Second-order effects:</strong></p>
+<ul>
+<li>Stock-out risk increases</li>
+<li>Suppliers have less buffer for demand spikes</li>
+<li>Purchasing frequency increases</li>
+</ul>
+<p><strong>Third-order effects:</strong></p>
+<ul>
+<li>Customer complaints about availability</li>
+<li>More frequent supplier negotiations and orders</li>
+<li>Transportation costs increase (smaller, more frequent shipments)</li>
+</ul>
+<p><strong>Fourth-order effects:</strong></p>
+<ul>
+<li>Customer loyalty decreases</li>
+<li>Supplier relationships strain</li>
+<li>Administrative burden increases</li>
+</ul>
+<p><strong>Fifth-order effects:</strong></p>
+<ul>
+<li>Revenue decline from lost customers</li>
+<li>Higher procurement costs from damaged supplier relationships</li>
+<li>Need to hire more purchasing staff</li>
+</ul>
+<p><strong>Net assessment:</strong> The first-order cost savings may be completely offset or exceeded by later-order effects. Before deciding, quantify the likely second-order impacts and decide whether the tradeoff is worth it.</p>
+<h2>Building the Skill</h2>
+<h3>Practice on Past Decisions</h3>
+<p>Take a decision that didn&#39;t work out. Trace the causal chain. Where did later-order effects cause the failure?</p>
+<h3>Make It Explicit</h3>
+<p>When proposing decisions, include a &quot;second-order effects&quot; section. Force yourself and others to think beyond the immediate.</p>
+<h3>Create Delays</h3>
+<p>Between proposal and decision, insert time for reflection. Immediate decisions favor first-order thinking.</p>
+<h3>Use Devil&#39;s Advocates</h3>
+<p>Assign someone to find the second-order problems with every proposal.</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>First-order thinkers solve problems that come back. Second-order thinkers solve problems that stay solved.</em></p>
 
             </article>
 

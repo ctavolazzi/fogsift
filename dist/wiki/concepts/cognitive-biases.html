@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Cognitive Biases | Fogsift Wiki</title>
+    <meta name="description" content="Cognitive biases are systematic patterns of deviation from rational judgment. They're mental shortcuts that usually help but sometimes mislead. Understanding th">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/cognitive-biases.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Cognitive Biases | Fogsift Wiki">
+    <meta property="og:description" content="Cognitive biases are systematic patterns of deviation from rational judgment. They're mental shortcuts that usually help but sometimes mislead. Understanding th">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/cognitive-biases.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">COGNITIVE BIASES</span></li>
             </ol>
         </nav>
     </div>
@@ -109,10 +109,10 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
-    <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
+    <li><a href="../concepts/cognitive-biases.html" class="active">Cognitive Biases</a></li>
     <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
     <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
   </ul>
@@ -162,45 +162,137 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Cognitive Biases</h1>
+<p>Cognitive biases are systematic patterns of deviation from rational judgment. They&#39;re mental shortcuts that usually help but sometimes mislead. Understanding them helps you think more clearly and diagnose problems more accurately.</p>
+<h2>Why Biases Matter for Diagnosis</h2>
+<p>When investigating problems:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li><strong>You</strong> will be biased in how you gather and interpret evidence</li>
+<li><strong>Stakeholders</strong> will be biased in what they tell you</li>
+<li><strong>The organization</strong> will have embedded biases in its culture and processes</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
+<p>Awareness doesn&#39;t eliminate bias, but it reduces its impact.</p>
+<h2>Key Biases in Problem-Solving</h2>
 <h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p><strong>What it is:</strong> Seeking evidence that confirms what you already believe and ignoring evidence that contradicts it.</p>
+<p><strong>How it shows up:</strong></p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Interviewing people you expect to agree with you first</li>
+<li>Dismissing data that doesn&#39;t fit your theory</li>
+<li>Asking leading questions that prompt expected answers</li>
+</ul>
+<p><strong>Countermeasure:</strong> Actively seek disconfirming evidence. Ask &quot;what would prove me wrong?&quot; and then look for it.</p>
+<hr>
+<h3>Availability Bias</h3>
+<p><strong>What it is:</strong> Overweighting information that comes to mind easily, usually because it&#39;s recent, vivid, or emotionally charged.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>Focusing on the dramatic failure, not the mundane causes</li>
+<li>Giving too much weight to the last thing someone told you</li>
+<li>Thinking rare events are common because they&#39;re memorable</li>
+</ul>
+<p><strong>Countermeasure:</strong> Seek systematic data, not anecdotes. Ask &quot;what am I not seeing because it&#39;s not memorable?&quot;</p>
+<hr>
+<h3>Anchoring</h3>
+<p><strong>What it is:</strong> Over-relying on the first piece of information encountered, even if it&#39;s arbitrary.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>Estimating based on numbers that were mentioned, even irrelevant ones</li>
+<li>Starting investigations where someone else pointed, without questioning why</li>
+<li>Getting stuck on the first explanation offered</li>
+</ul>
+<p><strong>Countermeasure:</strong> Generate your own estimates before looking at others. Consider multiple starting points.</p>
+<hr>
+<h3>Fundamental Attribution Error</h3>
+<p><strong>What it is:</strong> Attributing others&#39; behavior to their character while attributing your own behavior to circumstances.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>&quot;They made a mistake because they&#39;re careless&quot; vs. &quot;I made a mistake because I was rushed&quot;</li>
+<li>Blaming individuals when systems failed them</li>
+<li>Ignoring context when judging performance</li>
+</ul>
+<p><strong>Countermeasure:</strong> Always ask about circumstances before concluding about character. &quot;What about the situation made this behavior likely?&quot;</p>
+<hr>
+<h3>Hindsight Bias</h3>
+<p><strong>What it is:</strong> Believing, after an event, that you would have predicted it. &quot;I knew it all along.&quot;</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>Judging past decisions by outcomes rather than the information available at the time</li>
+<li>Underestimating how uncertain the situation was</li>
+<li>Assuming failures were predictable and therefore someone&#39;s fault</li>
+</ul>
+<p><strong>Countermeasure:</strong> Reconstruct what was known at the time. Judge decisions by process, not just outcomes.</p>
+<hr>
+<h3>Sunk Cost Fallacy</h3>
+<p><strong>What it is:</strong> Continuing to invest in something because of what you&#39;ve already invested, rather than evaluating future value.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>&quot;We&#39;ve already spent $2M, we can&#39;t stop now&quot;</li>
+<li>Continuing failed initiatives because abandoning them feels like waste</li>
+<li>Escalating commitment to failing strategies</li>
+</ul>
+<p><strong>Countermeasure:</strong> Evaluate decisions based on future costs and benefits only. Past investment is irrelevant to future value.</p>
+<hr>
+<h3>Survivorship Bias</h3>
+<p><strong>What it is:</strong> Drawing conclusions from successes without considering the failures that didn&#39;t survive to be observed.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>&quot;These successful companies all did X, so X causes success&quot;</li>
+<li>Ignoring failed projects when analyzing what works</li>
+<li>Learning only from visible examples</li>
+</ul>
+<p><strong>Countermeasure:</strong> Ask &quot;what about the ones that didn&#39;t make it?&quot; Seek out failure data.</p>
+<hr>
+<h3>Status Quo Bias</h3>
+<p><strong>What it is:</strong> Preferring the current state of affairs over change, even when change would be beneficial.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>Resistance to new processes, tools, or structures</li>
+<li>Framing change as risky and staying the same as safe</li>
+<li>Requiring more evidence for change than for continuity</li>
+</ul>
+<p><strong>Countermeasure:</strong> Evaluate the current state as rigorously as you would a proposed change. What&#39;s the cost of not changing?</p>
+<hr>
+<h3>Dunning-Kruger Effect</h3>
+<p><strong>What it is:</strong> People with low competence overestimate their ability, while experts underestimate theirs.</p>
+<p><strong>How it shows up:</strong></p>
+<ul>
+<li>Confident but wrong stakeholders</li>
+<li>Experts who hedge too much</li>
+<li>Resistance to outside perspective</li>
+</ul>
+<p><strong>Countermeasure:</strong> Calibrate confidence against track record. Seek feedback from people with different expertise levels.</p>
+<h2>Organizational Biases</h2>
+<p>Beyond individual biases, organizations develop collective biases:</p>
+<h3>Groupthink</h3>
+<p>Agreement driven by social pressure rather than evidence. Everyone nods, but nobody actually believes it.</p>
+<h3>NIH (Not Invented Here)</h3>
+<p>Dismissing external ideas because they weren&#39;t developed internally.</p>
+<h3>Success Theater</h3>
+<p>Reporting what&#39;s going well while hiding what&#39;s failing.</p>
+<h3>Tyranny of Metrics</h3>
+<p>Optimizing for measurable targets at the expense of unmeasured (but important) outcomes.</p>
+<h2>Using Bias Awareness</h2>
+<h3>In Yourself</h3>
+<ul>
+<li>Before concluding, ask: &quot;What bias might be affecting my judgment here?&quot;</li>
+<li>Seek evidence that would prove you wrong</li>
+<li>Get outside perspectives</li>
+</ul>
+<h3>In Stakeholders</h3>
+<ul>
+<li>Recognize that what they tell you is filtered through their biases</li>
+<li>Ask questions that bypass common biases</li>
+<li>Triangulate across multiple sources</li>
+</ul>
+<h3>In Organizations</h3>
+<ul>
+<li>Identify systemic biases in culture and process</li>
+<li>Design countermeasures into processes</li>
+<li>Create safe spaces for dissent</li>
 </ul>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>Bias is unavoidable. Unawareness of bias is not.</em></p>
 
             </article>
 

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Fishbone Diagrams | Fogsift Wiki</title>
+    <meta name="description" content="A fishbone diagram (also called Ishikawa or cause-and-effect diagram) visually maps the potential causes of a problem. It's particularly useful when multiple fa">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/tools/fishbone-diagram.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Fishbone Diagrams | Fogsift Wiki">
+    <meta property="og:description" content="A fishbone diagram (also called Ishikawa or cause-and-effect diagram) visually maps the potential causes of a problem. It's particularly useful when multiple fa">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/tools/fishbone-diagram.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">FISHBONE DIAGRAM</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -150,7 +150,7 @@
   <h4 class="wiki-nav-title">🛠️ Tools & Techniques</h4>
   <ul class="wiki-nav-list">
     <li><a href="../tools/five-whys.html">The Five Whys</a></li>
-    <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
+    <li><a href="../tools/fishbone-diagram.html" class="active">Fishbone Diagrams</a></li>
     <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
     <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
   </ul>
@@ -162,45 +162,144 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Fishbone Diagrams</h1>
+<p>A fishbone diagram (also called Ishikawa or cause-and-effect diagram) visually maps the potential causes of a problem. It&#39;s particularly useful when multiple factors might contribute and you need to systematically explore possibilities.</p>
+<h2>The Structure</h2>
+<pre><code>        ┌─────────────────────────────────────────────────┐
+        │                                                 │
+ Category 1 ───────────┬──────────────────────────────────┤
+        │              │                                  │
+        │      Cause 1.1 ─────┤                           │
+        │              │      │                           │
+        │      Cause 1.2 ─────┤                      PROBLEM
+        │                     │                           │
+ Category 2 ───────────┬──────┤                           │
+        │              │      │                           │
+        │      Cause 2.1 ─────┤                           │
+        │              │                                  │
+        │      Cause 2.2 ─────┤                           │
+        │                                                 │
+        └─────────────────────────────────────────────────┘
+</code></pre>
+<p>The &quot;head&quot; of the fish is the problem. The &quot;bones&quot; are categories of potential causes. Smaller bones are specific causes within each category.</p>
+<h2>Building the Diagram</h2>
+<h3>Step 1: Define the Problem</h3>
+<p>Write the problem clearly at the head of the fish. Be specific. &quot;Customer complaints&quot; is too vague. &quot;Customers complaining about delivery time&quot; is better.</p>
+<h3>Step 2: Choose Categories</h3>
+<p>Draw major bones for each category of causes. Common category sets:</p>
+<p><strong>Manufacturing (6 Ms):</strong></p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Man (People)</li>
+<li>Machine (Equipment)</li>
+<li>Method (Process)</li>
+<li>Material (Inputs)</li>
+<li>Measurement</li>
+<li>Mother Nature (Environment)</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p><strong>Services (8 Ps):</strong></p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Price</li>
+<li>Promotion</li>
+<li>People</li>
+<li>Processes</li>
+<li>Place/Plant</li>
+<li>Policies</li>
+<li>Procedures</li>
+<li>Product</li>
+</ul>
+<p><strong>Or create your own:</strong></p>
+<ul>
+<li>Systems</li>
+<li>People</li>
+<li>Process</li>
+<li>External</li>
+<li>(Whatever fits your context)</li>
+</ul>
+<h3>Step 3: Brainstorm Causes</h3>
+<p>For each category, brainstorm potential causes. Add them as smaller bones. Don&#39;t evaluate yet, just collect.</p>
+<h3>Step 4: Dig Deeper</h3>
+<p>For each cause, ask &quot;why?&quot; Add sub-causes as even smaller bones. This is where the Five Whys technique combines with fishbone diagrams.</p>
+<h3>Step 5: Analyze</h3>
+<p>Look for:</p>
+<ul>
+<li>Causes that appear in multiple categories</li>
+<li>Clusters of related causes</li>
+<li>Causes with strong evidence</li>
+<li>Causes that are actionable</li>
+</ul>
+<h3>Step 6: Prioritize</h3>
+<p>Not all causes are equal. Use evidence and judgment to identify the most likely root causes. Investigate those first.</p>
+<h2>Example</h2>
+<p><strong>Problem:</strong> High employee turnover</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Causes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>People</strong></td>
+<td>Poor hiring fit, Inadequate onboarding, Manager quality, Team dynamics</td>
+</tr>
+<tr>
+<td><strong>Process</strong></td>
+<td>Unclear expectations, No career path, Slow decision-making, Too much bureaucracy</td>
+</tr>
+<tr>
+<td><strong>Compensation</strong></td>
+<td>Below market salary, Unclear bonus structure, Limited benefits, No equity</td>
+</tr>
+<tr>
+<td><strong>Culture</strong></td>
+<td>Toxic behaviors tolerated, No recognition, Work-life imbalance, Lack of purpose</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Poor tools, Office location, Remote policy, Physical workspace</td>
+</tr>
+<tr>
+<td><strong>External</strong></td>
+<td>Competitor recruiting, Industry trends, Economy, Geographic factors</td>
+</tr>
+</tbody></table>
+<p>After investigation, you might find the primary drivers are &quot;Manager quality&quot; and &quot;No career path,&quot; with &quot;Below market salary&quot; as a contributing factor.</p>
+<h2>When to Use It</h2>
+<ul>
+<li>Complex problems with multiple potential causes</li>
+<li>Group brainstorming sessions</li>
+<li>When you need to ensure comprehensive analysis</li>
+<li>When different stakeholders have different theories</li>
+<li>Teaching teams to think systematically about causation</li>
+</ul>
+<h2>When It Doesn&#39;t Work</h2>
+<h3>Too Many Causes</h3>
+<p>If you generate 50 causes, the diagram becomes unwieldy. Prioritize or group similar causes.</p>
+<h3>No Investigation</h3>
+<p>Fishbone diagrams generate hypotheses. They don&#39;t prove anything. Each suspected cause needs verification.</p>
+<h3>Consensus Theater</h3>
+<p>Sometimes teams use fishbone diagrams to create false agreement. Everyone&#39;s theory goes on the diagram, but no one&#39;s theory gets tested.</p>
+<h3>Linear Problems</h3>
+<p>If the cause is straightforward, a fishbone diagram is overkill. Use <a href="/wiki/tools/five-whys.html">Five Whys</a> instead.</p>
+<h2>Best Practices</h2>
+<h3>Use in Groups</h3>
+<p>Fishbone diagrams work best as group exercises. Different perspectives surface different causes.</p>
+<h3>Be Specific</h3>
+<p>&quot;Communication problems&quot; is too vague. &quot;Status updates not reaching stakeholders&quot; is better.</p>
+<h3>Include Data</h3>
+<p>Where possible, attach evidence to causes. &quot;Manager quality&quot; backed by &quot;Exit interviews cite manager in 60% of departures&quot; is more persuasive.</p>
+<h3>Iterate</h3>
+<p>The first pass is rarely complete. Revisit after investigation. Add what you&#39;ve learned. Remove what&#39;s been ruled out.</p>
+<h3>Avoid Blame</h3>
+<p>Keep the focus on systems and processes, not individuals. &quot;John&#39;s errors&quot; isn&#39;t useful. &quot;Inadequate training for complex tasks&quot; is useful.</p>
+<h2>Combining with Other Tools</h2>
+<ul>
+<li><strong>Five Whys:</strong> For each bone, ask why to find deeper causes</li>
+<li><strong>Pareto Analysis:</strong> Prioritize which causes to address first</li>
+<li><strong>TRACE Protocol:</strong> Use the fishbone in the &quot;Analyze&quot; phase</li>
 </ul>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>A fishbone diagram doesn&#39;t solve the problem. It maps the territory where the solution lives.</em></p>
 
             </article>
 

@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>The TRACE Protocol | Fogsift Wiki</title>
+    <meta name="description" content="TRACE is our systematic approach to diagnostic investigation. It provides structure without being prescriptive, ensuring thorough investigation while remaining ">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/trace-protocol.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="The TRACE Protocol | Fogsift Wiki">
+    <meta property="og:description" content="TRACE is our systematic approach to diagnostic investigation. It provides structure without being prescriptive, ensuring thorough investigation while remaining ">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/trace-protocol.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">TRACE PROTOCOL</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -120,7 +120,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">🔧 Frameworks</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
+    <li><a href="../frameworks/trace-protocol.html" class="active">The TRACE Protocol</a></li>
     <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
     <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
     <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
@@ -162,45 +162,129 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>The TRACE Protocol</h1>
+<p>TRACE is our systematic approach to diagnostic investigation. It provides structure without being prescriptive, ensuring thorough investigation while remaining adaptable to different problem types.</p>
+<h2>The Framework</h2>
+<h3>T - Target the Symptom</h3>
+<p>Before you can solve a problem, you need to define it precisely.</p>
+<p><strong>Questions to answer:</strong></p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>What exactly is happening?</li>
+<li>What should be happening instead?</li>
+<li>What is the gap between current and desired state?</li>
+<li>How do we measure the symptom?</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p><strong>Common mistakes:</strong></p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Defining the problem too broadly (&quot;things are broken&quot;)</li>
+<li>Defining the symptom as a cause (&quot;we have a training problem&quot;)</li>
+<li>Accepting someone else&#39;s problem definition without verification</li>
+</ul>
+<p><strong>Output:</strong> A clear, measurable symptom statement.</p>
+<hr>
+<h3>R - Record the Evidence</h3>
+<p>Systematic evidence collection prevents confirmation bias and ensures you don&#39;t miss important data.</p>
+<p><strong>Evidence types:</strong></p>
+<ul>
+<li><strong>Documentary:</strong> Emails, reports, logs, metrics, procedures</li>
+<li><strong>Testimonial:</strong> Interviews, observations, firsthand accounts</li>
+<li><strong>Physical:</strong> Site observations, artifact inspection</li>
+<li><strong>Temporal:</strong> Timelines, sequences, patterns over time</li>
+</ul>
+<p><strong>Recording principles:</strong></p>
+<ul>
+<li>Capture everything, filter later</li>
+<li>Note sources and dates</li>
+<li>Distinguish fact from interpretation</li>
+<li>Preserve original context</li>
+</ul>
+<p><strong>Output:</strong> Organized evidence repository with clear sourcing.</p>
+<hr>
+<h3>A - Analyze the Chain</h3>
+<p>Map the causal chain from symptom to source.</p>
+<p><strong>Process:</strong></p>
+<ol>
+<li>Start with the symptom</li>
+<li>Ask &quot;what directly caused this?&quot;</li>
+<li>Document the cause</li>
+<li>Repeat until you reach a point where intervention is possible</li>
+</ol>
+<p><strong>Tools:</strong></p>
+<ul>
+<li><a href="/wiki/tools/five-whys.html">Five Whys</a></li>
+<li><a href="/wiki/tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
+<li>Causal chain mapping</li>
+<li>Timeline analysis</li>
+</ul>
+<p><strong>Warning signs you&#39;ve stopped too early:</strong></p>
+<ul>
+<li>The cause is a person (&quot;John made an error&quot;)</li>
+<li>The cause is vague (&quot;communication breakdown&quot;)</li>
+<li>You can&#39;t explain <em>why</em> this cause occurred</li>
+</ul>
+<p><strong>Output:</strong> Visual causal chain from symptom to root cause.</p>
+<hr>
+<h3>C - Challenge Assumptions</h3>
+<p>Every investigation is built on assumptions. Some are valid. Some aren&#39;t.</p>
+<p><strong>Questions to ask:</strong></p>
+<ul>
+<li>What are we assuming to be true without evidence?</li>
+<li>What if the opposite were true?</li>
+<li>Whose perspective are we missing?</li>
+<li>What evidence would contradict our current hypothesis?</li>
+</ul>
+<p><strong>Common hidden assumptions:</strong></p>
+<ul>
+<li>&quot;The process is being followed as documented&quot;</li>
+<li>&quot;The people involved are telling us everything&quot;</li>
+<li>&quot;The metric we&#39;re measuring reflects the real problem&quot;</li>
+<li>&quot;Past performance predicts future behavior&quot;</li>
+</ul>
+<p><strong>Output:</strong> List of validated and invalidated assumptions.</p>
+<hr>
+<h3>E - Expose the Root</h3>
+<p>The root cause is the deepest point in the causal chain where intervention is both possible and effective.</p>
+<p><strong>Root cause criteria:</strong></p>
+<ul>
+<li>Removing it prevents recurrence</li>
+<li>It&#39;s within the organization&#39;s control</li>
+<li>Addressing it is proportional to the problem</li>
+<li>The evidence supports it</li>
+</ul>
+<p><strong>Validation tests:</strong></p>
+<ul>
+<li>If this was the root cause, would this symptom have occurred? (Yes)</li>
+<li>If we eliminate this cause, will the symptom recur? (No)</li>
+<li>Can we trace the causal chain from this cause to the symptom? (Yes)</li>
+<li>Is there a deeper cause we haven&#39;t explored? (No)</li>
+</ul>
+<p><strong>Output:</strong> Documented root cause with supporting evidence.</p>
+<hr>
+<h2>Putting It Together</h2>
+<p>TRACE is iterative. You&#39;ll often cycle back through earlier phases as new information emerges:</p>
+<ol>
+<li><strong>Start:</strong> Target the symptom</li>
+<li><strong>Gather:</strong> Record initial evidence</li>
+<li><strong>Map:</strong> Begin analyzing the chain</li>
+<li><strong>Test:</strong> Challenge emerging hypotheses</li>
+<li><strong>Refine:</strong> Return to evidence gathering with new questions</li>
+<li><strong>Converge:</strong> Expose the root when evidence supports it</li>
+</ol>
+<h2>When to Use TRACE</h2>
+<ul>
+<li>Complex problems with unclear causes</li>
+<li>Recurring problems that resist simple fixes</li>
+<li>High-stakes situations where being wrong is costly</li>
+<li>Situations where multiple stakeholders have different explanations</li>
+</ul>
+<h2>When TRACE is Overkill</h2>
+<ul>
+<li>Simple problems with obvious causes</li>
+<li>Situations where speed matters more than certainty</li>
+<li>Problems where the solution is known and implementation is the challenge</li>
 </ul>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>TRACE provides structure, not a script. Adapt it to your context.</em></p>
 
             </article>
 

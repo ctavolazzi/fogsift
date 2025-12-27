@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Field Note: Documentation Debt | Fogsift Wiki</title>
+    <meta name="description" content="---">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/007-documentation-debt.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Field Note: Documentation Debt | Fogsift Wiki">
+    <meta property="og:description" content="---">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/007-documentation-debt.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">DOCUMENTATION DEBT</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -135,7 +135,7 @@
     <li><a href="../field-notes/004-bottlenecks.html">Finding the Bottleneck</a></li>
     <li><a href="../field-notes/005-tribal-knowledge.html">Tribal Knowledge</a></li>
     <li><a href="../field-notes/006-incentive-alignment.html">Incentive Alignment</a></li>
-    <li><a href="../field-notes/007-documentation-debt.html">Documentation Debt</a></li>
+    <li><a href="../field-notes/007-documentation-debt.html" class="active">Documentation Debt</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -162,45 +162,88 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
-<ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
-</ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
-<ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
-</ul>
+                <h1>Field Note: Documentation Debt</h1>
+<p><strong>Date:</strong> 2024-11-28
+<strong>Sector:</strong> ENGINEERING
+<strong>Read Time:</strong> 4 minutes</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p>Technical debt is well understood. Documentation debt is its quieter, more insidious cousin.</p>
+<h2>The Observation</h2>
+<p>Client was struggling with onboarding. New engineers took months to become productive. Everyone blamed the complexity of the codebase.</p>
+<p>We interviewed recent hires. Asked what slowed them down.</p>
+<ul>
+<li>&quot;There&#39;s a wiki, but half the pages are outdated.&quot;</li>
+<li>&quot;I spent three days figuring out something that took my mentor five minutes to explain.&quot;</li>
+<li>&quot;The README says one thing, but the code does something else.&quot;</li>
+<li>&quot;I was afraid to ask because everyone seems so busy.&quot;</li>
+</ul>
+<p>The problem wasn&#39;t code complexity. It was documentation debt.</p>
+<p>The system had evolved. The documentation hadn&#39;t. What was written was wrong. What was right was unwritten.</p>
+<h2>What Is Documentation Debt?</h2>
+<p>Documentation debt accumulates when:</p>
+<ul>
+<li>Docs aren&#39;t created when systems are built</li>
+<li>Docs aren&#39;t updated when systems change</li>
+<li>Knowledge lives in people&#39;s heads instead of accessible sources</li>
+<li>Outdated docs are left in place, misleading future readers</li>
+</ul>
+<p>Like technical debt, documentation debt compounds. The longer you wait, the harder it is to catch up.</p>
+<h2>The Cost of Documentation Debt</h2>
+<h3>Onboarding Time</h3>
+<p>Every new person has to reconstruct the knowledge that could have been documented. Multiply this by every hire, and the waste is staggering.</p>
+<h3>Expert Dependency</h3>
+<p>When only certain people know how things work, they become bottlenecks. Everything flows through them. They can&#39;t take vacation. They can&#39;t work on new things.</p>
+<h3>Repeated Mistakes</h3>
+<p>Without documentation, each person discovers the same pitfalls independently. Lessons don&#39;t transfer. Mistakes repeat.</p>
+<h3>Decision Paralysis</h3>
+<p>When no one knows why things are the way they are, no one wants to change them. &quot;It might be like that for a reason.&quot;</p>
+<h3>Tribal Knowledge Risk</h3>
+<p>See <a href="/wiki/field-notes/005-tribal-knowledge.html">Field Note: Tribal Knowledge</a>. Undocumented knowledge walks out the door when people leave.</p>
+<h2>Where Documentation Debt Hides</h2>
+<h3>Architecture Decisions</h3>
+<p>Why was it built this way? What alternatives were considered? What are the trade-offs? This context is almost never written down.</p>
+<h3>Configuration</h3>
+<p>What do these settings mean? Why are they set to these values? What happens if you change them?</p>
+<h3>Procedures</h3>
+<p>How do you deploy? How do you recover from failure? How do you handle the edge cases?</p>
+<h3>History</h3>
+<p>What did we try before? What didn&#39;t work? What constraints existed that might have changed?</p>
+<h2>Paying Down Documentation Debt</h2>
+<h3>Make It Part of the Work</h3>
+<p>Documentation isn&#39;t a separate task. It&#39;s part of completing the work. A feature isn&#39;t done until it&#39;s documented.</p>
+<h3>Write for the Future</h3>
+<p>Write for someone who doesn&#39;t know what you know. Your future self qualifies.</p>
+<h3>Capture Decisions</h3>
+<p>When you make a significant decision, write down:</p>
+<ul>
+<li>What you decided</li>
+<li>What alternatives you considered</li>
+<li>Why you chose this option</li>
+<li>What would make you reconsider</li>
+</ul>
+<h3>Kill Zombie Docs</h3>
+<p>Outdated documentation is worse than no documentation. It misleads. Either update it or delete it.</p>
+<h3>Create Forcing Functions</h3>
+<ul>
+<li>Code reviews that check for doc updates</li>
+<li>Onboarding feedback that identifies gaps</li>
+<li>Regular doc audits</li>
+<li>Ownership assignment for doc sections</li>
+</ul>
+<h2>The Resolution</h2>
+<p>We implemented a documentation sprint. Two weeks of capturing the critical knowledge that was trapped in heads.</p>
+<p>More importantly, we changed the process:</p>
+<ul>
+<li>PRs now require doc updates for user-facing changes</li>
+<li>Architecture Decision Records (ADRs) for significant choices</li>
+<li>Onboarding includes creating documentation as you learn</li>
+<li>Doc ownership rotates quarterly</li>
+</ul>
+<p>Six months later, onboarding time had halved. And the senior engineers weren&#39;t getting interrupted as often.</p>
+<h2>The Takeaway</h2>
+<p>Documentation isn&#39;t overhead. It&#39;s infrastructure. Every hour not spent documenting is borrowed from the future. Eventually, the debt comes due.</p>
+<hr>
+<p><em>If it isn&#39;t written down, you&#39;ll explain it again. And again. And again.</em></p>
 
             </article>
 

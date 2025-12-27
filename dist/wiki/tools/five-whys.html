@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>The Five Whys | Fogsift Wiki</title>
+    <meta name="description" content="The Five Whys is a simple but powerful technique for drilling past symptoms to find root causes. Ask "why?" repeatedly until you reach a cause you can actually ">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/tools/five-whys.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="The Five Whys | Fogsift Wiki">
+    <meta property="og:description" content="The Five Whys is a simple but powerful technique for drilling past symptoms to find root causes. Ask "why?" repeatedly until you reach a cause you can actually ">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/tools/five-whys.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">FIVE WHYS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -149,7 +149,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">🛠️ Tools & Techniques</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../tools/five-whys.html">The Five Whys</a></li>
+    <li><a href="../tools/five-whys.html" class="active">The Five Whys</a></li>
     <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
     <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
     <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
@@ -162,45 +162,79 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
+                <h1>The Five Whys</h1>
+<p>The Five Whys is a simple but powerful technique for drilling past symptoms to find root causes. Ask &quot;why?&quot; repeatedly until you reach a cause you can actually address.</p>
 <h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+<ol>
+<li>Start with a problem statement</li>
+<li>Ask &quot;Why did this happen?&quot;</li>
+<li>Take the answer and ask &quot;Why?&quot; again</li>
+<li>Repeat until you reach an actionable root cause</li>
+<li>(Usually takes about five iterations, hence the name)</li>
+</ol>
+<h2>Example</h2>
+<p><strong>Problem:</strong> The website went down during peak traffic</p>
+<ol>
+<li><strong>Why?</strong> The server ran out of memory</li>
+<li><strong>Why?</strong> The application had a memory leak</li>
+<li><strong>Why?</strong> Database connections weren&#39;t being closed</li>
+<li><strong>Why?</strong> The connection pooling configuration was wrong</li>
+<li><strong>Why?</strong> We used default settings from a tutorial without understanding them</li>
+</ol>
+<p><strong>Root cause:</strong> Configuration wasn&#39;t reviewed for production requirements</p>
+<p><strong>Action:</strong> Create a deployment checklist that includes configuration review</p>
+<h2>When to Use It</h2>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Initial investigation of problems</li>
+<li>When you need to move quickly from symptom to cause</li>
+<li>When the causal chain is relatively linear</li>
+<li>As a facilitation technique in group problem-solving</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
-<ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
-</ul>
+<h2>When It Doesn&#39;t Work</h2>
+<h3>Complex Causation</h3>
+<p>When multiple causes interact, asking &quot;why?&quot; in a straight line misses the complexity. You might need <a href="/wiki/tools/fishbone-diagram.html">Fishbone Diagrams</a> or systems mapping instead.</p>
+<h3>Human-Caused Problems</h3>
+<p>&quot;Why?&quot; can feel like blame. &quot;Why did you make that mistake?&quot; puts people on the defensive. Rephrase: &quot;What about the situation led to this outcome?&quot;</p>
+<h3>Inadequate Expertise</h3>
+<p>If no one in the room understands the system, asking &quot;why?&quot; just generates guesses. You need investigation, not interrogation.</p>
+<h3>Premature Termination</h3>
+<p>People often stop at convenient answers. &quot;Human error&quot; is not a root cause. Neither is &quot;didn&#39;t follow the process.&quot; Ask why those things happened.</p>
+<h2>Best Practices</h2>
+<h3>Keep Asking</h3>
+<p>Five is a guideline, not a rule. Sometimes you need three whys. Sometimes you need seven. Stop when you reach something actionable.</p>
+<h3>Verify Each Answer</h3>
+<p>Each &quot;because&quot; should be factual, not hypothetical. If you don&#39;t know, investigate before proceeding.</p>
+<h3>Consider Multiple Branches</h3>
+<p>The first &quot;why&quot; might have multiple answers. Explore each branch. The real root cause might be in an unexpected direction.</p>
+<h3>Focus on Systems, Not People</h3>
+<p>&quot;John made an error&quot; is not useful. &quot;The system allowed/encouraged John&#39;s error&quot; is useful.</p>
+<h3>Document the Chain</h3>
+<p>Write down each why and because. This creates a record and makes gaps visible.</p>
+<h2>Variations</h2>
+<h3>5 Whys with Evidence</h3>
+<p>For each &quot;because,&quot; require supporting evidence. Slows down the process but increases accuracy.</p>
+<h3>Branching 5 Whys</h3>
+<p>When you get multiple answers to a &quot;why,&quot; explore each branch separately. Results in a tree rather than a line.</p>
+<h3>5 Whys + 2 Hows</h3>
+<p>After finding the root cause, ask &quot;How do we prevent this?&quot; and &quot;How do we detect it earlier?&quot;</p>
+<h2>Common Mistakes</h2>
+<h3>Stopping at Symptoms</h3>
+<p>&quot;Why did the server crash?&quot; → &quot;Because it was overloaded.&quot; That&#39;s still a symptom. Keep going.</p>
+<h3>Accepting &quot;Because X Failed to Y&quot;</h3>
+<p>&quot;Because QA failed to catch the bug&quot; blames QA without asking why the bug was catchable and wasn&#39;t caught.</p>
+<h3>Guessing</h3>
+<p>&quot;I think it&#39;s because...&quot; is a hypothesis. Verify it before treating it as fact.</p>
+<h3>Single Path</h3>
+<p>Taking only the first answer at each level. Reality is often multi-causal.</p>
+<h2>The Deeper Point</h2>
+<p>The Five Whys isn&#39;t really about the number five. It&#39;s about:</p>
+<ol>
+<li><strong>Not accepting the obvious answer.</strong> The first explanation is usually incomplete.</li>
+<li><strong>Tracing causation systematically.</strong> Following the chain rather than jumping to conclusions.</li>
+<li><strong>Finding actionable causes.</strong> Stopping at something you can actually change.</li>
+</ol>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>The first answer is rarely the root cause. Keep asking.</em></p>
 
             </article>
 

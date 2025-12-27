@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Systems Thinking | Fogsift Wiki</title>
+    <meta name="description" content="Systems thinking is a way of seeing the world as interconnected patterns rather than isolated events. It focuses on relationships, feedback, and emergence rathe">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/systems-thinking.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Systems Thinking | Fogsift Wiki">
+    <meta property="og:description" content="Systems thinking is a way of seeing the world as interconnected patterns rather than isolated events. It focuses on relationships, feedback, and emergence rathe">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/systems-thinking.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">SYSTEMS THINKING</span></li>
             </ol>
         </nav>
     </div>
@@ -109,9 +109,9 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
-    <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
+    <li><a href="../concepts/systems-thinking.html" class="active">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
     <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
     <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
@@ -162,45 +162,85 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Systems Thinking</h1>
+<p>Systems thinking is a way of seeing the world as interconnected patterns rather than isolated events. It focuses on relationships, feedback, and emergence rather than linear cause and effect.</p>
+<h2>The Shift</h2>
+<h3>Event-Level Thinking</h3>
+<p>Most problem-solving operates at the event level:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>&quot;Sales dropped this quarter&quot; → &quot;Run a promotion&quot;</li>
+<li>&quot;Server crashed&quot; → &quot;Restart the server&quot;</li>
+<li>&quot;Employee quit&quot; → &quot;Hire a replacement&quot;</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p>This is reactive. It treats symptoms. Problems recur.</p>
+<h3>Systems-Level Thinking</h3>
+<p>Systems thinking looks deeper:</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>&quot;Sales dropped&quot; → &quot;What market dynamics are shifting? What feedback loop is reinforcing the decline?&quot;</li>
+<li>&quot;Server crashed&quot; → &quot;What load pattern caused this? What architectural constraint made it vulnerable?&quot;</li>
+<li>&quot;Employee quit&quot; → &quot;What about our culture, compensation, or management made leaving attractive?&quot;</li>
 </ul>
+<p>This is proactive. It addresses root causes. Problems get solved.</p>
+<h2>Core Principles</h2>
+<h3>Everything is Connected</h3>
+<p>In a system, components influence each other. Change one thing, and ripples propagate. There are no isolated variables.</p>
+<p><strong>Implication:</strong> Consider second-order effects. Ask &quot;and then what?&quot; until you&#39;ve traced the consequences.</p>
+<h3>Structure Drives Behavior</h3>
+<p>The way a system is organized determines how it behaves. The same people in different structures will produce different results.</p>
+<p><strong>Implication:</strong> If you want different behavior, change the structure. Don&#39;t just blame the people.</p>
+<h3>Feedback Rules Everything</h3>
+<p>Systems are governed by feedback loops, both reinforcing and balancing. Understand the loops, understand the system. See <a href="/wiki/frameworks/feedback-loops.html">Feedback Loop Analysis</a>.</p>
+<p><strong>Implication:</strong> Look for loops. When you find a persistent problem, there&#39;s probably a loop maintaining it.</p>
+<h3>Emergence Happens</h3>
+<p>The behavior of a system is often more than the sum of its parts. Properties emerge from interactions that can&#39;t be predicted from components alone.</p>
+<p><strong>Implication:</strong> You can&#39;t fully understand a system by analyzing its components in isolation.</p>
+<h3>Delays Obscure Causation</h3>
+<p>In systems, causes and effects are often separated by time. This makes learning from experience difficult and interventions hard to evaluate.</p>
+<p><strong>Implication:</strong> Be patient. Look for delayed effects. Don&#39;t assume absence of immediate result means absence of effect.</p>
+<h2>System Archetypes</h2>
+<p>Certain patterns appear repeatedly across different systems:</p>
+<h3>Fixes That Fail</h3>
+<p>A quick fix solves the symptom but ignores the root cause. The problem returns, often worse.</p>
+<p><strong>Structure:</strong> Symptom → Fix → Relief (delay) → Side effect → Worse symptom</p>
+<p><strong>Example:</strong> Overtime to meet deadlines → Short-term success → Fatigue → Lower productivity → More overtime needed</p>
+<h3>Shifting the Burden</h3>
+<p>An addiction-like pattern where symptomatic solutions undermine fundamental solutions.</p>
+<p><strong>Structure:</strong> Problem → Symptomatic solution + Fundamental solution → Symptomatic solution is easier → Dependency develops → Fundamental solution atrophies</p>
+<p><strong>Example:</strong> Knowledge gap → Hire consultants + Train staff → Consultants are faster → Dependency on consultants → Internal capability never develops</p>
+<h3>Limits to Growth</h3>
+<p>Initial success encounters constraints that slow and eventually stop growth.</p>
+<p><strong>Structure:</strong> Growth → Success → Constraint activated → Growth slows → (If constraint not addressed) Growth stops</p>
+<p><strong>Example:</strong> Startup grows → More customers → Support quality drops → Customer complaints → Reputation damage → Growth stalls</p>
+<h3>Tragedy of the Commons</h3>
+<p>Individual rational actions deplete a shared resource.</p>
+<p><strong>Structure:</strong> Individual benefit → Resource use → (Many individuals) → Resource depletion → Reduced individual benefit</p>
+<p><strong>Example:</strong> Everyone optimizes their department → Shared resources (IT, budget, attention) are overused → Conflict and scarcity → Everyone worse off</p>
+<h2>Applying Systems Thinking</h2>
+<h3>Step 1: Define the System Boundary</h3>
+<p>What&#39;s in? What&#39;s out? Boundaries are always somewhat arbitrary, but you need them to analyze.</p>
+<h3>Step 2: Identify Components</h3>
+<p>What are the major elements? Don&#39;t go too detailed too early.</p>
+<h3>Step 3: Map Relationships</h3>
+<p>How do components influence each other? Draw arrows. Note whether relationships are reinforcing (+) or balancing (-).</p>
+<h3>Step 4: Find the Loops</h3>
+<p>Trace circular patterns. Identify whether they&#39;re reinforcing or balancing. Note delays.</p>
+<h3>Step 5: Look for Leverage</h3>
+<p>Where can small interventions produce large effects? Usually at loop junctions or delay points.</p>
+<h3>Step 6: Test Interventions</h3>
+<p>Before implementing, think through how the system will respond. Will other loops counteract your intervention?</p>
+<h2>Common Mistakes</h2>
+<h3>Focusing on Events</h3>
+<p>Getting caught in the immediate rather than the structural. Events are symptoms; system structure is the cause.</p>
+<h3>Linear Thinking</h3>
+<p>Assuming A → B → C without considering that C might influence A.</p>
+<h3>Ignoring Delays</h3>
+<p>Expecting immediate results and abandoning interventions too soon.</p>
+<h3>Pushing on Resistance</h3>
+<p>Fighting balancing loops instead of changing what they&#39;re balancing toward.</p>
+<h3>Optimizing Parts</h3>
+<p>Making individual components better without considering system-wide effects.</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>Systems don&#39;t respond to effort. They respond to structure.</em></p>
 
             </article>
 

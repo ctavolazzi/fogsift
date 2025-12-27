@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Process Mapping | Fogsift Wiki</title>
+    <meta name="description" content="Process mapping creates a visual representation of how work flows through a system. It reveals gaps, redundancies, bottlenecks, and opportunities for improvemen">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/tools/process-mapping.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Process Mapping | Fogsift Wiki">
+    <meta property="og:description" content="Process mapping creates a visual representation of how work flows through a system. It reveals gaps, redundancies, bottlenecks, and opportunities for improvemen">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/tools/process-mapping.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">PROCESS MAPPING</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -152,7 +152,7 @@
     <li><a href="../tools/five-whys.html">The Five Whys</a></li>
     <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
     <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
-    <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
+    <li><a href="../tools/process-mapping.html" class="active">Process Mapping</a></li>
   </ul>
 </div>
 
@@ -162,45 +162,132 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Process Mapping</h1>
+<p>Process mapping creates a visual representation of how work flows through a system. It reveals gaps, redundancies, bottlenecks, and opportunities for improvement that are invisible in verbal descriptions.</p>
+<h2>Why Map Processes?</h2>
+<h3>Reality vs. Perception</h3>
+<p>The process people describe is rarely the process they follow. Mapping reveals the actual flow.</p>
+<h3>Hidden Complexity</h3>
+<p>Simple processes often have hidden steps, decision points, and exceptions. Mapping makes them visible.</p>
+<h3>Communication</h3>
+<p>A visual map communicates more clearly than paragraphs of text. Different stakeholders can literally point to where they see problems.</p>
+<h3>Baseline for Improvement</h3>
+<p>You can&#39;t improve what you don&#39;t understand. Maps create the foundation for optimization.</p>
+<h2>Types of Process Maps</h2>
+<h3>Flowchart</h3>
+<p>Basic steps and decision points. Good for simple, linear processes.</p>
+<pre><code>[Start] → [Step 1] → [Decision?] → [Step 2A] → [End]
+                    ↓
+               [Step 2B] → [End]
+</code></pre>
+<h3>Swimlane Diagram</h3>
+<p>Shows who performs each step. Good for cross-functional processes.</p>
+<pre><code>┌──────────────────────────────────────────┐
+│ Customer   │ [Request] ─────────────────→│
+├────────────┼─────────────────────────────┤
+│ Sales      │           │ [Quote]         │
+├────────────┼───────────┼─────────────────┤
+│ Operations │           │         [Fulfill]
+└────────────┴───────────┴─────────────────┘
+</code></pre>
+<h3>Value Stream Map</h3>
+<p>Shows time, value-add vs. waste, and inventory between steps. Good for lean improvement.</p>
+<h3>SIPOC</h3>
+<p>High-level view: Suppliers, Inputs, Process, Outputs, Customers. Good for scoping before detailed mapping.</p>
+<h2>Building a Process Map</h2>
+<h3>Step 1: Define Scope</h3>
+<p>Where does the process start? Where does it end? What&#39;s in scope?</p>
+<p>Common boundaries:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>When a request arrives → when it&#39;s fulfilled</li>
+<li>When a problem is detected → when it&#39;s resolved</li>
+<li>When material arrives → when product ships</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<h3>Step 2: Identify Steps</h3>
+<p>Walk through the process. Document each action.</p>
+<p><strong>Methods:</strong></p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Observe the process in action</li>
+<li>Interview people who do the work</li>
+<li>Review existing documentation (skeptically)</li>
+<li>Follow a specific case through the system</li>
 </ul>
+<h3>Step 3: Sequence Steps</h3>
+<p>Arrange steps in order. Identify parallel paths and decision points.</p>
+<h3>Step 4: Add Detail</h3>
+<p>For each step, capture:</p>
+<ul>
+<li>Who performs it</li>
+<li>How long it takes</li>
+<li>What inputs are needed</li>
+<li>What outputs are produced</li>
+<li>What can go wrong</li>
+</ul>
+<h3>Step 5: Validate</h3>
+<p>Review the map with people who do the work. They&#39;ll catch errors and omissions.</p>
+<h3>Step 6: Analyze</h3>
+<p>Look for:</p>
+<ul>
+<li><strong>Bottlenecks:</strong> Where does work queue up?</li>
+<li><strong>Loops:</strong> Where do things go back for rework?</li>
+<li><strong>Handoffs:</strong> Where does work transfer between people/teams?</li>
+<li><strong>Decision points:</strong> Where does the process branch?</li>
+<li><strong>Delays:</strong> Where does work wait?</li>
+<li><strong>Redundancy:</strong> Where is work duplicated?</li>
+<li><strong>Missing steps:</strong> What happens that isn&#39;t documented?</li>
+</ul>
+<h2>What to Look For</h2>
+<h3>Non-Value-Add Steps</h3>
+<p>Steps that don&#39;t contribute to what the customer values. Transport, waiting, inspection, rework.</p>
+<h3>Exception Handling</h3>
+<p>How are unusual cases handled? Are there undocumented workarounds?</p>
+<h3>Information Gaps</h3>
+<p>Where do people lack information they need? Where do they hunt for data?</p>
+<h3>Approval Bottlenecks</h3>
+<p>Where do approvals slow things down? Are all those approvals necessary?</p>
+<h3>Handoff Failures</h3>
+<p>Where does work fall through cracks between teams or shifts?</p>
+<h2>Best Practices</h2>
+<h3>Map What Is, Not What Should Be</h3>
+<p>Document the current reality, including workarounds and exceptions. Improvement comes later.</p>
+<h3>Include the Informal</h3>
+<p>The unofficial steps, the shortcuts, the tribal knowledge: these are often more important than formal procedures.</p>
+<h3>Use Consistent Symbols</h3>
+<p>Standard symbols make maps readable:</p>
+<ul>
+<li>Rectangles: Steps</li>
+<li>Diamonds: Decisions</li>
+<li>Arrows: Flow direction</li>
+<li>Ovals: Start/End</li>
+<li>Circles: Connectors</li>
+</ul>
+<h3>Keep It Readable</h3>
+<p>A map that&#39;s too detailed becomes useless. Create high-level overviews, then drill down where needed.</p>
+<h3>Date and Version</h3>
+<p>Processes change. Mark when the map was made and what version it is.</p>
+<h2>Common Mistakes</h2>
+<h3>Mapping the Ideal</h3>
+<p>Drawing how the process <em>should</em> work instead of how it <em>does</em> work.</p>
+<h3>Over-Detailing</h3>
+<p>Trying to capture every possible exception and edge case. The map becomes unreadable.</p>
+<h3>Skipping Validation</h3>
+<p>Assuming you understood correctly without checking with the people who do the work.</p>
+<h3>One-Time Exercise</h3>
+<p>Treating mapping as a project rather than a living document. Processes evolve; maps should too.</p>
+<h3>Ignoring Variation</h3>
+<p>Mapping one version of a process when multiple versions exist. Different shifts, different sites, different people might follow different processes.</p>
+<h2>Using the Map</h2>
+<p>Once you have a process map:</p>
+<ol>
+<li><strong>Identify improvements:</strong> Where are the obvious waste and delay?</li>
+<li><strong>Prioritize:</strong> Which improvements have the biggest impact? See <a href="/wiki/tools/pareto-analysis.html">Pareto Analysis</a>.</li>
+<li><strong>Design future state:</strong> Map how you want the process to work.</li>
+<li><strong>Plan transition:</strong> What needs to change to get from current to future?</li>
+<li><strong>Implement and measure:</strong> Make changes, measure results.</li>
+<li><strong>Update the map:</strong> The new current state becomes the new baseline.</li>
+</ol>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>You can&#39;t improve what you can&#39;t see. Mapping makes the invisible visible.</em></p>
 
             </article>
 

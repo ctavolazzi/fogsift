@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Decision Matrix | Fogsift Wiki</title>
+    <meta name="description" content="A decision matrix is a structured approach to evaluating options against weighted criteria. It turns complex decisions into transparent, defensible choices.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/decision-matrix.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Decision Matrix | Fogsift Wiki">
+    <meta property="og:description" content="A decision matrix is a structured approach to evaluating options against weighted criteria. It turns complex decisions into transparent, defensible choices.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/decision-matrix.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">DECISION MATRIX</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -121,7 +121,7 @@
   <h4 class="wiki-nav-title">🔧 Frameworks</h4>
   <ul class="wiki-nav-list">
     <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
-    <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
+    <li><a href="../frameworks/decision-matrix.html" class="active">Decision Matrix</a></li>
     <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
     <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
   </ul>
@@ -162,45 +162,151 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Decision Matrix</h1>
+<p>A decision matrix is a structured approach to evaluating options against weighted criteria. It turns complex decisions into transparent, defensible choices.</p>
+<h2>When to Use It</h2>
+<p>Use a decision matrix when:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>You have multiple viable options</li>
+<li>Multiple criteria matter</li>
+<li>Stakeholders have different priorities</li>
+<li>You need to document the rationale</li>
+<li>The decision is high-stakes or irreversible</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p>Don&#39;t use it when:</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>There&#39;s an obvious choice</li>
+<li>Speed matters more than optimization</li>
+<li>You&#39;re using it to justify a decision you&#39;ve already made</li>
 </ul>
+<h2>The Framework</h2>
+<h3>Step 1: Define Options</h3>
+<p>List all viable options. Include &quot;do nothing&quot; if it&#39;s a real option. Exclude options that fail hard constraints.</p>
+<p><strong>Good options are:</strong></p>
+<ul>
+<li>Mutually exclusive (you can&#39;t do both)</li>
+<li>Collectively exhaustive (you&#39;ve covered the space)</li>
+<li>Concrete (you know what implementation looks like)</li>
+</ul>
+<h3>Step 2: Define Criteria</h3>
+<p>What factors matter for this decision? Criteria should be:</p>
+<ul>
+<li><strong>Independent:</strong> Each criterion measures something different</li>
+<li><strong>Measurable:</strong> You can evaluate options against them</li>
+<li><strong>Relevant:</strong> They actually affect the outcome you care about</li>
+<li><strong>Accepted:</strong> Stakeholders agree these are the right criteria</li>
+</ul>
+<p><strong>Common criteria categories:</strong></p>
+<ul>
+<li>Cost (upfront, ongoing, hidden)</li>
+<li>Risk (likelihood, impact, reversibility)</li>
+<li>Time (to implement, to realize value)</li>
+<li>Capability (what it enables)</li>
+<li>Alignment (with strategy, culture, constraints)</li>
+</ul>
+<h3>Step 3: Weight Criteria</h3>
+<p>Not all criteria matter equally. Assign weights that sum to 100%.</p>
+<p><strong>Weighting methods:</strong></p>
+<ul>
+<li><strong>Direct assignment:</strong> Stakeholders agree on percentages</li>
+<li><strong>Pairwise comparison:</strong> Compare criteria two at a time</li>
+<li><strong>Point allocation:</strong> Give each stakeholder 100 points to distribute</li>
+</ul>
+<p><strong>The conversation about weights is often more valuable than the weights themselves.</strong> It forces stakeholders to articulate what really matters.</p>
+<h3>Step 4: Score Options</h3>
+<p>Rate each option against each criterion. Use a consistent scale (1-5 or 1-10).</p>
+<p><strong>Scoring guidelines:</strong></p>
+<ul>
+<li>Define what each score means before you start</li>
+<li>Score one criterion at a time (not one option at a time)</li>
+<li>Use evidence where available</li>
+<li>Note assumptions and uncertainties</li>
+</ul>
+<h3>Step 5: Calculate and Analyze</h3>
+<p>Multiply each score by its weight and sum across criteria.</p>
+<p><strong>But don&#39;t stop at the number.</strong> Analyze:</p>
+<ul>
+<li>How sensitive is the result to weight changes?</li>
+<li>Where are the biggest score differences?</li>
+<li>What assumptions drive the scores?</li>
+<li>Does the result match intuition? If not, why?</li>
+</ul>
+<h2>Example</h2>
+<p><strong>Decision:</strong> Which project management tool to adopt?</p>
+<table>
+<thead>
+<tr>
+<th>Criterion</th>
+<th>Weight</th>
+<th>Tool A</th>
+<th>Tool B</th>
+<th>Tool C</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ease of use</td>
+<td>30%</td>
+<td>4</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Integration</td>
+<td>25%</td>
+<td>5</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>20%</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Scalability</td>
+<td>15%</td>
+<td>4</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Support</td>
+<td>10%</td>
+<td>3</td>
+<td>4</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Weighted Score</strong></td>
+<td></td>
+<td><strong>3.95</strong></td>
+<td><strong>3.85</strong></td>
+<td><strong>3.75</strong></td>
+</tr>
+</tbody></table>
+<p>Tool A wins, but barely. The decision isn&#39;t clear-cut, which suggests this might warrant more investigation.</p>
+<h2>Common Pitfalls</h2>
+<h3>Analysis Paralysis</h3>
+<p>The matrix is a tool for decision-making, not a substitute for it. At some point, you have enough information. Make the call.</p>
+<h3>False Precision</h3>
+<p>A score of 3.82 is not meaningfully different from 3.79. Don&#39;t let decimal places create false confidence.</p>
+<h3>Gaming the Weights</h3>
+<p>If you change the weights until your preferred option wins, you&#39;re not using a decision matrix. You&#39;re rationalizing.</p>
+<h3>Ignoring Intuition</h3>
+<p>If the matrix says Option A but your gut screams Option B, investigate. Your intuition might be detecting something the matrix missed.</p>
+<h3>Forgetting Implementation</h3>
+<p>The best option on paper is worthless if you can&#39;t implement it. Include implementation feasibility in your criteria.</p>
+<h2>Variations</h2>
+<h3>Threshold Matrix</h3>
+<p>Add a minimum acceptable score for each criterion. Options that fail any threshold are eliminated regardless of total score.</p>
+<h3>Risk-Adjusted Matrix</h3>
+<p>Score both expected outcome and worst-case outcome. Weight them based on risk tolerance.</p>
+<h3>Multi-Stakeholder Matrix</h3>
+<p>Let different stakeholders assign their own weights. Analyze where they agree and disagree.</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>The matrix doesn&#39;t make the decision. It makes the decision process visible.</em></p>
 
             </article>
 

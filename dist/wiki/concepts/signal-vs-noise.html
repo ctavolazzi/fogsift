@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Signal vs Noise | Fogsift Wiki</title>
+    <meta name="description" content="Not all information is equal. Signal is information that tells you something true about reality. Noise is information that doesn't. The ability to distinguish b">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/signal-vs-noise.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Signal vs Noise | Fogsift Wiki">
+    <meta property="og:description" content="Not all information is equal. Signal is information that tells you something true about reality. Noise is information that doesn't. The ability to distinguish b">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/signal-vs-noise.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">SIGNAL VS NOISE</span></li>
             </ol>
         </nav>
     </div>
@@ -109,12 +109,12 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
     <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
-    <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
+    <li><a href="../concepts/signal-vs-noise.html" class="active">Signal vs Noise</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -162,45 +162,108 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Signal vs Noise</h1>
+<p>Not all information is equal. Signal is information that tells you something true about reality. Noise is information that doesn&#39;t. The ability to distinguish between them is fundamental to diagnosis.</p>
+<h2>The Distinction</h2>
+<h3>Signal</h3>
+<p>Signal is information that:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Reflects actual state</li>
+<li>Predicts outcomes</li>
+<li>Remains consistent on re-measurement</li>
+<li>Provides actionable insight</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<h3>Noise</h3>
+<p>Noise is information that:</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Reflects random variation</li>
+<li>Has no predictive power</li>
+<li>Fluctuates without meaningful change</li>
+<li>Distracts from actual patterns</li>
 </ul>
+<h2>Why This Matters</h2>
+<h3>Most Data is Noise</h3>
+<p>In any complex system, most variation is random. Sales fluctuate. Performance varies. Metrics bounce around. Most of this is noise.</p>
+<p>Acting on noise is a mistake. You&#39;ll see patterns that aren&#39;t there, make changes that aren&#39;t needed, and create volatility where stability is possible.</p>
+<h3>Signal is Often Subtle</h3>
+<p>Real signals are often small compared to noise. They require sustained attention to detect. An important trend might be a few percentage points hidden in wild monthly swings.</p>
+<h3>Noise Looks Like Signal</h3>
+<p>Human brains are pattern-recognition machines. We see patterns even where none exist. That face in the clouds, that trend in the data: probably noise.</p>
+<h2>Sources of Noise</h2>
+<h3>Random Variation</h3>
+<p>Every process has inherent variability. Temperature, timing, human attention: these fluctuate randomly.</p>
+<p><strong>Implication:</strong> Expect variation. Don&#39;t treat every fluctuation as meaningful.</p>
+<h3>Measurement Error</h3>
+<p>The act of measuring introduces error. Different people measure differently. Instruments have precision limits.</p>
+<p><strong>Implication:</strong> Understand your measurement uncertainty. Don&#39;t trust precision you can&#39;t justify.</p>
+<h3>Sampling Effects</h3>
+<p>When you measure a subset, you get a different result than you would from the whole.</p>
+<p><strong>Implication:</strong> Larger samples reduce noise. Single data points are almost pure noise.</p>
+<h3>Reporting Bias</h3>
+<p>What gets reported isn&#39;t representative. People report what&#39;s interesting, unusual, or makes them look good.</p>
+<p><strong>Implication:</strong> Ask what&#39;s <em>not</em> being reported. Seek boring data.</p>
+<h2>Detecting Signal</h2>
+<h3>Persistence</h3>
+<p>Signal persists over time. Noise fluctuates.</p>
+<ul>
+<li>Is this pattern consistent across multiple time periods?</li>
+<li>Does it survive changes in measurement approach?</li>
+<li>Would you expect to see it again if you re-measured?</li>
+</ul>
+<h3>Magnitude</h3>
+<p>Significant signals are usually large relative to typical variation.</p>
+<ul>
+<li>How big is this compared to normal fluctuation?</li>
+<li>Is it outside the range of expected randomness?</li>
+<li>Would you notice it without looking for it?</li>
+</ul>
+<h3>Mechanism</h3>
+<p>Real signals have explanations. Noise is random.</p>
+<ul>
+<li>Can you explain why this pattern exists?</li>
+<li>Does the explanation make sense given what you know?</li>
+<li>Would the pattern persist if the explanation were wrong?</li>
+</ul>
+<h3>Convergence</h3>
+<p>Multiple independent sources that agree suggest signal.</p>
+<ul>
+<li>Do different data sources tell the same story?</li>
+<li>Do different analysis methods reach the same conclusion?</li>
+<li>Do multiple observers see the same pattern?</li>
+</ul>
+<h2>Tools for Separation</h2>
+<h3>Statistical Process Control</h3>
+<p>Track metrics over time with control limits. Changes within limits are noise. Changes outside limits are signals worth investigating.</p>
+<h3>Trend Lines</h3>
+<p>Fit a line through noisy data. The line is your best estimate of signal. Deviations from the line are noise.</p>
+<h3>Moving Averages</h3>
+<p>Smooth out noise by averaging over a window. The moving average shows the underlying trend while individual points contain noise.</p>
+<h3>Root Cause Correlation</h3>
+<p>When signal is suspected, trace back to causes. If you can find a cause, it&#39;s more likely signal. If you can&#39;t, it might be noise.</p>
+<h2>Common Mistakes</h2>
+<h3>Over-Fitting</h3>
+<p>Seeing patterns in noise because you&#39;re looking too hard. More data points make it easier to find coincidences.</p>
+<p><strong>Fix:</strong> Ask &quot;Would I predict this pattern going forward?&quot;</p>
+<h3>Under-Fitting</h3>
+<p>Dismissing real signals as noise because they&#39;re subtle or uncomfortable.</p>
+<p><strong>Fix:</strong> Ask &quot;What evidence would convince me this is signal?&quot;</p>
+<h3>Premature Pattern Matching</h3>
+<p>Declaring a pattern on insufficient data.</p>
+<p><strong>Fix:</strong> Wait for more data. Require patterns to persist before acting.</p>
+<h3>Treating All Data Equally</h3>
+<p>Averaging high-quality data with low-quality data, or mixing reliable sources with unreliable ones.</p>
+<p><strong>Fix:</strong> Weight data by reliability. Separate sources by quality.</p>
+<h2>Application to Diagnosis</h2>
+<p>When investigating problems:</p>
+<ol>
+<li><strong>Collect more data than you think you need.</strong> Signal emerges from volume.</li>
+<li><strong>Look for persistent patterns.</strong> One data point is noise.</li>
+<li><strong>Triangulate sources.</strong> Signal appears across multiple measures.</li>
+<li><strong>Test explanations.</strong> If you can&#39;t explain why, it might be noise.</li>
+<li><strong>Act on signal, ignore noise.</strong> But be willing to revise as data accumulates.</li>
+</ol>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>In a noisy world, the ability to find signal is a superpower.</em></p>
 
             </article>
 

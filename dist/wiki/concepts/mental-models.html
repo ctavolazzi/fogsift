@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Mental Models | Fogsift Wiki</title>
+    <meta name="description" content="Mental models are frameworks for understanding how things work. They simplify complex reality into patterns we can reason about. The quality of your thinking de">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/mental-models.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Mental Models | Fogsift Wiki">
+    <meta property="og:description" content="Mental models are frameworks for understanding how things work. They simplify complex reality into patterns we can reason about. The quality of your thinking de">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/mental-models.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">MENTAL MODELS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,8 +109,8 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
-    <li><a href="../concepts/mental-models.html">Mental Models</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
+    <li><a href="../concepts/mental-models.html" class="active">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
     <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
@@ -162,45 +162,79 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+                <h1>Mental Models</h1>
+<p>Mental models are frameworks for understanding how things work. They simplify complex reality into patterns we can reason about. The quality of your thinking depends on the quality of your models.</p>
+<h2>What is a Mental Model?</h2>
+<p>A mental model is a simplified representation of reality that helps you:</p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>Predict outcomes</li>
+<li>Make decisions</li>
+<li>Understand systems</li>
+<li>Communicate with others</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p>Every model is incomplete. Every model is wrong in some ways. The goal isn&#39;t perfect models. It&#39;s <em>useful</em> models.</p>
+<h2>Why Models Matter</h2>
+<h3>You Already Use Models</h3>
+<p>Whether you know it or not, you&#39;re already thinking in models:</p>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>&quot;If I drop this, it falls&quot; (gravity model)</li>
+<li>&quot;If I raise prices, demand decreases&quot; (supply/demand model)</li>
+<li>&quot;If I work harder, I&#39;ll succeed&quot; (effort/reward model)</li>
 </ul>
+<p>The question isn&#39;t whether to use models. It&#39;s whether your models are any good.</p>
+<h3>Bad Models Cause Bad Decisions</h3>
+<p>If your model of reality doesn&#39;t match reality, your predictions will be wrong and your decisions will fail.</p>
+<p><strong>Example:</strong> A manager believes &quot;employees are motivated primarily by money.&quot; This model leads to compensation-focused retention strategies. When employees leave for jobs with lower pay but better culture, the manager is confused. The model was wrong.</p>
+<h3>Multiple Models Beat Single Models</h3>
+<p>No single model captures all of reality. The more models you have, the more perspectives you can take. Charlie Munger calls this &quot;mental model diversity.&quot;</p>
+<h2>Core Models for Problem-Solving</h2>
+<h3>First Principles</h3>
+<p>Break problems down to their fundamental truths and build up from there. Don&#39;t reason by analogy unless you understand why the analogy holds.</p>
+<h3>Inversion</h3>
+<p>Instead of asking &quot;how do I succeed?&quot;, ask &quot;what would guarantee failure?&quot; Then avoid those things.</p>
+<h3>Second-Order Effects</h3>
+<p>Ask not just &quot;what happens next?&quot; but &quot;and then what?&quot; Most mistakes come from ignoring downstream consequences. See <a href="/wiki/concepts/second-order-effects.html">Second-Order Effects</a>.</p>
+<h3>Map vs Territory</h3>
+<p>The model is not the reality. The org chart is not the organization. The metric is not the outcome. The description is not the thing. See <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a>.</p>
+<h3>Occam&#39;s Razor</h3>
+<p>Among competing explanations, prefer the simplest one that fits the evidence. Don&#39;t multiply entities unnecessarily.</p>
+<h3>Hanlon&#39;s Razor</h3>
+<p>Never attribute to malice what can be adequately explained by ignorance, confusion, or miscommunication.</p>
+<h3>Margin of Safety</h3>
+<p>Design for more stress than you expect. Build buffers. Assume your estimates are optimistic.</p>
+<h3>Feedback Loops</h3>
+<p>Understand how outputs become inputs. See <a href="/wiki/frameworks/feedback-loops.html">Feedback Loop Analysis</a>.</p>
+<h2>Developing Better Models</h2>
+<h3>Collect Models Actively</h3>
+<p>Read widely across disciplines. Physics, biology, economics, psychology, history, engineering: each field has developed models that apply far beyond their original domain.</p>
+<h3>Test Models Against Reality</h3>
+<p>When a model predicts something, check whether it happens. When predictions fail, update the model.</p>
+<h3>Notice When Models Conflict</h3>
+<p>If two of your models give different answers, at least one is wrong (or you&#39;re applying them incorrectly). Investigate.</p>
+<h3>Hold Models Loosely</h3>
+<p>Strong opinions, loosely held. Be willing to abandon a model when evidence contradicts it.</p>
+<h3>Understand Model Limits</h3>
+<p>Every model has boundary conditions where it stops working. Know what those are.</p>
+<h2>Common Model Failures</h2>
+<h3>Using the Wrong Model</h3>
+<p>Applying a model outside its domain. Not every problem is a nail. Not every solution is a hammer.</p>
+<h3>Confusing Model with Reality</h3>
+<p>Forgetting that the model is a simplification. The stock price is not the company. The grade is not the learning.</p>
+<h3>Ignoring Unfamiliar Models</h3>
+<p>Dismissing models from other fields because they&#39;re unfamiliar. Physics has much to teach business. Biology has much to teach software.</p>
+<h3>Model Lock-In</h3>
+<p>Using the same model for every problem because it worked before. Past success with a model doesn&#39;t guarantee future applicability.</p>
+<h2>Building Your Model Toolkit</h2>
+<p>Start with fundamentals:</p>
+<ol>
+<li>Understand the basic models in this wiki</li>
+<li>Practice applying them to real situations</li>
+<li>Notice when they work and when they don&#39;t</li>
+<li>Add new models from diverse sources</li>
+<li>Develop intuition for which model fits which situation</li>
+</ol>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>The map is not the territory, but a good map still beats wandering blind.</em></p>
 
             </article>
 

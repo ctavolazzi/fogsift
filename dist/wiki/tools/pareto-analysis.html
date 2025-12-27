@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Root Cause Analysis | Fogsift Wiki</title>
-    <meta name="description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <title>Pareto Analysis | Fogsift Wiki</title>
+    <meta name="description" content="Pareto Analysis applies the 80/20 rule to problem-solving: roughly 80% of effects come from 20% of causes. By identifying and focusing on the vital few, you get">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/root-cause.html">
+    <link rel="canonical" href="https://fogsift.com/wiki/tools/pareto-analysis.html">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Root Cause Analysis | Fogsift Wiki">
-    <meta property="og:description" content="Root cause analysis is the systematic process of tracing a problem back to its origin. It's not about fixing symptoms. It's about finding the actual source.">
+    <meta property="og:title" content="Pareto Analysis | Fogsift Wiki">
+    <meta property="og:description" content="Pareto Analysis applies the 80/20 rule to problem-solving: roughly 80% of effects come from 20% of causes. By identifying and focusing on the vital few, you get">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/root-cause.html">
+    <meta property="og:url" content="https://fogsift.com/wiki/tools/pareto-analysis.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -83,7 +83,7 @@
                 <li class="crumb-item crumb-separator">/</li>
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">WIKI</a></li>
                 <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">ROOT CAUSE</span></li>
+                <li class="crumb-item"><span class="crumb-current">PARETO ANALYSIS</span></li>
             </ol>
         </nav>
     </div>
@@ -109,7 +109,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title">💡 Concepts</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../concepts/root-cause.html" class="active">Root Cause Analysis</a></li>
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
     <li><a href="../concepts/mental-models.html">Mental Models</a></li>
     <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
     <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
@@ -151,7 +151,7 @@
   <ul class="wiki-nav-list">
     <li><a href="../tools/five-whys.html">The Five Whys</a></li>
     <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
-    <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
+    <li><a href="../tools/pareto-analysis.html" class="active">Pareto Analysis</a></li>
     <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
   </ul>
 </div>
@@ -162,45 +162,223 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-content">
-                <h1>Root Cause Analysis</h1>
-<p>Root cause analysis is the systematic process of tracing a problem back to its origin. It&#39;s not about fixing symptoms. It&#39;s about finding the actual source.</p>
+                <h1>Pareto Analysis</h1>
+<p>Pareto Analysis applies the 80/20 rule to problem-solving: roughly 80% of effects come from 20% of causes. By identifying and focusing on the vital few, you get maximum impact from limited resources.</p>
 <h2>The Principle</h2>
-<blockquote>
-<p>&quot;For every complex problem, there is an answer that is clear, simple, and wrong.&quot; - H.L. Mencken</p>
-</blockquote>
-<p>Most organizations treat symptoms. They see a fire and reach for a hose. But fires have ignition points. Find the ignition point, and you don&#39;t need the hose.</p>
-<h2>The Method</h2>
-<h3>1. Document the Symptom</h3>
-<p>What exactly is happening? When did it start? Who noticed it first?</p>
-<h3>2. Trace the Wire</h3>
-<p>Follow the causal chain backwards. Every effect has a cause. Every cause has a prior cause.</p>
-<h3>3. Apply the 5 Whys</h3>
-<p>Ask &quot;why&quot; at each step. Don&#39;t stop at the comfortable answer.</p>
-<p><strong>Example:</strong></p>
+<p>Not all causes are equal. A few critical causes typically account for most of the problem. Finding those causes and addressing them first is more effective than treating everything equally.</p>
+<p><strong>Examples:</strong></p>
 <ul>
-<li><em>Why</em> did the server crash? → Memory leak</li>
-<li><em>Why</em> was there a memory leak? → Unclosed database connections</li>
-<li><em>Why</em> weren&#39;t connections closed? → No timeout configured</li>
-<li><em>Why</em> was there no timeout? → Default settings copied from prototype</li>
-<li><em>Why</em> were prototype settings used? → No deployment checklist</li>
+<li>80% of complaints come from 20% of issues</li>
+<li>80% of defects come from 20% of root causes</li>
+<li>80% of delays come from 20% of bottlenecks</li>
+<li>80% of value comes from 20% of effort</li>
 </ul>
-<p>The root cause isn&#39;t &quot;memory leak.&quot; It&#39;s &quot;no deployment checklist.&quot;</p>
-<h2>Common Traps</h2>
-<h3>Premature Closure</h3>
-<p>Stopping at the first plausible explanation. The real cause is usually 2-3 layers deeper.</p>
-<h3>Blame Assignment</h3>
-<p>&quot;Human error&quot; is not a root cause. It&#39;s a symptom of a system that allows humans to err.</p>
-<h3>Confirmation Bias</h3>
-<p>Looking for evidence that supports your initial theory instead of testing it.</p>
-<h2>When to Use This</h2>
-<p>Root cause analysis is expensive. It requires time, access, and honest answers. Use it when:</p>
+<p>The specific ratio varies. It might be 70/30 or 90/10. The point is that impact is unequally distributed.</p>
+<h2>Building a Pareto Chart</h2>
+<h3>Step 1: Define the Problem</h3>
+<p>What are you analyzing? Defect types? Complaint categories? Delay reasons? Be specific.</p>
+<h3>Step 2: Collect Data</h3>
+<p>Count occurrences by category. You need frequency data.</p>
+<table>
+<thead>
+<tr>
+<th>Issue Type</th>
+<th>Count</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Late delivery</td>
+<td>85</td>
+</tr>
+<tr>
+<td>Wrong item</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Damaged item</td>
+<td>28</td>
+</tr>
+<tr>
+<td>Billing error</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Missing item</td>
+<td>12</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>8</td>
+</tr>
+</tbody></table>
+<h3>Step 3: Calculate Percentages</h3>
+<p>Convert counts to percentages of total.</p>
+<table>
+<thead>
+<tr>
+<th>Issue Type</th>
+<th>Count</th>
+<th>Percentage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Late delivery</td>
+<td>85</td>
+<td>45%</td>
+</tr>
+<tr>
+<td>Wrong item</td>
+<td>42</td>
+<td>22%</td>
+</tr>
+<tr>
+<td>Damaged item</td>
+<td>28</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>Billing error</td>
+<td>15</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>Missing item</td>
+<td>12</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>8</td>
+<td>4%</td>
+</tr>
+</tbody></table>
+<h3>Step 4: Calculate Cumulative Percentage</h3>
+<p>Add up percentages as you go down the list.</p>
+<table>
+<thead>
+<tr>
+<th>Issue Type</th>
+<th>Count</th>
+<th>Percentage</th>
+<th>Cumulative</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Late delivery</td>
+<td>85</td>
+<td>45%</td>
+<td>45%</td>
+</tr>
+<tr>
+<td>Wrong item</td>
+<td>42</td>
+<td>22%</td>
+<td>67%</td>
+</tr>
+<tr>
+<td>Damaged item</td>
+<td>28</td>
+<td>15%</td>
+<td>82%</td>
+</tr>
+<tr>
+<td>Billing error</td>
+<td>15</td>
+<td>8%</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>Missing item</td>
+<td>12</td>
+<td>6%</td>
+<td>96%</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>8</td>
+<td>4%</td>
+<td>100%</td>
+</tr>
+</tbody></table>
+<h3>Step 5: Identify the Vital Few</h3>
+<p>Look for where cumulative percentage crosses 80%. In this example, &quot;Late delivery&quot; and &quot;Wrong item&quot; account for 67% of issues. Adding &quot;Damaged item&quot; gets to 82%.</p>
+<p>These three categories are the vital few.</p>
+<h3>Step 6: Focus Resources</h3>
+<p>Address the vital few first. Solving late delivery alone eliminates nearly half the complaints.</p>
+<h2>When to Use It</h2>
 <ul>
-<li>The same problem keeps recurring</li>
-<li>The cost of the problem justifies the investigation</li>
-<li>You suspect the &quot;obvious&quot; fix won&#39;t work</li>
+<li>Resource allocation decisions</li>
+<li>Prioritizing improvement efforts</li>
+<li>Focusing investigation on high-impact areas</li>
+<li>Communicating priorities to stakeholders</li>
+<li>Quality improvement programs</li>
 </ul>
+<h2>When It Doesn&#39;t Work</h2>
+<h3>Uniform Distribution</h3>
+<p>If issues are evenly distributed across categories, there&#39;s no vital few. All causes need attention.</p>
+<h3>Critical Low-Frequency Events</h3>
+<p>Some rare events are catastrophic. A safety failure that happens 1% of the time might matter more than a convenience issue that happens 50% of the time. Pareto analysis counts frequency, not severity.</p>
+<h3>Changing Patterns</h3>
+<p>If the distribution shifts over time, a static Pareto analysis becomes misleading. Update regularly.</p>
+<h3>Category Bias</h3>
+<p>How you define categories affects results. &quot;Late delivery&quot; might hide multiple root causes that should be separated.</p>
+<h2>Best Practices</h2>
+<h3>Weight by Impact</h3>
+<p>If different issues have different costs or severity, multiply frequency by impact before calculating percentages.</p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Count</th>
+<th>Cost Each</th>
+<th>Total Cost</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Billing error</td>
+<td>15</td>
+<td>$500</td>
+<td>$7,500</td>
+</tr>
+<tr>
+<td>Late delivery</td>
+<td>85</td>
+<td>$50</td>
+<td>$4,250</td>
+</tr>
+<tr>
+<td>Wrong item</td>
+<td>42</td>
+<td>$100</td>
+<td>$4,200</td>
+</tr>
+</tbody></table>
+<p>Now billing errors might be the top priority despite lower frequency.</p>
+<h3>Drill Down</h3>
+<p>Once you identify the vital few, apply Pareto analysis within each category. &quot;Late delivery&quot; might break down into subcauses, one of which accounts for most late deliveries.</p>
+<h3>Track Over Time</h3>
+<p>After addressing top causes, the Pareto shifts. The next tier becomes the new vital few. Continuous improvement means continuously updating your analysis.</p>
+<h3>Use With Other Tools</h3>
+<p>Pareto tells you <em>what</em> to focus on. Other tools tell you <em>why</em> it happens:</p>
+<ul>
+<li>Use Pareto to prioritize</li>
+<li>Use <a href="/wiki/tools/fishbone-diagram.html">Fishbone diagrams</a> to explore causes</li>
+<li>Use <a href="/wiki/tools/five-whys.html">Five Whys</a> to find root causes</li>
+<li>Use <a href="/wiki/tools/process-mapping.html">Process mapping</a> to understand the system</li>
+</ul>
+<h2>Common Mistakes</h2>
+<h3>Cherry-Picking Data</h3>
+<p>Selecting time periods or data sources that support a preferred conclusion.</p>
+<h3>Ignoring the Vital Many</h3>
+<p>After fixing the vital few, don&#39;t ignore the rest forever. At some point, the remaining 20% of causes become significant.</p>
+<h3>Category Manipulation</h3>
+<p>Splitting or combining categories to change the analysis. Be consistent and transparent.</p>
+<h3>Static Analysis</h3>
+<p>Doing Pareto once and never updating it as conditions change.</p>
+<h2>The Deeper Point</h2>
+<p>Pareto analysis is about focus. In a world of unlimited resources, treat everything equally. In reality, resources are limited. Pareto helps you invest where it matters most.</p>
 <hr>
-<p><em>See also: <a href="/wiki/field-notes/001-map-territory.html">Field Note: The Map Is Not The Territory</a></em></p>
+<p><em>Not all causes are equal. Find the few that matter.</em></p>
 
             </article>
 
