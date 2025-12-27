@@ -4,6 +4,11 @@ All notable changes to Fogsift will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+
+## [0.0.2] - 2025-12-27
+### Patch
+- Enhanced toast system with copyable errors, wiki system, conversion-focused redesign, quick-deploy script, mobile CSS improvements
+
 ## [0.0.1] - 2025-12-26
 ### Initial Release
 - Complete single-page application with modular build system

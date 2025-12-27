@@ -1,6 +1,6 @@
 {
   "name": "fogsift",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Straight answers to complicated questions",
   "private": true,
   "scripts": {
@@ -14,7 +14,10 @@
     "version:minor": "node scripts/version.js minor",
     "version:major": "node scripts/version.js major"
   },
-  "keywords": ["consulting", "fogsift"],
+  "keywords": [
+    "consulting",
+    "fogsift"
+  ],
   "author": "Christopher Tavolazzi",
   "license": "UNLICENSED",
   "dependencies": {
