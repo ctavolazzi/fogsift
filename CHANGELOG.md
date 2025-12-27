@@ -5,6 +5,20 @@ All notable changes to Fogsift will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
 
+
+## [0.0.3] - 2025-12-27
+### Patch Release - "Secret Sleep Mode"
+
+#### New Features
+- **Secret Sleep Mode**: Hidden easter egg screensaver that activates after 5 minutes on page + 30 seconds idle
+  - Flying toasters animation (classic Mac screensaver homage) in 8-bit pixel art style
+  - Floating "Z" letters in burnt-orange with glow effects
+  - CRT scanline overlay for authentic retro feel
+  - TV flash wake-up effect when clicking to dismiss
+  - Console easter egg messages
+  - Respects `prefers-reduced-motion` accessibility setting
+  - Debug: `SleepMode._debugSleep()` in console to test
+
 ## [0.0.2] - 2025-12-27
 ### Patch Release - "Infrastructure & Polish"
 

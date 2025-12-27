@@ -32,6 +32,7 @@ const JS_FILES = [
     'src/js/theme.js',
     'src/js/modal.js',
     'src/js/nav.js',
+    'src/js/sleep.js',  // Easter egg - must be before main.js
     'src/js/main.js',
 ];
 

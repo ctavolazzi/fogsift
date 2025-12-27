@@ -13,6 +13,7 @@ const App = {
         this.initAccessibility();
         this.initRotatingWords();
         this.logBoot();
+        SleepMode.init();
     },
 
     initClock() {
