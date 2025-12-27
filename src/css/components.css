@@ -1711,7 +1711,8 @@ h1.sleepy, h2.sleepy, h3.sleepy {
 .headline.sleepy-breathing,
 .subhead.sleepy-breathing,
 .section-label.sleepy-breathing,
-.about-name.sleepy-breathing {
+.about-name.sleepy-breathing,
+h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
     animation: textBreathe 3.5s ease-in-out infinite !important;
 }
 
@@ -1738,6 +1739,21 @@ h1.sleepy, h2.sleepy, h3.sleepy {
     100% {
         transform: translateY(20px) rotate(15deg);
         opacity: 0.5;
+    }
+}
+
+.menu-link.sleepy-breathing {
+    animation: navBreathe 3.5s ease-in-out infinite !important;
+}
+
+@keyframes navBreathe {
+    0%, 100% {
+        transform: translateY(20px) rotate(15deg) scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(20px) rotate(15deg) scale(1.03);
+        opacity: 0.55;
     }
 }
 
