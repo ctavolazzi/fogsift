@@ -14,7 +14,7 @@ const Modal = {
 
     async loadArticles() {
         if (this.articles) return this.articles;
-        
+
         try {
             const response = await fetch(this.articlesPath);
             const data = await response.json();
