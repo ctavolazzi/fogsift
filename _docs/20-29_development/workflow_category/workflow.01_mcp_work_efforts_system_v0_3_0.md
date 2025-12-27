@@ -4,9 +4,10 @@ id: workflow.01
 links:
 - '[[00.00_index]]'
 - '[[workflow_category_index]]'
-related_work_efforts: []
+related_work_efforts:
+- WE-251227-uzo7
 title: MCP Work Efforts System v0.3.0
-updated: '2025-12-27T18:41:02Z'
+updated: '2025-12-27T19:30:00Z'
 ---
 
 # MCP Work Efforts System v0.3.0 - Complete Guide
@@ -98,6 +99,103 @@ your-repo/
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## Sequential Thinking Integration
+
+The **sequential-thinking** MCP server provides structured problem-solving for complex tasks. Use it **before** creating work efforts to plan your approach.
+
+### When to Use Sequential Thinking
+
+| Scenario | Use Sequential Thinking? |
+|----------|-------------------------|
+| Complex multi-step feature | ✅ Yes |
+| Problem with unclear scope | ✅ Yes |
+| Simple bug fix | ❌ No |
+| Straightforward task | ❌ No |
+| Architecture decisions | ✅ Yes |
+| Debugging complex issue | ✅ Yes |
+
+### How to Use
+
+```javascript
+mcp_sequential-thinking_sequentialthinking({
+  thought: "Your current thinking step",
+  thoughtNumber: 1,           // Current step (1, 2, 3...)
+  totalThoughts: 5,           // Estimated total steps
+  nextThoughtNeeded: true,    // More thinking needed?
+  isRevision: false,          // Revising previous thought?
+  revisesThought: null        // Which thought being revised
+})
+```
+
+### Example: Planning a Feature
+
+```
+Thought 1: "User wants a dashboard page. Let me identify the components needed..."
+Thought 2: "I'll need: HTML page, CSS styles, data source, navigation link..."
+Thought 3: "Dependencies: none on other features, but needs build script update..."
+Thought 4: "Tickets: 1) Create HTML, 2) Add styles, 3) Update navigation, 4) Test..."
+Thought 5: "Ready to create work effort with 4 tickets. Estimated 30 min work."
+```
+
+---
+
+## Complete AI Workflow (10 Steps)
+
+The work efforts system is part of a larger AI development workflow:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                  COMPLETE AI WORKFLOW                            │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                  │
+│  STEP 0: ECHO                                                    │
+│  Repeat understanding of request. WAIT for confirmation.         │
+│                                                                  │
+│  STEP 1: THINK                                                   │
+│  Use sequential-thinking MCP for complex problems.               │
+│  Tool: mcp_sequential-thinking_sequentialthinking                │
+│                                                                  │
+│  STEP 2: SEARCH                                                  │
+│  Check _work_efforts_ for related work.                          │
+│  Tool: mcp_work-efforts_search_work_efforts                      │
+│                                                                  │
+│  STEP 3: PLAN                                                    │
+│  Create Work Effort with tickets. WAIT for approval.             │
+│  Tool: mcp_work-efforts_create_work_effort                       │
+│                                                                  │
+│  STEP 4: EXECUTE                                                 │
+│  Work through tickets, updating status.                          │
+│  Tool: mcp_work-efforts_update_ticket                            │
+│                                                                  │
+│  STEP 5: VERIFY                                                  │
+│  Test changes work (browser tools for UI).                       │
+│  Tools: mcp_cursor-ide-browser_browser_*                         │
+│                                                                  │
+│  STEP 6: COMPLETE                                                │
+│  Mark tickets and WE as completed.                               │
+│  Tools: update_ticket, update_work_effort                        │
+│                                                                  │
+│  STEP 7: DOCUMENT                                                │
+│  Update _docs if needed.                                         │
+│  Tool: mcp_docs-maintainer_*                                     │
+│                                                                  │
+│  STEP 8: PERSIST                                                 │
+│  Store learnings in memory MCP.                                  │
+│  Tool: mcp_memory_*                                              │
+│                                                                  │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Stopping Points (CRITICAL)
+
+| Step | Action | Wait? |
+|------|--------|-------|
+| 0 | Echo understanding | ⏸️ YES |
+| 3 | Create work effort | ⏸️ YES |
+| Any | Destructive operation | ⏸️ YES |
 
 ---
 
