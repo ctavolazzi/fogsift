@@ -1,7 +1,7 @@
 {
   "name": "Fogsift",
   "short_name": "Fogsift",
-  "description": "Clear answers to complicated questions.",
+  "description": "Clear answers to good questions.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f5f0e6",
