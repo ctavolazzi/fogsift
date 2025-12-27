@@ -80,13 +80,16 @@
         <a href="#inventory" class="mobile-link" onclick="Nav.toggleMobile()">INVENTORY</a>
         <a href="#outputs" class="mobile-link" onclick="Nav.toggleMobile()">OUTPUTS</a>
         <a href="#transmission" class="mobile-link" onclick="Nav.toggleMobile()">TRANSMISSION</a>
+        <a href="#team" class="mobile-link" onclick="Nav.toggleMobile()">TEAM</a>
         <a href="#pricing" class="mobile-link" onclick="Nav.toggleMobile()">PROTOCOL</a>
         <a href="#contact" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </div>
 
     <div class="nav-wrapper">
         <div class="main-nav">
-            <div class="brand" onclick="window.scrollTo(0,0)">FOGSIFT</div>
+            <a href="#" class="brand" onclick="window.scrollTo(0,0); return false;">
+                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
 
             <div class="menu-items">
                 <div class="menu-item">
@@ -102,6 +105,7 @@
                     <span class="menu-link">INTEL</span>
                     <div class="dropdown">
                         <a href="#transmission" class="dropdown-link">Field Notes <span>Transmission Log</span></a>
+                        <a href="#team" class="dropdown-link">The Team <span>Who is FogSift</span></a>
                         <a href="#assets" class="dropdown-link">Secure Assets <span>Downloads</span></a>
                     </div>
                 </div>
@@ -327,6 +331,43 @@
                 <span>[KEY] PGP_PUBLIC_KEY.asc</span>
                 <span>2KB</span>
             </a>
+        </section>
+
+        <section class="section" id="team" data-crumb="INTEL / TEAM">
+            <span class="label" style="border: none; margin-bottom: 2rem;">WHO IS FOGSIFT</span>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">
+                        <img src="images/team/christopher-badge.webp" alt="Christopher - Owner" loading="lazy">
+                    </div>
+                    <div class="team-header">
+                        <span class="team-id">OPERATIVE 001</span>
+                    </div>
+                    <h3 class="team-name">Christopher</h3>
+                    <span class="team-role">Owner</span>
+                    <p class="team-bio">Root cause analyst. System diagnostician. I trace the wire until I find the break.</p>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar placeholder-avatar">?</div>
+                    <div class="team-header">
+                        <span class="team-id">OPERATIVE 002</span>
+                    </div>
+                    <h3 class="team-name">Position Open</h3>
+                    <span class="team-role">TBD</span>
+                    <p class="team-bio">Future operative. Slot reserved for expansion.</p>
+                </div>
+
+                <div class="team-card placeholder">
+                    <div class="team-avatar placeholder-avatar">?</div>
+                    <div class="team-header">
+                        <span class="team-id">OPERATIVE 003</span>
+                    </div>
+                    <h3 class="team-name">Position Open</h3>
+                    <span class="team-role">TBD</span>
+                    <p class="team-bio">Future operative. Slot reserved for expansion.</p>
+                </div>
+            </div>
         </section>
 
         <section class="section" style="margin-top: 6rem;" data-crumb="PROTOCOL / PARAMETERS">

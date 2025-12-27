@@ -42,6 +42,12 @@ const STATIC_ASSETS = [
     { src: 'src/favicon.png', dest: 'favicon.png' },
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
+    // Brand assets
+    { src: 'src/assets/icon-512.png', dest: 'assets/icon-512.png' },
+    { src: 'src/assets/logo-color-transparent.png', dest: 'assets/logo.png' },
+    { src: 'src/assets/logo-mono.png', dest: 'assets/logo-mono.png' },
+    // Team images
+    { src: 'src/images/team/christopher-badge.webp', dest: 'images/team/christopher-badge.webp' },
 ];
 
 function concat(files) {
