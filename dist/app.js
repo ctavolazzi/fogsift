@@ -253,6 +253,12 @@ const Nav = {
    FOGSIFT SECRET SLEEP MODE
    Easter egg screensaver - 70s/80s retro style
    Triggers after 5 min page time + 30s idle
+
+   NOW WITH ADORABLE SLEEPING ELEMENTS!
+   - Elements lie down and breathe
+   - ZZZs float up from sleeping elements
+   - Night caps and snore bubbles
+   - Startled wake-up when clicked!
    ============================================ */
 
 const SleepMode = {
@@ -272,6 +278,18 @@ const SleepMode = {
     animationFrame: null,
     toasters: [],
     zs: [],
+    sleepyElements: [],
+    decorations: [],
+    breathingTimeout: null,
+
+    // Element selectors for sleeping
+    SLEEPY_SELECTORS: {
+        buttons: '.cta-button, .pricing-cta, .theme-toggle, .menu-toggle',
+        cards: '.process-step, .pricing-card, .about-card, .hero-badge, .wiki-category-card',
+        text: '.headline, .subhead, .section-label, .about-name, main h1, main h2, main h3',
+        nav: '.menu-link',
+        logo: '.brand-logo'
+    },
 
     init() {
         this.pageLoadTime = Date.now();
@@ -323,13 +341,136 @@ const SleepMode = {
             'background: #1a1412; color: #fb923c; padding: 10px; font-family: monospace; font-weight: bold;'
         );
 
-        this.createOverlay();
-        this.initToasters();
-        this.initZs();
-        this.startAnimation();
+        // Add body class
+        document.body.classList.add('page-sleeping');
 
-        // Bind wake-up click
-        this.overlay.addEventListener('click', () => this.wakeUp());
+        // Make page elements fall asleep
+        this.putElementsToSleep();
+
+        // Create overlay (after elements start sleeping for better effect)
+        setTimeout(() => {
+            this.createOverlay();
+            this.initToasters();
+            this.initZs();
+            this.startAnimation();
+
+            // Bind wake-up click
+            this.overlay.addEventListener('click', () => this.wakeUp());
+        }, 300);
+    },
+
+    putElementsToSleep() {
+        this.sleepyElements = [];
+        this.decorations = [];
+
+        // Put buttons to sleep
+        document.querySelectorAll(this.SLEEPY_SELECTORS.buttons).forEach((el, i) => {
+            setTimeout(() => {
+                el.classList.add('sleepy');
+                this.sleepyElements.push({ element: el, type: 'button' });
+
+                // Add zzz to some buttons
+                if (i % 2 === 0) {
+                    this.addZzzToElement(el);
+                }
+            }, i * 100);
+        });
+
+        // Put cards to sleep
+        document.querySelectorAll(this.SLEEPY_SELECTORS.cards).forEach((el, i) => {
+            setTimeout(() => {
+                el.classList.add('sleepy');
+                el.style.position = 'relative';
+                this.sleepyElements.push({ element: el, type: 'card' });
+
+                // Add sleep cap to first few cards
+                if (i < 3) {
+                    this.addSleepCap(el);
+                }
+
+                // Add snore bubble to one card
+                if (i === 1) {
+                    this.addSnoreBubble(el);
+                }
+
+                // Add zzz
+                this.addZzzToElement(el);
+            }, 200 + i * 150);
+        });
+
+        // Put text to sleep
+        document.querySelectorAll(this.SLEEPY_SELECTORS.text).forEach((el, i) => {
+            setTimeout(() => {
+                el.classList.add('sleepy');
+                this.sleepyElements.push({ element: el, type: 'text' });
+            }, 100 + i * 80);
+        });
+
+        // Put nav links to sleep
+        document.querySelectorAll(this.SLEEPY_SELECTORS.nav).forEach((el, i) => {
+            setTimeout(() => {
+                el.classList.add('sleepy');
+                this.sleepyElements.push({ element: el, type: 'nav' });
+            }, i * 50);
+        });
+
+        // Put logo to sleep
+        const logo = document.querySelector(this.SLEEPY_SELECTORS.logo);
+        if (logo) {
+            setTimeout(() => {
+                logo.classList.add('sleepy');
+                logo.style.position = 'relative';
+                this.sleepyElements.push({ element: logo, type: 'logo' });
+                this.addZzzToElement(logo);
+                this.addSleepCap(logo);
+            }, 100);
+        }
+
+        // Start breathing after initial sleep animation
+        this.breathingTimeout = setTimeout(() => {
+            this.startBreathing();
+        }, 1500);
+    },
+
+    startBreathing() {
+        this.sleepyElements.forEach(({ element, type }) => {
+            element.classList.remove('sleepy');
+            element.classList.add('sleepy-breathing');
+        });
+    },
+
+    addZzzToElement(element) {
+        const container = document.createElement('div');
+        container.className = 'element-zzz-container';
+        container.style.cssText = 'position: absolute; top: -10px; right: -5px; pointer-events: none;';
+
+        for (let i = 0; i < 3; i++) {
+            const z = document.createElement('span');
+            z.className = 'element-zzz';
+            z.textContent = 'z';
+            z.style.animationDelay = `${i * 1}s`;
+            container.appendChild(z);
+        }
+
+        element.appendChild(container);
+        this.decorations.push(container);
+    },
+
+    addSleepCap(element) {
+        const cap = document.createElement('span');
+        cap.className = 'sleep-cap';
+        cap.textContent = '🧢';
+        cap.style.cssText = 'position: absolute; top: -20px; right: -15px; font-size: 1.5rem; transform: rotate(15deg); z-index: 50;';
+        element.appendChild(cap);
+        this.decorations.push(cap);
+    },
+
+    addSnoreBubble(element) {
+        const bubble = document.createElement('div');
+        bubble.className = 'snore-bubble';
+        bubble.innerHTML = 'zzz...';
+        element.appendChild(bubble);
+        this.decorations.push(bubble);
     },
 
     createOverlay() {
@@ -493,14 +634,26 @@ const SleepMode = {
         // TV turn-on flash effect
         this.overlay.classList.add('waking');
 
+        // Startle all elements!
+        this.startleElements();
+
         setTimeout(() => {
             this.isAsleep = false;
             this.lastActivityTime = Date.now();
+
+            // Cancel breathing timeout if still pending
+            if (this.breathingTimeout) {
+                clearTimeout(this.breathingTimeout);
+            }
 
             // Cancel animation
             if (this.animationFrame) {
                 cancelAnimationFrame(this.animationFrame);
             }
+
+            // Remove body class and add waking
+            document.body.classList.remove('page-sleeping');
+            document.body.classList.add('page-waking');
 
             // Remove overlay with fade
             this.overlay.classList.remove('active');
@@ -513,6 +666,16 @@ const SleepMode = {
                 this.overlay = null;
                 this.canvas = null;
                 this.ctx = null;
+
+                // Clean up decorations
+                this.cleanupDecorations();
+
+                // Remove waking class after animations complete
+                setTimeout(() => {
+                    document.body.classList.remove('page-waking');
+                    this.cleanupElementClasses();
+                }, 700);
+
             }, 500);
 
             // Console message
@@ -521,12 +684,72 @@ const SleepMode = {
                 'background: #f5f0e6; color: #4a2c2a; padding: 10px; font-family: monospace; font-weight: bold;'
             );
         }, 150);
+    },
+
+    startleElements() {
+        // Add startled class to all sleeping elements
+        this.sleepyElements.forEach(({ element, type }, i) => {
+            // Stagger the startle effect slightly
+            setTimeout(() => {
+                element.classList.remove('sleepy', 'sleepy-breathing');
+                element.classList.add('startled');
+
+                // Add exclamation mark to some elements
+                if (type === 'card' && i < 3) {
+                    this.addStartledMark(element);
+                }
+                if (type === 'button' && i === 0) {
+                    this.addStartledMark(element);
+                }
+            }, i * 30);
+        });
+    },
+
+    addStartledMark(element) {
+        const mark = document.createElement('span');
+        mark.className = 'startled-mark';
+        mark.textContent = '!';
+        mark.style.cssText = 'position: absolute; top: -25px; right: -10px;';
+        element.appendChild(mark);
+        this.decorations.push(mark);
+
+        // Remove after animation
+        setTimeout(() => {
+            if (mark.parentNode) {
+                mark.parentNode.removeChild(mark);
+            }
+        }, 600);
+    },
+
+    cleanupDecorations() {
+        this.decorations.forEach(dec => {
+            if (dec && dec.parentNode) {
+                dec.parentNode.removeChild(dec);
+            }
+        });
+        this.decorations = [];
+    },
+
+    cleanupElementClasses() {
+        // Remove all sleep-related classes
+        this.sleepyElements.forEach(({ element }) => {
+            element.classList.remove('sleepy', 'sleepy-breathing', 'startled');
+        });
+        this.sleepyElements = [];
     }
 };
 
 // Make available globally
 window.SleepMode = SleepMode;
 
+// Dev helper: Type SleepMode.test() in console to trigger immediately
+SleepMode.test = function() {
+    console.log('%c 🧪 Testing sleep mode... ', 'background: #4a2c2a; color: #fb923c; padding: 5px;');
+    this.enterSleepMode();
+};
+
+// Also available as window.sleep() for convenience
+window.sleep = () => SleepMode.test();
 
 
 /* ============================================
