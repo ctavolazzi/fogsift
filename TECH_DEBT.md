@@ -59,10 +59,10 @@ dist/                         # Built output (auto-generated)
 
 | ID | Issue | Impact |
 |----|-------|--------|
-| TD-009 | **No version indicator** — No way to tell deployed version | Debug difficulty |
+| ~~TD-009~~ | ~~**No version indicator** — No way to tell deployed version~~ | ✅ Version in footer + version.json |
 | TD-010 | **Duplicated theme logic** — Theme init in both index.html and 404.html | DRY violation |
 | TD-011 | **No CSS custom property fallbacks** — Old browsers break | ~2% user impact |
-| TD-012 | **Console graffiti** — Dev logs in production | Unprofessional |
+| ~~TD-012~~ | ~~**Console graffiti** — Dev logs in production~~ | ✅ Reviewed - only styled branding |
 
 ---
 
