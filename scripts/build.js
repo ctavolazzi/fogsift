@@ -41,6 +41,7 @@ const STATIC_ASSETS = [
     { src: 'src/manifest.json', dest: 'manifest.json' },
     { src: 'src/favicon.png', dest: 'favicon.png' },
     { src: 'src/og-image.png', dest: 'og-image.png' },
+    { src: 'src/content/articles.json', dest: 'content/articles.json' },
 ];
 
 function concat(files) {
@@ -64,6 +65,12 @@ function copyFile(srcPath, destPath) {
     if (!fs.existsSync(fullSrc)) {
         console.warn(`  ⚠ Missing: ${srcPath}`);
         return false;
+    }
+
+    // Ensure destination directory exists
+    const destDir = path.dirname(fullDest);
+    if (!fs.existsSync(destDir)) {
+        fs.mkdirSync(destDir, { recursive: true });
     }
 
     fs.copyFileSync(fullSrc, fullDest);

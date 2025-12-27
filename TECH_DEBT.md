@@ -9,16 +9,29 @@
 ## CURRENT ARCHITECTURE
 
 ```
-dist/
-├── index.html     # 985 lines — CSS + JS + HTML monolith
-├── 404.html       # 150 lines — standalone error page
-├── favicon.png
-├── og-image.png
-├── robots.txt
-└── sitemap.xml
+src/                          # Source files (edit here)
+├── index.html               # ~200 lines clean HTML template
+├── css/
+│   ├── tokens.css           # Design tokens
+│   ├── base.css             # Reset, typography
+│   └── components.css       # Component styles
+├── js/
+│   ├── toast.js             # Toast module
+│   ├── theme.js             # Theme module
+│   ├── modal.js             # Modal module
+│   ├── nav.js               # Navigation module
+│   └── main.js              # App init
+└── content/
+    └── articles.json        # Article content
+
+dist/                         # Built output (auto-generated)
+├── index.html               # Processed HTML
+├── styles.css               # Concatenated CSS
+├── app.js                   # Concatenated JS
+└── [static assets]
 ```
 
-**Stack:** Vanilla HTML/CSS/JS (no build, no dependencies)
+**Stack:** Vanilla HTML/CSS/JS with build script (Node.js)
 
 ---
 
@@ -26,11 +39,11 @@ dist/
 
 ### 🔴 CRITICAL (Fix before next feature)
 
-| ID | Issue | Impact | Lines |
-|----|-------|--------|-------|
-| TD-001 | **Monolith file** — All CSS/JS/HTML in one 985-line file | Can't reuse, hard to maintain | 985 |
-| TD-002 | **Global scope JS** — All functions pollute window | Collision risk, no encapsulation | 160 |
-| TD-003 | **Hardcoded articles** — Content baked into JS `openArticle()` | Can't add content without code change | 520-533 |
+| ID | Issue | Impact | Status |
+|----|-------|--------|--------|
+| ~~TD-001~~ | ~~**Monolith file** — All CSS/JS/HTML in one file~~ | ~~Can't reuse~~ | ✅ Split into src/ modules |
+| ~~TD-002~~ | ~~**Global scope JS** — All functions pollute window~~ | ~~Collision risk~~ | ✅ Module pattern (Toast, Theme, etc) |
+| ~~TD-003~~ | ~~**Hardcoded articles** — Content in modal.js~~ | ~~Can't add content without code change~~ | ✅ Fixed 2025-12-26 |
 
 ### 🟡 MODERATE (Fix in next sprint)
 
@@ -55,42 +68,43 @@ dist/
 
 ## REFACTOR PRIORITY QUEUE
 
-### Phase 1: STRUCTURE (Next)
+### Phase 1: STRUCTURE ✅ COMPLETE
 Split the monolith into composable files:
 
 ```
 src/
-├── index.html          # Clean HTML only
+├── index.html          # ✅ Clean HTML only
 ├── css/
-│   ├── tokens.css      # Design tokens (colors, spacing, fonts)
-│   ├── base.css        # Reset, typography, utilities
-│   └── components.css  # All component styles
+│   ├── tokens.css      # ✅ Design tokens
+│   ├── base.css        # ✅ Reset, typography
+│   └── components.css  # ✅ Component styles
 ├── js/
-│   ├── theme.js        # Theme toggle + persistence
-│   ├── nav.js          # Mobile menu + breadcrumbs
-│   ├── modal.js        # Article modal system
-│   ├── toast.js        # Toast notification system
-│   └── main.js         # Init + event bindings
+│   ├── theme.js        # ✅ Theme module
+│   ├── nav.js          # ✅ Nav module
+│   ├── modal.js        # ✅ Modal module
+│   ├── toast.js        # ✅ Toast module
+│   └── main.js         # ✅ App init
 └── content/
-    └── articles.json   # Article content (title, body, metadata)
+    └── articles.json   # ✅ Created (not yet loaded by modal.js)
 ```
 
-**Benefit:** Each file has one job. Easy to find, easy to change.
+**Status:** ✅ Complete. Modal now fetches from articles.json.
 
-### Phase 2: BUILD (After structure)
-Add minimal build tooling:
+### Phase 2: BUILD 🔄 IN PROGRESS
+Build tooling:
 
 ```
-package.json           # Just for scripts, no frameworks
-├── build              # Concat + minify CSS/JS
-├── dev                # Local server with watch
-└── deploy             # Build + wrangler pages deploy
+package.json           # ✅ Scripts defined
+├── build              # ✅ Concat CSS/JS (no minification yet)
+├── dev                # ✅ Wrangler dev server
+└── deploy             # ✅ Build + deploy to Cloudflare Pages
 ```
 
-**Tooling:**
-- `esbuild` (fast JS bundling)
-- `lightningcss` (CSS minification)
-- No React, no Vite, no webpack
+**Status:** Build works but no minification. Add esbuild/lightningcss for smaller bundles.
+
+**Remaining:**
+- [ ] Add CSS minification (lightningcss or clean-css)
+- [ ] Add JS minification (esbuild --minify)
 
 ### Phase 3: CONTENT (After build)
 Move content out of code:
@@ -126,14 +140,14 @@ content/
 
 ## COMPOSABILITY TARGETS
 
-| Component | Reusable? | Target |
-|-----------|-----------|--------|
-| Toast system | ❌ Inline | ✅ `toast.js` module |
-| Theme toggle | ❌ Inline | ✅ `theme.js` module |
-| Modal system | ❌ Inline | ✅ `modal.js` module |
-| Breadcrumb tracker | ❌ Inline | ✅ `nav.js` module |
-| Design tokens | ❌ In `<style>` | ✅ `tokens.css` |
-| Article content | ❌ In JS | ✅ `articles.json` |
+| Component | Status | Location |
+|-----------|--------|----------|
+| Toast system | ✅ Done | `src/js/toast.js` |
+| Theme toggle | ✅ Done | `src/js/theme.js` |
+| Modal system | ✅ Done | `src/js/modal.js` |
+| Breadcrumb tracker | ✅ Done | `src/js/nav.js` |
+| Design tokens | ✅ Done | `src/css/tokens.css` |
+| Article content | ✅ Done | `src/content/articles.json` loaded by modal.js |
 
 ---
 
@@ -162,10 +176,12 @@ content/
 
 | Metric | Current | Target |
 |--------|---------|--------|
-| index.html size | ~40KB | <15KB (minified) |
+| dist/index.html | ~15KB | <10KB (minified) |
+| dist/styles.css | ~8KB | <5KB (minified) |
+| dist/app.js | ~10KB | <5KB (minified) |
 | Lighthouse Performance | Unknown | >90 |
 | Time to Interactive | Unknown | <1.5s |
-| Files in dist/ | 6 | 10-15 (after split) |
+| Files in src/ | 12 | ✅ Achieved |
 
 ---
 
