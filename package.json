@@ -7,10 +7,12 @@
     "dev": "npx wrangler pages dev dist --port 5050",
     "build": "node scripts/build.js",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift",
-    "preview": "npm run build && npm run dev"
+    "preview": "npm run build && npm run dev",
+    "version:patch": "node scripts/version.js patch",
+    "version:minor": "node scripts/version.js minor",
+    "version:major": "node scripts/version.js major"
   },
   "keywords": ["consulting", "fogsift"],
   "author": "Christopher Tavolazzi",
   "license": "UNLICENSED"
 }
-

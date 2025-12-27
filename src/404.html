@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGNAL LOST | Fogsift</title>
+    <meta name="robots" content="noindex, follow">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script>
+        (function() {
+            var localTheme = localStorage.getItem('theme');
+            var supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (localTheme === 'dark' || (!localTheme && supportDarkMode)) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --ink: #18181b; --paper: #f4f4f5; --copper: #d97706; --electric: #0891b2;
+        }
+        [data-theme="dark"] {
+            --ink: #f4f4f5; --paper: #18181b; --copper: #fbbf24; --electric: #22d3ee;
+        }
+
+        body {
+            background-color: var(--paper); color: var(--ink);
+            font-family: 'JetBrains Mono', monospace;
+            height: 100vh; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            margin: 0; transition: background-color 0.3s;
+        }
+
+        .code { font-size: 6rem; font-weight: 700; color: var(--copper); line-height: 1; margin-bottom: 1rem; }
+        .msg { font-size: 1.5rem; margin-bottom: 2rem; }
+
+        .btn {
+            display: inline-block; padding: 1rem 2rem; border: 2px solid var(--ink);
+            color: var(--ink); text-decoration: none; font-weight: 700;
+            box-shadow: 4px 4px 0 var(--electric); transition: all 0.1s;
+        }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--copper); }
+        .btn:active { transform: translate(2px, 2px); box-shadow: none; }
+    </style>
+</head>
+<body>
+    <div class="code">404</div>
+    <div class="msg">SIGNAL LOST // GRID REFERENCE UNKNOWN</div>
+    <p style="max-width: 400px; margin-bottom: 3rem; opacity: 0.7;">
+        The page you are looking for has been redacted, moved, or never existed.
+        Return to base immediately.
+    </p>
+    <a href="/" class="btn">RETURN TO SIGNAL</a>
+</body>
+</html>
+

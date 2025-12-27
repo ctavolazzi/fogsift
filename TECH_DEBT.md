@@ -1,7 +1,7 @@
 # FOGSIFT // TECH DEBT & PRIORITIES
 
-**Version:** 0.0.1  
-**Audit Date:** 2025-12-26  
+**Version:** 0.0.1
+**Audit Date:** 2025-12-26
 **Status:** LAUNCH COMPLETE — REFACTOR QUEUE INITIATED
 
 ---
@@ -38,8 +38,8 @@ dist/
 |----|-------|--------|
 | TD-004 | **Inline manifest** — Base64 PWA manifest in `<head>` | Hard to update, not cacheable |
 | TD-005 | **No build process** — Unminified CSS/JS | Larger payload (~40KB vs ~15KB) |
-| TD-006 | **Fake email form** — Subscription shows "DB_FULL" toast | Looks broken to users |
-| TD-007 | **Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text | Incomplete feature |
+| ~~TD-006~~ | ~~**Fake email form** — Subscription shows "DB_FULL" toast~~ | ✅ Fixed 2025-12-26 |
+| ~~TD-007~~ | ~~**Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text~~ | ✅ Fixed 2025-12-26 |
 | TD-008 | **No analytics** — Zero visibility into traffic | Can't measure anything |
 
 ### 🟢 LOW (Nice to have)
@@ -87,7 +87,7 @@ package.json           # Just for scripts, no frameworks
 └── deploy             # Build + wrangler pages deploy
 ```
 
-**Tooling:** 
+**Tooling:**
 - `esbuild` (fast JS bundling)
 - `lightningcss` (CSS minification)
 - No React, no Vite, no webpack
@@ -140,10 +140,10 @@ content/
 ## QUICK WINS (< 30 min each)
 
 - [ ] Remove console.log statements (TD-012)
-- [ ] Add version comment to HTML `<!-- v0.0.1 -->`  
+- [ ] Add version comment to HTML `<!-- v0.0.1 -->`
 - [ ] Add real manifest.json file (TD-004)
-- [ ] Hide email form or add "coming soon" (TD-006)
-- [ ] Replace Calendly placeholder with mailto link (TD-007)
+- [x] Hide email form or add "coming soon" (TD-006) ✅ 2025-12-26
+- [x] Replace Calendly placeholder with mailto link (TD-007) ✅ 2025-12-26
 
 ---
 
