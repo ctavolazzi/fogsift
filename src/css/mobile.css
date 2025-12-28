@@ -79,6 +79,28 @@
         height: 100px;
     }
 
+    /* === TESTIMONIALS === */
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-md);
+    }
+
+    .testimonial-card {
+        padding: var(--space-md);
+    }
+
+    .testimonial-quote {
+        font-size: var(--text-sm);
+    }
+
+    .testimonials-stats {
+        gap: var(--space-lg);
+    }
+
+    .stat-number {
+        font-size: var(--text-xl);
+    }
+
     /* === PRICING === */
     .pricing-cards {
         grid-template-columns: 1fr;
@@ -164,6 +186,17 @@
 @media (min-width: 769px) and (max-width: 1024px) {
     .process-steps {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Center the third testimonial on tablet */
+    .testimonial-card:nth-child(3) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
     }
 
     .pricing-cards {

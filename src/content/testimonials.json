@@ -1,0 +1,52 @@
+{
+  "sectionTitle": "WHAT CLIENTS SAY",
+  "sectionSubtitle": "Real feedback from real engagements",
+  "testimonials": [
+    {
+      "id": "testimonial-manufacturing",
+      "quote": "We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach.",
+      "author": "Operations Director",
+      "company": "Manufacturing Company",
+      "industry": "manufacturing",
+      "outcome": "Reduced downtime by 40%",
+      "featured": true
+    },
+    {
+      "id": "testimonial-tech",
+      "quote": "Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar.",
+      "author": "Founder & CEO",
+      "company": "Tech Startup",
+      "industry": "technology",
+      "outcome": "Shipped 3 months faster",
+      "featured": true
+    },
+    {
+      "id": "testimonial-services",
+      "quote": "The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month.",
+      "author": "VP of Strategy",
+      "company": "Professional Services Firm",
+      "industry": "services",
+      "outcome": "30% productivity increase",
+      "featured": true
+    }
+  ],
+  "stats": {
+    "engagementsCompleted": {
+      "value": "15+",
+      "label": "Engagements"
+    },
+    "clientSatisfaction": {
+      "value": "100%",
+      "label": "Client Satisfaction"
+    },
+    "industriesServed": {
+      "value": "8+",
+      "label": "Industries"
+    }
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2025-12-27",
+    "note": "Placeholder content - replace with real testimonials when available"
+  }
+}
