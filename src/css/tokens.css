@@ -352,18 +352,18 @@
     --earth-mid: #90caf9;
     --earth-dark: #42a5f5;
 
-    --ink: #1565c0;
+    --ink: #0d47a1;              /* Darker blue for better contrast */
     --paper: var(--cream);
     --canvas: var(--cream-dark);
     --primary: var(--burnt-orange);
     --primary-hover: var(--rust);
-    --secondary: var(--chocolate-light);
+    --secondary: #1976d2;        /* Darker secondary */
     --accent: #ff9800;
     --accent-light: #ffcc80;
     --highlight: #ffc107;
 
-    --muted: #5c9dc7;
-    --muted-light: #90caf9;
+    --muted: #1565c0;            /* Much darker for readability */
+    --muted-light: #1976d2;      /* Still readable */
     --line: #b3d9f7;
 
     --shadow-soft: 0 4px 20px rgba(33, 150, 243, 0.15);
@@ -398,8 +398,8 @@
     --accent-light: #ff71ce;
     --highlight: #01cdfe;
 
-    --muted: #b967ff;
-    --muted-light: #7b2cbf;
+    --muted: #e0a0ff;            /* Brighter purple for readability */
+    --muted-light: #c880ff;      /* Still bright enough */
     --line: #3c096c;
 
     --shadow-soft: 0 0 20px rgba(255, 113, 206, 0.2);

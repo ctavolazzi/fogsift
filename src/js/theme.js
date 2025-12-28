@@ -158,7 +158,7 @@ const Theme = {
         }
     },
 
-    DEMO_INTERVAL: 6000, // 6 seconds per theme
+    DEMO_INTERVAL: 4000, // 4 seconds per theme (faster pacing)
     _demoCountdown: 0,
     _demoCountdownInterval: null,
 
@@ -231,23 +231,23 @@ const Theme = {
     },
 
     /**
-     * Demo tick - switch to next theme with smooth transition
+     * Demo tick - switch to next theme with fast, smooth transition
      */
     _demoTick() {
         const theme = this.THEMES[this._demoIndex];
         
-        // Add smooth transition effect
+        // Add quick transition effect
         document.documentElement.classList.add('demo-channel-switch');
         
-        // Switch theme at the midpoint of the fade
+        // Switch theme quickly (80ms into effect)
         setTimeout(() => {
             this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
-        }, 150);
+        }, 80);
         
-        // Remove effect class after animation completes
+        // Remove effect class fast (200ms total)
         setTimeout(() => {
             document.documentElement.classList.remove('demo-channel-switch');
-        }, 500);
+        }, 200);
         
         this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
     },
