@@ -1,0 +1,196 @@
+/* ============================================
+   CAMO THEME - Military Woodland Pattern
+   Real camouflage with hunter's orange accents
+   ============================================ */
+
+/* === CAMO PATTERN BACKGROUND === */
+[data-theme="camo"] body {
+    background: 
+        /* Layer 1: Large blotches */
+        radial-gradient(ellipse 80px 60px at 20% 30%, #4b5320 40%, transparent 50%),
+        radial-gradient(ellipse 100px 70px at 70% 20%, #3d421a 40%, transparent 50%),
+        radial-gradient(ellipse 90px 80px at 40% 70%, #556b2f 40%, transparent 50%),
+        radial-gradient(ellipse 70px 90px at 80% 60%, #4b5320 40%, transparent 50%),
+        radial-gradient(ellipse 85px 65px at 10% 80%, #3d421a 40%, transparent 50%),
+        /* Layer 2: Medium shapes */
+        radial-gradient(ellipse 50px 40px at 30% 50%, #6b8e23 35%, transparent 45%),
+        radial-gradient(ellipse 60px 45px at 60% 40%, #556b2f 35%, transparent 45%),
+        radial-gradient(ellipse 55px 50px at 85% 75%, #6b8e23 35%, transparent 45%),
+        radial-gradient(ellipse 45px 55px at 15% 55%, #556b2f 35%, transparent 45%),
+        /* Layer 3: Small dark spots */
+        radial-gradient(ellipse 25px 20px at 25% 25%, #2d3311 60%, transparent 70%),
+        radial-gradient(ellipse 30px 25px at 55% 65%, #2d3311 60%, transparent 70%),
+        radial-gradient(ellipse 20px 30px at 75% 35%, #2d3311 60%, transparent 70%),
+        radial-gradient(ellipse 28px 22px at 45% 85%, #2d3311 60%, transparent 70%),
+        /* Base color */
+        #4b5320;
+    background-size: 200px 200px;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* === CONTENT OVERLAY === */
+[data-theme="camo"] .hero-section,
+[data-theme="camo"] .process-section,
+[data-theme="camo"] .about-section,
+[data-theme="camo"] .testimonials-section,
+[data-theme="camo"] .pricing-section,
+[data-theme="camo"] .cta-section,
+[data-theme="camo"] .wiki-main,
+[data-theme="camo"] .wiki-sidebar {
+    background: rgba(75, 83, 32, 0.85);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+/* === HUNTER ORANGE ACCENTS === */
+[data-theme="camo"] .cta-button,
+[data-theme="camo"] .pricing-cta {
+    background: linear-gradient(135deg, #ff6600 0%, #ff8533 100%);
+    color: #1a1a0a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: 3px solid #ff8533;
+    box-shadow: 
+        0 0 20px rgba(255, 102, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.2s ease;
+}
+
+[data-theme="camo"] .cta-button:hover,
+[data-theme="camo"] .pricing-cta:hover {
+    background: linear-gradient(135deg, #ff8533 0%, #ffa366 100%);
+    box-shadow: 
+        0 0 30px rgba(255, 102, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* === STENCIL TEXT EFFECT === */
+[data-theme="camo"] h1,
+[data-theme="camo"] h2,
+[data-theme="camo"] .headline {
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: #f5f5dc;
+    text-shadow: 
+        2px 2px 0 #2d3311,
+        -1px -1px 0 #2d3311;
+}
+
+/* === DOG TAGS / CARDS === */
+[data-theme="camo"] .pricing-card,
+[data-theme="camo"] .about-card,
+[data-theme="camo"] .process-step,
+[data-theme="camo"] .testimonial-card,
+[data-theme="camo"] .wiki-category-card {
+    background: linear-gradient(145deg, #5c6324 0%, #3d421a 100%);
+    border: 2px solid #6b8e23;
+    border-radius: 4px;
+    box-shadow: 
+        4px 4px 0 #2d3311,
+        0 0 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Notch effect like dog tags */
+[data-theme="camo"] .pricing-card::before,
+[data-theme="camo"] .about-card::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 8px;
+    background: #2d3311;
+    border-radius: 0 0 10px 10px;
+}
+
+/* === AMMO COUNT STYLE PRICES === */
+[data-theme="camo"] .pricing-card .price {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #ff6600;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+    font-size: 2rem;
+}
+
+/* === CROSSHAIR CURSOR === */
+[data-theme="camo"] .cta-button,
+[data-theme="camo"] .pricing-cta,
+[data-theme="camo"] a {
+    cursor: crosshair;
+}
+
+/* === NAVIGATION BAR === */
+[data-theme="camo"] .nav-wrapper,
+[data-theme="camo"] .main-nav {
+    background: linear-gradient(180deg, #3d421a 0%, #2d3311 100%);
+    border-bottom: 3px solid #ff6600;
+}
+
+[data-theme="camo"] .menu-link {
+    color: #f5f5dc;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+[data-theme="camo"] .menu-link:hover {
+    color: #ff6600;
+    text-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+}
+
+/* === FOOTER === */
+[data-theme="camo"] footer {
+    background: linear-gradient(180deg, #2d3311 0%, #1a1a0a 100%);
+    border-top: 3px solid #ff6600;
+}
+
+/* === ANIMATED SCOPE CROSSHAIR === */
+[data-theme="camo"] .hero-section::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    border: 2px solid rgba(255, 102, 0, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    animation: scopePulse 3s ease-in-out infinite;
+}
+
+[data-theme="camo"] .hero-section::before {
+    content: '+';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: rgba(255, 102, 0, 0.3);
+    pointer-events: none;
+    z-index: 2;
+    font-family: monospace;
+    animation: scopePulse 3s ease-in-out infinite;
+}
+
+@keyframes scopePulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="camo"] .hero-section::after,
+    [data-theme="camo"] .hero-section::before {
+        animation: none;
+        opacity: 0.3;
+    }
+}
+
