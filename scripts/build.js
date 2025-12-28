@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * FOGSIFT BUILD SCRIPT v3
- * - Concatenates CSS and JS from src/
+ * FOGSIFT BUILD SCRIPT v4
+ * - Concatenates and minifies CSS and JS from src/ (using esbuild)
  * - Processes HTML template with version injection
  * - Builds markdown wiki pages
  * - Copies static assets to dist/
@@ -10,6 +10,7 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const esbuild = require('esbuild');
 
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'src');
@@ -387,7 +388,34 @@ function buildWiki() {
     return pagesBuilt;
 }
 
-function build() {
+async function minifyCSS(css) {
+    const result = await esbuild.transform(css, {
+        loader: 'css',
+        minify: true,
+    });
+    return result.code;
+}
+
+async function minifyJS(js) {
+    const result = await esbuild.transform(js, {
+        loader: 'js',
+        minify: true,
+        target: ['es2020'],
+    });
+    return result.code;
+}
+
+function formatSize(bytes) {
+    return (bytes / 1024).toFixed(1) + 'KB';
+}
+
+function formatSavings(original, minified) {
+    const saved = original - minified;
+    const percent = ((saved / original) * 100).toFixed(0);
+    return `${formatSize(minified)} (saved ${percent}%)`;
+}
+
+async function build() {
     console.log(`\n🔧 Building Fogsift v${VERSION}...\n`);
 
     // Ensure dist exists
@@ -397,16 +425,18 @@ function build() {
     console.log('📦 CSS:');
     const css = concat(CSS_FILES);
     if (css) {
-        fs.writeFileSync(path.join(DIST, 'styles.css'), css);
-        console.log(`  ✓ dist/styles.css (${(css.length / 1024).toFixed(1)}KB)`);
+        const minifiedCSS = await minifyCSS(css);
+        fs.writeFileSync(path.join(DIST, 'styles.css'), minifiedCSS);
+        console.log(`  ✓ dist/styles.css ${formatSavings(css.length, minifiedCSS.length)}`);
     }
 
     // Build JS bundle
     console.log('\n📦 JavaScript:');
     const js = concat(JS_FILES);
     if (js) {
-        fs.writeFileSync(path.join(DIST, 'app.js'), js);
-        console.log(`  ✓ dist/app.js (${(js.length / 1024).toFixed(1)}KB)`);
+        const minifiedJS = await minifyJS(js);
+        fs.writeFileSync(path.join(DIST, 'app.js'), minifiedJS);
+        console.log(`  ✓ dist/app.js ${formatSavings(js.length, minifiedJS.length)}`);
     }
 
     // Process HTML template
@@ -434,4 +464,7 @@ function build() {
     console.log('   Run: npm run dev\n');
 }
 
-build();
+build().catch(err => {
+    console.error('Build failed:', err);
+    process.exit(1);
+});
