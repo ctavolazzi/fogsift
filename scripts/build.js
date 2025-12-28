@@ -23,7 +23,7 @@ const VERSION = pkg.version || '0.0.0';
 // Theme init script - injected into HTML <head> to prevent FOUC
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
-const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 't800', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'];
+const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'];
 const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
 
 // Navigation partial - single source of truth for site navigation
@@ -90,9 +90,9 @@ function generateNavHeader(currentPage = '') {
                             <span class="theme-option-label">Matrix</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="t800" role="option" onclick="ThemePicker.select('t800')">
-                            <span class="theme-option-icon">🤖</span>
-                            <span class="theme-option-label">T-800</span>
+                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
                         <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
@@ -166,7 +166,7 @@ const CSS_FILES = [
     'src/css/components.css',       // Sections, buttons, toast, modal
     'src/css/industrial-theme.css', // Industrial punchcard theme overrides
     'src/css/matrix-theme.css',     // Matrix digital rain theme overrides
-    'src/css/t800-theme.css',       // T-800 Terminator HUD theme
+    'src/css/sky-theme.css',       // T-800 Terminator HUD theme
     'src/css/synthwave-theme.css',  // Synthwave 80s neon theme
     'src/css/pipboy-theme.css',     // Pip-Boy Fallout CRT theme
     'src/css/rivendell-theme.css',  // Rivendell elvish elegance theme

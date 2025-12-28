@@ -3,8 +3,54 @@
    Mobile-first responsive overrides
    ============================================ */
 
+/* ============================================
+   GLOBAL OVERFLOW PROTECTION
+   Prevents content from breaking out of viewport
+   ============================================ */
+
+/* Prevent horizontal scroll on entire page */
+html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+}
+
+/* Ensure all elements respect container bounds */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Images and media respect container */
+img, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Prevent long text from breaking layout */
+h1, h2, h3, h4, h5, h6, p, li, td, th, label, span {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Code blocks scroll horizontally instead of breaking */
+pre, code {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
 /* === MOBILE BREAKPOINT: 768px and below === */
 @media (max-width: 768px) {
+
+    /* === HIDE SCROLLBAR ON MOBILE === */
+    html, body {
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+    }
+    
+    html::-webkit-scrollbar,
+    body::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
 
     /* === TOUCH TARGETS (WCAG 2.1: 44x44px min) === */
     .cta-button,
@@ -59,8 +105,31 @@
         display: none;
     }
 
+    /* === MENU OVERFLOW PROTECTION === */
+    .theme-picker {
+        position: relative;
+    }
+
     .theme-picker-menu {
         min-width: 140px;
+        max-width: calc(100vw - 20px); /* Never wider than viewport minus padding */
+        max-height: 70vh; /* Don't take more than 70% of viewport height */
+        right: 0;
+        left: auto;
+    }
+
+    /* Mobile nav menu stays within bounds */
+    .mobile-nav {
+        max-width: 100vw;
+        max-height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    /* All buttons stay within container */
+    button, .btn, .cta-button, .pricing-cta {
+        max-width: 100%;
+        white-space: normal; /* Allow text to wrap if needed */
     }
 
     /* === HERO === */
@@ -199,6 +268,66 @@
     .process-step {
         padding: var(--space-md);
     }
+
+    /* Extra small screen nav protection */
+    .main-nav {
+        padding: var(--space-xs) var(--space-sm);
+    }
+
+    .brand-logo {
+        height: 28px;
+        max-width: 100px;
+    }
+
+    /* Compact theme picker for tiny screens */
+    .theme-picker-toggle {
+        padding: 4px 8px;
+        min-height: 32px;
+        font-size: 0.875rem;
+    }
+
+    .theme-picker-menu {
+        min-width: 120px;
+        font-size: 0.875rem;
+    }
+
+    .theme-option-label {
+        font-size: 0.75rem;
+    }
+
+    /* Stack nav controls if needed */
+    .nav-controls {
+        gap: 4px;
+    }
+}
+
+/* === EXTRA SMALL: 320px and below === */
+@media (max-width: 320px) {
+    /* Absolute minimum sizes for tiny screens */
+    .headline {
+        font-size: 1.5rem;
+    }
+
+    section,
+    .section {
+        padding: var(--space-sm);
+    }
+
+    .cta-button {
+        font-size: 0.75rem;
+        padding: 10px 12px;
+    }
+
+    /* Hide non-essential decorative elements */
+    .theme-option-icon {
+        display: none;
+    }
+
+    /* Ensure logo doesn't overflow */
+    .brand-logo {
+        height: 24px;
+        max-width: 80px;
+    }
 }
 
 /* === TABLET: 769px to 1024px === */
@@ -229,16 +358,16 @@
    ============================================ */
 
 @media (max-width: 768px) {
-    /* === T-800: Simplify HUD === */
-    [data-theme="t800"] .hero-section::before,
-    [data-theme="t800"] .hero-section::after {
-        display: none; /* Hide HUD text on mobile */
+    /* === SKY: Simplify clouds === */
+    [data-theme="sky"] body::before,
+    [data-theme="sky"] body::after {
+        width: 150px;
+        height: 60px;
     }
     
-    [data-theme="t800"] main::before,
-    [data-theme="t800"] main::after {
-        width: 100px;
-        height: 100px;
+    [data-theme="sky"] .hero-section::before,
+    [data-theme="sky"] .hero-section::after {
+        display: none; /* Hide sun and bird on mobile */
     }
 
     /* === SYNTHWAVE: Reduce grid complexity === */
@@ -292,15 +421,16 @@
 
 /* === VERY SMALL SCREENS: Disable most animations === */
 @media (max-width: 375px) {
-    [data-theme="t800"] body::before,
+    [data-theme="sky"] body::before,
+    [data-theme="sky"] body::after,
     [data-theme="synthwave"] body::before,
     [data-theme="ocean"] body::before {
         animation: none;
     }
     
     /* Ensure text remains readable */
-    [data-theme="t800"] h1,
-    [data-theme="t800"] h2,
+    [data-theme="sky"] h1,
+    [data-theme="sky"] h2,
     [data-theme="synthwave"] h1,
     [data-theme="synthwave"] h2,
     [data-theme="ocean"] h1,
