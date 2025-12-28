@@ -471,6 +471,7 @@ function buildWiki() {
         const rootPath = `${'../'.repeat(depth + 1)}index.html`;
         const assetsPath = `${'../'.repeat(depth + 1)}assets/`;
         const stylesPath = `${'../'.repeat(depth + 1)}styles.css`;
+        const appPath = `${'../'.repeat(depth + 1)}app.js`;
         const manifestPath = `${'../'.repeat(depth + 1)}manifest.json`;
         const faviconPath = `${'../'.repeat(depth + 1)}favicon.png`;
 
@@ -488,6 +489,7 @@ function buildWiki() {
             .replace(/\{\{ROOT_PATH\}\}/g, rootPath)
             .replace(/\{\{ASSETS_PATH\}\}/g, assetsPath)
             .replace(/\{\{STYLES_PATH\}\}/g, stylesPath)
+            .replace(/\{\{APP_PATH\}\}/g, appPath)
             .replace(/\{\{MANIFEST_PATH\}\}/g, manifestPath)
             .replace(/\{\{FAVICON_PATH\}\}/g, faviconPath)
             .replace(/\{\{CONTENT\}\}/g, htmlContent)

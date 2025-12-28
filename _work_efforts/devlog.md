@@ -105,3 +105,39 @@ This file tracks development activity, decisions, and changes across sessions.
 ### Layout
 - Mobile: [Logo] [Theme Dropdown] [Hamburger]
 - Desktop: [Logo] [Nav Links] [Theme Dropdown]
+
+[2025-12-28 08:48:57] ## DRY Code Refactoring - Custom Theme Picker
+
+**Task:** Implement custom styled dropdown for theme picker + DRY refactoring
+
+### Custom Theme Picker
+- Replaced native `<select>` with custom dropdown component
+- Three themes with icons: ☀ Light, ● Dark, ▣ Industrial
+- Keyboard navigation (Arrow keys, Enter, Escape)
+- Click-outside-to-close behavior
+- Proper ARIA attributes for accessibility
+
+### DRY Refactoring
+Wiki templates now load shared `app.js` instead of duplicating inline JS:
+
+**Before:** ~250 lines of inline JS per wiki template (Theme, ThemePicker, Nav, Toast duplicated)
+
+**After:** 
+- Wiki templates load `{{APP_PATH}}` which resolves to correct relative path
+- Only wiki-specific code (WikiNav) remains inline (~50 lines)
+- Theme, ThemePicker, Nav, Toast shared via app.js
+
+### Files Modified
+| File | Changes |
+|------|---------|
+| `scripts/build.js` | Added `appPath` variable + `{{APP_PATH}}` replacement |
+| `src/index.html` | Custom theme picker HTML |
+| `src/wiki-template.html` | Load app.js, keep only WikiNav inline |
+| `src/wiki-index-template.html` | Load app.js, removed all inline JS |
+| `src/js/theme.js` | Added ThemePicker component |
+| `src/css/navigation.css` | Custom dropdown styles |
+
+### Benefits
+- Single source of truth for Theme/ThemePicker/Nav/Toast
+- Bug fixes propagate to all pages automatically
+- Easier to maintain and extend
