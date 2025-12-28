@@ -20,6 +20,11 @@ const DIST = path.join(ROOT, 'dist');
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const VERSION = pkg.version || '0.0.0';
 
+// Theme init script - injected into HTML <head> to prevent FOUC
+// Single source of truth for theme initialization (TD-010)
+const THEME_STORAGE_KEY = 'theme';
+const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');document.documentElement.setAttribute('data-theme',t||'light')})();</script>`;
+
 // SVG Icons for wiki categories
 const WIKI_ICONS = {
     book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg>`,
@@ -38,12 +43,15 @@ function getWikiIcon(iconName) {
 }
 
 // Files to concatenate (order matters)
+// TD-017: Split components.css into modular files
 const CSS_FILES = [
-    'src/css/tokens.css',
-    'src/css/base.css',
-    'src/css/components.css',
-    'src/css/wiki.css',    // Wiki page styles
-    'src/css/mobile.css',  // Mobile-first overrides - must be last
+    'src/css/tokens.css',      // Design tokens
+    'src/css/base.css',        // Reset, typography
+    'src/css/navigation.css',  // Nav, mobile drawer, theme toggle
+    'src/css/components.css',  // Sections, buttons, toast, modal
+    'src/css/sleep.css',       // Sleep mode animations (easter egg)
+    'src/css/wiki.css',        // Wiki page styles
+    'src/css/mobile.css',      // Mobile-first overrides - must be last
 ];
 
 const JS_FILES = [
@@ -56,8 +64,8 @@ const JS_FILES = [
 ];
 
 // Static assets to copy from src/ to dist/
+// Note: 404.html is processed separately (TD-010 theme init injection)
 const STATIC_ASSETS = [
-    { src: 'src/404.html', dest: '404.html' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
     { src: 'src/manifest.json', dest: 'manifest.json' },
@@ -120,6 +128,9 @@ function processHtml() {
 
     let html = fs.readFileSync(templatePath, 'utf8');
 
+    // Inject theme init script (TD-010: single source of truth)
+    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
@@ -128,6 +139,23 @@ function processHtml() {
     html = html.replace(/<lastmod>.*?<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
 
     fs.writeFileSync(path.join(DIST, 'index.html'), html);
+    return true;
+}
+
+function process404Html() {
+    const templatePath = path.join(SRC, '404.html');
+
+    if (!fs.existsSync(templatePath)) {
+        console.warn('  ⚠ src/404.html not found, skipping');
+        return false;
+    }
+
+    let html = fs.readFileSync(templatePath, 'utf8');
+
+    // Inject theme init script (TD-010: single source of truth)
+    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+
+    fs.writeFileSync(path.join(DIST, '404.html'), html);
     return true;
 }
 
@@ -439,10 +467,13 @@ async function build() {
         console.log(`  ✓ dist/app.js ${formatSavings(js.length, minifiedJS.length)}`);
     }
 
-    // Process HTML template
+    // Process HTML templates (with theme init injection - TD-010)
     console.log('\n📄 HTML:');
     if (processHtml()) {
         console.log('  ✓ dist/index.html (processed)');
+    }
+    if (process404Html()) {
+        console.log('  ✓ dist/404.html (processed)');
     }
 
     // Copy static assets

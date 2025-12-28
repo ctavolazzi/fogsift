@@ -45,13 +45,8 @@
     }
     </script>
 
-    <!-- Theme detection - inline to prevent FOUC -->
-    <script>
-        (function() {
-            var localTheme = localStorage.getItem('theme');
-            document.documentElement.setAttribute('data-theme', localTheme || 'light');
-        })();
-    </script>
+    <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
+    {{THEME_INIT}}
 
     <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
          Alternative: self-host fonts for maximum security -->
