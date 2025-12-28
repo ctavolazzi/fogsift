@@ -229,16 +229,16 @@
    ============================================ */
 
 @media (max-width: 768px) {
-    /* === T-800: Simplify HUD === */
-    [data-theme="t800"] .hero-section::before,
-    [data-theme="t800"] .hero-section::after {
-        display: none; /* Hide HUD text on mobile */
+    /* === SKY: Simplify clouds === */
+    [data-theme="sky"] body::before,
+    [data-theme="sky"] body::after {
+        width: 150px;
+        height: 60px;
     }
     
-    [data-theme="t800"] main::before,
-    [data-theme="t800"] main::after {
-        width: 100px;
-        height: 100px;
+    [data-theme="sky"] .hero-section::before,
+    [data-theme="sky"] .hero-section::after {
+        display: none; /* Hide sun and bird on mobile */
     }
 
     /* === SYNTHWAVE: Reduce grid complexity === */
@@ -292,15 +292,16 @@
 
 /* === VERY SMALL SCREENS: Disable most animations === */
 @media (max-width: 375px) {
-    [data-theme="t800"] body::before,
+    [data-theme="sky"] body::before,
+    [data-theme="sky"] body::after,
     [data-theme="synthwave"] body::before,
     [data-theme="ocean"] body::before {
         animation: none;
     }
     
     /* Ensure text remains readable */
-    [data-theme="t800"] h1,
-    [data-theme="t800"] h2,
+    [data-theme="sky"] h1,
+    [data-theme="sky"] h2,
     [data-theme="synthwave"] h1,
     [data-theme="synthwave"] h2,
     [data-theme="ocean"] h1,
