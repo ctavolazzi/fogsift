@@ -275,6 +275,43 @@
     background: rgba(33, 150, 243, 0.1);
 }
 
+/* === SLEEP MODE === */
+/* When page is sleeping, the sky settles into night */
+[data-theme="sky"] body.page-sleeping::before,
+[data-theme="sky"] body.page-sleeping::after {
+    animation-play-state: paused;
+    opacity: 0.3;
+    filter: brightness(0.5);
+    transition: opacity 2s ease, filter 2s ease;
+}
+
+[data-theme="sky"] body.page-sleeping .hero-section::before {
+    /* Sun dims and stops pulsing */
+    animation-play-state: paused;
+    opacity: 0.2;
+    filter: brightness(0.4) saturate(0.5);
+    transition: opacity 2s ease, filter 2s ease;
+}
+
+[data-theme="sky"] body.page-sleeping .hero-section::after {
+    /* Bird flies away / hides */
+    animation-play-state: paused;
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+/* Sky darkens to dusk/night colors */
+[data-theme="sky"] body.page-sleeping {
+    background: linear-gradient(
+        180deg,
+        #1a1a2e 0%,
+        #16213e 30%,
+        #0f3460 60%,
+        #1a1a2e 100%
+    ) !important;
+    transition: background 3s ease;
+}
+
 /* === REDUCED MOTION === */
 @media (prefers-reduced-motion: reduce) {
     [data-theme="sky"] body::before,
