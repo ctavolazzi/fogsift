@@ -383,19 +383,23 @@
 
 /* === ROTATING HIGHLIGHT === */
 /* Keep it simple - just color styling, NOT button-like */
-[data-theme="industrial-punchcard"] .rotating-highlight {
+/* Higher specificity (0,3,0+) to override base component styles without !important */
+[data-theme="industrial-punchcard"] .hero-badge .rotating-highlight,
+[data-theme="industrial-punchcard"] .section-hero .rotating-highlight {
     color: var(--primary);
-    background: transparent !important;
+    background: transparent;
 }
 
-[data-theme="industrial-punchcard"] .rotating-highlight [data-words],
-[data-theme="industrial-punchcard"] [data-words] {
-    color: var(--primary) !important;
-    background: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
+[data-theme="industrial-punchcard"] .hero-badge .rotating-highlight [data-words],
+[data-theme="industrial-punchcard"] .section-hero .rotating-highlight [data-words],
+[data-theme="industrial-punchcard"] .hero-badge [data-words],
+[data-theme="industrial-punchcard"] .section-hero [data-words] {
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    border-radius: 0;
 }
 
 /* === SECTION LABELS === */

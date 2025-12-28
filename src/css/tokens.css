@@ -232,7 +232,7 @@
     --ease-bounce: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.1);
 
     /* === PUNCHCARD TEXTURE (CSS background) === */
-    --texture-punchcard: 
+    --texture-punchcard:
         repeating-linear-gradient(
             0deg,
             transparent,
@@ -262,7 +262,7 @@
 }
 
 html {
-    transition: 
+    transition:
         background-color var(--theme-transition),
         color var(--theme-transition);
 }
@@ -281,7 +281,7 @@ body,
 .card,
 .nav-header,
 .mobile-drawer {
-    transition: 
+    transition:
         background-color var(--theme-transition),
         border-color var(--theme-transition),
         color var(--theme-transition),
@@ -296,11 +296,23 @@ body,
         --ease-bounce: 0s;
         --theme-transition: 0s; /* Disable theme transitions */
     }
-    
-    html, body, .hero-section, .process-section,
-    .pricing-section, .about-section, .testimonials-section,
-    .cta-section, .site-footer, .wiki-content, .wiki-sidebar,
-    .wiki-header, .card, .nav-header, .mobile-drawer {
-        transition: none !important;
+
+    /* Using html prefix for higher specificity instead of !important */
+    html,
+    html body,
+    html .hero-section,
+    html .process-section,
+    html .pricing-section,
+    html .about-section,
+    html .testimonials-section,
+    html .cta-section,
+    html .site-footer,
+    html .wiki-content,
+    html .wiki-sidebar,
+    html .wiki-header,
+    html .card,
+    html .nav-header,
+    html .mobile-drawer {
+        transition: none;
     }
 }

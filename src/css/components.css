@@ -45,20 +45,25 @@
 }
 
 /* === HONEYPOT (Anti-bot) === */
-.hp-field {
-    position: absolute !important;
-    left: -9999px !important;
-    top: -9999px !important;
-    width: 1px !important;
-    height: 1px !important;
-    overflow: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    visibility: hidden !important;
+/* Security-critical: Must stay hidden. Using high specificity (0,2,0+) instead of !important */
+.hp-field[aria-hidden="true"],
+input.hp-field,
+textarea.hp-field,
+.hp-field.hp-field {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
 }
 
-label.hp-field {
-    display: none !important;
+label.hp-field,
+.hp-field + label {
+    display: none;
 }
 
 /* === HERO SECTION === */
@@ -620,7 +625,7 @@ footer {
 }
 
 /* === RESPONSIVE === */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     .process-steps,
     .pricing-cards {
         grid-template-columns: 1fr;

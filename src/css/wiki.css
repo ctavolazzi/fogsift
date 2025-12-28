@@ -865,8 +865,10 @@ body.wiki-body {
 }
 
 /* Active wiki nav link in header */
-.wiki-nav-active {
-    color: var(--burnt-orange) !important;
+/* Specificity (0,1,1) to override base nav link styles without !important */
+a.wiki-nav-active,
+.menu-link.wiki-nav-active {
+    color: var(--burnt-orange);
     position: relative;
 }
 

@@ -221,3 +221,21 @@ Wiki templates now load shared `app.js` instead of duplicating inline JS:
 - **Archive:** 2025-12/ (4 WEs, 19 tickets) + legacy/ (21 files)
 - **Git:** Single main branch, no stale remotes
 - **Docs:** TECH_DEBT.md and CONTINUATION.md current
+
+[2025-12-28 09:15:43] CSS REFACTOR: Removed all 56 !important declarations
+
+**Files Changed:**
+- `src/css/wiki.css` - Fixed .wiki-nav-active specificity (1 instance)
+- `src/css/components.css` - Refactored honeypot field selectors (10 instances)
+- `src/css/industrial-theme.css` - Fixed rotating-highlight reset (7 instances)
+- `src/css/sleep.css` - Refactored animation state selectors (25 instances)
+- `src/css/base.css` - Fixed print stylesheet specificity (12 instances)
+- `src/css/tokens.css` - Fixed reduced motion specificity (1 instance)
+
+**Techniques Used:**
+- `html body` prefix for print/accessibility overrides
+- `body.page-sleeping` / `body.page-waking` for animation states
+- Compound selectors `.hp-field.hp-field` for security fields
+- Parent context selectors for theme overrides
+
+**Verification:** `grep -r "!important;" src/css/` returns zero results

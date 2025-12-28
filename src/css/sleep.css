@@ -190,8 +190,10 @@
 }
 
 /* === BREATHING ANIMATION === */
-.sleepy-breathing {
-    animation: breathe 3s ease-in-out infinite !important;
+/* Using body.page-sleeping for higher specificity (0,2,0) instead of !important */
+body.page-sleeping .sleepy-breathing,
+.sleepy.sleepy-breathing {
+    animation: breathe 3s ease-in-out infinite;
 }
 
 @keyframes breathe {
@@ -225,12 +227,13 @@
 }
 
 /* Card breathing - different from buttons */
-.process-step.sleepy-breathing,
-.pricing-card.sleepy-breathing,
-.about-card.sleepy-breathing,
-.hero-badge.sleepy-breathing,
-.wiki-category-card.sleepy-breathing {
-    animation: cardBreathe 4s ease-in-out infinite !important;
+/* Using body.page-sleeping for higher specificity instead of !important */
+body.page-sleeping .process-step.sleepy-breathing,
+body.page-sleeping .pricing-card.sleepy-breathing,
+body.page-sleeping .about-card.sleepy-breathing,
+body.page-sleeping .hero-badge.sleepy-breathing,
+body.page-sleeping .wiki-category-card.sleepy-breathing {
+    animation: cardBreathe 4s ease-in-out infinite;
 }
 
 @keyframes cardBreathe {
@@ -265,12 +268,15 @@ h1.sleepy, h2.sleepy, h3.sleepy {
     }
 }
 
-.headline.sleepy-breathing,
-.subhead.sleepy-breathing,
-.section-label.sleepy-breathing,
-.about-name.sleepy-breathing,
-h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
-    animation: textBreathe 3.5s ease-in-out infinite !important;
+/* Using body.page-sleeping for higher specificity instead of !important */
+body.page-sleeping .headline.sleepy-breathing,
+body.page-sleeping .subhead.sleepy-breathing,
+body.page-sleeping .section-label.sleepy-breathing,
+body.page-sleeping .about-name.sleepy-breathing,
+body.page-sleeping h1.sleepy-breathing,
+body.page-sleeping h2.sleepy-breathing,
+body.page-sleeping h3.sleepy-breathing {
+    animation: textBreathe 3.5s ease-in-out infinite;
 }
 
 @keyframes textBreathe {
@@ -299,8 +305,9 @@ h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
     }
 }
 
-.menu-link.sleepy-breathing {
-    animation: navBreathe 3.5s ease-in-out infinite !important;
+/* Using body.page-sleeping for higher specificity instead of !important */
+body.page-sleeping .menu-link.sleepy-breathing {
+    animation: navBreathe 3.5s ease-in-out infinite;
 }
 
 @keyframes navBreathe {
@@ -330,8 +337,9 @@ h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
     }
 }
 
-.brand-logo.sleepy-breathing {
-    animation: logoBreathe 4s ease-in-out infinite !important;
+/* Using body.page-sleeping for higher specificity instead of !important */
+body.page-sleeping .brand-logo.sleepy-breathing {
+    animation: logoBreathe 4s ease-in-out infinite;
 }
 
 @keyframes logoBreathe {
@@ -439,8 +447,10 @@ h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
    ============================================ */
 
 /* === STARTLED JUMP BACK === */
-.startled {
-    animation: startledJump 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+/* Using body.page-waking for higher specificity (0,2,0) instead of !important */
+body.page-waking .startled,
+.sleepy.startled {
+    animation: startledJump 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes startledJump {
@@ -465,12 +475,13 @@ h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
 }
 
 /* === CARD STARTLED === */
-.process-step.startled,
-.pricing-card.startled,
-.about-card.startled,
-.hero-badge.startled,
-.wiki-category-card.startled {
-    animation: cardStartled 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+/* Using body.page-waking for higher specificity instead of !important */
+body.page-waking .process-step.startled,
+body.page-waking .pricing-card.startled,
+body.page-waking .about-card.startled,
+body.page-waking .hero-badge.startled,
+body.page-waking .wiki-category-card.startled {
+    animation: cardStartled 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes cardStartled {
@@ -495,12 +506,15 @@ h1.sleepy-breathing, h2.sleepy-breathing, h3.sleepy-breathing {
 }
 
 /* === TEXT STARTLED === */
-.headline.startled,
-.subhead.startled,
-.section-label.startled,
-.about-name.startled,
-h1.startled, h2.startled, h3.startled {
-    animation: textStartled 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+/* Using body.page-waking for higher specificity instead of !important */
+body.page-waking .headline.startled,
+body.page-waking .subhead.startled,
+body.page-waking .section-label.startled,
+body.page-waking .about-name.startled,
+body.page-waking h1.startled,
+body.page-waking h2.startled,
+body.page-waking h3.startled {
+    animation: textStartled 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes textStartled {
@@ -525,8 +539,9 @@ h1.startled, h2.startled, h3.startled {
 }
 
 /* === NAV STARTLED === */
-.menu-link.startled {
-    animation: navStartled 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+/* Using body.page-waking for higher specificity instead of !important */
+body.page-waking .menu-link.startled {
+    animation: navStartled 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes navStartled {
@@ -548,8 +563,9 @@ h1.startled, h2.startled, h3.startled {
 }
 
 /* === LOGO STARTLED === */
-.brand-logo.startled {
-    animation: logoStartled 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+/* Using body.page-waking for higher specificity instead of !important */
+body.page-waking .brand-logo.startled {
+    animation: logoStartled 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 @keyframes logoStartled {
@@ -666,27 +682,28 @@ body.page-waking main {
    ============================================ */
 
 /* Reduced motion: disable all sleep animations */
+/* Using html body for higher specificity (0,0,2) instead of !important */
 @media (prefers-reduced-motion: reduce) {
-    .sleepy,
-    .sleepy-breathing,
-    .startled,
-    .sleep-z,
-    .element-zzz,
-    .sleep-cap,
-    .snore-bubble,
-    .sleep-icon,
-    .sleep-message,
-    .startled-mark {
-        animation: none !important;
-        transition: none !important;
+    html body .sleepy,
+    html body .sleepy-breathing,
+    html body .startled,
+    html body .sleep-z,
+    html body .element-zzz,
+    html body .sleep-cap,
+    html body .snore-bubble,
+    html body .sleep-icon,
+    html body .sleep-message,
+    html body .startled-mark {
+        animation: none;
+        transition: none;
     }
 
-    #sleep-overlay {
-        transition: opacity 0.1s ease !important;
+    html #sleep-overlay {
+        transition: opacity 0.1s ease;
     }
 
-    #sleep-overlay.waking {
-        animation: none !important;
+    html #sleep-overlay.waking {
+        animation: none;
     }
 }
 
@@ -729,8 +746,9 @@ body.page-sleeping .pricing-cards {
         }
     }
 
-    .sleepy-breathing {
-        animation: breatheMobile 3s ease-in-out infinite !important;
+    /* Using body.page-sleeping for higher specificity instead of !important */
+    body.page-sleeping .sleepy-breathing {
+        animation: breatheMobile 3s ease-in-out infinite;
     }
 
     @keyframes breatheMobile {
@@ -742,8 +760,9 @@ body.page-sleeping .pricing-cards {
         }
     }
 
-    .startled {
-        animation: startledJumpMobile 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards !important;
+    /* Using body.page-waking for higher specificity instead of !important */
+    body.page-waking .startled {
+        animation: startledJumpMobile 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
 
     @keyframes startledJumpMobile {
@@ -761,19 +780,19 @@ body.page-sleeping .pricing-cards {
         }
     }
 
-    /* Smaller decorations on mobile */
-    .sleep-cap {
-        font-size: 1rem !important;
-        top: -12px !important;
-        right: -8px !important;
+    /* Smaller decorations on mobile - using html body for higher specificity */
+    html body .sleep-cap {
+        font-size: 1rem;
+        top: -12px;
+        right: -8px;
     }
 
-    .element-zzz {
-        font-size: 0.9rem !important;
+    html body .element-zzz {
+        font-size: 0.9rem;
     }
 
-    .snore-bubble {
-        font-size: 0.7rem !important;
-        padding: 5px 8px !important;
+    html body .snore-bubble {
+        font-size: 0.7rem;
+        padding: 5px 8px;
     }
 }
