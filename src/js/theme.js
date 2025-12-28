@@ -17,13 +17,14 @@ const Theme = {
     EVENT_NAME: 'themechange',
 
     // Available themes - order matters for cycle()
-    THEMES: ['light', 'dark', 'industrial-punchcard'],
+    THEMES: ['light', 'dark', 'industrial-punchcard', 'matrix'],
 
     // Human-readable theme names for UI
     THEME_LABELS: {
         'light': 'Light',
         'dark': 'Dark',
-        'industrial-punchcard': 'Industrial'
+        'industrial-punchcard': 'Industrial',
+        'matrix': 'Matrix'
     },
 
     _initialized: false,
