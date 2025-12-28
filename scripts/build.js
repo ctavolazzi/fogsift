@@ -125,6 +125,11 @@ function generateNavHeader(currentPage = '') {
                             <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
+                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
                     </div>
                 </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">

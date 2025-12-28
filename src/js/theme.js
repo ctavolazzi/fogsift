@@ -14,6 +14,7 @@
 
 const Theme = {
     STORAGE_KEY: 'theme',
+    SCROLL_KEY: 'theme-scroll-position',
     EVENT_NAME: 'themechange',
 
     // Available themes - order matters for cycle()
@@ -31,11 +32,14 @@ const Theme = {
         'rivendell': 'Rivendell',
         'camo': 'Camo',
         'barbie': 'Barbie',
-        'ocean': 'Ocean'
+        'ocean': 'Ocean',
+        'demo': 'Demo'
     },
 
     _initialized: false,
     _observer: null,
+    _demoInterval: null,
+    _demoActive: false,
 
     /**
      * Initialize theme system
@@ -96,7 +100,18 @@ const Theme = {
      * Set theme with full event dispatching
      */
     set(theme, options = {}) {
-        const { notify = true, broadcast = true } = options;
+        const { notify = true, broadcast = true, preserveScroll = true, fromDemo = false } = options;
+
+        // Handle demo mode
+        if (theme === 'demo') {
+            this.startDemo();
+            return;
+        }
+
+        // Stop demo if switching to a specific theme (but not if called from demo cycle itself)
+        if (this._demoActive && !fromDemo) {
+            this.stopDemo();
+        }
 
         // Validate theme
         if (!this.THEMES.includes(theme)) {
@@ -107,14 +122,28 @@ const Theme = {
         const previousTheme = this.get();
         if (previousTheme === theme) return; // No change
 
+        // Save scroll position before theme change
+        if (preserveScroll) {
+            this._saveScrollPosition();
+        }
+
         // Apply the theme
         this._applyTheme(theme);
 
-        // Persist to storage
-        try {
-            localStorage.setItem(this.STORAGE_KEY, theme);
-        } catch (e) {
-            console.warn('Theme: Could not persist preference:', e.message);
+        // Restore scroll position after theme change (with tiny delay for CSS to settle)
+        if (preserveScroll) {
+            requestAnimationFrame(() => {
+                this._restoreScrollPosition();
+            });
+        }
+
+        // Persist to storage (only if not in demo mode)
+        if (!this._demoActive) {
+            try {
+                localStorage.setItem(this.STORAGE_KEY, theme);
+            } catch (e) {
+                console.warn('Theme: Could not persist preference:', e.message);
+            }
         }
 
         // Broadcast change event for all listeners
@@ -124,8 +153,67 @@ const Theme = {
 
         // Show toast notification
         if (notify && typeof Toast !== 'undefined') {
-            Toast.show(`VISUAL MODE: ${this.THEME_LABELS[theme].toUpperCase()}`);
+            const label = this._demoActive ? `DEMO: ${this.THEME_LABELS[theme].toUpperCase()}` : `VISUAL MODE: ${this.THEME_LABELS[theme].toUpperCase()}`;
+            Toast.show(label);
         }
+    },
+
+    /**
+     * Start demo mode - auto-cycle through themes every 5-8 seconds
+     */
+    startDemo() {
+        if (this._demoActive) return;
+        this._demoActive = true;
+
+        // Save original theme to restore later
+        this._demoOriginalTheme = this.get();
+        this._demoIndex = 0;
+
+        if (typeof Toast !== 'undefined') {
+            Toast.show('🎬 DEMO MODE: Press T to exit');
+        }
+
+        // Start cycling
+        this._demoTick();
+        this._demoInterval = setInterval(() => this._demoTick(), 6000); // 6 seconds per theme
+    },
+
+    /**
+     * Stop demo mode
+     */
+    stopDemo() {
+        if (!this._demoActive) return;
+        this._demoActive = false;
+
+        if (this._demoInterval) {
+            clearInterval(this._demoInterval);
+            this._demoInterval = null;
+        }
+
+        // Restore original theme
+        if (this._demoOriginalTheme && this.THEMES.includes(this._demoOriginalTheme)) {
+            this.set(this._demoOriginalTheme, { notify: true });
+        }
+
+        if (typeof Toast !== 'undefined') {
+            Toast.show('Demo ended');
+        }
+    },
+
+    /**
+     * Demo tick - switch to next theme
+     */
+    _demoTick() {
+        const theme = this.THEMES[this._demoIndex];
+        this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
+        this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
+    },
+
+    /**
+     * Check if demo mode is active
+     */
+    isDemoActive() {
+        return this._demoActive;
     },
 
     /**
@@ -169,8 +257,53 @@ const Theme = {
      * Apply theme to DOM (no events)
      */
     _applyTheme(theme) {
+        // Add smooth transition class
+        document.documentElement.classList.add('theme-transitioning');
         document.documentElement.setAttribute('data-theme', theme);
         this._hydrateDropdowns();
+        
+        // Remove transition class after animation
+        setTimeout(() => {
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 300);
+    },
+
+    /**
+     * Save current scroll position
+     */
+    _saveScrollPosition() {
+        try {
+            const scrollData = {
+                x: window.scrollX || window.pageXOffset,
+                y: window.scrollY || window.pageYOffset,
+                path: window.location.pathname
+            };
+            sessionStorage.setItem(this.SCROLL_KEY, JSON.stringify(scrollData));
+        } catch (e) {
+            // Storage unavailable
+        }
+    },
+
+    /**
+     * Restore scroll position
+     */
+    _restoreScrollPosition() {
+        try {
+            const data = sessionStorage.getItem(this.SCROLL_KEY);
+            if (!data) return;
+            
+            const scrollData = JSON.parse(data);
+            // Only restore if on same page
+            if (scrollData.path === window.location.pathname) {
+                window.scrollTo({
+                    top: scrollData.y,
+                    left: scrollData.x,
+                    behavior: 'instant' // No smooth scroll - instant restore
+                });
+            }
+        } catch (e) {
+            // Storage unavailable or invalid data
+        }
     },
 
     /**
@@ -280,7 +413,7 @@ const Theme = {
     },
 
     /**
-     * Setup keyboard shortcut: Press "T" to cycle themes
+     * Setup keyboard shortcut: Press "T" to cycle themes, "D" for demo mode
      */
     _setupKeyboardShortcut() {
         document.addEventListener('keydown', (e) => {
@@ -292,7 +425,22 @@ const Theme = {
             if (e.ctrlKey || e.altKey || e.metaKey) return;
 
             if (e.key === 't' || e.key === 'T') {
-                this.cycle();
+                // If demo is active, stop it
+                if (this._demoActive) {
+                    this.stopDemo();
+                } else {
+                    this.cycle();
+                }
+                e.preventDefault();
+            }
+
+            // Press "D" to start/stop demo mode
+            if (e.key === 'd' || e.key === 'D') {
+                if (this._demoActive) {
+                    this.stopDemo();
+                } else {
+                    this.startDemo();
+                }
                 e.preventDefault();
             }
         });

@@ -222,3 +222,89 @@
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+/* ============================================
+   THEME ANIMATIONS - MOBILE OPTIMIZATIONS
+   Reduce heavy effects for better performance
+   ============================================ */
+
+@media (max-width: 768px) {
+    /* === T-800: Simplify HUD === */
+    [data-theme="t800"] .hero-section::before,
+    [data-theme="t800"] .hero-section::after {
+        display: none; /* Hide HUD text on mobile */
+    }
+    
+    [data-theme="t800"] main::before,
+    [data-theme="t800"] main::after {
+        width: 100px;
+        height: 100px;
+    }
+
+    /* === SYNTHWAVE: Reduce grid complexity === */
+    [data-theme="synthwave"] body::before {
+        height: 30%; /* Smaller grid */
+    }
+    
+    [data-theme="synthwave"] body::after {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* === CAMO: Simpler pattern === */
+    [data-theme="camo"] .hero-section::after,
+    [data-theme="camo"] .hero-section::before {
+        display: none; /* Hide scope crosshair on mobile */
+    }
+
+    /* === OCEAN: Fewer bubbles === */
+    [data-theme="ocean"] .hero-section::before,
+    [data-theme="ocean"] .hero-section::after {
+        display: none; /* Hide extra bubbles */
+    }
+
+    /* === BARBIE: Simplify sparkles === */
+    [data-theme="barbie"] body::before,
+    [data-theme="barbie"] body::after {
+        display: none; /* Hide floating sparkles */
+    }
+
+    /* === RIVENDELL: Simplify effects === */
+    [data-theme="rivendell"] body::before {
+        display: none; /* Hide rotating light rays */
+    }
+    
+    [data-theme="rivendell"] .hero-section::after {
+        display: none; /* Hide falling leaf */
+    }
+
+    /* === PIP-BOY: Simplify UI === */
+    [data-theme="pipboy"] .hero-section::before,
+    [data-theme="pipboy"] .hero-section::after {
+        display: none; /* Hide VAULT-TEC header */
+    }
+
+    /* === MATRIX: Canvas handles its own responsive === */
+    #matrix-rain-canvas {
+        opacity: 0.5; /* Lighter on mobile for readability */
+    }
+}
+
+/* === VERY SMALL SCREENS: Disable most animations === */
+@media (max-width: 375px) {
+    [data-theme="t800"] body::before,
+    [data-theme="synthwave"] body::before,
+    [data-theme="ocean"] body::before {
+        animation: none;
+    }
+    
+    /* Ensure text remains readable */
+    [data-theme="t800"] h1,
+    [data-theme="t800"] h2,
+    [data-theme="synthwave"] h1,
+    [data-theme="synthwave"] h2,
+    [data-theme="ocean"] h1,
+    [data-theme="ocean"] h2 {
+        text-shadow: none;
+    }
+}
