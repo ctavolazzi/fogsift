@@ -162,12 +162,17 @@ const Theme = {
      * Start demo mode - auto-cycle through themes every 5-8 seconds
      */
     startDemo() {
-        if (this._demoActive) return;
+        console.log('[DEMO] startDemo called, _demoActive:', this._demoActive);
+        if (this._demoActive) {
+            console.log('[DEMO] Already active, returning');
+            return;
+        }
         this._demoActive = true;
 
         // Save original theme to restore later
         this._demoOriginalTheme = this.get();
         this._demoIndex = 0;
+        console.log('[DEMO] Started with original theme:', this._demoOriginalTheme);
 
         if (typeof Toast !== 'undefined') {
             Toast.show('🎬 DEMO MODE: Press T to exit');
@@ -182,7 +187,12 @@ const Theme = {
      * Stop demo mode
      */
     stopDemo() {
-        if (!this._demoActive) return;
+        console.log('[DEMO] stopDemo called, _demoActive:', this._demoActive);
+        console.trace('[DEMO] Stack trace:');
+        if (!this._demoActive) {
+            console.log('[DEMO] Not active, returning');
+            return;
+        }
         this._demoActive = false;
 
         if (this._demoInterval) {

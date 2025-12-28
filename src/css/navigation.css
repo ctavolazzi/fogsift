@@ -12,7 +12,7 @@
     max-width: 100vw; /* Never exceed viewport width */
     z-index: 1000;
     box-shadow: var(--shadow-soft);
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow: visible; /* Allow dropdowns to extend beyond nav */
 }
 
 .main-nav {
@@ -24,7 +24,7 @@
     align-items: center;
     padding: 0 2rem;
     max-width: 100%; /* Stay within parent */
-    overflow: hidden; /* Prevent children from overflowing */
+    overflow: visible; /* Allow dropdowns to extend beyond nav */
 }
 
 .brand {
@@ -119,6 +119,7 @@
     position: relative;
     display: inline-flex;
     align-items: center;
+    z-index: 1001; /* Above nav-wrapper to ensure dropdown is visible */
 }
 
 .theme-picker-toggle {
@@ -190,7 +191,7 @@
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     padding: 6px;
-    z-index: 1000;
+    z-index: 1002; /* Above theme-picker (1001) to ensure visibility */
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px) scale(0.95);
