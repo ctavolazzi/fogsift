@@ -13,7 +13,25 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 100px;
-    overflow-y: scroll;
+    overflow-y: auto; /* Changed from scroll to auto - only show scrollbar when needed */
+}
+
+/* Hide scrollbar but keep scrollability (optional - for cleaner look) */
+html::-webkit-scrollbar {
+    width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+    background: var(--canvas, #1a1a1a);
+}
+
+html::-webkit-scrollbar-thumb {
+    background: var(--line, #333);
+    border-radius: 4px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--muted, #555);
 }
 
 /* === SMOOTH THEME TRANSITIONS === */

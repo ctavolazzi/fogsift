@@ -9,8 +9,10 @@
     top: 0;
     left: 0;
     width: 100%;
+    max-width: 100vw; /* Never exceed viewport width */
     z-index: 1000;
     box-shadow: var(--shadow-soft);
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .main-nav {
@@ -21,6 +23,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 2rem;
+    max-width: 100%; /* Stay within parent */
+    overflow: hidden; /* Prevent children from overflowing */
 }
 
 .brand {
@@ -174,6 +178,13 @@
     top: calc(100% + 8px);
     right: 0;
     min-width: 160px;
+    max-width: calc(100vw - 20px); /* Never wider than viewport minus margin */
+    max-height: 80vh; /* Don't exceed 80% of viewport height */
+    overflow-y: auto; /* Scroll if too many options */
+    overflow-x: hidden;
+    /* Hide scrollbar but keep scrollability */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
     background: var(--paper);
     border: 2px solid var(--line);
     border-radius: var(--radius);
@@ -184,6 +195,11 @@
     visibility: hidden;
     transform: translateY(-8px) scale(0.95);
     transition: all 0.15s ease;
+}
+
+/* Hide scrollbar for Chrome, Safari, Opera */
+.theme-picker-menu::-webkit-scrollbar {
+    display: none;
 }
 
 .theme-picker[aria-expanded="true"] .theme-picker-menu {
