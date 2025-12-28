@@ -164,6 +164,23 @@ function process404Html() {
     return true;
 }
 
+function processSimpleHtml(filename) {
+    const templatePath = path.join(SRC, filename);
+
+    if (!fs.existsSync(templatePath)) {
+        console.warn(`  ⚠ src/${filename} not found, skipping`);
+        return false;
+    }
+
+    let html = fs.readFileSync(templatePath, 'utf8');
+
+    // Inject theme init script (TD-010: single source of truth)
+    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+
+    fs.writeFileSync(path.join(DIST, filename), html);
+    return true;
+}
+
 function ensureDir(dir) {
     if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
@@ -579,6 +596,12 @@ async function build() {
     }
     if (process404Html()) {
         console.log('  ✓ dist/404.html (processed)');
+    }
+    if (processSimpleHtml('privacy.html')) {
+        console.log('  ✓ dist/privacy.html (processed)');
+    }
+    if (processSimpleHtml('disclaimer.html')) {
+        console.log('  ✓ dist/disclaimer.html (processed)');
     }
 
     // Copy static assets
