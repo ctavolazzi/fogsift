@@ -10,6 +10,7 @@
     <link rel="canonical" href="https://fogsift.com/wiki/faq.html">
 
     <link rel="manifest" href="../manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -24,8 +25,9 @@
     <!-- Theme detection - inline to prevent FOUC -->
     <script>
         (function() {
-            var localTheme = localStorage.getItem('theme');
-            document.documentElement.setAttribute('data-theme', localTheme || 'light');
+            var t = localStorage.getItem('theme');
+            var valid = ['light', 'dark', 'industrial-punchcard'];
+            document.documentElement.setAttribute('data-theme', valid.includes(t) ? t : 'light');
         })();
     </script>
 
@@ -40,6 +42,9 @@
 
     <div id="toast-container"></div>
 
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
         <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
@@ -50,6 +55,16 @@
         <a href="../index.html#about" class="mobile-link">ABOUT</a>
         <a href="../index.html#pricing" class="mobile-link">PRICING</a>
         <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="mobile-link">CONTACT</a>
+        <div class="mobile-theme-selector">
+            <label class="mobile-theme-label">Theme</label>
+            <div class="theme-selector">
+                <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="industrial-punchcard">Industrial</option>
+                </select>
+            </div>
+        </div>
     </nav>
 
     <div class="nav-wrapper">
@@ -67,10 +82,13 @@
             </div>
 
             <div class="nav-controls">
-                <button class="theme-toggle" onclick="Theme.toggle()" aria-label="Toggle Dark Mode">
-                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
+                <div class="theme-selector">
+                    <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="industrial-punchcard">Industrial</option>
+                    </select>
+                </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
@@ -89,15 +107,22 @@
     </div>
 
     <div class="wiki-layout">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="wiki-sidebar-toggle" aria-expanded="false" aria-controls="wiki-sidebar" onclick="WikiNav.toggle()">
+            <span class="toggle-text">Navigation</span>
+            <span class="toggle-icon" aria-hidden="true">+</span>
+        </button>
+
         <!-- Sidebar Navigation -->
-        <aside class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
-            <div class="wiki-sidebar-header">
-                <a href="index.html" class="wiki-home-link">
-                    <span aria-hidden="true">←</span> Wiki Home
-                </a>
-            </div>
-            <div class="wiki-sidebar-content">
-                <div class="wiki-nav-category">
+        <aside id="wiki-sidebar" class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
+            <div class="wiki-sidebar-inner">
+                <div class="wiki-sidebar-header">
+                    <a href="index.html" class="wiki-home-link">
+                        <span aria-hidden="true">←</span> Wiki Home
+                    </a>
+                </div>
+                <div class="wiki-sidebar-content">
+                    <div class="wiki-nav-category">
   <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg></span>Documentation</h4>
   <ul class="wiki-nav-list">
     <li><a href="getting-started.html">Getting Started</a></li>
@@ -156,6 +181,7 @@
   </ul>
 </div>
 
+                </div>
             </div>
         </aside>
 
@@ -463,26 +489,160 @@
         </main>
     </div>
 
-    <!-- Minimal JS for wiki pages -->
+    <!-- Minimal JS for wiki pages - Event-driven theme system -->
     <script>
-        // Theme toggle
+        // Theme system (event-driven, cross-tab sync)
         const Theme = {
-            toggle() {
-                const html = document.documentElement;
-                const current = html.getAttribute('data-theme');
-                const next = current === 'dark' ? 'light' : 'dark';
-                html.setAttribute('data-theme', next);
-                localStorage.setItem('theme', next);
+            THEMES: ['light', 'dark', 'industrial-punchcard'],
+            LABELS: { 'light': 'Light', 'dark': 'Dark', 'industrial-punchcard': 'Industrial' },
+            _initialized: false,
+
+            get() {
+                return document.documentElement.getAttribute('data-theme') || 'light';
+            },
+
+            set(theme, notify = true) {
+                if (!this.THEMES.includes(theme)) theme = 'light';
+                const prev = this.get();
+                if (prev === theme) return;
+                
+                document.documentElement.setAttribute('data-theme', theme);
+                try { localStorage.setItem('theme', theme); } catch {}
+                this._hydrateDropdowns();
+                
+                // Dispatch event for any listeners
+                window.dispatchEvent(new CustomEvent('themechange', { 
+                    detail: { theme, previousTheme: prev } 
+                }));
+                
+                // Show toast if available
+                if (notify && typeof Toast !== 'undefined') {
+                    Toast.show('VISUAL MODE: ' + this.LABELS[theme].toUpperCase());
+                }
+            },
+
+            onChange(event) {
+                this.set(event.target.value);
+            },
+
+            _hydrateDropdowns() {
+                const current = this.get();
+                document.querySelectorAll('.theme-dropdown').forEach(d => {
+                    if (d.value !== current) d.value = current;
+                });
+            },
+
+            init() {
+                if (this._initialized) return;
+                this._initialized = true;
+                
+                // Apply stored theme
+                const stored = localStorage.getItem('theme');
+                const theme = this.THEMES.includes(stored) ? stored : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                this._hydrateDropdowns();
+                
+                // Cross-tab sync via storage events
+                window.addEventListener('storage', (e) => {
+                    if (e.key === 'theme' && e.newValue && this.THEMES.includes(e.newValue)) {
+                        if (e.newValue !== this.get()) {
+                            document.documentElement.setAttribute('data-theme', e.newValue);
+                            this._hydrateDropdowns();
+                        }
+                    }
+                });
             }
         };
+
+        // Initialize theme on load
+        Theme.init();
 
         // Mobile nav
         const Nav = {
             toggleMobile() {
                 const drawer = document.getElementById('mobile-drawer');
-                drawer?.classList.toggle('open');
+                const overlay = document.getElementById('mobile-overlay');
+                const isOpen = drawer?.classList.contains('open');
+                if (isOpen) {
+                    drawer?.classList.remove('open');
+                    overlay?.classList.remove('open');
+                    document.body.classList.remove('scroll-locked');
+                } else {
+                    drawer?.classList.add('open');
+                    overlay?.classList.add('open');
+                    document.body.classList.add('scroll-locked');
+                }
             }
         };
+
+        // Wiki sidebar accordion toggle
+        const WikiNav = {
+            sidebar: null,
+            toggle: null,
+
+            init() {
+                this.sidebar = document.getElementById('wiki-sidebar');
+                this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
+
+                // Mark active page in navigation
+                this.highlightActivePage();
+
+                // Auto-close sidebar when clicking nav links (mobile/tablet)
+                if (this.sidebar) {
+                    this.sidebar.addEventListener('click', (e) => {
+                        if (e.target.closest('.wiki-nav-list a')) {
+                            // Small delay for visual feedback before close
+                            setTimeout(() => this.close(), 150);
+                        }
+                    });
+                }
+            },
+
+            toggle() {
+                if (!this.sidebar || !this.toggleBtn) {
+                    this.sidebar = document.getElementById('wiki-sidebar');
+                    this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
+                }
+                if (!this.sidebar || !this.toggleBtn) return;
+
+                const expanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
+                this.toggleBtn.setAttribute('aria-expanded', !expanded);
+                this.sidebar.classList.toggle('open');
+
+                // Update toggle icon with smooth transition
+                const icon = this.toggleBtn.querySelector('.toggle-icon');
+                if (icon) {
+                    icon.textContent = expanded ? '+' : '−';
+                }
+            },
+
+            close() {
+                if (!this.sidebar || !this.toggleBtn) return;
+                this.toggleBtn.setAttribute('aria-expanded', 'false');
+                this.sidebar.classList.remove('open');
+                const icon = this.toggleBtn.querySelector('.toggle-icon');
+                if (icon) icon.textContent = '+';
+            },
+
+            highlightActivePage() {
+                // Get current page path
+                const currentPath = window.location.pathname;
+                const currentPage = currentPath.split('/').pop();
+
+                // Find and mark active link
+                const navLinks = document.querySelectorAll('.wiki-nav-list a');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && (href === currentPage || href.endsWith(currentPage))) {
+                        link.setAttribute('aria-current', 'page');
+                        link.closest('li')?.classList.add('active');
+                    }
+                });
+            }
+        };
+
+        // Initialize WikiNav
+        WikiNav.init();
 
         // Toast (minimal)
         const Toast = {

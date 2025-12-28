@@ -44,6 +44,17 @@
         height: 36px;
     }
 
+    /* Hide desktop theme selector on mobile */
+    .nav-controls .theme-selector {
+        display: none;
+    }
+
+    /* Theme dropdown in mobile drawer */
+    .mobile-theme-selector .theme-dropdown {
+        font-size: var(--text-sm);
+        padding: 14px 40px 14px 16px;
+    }
+
     /* === HERO === */
     .section-hero {
         padding: var(--space-lg) 0;

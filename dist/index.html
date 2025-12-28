@@ -11,6 +11,7 @@
     <link rel="canonical" href="https://fogsift.com">
 
     <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -46,7 +47,7 @@
     </script>
 
     <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
-    <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t||'light')})();</script>
+    <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
 
     <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
          Alternative: self-host fonts for maximum security -->
@@ -76,6 +77,9 @@
         </div>
     </div>
 
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
         <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
@@ -86,6 +90,16 @@
         <a href="#process" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
         <a href="#about" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
         <a href="#pricing" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <div class="mobile-theme-selector">
+            <label class="mobile-theme-label">Theme</label>
+            <div class="theme-selector">
+                <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                    <option value="industrial-punchcard">Industrial</option>
+                </select>
+            </div>
+        </div>
     </nav>
 
     <!-- Main Navigation - Minimal top bar -->
@@ -104,10 +118,13 @@
             </nav>
 
             <div class="nav-controls">
-                <button class="theme-toggle" onclick="Theme.toggle()" aria-label="Toggle dark mode" aria-pressed="false">
-                    <svg class="icon-sun" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-                </button>
+                <div class="theme-selector">
+                    <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                        <option value="industrial-punchcard">Industrial</option>
+                    </select>
+                </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>

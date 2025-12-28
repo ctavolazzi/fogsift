@@ -1,0 +1,493 @@
+/* ============================================
+   FOGSIFT INDUSTRIAL PUNCHCARD THEME
+   "Toy-Grade Industrial" aesthetic
+
+   Claymorphism + Neo-Brutalism:
+   - Matte plastic mission control dashboard
+   - Punchcard paper texture
+   - Hard-edge shadows with mechanical press
+   - "Puff" volume via inset shadows
+   ============================================ */
+
+/* === BODY TEXTURE (Punchcard Paper) === */
+[data-theme="industrial-punchcard"] body {
+    background-color: var(--paper);
+    background-image: var(--texture-punchcard);
+    background-attachment: fixed;
+}
+
+/* === NAVIGATION - Industrial Frame === */
+[data-theme="industrial-punchcard"] .nav-wrapper {
+    box-shadow: 0 4px 0 var(--chocolate);
+}
+
+[data-theme="industrial-punchcard"] .main-nav {
+    background: var(--paper);
+    border-bottom: var(--border-width) solid var(--chocolate);
+    box-shadow: var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .brand-logo {
+    filter: contrast(1.1) saturate(1.1);
+}
+
+[data-theme="industrial-punchcard"] .menu-link {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: var(--radius-button);
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .menu-link:hover {
+    background: var(--canvas);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .menu-link.cta-link {
+    background: var(--primary);
+    border: var(--border-width-thin) solid var(--chocolate);
+    box-shadow: var(--shadow-hard), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .menu-link.cta-link:hover {
+    background: var(--primary-hover);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--chocolate), var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .menu-link.cta-link:active {
+    transform: translate(4px, 4px);
+    box-shadow: var(--shadow-active);
+}
+
+/* === CTA BUTTONS - Mechanical Click-Clack === */
+[data-theme="industrial-punchcard"] .cta-button {
+    background: var(--primary);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-hard), var(--shadow-puff);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all var(--snap);
+    position: relative;
+}
+
+[data-theme="industrial-punchcard"] .cta-button:hover {
+    background: var(--primary-hover);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--chocolate), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .cta-button:active {
+    transform: translate(4px, 4px);
+    box-shadow: var(--shadow-active), var(--shadow-puff-pressed);
+}
+
+/* === CARDS - Matte Plastic Panels === */
+[data-theme="industrial-punchcard"] .hero-badge,
+[data-theme="industrial-punchcard"] .about-card,
+[data-theme="industrial-punchcard"] .process-step,
+[data-theme="industrial-punchcard"] .testimonial-card,
+[data-theme="industrial-punchcard"] .pricing-card {
+    background: var(--paper);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card), var(--shadow-puff);
+    transition: all var(--ease-out);
+}
+
+[data-theme="industrial-punchcard"] .hero-badge:hover,
+[data-theme="industrial-punchcard"] .about-card:hover,
+[data-theme="industrial-punchcard"] .process-step:hover,
+[data-theme="industrial-punchcard"] .testimonial-card:hover,
+[data-theme="industrial-punchcard"] .pricing-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: var(--shadow-elevated), var(--shadow-puff);
+}
+
+/* Featured pricing card - extra prominence */
+[data-theme="industrial-punchcard"] .pricing-card.featured {
+    border-color: var(--primary);
+    border-width: 5px;
+    box-shadow: var(--shadow-elevated), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .featured-tag {
+    background: var(--primary);
+    border: 2px solid var(--chocolate);
+    font-weight: 800;
+    box-shadow: 2px 2px 0 var(--chocolate);
+}
+
+/* === PROCESS STEPS - Industrial Indicators === */
+[data-theme="industrial-punchcard"] .step-number {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    background: var(--canvas);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    box-shadow: var(--shadow-puff-pressed);
+    margin-bottom: var(--space-sm);
+}
+
+[data-theme="industrial-punchcard"] .process-step h3 {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* === PRICING CTA - Secondary Button Style === */
+[data-theme="industrial-punchcard"] .pricing-cta {
+    background: var(--primary);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius-button);
+    box-shadow: 3px 3px 0 var(--chocolate), var(--shadow-puff);
+    font-weight: 800;
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .pricing-cta:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--chocolate), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .pricing-cta:active {
+    transform: translate(3px, 3px);
+    box-shadow: var(--shadow-active), var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .pricing-card.featured .pricing-cta {
+    background: var(--chocolate);
+}
+
+/* === TESTIMONIALS - Quote Styling === */
+[data-theme="industrial-punchcard"] .testimonial-quote::before {
+    color: var(--primary);
+    opacity: 0.5;
+    font-weight: 900;
+}
+
+[data-theme="industrial-punchcard"] .author-name {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+[data-theme="industrial-punchcard"] .author-title {
+    font-family: var(--font-mono);
+    background: var(--canvas);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+/* === STATS - Industrial Gauges === */
+[data-theme="industrial-punchcard"] .stat-number {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    background: var(--canvas);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .stat-label {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* === CONTACT SECTION - Control Panel === */
+[data-theme="industrial-punchcard"] .section-contact {
+    background: var(--chocolate);
+    border: var(--border-width) solid var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+    position: relative;
+}
+
+[data-theme="industrial-punchcard"] .section-contact::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: calc(var(--radius-lg) - 4px);
+    pointer-events: none;
+}
+
+[data-theme="industrial-punchcard"] .section-contact .cta-button {
+    background: var(--primary);
+    border-color: var(--paper);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .section-contact .cta-button:hover {
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3), var(--shadow-puff);
+}
+
+/* === ABOUT AVATAR - Industrial Frame === */
+[data-theme="industrial-punchcard"] .about-avatar img {
+    border: var(--border-width) solid var(--chocolate);
+    box-shadow: var(--shadow-hard);
+}
+
+[data-theme="industrial-punchcard"] .about-role {
+    background: var(--canvas);
+    padding: 4px 12px;
+    border-radius: var(--radius);
+    border: 2px solid var(--line);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+/* === FOOTER - Industrial Base === */
+[data-theme="industrial-punchcard"] footer {
+    border-top: var(--border-width) solid var(--chocolate);
+    background: var(--canvas);
+    margin-left: calc(var(--space-md) * -1);
+    margin-right: calc(var(--space-md) * -1);
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+    box-shadow: inset 0 4px 8px rgba(62, 39, 35, 0.05);
+}
+
+[data-theme="industrial-punchcard"] .footer-links a {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .footer-links a:hover {
+    background: var(--paper);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+/* === TOAST NOTIFICATIONS - Industrial Alerts === */
+[data-theme="industrial-punchcard"] .toast {
+    background: var(--chocolate);
+    border: var(--border-width-thin) solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-elevated);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* === MODAL - Industrial Dialog === */
+[data-theme="industrial-punchcard"] #article-modal {
+    background: rgba(62, 39, 35, 0.9);
+}
+
+[data-theme="industrial-punchcard"] .modal-content {
+    background: var(--paper);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .close-modal {
+    background: var(--canvas);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .close-modal:hover {
+    background: var(--paper);
+    box-shadow: var(--shadow-puff);
+}
+
+/* === MOBILE DRAWER - Industrial Side Panel === */
+[data-theme="industrial-punchcard"] .mobile-drawer {
+    background: var(--paper);
+    border-left: var(--border-width) solid var(--chocolate);
+    box-shadow: -6px 0 0 var(--chocolate), var(--shadow-elevated);
+}
+
+[data-theme="industrial-punchcard"] .mobile-link {
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 2px solid transparent;
+    border-radius: var(--radius);
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .mobile-link:hover {
+    background: var(--canvas);
+    border-color: var(--line);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .mobile-close {
+    background: var(--canvas);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-puff-pressed);
+}
+
+[data-theme="industrial-punchcard"] .mobile-overlay.open {
+    background: rgba(62, 39, 35, 0.6);
+}
+
+[data-theme="industrial-punchcard"] .mobile-theme-label {
+    color: var(--chocolate-light);
+}
+
+[data-theme="industrial-punchcard"] .mobile-theme-selector .theme-dropdown {
+    background: var(--paper);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius-button);
+    box-shadow: var(--shadow-hard);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+[data-theme="industrial-punchcard"] .mobile-theme-selector .theme-dropdown:focus {
+    box-shadow: var(--shadow-hard), 0 0 0 3px var(--primary-transparent);
+}
+
+/* === TYPOGRAPHY OVERRIDES === */
+[data-theme="industrial-punchcard"] h1,
+[data-theme="industrial-punchcard"] h2,
+[data-theme="industrial-punchcard"] h3,
+[data-theme="industrial-punchcard"] h4 {
+    font-weight: 800;
+    letter-spacing: -0.01em;
+}
+
+[data-theme="industrial-punchcard"] .headline {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+/* Monospace elements - typewriter feel */
+[data-theme="industrial-punchcard"] code,
+[data-theme="industrial-punchcard"] .font-mono {
+    background: var(--canvas);
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+}
+
+/* === ROTATING HIGHLIGHT === */
+/* Keep it simple - just color styling, NOT button-like */
+[data-theme="industrial-punchcard"] .rotating-highlight {
+    color: var(--primary);
+    background: transparent !important;
+}
+
+[data-theme="industrial-punchcard"] .rotating-highlight [data-words],
+[data-theme="industrial-punchcard"] [data-words] {
+    color: var(--primary) !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+/* === SECTION LABELS === */
+[data-theme="industrial-punchcard"] .section-label {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    background: var(--chocolate);
+    color: var(--paper);
+    padding: 6px 16px;
+    border-radius: var(--radius);
+    display: inline-block;
+    box-shadow: 2px 2px 0 var(--primary);
+}
+
+/* === DECORATIVE SLOT EFFECT === */
+[data-theme="industrial-punchcard"] .slot-bg {
+    background: var(--canvas);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-puff-pressed);
+    padding: var(--space-md);
+}
+
+/* === WIKI OVERRIDES === */
+[data-theme="industrial-punchcard"] .wiki-sidebar {
+    background: var(--canvas);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .wiki-main {
+    background: var(--paper);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .wiki-category-card {
+    background: var(--paper);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 0 var(--chocolate), var(--shadow-puff);
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .wiki-category-card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--chocolate), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .wiki-content h1::after {
+    background: var(--primary);
+    height: 4px;
+    border-radius: 2px;
+}
+
+[data-theme="industrial-punchcard"] .wiki-content blockquote::before {
+    background: var(--primary);
+    width: 4px;
+    border-radius: 2px;
+}
+
+/* === JD SITEMAP OVERRIDES === */
+[data-theme="industrial-punchcard"] .jd-sitemap {
+    background: var(--canvas);
+    border: var(--border-width-thin) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+
+[data-theme="industrial-punchcard"] .jd-category {
+    background: var(--paper);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-puff);
+    transition: all var(--snap);
+}
+
+[data-theme="industrial-punchcard"] .jd-category:hover {
+    border-color: var(--primary);
+    box-shadow: 3px 3px 0 var(--chocolate), var(--shadow-puff);
+}
+
+[data-theme="industrial-punchcard"] .jd-range {
+    font-family: var(--font-mono);
+    background: var(--canvas);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+    font-weight: 700;
+}
+

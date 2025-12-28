@@ -169,10 +169,7 @@ const App = {
             '%c FOGSIFT v' + this.version + ' // SYSTEMS NOMINAL ',
             'background: #4a2c2a; color: #e07b3c; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #0d9488;'
         );
-        console.log(
-            '%c 💤 Psst... stay a while and something might happen... ',
-            'background: #4a2c2a; color: #e07b3c; padding: 5px; font-family: monospace; font-size: 10px;'
-        );
+        // Note: "Psst..." hint moved to SleepMode.init() to avoid duplication
         console.log(
             '%c 🎮 ...or try the old ways. ',
             'color: #999; font-family: monospace; font-size: 10px;'

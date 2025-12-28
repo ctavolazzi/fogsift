@@ -167,6 +167,94 @@
     }
 }
 
+/* === PALETTE: INDUSTRIAL PUNCHCARD === */
+/* "Toy-Grade Industrial" - Matte plastic mission control on punchcard paper */
+[data-theme="industrial-punchcard"] {
+    /* Core Industrial Palette */
+    --cream: #FDFBF7;           /* Warm Cream - primary background */
+    --cream-dark: #F0EBE0;      /* Darker Cream - passive/slot surfaces */
+    --chocolate: #3E2723;       /* Deep Mocha - structure/ink */
+    --chocolate-light: #5D4037; /* Lighter mocha - secondary text */
+    --burnt-orange: #E67E22;    /* Safety Orange - action/CTA */
+    --rust: #D35400;            /* Darker orange - hover states */
+    --earth-mid: #6D4C41;       /* Mid brown - decorative */
+    --earth-dark: #4E342E;      /* Dark brown - decorative */
+
+    /* Semantic mappings */
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #E67E22;          /* Orange accent (no teal in industrial) */
+    --accent-light: #F39C12;
+    --highlight: #F1C40F;       /* Industrial gold */
+
+    /* Text colors */
+    --muted: var(--chocolate-light);
+    --muted-light: #8D6E63;
+    --line: #D7CCC8;
+
+    --bar-bg: var(--cream-dark);
+    --bar-text: var(--chocolate);
+    --bar-border: var(--line);
+
+    /* === INDUSTRIAL BORDERS (Thicker, brutalist) === */
+    --border-width: 4px;
+    --border-width-thin: 3px;
+
+    /* === INDUSTRIAL SHADOWS (Hard-edge, mechanical) === */
+    /* Resting state - high opacity, hard offset */
+    --shadow-soft: 3px 3px 0 rgba(62, 39, 35, 0.15);
+    --shadow-card: 4px 4px 0 var(--chocolate);
+    --shadow-elevated: 6px 6px 0 var(--chocolate);
+    --shadow-hard: 4px 4px 0 var(--chocolate);
+    --shadow-hover: 6px 6px 0 var(--burnt-orange);
+    /* Active/pressed state - no shadow (moves with transform) */
+    --shadow-active: 0 0 0 transparent;
+
+    /* Industrial "Puff" effect - inset shadows for volume */
+    --shadow-puff: inset 2px 2px 4px rgba(255, 255, 255, 0.8),
+                   inset -2px -2px 4px rgba(62, 39, 35, 0.15);
+    --shadow-puff-pressed: inset 2px 2px 4px rgba(62, 39, 35, 0.1),
+                           inset -1px -1px 2px rgba(255, 255, 255, 0.5);
+
+    /* === INDUSTRIAL RADIUS (Rounded but chunky) === */
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-badge: 24px;
+    --radius-button: 16px;
+
+    /* === INDUSTRIAL MOTION (Snappy, mechanical) === */
+    --snap: 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out: 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-bounce: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+
+    /* === PUNCHCARD TEXTURE (CSS background) === */
+    --texture-punchcard: 
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(62, 39, 35, 0.02) 2px,
+            rgba(62, 39, 35, 0.02) 4px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 2px,
+            rgba(62, 39, 35, 0.02) 2px,
+            rgba(62, 39, 35, 0.02) 4px
+        ),
+        linear-gradient(
+            135deg,
+            rgba(62, 39, 35, 0.03) 0%,
+            transparent 50%,
+            rgba(62, 39, 35, 0.02) 100%
+        );
+}
+
 /* === REDUCED MOTION (Accessibility) === */
 @media (prefers-reduced-motion: reduce) {
     :root {

@@ -23,7 +23,8 @@ const VERSION = pkg.version || '0.0.0';
 // Theme init script - injected into HTML <head> to prevent FOUC
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
-const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');document.documentElement.setAttribute('data-theme',t||'light')})();</script>`;
+const VALID_THEMES = ['light', 'dark', 'industrial-punchcard'];
+const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
 
 // SVG Icons for wiki categories
 const WIKI_ICONS = {
@@ -45,13 +46,14 @@ function getWikiIcon(iconName) {
 // Files to concatenate (order matters)
 // TD-017: Split components.css into modular files
 const CSS_FILES = [
-    'src/css/tokens.css',      // Design tokens
-    'src/css/base.css',        // Reset, typography
-    'src/css/navigation.css',  // Nav, mobile drawer, theme toggle
-    'src/css/components.css',  // Sections, buttons, toast, modal
-    'src/css/sleep.css',       // Sleep mode animations (easter egg)
-    'src/css/wiki.css',        // Wiki page styles
-    'src/css/mobile.css',      // Mobile-first overrides - must be last
+    'src/css/tokens.css',           // Design tokens
+    'src/css/base.css',             // Reset, typography
+    'src/css/navigation.css',       // Nav, mobile drawer, theme toggle
+    'src/css/components.css',       // Sections, buttons, toast, modal
+    'src/css/industrial-theme.css', // Industrial punchcard theme overrides
+    'src/css/sleep.css',            // Sleep mode animations (easter egg)
+    'src/css/wiki.css',             // Wiki page styles
+    'src/css/mobile.css',           // Mobile-first overrides - must be last
 ];
 
 const JS_FILES = [
