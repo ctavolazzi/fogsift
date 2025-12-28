@@ -147,12 +147,29 @@
             </nav>
 
             <div class="nav-controls">
-                <div class="theme-selector">
-                    <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                        <option value="industrial-punchcard">Industrial</option>
-                    </select>
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
                 </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>

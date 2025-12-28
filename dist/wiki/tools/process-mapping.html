@@ -97,12 +97,29 @@
             </div>
 
             <div class="nav-controls">
-                <div class="theme-selector">
-                    <select class="theme-dropdown" onchange="Theme.onChange(event)" aria-label="Select theme">
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                        <option value="industrial-punchcard">Industrial</option>
-                    </select>
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
                 </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
@@ -573,92 +590,11 @@
         </main>
     </div>
 
-    <!-- Minimal JS for wiki pages - Event-driven theme system -->
+    <!-- Shared JS bundle (Theme, ThemePicker, Nav, Toast) -->
+    <script src="../../app.js" defer></script>
+
+    <!-- Wiki-specific JS -->
     <script>
-        // Theme system (event-driven, cross-tab sync)
-        const Theme = {
-            THEMES: ['light', 'dark', 'industrial-punchcard'],
-            LABELS: { 'light': 'Light', 'dark': 'Dark', 'industrial-punchcard': 'Industrial' },
-            _initialized: false,
-
-            get() {
-                return document.documentElement.getAttribute('data-theme') || 'light';
-            },
-
-            set(theme, notify = true) {
-                if (!this.THEMES.includes(theme)) theme = 'light';
-                const prev = this.get();
-                if (prev === theme) return;
-
-                document.documentElement.setAttribute('data-theme', theme);
-                try { localStorage.setItem('theme', theme); } catch {}
-                this._hydrateDropdowns();
-
-                // Dispatch event for any listeners
-                window.dispatchEvent(new CustomEvent('themechange', {
-                    detail: { theme, previousTheme: prev }
-                }));
-
-                // Show toast if available
-                if (notify && typeof Toast !== 'undefined') {
-                    Toast.show('VISUAL MODE: ' + this.LABELS[theme].toUpperCase());
-                }
-            },
-
-            onChange(event) {
-                this.set(event.target.value);
-            },
-
-            _hydrateDropdowns() {
-                const current = this.get();
-                document.querySelectorAll('.theme-dropdown').forEach(d => {
-                    if (d.value !== current) d.value = current;
-                });
-            },
-
-            init() {
-                if (this._initialized) return;
-                this._initialized = true;
-
-                // Apply stored theme
-                const stored = localStorage.getItem('theme');
-                const theme = this.THEMES.includes(stored) ? stored : 'light';
-                document.documentElement.setAttribute('data-theme', theme);
-                this._hydrateDropdowns();
-
-                // Cross-tab sync via storage events
-                window.addEventListener('storage', (e) => {
-                    if (e.key === 'theme' && e.newValue && this.THEMES.includes(e.newValue)) {
-                        if (e.newValue !== this.get()) {
-                            document.documentElement.setAttribute('data-theme', e.newValue);
-                            this._hydrateDropdowns();
-                        }
-                    }
-                });
-            }
-        };
-
-        // Initialize theme on load
-        Theme.init();
-
-        // Mobile nav
-        const Nav = {
-            toggleMobile() {
-                const drawer = document.getElementById('mobile-drawer');
-                const overlay = document.getElementById('mobile-overlay');
-                const isOpen = drawer?.classList.contains('open');
-                if (isOpen) {
-                    drawer?.classList.remove('open');
-                    overlay?.classList.remove('open');
-                    document.body.classList.remove('scroll-locked');
-                } else {
-                    drawer?.classList.add('open');
-                    overlay?.classList.add('open');
-                    document.body.classList.add('scroll-locked');
-                }
-            }
-        };
-
         // Wiki sidebar accordion toggle
         const WikiNav = {
             sidebar: null,
@@ -675,7 +611,6 @@
                 if (this.sidebar) {
                     this.sidebar.addEventListener('click', (e) => {
                         if (e.target.closest('.wiki-nav-list a')) {
-                            // Small delay for visual feedback before close
                             setTimeout(() => this.close(), 150);
                         }
                     });
@@ -693,11 +628,8 @@
                 this.toggleBtn.setAttribute('aria-expanded', !expanded);
                 this.sidebar.classList.toggle('open');
 
-                // Update toggle icon with smooth transition
                 const icon = this.toggleBtn.querySelector('.toggle-icon');
-                if (icon) {
-                    icon.textContent = expanded ? '+' : '−';
-                }
+                if (icon) icon.textContent = expanded ? '+' : '−';
             },
 
             close() {
@@ -709,13 +641,9 @@
             },
 
             highlightActivePage() {
-                // Get current page path
                 const currentPath = window.location.pathname;
                 const currentPage = currentPath.split('/').pop();
-
-                // Find and mark active link
-                const navLinks = document.querySelectorAll('.wiki-nav-list a');
-                navLinks.forEach(link => {
+                document.querySelectorAll('.wiki-nav-list a').forEach(link => {
                     const href = link.getAttribute('href');
                     if (href && (href === currentPage || href.endsWith(currentPage))) {
                         link.setAttribute('aria-current', 'page');
@@ -725,21 +653,12 @@
             }
         };
 
-        // Initialize WikiNav
-        WikiNav.init();
-
-        // Toast (minimal)
-        const Toast = {
-            show(msg) {
-                const container = document.getElementById('toast-container');
-                if (!container) return;
-                const toast = document.createElement('div');
-                toast.className = 'toast';
-                toast.textContent = msg;
-                container.appendChild(toast);
-                setTimeout(() => toast.remove(), 3000);
-            }
-        };
+        // Init WikiNav when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => WikiNav.init());
+        } else {
+            WikiNav.init();
+        }
     </script>
 </body>
 </html>

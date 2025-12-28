@@ -44,18 +44,23 @@
         height: 36px;
     }
 
-    /* Keep theme selector visible in header on mobile */
-    .nav-controls .theme-selector {
+    /* Theme picker visible on mobile */
+    .nav-controls .theme-picker {
         display: inline-flex;
     }
 
-    /* Compact theme dropdown on mobile */
-    .nav-controls .theme-dropdown {
-        min-width: 80px;
-        padding: 6px 26px 6px 8px;
-        font-size: 0.65rem;
-        background-position: right 6px center;
-        background-size: 8px;
+    /* Compact theme picker on mobile */
+    .theme-picker-toggle {
+        padding: 6px 10px;
+        min-height: 36px;
+    }
+
+    .theme-picker-label {
+        display: none;
+    }
+
+    .theme-picker-menu {
+        min-width: 140px;
     }
 
     /* === HERO === */
