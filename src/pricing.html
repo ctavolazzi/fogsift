@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | Fogsift</title>
     <meta name="description" content="Fogsift pricing: Free triage call, $20 deep dive, or contract engagement. Simple, transparent pricing for consulting services.">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/pricing.html">
-    
+
     <!-- Theme detection -->
     {{THEME_INIT}}
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,47 +19,11 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <header class="nav-wrapper" role="banner">
-        <div class="main-nav">
-            <a href="index.html" class="brand" aria-label="Fogsift home">
-                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
-            </a>
-            <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
-                <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link" aria-current="page">PRICING</a></div>
-                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
-            </nav>
-            <div class="nav-controls">
-                <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
-                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
-                        <span class="theme-picker-label">Theme</span>
-                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
-                            <span class="theme-option-icon">☀</span>
-                            <span class="theme-option-label">Light</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
-                            <span class="theme-option-icon">●</span>
-                            <span class="theme-option-label">Dark</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
-                            <span class="theme-option-icon">▣</span>
-                            <span class="theme-option-label">Industrial</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
         <section class="section section-pricing" style="text-align: center;">
@@ -94,24 +58,24 @@
 
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>How It Works</h2>
-            
+
             <h3>The Call (Free)</h3>
             <p>A quick conversation to understand your situation. No strings attached. If I can point you in the right direction in 15 minutes, I will. If you need more help, we'll discuss next steps.</p>
-            
+
             <h3>Deep Dive ($20)</h3>
             <p>One hour of focused work on your problem. This is where we dig in — research, analysis, and concrete recommendations. Most people get what they need here.</p>
-            
+
             <h3>Contract Engagement</h3>
             <p>For bigger projects that need ongoing attention. We define the scope together, agree on deliverables, and I get to work. Pricing depends on complexity and timeline.</p>
-            
+
             <h2>FAQ</h2>
-            
+
             <h3>Why so cheap?</h3>
             <p>I'd rather help 100 people at accessible prices than 5 people at premium rates. The work is the same either way.</p>
-            
+
             <h3>What if I'm not satisfied?</h3>
             <p>If you don't find value in our conversation, you don't pay. Simple as that.</p>
-            
+
             <h3>Do you do ongoing retainers?</h3>
             <p>Sometimes, for the right fit. Let's talk about what you need.</p>
         </section>

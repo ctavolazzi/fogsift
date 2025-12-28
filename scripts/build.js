@@ -26,6 +26,75 @@ const THEME_STORAGE_KEY = 'theme';
 const VALID_THEMES = ['light', 'dark', 'industrial-punchcard'];
 const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
 
+// Navigation partial - single source of truth for site navigation
+const NAV_LINKS = [
+    { href: 'wiki/index.html', label: 'WIKI' },
+    { href: 'process.html', label: 'PROCESS' },
+    { href: 'about.html', label: 'ABOUT' },
+    { href: 'pricing.html', label: 'PRICING' },
+    { href: 'contact.html', label: 'CONTACT', cta: true },
+];
+
+// Generate nav HTML from links array
+function generateNavHeader(currentPage = '') {
+    const menuItems = NAV_LINKS.map(link => {
+        const isCurrent = currentPage && link.href === currentPage;
+        const classes = link.cta ? 'menu-link cta-link' : 'menu-link';
+        const aria = isCurrent ? ' aria-current="page"' : '';
+        return `<div class="menu-item"><a href="${link.href}" class="${classes}"${aria}>${link.label}</a></div>`;
+    }).join('\n                ');
+
+    return `<!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        ${NAV_LINKS.map(l => `<a href="${l.href}" class="mobile-link${l.cta ? ' cta-link' : ''}" onclick="Nav.toggleMobile()">${l.label}</a>`).join('\n        ')}
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper" role="banner">
+        <div class="main-nav">
+            <a href="index.html" class="brand" aria-label="Fogsift home">
+                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                ${menuItems}
+            </nav>
+            <div class="nav-controls">
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>`;
+}
+
 // SVG Icons for wiki categories
 const WIKI_ICONS = {
     book: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg>`,
@@ -136,6 +205,9 @@ function processHtml() {
     // Inject theme init script (TD-010: single source of truth)
     html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
 
+    // Inject nav header (DRY: single source of truth for navigation)
+    html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
+
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
@@ -160,6 +232,9 @@ function process404Html() {
     // Inject theme init script (TD-010: single source of truth)
     html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
 
+    // Inject nav header (DRY: single source of truth for navigation)
+    html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
+
     fs.writeFileSync(path.join(DIST, '404.html'), html);
     return true;
 }
@@ -176,6 +251,9 @@ function processSimpleHtml(filename) {
 
     // Inject theme init script (TD-010: single source of truth)
     html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+
+    // Inject nav header with current page highlighted (DRY: single source of truth)
+    html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader(filename));
 
     fs.writeFileSync(path.join(DIST, filename), html);
     return true;

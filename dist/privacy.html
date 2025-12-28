@@ -20,15 +20,64 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
     <header class="nav-wrapper" role="banner">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="index.html" class="menu-link">HOME</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
+                <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
+                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
             </nav>
+            <div class="nav-controls">
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
         </div>
     </header>
 

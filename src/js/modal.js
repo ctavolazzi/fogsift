@@ -6,7 +6,7 @@
 const Modal = {
     elementId: 'article-modal',
     articles: null, // Cache for loaded articles
-    articlesPath: 'content/articles.json',
+    articlesPath: '/content/articles.json',
 
     getElement() {
         return document.getElementById(this.elementId);

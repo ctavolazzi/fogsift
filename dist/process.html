@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Process | Fogsift</title>
     <meta name="description" content="How Fogsift works: Listen, Research, Deliver. A simple three-step process to get you clear answers to complex problems.">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/process.html">
-    
+
     <!-- Theme detection -->
     <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +19,24 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
     <header class="nav-wrapper" role="banner">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
@@ -57,6 +74,9 @@
                         </button>
                     </div>
                 </div>
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
             </div>
         </div>
     </header>
@@ -69,13 +89,13 @@
                 <div class="process-step">
                     <div class="step-number">01</div>
                     <h3>Listen</h3>
-                    <p>You tell me what's going on. I ask the questions you haven't thought of yet.</p>
+                    <p>You share what's going on. He asks the questions you haven't thought of yet.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">02</div>
                     <h3>Research</h3>
-                    <p>I dig in. Different industries, different angles, different solutions you might have missed.</p>
+                    <p>He digs in. Different industries, different angles, different solutions you might have missed.</p>
                 </div>
 
                 <div class="process-step">
@@ -90,16 +110,16 @@
 
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>Why This Works</h2>
-            
+
             <p>Most problems aren't actually new. They just feel that way because you're too close to them. Fresh eyes and the right questions can cut through months of confusion in a single conversation.</p>
-            
+
             <h3>What You Get</h3>
             <ul>
                 <li><strong>Clarity</strong> — A clear understanding of what's actually happening</li>
                 <li><strong>Options</strong> — Multiple paths forward, with tradeoffs explained</li>
                 <li><strong>Action</strong> — Concrete next steps you can take immediately</li>
             </ul>
-            
+
             <h3>What You Don't Get</h3>
             <ul>
                 <li>Vague advice that sounds smart but doesn't help</li>

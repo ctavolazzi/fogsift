@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Fogsift</title>
     <meta name="description" content="Get in touch with Fogsift. Ask a question, book a call, or start a conversation about your problem.">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/contact.html">
-    
+
     <!-- Theme detection -->
     {{THEME_INIT}}
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,47 +19,11 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
-    <header class="nav-wrapper" role="banner">
-        <div class="main-nav">
-            <a href="index.html" class="brand" aria-label="Fogsift home">
-                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
-            </a>
-            <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
-                <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="contact.html" class="menu-link cta-link" aria-current="page">CONTACT</a></div>
-            </nav>
-            <div class="nav-controls">
-                <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
-                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
-                        <span class="theme-picker-label">Theme</span>
-                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
-                    </button>
-                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
-                            <span class="theme-option-icon">☀</span>
-                            <span class="theme-option-label">Light</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
-                            <span class="theme-option-icon">●</span>
-                            <span class="theme-option-label">Dark</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
-                            <span class="theme-option-icon">▣</span>
-                            <span class="theme-option-label">Industrial</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
         <section class="section section-contact" style="text-align: center; margin-bottom: var(--space-xl);">
@@ -74,15 +38,15 @@
 
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>Ways to Reach Me</h2>
-            
+
             <h3>Email</h3>
             <p><a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a></p>
-            <p>Best for detailed questions or when you want to explain your situation in writing. I typically respond within 24 hours.</p>
-            
+            <p>Best for detailed questions or when you want to explain your situation in writing. We typically respond within 24 hours.</p>
+
             <h3>Book a Call</h3>
             <p>The first call is free — 15-30 minutes to triage your problem and see if I can help. No pitch, no pressure.</p>
             <p><a href="mailto:christopher@fogsift.com?subject=Booking%20a%20Free%20Call">Email to schedule →</a></p>
-            
+
             <h2>What to Include</h2>
             <p>When you reach out, it helps to know:</p>
             <ul>
@@ -91,9 +55,9 @@
                 <li>What would success look like?</li>
             </ul>
             <p>Don't worry if you don't have all the answers — that's what we'll figure out together.</p>
-            
+
             <h2>Response Time</h2>
-            <p>I aim to respond to all inquiries within 24 hours on business days. If you haven't heard back, check your spam folder or try again.</p>
+            <p>We aim to respond to all inquiries within 24 hours on business days. If you haven't heard back, check your spam folder or try again.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>

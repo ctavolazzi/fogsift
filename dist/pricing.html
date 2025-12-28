@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | Fogsift</title>
     <meta name="description" content="Fogsift pricing: Free triage call, $20 deep dive, or contract engagement. Simple, transparent pricing for consulting services.">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/pricing.html">
-    
+
     <!-- Theme detection -->
     <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -19,7 +19,24 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
     <header class="nav-wrapper" role="banner">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
@@ -57,6 +74,9 @@
                         </button>
                     </div>
                 </div>
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
             </div>
         </div>
     </header>
@@ -94,24 +114,24 @@
 
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>How It Works</h2>
-            
+
             <h3>The Call (Free)</h3>
             <p>A quick conversation to understand your situation. No strings attached. If I can point you in the right direction in 15 minutes, I will. If you need more help, we'll discuss next steps.</p>
-            
+
             <h3>Deep Dive ($20)</h3>
             <p>One hour of focused work on your problem. This is where we dig in — research, analysis, and concrete recommendations. Most people get what they need here.</p>
-            
+
             <h3>Contract Engagement</h3>
             <p>For bigger projects that need ongoing attention. We define the scope together, agree on deliverables, and I get to work. Pricing depends on complexity and timeline.</p>
-            
+
             <h2>FAQ</h2>
-            
+
             <h3>Why so cheap?</h3>
             <p>I'd rather help 100 people at accessible prices than 5 people at premium rates. The work is the same either way.</p>
-            
+
             <h3>What if I'm not satisfied?</h3>
             <p>If you don't find value in our conversation, you don't pay. Simple as that.</p>
-            
+
             <h3>Do you do ongoing retainers?</h3>
             <p>Sometimes, for the right fit. Let's talk about what you need.</p>
         </section>

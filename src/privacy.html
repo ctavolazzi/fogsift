@@ -20,17 +20,10 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <header class="nav-wrapper" role="banner">
-        <div class="main-nav">
-            <a href="index.html" class="brand" aria-label="Fogsift home">
-                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
-            </a>
-            <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="index.html" class="menu-link">HOME</a></div>
-                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
-            </nav>
-        </div>
-    </header>
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
         <section class="wiki-content" style="padding: var(--space-lg) 0;">
