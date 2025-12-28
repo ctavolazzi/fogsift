@@ -23,7 +23,7 @@ const VERSION = pkg.version || '0.0.0';
 // Theme init script - injected into HTML <head> to prevent FOUC
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
-const VALID_THEMES = ['light', 'dark', 'industrial-punchcard'];
+const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix'];
 const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
 
 // Navigation partial - single source of truth for site navigation
@@ -85,6 +85,11 @@ function generateNavHeader(currentPage = '') {
                             <span class="theme-option-label">Industrial</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
+                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
                     </div>
                 </div>
                 <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
@@ -120,6 +125,7 @@ const CSS_FILES = [
     'src/css/navigation.css',       // Nav, mobile drawer, theme toggle
     'src/css/components.css',       // Sections, buttons, toast, modal
     'src/css/industrial-theme.css', // Industrial punchcard theme overrides
+    'src/css/matrix-theme.css',     // Matrix digital rain theme overrides
     'src/css/sleep.css',            // Sleep mode animations (easter egg)
     'src/css/wiki.css',             // Wiki page styles
     'src/css/mobile.css',           // Mobile-first overrides - must be last
@@ -128,6 +134,7 @@ const CSS_FILES = [
 const JS_FILES = [
     'src/js/toast.js',
     'src/js/theme.js',
+    'src/js/matrix-rain.js', // Matrix theme canvas animation
     'src/js/modal.js',
     'src/js/nav.js',
     'src/js/sleep.js',    // Easter egg - must be before main.js
