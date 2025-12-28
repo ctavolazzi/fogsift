@@ -57,32 +57,32 @@
 
     <!-- External Stylesheet with error handling -->
     <link rel="stylesheet" href="styles.css" id="main-styles" onerror="window.__cssLoadError='styles.css'">
-    
+
     <!-- CSS Load Verification -->
     <script>
     (function() {
         window.__cssErrors = [];
-        
+
         // Check CSS loaded after DOM ready
         document.addEventListener('DOMContentLoaded', function() {
             var styles = document.getElementById('main-styles');
             var testEl = document.body;
-            
+
             // Verify stylesheet loaded
             if (window.__cssLoadError) {
                 console.error('[FOGSIFT] CSS Load Error:', window.__cssLoadError);
                 window.__cssErrors.push(window.__cssLoadError);
             }
-            
+
             // Verify styles are applied (check for CSS custom properties)
             var computed = getComputedStyle(document.documentElement);
             var primaryColor = computed.getPropertyValue('--primary').trim();
-            
+
             if (!primaryColor) {
                 console.warn('[FOGSIFT] CSS variables not detected - styles may not have loaded correctly');
                 window.__cssErrors.push('CSS variables missing');
             }
-            
+
             // Log success or failure
             if (window.__cssErrors.length === 0) {
                 console.log('%c[FOGSIFT] Styles loaded successfully', 'color: #4CAF50');
