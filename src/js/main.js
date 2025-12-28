@@ -16,8 +16,22 @@ const App = {
         this.initAccessibility();
         this.initRotatingWords();
         this.initKonami();
+        this.initHoneypot();
         this.logBoot();
         SleepMode.init();
+    },
+
+    initHoneypot() {
+        // Block mailto links if honeypot checkbox is checked (bot behavior)
+        document.querySelectorAll('a[data-honeypot="true"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const honeypot = link.parentElement.querySelector('.hp-field input');
+                if (honeypot && honeypot.checked) {
+                    e.preventDefault();
+                    console.log('%c 🤖 Bot detected ', 'background: #dc2626; color: white; padding: 5px;');
+                }
+            });
+        });
     },
 
     initClock() {

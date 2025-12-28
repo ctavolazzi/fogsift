@@ -44,6 +44,23 @@
     outline-offset: var(--focus-ring-offset);
 }
 
+/* === HONEYPOT (Anti-bot) === */
+.hp-field {
+    position: absolute !important;
+    left: -9999px !important;
+    top: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+}
+
+label.hp-field {
+    display: none !important;
+}
+
 /* === HERO SECTION === */
 .section-hero {
     text-align: center;
