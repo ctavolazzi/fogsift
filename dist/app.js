@@ -798,14 +798,6 @@ const SleepMode = {
 // Make available globally
 window.SleepMode = SleepMode;
 
-// Dev helper: Type SleepMode.test() in console to trigger immediately
-SleepMode.test = function() {
-    console.log('%c 🧪 Testing sleep mode... ', 'background: #4a2c2a; color: #fb923c; padding: 5px;');
-    this.enterSleepMode();
-};
-
-// Also available as window.sleep() for convenience
-window.sleep = () => SleepMode.test();
 
 
 

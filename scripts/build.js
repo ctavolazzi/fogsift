@@ -63,6 +63,8 @@ const STATIC_ASSETS = [
     { src: 'src/favicon.png', dest: 'favicon.png' },
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
+    { src: 'src/content/status.json', dest: 'content/status.json' },
+    { src: 'src/system-status.html', dest: 'system-status.html' },
     // Security files
     { src: 'src/_headers', dest: '_headers' },
     { src: 'src/.well-known/security.txt', dest: '.well-known/security.txt' },

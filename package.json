@@ -14,7 +14,10 @@
     "preview": "npm run build && npm run dev",
     "version:patch": "node scripts/version.js patch",
     "version:minor": "node scripts/version.js minor",
-    "version:major": "node scripts/version.js major"
+    "version:major": "node scripts/version.js major",
+    "mcp:status": "node scripts/mcp-status-writer.js",
+    "mcp:watch": "node scripts/mcp-status-writer.js --watch",
+    "mcp:dev": "npm run mcp:status && npm run dev"
   },
   "keywords": [
     "consulting",
