@@ -603,6 +603,18 @@ async function build() {
     if (processSimpleHtml('disclaimer.html')) {
         console.log('  ✓ dist/disclaimer.html (processed)');
     }
+    if (processSimpleHtml('about.html')) {
+        console.log('  ✓ dist/about.html (processed)');
+    }
+    if (processSimpleHtml('process.html')) {
+        console.log('  ✓ dist/process.html (processed)');
+    }
+    if (processSimpleHtml('pricing.html')) {
+        console.log('  ✓ dist/pricing.html (processed)');
+    }
+    if (processSimpleHtml('contact.html')) {
+        console.log('  ✓ dist/contact.html (processed)');
+    }
 
     // Copy static assets
     console.log('\n📁 Static Assets:');
