@@ -141,3 +141,45 @@ Wiki templates now load shared `app.js` instead of duplicating inline JS:
 - Single source of truth for Theme/ThemePicker/Nav/Toast
 - Bug fixes propagate to all pages automatically
 - Easier to maintain and extend
+
+[2025-12-28 08:53:25] ## Theme System Enhancements - DEPLOYED ✅
+
+### PR #10 Merged
+**Commit:** fd54a89 (squash merge)
+**Branch:** feature/theme-system-enhancements → main
+
+### Changes Summary
+
+**Custom Theme Picker**
+- Replaced native `<select>` with custom styled dropdown
+- Icons: ☀ Light, ● Dark, ▣ Industrial
+- Full keyboard navigation (Arrow keys, Enter, Escape)
+- Click-outside-to-close behavior
+
+**DRY Refactoring**
+- Wiki templates now load shared `app.js`
+- Removed ~200 lines duplicate JS per template
+- Added `{{APP_PATH}}` build variable
+- **Net result: -2,044 lines of code**
+
+**New Features**
+- System theme auto-detection (`prefers-color-scheme`)
+- Keyboard shortcut: Press `T` to cycle themes
+- Smooth theme transitions (0.3s ease)
+- Console hint for keyboard shortcut
+
+**Accessibility**
+- Respects `prefers-reduced-motion`
+- ARIA roles on custom dropdown
+
+### Files Modified
+- `src/js/theme.js` - ThemePicker + system detection
+- `src/js/main.js` - Console hint
+- `src/css/tokens.css` - Smooth transitions
+- `src/css/navigation.css` - Custom dropdown styles
+- `scripts/build.js` - APP_PATH variable
+- Wiki templates - Load app.js
+
+### Deployment
+- **Production:** https://fogsift.com
+- **Preview:** https://0d69d168.fogsift.pages.dev

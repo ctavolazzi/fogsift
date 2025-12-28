@@ -1,8 +1,8 @@
 # FOGSIFT // TECH DEBT & PRIORITIES
 
-**Version:** 0.0.1
-**Audit Date:** 2025-12-26
-**Status:** LAUNCH COMPLETE — REFACTOR QUEUE INITIATED
+**Version:** 0.0.5
+**Audit Date:** 2025-12-28
+**Status:** LAUNCH COMPLETE — CLEANUP & MAINTENANCE
 
 ---
 
@@ -10,24 +10,33 @@
 
 ```
 src/                          # Source files (edit here)
-├── index.html               # ~200 lines clean HTML template
+├── index.html               # Main page
 ├── css/
-│   ├── tokens.css           # Design tokens
-│   ├── base.css             # Reset, typography
-│   └── components.css       # Component styles
+│   ├── tokens.css           # Design tokens (306 lines)
+│   ├── base.css             # Reset, typography (216 lines)
+│   ├── components.css       # Component styles (649 lines)
+│   ├── navigation.css       # Nav styles (473 lines)
+│   ├── mobile.css           # Mobile responsive (224 lines)
+│   ├── industrial-theme.css # Industrial theme (493 lines)
+│   ├── wiki.css             # Wiki styles (1,135 lines)
+│   └── sleep.css            # Sleep mode (779 lines)
 ├── js/
-│   ├── toast.js             # Toast module
-│   ├── theme.js             # Theme module
-│   ├── modal.js             # Modal module
-│   ├── nav.js               # Navigation module
-│   └── main.js              # App init
+│   ├── main.js              # App init (189 lines)
+│   ├── theme.js             # Theme module (462 lines)
+│   ├── toast.js             # Toast module (84 lines)
+│   ├── modal.js             # Modal module (106 lines)
+│   ├── nav.js               # Navigation module (37 lines)
+│   ├── sleep.js             # Sleep mode (596 lines)
+│   ├── cache.js             # Caching layer (205 lines)
+│   ├── debug.js             # Debug utilities (193 lines)
+│   └── wiki-api.js          # Wiki API client (125 lines)
 └── content/
     └── articles.json        # Article content
 
 dist/                         # Built output (auto-generated)
 ├── index.html               # Processed HTML
-├── styles.css               # Concatenated CSS
-├── app.js                   # Concatenated JS
+├── styles.css               # Concatenated CSS (~4.3KB)
+├── app.js                   # Concatenated JS (~2KB)
 └── [static assets]
 ```
 
@@ -58,16 +67,17 @@ dist/                         # Built output (auto-generated)
 | ~~TD-006~~ | ~~**Fake email form** — Subscription shows "DB_FULL" toast~~ | ✅ Fixed 2025-12-26 |
 | ~~TD-007~~ | ~~**Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text~~ | ✅ Fixed 2025-12-26 |
 | TD-008 | **No analytics** — Zero visibility into traffic | Can't measure anything |
-| TD-017 | **Bloated CSS** — components.css is 2,222 lines | Hard to navigate |
-| TD-018 | **Large sleep.js** — 548 lines, 61% of JS codebase | Should be split |
+| TD-017 | **Bloated CSS** — components.css is 649 lines (reduced from 2,222) | Partially addressed |
+| TD-018 | **Large sleep.js** — 596 lines | Should be split |
 | TD-019 | **No tests** — Zero test coverage | Can't refactor safely |
+| TD-020 | **Large wiki.css** — 1,135 lines | Should be split or modularized |
 
 ### 🟢 LOW (Nice to have)
 
 | ID | Issue | Impact |
 |----|-------|--------|
 | ~~TD-009~~ | ~~**No version indicator** — No way to tell deployed version~~ | ✅ Version in footer + version.json |
-| TD-010 | **Duplicated theme logic** — Theme init in both index.html and 404.html | DRY violation |
+| ~~TD-010~~ | ~~**Duplicated theme logic** — Theme init in both index.html and 404.html~~ | ✅ Fixed 2025-12-28 - Wiki pages now use shared app.js |
 | TD-011 | **No CSS custom property fallbacks** — Old browsers break | ~2% user impact |
 | ~~TD-012~~ | ~~**Console graffiti** — Dev logs in production~~ | ✅ Reviewed - only styled branding |
 
@@ -193,5 +203,5 @@ content/
 ---
 
 *Last updated: 2025-12-28*
-*ESLint added, critical bugs fixed*
+*Cleanup: Archived work efforts, updated line counts, marked TD-010 resolved*
 

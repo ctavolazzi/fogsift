@@ -1,7 +1,7 @@
 # FogSift Master Continuation Prompt
 
-**Last Updated:** 2025-12-27
-**Version:** 0.0.2
+**Last Updated:** 2025-12-28
+**Version:** 0.0.5
 
 Copy this entire document to start a new AI session with full project context.
 
@@ -12,7 +12,7 @@ Copy this entire document to start a new AI session with full project context.
 | Field | Value |
 |-------|-------|
 | **Repo** | `/Users/ctavolazzi/Code/fogsift` |
-| **Version** | 0.0.2 (released 2025-12-27) |
+| **Version** | 0.0.5 (released 2025-12-28) |
 | **Stack** | Static HTML5/CSS3/Vanilla JS with Node.js build |
 | **Hosting** | Cloudflare Pages |
 | **Live Site** | https://fogsift.pages.dev |
@@ -82,11 +82,15 @@ src/css/
 ### JavaScript Modules
 ```
 src/js/
-├── main.js    # App init, clock, accessibility (~80 lines)
-├── nav.js     # Mobile menu handling
-├── toast.js   # Toast notifications
-├── theme.js   # Light/dark mode toggle
-├── modal.js   # Article modal
+├── main.js      # App init (~190 lines)
+├── theme.js     # Theme module with custom picker (~462 lines)
+├── toast.js     # Toast notifications (~84 lines)
+├── modal.js     # Article modal (~106 lines)
+├── nav.js       # Mobile menu handling (~37 lines)
+├── sleep.js     # Sleep mode easter egg (~596 lines)
+├── cache.js     # API caching layer (~205 lines)
+├── debug.js     # Debug utilities (~193 lines)
+├── wiki-api.js  # Wiki API client (~125 lines)
 ```
 
 ### Build System
@@ -117,17 +121,26 @@ npm run version:major  # Bump X.0.0
 
 ## Recent Work
 
+### Theme System Enhancements (2025-12-28)
+- Custom theme picker with dropdown UI (☀ Light, ● Dark, ▣ Industrial)
+- Keyboard shortcut "T" to cycle themes
+- System theme auto-detection (respects OS prefers-color-scheme)
+- Smooth CSS transitions on theme changes
+- Reduced motion accessibility support
+- DRY refactoring: Wiki pages now use shared app.js (-2,044 lines)
+
+### CSS Error Handling (2025-12-28)
+- Added defensive CSS load verification for Cloudflare deployment
+- Fallback inline styles if CSS fails to load
+
 ### 70's/80's Retro Visual Overhaul (2025-12-27)
-- Transformed from cold brutalist to warm retro-modern
-- Reduced from 12+ sections to 5 clean sections
-- Removed complexity: floating CTA, progress bar, breadcrumbs, diagnostic
-- New badge-style components matching logo aesthetic
-- Dark mode with chocolate background and cream text
-- Mobile-responsive design verified
+- Warm retro-modern aesthetic matching logo
+- Badge-style cards with rounded corners
+- Industrial theme with amber/teal accents
 
 ### Wiki System (2025-12-27)
 - Markdown-based wiki at `src/wiki/`
-- 6 pages built to `dist/wiki/`
+- 30+ pages organized by category
 - Custom wiki styling matching site aesthetic
 
 ---
@@ -146,14 +159,20 @@ npm run version:major  # Bump X.0.0
 
 ## Work Efforts
 
-Located in `_work_efforts_/00-09_site_improvements/00_ui_ux/`:
+Work efforts use the v0.3.0 system with `WE-YYMMDD-xxxx` format.
 
-| File | Description | Status |
-|------|-------------|--------|
-| 00.01_hotline-button-clarity.md | CTA copy updates | ✅ Completed |
-| 00.06_conversion-focused-redesign.md | UX redesign | ✅ Completed |
-| 00.07_ux-redesign-audit-report.md | Audit findings | ✅ Completed |
-| 00.08_70s-retro-visual-overhaul.md | Retro aesthetic | ✅ Completed |
+**Active:** None (all completed)
+
+**Archived in `_work_efforts/_archive/2025-12/`:**
+
+| ID | Description | Tickets |
+|----|-------------|---------|
+| WE-251227-fmhx | MCP System Dashboard | 4 |
+| WE-251227-giok | MCP Integration Test Task | 2 |
+| WE-251227-uzo7 | Work Effort System Rules Setup | 5 |
+| WE-251227-x7k9 | API Architecture | 8 |
+
+**Legacy work efforts archived in `_work_efforts/_archive/legacy/`**
 
 ---
 
@@ -168,8 +187,8 @@ Located in `_work_efforts_/00-09_site_improvements/00_ui_ux/`:
 
 ## Suggested Next Steps
 
-1. **Deploy** - Push to production (`npm run deploy`)
-2. **Analytics** - Add conversion tracking
-3. **Content** - Add more wiki articles
-4. **Performance** - Run Lighthouse audit
-5. **SEO** - Review meta tags and structured data
+1. **Analytics** - Add Plausible or Cloudflare Analytics (TD-008)
+2. **Build Optimization** - Add CSS/JS minification (TD-005)
+3. **Testing** - Add basic test coverage (TD-019)
+4. **Content** - Add more wiki articles
+5. **Lead Capture** - See FEATURE_VOID_AUDIT.md for priority features
