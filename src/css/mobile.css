@@ -44,15 +44,18 @@
         height: 36px;
     }
 
-    /* Hide desktop theme selector on mobile */
+    /* Keep theme selector visible in header on mobile */
     .nav-controls .theme-selector {
-        display: none;
+        display: inline-flex;
     }
 
-    /* Theme dropdown in mobile drawer */
-    .mobile-theme-selector .theme-dropdown {
-        font-size: var(--text-sm);
-        padding: 14px 40px 14px 16px;
+    /* Compact theme dropdown on mobile */
+    .nav-controls .theme-dropdown {
+        min-width: 80px;
+        padding: 6px 26px 6px 8px;
+        font-size: 0.65rem;
+        background-position: right 6px center;
+        background-size: 8px;
     }
 
     /* === HERO === */

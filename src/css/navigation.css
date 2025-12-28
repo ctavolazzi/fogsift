@@ -345,20 +345,21 @@
         justify-content: center;
     }
 
-    /* Hide desktop theme selector on mobile - use drawer instead */
+    /* Keep theme selector visible on mobile - always in header */
     .nav-controls .theme-selector {
-        display: none;
+        display: inline-flex;
     }
 
-    /* Mobile drawer theme selector */
-    .mobile-theme-selector {
-        display: block;
+    /* Compact theme dropdown on mobile */
+    .nav-controls .theme-dropdown {
+        min-width: 90px;
+        padding: 6px 28px 6px 10px;
+        font-size: 0.7rem;
+        background-position: right 8px center;
     }
 }
 
-/* Show desktop theme selector on larger screens */
-@media (min-width: 801px) {
-    .mobile-theme-selector {
-        display: none;
-    }
+/* Mobile theme selector in drawer - no longer used */
+.mobile-theme-selector {
+    display: none;
 }

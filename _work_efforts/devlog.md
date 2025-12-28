@@ -62,3 +62,46 @@ This file tracks development activity, decisions, and changes across sessions.
 [2025-12-28 07:19:40] SESSION UPDATE: Fixed MCP work-efforts server folder name (_work_efforts_ → _work_efforts). Built and deployed dev-log MCP server (12/12 servers healthy). Marked WE-251227-x7k9 (API Architecture) as completed. All work efforts now discoverable via list_work_efforts.
 
 [2025-12-28 07:21:49] PERSIST: Created memory entities (FogSift_Workflow, Work_Effort_System, MCP_Servers_FogSift) and relations. Note: Memory MCP has read schema error (-32602) but write operations succeeded.
+
+[2025-12-28 08:31:19] ## Theme Switcher UX Improvement
+
+**Task:** Make theme dropdown always visible in header across all viewports
+
+**Changes:**
+1. Remove theme selector from mobile drawer
+2. Keep theme dropdown visible in header on mobile (next to hamburger)
+3. Apply to main site and wiki templates
+
+**Files to modify:**
+- src/index.html
+- src/css/navigation.css  
+- src/wiki-template.html
+- src/wiki-index-template.html
+
+[2025-12-28 08:34:47] ## Theme Switcher UX Improvement - COMPLETED
+
+**Status:** ✅ Complete
+
+### Changes Made
+1. Removed theme selector from mobile drawer in:
+   - `src/index.html`
+   - `src/wiki-template.html`  
+   - `src/wiki-index-template.html`
+
+2. Updated CSS to keep theme dropdown visible on mobile:
+   - `src/css/navigation.css` - Made `.nav-controls .theme-selector` visible at 800px breakpoint
+   - `src/css/mobile.css` - Changed rule at 768px from `display: none` to `display: inline-flex`
+   - Added compact styling for mobile dropdown (80px min-width, smaller font)
+
+### Verification Results
+- ✅ Theme dropdown visible in header on mobile (375px)
+- ✅ Theme dropdown visible in header on desktop (1280px)
+- ✅ Mobile drawer no longer has theme selector
+- ✅ Theme switching works on all viewports
+- ✅ All three themes (Light, Dark, Industrial) functional
+- ✅ Wiki pages have consistent header layout
+- ✅ No console errors
+
+### Layout
+- Mobile: [Logo] [Theme Dropdown] [Hamburger]
+- Desktop: [Logo] [Nav Links] [Theme Dropdown]
