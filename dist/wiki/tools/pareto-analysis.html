@@ -48,7 +48,7 @@
                 window.__cssErrors.push(window.__cssLoadError);
             }
             var computed = getComputedStyle(document.documentElement);
-            if (!computed.getPropertyValue('--color-bg').trim()) {
+            if (!computed.getPropertyValue('--primary').trim()) {
                 console.warn('[FOGSIFT Wiki] CSS variables not detected');
                 window.__cssErrors.push('CSS variables missing');
             }

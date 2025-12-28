@@ -76,9 +76,9 @@
             
             // Verify styles are applied (check for CSS custom properties)
             var computed = getComputedStyle(document.documentElement);
-            var bgColor = computed.getPropertyValue('--color-bg').trim();
+            var primaryColor = computed.getPropertyValue('--primary').trim();
             
-            if (!bgColor) {
+            if (!primaryColor) {
                 console.warn('[FOGSIFT] CSS variables not detected - styles may not have loaded correctly');
                 window.__cssErrors.push('CSS variables missing');
             }
