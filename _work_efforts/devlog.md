@@ -58,3 +58,5 @@ This file tracks development activity, decisions, and changes across sessions.
 | WE-251227-fmhx | MCP System Dashboard | Completed |
 | WE-251227-giok | MCP Integration Test Task | Completed |
 
+
+[2025-12-28 07:19:40] SESSION UPDATE: Fixed MCP work-efforts server folder name (_work_efforts_ → _work_efforts). Built and deployed dev-log MCP server (12/12 servers healthy). Marked WE-251227-x7k9 (API Architecture) as completed. All work efforts now discoverable via list_work_efforts.
