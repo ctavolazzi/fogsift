@@ -796,3 +796,163 @@ body.page-sleeping .pricing-cards {
         padding: 5px 8px;
     }
 }
+
+/* ============================================
+   DEEP SLEEP MODE - PEACEFUL & LIGHTWEIGHT
+   Smoothly settles into a cozy sleeping state
+   ============================================ */
+
+/* === SETTLING TRANSITION === */
+/* Smooth transition INTO deep sleep */
+body.settling-to-sleep .sleepy-breathing {
+    transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+}
+
+#sleep-overlay.settling-to-sleep {
+    transition: background 1.5s ease-out;
+}
+
+/* === DEEP SLEEP STATE === */
+/* Soft tint so it's clear something is different */
+#sleep-overlay.deep-sleep {
+    background: rgba(20, 15, 12, 0.4);
+    pointer-events: auto;
+}
+
+/* Hide the busy animated stuff */
+#sleep-overlay.deep-sleep .sleep-zs-container,
+#sleep-overlay.deep-sleep #sleep-canvas,
+#sleep-overlay.deep-sleep .sleep-scanlines {
+    display: none;
+}
+
+/* Centered sleep message - make it clear we're sleeping! */
+#sleep-overlay.deep-sleep .sleep-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    gap: 16px;
+    background: rgba(26, 20, 18, 0.95);
+    padding: 40px 60px;
+    border-radius: 20px;
+    border: 2px solid var(--burnt-orange, #e07b3c);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: none;
+    opacity: 1;
+    text-align: center;
+}
+
+#sleep-overlay.deep-sleep .sleep-icon {
+    font-size: 4rem;
+    animation: gentlePulse 4s ease-in-out infinite;
+}
+
+#sleep-overlay.deep-sleep .sleep-text {
+    font-size: 1.1rem;
+    opacity: 1;
+    letter-spacing: 0.15em;
+    color: var(--cream, #f5f0e6);
+    text-transform: uppercase;
+    margin-top: 8px;
+}
+
+/* Add a subtitle explaining what happened */
+#sleep-overlay.deep-sleep .sleep-message::after {
+    content: "We noticed you stepped away, so we dimmed the lights.";
+    display: block;
+    font-family: var(--font-mono, monospace);
+    font-size: 0.75rem;
+    color: var(--burnt-orange, #e07b3c);
+    opacity: 0.8;
+    margin-top: 20px;
+    max-width: 280px;
+    line-height: 1.5;
+}
+
+/* Very gentle pulse - barely noticeable but alive */
+@keyframes gentlePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.9;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+/* === FROZEN ELEMENTS (hold final pose) === */
+/* Elements stay in their sleepy positions but stop animating */
+body.deep-sleep .sleepy-breathing {
+    animation: none !important;
+}
+
+/* Buttons resting on their side - still visible! */
+body.deep-sleep .cta-button.sleepy-breathing,
+body.deep-sleep .pricing-cta.sleepy-breathing,
+body.deep-sleep .theme-toggle.sleepy-breathing,
+body.deep-sleep .menu-toggle.sleepy-breathing {
+    transform: rotate(90deg) translateY(10px);
+}
+
+/* Cards tilted and resting */
+body.deep-sleep .process-step.sleepy-breathing,
+body.deep-sleep .pricing-card.sleepy-breathing,
+body.deep-sleep .about-card.sleepy-breathing,
+body.deep-sleep .hero-badge.sleepy-breathing,
+body.deep-sleep .wiki-category-card.sleepy-breathing {
+    transform: rotate(8deg) translateY(15px) translateX(10px);
+}
+
+/* Text nodded off */
+body.deep-sleep .headline.sleepy-breathing,
+body.deep-sleep .subhead.sleepy-breathing,
+body.deep-sleep .section-label.sleepy-breathing,
+body.deep-sleep .about-name.sleepy-breathing,
+body.deep-sleep h1.sleepy-breathing,
+body.deep-sleep h2.sleepy-breathing,
+body.deep-sleep h3.sleepy-breathing {
+    transform: rotate(5deg) translateY(8px);
+    opacity: 0.8;
+}
+
+/* Nav links drooped */
+body.deep-sleep .menu-link.sleepy-breathing {
+    transform: translateY(20px) rotate(15deg);
+    opacity: 0.7;
+}
+
+/* Logo sleeping peacefully */
+body.deep-sleep .brand-logo.sleepy-breathing {
+    transform: rotate(-15deg) translateY(5px);
+    filter: brightness(0.8);
+}
+
+/* Content dimmed but visible - clearly "resting" */
+body.deep-sleep main {
+    filter: brightness(0.7) saturate(0.7);
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    body.deep-sleep .cta-button.sleepy-breathing,
+    body.deep-sleep .pricing-cta.sleepy-breathing {
+        transform: rotate(45deg) translateY(5px);
+    }
+
+    #sleep-overlay.deep-sleep .sleep-icon {
+        font-size: 4rem;
+    }
+}
+
+/* Reduced motion: static deep sleep */
+@media (prefers-reduced-motion: reduce) {
+    #sleep-overlay.deep-sleep .sleep-message,
+    #sleep-overlay.deep-sleep .sleep-icon,
+    #sleep-overlay.deep-sleep .sleep-text {
+        animation: none;
+    }
+}

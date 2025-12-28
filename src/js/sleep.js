@@ -19,6 +19,7 @@ const SleepMode = {
     PAGE_TIME_REQUIRED: 5 * 60 * 1000,   // 5 minutes before sleep eligible
     IDLE_TIME_REQUIRED: 30 * 1000,        // 30 seconds idle to trigger sleep
     CHECK_INTERVAL: 5000,                  // Check sleep conditions every 5s
+    DEEP_SLEEP_DELAY: 3000,                // 3 seconds before entering ultra-lightweight mode
 
     // Animation timing (milliseconds)
     TIMING: {
@@ -61,6 +62,7 @@ const SleepMode = {
     pageLoadTime: Date.now(),
     lastActivityTime: Date.now(),
     isAsleep: false,
+    isDeepSleep: false,              // Ultra-lightweight mode flag
     checkTimer: null,
     overlay: null,
     canvas: null,
@@ -71,6 +73,7 @@ const SleepMode = {
     sleepyElements: [],
     decorations: [],
     breathingTimeout: null,
+    deepSleepTimeout: null,          // Timer for entering deep sleep
     resizeHandler: null,
     wakeHandler: null,
 
@@ -236,6 +239,11 @@ const SleepMode = {
         this.breathingTimeout = setTimeout(() => {
             this.startBreathing();
         }, this.TIMING.BREATHING_START);
+
+        // Schedule deep sleep for ultra-lightweight mode
+        this.deepSleepTimeout = setTimeout(() => {
+            this.enterDeepSleep();
+        }, this.DEEP_SLEEP_DELAY);
     },
 
     // Prepare element for animation (save original styles)
@@ -262,6 +270,67 @@ const SleepMode = {
             element.classList.remove('sleepy');
             element.classList.add('sleepy-breathing');
         });
+    },
+
+    // Enter ultra-lightweight deep sleep mode
+    // Smoothly transitions to minimal resource usage while looking peaceful
+    enterDeepSleep() {
+        if (!this.isAsleep || this.isDeepSleep) return;
+        this.isDeepSleep = true;
+
+        // Cancel the canvas animation loop
+        if (this.animationFrame) {
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = null;
+        }
+
+        // Add settling class first for smooth transition
+        document.body.classList.add('settling-to-sleep');
+        if (this.overlay) {
+            this.overlay.classList.add('settling-to-sleep');
+        }
+
+        // Fade out the canvas smoothly
+        if (this.canvas) {
+            this.canvas.style.transition = 'opacity 1.5s ease-out';
+            this.canvas.style.opacity = '0';
+        }
+
+        // Fade out floating Zs smoothly
+        const zsContainer = this.overlay?.querySelector('.sleep-zs-container');
+        if (zsContainer) {
+            zsContainer.style.transition = 'opacity 1.5s ease-out';
+            zsContainer.style.opacity = '0';
+        }
+
+        // After transition, switch to deep sleep state
+        setTimeout(() => {
+            // Now apply deep sleep class (animations frozen)
+            document.body.classList.remove('settling-to-sleep');
+            document.body.classList.add('deep-sleep');
+            if (this.overlay) {
+                this.overlay.classList.remove('settling-to-sleep');
+                this.overlay.classList.add('deep-sleep');
+            }
+
+            // Hide canvas completely now
+            if (this.canvas) {
+                this.canvas.style.display = 'none';
+            }
+
+            // Remove Zs from DOM
+            if (zsContainer) {
+                zsContainer.innerHTML = '';
+            }
+
+            // Clean up element decorations
+            this.cleanupDecorations();
+        }, 1500);
+
+        console.log(
+            '%c 😴💤 Settling into deep sleep... ',
+            'background: #0a0806; color: #666; padding: 5px; font-family: monospace; font-size: 9px;'
+        );
     },
 
     addZzzToElement(element) {
@@ -477,12 +546,19 @@ const SleepMode = {
 
         setTimeout(() => {
             this.isAsleep = false;
+            this.isDeepSleep = false;
             this.lastActivityTime = Date.now();
 
             // Cancel breathing timeout if still pending
             if (this.breathingTimeout) {
                 clearTimeout(this.breathingTimeout);
                 this.breathingTimeout = null;
+            }
+
+            // Cancel deep sleep timeout if still pending
+            if (this.deepSleepTimeout) {
+                clearTimeout(this.deepSleepTimeout);
+                this.deepSleepTimeout = null;
             }
 
             // Cancel animation
@@ -497,8 +573,8 @@ const SleepMode = {
                 this.resizeHandler = null;
             }
 
-            // Remove body class and add waking
-            document.body.classList.remove('page-sleeping');
+            // Remove body classes and add waking
+            document.body.classList.remove('page-sleeping', 'deep-sleep', 'settling-to-sleep');
             document.body.classList.add('page-waking');
 
             // Remove overlay with fade

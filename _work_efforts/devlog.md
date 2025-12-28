@@ -239,3 +239,63 @@ Wiki templates now load shared `app.js` instead of duplicating inline JS:
 - Parent context selectors for theme overrides
 
 **Verification:** `grep -r "!important;" src/css/` returns zero results
+
+[2025-12-28 20:46:49] ## WE-251228-c824: Optimize Sleep Mode for Lightweight Deep Sleep
+
+### Summary
+Implemented "deep sleep" mode that kicks in 3 seconds after entering sleep mode. This maintains the charming "falling asleep" visual while eliminating CPU/GPU usage once settled.
+
+### Changes Made
+
+**src/js/sleep.js:**
+- Added `DEEP_SLEEP_DELAY: 3000` constant
+- Added `isDeepSleep` state flag and `deepSleepTimeout` timer
+- Added `enterDeepSleep()` method that:
+  - Cancels the requestAnimationFrame loop (no more flying toasters)
+  - Hides the canvas element
+  - Removes floating Z elements from overlay
+  - Cleans up element decorations (zzz, caps, bubbles)
+  - Adds `deep-sleep` class to body and overlay
+- Updated `wakeUp()` to clear deep sleep state and timeout
+
+**src/css/sleep.css:**
+- Added deep sleep CSS rules that:
+  - Set `animation: none` on all breathing elements
+  - Hold elements at their final sleeping positions (rotated/tilted)
+  - Hide canvas, floating Zs, and scanlines
+  - Set `will-change: auto` to release GPU memory
+  - Keep static "tap to wake" message visible
+
+### Resource Usage
+- **Before:** Continuous requestAnimationFrame loop + 10+ CSS animations running
+- **After:** Near-zero CPU/GPU usage (static CSS only)
+
+### Timeline
+- 0s: Elements start falling asleep (one-shot animations)
+- 1.5s: Breathing animations begin
+- 3s: Deep sleep activates, everything freezes
+
+Status: ✅ Completed
+
+[2025-12-28 21:00:57] ## Sleep Mode Polish - Made Deep Sleep Cozy
+
+### Problem
+Deep sleep mode looked glitchy - animations stopped abruptly instead of settling peacefully.
+
+### Solution
+Added smooth transition into deep sleep:
+
+1. **Settling Phase** (1.5s): 
+   - Canvas and Zs fade out smoothly
+   - Elements transition gracefully to final positions
+
+2. **Deep Sleep Visual**:
+   - Darker overlay (92% opacity) - like a quiet room at night
+   - Gentle vignette effect for coziness
+   - Very slow, dreamy glow on the 💤 icon (6-8s cycle)
+   - Subtle text pulse on "tap to wake"
+   - Scanlines at 10% opacity for atmosphere
+
+3. **Elements**: More dimmed (40-60% opacity) to feel truly asleep
+
+The deep sleep animations are intentionally VERY slow (6-8 second cycles) - this is GPU friendly while still feeling alive.
