@@ -51,7 +51,7 @@ html.theme-transitioning *::after {
 }
 
 /* === DEMO MODE CHANNEL SWITCH EFFECT === */
-/* Subtle fade transition between themes */
+/* TV static noise effect */
 html.demo-channel-switch::before {
     content: '';
     position: fixed;
@@ -61,44 +61,79 @@ html.demo-channel-switch::before {
     height: 100%;
     z-index: 99999;
     pointer-events: none;
-    background: rgba(0, 0, 0, 0.08);
-    animation: channelFade 0.4s ease-in-out forwards;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            rgba(0, 0, 0, 0.15) 0px,
+            rgba(0, 0, 0, 0.15) 1px,
+            transparent 1px,
+            transparent 2px
+        );
+    animation: staticNoise 0.15s steps(3) 2;
 }
 
-/* Soft horizontal wipe line */
+/* Static grain overlay */
 html.demo-channel-switch::after {
     content: '';
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
     z-index: 100000;
     pointer-events: none;
-    background: linear-gradient(
-        90deg,
-        transparent 0%,
-        rgba(255, 255, 255, 0.4) 50%,
-        transparent 100%
-    );
-    animation: softWipe 0.5s ease-out forwards;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0;
+    animation: staticGrain 0.3s steps(5) forwards;
 }
 
-@keyframes channelFade {
-    0% { opacity: 0; }
-    30% { opacity: 1; }
-    70% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-@keyframes softWipe {
-    0% {
-        top: 0%;
-        opacity: 0.8;
-    }
-    100% {
-        top: 100%;
+@keyframes staticNoise {
+    0% { 
         opacity: 0;
+        transform: translateY(0);
+    }
+    25% { 
+        opacity: 0.6;
+        transform: translateY(-2px);
+    }
+    50% { 
+        opacity: 0.4;
+        transform: translateY(1px);
+    }
+    75% { 
+        opacity: 0.7;
+        transform: translateY(-1px);
+    }
+    100% { 
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes staticGrain {
+    0% { 
+        opacity: 0;
+        transform: translate(0, 0);
+    }
+    20% { 
+        opacity: 0.15;
+        transform: translate(-5%, -5%);
+    }
+    40% { 
+        opacity: 0.1;
+        transform: translate(5%, 5%);
+    }
+    60% { 
+        opacity: 0.12;
+        transform: translate(-3%, 3%);
+    }
+    80% { 
+        opacity: 0.08;
+        transform: translate(3%, -3%);
+    }
+    100% { 
+        opacity: 0;
+        transform: translate(0, 0);
     }
 }
 
