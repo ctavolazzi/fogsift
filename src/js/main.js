@@ -4,7 +4,14 @@
    ============================================ */
 
 const App = {
-    version: '0.0.2',
+    version: '0.0.4',
+
+    // Configuration constants (milliseconds)
+    TIMING: {
+        CLOCK_UPDATE: 1000,          // UTC clock refresh rate
+        WORD_ROTATION: 2500,         // Interval between word changes
+        WORD_FADE: 300,              // Fade transition duration
+    },
 
     init() {
         Nav.init();
@@ -26,7 +33,7 @@ const App = {
         };
 
         update();
-        setInterval(update, 1000);
+        setInterval(update, this.TIMING.CLOCK_UPDATE);
     },
 
     initAccessibility() {
@@ -89,8 +96,8 @@ const App = {
                     index = (index + 1) % words.length;
                     el.textContent = words[index];
                     el.style.opacity = '1';
-                }, 300);
-            }, 2500);
+                }, this.TIMING.WORD_FADE);
+            }, this.TIMING.WORD_ROTATION);
         });
     },
 

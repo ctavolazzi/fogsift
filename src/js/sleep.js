@@ -11,12 +11,53 @@
    ============================================ */
 
 const SleepMode = {
-    // Configuration
-    PAGE_TIME_REQUIRED: 5 * 60 * 1000,  // 5 minutes in ms
-    IDLE_TIME_REQUIRED: 30 * 1000,       // 30 seconds in ms
-    CHECK_INTERVAL: 5000,                 // Check every 5 seconds
+    // ============================================
+    // CONFIGURATION CONSTANTS
+    // ============================================
 
-    // State
+    // Timing thresholds (milliseconds)
+    PAGE_TIME_REQUIRED: 5 * 60 * 1000,   // 5 minutes before sleep eligible
+    IDLE_TIME_REQUIRED: 30 * 1000,        // 30 seconds idle to trigger sleep
+    CHECK_INTERVAL: 5000,                  // Check sleep conditions every 5s
+
+    // Animation timing (milliseconds)
+    TIMING: {
+        OVERLAY_DELAY: 300,                // Delay before creating overlay
+        BREATHING_START: 1500,             // Delay before breathing animation
+        WAKE_FLASH_DURATION: 150,          // TV flash effect duration
+        OVERLAY_FADE: 500,                 // Overlay fade out duration
+        ELEMENT_CLEANUP_DELAY: 700,        // Delay for element class cleanup
+        STAGGER_BUTTONS: 100,              // Stagger delay between buttons
+        STAGGER_CARDS: 150,                // Stagger delay between cards
+        STAGGER_TEXT: 80,                  // Stagger delay between text elements
+        STAGGER_NAV: 50,                   // Stagger delay between nav items
+        STAGGER_STARTLE: 30,               // Stagger delay for startle effect
+        STARTLED_MARK_DURATION: 600,       // Duration of exclamation mark
+    },
+
+    // Display settings
+    DISPLAY: {
+        MOBILE_BREAKPOINT: 768,            // Mobile width breakpoint
+        TOASTERS_PER_200PX: 1,             // Toasters per 200px width + base
+        TOASTERS_MOBILE: 2,                // Toaster count on mobile
+        Z_COUNT_DESKTOP: 8,                // Floating Z count on desktop
+        Z_COUNT_MOBILE: 4,                 // Floating Z count on mobile
+        ZS_PER_ELEMENT: 3,                 // ZZZ count per sleeping element
+    },
+
+    // Canvas animation settings
+    CANVAS: {
+        TOASTER_MIN_SPEED: 1,              // Minimum toaster speed
+        TOASTER_SPEED_RANGE: 1.5,          // Additional random speed
+        WING_SPEED_MIN: 5,                 // Minimum wing flap speed
+        WING_SPEED_RANGE: 5,               // Additional random wing speed
+        WRAP_MARGIN: 60,                   // Screen wrap margin for toasters
+        PIXEL_SCALE: 3,                    // Pixel art scale factor
+    },
+
+    // ============================================
+    // STATE
+    // ============================================
     pageLoadTime: Date.now(),
     lastActivityTime: Date.now(),
     isAsleep: false,
@@ -120,7 +161,7 @@ const SleepMode = {
             this.wakeHandler = () => this.wakeUp();
             this.overlay.addEventListener('click', this.wakeHandler);
             this.overlay.addEventListener('touchend', this.wakeHandler, { passive: true });
-        }, 300);
+        }, this.TIMING.OVERLAY_DELAY);
     },
 
     putElementsToSleep() {
@@ -138,7 +179,7 @@ const SleepMode = {
                 if (i % 2 === 0) {
                     this.addZzzToElement(el);
                 }
-            }, i * 100);
+            }, i * this.TIMING.STAGGER_BUTTONS);
         });
 
         // Put cards to sleep
@@ -160,7 +201,7 @@ const SleepMode = {
 
                 // Add zzz
                 this.addZzzToElement(el);
-            }, 200 + i * 150);
+            }, 2 * this.TIMING.STAGGER_BUTTONS + i * this.TIMING.STAGGER_CARDS);
         });
 
         // Put text to sleep
@@ -168,7 +209,7 @@ const SleepMode = {
             setTimeout(() => {
                 el.classList.add('sleepy');
                 this.sleepyElements.push({ element: el, type: 'text' });
-            }, 100 + i * 80);
+            }, this.TIMING.STAGGER_BUTTONS + i * this.TIMING.STAGGER_TEXT);
         });
 
         // Put nav links to sleep
@@ -176,7 +217,7 @@ const SleepMode = {
             setTimeout(() => {
                 el.classList.add('sleepy');
                 this.sleepyElements.push({ element: el, type: 'nav' });
-            }, i * 50);
+            }, i * this.TIMING.STAGGER_NAV);
         });
 
         // Put logo to sleep
@@ -188,13 +229,13 @@ const SleepMode = {
                 this.sleepyElements.push({ element: logo, type: 'logo' });
                 this.addZzzToElement(logo);
                 this.addSleepCap(logo);
-            }, 100);
+            }, this.TIMING.STAGGER_BUTTONS);
         }
 
         // Start breathing after initial sleep animation
         this.breathingTimeout = setTimeout(() => {
             this.startBreathing();
-        }, 1500);
+        }, this.TIMING.BREATHING_START);
     },
 
     // Prepare element for animation (save original styles)
@@ -228,7 +269,7 @@ const SleepMode = {
         container.className = 'element-zzz-container';
         container.style.cssText = 'position: absolute; top: -10px; right: -5px; pointer-events: none;';
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < this.DISPLAY.ZS_PER_ELEMENT; i++) {
             const z = document.createElement('span');
             z.className = 'element-zzz';
             z.textContent = 'z';
@@ -297,7 +338,7 @@ const SleepMode = {
     // Pixel art toaster drawing (8-bit style)
     drawToaster(x, y, wingFrame) {
         const ctx = this.ctx;
-        const scale = 3;
+        const scale = this.CANVAS.PIXEL_SCALE;
         const colors = {
             body: '#c4956a',      // Warm tan
             dark: '#5c3d2e',      // Dark brown
@@ -349,16 +390,18 @@ const SleepMode = {
     initToasters() {
         this.toasters = [];
         // Fewer toasters on mobile for performance
-        const isMobile = window.innerWidth < 768;
-        const count = isMobile ? 2 : Math.floor(window.innerWidth / 200) + 2;
+        const isMobile = window.innerWidth < this.DISPLAY.MOBILE_BREAKPOINT;
+        const count = isMobile
+            ? this.DISPLAY.TOASTERS_MOBILE
+            : Math.floor(window.innerWidth / 200) * this.DISPLAY.TOASTERS_PER_200PX + 2;
 
         for (let i = 0; i < count; i++) {
             this.toasters.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                speed: 1 + Math.random() * 1.5,
+                speed: this.CANVAS.TOASTER_MIN_SPEED + Math.random() * this.CANVAS.TOASTER_SPEED_RANGE,
                 wingFrame: Math.floor(Math.random() * 10),
-                wingSpeed: 5 + Math.floor(Math.random() * 5),
+                wingSpeed: this.CANVAS.WING_SPEED_MIN + Math.floor(Math.random() * this.CANVAS.WING_SPEED_RANGE),
             });
         }
     },
@@ -369,7 +412,8 @@ const SleepMode = {
 
         const sizes = ['small', 'medium', 'large'];
         // Fewer Zs on mobile
-        const count = window.innerWidth < 768 ? 4 : 8;
+        const isMobile = window.innerWidth < this.DISPLAY.MOBILE_BREAKPOINT;
+        const count = isMobile ? this.DISPLAY.Z_COUNT_MOBILE : this.DISPLAY.Z_COUNT_DESKTOP;
 
         for (let i = 0; i < count; i++) {
             const z = document.createElement('div');
@@ -397,12 +441,13 @@ const SleepMode = {
                 toaster.y -= toaster.speed * 0.6;
 
                 // Wrap around screen
-                if (toaster.x > this.canvas.width + 60) {
-                    toaster.x = -60;
+                const margin = this.CANVAS.WRAP_MARGIN;
+                if (toaster.x > this.canvas.width + margin) {
+                    toaster.x = -margin;
                     toaster.y = Math.random() * this.canvas.height;
                 }
-                if (toaster.y < -60) {
-                    toaster.y = this.canvas.height + 60;
+                if (toaster.y < -margin) {
+                    toaster.y = this.canvas.height + margin;
                     toaster.x = Math.random() * this.canvas.width;
                 }
 
@@ -478,16 +523,16 @@ const SleepMode = {
                 setTimeout(() => {
                     document.body.classList.remove('page-waking');
                     this.cleanupElementClasses();
-                }, 700);
+                }, this.TIMING.ELEMENT_CLEANUP_DELAY);
 
-            }, 500);
+            }, this.TIMING.OVERLAY_FADE);
 
             // Console message
             console.log(
                 '%c ☀️ Good morning! FOGSIFT is awake and ready. ',
                 'background: #f5f0e6; color: #4a2c2a; padding: 10px; font-family: monospace; font-weight: bold;'
             );
-        }, this.prefersReducedMotion() ? 0 : 150);
+        }, this.prefersReducedMotion() ? 0 : this.TIMING.WAKE_FLASH_DURATION);
     },
 
     startleElements() {
@@ -505,7 +550,7 @@ const SleepMode = {
                 if (type === 'button' && i === 0) {
                     this.addStartledMark(element);
                 }
-            }, i * 30);
+            }, i * this.TIMING.STAGGER_STARTLE);
         });
     },
 
@@ -522,7 +567,7 @@ const SleepMode = {
             if (mark.parentNode) {
                 mark.parentNode.removeChild(mark);
             }
-        }, 600);
+        }, this.TIMING.STARTLED_MARK_DURATION);
     },
 
     cleanupDecorations() {
