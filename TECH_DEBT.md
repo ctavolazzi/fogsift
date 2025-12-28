@@ -1,9 +1,8 @@
 # FOGSIFT // TECH DEBT & PRIORITIES
 
-**Version:** 0.0.4
+**Version:** 0.0.1
 **Audit Date:** 2025-12-26
-**Last Updated:** 2025-12-28
-**Status:** LAUNCH COMPLETE — BUILD PIPELINE OPTIMIZED
+**Status:** LAUNCH COMPLETE — REFACTOR QUEUE INITIATED
 
 ---
 
@@ -45,26 +44,32 @@ dist/                         # Built output (auto-generated)
 | ~~TD-001~~ | ~~**Monolith file** — All CSS/JS/HTML in one file~~ | ~~Can't reuse~~ | ✅ Split into src/ modules |
 | ~~TD-002~~ | ~~**Global scope JS** — All functions pollute window~~ | ~~Collision risk~~ | ✅ Module pattern (Toast, Theme, etc) |
 | ~~TD-003~~ | ~~**Hardcoded articles** — Content in modal.js~~ | ~~Can't add content without code change~~ | ✅ Fixed 2025-12-26 |
+| ~~TD-013~~ | ~~**Missing error handling** — localStorage, fetch, clipboard~~ | ~~Silent failures~~ | ✅ Fixed 2025-12-28 |
+| ~~TD-014~~ | ~~**Memory leaks** — Uncleared setInterval timers~~ | ~~Memory accumulation~~ | ✅ Fixed 2025-12-28 |
+| TD-015 | **Magic numbers** — Hardcoded timing values (1000, 2500, 300) | Hard to maintain |
+| TD-016 | **No static analysis** — ESLint now configured but needs CI integration | Bugs slip through |
 
 ### 🟡 MODERATE (Fix in next sprint)
 
 | ID | Issue | Impact |
 |----|-------|--------|
 | ~~TD-004~~ | ~~**Inline manifest** — Base64 PWA manifest in `<head>`~~ | ✅ Fixed 2025-12-26 |
-| ~~TD-005~~ | ~~**No build process** — Unminified CSS/JS~~ | ✅ esbuild minification: CSS -32%, JS -52% (2025-12-28) |
+| TD-005 | **No build process** — Unminified CSS/JS | Larger payload (~40KB vs ~15KB) |
 | ~~TD-006~~ | ~~**Fake email form** — Subscription shows "DB_FULL" toast~~ | ✅ Fixed 2025-12-26 |
 | ~~TD-007~~ | ~~**Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text~~ | ✅ Fixed 2025-12-26 |
 | TD-008 | **No analytics** — Zero visibility into traffic | Can't measure anything |
+| TD-017 | **Bloated CSS** — components.css is 2,222 lines | Hard to navigate |
+| TD-018 | **Large sleep.js** — 548 lines, 61% of JS codebase | Should be split |
+| TD-019 | **No tests** — Zero test coverage | Can't refactor safely |
 
 ### 🟢 LOW (Nice to have)
 
 | ID | Issue | Impact |
 |----|-------|--------|
 | ~~TD-009~~ | ~~**No version indicator** — No way to tell deployed version~~ | ✅ Version in footer + version.json |
-| ~~TD-010~~ | ~~**Duplicated theme logic** — Theme init in both index.html and 404.html~~ | ✅ Consolidated via build.js injection (2025-12-28) |
+| TD-010 | **Duplicated theme logic** — Theme init in both index.html and 404.html | DRY violation |
 | TD-011 | **No CSS custom property fallbacks** — Old browsers break | ~2% user impact |
 | ~~TD-012~~ | ~~**Console graffiti** — Dev logs in production~~ | ✅ Reviewed - only styled branding |
-| ~~TD-017~~ | ~~**Large components.css** — 2200+ lines monolith~~ | ✅ Split into 3 files: nav, components, sleep (2025-12-28) |
 
 ---
 
@@ -92,22 +97,21 @@ src/
 
 **Status:** ✅ Complete. Modal now fetches from articles.json.
 
-### Phase 2: BUILD ✅ COMPLETE
+### Phase 2: BUILD 🔄 IN PROGRESS
 Build tooling:
 
 ```
 package.json           # ✅ Scripts defined
-├── build              # ✅ Concat + minify CSS/JS (esbuild)
+├── build              # ✅ Concat CSS/JS (no minification yet)
 ├── dev                # ✅ Wrangler dev server
 └── deploy             # ✅ Build + deploy to Cloudflare Pages
 ```
 
-**Status:** ✅ Complete. esbuild minification added 2025-12-28.
+**Status:** Build works but no minification. Add esbuild/lightningcss for smaller bundles.
 
-**Completed:**
-- [x] Add CSS minification (esbuild) — 32% reduction
-- [x] Add JS minification (esbuild --minify) — 52% reduction
-- [x] Theme init consolidated via build injection (TD-010)
+**Remaining:**
+- [ ] Add CSS minification (lightningcss or clean-css)
+- [ ] Add JS minification (esbuild --minify)
 
 ### Phase 3: CONTENT (After build)
 Move content out of code:
@@ -172,23 +176,22 @@ content/
 | 2025-12-26 | Keep vanilla JS | 160 lines of JS doesn't need React. |
 | 2025-12-26 | esbuild over webpack | 100x faster, zero config. |
 | 2025-12-26 | Cloudflare Pages | Free, fast, already deployed. |
-| 2025-12-28 | Theme init via build injection | Single source of truth, prevents FOUC across all pages. |
-| 2025-12-28 | Split components.css into modules | Improved maintainability: nav (227), components (509), sleep (779 lines). |
 
 ---
 
 ## METRICS TO TRACK
 
-| Metric | Current | Target | Notes |
-|--------|---------|--------|-------|
-| dist/index.html | 13.0KB | <10KB | Clean, semantic HTML |
-| dist/styles.css | 43.2KB | <40KB | ✅ Near target after TD-017 refactor |
-| dist/app.js | 15.5KB | <10KB | Minified via esbuild |
-| Lighthouse Performance | Unknown | >90 | |
-| Time to Interactive | Unknown | <1.5s | |
-| Files in src/ | 12+ | ✅ Achieved | Modular architecture |
+| Metric | Current | Target |
+|--------|---------|--------|
+| dist/index.html | ~15KB | <10KB (minified) |
+| dist/styles.css | ~8KB | <5KB (minified) |
+| dist/app.js | ~10KB | <5KB (minified) |
+| Lighthouse Performance | Unknown | >90 |
+| Time to Interactive | Unknown | <1.5s |
+| Files in src/ | 12 | ✅ Achieved |
 
 ---
 
 *Last updated: 2025-12-28*
+*ESLint added, critical bugs fixed*
 

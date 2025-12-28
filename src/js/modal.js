@@ -17,6 +17,9 @@ const Modal = {
 
         try {
             const response = await fetch(this.articlesPath);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}`);
+            }
             const data = await response.json();
             // Convert array to object keyed by id for fast lookup
             this.articles = {};
@@ -25,7 +28,10 @@ const Modal = {
             });
             return this.articles;
         } catch (error) {
-            console.warn('Failed to load articles:', error);
+            console.warn('Failed to load articles:', error.message);
+            if (typeof Toast !== 'undefined') {
+                Toast.error('Could not load articles. Check connection.');
+            }
             return {};
         }
     },

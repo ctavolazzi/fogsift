@@ -11,7 +11,12 @@ const Theme = {
     STORAGE_KEY: 'theme',  // Also defined in scripts/build.js THEME_STORAGE_KEY
 
     init() {
-        const theme = localStorage.getItem(this.STORAGE_KEY) || 'light';
+        let theme = 'light';
+        try {
+            theme = localStorage.getItem(this.STORAGE_KEY) || 'light';
+        } catch {
+            // localStorage unavailable
+        }
         this.set(theme, false);
     },
 
@@ -21,7 +26,12 @@ const Theme = {
 
     set(theme, notify = true) {
         document.documentElement.setAttribute('data-theme', theme);
-        localStorage.setItem(this.STORAGE_KEY, theme);
+        try {
+            localStorage.setItem(this.STORAGE_KEY, theme);
+        } catch (e) {
+            // localStorage may be unavailable (private browsing, quota exceeded)
+            console.warn('Theme: Could not persist preference:', e.message);
+        }
         if (notify && typeof Toast !== 'undefined') {
             Toast.show(`VISUAL MODE: ${theme.toUpperCase()}`);
         }

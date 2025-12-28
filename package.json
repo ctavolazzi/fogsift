@@ -1,8 +1,9 @@
 {
   "name": "fogsift",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "description": "Straight answers to complicated questions",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npm run build && npm-run-all --parallel serve watch",
     "serve": "browser-sync start --server dist --port 5050 --no-open --files 'dist/**/*'",
@@ -17,7 +18,9 @@
     "version:major": "node scripts/version.js major",
     "mcp:status": "node scripts/mcp-status-writer.js",
     "mcp:watch": "node scripts/mcp-status-writer.js --watch",
-    "mcp:dev": "npm run mcp:status && npm run dev"
+    "mcp:dev": "npm run mcp:status && npm run dev",
+    "lint": "eslint src/js/",
+    "lint:fix": "eslint src/js/ --fix"
   },
   "keywords": [
     "consulting",
@@ -29,9 +32,11 @@
     "marked": "^15.0.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.2",
     "browser-sync": "^3.0.4",
     "chokidar-cli": "^3.0.0",
-    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0",
     "npm-run-all": "^4.1.5"
   }
 }

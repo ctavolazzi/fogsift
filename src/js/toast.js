@@ -52,6 +52,9 @@ const Toast = {
                 navigator.clipboard.writeText(message).then(() => {
                     copyBtn.innerHTML = '[COPIED]';
                     setTimeout(() => copyBtn.innerHTML = '[COPY]', 1000);
+                }).catch(() => {
+                    copyBtn.innerHTML = '[FAILED]';
+                    setTimeout(() => copyBtn.innerHTML = '[COPY]', 1000);
                 });
             };
             toast.appendChild(copyBtn);
