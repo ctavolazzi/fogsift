@@ -1,0 +1,223 @@
+{
+  "title": "Fogsift Wiki Sitemap",
+  "buildDate": "2025-12-28T06:57:42.501Z",
+  "buildTimestamp": 1766905062501,
+  "categories": [
+    {
+      "id": "docs",
+      "title": "Documentation",
+      "range": "10-19",
+      "rangeStart": 10,
+      "pages": [
+        {
+          "slug": "getting-started",
+          "title": "Getting Started",
+          "jdNumber": "10.01",
+          "href": "getting-started.html"
+        },
+        {
+          "slug": "how-we-work",
+          "title": "How We Work",
+          "jdNumber": "10.02",
+          "href": "how-we-work.html"
+        },
+        {
+          "slug": "diagnostic-process",
+          "title": "The Diagnostic Process",
+          "jdNumber": "10.03",
+          "href": "diagnostic-process.html"
+        },
+        {
+          "slug": "faq",
+          "title": "Frequently Asked Questions",
+          "jdNumber": "10.04",
+          "href": "faq.html"
+        }
+      ]
+    },
+    {
+      "id": "concepts",
+      "title": "Concepts",
+      "range": "20-29",
+      "rangeStart": 20,
+      "pages": [
+        {
+          "slug": "concepts/root-cause",
+          "title": "Root Cause Analysis",
+          "jdNumber": "20.01",
+          "href": "concepts/root-cause.html"
+        },
+        {
+          "slug": "concepts/mental-models",
+          "title": "Mental Models",
+          "jdNumber": "20.02",
+          "href": "concepts/mental-models.html"
+        },
+        {
+          "slug": "concepts/systems-thinking",
+          "title": "Systems Thinking",
+          "jdNumber": "20.03",
+          "href": "concepts/systems-thinking.html"
+        },
+        {
+          "slug": "concepts/cognitive-biases",
+          "title": "Cognitive Biases",
+          "jdNumber": "20.04",
+          "href": "concepts/cognitive-biases.html"
+        },
+        {
+          "slug": "concepts/second-order-effects",
+          "title": "Second-Order Effects",
+          "jdNumber": "20.05",
+          "href": "concepts/second-order-effects.html"
+        },
+        {
+          "slug": "concepts/signal-vs-noise",
+          "title": "Signal vs Noise",
+          "jdNumber": "20.06",
+          "href": "concepts/signal-vs-noise.html"
+        }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "title": "Frameworks",
+      "range": "30-39",
+      "rangeStart": 30,
+      "pages": [
+        {
+          "slug": "frameworks/trace-protocol",
+          "title": "The TRACE Protocol",
+          "jdNumber": "30.01",
+          "href": "frameworks/trace-protocol.html"
+        },
+        {
+          "slug": "frameworks/decision-matrix",
+          "title": "Decision Matrix",
+          "jdNumber": "30.02",
+          "href": "frameworks/decision-matrix.html"
+        },
+        {
+          "slug": "frameworks/constraint-mapping",
+          "title": "Constraint Mapping",
+          "jdNumber": "30.03",
+          "href": "frameworks/constraint-mapping.html"
+        },
+        {
+          "slug": "frameworks/feedback-loops",
+          "title": "Feedback Loop Analysis",
+          "jdNumber": "30.04",
+          "href": "frameworks/feedback-loops.html"
+        }
+      ]
+    },
+    {
+      "id": "field-notes",
+      "title": "Field Notes",
+      "range": "40-49",
+      "rangeStart": 40,
+      "pages": [
+        {
+          "slug": "field-notes/001-map-territory",
+          "title": "The Map Is Not The Territory",
+          "jdNumber": "40.01",
+          "href": "field-notes/001-map-territory.html"
+        },
+        {
+          "slug": "field-notes/002-precision-accuracy",
+          "title": "Precision vs Accuracy",
+          "jdNumber": "40.02",
+          "href": "field-notes/002-precision-accuracy.html"
+        },
+        {
+          "slug": "field-notes/003-entropy",
+          "title": "Entropy",
+          "jdNumber": "40.03",
+          "href": "field-notes/003-entropy.html"
+        },
+        {
+          "slug": "field-notes/004-bottlenecks",
+          "title": "Finding the Bottleneck",
+          "jdNumber": "40.04",
+          "href": "field-notes/004-bottlenecks.html"
+        },
+        {
+          "slug": "field-notes/005-tribal-knowledge",
+          "title": "Tribal Knowledge",
+          "jdNumber": "40.05",
+          "href": "field-notes/005-tribal-knowledge.html"
+        },
+        {
+          "slug": "field-notes/006-incentive-alignment",
+          "title": "Incentive Alignment",
+          "jdNumber": "40.06",
+          "href": "field-notes/006-incentive-alignment.html"
+        },
+        {
+          "slug": "field-notes/007-documentation-debt",
+          "title": "Documentation Debt",
+          "jdNumber": "40.07",
+          "href": "field-notes/007-documentation-debt.html"
+        }
+      ]
+    },
+    {
+      "id": "case-studies",
+      "title": "Case Studies",
+      "range": "50-59",
+      "rangeStart": 50,
+      "pages": [
+        {
+          "slug": "case-studies/manufacturing-throughput",
+          "title": "Manufacturing Throughput Crisis",
+          "jdNumber": "50.01",
+          "href": "case-studies/manufacturing-throughput.html"
+        },
+        {
+          "slug": "case-studies/communication-breakdown",
+          "title": "The Communication Breakdown",
+          "jdNumber": "50.02",
+          "href": "case-studies/communication-breakdown.html"
+        },
+        {
+          "slug": "case-studies/the-invisible-process",
+          "title": "The Invisible Process",
+          "jdNumber": "50.03",
+          "href": "case-studies/the-invisible-process.html"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools & Techniques",
+      "range": "60-69",
+      "rangeStart": 60,
+      "pages": [
+        {
+          "slug": "tools/five-whys",
+          "title": "The Five Whys",
+          "jdNumber": "60.01",
+          "href": "tools/five-whys.html"
+        },
+        {
+          "slug": "tools/fishbone-diagram",
+          "title": "Fishbone Diagrams",
+          "jdNumber": "60.02",
+          "href": "tools/fishbone-diagram.html"
+        },
+        {
+          "slug": "tools/pareto-analysis",
+          "title": "Pareto Analysis",
+          "jdNumber": "60.03",
+          "href": "tools/pareto-analysis.html"
+        },
+        {
+          "slug": "tools/process-mapping",
+          "title": "Process Mapping",
+          "jdNumber": "60.04",
+          "href": "tools/process-mapping.html"
+        }
+      ]
+    }
+  ]
+}

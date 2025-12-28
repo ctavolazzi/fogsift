@@ -59,7 +59,10 @@ const JS_FILES = [
     'src/js/theme.js',
     'src/js/modal.js',
     'src/js/nav.js',
-    'src/js/sleep.js',  // Easter egg - must be before main.js
+    'src/js/sleep.js',    // Easter egg - must be before main.js
+    'src/js/cache.js',    // TKT-x7k9-005: Caching layer
+    'src/js/debug.js',    // TKT-x7k9-008: Debug logging
+    'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
     'src/js/main.js',
 ];
 
@@ -314,6 +317,104 @@ function generateJDSitemap(wikiIndex, depth = 0) {
     return html;
 }
 
+// ============================================
+// API GENERATION (TKT-x7k9-002, TKT-x7k9-003)
+// ============================================
+
+/**
+ * Generate all API JSON files in dist/api/
+ * Called from build() function
+ */
+function buildAPI() {
+    const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
+    const articlesPath = path.join(SRC, 'content', 'articles.json');
+    const apiDir = path.join(DIST, 'api');
+    const wikiApiDir = path.join(apiDir, 'wiki');
+
+    // Ensure API directories exist
+    ensureDir(wikiApiDir);
+
+    const buildDate = new Date().toISOString();
+    const buildTimestamp = Date.now();
+    let filesCreated = 0;
+
+    // 1. Generate /api/wiki/index.json (TKT-x7k9-002)
+    if (fs.existsSync(wikiIndexPath)) {
+        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+        const apiIndex = {
+            ...wikiIndex,
+            buildDate,
+            buildTimestamp
+        };
+        fs.writeFileSync(
+            path.join(wikiApiDir, 'index.json'),
+            JSON.stringify(apiIndex, null, 2)
+        );
+        filesCreated++;
+    }
+
+    // 2. Generate /api/wiki/sitemap.json (TKT-x7k9-003)
+    if (fs.existsSync(wikiIndexPath)) {
+        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+        const sitemapData = {
+            title: 'Fogsift Wiki Sitemap',
+            buildDate,
+            buildTimestamp,
+            categories: wikiIndex.categories.map(category => {
+                const jdConfig = JD_RANGES[category.id] || { start: 90, name: category.title };
+                const rangeStart = jdConfig.start;
+                return {
+                    id: category.id,
+                    title: category.title,
+                    range: `${rangeStart}-${rangeStart + 9}`,
+                    rangeStart,
+                    pages: category.pages.map((page, index) => ({
+                        slug: page.slug,
+                        title: page.title,
+                        jdNumber: `${rangeStart}.${String(index + 1).padStart(2, '0')}`,
+                        href: `${page.slug}.html`
+                    }))
+                };
+            })
+        };
+        fs.writeFileSync(
+            path.join(wikiApiDir, 'sitemap.json'),
+            JSON.stringify(sitemapData, null, 2)
+        );
+        filesCreated++;
+    }
+
+    // 3. Generate /api/articles.json
+    if (fs.existsSync(articlesPath)) {
+        const articles = JSON.parse(fs.readFileSync(articlesPath, 'utf8'));
+        const apiArticles = {
+            buildDate,
+            buildTimestamp,
+            articles: articles.articles || articles
+        };
+        fs.writeFileSync(
+            path.join(apiDir, 'articles.json'),
+            JSON.stringify(apiArticles, null, 2)
+        );
+        filesCreated++;
+    }
+
+    // 4. Generate /api/meta.json
+    const meta = {
+        name: 'Fogsift',
+        version: VERSION,
+        buildDate,
+        buildTimestamp
+    };
+    fs.writeFileSync(
+        path.join(apiDir, 'meta.json'),
+        JSON.stringify(meta, null, 2)
+    );
+    filesCreated++;
+
+    return filesCreated;
+}
+
 function buildWiki() {
     const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
     const pageTemplatePath = path.join(SRC, 'wiki-template.html');
@@ -490,6 +591,11 @@ async function build() {
     if (wikiPages > 0) {
         console.log(`  ✓ Built ${wikiPages} wiki pages`);
     }
+
+    // Build API (TKT-x7k9-002, TKT-x7k9-003)
+    console.log('\n🔌 API:');
+    const apiFiles = buildAPI();
+    console.log(`  ✓ Generated ${apiFiles} API endpoints`);
 
     console.log(`\n✨ Build complete! v${VERSION}`);
     console.log('   Run: npm run dev\n');

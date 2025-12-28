@@ -1,0 +1,33 @@
+{
+  "buildDate": "2025-12-28T06:57:42.501Z",
+  "buildTimestamp": 1766905062501,
+  "articles": [
+    {
+      "id": "001",
+      "title": "FIELD NOTE: THE MAP IS NOT THE TERRITORY",
+      "date": "2025-01-14",
+      "sector": "STRATEGY",
+      "readTime": "2M",
+      "band": "strategy",
+      "body": "Most organizations confuse their organizational chart with their actual communication network. When we deploy the Trace protocol, we find the critical node is often a Scheduler in a basement office."
+    },
+    {
+      "id": "002",
+      "title": "FIELD NOTE: PRECISION VS ACCURACY",
+      "date": "2025-01-08",
+      "sector": "FABRICATION",
+      "readTime": "4M",
+      "band": "fab",
+      "body": "In CNC, precision is repeatability. Accuracy is hitting the mark. You can be precise (hitting the same wrong spot every time) without being accurate. Strategy works the same way."
+    },
+    {
+      "id": "003",
+      "title": "FIELD NOTE: ENTROPY",
+      "date": "2024-12-22",
+      "sector": "SYSTEMS",
+      "readTime": "3M",
+      "band": "systems",
+      "body": "Chaos is the default state. Order requires energy injection. If you stop pushing, the system decays."
+    }
+  ]
+}
