@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lava Blob Animation Demo | FogSift</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/lava-blob.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--paper);
+            color: var(--ink);
+            min-height: 100vh;
+            padding: var(--space-lg);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .demo-header {
+            text-align: center;
+            margin-bottom: var(--space-xl);
+        }
+
+        .demo-header h1 {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-sm);
+            letter-spacing: var(--letter-tight);
+        }
+
+        .demo-header p {
+            color: var(--muted);
+            font-size: var(--text-base);
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            display: flex;
+            gap: var(--space-sm);
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .theme-btn {
+            padding: var(--space-sm) var(--space-md);
+            border: var(--border-width) solid var(--ink);
+            background: var(--paper);
+            color: var(--ink);
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            font-size: var(--text-sm);
+            transition: all var(--ease-out);
+        }
+
+        .theme-btn:hover {
+            background: var(--primary);
+            color: var(--paper);
+            border-color: var(--primary);
+        }
+
+        .theme-btn.active {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        /* Demo Grid */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .demo-card {
+            background: var(--canvas);
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .demo-card h3 {
+            font-size: var(--text-lg);
+            font-weight: 600;
+        }
+
+        .demo-card p {
+            color: var(--muted);
+            font-size: var(--text-sm);
+            text-align: center;
+        }
+
+        .demo-card code {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            background: var(--paper);
+            padding: var(--space-xs) var(--space-sm);
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+        }
+
+        /* Dark background card for contrast */
+        .demo-card--dark {
+            background: var(--ink);
+            border-color: var(--ink);
+        }
+
+        .demo-card--dark h3,
+        .demo-card--dark p {
+            color: var(--paper);
+        }
+
+        .demo-card--dark code {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.2);
+            color: var(--paper);
+        }
+
+        /* Usage Section */
+        .usage-section {
+            max-width: 800px;
+            margin: var(--space-xl) auto 0;
+            padding: var(--space-lg);
+            background: var(--canvas);
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius-lg);
+        }
+
+        .usage-section h2 {
+            font-size: var(--text-xl);
+            margin-bottom: var(--space-md);
+        }
+
+        .usage-section pre {
+            background: var(--paper);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space-md);
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            line-height: 1.5;
+        }
+
+        /* Footer */
+        .demo-footer {
+            text-align: center;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: var(--text-sm);
+        }
+
+        .demo-footer a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .demo-footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-header">
+        <h1>Lava Blob Animation</h1>
+        <p>Organic morphing shapes inspired by lava lamps</p>
+    </div>
+
+    <div class="theme-switcher">
+        <button class="theme-btn active" data-theme="">Light</button>
+        <button class="theme-btn" data-theme="dark">Dark</button>
+        <button class="theme-btn" data-theme="industrial-punchcard">Industrial</button>
+        <button class="theme-btn" data-theme="matrix">Matrix</button>
+    </div>
+
+    <div class="demo-grid">
+        <!-- Single Blob -->
+        <div class="demo-card">
+            <h3>Single Blob</h3>
+            <div class="lava-container">
+                <div class="lava-blob"></div>
+            </div>
+            <p>Basic morphing blob</p>
+            <code>.lava-blob</code>
+        </div>
+
+        <!-- Layered Blobs -->
+        <div class="demo-card">
+            <h3>Layered Blobs</h3>
+            <div class="lava-container lava-container--lg">
+                <div class="lava-blob"></div>
+                <div class="lava-blob lava-blob--secondary"></div>
+            </div>
+            <p>Two blobs with offset timing</p>
+            <code>.lava-blob--secondary</code>
+        </div>
+
+        <!-- Triple Layer -->
+        <div class="demo-card demo-card--dark">
+            <h3>Triple Layer</h3>
+            <div class="lava-container lava-container--xl">
+                <div class="lava-blob"></div>
+                <div class="lava-blob lava-blob--secondary"></div>
+                <div class="lava-blob lava-blob--tertiary"></div>
+            </div>
+            <p>Three blobs for maximum depth</p>
+            <code>.lava-blob--tertiary</code>
+        </div>
+
+        <!-- With Glow -->
+        <div class="demo-card demo-card--dark">
+            <h3>Glow Effect</h3>
+            <div class="lava-container lava-container--lg">
+                <div class="lava-blob lava-blob--glow"></div>
+            </div>
+            <p>Pulsing glow animation</p>
+            <code>.lava-blob--glow</code>
+        </div>
+
+        <!-- Small Size -->
+        <div class="demo-card">
+            <h3>Small</h3>
+            <div class="lava-container lava-container--sm">
+                <div class="lava-blob"></div>
+            </div>
+            <p>60px container</p>
+            <code>.lava-container--sm</code>
+        </div>
+
+        <!-- Fast Speed -->
+        <div class="demo-card">
+            <h3>Fast Speed</h3>
+            <div class="lava-container">
+                <div class="lava-blob lava-blob--fast"></div>
+            </div>
+            <p>6 second cycle</p>
+            <code>.lava-blob--fast</code>
+        </div>
+
+        <!-- Slow Speed -->
+        <div class="demo-card">
+            <h3>Slow Speed</h3>
+            <div class="lava-container">
+                <div class="lava-blob lava-blob--slow"></div>
+            </div>
+            <p>16 second cycle</p>
+            <code>.lava-blob--slow</code>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="demo-card">
+            <h3>Loading Indicator</h3>
+            <div style="display: flex; align-items: center; gap: var(--space-md);">
+                <div class="lava-loader">
+                    <div class="lava-blob"></div>
+                </div>
+                <span>Loading...</span>
+            </div>
+            <p>Compact loading state</p>
+            <code>.lava-loader</code>
+        </div>
+
+        <!-- Inline Loader -->
+        <div class="demo-card">
+            <h3>Inline Loader</h3>
+            <p style="font-size: var(--text-base); color: var(--ink);">
+                Processing
+                <span class="lava-loader lava-loader--inline">
+                    <span class="lava-blob"></span>
+                </span>
+                your request
+            </p>
+            <code>.lava-loader--inline</code>
+        </div>
+    </div>
+
+    <div class="usage-section">
+        <h2>Usage</h2>
+        <pre>&lt;!-- Basic blob --&gt;
+&lt;div class="lava-container"&gt;
+    &lt;div class="lava-blob"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Layered blobs --&gt;
+&lt;div class="lava-container lava-container--lg"&gt;
+    &lt;div class="lava-blob"&gt;&lt;/div&gt;
+    &lt;div class="lava-blob lava-blob--secondary"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Loading indicator --&gt;
+&lt;div class="lava-loader"&gt;
+    &lt;div class="lava-blob"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Include in your HTML --&gt;
+&lt;link rel="stylesheet" href="css/lava-blob.css"&gt;</pre>
+    </div>
+
+    <div class="demo-footer">
+        <p>Part of the <a href="index.html">FogSift</a> design system</p>
+    </div>
+
+    <script>
+        // Theme switcher
+        const themeBtns = document.querySelectorAll('.theme-btn');
+
+        themeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+
+                // Update active state
+                themeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                // Apply theme
+                if (theme) {
+                    document.documentElement.setAttribute('data-theme', theme);
+                } else {
+                    document.documentElement.removeAttribute('data-theme');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+

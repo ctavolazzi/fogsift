@@ -23,7 +23,7 @@ const VERSION = pkg.version || '0.0.0';
 // Theme init script - injected into HTML <head> to prevent FOUC
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
-const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix'];
+const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 't800', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'];
 const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
 
 // Navigation partial - single source of truth for site navigation
@@ -88,6 +88,41 @@ function generateNavHeader(currentPage = '') {
                         <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
                             <span class="theme-option-icon">▓</span>
                             <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="t800" role="option" onclick="ThemePicker.select('t800')">
+                            <span class="theme-option-icon">🤖</span>
+                            <span class="theme-option-label">T-800</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
                     </div>

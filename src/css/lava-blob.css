@@ -1,0 +1,218 @@
+/* ============================================
+   LAVA BLOB - Morphing Animation Component
+   4-stage organic blob that cycles like a lava lamp
+   ============================================ */
+
+/* === CONTAINER === */
+.lava-container {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lava-container--sm {
+    width: 60px;
+    height: 60px;
+}
+
+.lava-container--lg {
+    width: 200px;
+    height: 200px;
+}
+
+.lava-container--xl {
+    width: 300px;
+    height: 300px;
+}
+
+/* === THE BLOB === */
+.lava-blob {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    background: linear-gradient(
+        135deg,
+        var(--burnt-orange, #e07b3c) 0%,
+        var(--rust, #c2410c) 50%,
+        var(--earth-mid, #8b5a2b) 100%
+    );
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: blob-morph 10s ease-in-out infinite;
+    filter: blur(0px);
+    box-shadow:
+        0 0 40px rgba(224, 123, 60, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Secondary blob - offset timing for layered effect */
+.lava-blob--secondary {
+    background: linear-gradient(
+        135deg,
+        var(--teal, #0d9488) 0%,
+        var(--accent-light, #14b8a6) 50%,
+        var(--teal, #0d9488) 100%
+    );
+    animation-delay: -5s;
+    opacity: 0.7;
+    width: 70%;
+    height: 70%;
+    box-shadow:
+        0 0 40px rgba(13, 148, 136, 0.4),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Tertiary blob for extra depth */
+.lava-blob--tertiary {
+    background: linear-gradient(
+        135deg,
+        var(--highlight, #fbbf24) 0%,
+        var(--burnt-orange, #e07b3c) 100%
+    );
+    animation-delay: -2.5s;
+    opacity: 0.5;
+    width: 60%;
+    height: 60%;
+    box-shadow:
+        0 0 30px rgba(251, 191, 36, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+/* === 4-STAGE MORPH ANIMATION === */
+@keyframes blob-morph {
+    0%, 100% {
+        /* Config 1: Rounded top-left heavy */
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(0deg) scale(1);
+    }
+    25% {
+        /* Config 2: Stretched horizontal */
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: rotate(90deg) scale(1.05);
+    }
+    50% {
+        /* Config 3: Bottom-right heavy */
+        border-radius: 50% 60% 50% 40% / 40% 50% 60% 50%;
+        transform: rotate(180deg) scale(0.95);
+    }
+    75% {
+        /* Config 4: Vertical stretch */
+        border-radius: 40% 30% 60% 50% / 60% 40% 50% 70%;
+        transform: rotate(270deg) scale(1.02);
+    }
+}
+
+/* === GLOW PULSE (optional enhancement) === */
+.lava-blob--glow {
+    animation:
+        blob-morph 10s ease-in-out infinite,
+        blob-glow 4s ease-in-out infinite;
+}
+
+@keyframes blob-glow {
+    0%, 100% {
+        filter: blur(0px) brightness(1);
+        box-shadow:
+            0 0 40px rgba(224, 123, 60, 0.4),
+            inset 0 0 30px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        filter: blur(1px) brightness(1.1);
+        box-shadow:
+            0 0 60px rgba(224, 123, 60, 0.6),
+            0 0 100px rgba(224, 123, 60, 0.3),
+            inset 0 0 30px rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* === SPEED VARIANTS === */
+.lava-blob--slow {
+    animation-duration: 16s;
+}
+
+.lava-blob--fast {
+    animation-duration: 6s;
+}
+
+/* === THEME VARIANTS === */
+
+/* Matrix theme override */
+[data-theme="matrix"] .lava-blob {
+    background: linear-gradient(
+        135deg,
+        #00FF41 0%,
+        #008F11 50%,
+        #003B00 100%
+    );
+    box-shadow:
+        0 0 40px rgba(0, 255, 65, 0.5),
+        0 0 80px rgba(0, 255, 65, 0.2),
+        inset 0 0 30px rgba(0, 255, 65, 0.2);
+}
+
+[data-theme="matrix"] .lava-blob--secondary {
+    background: linear-gradient(
+        135deg,
+        #39FF14 0%,
+        #00FF41 100%
+    );
+    box-shadow:
+        0 0 40px rgba(57, 255, 20, 0.4),
+        inset 0 0 30px rgba(57, 255, 20, 0.1);
+}
+
+/* Dark theme enhancement */
+[data-theme="dark"] .lava-blob {
+    box-shadow:
+        0 0 50px rgba(251, 146, 60, 0.5),
+        0 0 100px rgba(251, 146, 60, 0.2),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Industrial theme */
+[data-theme="industrial-punchcard"] .lava-blob {
+    box-shadow:
+        4px 4px 0 var(--chocolate, #3E2723),
+        0 0 30px rgba(230, 126, 34, 0.3),
+        inset 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    .lava-blob,
+    .lava-blob--secondary,
+    .lava-blob--tertiary {
+        animation: none;
+        border-radius: 50%;
+        transform: none;
+    }
+}
+
+/* === LOADING INDICATOR VARIANT === */
+.lava-loader {
+    position: relative;
+    width: 48px;
+    height: 48px;
+}
+
+.lava-loader .lava-blob {
+    width: 100%;
+    height: 100%;
+    animation-duration: 3s;
+}
+
+/* Inline loading (next to text) */
+.lava-loader--inline {
+    display: inline-flex;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin: 0 var(--space-sm, 0.5rem);
+}
+
+.lava-loader--inline .lava-blob {
+    animation-duration: 2s;
+}
+

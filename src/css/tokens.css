@@ -340,6 +340,249 @@
         );
 }
 
+/* === PALETTE: T-800 === */
+/* Terminator HUD - Red targeting system on black */
+[data-theme="t800"] {
+    --cream: #0a0000;
+    --cream-dark: #000000;
+    --chocolate: #ff0000;
+    --chocolate-light: #cc0000;
+    --burnt-orange: #ff0000;
+    --rust: #ff3333;
+    --earth-mid: #660000;
+    --earth-dark: #330000;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #ff0000;
+    --accent-light: #ff4444;
+    --highlight: #ff0000;
+
+    --muted: #cc3333;
+    --muted-light: #993333;
+    --line: #330000;
+
+    --shadow-soft: 0 0 20px rgba(255, 0, 0, 0.2);
+    --shadow-card: 0 0 30px rgba(255, 0, 0, 0.25);
+    --shadow-hover: 0 0 20px rgba(255, 0, 0, 0.5);
+
+    --font-display: 'JetBrains Mono', monospace;
+    --font-sans: 'JetBrains Mono', monospace;
+    --radius: 0;
+    --radius-lg: 0;
+}
+
+/* === PALETTE: SYNTHWAVE === */
+/* 80s retro neon - Purple, pink, cyan */
+[data-theme="synthwave"] {
+    --cream: #1a1a2e;
+    --cream-dark: #0f0f1a;
+    --chocolate: #ff71ce;
+    --chocolate-light: #b967ff;
+    --burnt-orange: #01cdfe;
+    --rust: #05ffa1;
+    --earth-mid: #7b2cbf;
+    --earth-dark: #3c096c;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #fffb96;
+    --accent-light: #ff71ce;
+    --highlight: #01cdfe;
+
+    --muted: #b967ff;
+    --muted-light: #7b2cbf;
+    --line: #3c096c;
+
+    --shadow-soft: 0 0 20px rgba(255, 113, 206, 0.2);
+    --shadow-card: 0 0 30px rgba(1, 205, 254, 0.2);
+    --shadow-hover: 0 0 25px rgba(255, 113, 206, 0.5);
+
+    --font-display: 'Outfit', sans-serif;
+    --radius: 4px;
+}
+
+/* === PALETTE: PIP-BOY === */
+/* Fallout terminal - Amber/green CRT */
+[data-theme="pipboy"] {
+    --cream: #1a1a0a;
+    --cream-dark: #0d0d05;
+    --chocolate: #00ff00;
+    --chocolate-light: #00cc00;
+    --burnt-orange: #ffb000;
+    --rust: #ffc933;
+    --earth-mid: #006600;
+    --earth-dark: #003300;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #ffb000;
+    --accent-light: #00ff00;
+    --highlight: #ffb000;
+
+    --muted: #00cc00;
+    --muted-light: #009900;
+    --line: #003300;
+
+    --shadow-soft: 0 0 15px rgba(0, 255, 0, 0.15);
+    --shadow-card: 0 0 20px rgba(255, 176, 0, 0.2);
+    --shadow-hover: 0 0 25px rgba(0, 255, 0, 0.4);
+
+    --font-display: 'JetBrains Mono', monospace;
+    --font-sans: 'JetBrains Mono', monospace;
+    --radius: 2px;
+}
+
+/* === PALETTE: RIVENDELL === */
+/* Elvish elegance - Gold and emerald */
+[data-theme="rivendell"] {
+    --cream: #f8f5e6;
+    --cream-dark: #ebe4c8;
+    --chocolate: #2d4a3e;
+    --chocolate-light: #4a7c59;
+    --burnt-orange: #c9a227;
+    --rust: #d4af37;
+    --earth-mid: #5c8a4d;
+    --earth-dark: #2d4a3e;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #c9a227;
+    --accent-light: #4a7c59;
+    --highlight: #d4af37;
+
+    --muted: #4a7c59;
+    --muted-light: #6b9b5a;
+    --line: #c9b896;
+
+    --shadow-soft: 0 4px 20px rgba(45, 74, 62, 0.1);
+    --shadow-card: 0 8px 30px rgba(201, 162, 39, 0.15);
+    --shadow-hover: 0 12px 40px rgba(201, 162, 39, 0.25);
+
+    --font-display: 'Outfit', serif;
+    --radius: 12px;
+    --radius-lg: 20px;
+}
+
+/* === PALETTE: CAMO === */
+/* Hunter aesthetic - Camo greens with safety orange */
+[data-theme="camo"] {
+    --cream: #4b5320;
+    --cream-dark: #3d421a;
+    --chocolate: #f5f5dc;
+    --chocolate-light: #d2b48c;
+    --burnt-orange: #ff6600;
+    --rust: #ff8533;
+    --earth-mid: #6b8e23;
+    --earth-dark: #556b2f;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #ff6600;
+    --accent-light: #8fbc8f;
+    --highlight: #ff6600;
+
+    --muted: #d2b48c;
+    --muted-light: #a0522d;
+    --line: #556b2f;
+
+    --shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 6px 20px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 8px 25px rgba(255, 102, 0, 0.3);
+
+    --font-display: 'Outfit', sans-serif;
+    --radius: 4px;
+}
+
+/* === PALETTE: BARBIE === */
+/* Hot pink fun - Playful and bright */
+[data-theme="barbie"] {
+    --cream: #fff0f5;
+    --cream-dark: #ffe4ec;
+    --chocolate: #ff1493;
+    --chocolate-light: #ff69b4;
+    --burnt-orange: #ff1493;
+    --rust: #ff69b4;
+    --earth-mid: #db7093;
+    --earth-dark: #c71585;
+
+    --ink: #880044;
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #ff1493;
+    --accent-light: #ffb6c1;
+    --highlight: #ff69b4;
+
+    --muted: #db7093;
+    --muted-light: #ffb6c1;
+    --line: #ffb6c1;
+
+    --shadow-soft: 0 4px 20px rgba(255, 20, 147, 0.15);
+    --shadow-card: 0 8px 30px rgba(255, 20, 147, 0.2);
+    --shadow-hover: 0 12px 40px rgba(255, 20, 147, 0.3);
+
+    --font-display: 'Outfit', sans-serif;
+    --radius: 20px;
+    --radius-lg: 30px;
+}
+
+/* === PALETTE: OCEAN === */
+/* Deep sea - Bioluminescent blues */
+[data-theme="ocean"] {
+    --cream: #0a1628;
+    --cream-dark: #050d18;
+    --chocolate: #00d4ff;
+    --chocolate-light: #0099cc;
+    --burnt-orange: #00ffcc;
+    --rust: #66ffdd;
+    --earth-mid: #006688;
+    --earth-dark: #003344;
+
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #00ffcc;
+    --accent-light: #00d4ff;
+    --highlight: #00ffcc;
+
+    --muted: #0099cc;
+    --muted-light: #006688;
+    --line: #003344;
+
+    --shadow-soft: 0 0 20px rgba(0, 212, 255, 0.15);
+    --shadow-card: 0 0 30px rgba(0, 255, 204, 0.2);
+    --shadow-hover: 0 0 40px rgba(0, 212, 255, 0.4);
+
+    --font-display: 'Outfit', sans-serif;
+    --radius: 8px;
+}
+
 /* === THEME TRANSITIONS === */
 /* Smooth color transitions when switching themes */
 :root {
