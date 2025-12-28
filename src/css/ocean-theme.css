@@ -1,0 +1,310 @@
+/* ============================================
+   OCEAN THEME - Deep Sea Bioluminescence
+   Underwater glow, floating bubbles, waves
+   ============================================ */
+
+/* === DEEP OCEAN GRADIENT === */
+[data-theme="ocean"] body {
+    background: linear-gradient(
+        180deg,
+        #050d18 0%,
+        #0a1628 20%,
+        #0d1f3c 40%,
+        #0a1628 60%,
+        #071222 80%,
+        #030810 100%
+    );
+    background-attachment: fixed;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* === CAUSTIC LIGHT PATTERNS === */
+[data-theme="ocean"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(ellipse 100px 80px at 20% 20%, rgba(0, 212, 255, 0.1), transparent),
+        radial-gradient(ellipse 150px 100px at 80% 30%, rgba(0, 255, 204, 0.08), transparent),
+        radial-gradient(ellipse 80px 120px at 50% 70%, rgba(0, 212, 255, 0.06), transparent),
+        radial-gradient(ellipse 120px 90px at 30% 50%, rgba(0, 255, 204, 0.05), transparent);
+    animation: caustics 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes caustics {
+    0%, 100% { 
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% { 
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+/* === FLOATING BUBBLES === */
+[data-theme="ocean"] body::after {
+    content: '';
+    position: fixed;
+    bottom: -20px;
+    left: 10%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.4), rgba(0,212,255,0.2), transparent);
+    border-radius: 50%;
+    animation: bubble1 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 100;
+}
+
+[data-theme="ocean"] .hero-section::before {
+    content: '';
+    position: fixed;
+    bottom: -15px;
+    left: 30%;
+    width: 15px;
+    height: 15px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), rgba(0,255,204,0.2), transparent);
+    border-radius: 50%;
+    animation: bubble2 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 100;
+}
+
+[data-theme="ocean"] .hero-section::after {
+    content: '';
+    position: fixed;
+    bottom: -25px;
+    left: 70%;
+    width: 25px;
+    height: 25px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.3), rgba(0,212,255,0.15), transparent);
+    border-radius: 50%;
+    animation: bubble3 12s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@keyframes bubble1 {
+    0% { bottom: -20px; opacity: 0; transform: translateX(0) scale(1); }
+    10% { opacity: 0.8; }
+    90% { opacity: 0.6; }
+    100% { bottom: 110vh; opacity: 0; transform: translateX(30px) scale(0.5); }
+}
+
+@keyframes bubble2 {
+    0% { bottom: -15px; opacity: 0; transform: translateX(0) scale(1); }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.5; }
+    100% { bottom: 110vh; opacity: 0; transform: translateX(-20px) scale(0.6); }
+}
+
+@keyframes bubble3 {
+    0% { bottom: -25px; opacity: 0; transform: translateX(0) scale(1); }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.4; }
+    100% { bottom: 110vh; opacity: 0; transform: translateX(40px) scale(0.4); }
+}
+
+/* === BIOLUMINESCENT TEXT === */
+[data-theme="ocean"] h1,
+[data-theme="ocean"] h2,
+[data-theme="ocean"] .headline {
+    font-family: 'Outfit', sans-serif;
+    color: #00d4ff;
+    font-weight: 700;
+    text-shadow: 
+        0 0 10px #00d4ff,
+        0 0 20px #00d4ff,
+        0 0 40px rgba(0, 212, 255, 0.5);
+    animation: bioGlow 3s ease-in-out infinite;
+}
+
+@keyframes bioGlow {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px #00d4ff,
+            0 0 20px #00d4ff,
+            0 0 40px rgba(0, 212, 255, 0.5);
+    }
+    50% { 
+        text-shadow: 
+            0 0 15px #00ffcc,
+            0 0 30px #00ffcc,
+            0 0 60px rgba(0, 255, 204, 0.6);
+    }
+}
+
+[data-theme="ocean"] h3 {
+    color: #00ffcc;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+[data-theme="ocean"] p,
+[data-theme="ocean"] .body-text {
+    color: #66d9ff;
+}
+
+/* === JELLYFISH CARDS === */
+[data-theme="ocean"] .pricing-card,
+[data-theme="ocean"] .about-card,
+[data-theme="ocean"] .process-step,
+[data-theme="ocean"] .testimonial-card,
+[data-theme="ocean"] .wiki-category-card,
+[data-theme="ocean"] .hero-badge {
+    background: rgba(10, 22, 40, 0.8);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 
+        0 0 30px rgba(0, 212, 255, 0.15),
+        inset 0 0 40px rgba(0, 255, 204, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Bioluminescent pulse on hover */
+[data-theme="ocean"] .pricing-card:hover,
+[data-theme="ocean"] .wiki-category-card:hover {
+    border-color: #00ffcc;
+    box-shadow: 
+        0 0 50px rgba(0, 255, 204, 0.3),
+        inset 0 0 50px rgba(0, 255, 204, 0.1);
+}
+
+/* Tentacle-like gradient at bottom */
+[data-theme="ocean"] .pricing-card::after,
+[data-theme="ocean"] .about-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30%;
+    background: linear-gradient(
+        180deg,
+        transparent 0%,
+        rgba(0, 255, 204, 0.05) 100%
+    );
+    pointer-events: none;
+}
+
+/* === BUTTONS === */
+[data-theme="ocean"] .cta-button,
+[data-theme="ocean"] .pricing-cta {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 255, 204, 0.2) 0%,
+        rgba(0, 212, 255, 0.3) 100%
+    );
+    color: #00ffcc;
+    border: 2px solid #00ffcc;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    box-shadow: 
+        0 0 20px rgba(0, 255, 204, 0.3),
+        inset 0 0 20px rgba(0, 255, 204, 0.1);
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Wave effect on button */
+[data-theme="ocean"] .cta-button::before,
+[data-theme="ocean"] .pricing-cta::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(0, 255, 204, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+}
+
+[data-theme="ocean"] .cta-button:hover::before,
+[data-theme="ocean"] .pricing-cta:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+[data-theme="ocean"] .cta-button:hover,
+[data-theme="ocean"] .pricing-cta:hover {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 255, 204, 0.4) 0%,
+        rgba(0, 212, 255, 0.5) 100%
+    );
+    box-shadow: 
+        0 0 40px rgba(0, 255, 204, 0.5),
+        inset 0 0 30px rgba(0, 255, 204, 0.2);
+    transform: translateY(-3px);
+}
+
+/* === NAVIGATION === */
+[data-theme="ocean"] .nav-wrapper,
+[data-theme="ocean"] .main-nav {
+    background: rgba(5, 13, 24, 0.95);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="ocean"] .menu-link {
+    color: #00d4ff;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+[data-theme="ocean"] .menu-link:hover {
+    color: #00ffcc;
+    text-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+}
+
+/* === WAVE TOP BORDER === */
+[data-theme="ocean"] .nav-wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 200%;
+    height: 10px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 10'%3E%3Cpath d='M0 10 Q150 0 300 10 Q450 20 600 10 Q750 0 900 10 Q1050 20 1200 10' fill='none' stroke='rgba(0,212,255,0.3)' stroke-width='2'/%3E%3C/svg%3E");
+    animation: waveMove 5s linear infinite;
+}
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* === FOOTER === */
+[data-theme="ocean"] footer {
+    background: rgba(3, 8, 16, 0.98);
+    border-top: 1px solid rgba(0, 212, 255, 0.3);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="ocean"] body::before,
+    [data-theme="ocean"] body::after,
+    [data-theme="ocean"] .hero-section::before,
+    [data-theme="ocean"] .hero-section::after,
+    [data-theme="ocean"] h1,
+    [data-theme="ocean"] h2,
+    [data-theme="ocean"] .headline,
+    [data-theme="ocean"] .nav-wrapper::after {
+        animation: none;
+    }
+}
+

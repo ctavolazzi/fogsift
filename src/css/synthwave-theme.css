@@ -1,0 +1,304 @@
+/* ============================================
+   SYNTHWAVE THEME - 80s Retro Neon
+   Sunset grid, neon glow, VHS aesthetic
+   ============================================ */
+
+/* === SUNSET GRADIENT BACKGROUND === */
+[data-theme="synthwave"] body {
+    background: 
+        /* Stars */
+        radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+        radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+        radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 160px 120px, #fff, transparent),
+        /* Sunset gradient */
+        linear-gradient(
+            180deg,
+            #0f0f1a 0%,
+            #1a1a2e 20%,
+            #2d1b4e 40%,
+            #4a1942 55%,
+            #ff6b6b 70%,
+            #feca57 85%,
+            #ff9ff3 100%
+        );
+    background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+/* === NEON GRID FLOOR === */
+[data-theme="synthwave"] body::before {
+    content: '';
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background: 
+        /* Horizontal lines */
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 30px,
+            rgba(1, 205, 254, 0.3) 30px,
+            rgba(1, 205, 254, 0.3) 31px
+        ),
+        /* Vertical lines with perspective */
+        linear-gradient(
+            90deg,
+            transparent 0%,
+            transparent 49%,
+            rgba(255, 113, 206, 0.2) 49%,
+            rgba(255, 113, 206, 0.2) 51%,
+            transparent 51%,
+            transparent 100%
+        );
+    background-size: 100% 100%, 80px 100%;
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: bottom center;
+    pointer-events: none;
+    z-index: -1;
+    animation: gridScroll 20s linear infinite;
+}
+
+@keyframes gridScroll {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 0 300px, 0 0; }
+}
+
+/* === SUN === */
+[data-theme="synthwave"] body::after {
+    content: '';
+    position: fixed;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background: 
+        repeating-linear-gradient(
+            0deg,
+            #ff6b6b 0px,
+            #ff6b6b 10px,
+            transparent 10px,
+            transparent 20px
+        ),
+        linear-gradient(
+            180deg,
+            #feca57 0%,
+            #ff6b6b 50%,
+            #ff71ce 100%
+        );
+    border-radius: 50%;
+    clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: sunPulse 4s ease-in-out infinite;
+}
+
+@keyframes sunPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+/* === NEON TEXT === */
+[data-theme="synthwave"] h1,
+[data-theme="synthwave"] h2,
+[data-theme="synthwave"] .headline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    color: #ff71ce;
+    text-shadow: 
+        0 0 10px #ff71ce,
+        0 0 20px #ff71ce,
+        0 0 40px #ff71ce,
+        0 0 80px #b967ff;
+    animation: neonPulse 2s ease-in-out infinite;
+}
+
+[data-theme="synthwave"] h3 {
+    color: #01cdfe;
+    text-shadow: 
+        0 0 10px #01cdfe,
+        0 0 20px #01cdfe,
+        0 0 40px #01cdfe;
+}
+
+@keyframes neonPulse {
+    0%, 100% { 
+        text-shadow: 
+            0 0 10px #ff71ce,
+            0 0 20px #ff71ce,
+            0 0 40px #ff71ce,
+            0 0 80px #b967ff;
+    }
+    50% { 
+        text-shadow: 
+            0 0 5px #ff71ce,
+            0 0 10px #ff71ce,
+            0 0 20px #ff71ce,
+            0 0 40px #b967ff;
+    }
+}
+
+/* === CHROME TEXT EFFECT === */
+[data-theme="synthwave"] .section-label {
+    background: linear-gradient(
+        180deg,
+        #fff 0%,
+        #01cdfe 25%,
+        #ff71ce 50%,
+        #01cdfe 75%,
+        #fff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+}
+
+/* === GLASSMORPHISM CARDS === */
+[data-theme="synthwave"] .pricing-card,
+[data-theme="synthwave"] .about-card,
+[data-theme="synthwave"] .process-step,
+[data-theme="synthwave"] .testimonial-card,
+[data-theme="synthwave"] .wiki-category-card,
+[data-theme="synthwave"] .hero-badge {
+    background: rgba(26, 26, 46, 0.7);
+    border: 1px solid rgba(255, 113, 206, 0.3);
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 
+        0 0 20px rgba(255, 113, 206, 0.2),
+        0 0 40px rgba(1, 205, 254, 0.1);
+}
+
+[data-theme="synthwave"] .pricing-card:hover,
+[data-theme="synthwave"] .wiki-category-card:hover {
+    border-color: #01cdfe;
+    box-shadow: 
+        0 0 30px rgba(1, 205, 254, 0.4),
+        0 0 60px rgba(255, 113, 206, 0.2);
+}
+
+/* === NEON BUTTONS === */
+[data-theme="synthwave"] .cta-button,
+[data-theme="synthwave"] .pricing-cta {
+    background: linear-gradient(135deg, #01cdfe 0%, #05ffa1 100%);
+    color: #0f0f1a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 4px;
+    box-shadow: 
+        0 0 20px rgba(1, 205, 254, 0.5),
+        0 0 40px rgba(1, 205, 254, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+[data-theme="synthwave"] .cta-button::before,
+[data-theme="synthwave"] .pricing-cta::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transform: rotate(45deg);
+    animation: buttonShine 3s ease-in-out infinite;
+}
+
+@keyframes buttonShine {
+    0% { transform: translateX(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) rotate(45deg); }
+}
+
+[data-theme="synthwave"] .cta-button:hover,
+[data-theme="synthwave"] .pricing-cta:hover {
+    background: linear-gradient(135deg, #05ffa1 0%, #01cdfe 100%);
+    box-shadow: 
+        0 0 30px rgba(5, 255, 161, 0.6),
+        0 0 60px rgba(1, 205, 254, 0.4);
+    transform: translateY(-3px);
+}
+
+/* === NAVIGATION === */
+[data-theme="synthwave"] .nav-wrapper,
+[data-theme="synthwave"] .main-nav {
+    background: rgba(15, 15, 26, 0.9);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #ff71ce, #01cdfe, #05ffa1, #ff71ce) 1;
+    backdrop-filter: blur(10px);
+}
+
+[data-theme="synthwave"] .menu-link {
+    color: #ff71ce;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+}
+
+[data-theme="synthwave"] .menu-link:hover {
+    color: #01cdfe;
+    text-shadow: 0 0 10px #01cdfe;
+}
+
+/* === VHS TRACKING LINES === */
+[data-theme="synthwave"] .hero-section::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 255, 255, 0.5) 50%, 
+        transparent 100%
+    );
+    animation: vhsTracking 8s linear infinite;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes vhsTracking {
+    0% { top: 0; opacity: 0; }
+    10% { opacity: 0.8; }
+    20% { opacity: 0; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* === FOOTER === */
+[data-theme="synthwave"] footer {
+    background: rgba(15, 15, 26, 0.95);
+    border-top: 2px solid transparent;
+    border-image: linear-gradient(90deg, #ff71ce, #01cdfe, #05ffa1, #ff71ce) 1;
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="synthwave"] body::before,
+    [data-theme="synthwave"] body::after,
+    [data-theme="synthwave"] h1,
+    [data-theme="synthwave"] h2,
+    [data-theme="synthwave"] .headline,
+    [data-theme="synthwave"] .cta-button::before,
+    [data-theme="synthwave"] .pricing-cta::before,
+    [data-theme="synthwave"] .hero-section::after {
+        animation: none;
+    }
+}
+
