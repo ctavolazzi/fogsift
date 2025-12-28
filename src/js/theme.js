@@ -231,24 +231,24 @@ const Theme = {
     },
 
     /**
-     * Demo tick - switch to next theme with channel switch effect
+     * Demo tick - switch to next theme with smooth transition
      */
     _demoTick() {
         const theme = this.THEMES[this._demoIndex];
-
-        // Add channel switch effect
+        
+        // Add smooth transition effect
         document.documentElement.classList.add('demo-channel-switch');
-
-        // Switch theme after brief delay for effect
+        
+        // Switch theme at the midpoint of the fade
         setTimeout(() => {
             this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
-        }, 50);
-
-        // Remove effect class
+        }, 150);
+        
+        // Remove effect class after animation completes
         setTimeout(() => {
             document.documentElement.classList.remove('demo-channel-switch');
-        }, 200);
-
+        }, 500);
+        
         this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
     },
 
