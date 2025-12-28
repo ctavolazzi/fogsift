@@ -161,6 +161,13 @@ const CSS_FILES = [
     'src/css/components.css',       // Sections, buttons, toast, modal
     'src/css/industrial-theme.css', // Industrial punchcard theme overrides
     'src/css/matrix-theme.css',     // Matrix digital rain theme overrides
+    'src/css/t800-theme.css',       // T-800 Terminator HUD theme
+    'src/css/synthwave-theme.css',  // Synthwave 80s neon theme
+    'src/css/pipboy-theme.css',     // Pip-Boy Fallout CRT theme
+    'src/css/rivendell-theme.css',  // Rivendell elvish elegance theme
+    'src/css/camo-theme.css',       // Camo military woodland theme
+    'src/css/barbie-theme.css',     // Barbie hot pink dream theme
+    'src/css/ocean-theme.css',      // Ocean deep sea bioluminescence theme
     'src/css/sleep.css',            // Sleep mode animations (easter egg)
     'src/css/wiki.css',             // Wiki page styles
     'src/css/mobile.css',           // Mobile-first overrides - must be last
