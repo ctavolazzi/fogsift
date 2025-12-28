@@ -1,13 +1,13 @@
 /* ============================================
    FOGSIFT THEME MODULE
    Event-driven multi-theme system with persistence
-   
+
    Architecture:
    - Single source of truth (localStorage + data-theme attribute)
    - Event-driven updates via CustomEvent 'themechange'
    - Cross-tab sync via storage event listener
    - Auto-hydration of dropdowns via MutationObserver
-   
+
    Note: The storage key 'theme' is also used in build.js
    for FOUC-prevention script injection (TD-010).
    ============================================ */
@@ -15,17 +15,17 @@
 const Theme = {
     STORAGE_KEY: 'theme',
     EVENT_NAME: 'themechange',
-    
+
     // Available themes - order matters for cycle()
     THEMES: ['light', 'dark', 'industrial-punchcard'],
-    
+
     // Human-readable theme names for UI
     THEME_LABELS: {
         'light': 'Light',
         'dark': 'Dark',
         'industrial-punchcard': 'Industrial'
     },
-    
+
     _initialized: false,
     _observer: null,
 
@@ -39,7 +39,7 @@ const Theme = {
     init() {
         if (this._initialized) return;
         this._initialized = true;
-        
+
         // Get stored theme or default
         let theme = 'light';
         try {
@@ -48,19 +48,19 @@ const Theme = {
         } catch {
             // localStorage unavailable
         }
-        
+
         // Apply theme without notification on init
         this._applyTheme(theme);
-        
+
         // Hydrate all existing dropdowns
         this._hydrateDropdowns();
-        
+
         // Listen for storage changes (cross-tab sync)
         this._setupStorageListener();
-        
+
         // Watch for dynamically added dropdowns
         this._setupMutationObserver();
-        
+
         // Listen for our own theme change events (for components)
         this._setupThemeListener();
     },
@@ -77,31 +77,31 @@ const Theme = {
      */
     set(theme, options = {}) {
         const { notify = true, broadcast = true } = options;
-        
+
         // Validate theme
         if (!this.THEMES.includes(theme)) {
             console.warn(`Theme: Invalid theme "${theme}", falling back to light`);
             theme = 'light';
         }
-        
+
         const previousTheme = this.get();
         if (previousTheme === theme) return; // No change
-        
+
         // Apply the theme
         this._applyTheme(theme);
-        
+
         // Persist to storage
         try {
             localStorage.setItem(this.STORAGE_KEY, theme);
         } catch (e) {
             console.warn('Theme: Could not persist preference:', e.message);
         }
-        
+
         // Broadcast change event for all listeners
         if (broadcast) {
             this._dispatchChange(theme, previousTheme);
         }
-        
+
         // Show toast notification
         if (notify && typeof Toast !== 'undefined') {
             Toast.show(`VISUAL MODE: ${this.THEME_LABELS[theme].toUpperCase()}`);
@@ -124,14 +124,14 @@ const Theme = {
     toggle() {
         this.cycle();
     },
-    
+
     /**
      * Handle dropdown change event
      */
     onChange(event) {
         this.set(event.target.value);
     },
-    
+
     /**
      * Subscribe to theme changes
      * @param {Function} callback - Called with (newTheme, previousTheme)
@@ -142,9 +142,9 @@ const Theme = {
         window.addEventListener(this.EVENT_NAME, handler);
         return () => window.removeEventListener(this.EVENT_NAME, handler);
     },
-    
+
     // ============ PRIVATE METHODS ============
-    
+
     /**
      * Apply theme to DOM (no events)
      */
@@ -152,7 +152,7 @@ const Theme = {
         document.documentElement.setAttribute('data-theme', theme);
         this._hydrateDropdowns();
     },
-    
+
     /**
      * Hydrate all theme dropdowns with current value
      */
@@ -164,7 +164,7 @@ const Theme = {
             }
         });
     },
-    
+
     /**
      * Dispatch theme change CustomEvent
      */
@@ -175,7 +175,7 @@ const Theme = {
         });
         window.dispatchEvent(event);
     },
-    
+
     /**
      * Listen for localStorage changes (cross-tab sync)
      */
@@ -191,13 +191,13 @@ const Theme = {
             }
         });
     },
-    
+
     /**
      * Watch for dynamically added dropdowns
      */
     _setupMutationObserver() {
         if (typeof MutationObserver === 'undefined') return;
-        
+
         this._observer = new MutationObserver((mutations) => {
             for (const mutation of mutations) {
                 for (const node of mutation.addedNodes) {
@@ -214,13 +214,13 @@ const Theme = {
                 }
             }
         });
-        
+
         this._observer.observe(document.body, {
             childList: true,
             subtree: true
         });
     },
-    
+
     /**
      * Listen for theme changes to update dropdowns
      */
@@ -229,7 +229,7 @@ const Theme = {
             this._hydrateDropdowns();
         });
     },
-    
+
     /**
      * Cleanup (for testing or SPA unmount)
      */

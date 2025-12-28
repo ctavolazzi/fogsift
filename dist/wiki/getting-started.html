@@ -516,16 +516,16 @@
                 if (!this.THEMES.includes(theme)) theme = 'light';
                 const prev = this.get();
                 if (prev === theme) return;
-                
+
                 document.documentElement.setAttribute('data-theme', theme);
                 try { localStorage.setItem('theme', theme); } catch {}
                 this._hydrateDropdowns();
-                
+
                 // Dispatch event for any listeners
-                window.dispatchEvent(new CustomEvent('themechange', { 
-                    detail: { theme, previousTheme: prev } 
+                window.dispatchEvent(new CustomEvent('themechange', {
+                    detail: { theme, previousTheme: prev }
                 }));
-                
+
                 // Show toast if available
                 if (notify && typeof Toast !== 'undefined') {
                     Toast.show('VISUAL MODE: ' + this.LABELS[theme].toUpperCase());
@@ -546,13 +546,13 @@
             init() {
                 if (this._initialized) return;
                 this._initialized = true;
-                
+
                 // Apply stored theme
                 const stored = localStorage.getItem('theme');
                 const theme = this.THEMES.includes(stored) ? stored : 'light';
                 document.documentElement.setAttribute('data-theme', theme);
                 this._hydrateDropdowns();
-                
+
                 // Cross-tab sync via storage events
                 window.addEventListener('storage', (e) => {
                     if (e.key === 'theme' && e.newValue && this.THEMES.includes(e.newValue)) {
