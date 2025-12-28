@@ -1,0 +1,493 @@
+/* ============================================
+   FOGSIFT MATRIX THEME - Performance Optimized
+   Buttery smooth animations using GPU acceleration
+   ============================================ */
+
+/* === KEYFRAMES - GPU Accelerated Only === */
+
+@keyframes neonPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+@keyframes textGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.85; }
+}
+
+@keyframes borderPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* === GLOBAL SETUP === */
+[data-theme="matrix"] {
+    --matrix-green: #00FF41;
+    --matrix-dark-green: #008F11;
+    --matrix-darker: #003B00;
+    --matrix-bg: #0D0208;
+    --matrix-glow: 0 0 10px #00FF4180;
+}
+
+[data-theme="matrix"] * {
+    /* Hint browser about animated properties */
+    will-change: auto;
+}
+
+/* === BODY === */
+[data-theme="matrix"] body {
+    background-color: var(--matrix-bg);
+}
+
+/* Simple scanline - no animation, just texture */
+[data-theme="matrix"] body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(0, 255, 65, 0.015) 2px,
+        rgba(0, 255, 65, 0.015) 4px
+    );
+    pointer-events: none;
+    z-index: 10000;
+}
+
+/* === NAVIGATION === */
+[data-theme="matrix"] .nav-wrapper {
+    box-shadow: 0 1px 0 var(--matrix-green);
+}
+
+[data-theme="matrix"] .main-nav {
+    background: rgba(0, 0, 0, 0.95);
+    border-bottom: 1px solid var(--matrix-green);
+}
+
+[data-theme="matrix"] .brand-logo {
+    filter: brightness(0) invert(1) sepia(1) saturate(10000%) hue-rotate(85deg);
+}
+
+[data-theme="matrix"] .menu-link {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--matrix-green);
+    text-shadow: var(--matrix-glow);
+    transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+
+[data-theme="matrix"] .menu-link:hover {
+    color: #FFF;
+    text-shadow: 0 0 15px var(--matrix-green);
+}
+
+[data-theme="matrix"] .menu-link.cta-link {
+    background: transparent;
+    border: 1px solid var(--matrix-green);
+    box-shadow: var(--matrix-glow);
+}
+
+[data-theme="matrix"] .menu-link.cta-link:hover {
+    background: var(--matrix-green);
+    color: #000;
+}
+
+/* === CTA BUTTONS === */
+[data-theme="matrix"] .cta-button {
+    background: transparent;
+    border: 1px solid var(--matrix-green);
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--matrix-green);
+    text-shadow: var(--matrix-glow);
+    box-shadow: var(--matrix-glow);
+    transition: all 0.15s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Sweep effect - GPU accelerated */
+[data-theme="matrix"] .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.3), transparent);
+    transition: transform 0.4s ease;
+    transform: translateX(0);
+}
+
+[data-theme="matrix"] .cta-button:hover::before {
+    transform: translateX(200%);
+}
+
+[data-theme="matrix"] .cta-button:hover {
+    background: var(--matrix-green);
+    color: #000;
+    text-shadow: none;
+    box-shadow: 0 0 20px var(--matrix-green);
+}
+
+/* === CARDS === */
+[data-theme="matrix"] .hero-badge,
+[data-theme="matrix"] .about-card,
+[data-theme="matrix"] .process-step,
+[data-theme="matrix"] .testimonial-card,
+[data-theme="matrix"] .pricing-card {
+    background: rgba(0, 15, 0, 0.8);
+    border: 1px solid var(--matrix-darker);
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 255, 65, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* === LEGIBILITY FIXES === */
+/* Ensure body text in cards is readable */
+[data-theme="matrix"] .pricing-card p,
+[data-theme="matrix"] .process-step p,
+[data-theme="matrix"] .testimonial-quote,
+[data-theme="matrix"] .about-card p,
+[data-theme="matrix"] .hero-badge p {
+    color: #00DD44;  /* Brighter green for body text */
+}
+
+/* Stats labels */
+[data-theme="matrix"] .stat-label,
+[data-theme="matrix"] .stat-desc {
+    color: #00CC33;
+}
+
+/* Pricing card prices/headings already use main green, ensure descriptions are readable */
+[data-theme="matrix"] .pricing-card .price,
+[data-theme="matrix"] .pricing-card h4 {
+    color: var(--matrix-green);
+}
+
+[data-theme="matrix"] .hero-badge:hover,
+[data-theme="matrix"] .about-card:hover,
+[data-theme="matrix"] .process-step:hover,
+[data-theme="matrix"] .testimonial-card:hover,
+[data-theme="matrix"] .pricing-card:hover {
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 25px rgba(0, 255, 65, 0.2);
+    transform: translateY(-3px);
+}
+
+[data-theme="matrix"] .pricing-card.featured {
+    border: 2px solid var(--matrix-green);
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.15);
+}
+
+[data-theme="matrix"] .featured-tag {
+    background: var(--matrix-green);
+    color: #000;
+    font-family: var(--font-mono);
+    font-weight: 700;
+}
+
+/* === TYPOGRAPHY === */
+[data-theme="matrix"] h1,
+[data-theme="matrix"] h2,
+[data-theme="matrix"] h3,
+[data-theme="matrix"] h4 {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--matrix-green);
+    text-shadow: var(--matrix-glow);
+}
+
+[data-theme="matrix"] .headline {
+    animation: textGlow 3s ease-in-out infinite;
+}
+
+[data-theme="matrix"] p,
+[data-theme="matrix"] li,
+[data-theme="matrix"] span {
+    font-family: var(--font-mono);
+}
+
+[data-theme="matrix"] code {
+    background: rgba(0, 255, 65, 0.1);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--matrix-darker);
+    color: #39FF14;
+}
+
+/* === ROTATING HIGHLIGHT === */
+[data-theme="matrix"] .rotating-highlight,
+[data-theme="matrix"] [data-words] {
+    color: #39FF14;
+    text-shadow: 0 0 15px var(--matrix-green);
+}
+
+/* === PROCESS STEPS === */
+[data-theme="matrix"] .step-number {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    color: var(--matrix-green);
+    text-shadow: var(--matrix-glow);
+}
+
+/* === STATS === */
+[data-theme="matrix"] .stat-number {
+    font-family: var(--font-mono);
+    font-weight: 900;
+    color: var(--matrix-green);
+    text-shadow: 0 0 15px var(--matrix-green);
+    animation: textGlow 2s ease-in-out infinite;
+}
+
+/* === TESTIMONIALS === */
+[data-theme="matrix"] .testimonial-quote::before {
+    color: var(--matrix-green);
+    opacity: 0.6;
+}
+
+[data-theme="matrix"] .author-name {
+    color: var(--matrix-green);
+}
+
+/* === CONTACT === */
+[data-theme="matrix"] .section-contact {
+    background: rgba(0, 20, 0, 0.9);
+    border: 1px solid var(--matrix-green);
+    border-radius: 2px;
+}
+
+/* === FOOTER === */
+[data-theme="matrix"] footer {
+    border-top: 1px solid var(--matrix-green);
+    background: rgba(0, 0, 0, 0.95);
+}
+
+[data-theme="matrix"] .footer-links a {
+    color: var(--matrix-green);
+    transition: color 0.15s ease;
+}
+
+[data-theme="matrix"] .footer-links a:hover {
+    color: #FFF;
+}
+
+/* === TOAST === */
+[data-theme="matrix"] .toast {
+    background: rgba(0, 0, 0, 0.95);
+    border: 1px solid var(--matrix-green);
+    color: var(--matrix-green);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* === MODAL === */
+[data-theme="matrix"] #article-modal {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="matrix"] .modal-content {
+    background: var(--matrix-bg);
+    border: 1px solid var(--matrix-green);
+}
+
+/* === MOBILE DRAWER === */
+[data-theme="matrix"] .mobile-drawer {
+    background: rgba(0, 0, 0, 0.98);
+    border-left: 1px solid var(--matrix-green);
+}
+
+[data-theme="matrix"] .mobile-link {
+    color: var(--matrix-green);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+[data-theme="matrix"] .mobile-link:hover {
+    color: #FFF;
+    background: rgba(0, 255, 65, 0.1);
+}
+
+[data-theme="matrix"] .mobile-overlay.open {
+    background: rgba(0, 5, 0, 0.8);
+}
+
+/* === THEME PICKER === */
+[data-theme="matrix"] .theme-picker-toggle {
+    border: 1px solid var(--matrix-darker);
+    background: transparent;
+    color: var(--matrix-green);
+}
+
+[data-theme="matrix"] .theme-picker-toggle:hover {
+    border-color: var(--matrix-green);
+}
+
+[data-theme="matrix"] .theme-picker-menu {
+    background: rgba(0, 0, 0, 0.98);
+    border: 1px solid var(--matrix-green);
+}
+
+[data-theme="matrix"] .theme-picker-option {
+    color: var(--matrix-green);
+    font-family: var(--font-mono);
+    transition: background 0.15s ease;
+}
+
+[data-theme="matrix"] .theme-picker-option:hover {
+    background: rgba(0, 255, 65, 0.15);
+}
+
+[data-theme="matrix"] .theme-picker-option[aria-selected="true"] {
+    background: rgba(0, 255, 65, 0.2);
+}
+
+/* === LINKS === */
+[data-theme="matrix"] a {
+    color: var(--matrix-green);
+    transition: color 0.15s ease;
+}
+
+[data-theme="matrix"] a:hover {
+    color: #FFF;
+}
+
+/* === FORMS === */
+[data-theme="matrix"] input,
+[data-theme="matrix"] textarea,
+[data-theme="matrix"] select {
+    background: rgba(0, 5, 0, 0.9);
+    border: 1px solid var(--matrix-darker);
+    color: var(--matrix-green);
+    font-family: var(--font-mono);
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[data-theme="matrix"] input:focus,
+[data-theme="matrix"] textarea:focus,
+[data-theme="matrix"] select:focus {
+    border-color: var(--matrix-green);
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.2);
+    outline: none;
+}
+
+/* === SCROLLBAR === */
+[data-theme="matrix"] ::-webkit-scrollbar {
+    width: 8px;
+}
+
+[data-theme="matrix"] ::-webkit-scrollbar-track {
+    background: #000;
+}
+
+[data-theme="matrix"] ::-webkit-scrollbar-thumb {
+    background: var(--matrix-darker);
+    border-radius: 4px;
+}
+
+[data-theme="matrix"] ::-webkit-scrollbar-thumb:hover {
+    background: var(--matrix-dark-green);
+}
+
+/* === SELECTION === */
+[data-theme="matrix"] ::selection {
+    background: var(--matrix-green);
+    color: #000;
+}
+
+/* === WIKI === */
+[data-theme="matrix"] .wiki-sidebar,
+[data-theme="matrix"] .wiki-main {
+    background: rgba(0, 10, 0, 0.9);
+    border: 1px solid var(--matrix-darker);
+}
+
+[data-theme="matrix"] .wiki-category-card {
+    background: rgba(0, 10, 0, 0.9);
+    border: 1px solid var(--matrix-darker);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="matrix"] .wiki-category-card:hover {
+    border-color: var(--matrix-green);
+    transform: translateY(-3px);
+}
+
+[data-theme="matrix"] .wiki-nav-title {
+    color: var(--matrix-green);
+    text-transform: uppercase;
+}
+
+[data-theme="matrix"] .wiki-nav-list a {
+    color: var(--matrix-dark-green);
+    transition: color 0.15s ease;
+}
+
+[data-theme="matrix"] .wiki-nav-list a:hover,
+[data-theme="matrix"] .wiki-nav-list a.active {
+    color: var(--matrix-green);
+}
+
+/* === JD SITEMAP === */
+[data-theme="matrix"] .jd-sitemap {
+    background: rgba(0, 10, 0, 0.9);
+    border: 1px solid var(--matrix-darker);
+}
+
+[data-theme="matrix"] .jd-category {
+    background: rgba(0, 15, 0, 0.5);
+    border: 1px solid var(--matrix-darker);
+    transition: border-color 0.15s ease;
+}
+
+[data-theme="matrix"] .jd-category:hover {
+    border-color: var(--matrix-green);
+}
+
+[data-theme="matrix"] .jd-range {
+    color: var(--matrix-green);
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--matrix-darker);
+}
+
+/* === AVATAR === */
+[data-theme="matrix"] .about-avatar img {
+    border: 1px solid var(--matrix-green);
+    filter: grayscale(100%) brightness(1.1) sepia(100%) saturate(300%) hue-rotate(85deg);
+    transition: filter 0.3s ease;
+}
+
+[data-theme="matrix"] .about-avatar img:hover {
+    filter: grayscale(50%) brightness(1.2) sepia(100%) saturate(400%) hue-rotate(85deg);
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+    [data-theme="matrix"] *,
+    [data-theme="matrix"] *::before,
+    [data-theme="matrix"] *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    [data-theme="matrix"] body::after {
+        display: none;
+    }
+}

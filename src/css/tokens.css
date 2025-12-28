@@ -136,9 +136,9 @@
     --accent-light: #5eead4;
     --highlight: #fcd34d;       /* Brighter gold */
 
-    /* Text colors */
-    --muted: #a8998a;
-    --muted-light: #7a6b5c;
+    /* Text colors - lighter for dark backgrounds */
+    --muted: #c4b5a6;           /* Lighter muted for dark mode */
+    --muted-light: #a8998a;     /* Medium muted */
     --line: #3d2e26;
 
     --bar-bg: var(--cream-dark);
@@ -252,6 +252,91 @@
             rgba(62, 39, 35, 0.03) 0%,
             transparent 50%,
             rgba(62, 39, 35, 0.02) 100%
+        );
+}
+
+/* === PALETTE: MATRIX === */
+/* "Digital Rain" - Green phosphor CRT aesthetic from The Matrix */
+[data-theme="matrix"] {
+    /* Core Matrix Palette */
+    --cream: #0D0208;           /* Near-black background */
+    --cream-dark: #000000;      /* Pure black for contrast */
+    --chocolate: #00FF41;       /* Phosphor green - primary text */
+    --chocolate-light: #008F11; /* Darker green - secondary text */
+    --burnt-orange: #00FF41;    /* Green CTA (same as primary) */
+    --rust: #39FF14;            /* Bright neon green - hover */
+    --earth-mid: #003B00;       /* Very dark green */
+    --earth-dark: #001A00;      /* Near-black green */
+
+    /* Semantic mappings */
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #39FF14;          /* Neon green accent */
+    --accent-light: #7FFF00;    /* Chartreuse for highlights */
+    --highlight: #00FF41;       /* Same phosphor green */
+
+    /* Legacy compatibility */
+    --copper: var(--primary);
+    --electric: var(--accent);
+
+    /* Text colors - need sufficient contrast on dark bg */
+    --muted: #00CC33;           /* Brighter green for readability */
+    --muted-light: #009922;     /* Medium green */
+    --line: #004400;
+
+    /* Status colors - all green variants */
+    --success: #00FF41;
+    --warning: #39FF14;
+    --error: #FF0040;           /* Red for errors (Matrix red pill) */
+    --info: #00FF41;
+
+    --bar-bg: var(--cream-dark);
+    --bar-text: var(--chocolate);
+    --bar-border: var(--line);
+
+    /* === MATRIX BORDERS (Thin, glowing) === */
+    --border-width: 1px;
+    --border-width-thin: 1px;
+
+    /* === MATRIX SHADOWS (Glow effects) === */
+    --shadow-soft: 0 0 20px rgba(0, 255, 65, 0.1);
+    --shadow-card: 0 0 30px rgba(0, 255, 65, 0.15);
+    --shadow-elevated: 0 0 40px rgba(0, 255, 65, 0.2);
+    --shadow-hard: 0 0 10px rgba(0, 255, 65, 0.3);
+    --shadow-hover: 0 0 20px rgba(0, 255, 65, 0.5);
+    --shadow-active: 0 0 5px rgba(0, 255, 65, 0.4);
+
+    /* Matrix glow effect for text */
+    --glow-text: 0 0 10px rgba(0, 255, 65, 0.8);
+    --glow-text-strong: 0 0 20px rgba(0, 255, 65, 1), 0 0 40px rgba(0, 255, 65, 0.5);
+
+    /* === MATRIX RADIUS (Sharp, digital) === */
+    --radius: 4px;
+    --radius-lg: 8px;
+    --radius-badge: 4px;
+    --radius-button: 4px;
+
+    /* === MATRIX MOTION (Quick, digital) === */
+    --snap: 0.05s linear;
+    --ease-out: 0.1s linear;
+    --ease-bounce: 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    /* === MATRIX TYPOGRAPHY (Monospace preference) === */
+    --font-display: 'JetBrains Mono', 'Courier New', monospace;
+    --font-sans: 'JetBrains Mono', 'Courier New', monospace;
+
+    /* === CRT SCANLINE TEXTURE === */
+    --texture-scanlines:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(0, 0, 0, 0.3) 2px,
+            rgba(0, 0, 0, 0.3) 4px
         );
 }
 
