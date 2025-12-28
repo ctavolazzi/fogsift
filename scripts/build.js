@@ -43,12 +43,15 @@ function getWikiIcon(iconName) {
 }
 
 // Files to concatenate (order matters)
+// TD-017: Split components.css into modular files
 const CSS_FILES = [
-    'src/css/tokens.css',
-    'src/css/base.css',
-    'src/css/components.css',
-    'src/css/wiki.css',    // Wiki page styles
-    'src/css/mobile.css',  // Mobile-first overrides - must be last
+    'src/css/tokens.css',      // Design tokens
+    'src/css/base.css',        // Reset, typography
+    'src/css/navigation.css',  // Nav, mobile drawer, theme toggle
+    'src/css/components.css',  // Sections, buttons, toast, modal
+    'src/css/sleep.css',       // Sleep mode animations (easter egg)
+    'src/css/wiki.css',        // Wiki page styles
+    'src/css/mobile.css',      // Mobile-first overrides - must be last
 ];
 
 const JS_FILES = [

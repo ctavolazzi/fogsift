@@ -64,6 +64,7 @@ dist/                         # Built output (auto-generated)
 | ~~TD-010~~ | ~~**Duplicated theme logic** — Theme init in both index.html and 404.html~~ | ✅ Consolidated via build.js injection (2025-12-28) |
 | TD-011 | **No CSS custom property fallbacks** — Old browsers break | ~2% user impact |
 | ~~TD-012~~ | ~~**Console graffiti** — Dev logs in production~~ | ✅ Reviewed - only styled branding |
+| ~~TD-017~~ | ~~**Large components.css** — 2200+ lines monolith~~ | ✅ Split into 3 files: nav, components, sleep (2025-12-28) |
 
 ---
 
@@ -172,6 +173,7 @@ content/
 | 2025-12-26 | esbuild over webpack | 100x faster, zero config. |
 | 2025-12-26 | Cloudflare Pages | Free, fast, already deployed. |
 | 2025-12-28 | Theme init via build injection | Single source of truth, prevents FOUC across all pages. |
+| 2025-12-28 | Split components.css into modules | Improved maintainability: nav (227), components (509), sleep (779 lines). |
 
 ---
 
@@ -180,7 +182,7 @@ content/
 | Metric | Current | Target | Notes |
 |--------|---------|--------|-------|
 | dist/index.html | 13.0KB | <10KB | Clean, semantic HTML |
-| dist/styles.css | 53.7KB | <40KB | Includes wiki.css, mobile.css |
+| dist/styles.css | 43.2KB | <40KB | ✅ Near target after TD-017 refactor |
 | dist/app.js | 15.5KB | <10KB | Minified via esbuild |
 | Lighthouse Performance | Unknown | >90 | |
 | Time to Interactive | Unknown | <1.5s | |
