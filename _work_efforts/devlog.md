@@ -183,3 +183,41 @@ Wiki templates now load shared `app.js` instead of duplicating inline JS:
 ### Deployment
 - **Production:** https://fogsift.com
 - **Preview:** https://0d69d168.fogsift.pages.dev
+
+[2025-12-28 08:59:55] ## Repository Cleanup Complete
+
+**Commit:** `ed50783`
+
+### Actions Taken
+
+1. **Archived 4 completed work efforts** to `_work_efforts/_archive/2025-12/`:
+   - WE-251227-fmhx (MCP System Dashboard)
+   - WE-251227-giok (MCP Integration Test Task)
+   - WE-251227-uzo7 (Work Effort System Rules Setup)
+   - WE-251227-x7k9 (API Architecture)
+
+2. **Archived 21 legacy work efforts** to `_work_efforts/_archive/legacy/`:
+   - 00-09_category/ (12 files)
+   - 00-09_site_improvements/ (9 files)
+
+3. **Pruned stale git branches:**
+   - origin/feature/theme-switcher-ux-improvements
+   - origin/feature/theme-system-enhancements
+
+4. **Updated TECH_DEBT.md:**
+   - Resolved TD-010 (theme logic now DRY with shared app.js)
+   - Added TD-020 (wiki.css at 1,135 lines)
+   - Updated file sizes to reflect current state
+   - Bumped version to 0.0.5
+
+5. **Updated CONTINUATION.md:**
+   - Updated to v0.0.5
+   - Updated JS modules section with current file list
+   - Updated work efforts section to reflect archive
+   - Updated recent work section with theme enhancements
+
+### Final State
+- **Work Efforts:** Clean root with only devlog.md
+- **Archive:** 2025-12/ (4 WEs, 19 tickets) + legacy/ (21 files)
+- **Git:** Single main branch, no stale remotes
+- **Docs:** TECH_DEBT.md and CONTINUATION.md current
