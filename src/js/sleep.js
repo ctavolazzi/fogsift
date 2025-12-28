@@ -16,10 +16,11 @@ const SleepMode = {
     // ============================================
 
     // Timing thresholds (milliseconds)
-    PAGE_TIME_REQUIRED: 5 * 60 * 1000,   // 5 minutes before sleep eligible
-    IDLE_TIME_REQUIRED: 30 * 1000,        // 30 seconds idle to trigger sleep
-    CHECK_INTERVAL: 5000,                  // Check sleep conditions every 5s
-    DEEP_SLEEP_DELAY: 3000,                // 3 seconds before entering ultra-lightweight mode
+    // TESTING - short timers
+    PAGE_TIME_REQUIRED: 3 * 1000,
+    IDLE_TIME_REQUIRED: 2 * 1000,
+    CHECK_INTERVAL: 1000,
+    DEEP_SLEEP_DELAY: 3000,
 
     // Animation timing (milliseconds)
     TIMING: {

@@ -826,7 +826,7 @@ body.settling-to-sleep .sleepy-breathing {
     display: none;
 }
 
-/* Centered sleep message - make it clear we're sleeping! */
+/* Centered sleep message - glassmorphism style */
 #sleep-overlay.deep-sleep .sleep-message {
     position: fixed;
     top: 50%;
@@ -834,29 +834,43 @@ body.settling-to-sleep .sleepy-breathing {
     bottom: auto;
     transform: translate(-50%, -50%);
     flex-direction: column;
-    gap: 16px;
-    background: rgba(26, 20, 18, 0.95);
-    padding: 40px 60px;
-    border-radius: 20px;
-    border: 2px solid var(--burnt-orange, #e07b3c);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-    animation: none;
+    gap: 12px;
+    background: linear-gradient(
+        135deg,
+        rgba(26, 20, 18, 0.9) 0%,
+        rgba(40, 30, 25, 0.95) 100%
+    );
+    padding: clamp(24px, 5vw, 48px) clamp(32px, 8vw, 72px);
+    border-radius: clamp(16px, 3vw, 24px);
+    border: 1px solid rgba(224, 123, 60, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.4),
+        0 0 80px rgba(224, 123, 60, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    animation: floatIn 0.6s ease-out;
     opacity: 1;
     text-align: center;
+    max-width: 90vw;
+    width: auto;
 }
 
 #sleep-overlay.deep-sleep .sleep-icon {
-    font-size: 4rem;
-    animation: gentlePulse 4s ease-in-out infinite;
+    font-size: clamp(3rem, 8vw, 5rem);
+    animation: sleepBreathe 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(100, 149, 237, 0.3));
 }
 
 #sleep-overlay.deep-sleep .sleep-text {
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
     opacity: 1;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.25em;
     color: var(--cream, #f5f0e6);
     text-transform: uppercase;
-    margin-top: 8px;
+    margin-top: 12px;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(245, 240, 230, 0.3);
 }
 
 /* Add a subtitle explaining what happened */
@@ -864,23 +878,56 @@ body.settling-to-sleep .sleepy-breathing {
     content: "We noticed you stepped away, so we dimmed the lights.";
     display: block;
     font-family: var(--font-mono, monospace);
-    font-size: 0.75rem;
+    font-size: clamp(0.65rem, 1.5vw, 0.8rem);
     color: var(--burnt-orange, #e07b3c);
-    opacity: 0.8;
-    margin-top: 20px;
-    max-width: 280px;
-    line-height: 1.5;
+    opacity: 0.7;
+    margin-top: 16px;
+    max-width: 320px;
+    line-height: 1.6;
 }
 
-/* Very gentle pulse - barely noticeable but alive */
-@keyframes gentlePulse {
-    0%, 100% {
-        transform: scale(1);
-        opacity: 0.9;
+/* Moon and stars decoration */
+#sleep-overlay.deep-sleep .sleep-message::before {
+    content: "🌙";
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    font-size: 1.5rem;
+    animation: moonGlow 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 223, 150, 0.5));
+}
+
+/* Entrance animation */
+@keyframes floatIn {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -40%) scale(0.9);
     }
-    50% {
-        transform: scale(1.05);
+    100% {
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Gentle breathing pulse */
+@keyframes sleepBreathe {
+    0%, 100% { 
+        transform: scale(1) translateY(0);
+    }
+    50% { 
+        transform: scale(1.05) translateY(-4px);
+    }
+}
+
+/* Moon glow */
+@keyframes moonGlow {
+    0%, 100% { 
+        opacity: 0.8;
+        transform: rotate(-5deg);
+    }
+    50% { 
+        opacity: 1;
+        transform: rotate(5deg);
     }
 }
 
@@ -942,9 +989,34 @@ body.deep-sleep main {
     body.deep-sleep .pricing-cta.sleepy-breathing {
         transform: rotate(45deg) translateY(5px);
     }
+    
+    #sleep-overlay.deep-sleep .sleep-message {
+        padding: 28px 36px;
+        border-radius: 16px;
+    }
+    
+    #sleep-overlay.deep-sleep .sleep-message::before {
+        top: -10px;
+        right: -6px;
+        font-size: 1.2rem;
+    }
+    
+    #sleep-overlay.deep-sleep .sleep-message::after {
+        max-width: 240px;
+    }
+}
 
-    #sleep-overlay.deep-sleep .sleep-icon {
-        font-size: 4rem;
+/* Small mobile */
+@media (max-width: 480px) {
+    #sleep-overlay.deep-sleep .sleep-message {
+        padding: 24px 28px;
+        margin: 0 16px;
+        max-width: calc(100vw - 32px);
+    }
+    
+    #sleep-overlay.deep-sleep .sleep-message::after {
+        max-width: 200px;
+        font-size: 0.65rem;
     }
 }
 
