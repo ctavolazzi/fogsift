@@ -16,11 +16,10 @@ const SleepMode = {
     // ============================================
 
     // Timing thresholds (milliseconds)
-    // TESTING - short timers
-    PAGE_TIME_REQUIRED: 3 * 1000,
-    IDLE_TIME_REQUIRED: 2 * 1000,
-    CHECK_INTERVAL: 1000,
-    DEEP_SLEEP_DELAY: 3000,
+    PAGE_TIME_REQUIRED: 5 * 60 * 1000,   // 5 minutes before sleep eligible
+    IDLE_TIME_REQUIRED: 30 * 1000,        // 30 seconds idle to trigger sleep
+    CHECK_INTERVAL: 5000,                  // Check sleep conditions every 5s
+    DEEP_SLEEP_DELAY: 3000,                // 3 seconds before entering ultra-lightweight mode
 
     // Animation timing (milliseconds)
     TIMING: {
@@ -663,11 +662,35 @@ const SleepMode = {
             this.restoreElement(element);
         });
         this.sleepyElements = [];
+    },
+
+    // Manual sleep trigger - for footer button
+    manualSleep() {
+        if (this.isAsleep) return;
+        this.enterSleepMode();
     }
 };
 
 // Make available globally
 window.SleepMode = SleepMode;
+
+// Add sleep button to footer on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+    // Find footer links container
+    const footerLinks = document.querySelector('.footer-links');
+    if (footerLinks) {
+        const sleepBtn = document.createElement('button');
+        sleepBtn.className = 'footer-sleep-btn';
+        sleepBtn.setAttribute('aria-label', 'Put site to sleep');
+        sleepBtn.innerHTML = '💤';
+        sleepBtn.title = 'Put site to sleep';
+        sleepBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            SleepMode.manualSleep();
+        });
+        footerLinks.appendChild(sleepBtn);
+    }
+});
 
 
 

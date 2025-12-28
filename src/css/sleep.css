@@ -3,6 +3,28 @@
    Cute sleeping elements that wake up startled
    ============================================ */
 
+/* === FOOTER SLEEP BUTTON === */
+.footer-sleep-btn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 2px 6px;
+    margin-left: 8px;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+    vertical-align: middle;
+}
+
+.footer-sleep-btn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+.footer-sleep-btn:active {
+    transform: scale(0.95);
+}
+
 /* === SLEEP OVERLAY === */
 #sleep-overlay {
     position: fixed;
@@ -843,7 +865,7 @@ body.settling-to-sleep .sleepy-breathing {
     padding: clamp(24px, 5vw, 48px) clamp(32px, 8vw, 72px);
     border-radius: clamp(16px, 3vw, 24px);
     border: 1px solid rgba(224, 123, 60, 0.3);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.4),
         0 0 80px rgba(224, 123, 60, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -911,21 +933,21 @@ body.settling-to-sleep .sleepy-breathing {
 
 /* Gentle breathing pulse */
 @keyframes sleepBreathe {
-    0%, 100% { 
+    0%, 100% {
         transform: scale(1) translateY(0);
     }
-    50% { 
+    50% {
         transform: scale(1.05) translateY(-4px);
     }
 }
 
 /* Moon glow */
 @keyframes moonGlow {
-    0%, 100% { 
+    0%, 100% {
         opacity: 0.8;
         transform: rotate(-5deg);
     }
-    50% { 
+    50% {
         opacity: 1;
         transform: rotate(5deg);
     }
@@ -989,18 +1011,18 @@ body.deep-sleep main {
     body.deep-sleep .pricing-cta.sleepy-breathing {
         transform: rotate(45deg) translateY(5px);
     }
-    
+
     #sleep-overlay.deep-sleep .sleep-message {
         padding: 28px 36px;
         border-radius: 16px;
     }
-    
+
     #sleep-overlay.deep-sleep .sleep-message::before {
         top: -10px;
         right: -6px;
         font-size: 1.2rem;
     }
-    
+
     #sleep-overlay.deep-sleep .sleep-message::after {
         max-width: 240px;
     }
@@ -1013,7 +1035,7 @@ body.deep-sleep main {
         margin: 0 16px;
         max-width: calc(100vw - 32px);
     }
-    
+
     #sleep-overlay.deep-sleep .sleep-message::after {
         max-width: 200px;
         font-size: 0.65rem;
