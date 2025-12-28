@@ -5,6 +5,7 @@
 
 const App = {
     version: '0.0.2',
+    _intervals: [], // Track intervals for cleanup
 
     init() {
         Nav.init();
@@ -26,7 +27,7 @@ const App = {
         };
 
         update();
-        setInterval(update, 1000);
+        this._intervals.push(setInterval(update, 1000));
     },
 
     initAccessibility() {
@@ -83,14 +84,14 @@ const App = {
             const words = JSON.parse(el.dataset.words);
             let index = 0;
 
-            setInterval(() => {
+            this._intervals.push(setInterval(() => {
                 el.style.opacity = '0';
                 setTimeout(() => {
                     index = (index + 1) % words.length;
                     el.textContent = words[index];
                     el.style.opacity = '1';
                 }, 300);
-            }, 2500);
+            }, 2500));
         });
     },
 
@@ -103,3 +104,8 @@ const App = {
 };
 
 document.addEventListener('DOMContentLoaded', () => App.init());
+
+// Cleanup on page unload to prevent memory leaks
+window.addEventListener('unload', () => {
+    App._intervals.forEach(id => clearInterval(id));
+});

@@ -44,6 +44,10 @@ dist/                         # Built output (auto-generated)
 | ~~TD-001~~ | ~~**Monolith file** — All CSS/JS/HTML in one file~~ | ~~Can't reuse~~ | ✅ Split into src/ modules |
 | ~~TD-002~~ | ~~**Global scope JS** — All functions pollute window~~ | ~~Collision risk~~ | ✅ Module pattern (Toast, Theme, etc) |
 | ~~TD-003~~ | ~~**Hardcoded articles** — Content in modal.js~~ | ~~Can't add content without code change~~ | ✅ Fixed 2025-12-26 |
+| ~~TD-013~~ | ~~**Missing error handling** — localStorage, fetch, clipboard~~ | ~~Silent failures~~ | ✅ Fixed 2025-12-28 |
+| ~~TD-014~~ | ~~**Memory leaks** — Uncleared setInterval timers~~ | ~~Memory accumulation~~ | ✅ Fixed 2025-12-28 |
+| TD-015 | **Magic numbers** — Hardcoded timing values (1000, 2500, 300) | Hard to maintain |
+| TD-016 | **No static analysis** — ESLint now configured but needs CI integration | Bugs slip through |
 
 ### 🟡 MODERATE (Fix in next sprint)
 
@@ -54,6 +58,9 @@ dist/                         # Built output (auto-generated)
 | ~~TD-006~~ | ~~**Fake email form** — Subscription shows "DB_FULL" toast~~ | ✅ Fixed 2025-12-26 |
 | ~~TD-007~~ | ~~**Calendly placeholder** — Contact box has `[CALENDLY EMBED]` text~~ | ✅ Fixed 2025-12-26 |
 | TD-008 | **No analytics** — Zero visibility into traffic | Can't measure anything |
+| TD-017 | **Bloated CSS** — components.css is 2,222 lines | Hard to navigate |
+| TD-018 | **Large sleep.js** — 548 lines, 61% of JS codebase | Should be split |
+| TD-019 | **No tests** — Zero test coverage | Can't refactor safely |
 
 ### 🟢 LOW (Nice to have)
 
@@ -185,5 +192,5 @@ content/
 
 ---
 
-*Last updated: 2025-12-26*
+*Last updated: 2025-12-28*
 
