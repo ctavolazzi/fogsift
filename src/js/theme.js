@@ -1,10 +1,14 @@
 /* ============================================
    FOGSIFT THEME MODULE
    Light/dark mode toggle with persistence
+
+   Note: The storage key 'theme' is also used in build.js
+   for FOUC-prevention script injection (TD-010).
+   Keep these in sync if changing the key.
    ============================================ */
 
 const Theme = {
-    STORAGE_KEY: 'theme',
+    STORAGE_KEY: 'theme',  // Also defined in scripts/build.js THEME_STORAGE_KEY
 
     init() {
         const theme = localStorage.getItem(this.STORAGE_KEY) || 'light';
