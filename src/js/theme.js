@@ -158,29 +158,42 @@ const Theme = {
         }
     },
 
+    DEMO_INTERVAL: 6000, // 6 seconds per theme
+    _demoCountdown: 0,
+    _demoCountdownInterval: null,
+
     /**
-     * Start demo mode - auto-cycle through themes every 5-8 seconds
+     * Start demo mode - auto-cycle through themes every 6 seconds
      */
     startDemo() {
-        console.log('[DEMO] startDemo called, _demoActive:', this._demoActive);
-        if (this._demoActive) {
-            console.log('[DEMO] Already active, returning');
-            return;
-        }
+        if (this._demoActive) return;
         this._demoActive = true;
 
         // Save original theme to restore later
         this._demoOriginalTheme = this.get();
         this._demoIndex = 0;
-        console.log('[DEMO] Started with original theme:', this._demoOriginalTheme);
 
         if (typeof Toast !== 'undefined') {
             Toast.show('🎬 DEMO MODE: Press T to exit');
         }
 
+        // Create countdown display
+        this._createCountdownDisplay();
+
         // Start cycling
         this._demoTick();
-        this._demoInterval = setInterval(() => this._demoTick(), 6000); // 6 seconds per theme
+        this._demoInterval = setInterval(() => this._demoTick(), this.DEMO_INTERVAL);
+        
+        // Start countdown timer (updates every second)
+        this._demoCountdown = Math.floor(this.DEMO_INTERVAL / 1000);
+        this._updateCountdownDisplay();
+        this._demoCountdownInterval = setInterval(() => {
+            this._demoCountdown--;
+            if (this._demoCountdown <= 0) {
+                this._demoCountdown = Math.floor(this.DEMO_INTERVAL / 1000);
+            }
+            this._updateCountdownDisplay();
+        }, 1000);
     },
 
     /**
@@ -197,6 +210,15 @@ const Theme = {
             clearInterval(this._demoInterval);
             this._demoInterval = null;
         }
+        
+        // Stop countdown timer
+        if (this._demoCountdownInterval) {
+            clearInterval(this._demoCountdownInterval);
+            this._demoCountdownInterval = null;
+        }
+        
+        // Remove countdown display
+        this._removeCountdownDisplay();
 
         // Restore original theme
         if (this._demoOriginalTheme && this.THEMES.includes(this._demoOriginalTheme)) {
@@ -213,20 +235,20 @@ const Theme = {
      */
     _demoTick() {
         const theme = this.THEMES[this._demoIndex];
-        
+
         // Add channel switch effect
         document.documentElement.classList.add('demo-channel-switch');
-        
+
         // Switch theme after brief delay for effect
         setTimeout(() => {
             this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
         }, 50);
-        
+
         // Remove effect class
         setTimeout(() => {
             document.documentElement.classList.remove('demo-channel-switch');
         }, 200);
-        
+
         this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
     },
 
@@ -235,6 +257,56 @@ const Theme = {
      */
     isDemoActive() {
         return this._demoActive;
+    },
+
+    /**
+     * Create countdown display element
+     */
+    _createCountdownDisplay() {
+        // Remove existing if present
+        this._removeCountdownDisplay();
+        
+        const display = document.createElement('div');
+        display.id = 'demo-countdown';
+        display.setAttribute('role', 'timer');
+        display.setAttribute('aria-live', 'off'); // Don't announce every tick
+        document.body.appendChild(display);
+    },
+
+    /**
+     * Update countdown display
+     */
+    _updateCountdownDisplay() {
+        const display = document.getElementById('demo-countdown');
+        if (!display) return;
+        
+        const currentTheme = this.THEME_LABELS[this.get()] || this.get();
+        const nextIndex = this._demoIndex;
+        const nextTheme = this.THEME_LABELS[this.THEMES[nextIndex]] || this.THEMES[nextIndex];
+        
+        // Create progress bar
+        const progress = ((Math.floor(this.DEMO_INTERVAL / 1000) - this._demoCountdown) / Math.floor(this.DEMO_INTERVAL / 1000)) * 100;
+        
+        display.innerHTML = `
+            <div class="demo-countdown-content">
+                <span class="demo-countdown-label">DEMO</span>
+                <span class="demo-countdown-theme">${currentTheme}</span>
+                <div class="demo-countdown-bar">
+                    <div class="demo-countdown-progress" style="width: ${progress}%"></div>
+                </div>
+                <span class="demo-countdown-next">Next: ${nextTheme} in ${this._demoCountdown}s</span>
+            </div>
+        `;
+    },
+
+    /**
+     * Remove countdown display
+     */
+    _removeCountdownDisplay() {
+        const display = document.getElementById('demo-countdown');
+        if (display) {
+            display.remove();
+        }
     },
 
     /**
@@ -282,7 +354,7 @@ const Theme = {
         document.documentElement.classList.add('theme-transitioning');
         document.documentElement.setAttribute('data-theme', theme);
         this._hydrateDropdowns();
-        
+
         // Remove transition class after animation
         setTimeout(() => {
             document.documentElement.classList.remove('theme-transitioning');
@@ -312,7 +384,7 @@ const Theme = {
         try {
             const data = sessionStorage.getItem(this.SCROLL_KEY);
             if (!data) return;
-            
+
             const scrollData = JSON.parse(data);
             // Only restore if on same page
             if (scrollData.path === window.location.pathname) {
@@ -417,7 +489,7 @@ const Theme = {
      */
     _setupSystemThemeListener() {
         if (typeof window === 'undefined' || !window.matchMedia) return;
-        
+
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         mediaQuery.addEventListener('change', (e) => {
             // Only auto-switch if user hasn't manually chosen a theme
@@ -441,7 +513,7 @@ const Theme = {
             // Don't trigger if typing in an input/textarea
             const tag = e.target.tagName.toLowerCase();
             if (tag === 'input' || tag === 'textarea' || e.target.isContentEditable) return;
-            
+
             // Don't trigger with modifier keys
             if (e.ctrlKey || e.altKey || e.metaKey) return;
 
@@ -535,7 +607,7 @@ const ThemePicker = {
         this._isOpen = true;
         this._picker.setAttribute('aria-expanded', 'true');
         this._toggle.setAttribute('aria-expanded', 'true');
-        
+
         // Focus first option
         const firstOption = this._menu.querySelector('.theme-picker-option');
         if (firstOption) firstOption.focus();
@@ -566,7 +638,7 @@ const ThemePicker = {
     _updateSelection() {
         if (!this._menu) return;
         const current = Theme.get();
-        
+
         this._menu.querySelectorAll('.theme-picker-option').forEach(option => {
             const isSelected = option.dataset.theme === current;
             option.setAttribute('aria-selected', isSelected ? 'true' : 'false');

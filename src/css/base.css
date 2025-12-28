@@ -37,7 +37,7 @@ html::-webkit-scrollbar-thumb:hover {
 /* === SMOOTH THEME TRANSITIONS === */
 html.theme-transitioning,
 html.theme-transitioning * {
-    transition: 
+    transition:
         background-color 0.3s ease,
         color 0.3s ease,
         border-color 0.3s ease,
@@ -124,11 +124,85 @@ html.demo-channel-switch::after {
     html.theme-transitioning * {
         transition: none;
     }
-    
+
     html.demo-channel-switch::before,
     html.demo-channel-switch::after {
         animation: none;
         display: none;
+    }
+}
+
+/* === DEMO MODE COUNTDOWN DISPLAY === */
+#demo-countdown {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99998;
+    pointer-events: none;
+    font-family: var(--font-mono, 'SF Mono', 'Monaco', monospace);
+    font-size: 12px;
+}
+
+.demo-countdown-content {
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 12px 16px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.demo-countdown-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #ff6b6b;
+    text-transform: uppercase;
+}
+
+.demo-countdown-theme {
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    text-transform: capitalize;
+}
+
+.demo-countdown-bar {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.demo-countdown-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b6b, #feca57);
+    border-radius: 2px;
+    transition: width 0.3s linear;
+}
+
+.demo-countdown-next {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Mobile positioning */
+@media (max-width: 600px) {
+    #demo-countdown {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+    }
+    
+    .demo-countdown-content {
+        min-width: auto;
     }
 }
 
