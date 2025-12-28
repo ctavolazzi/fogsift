@@ -183,7 +183,7 @@ const Theme = {
         // Start cycling
         this._demoTick();
         this._demoInterval = setInterval(() => this._demoTick(), this.DEMO_INTERVAL);
-        
+
         // Start countdown timer (updates every second)
         this._demoCountdown = Math.floor(this.DEMO_INTERVAL / 1000);
         this._updateCountdownDisplay();
@@ -202,7 +202,7 @@ const Theme = {
     stopDemo() {
         if (!this._demoActive) return;
         this._demoActive = false;
-        
+
         // Remove channel switch effect if present
         document.documentElement.classList.remove('demo-channel-switch');
 
@@ -210,13 +210,13 @@ const Theme = {
             clearInterval(this._demoInterval);
             this._demoInterval = null;
         }
-        
+
         // Stop countdown timer
         if (this._demoCountdownInterval) {
             clearInterval(this._demoCountdownInterval);
             this._demoCountdownInterval = null;
         }
-        
+
         // Remove countdown display
         this._removeCountdownDisplay();
 
@@ -231,24 +231,26 @@ const Theme = {
     },
 
     /**
-     * Demo tick - switch to next theme with fast, smooth transition
+     * Demo tick - switch to next theme with smooth transition
      */
     _demoTick() {
         const theme = this.THEMES[this._demoIndex];
-        
-        // Add quick transition effect
+
+        // Add transition class for GPU acceleration
+        document.documentElement.classList.add('theme-transitioning');
         document.documentElement.classList.add('demo-channel-switch');
-        
-        // Switch theme quickly (80ms into effect)
+
+        // Switch theme after brief visual effect
         setTimeout(() => {
             this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
-        }, 80);
-        
-        // Remove effect class fast (200ms total)
+        }, 100);
+
+        // Remove effect classes after animation completes
         setTimeout(() => {
             document.documentElement.classList.remove('demo-channel-switch');
-        }, 200);
-        
+            document.documentElement.classList.remove('theme-transitioning');
+        }, 350);
+
         this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
     },
 
@@ -265,7 +267,7 @@ const Theme = {
     _createCountdownDisplay() {
         // Remove existing if present
         this._removeCountdownDisplay();
-        
+
         const display = document.createElement('div');
         display.id = 'demo-countdown';
         display.setAttribute('role', 'timer');
@@ -279,14 +281,14 @@ const Theme = {
     _updateCountdownDisplay() {
         const display = document.getElementById('demo-countdown');
         if (!display) return;
-        
+
         const currentTheme = this.THEME_LABELS[this.get()] || this.get();
         const nextIndex = this._demoIndex;
         const nextTheme = this.THEME_LABELS[this.THEMES[nextIndex]] || this.THEMES[nextIndex];
-        
+
         // Create progress bar
         const progress = ((Math.floor(this.DEMO_INTERVAL / 1000) - this._demoCountdown) / Math.floor(this.DEMO_INTERVAL / 1000)) * 100;
-        
+
         display.innerHTML = `
             <div class="demo-countdown-content">
                 <span class="demo-countdown-label">DEMO</span>

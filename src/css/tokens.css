@@ -491,7 +491,7 @@
     --camo-olive: #4a5d23;
     --camo-black: #1a1a12;
     --camo-light-tan: #8b7355;
-    
+
     --cream: var(--camo-brown);
     --cream-dark: var(--camo-dark-brown);
     --chocolate: #f5e6c8;
@@ -623,6 +623,27 @@ body,
         border-color var(--theme-transition),
         color var(--theme-transition),
         box-shadow var(--theme-transition);
+}
+
+/* Smooth transitions for theme pseudo-elements */
+body::before,
+body::after,
+.hero-section::before,
+.hero-section::after {
+    transition:
+        opacity var(--theme-transition),
+        background var(--theme-transition),
+        filter var(--theme-transition);
+    /* GPU acceleration for smoother animations */
+    will-change: opacity, background;
+    transform: translateZ(0);
+}
+
+/* Force GPU layer during theme transitions */
+html.theme-transitioning body::before,
+html.theme-transitioning body::after {
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 /* === REDUCED MOTION (Accessibility) === */
