@@ -1,30 +1,43 @@
 /* ============================================
-   CAMO THEME - Military Woodland Pattern
-   Real camouflage with hunter's orange accents
+   CAMO THEME - Authentic Woodland Camouflage
+   Classic hunter's camo with orange accents
+   Colors: Forest green, brown, tan, black
    ============================================ */
 
-/* === CAMO PATTERN BACKGROUND === */
+/* === AUTHENTIC WOODLAND CAMO PATTERN === */
 [data-theme="camo"] body {
-    background: 
-        /* Layer 1: Large blotches */
-        radial-gradient(ellipse 80px 60px at 20% 30%, #4b5320 40%, transparent 50%),
-        radial-gradient(ellipse 100px 70px at 70% 20%, #3d421a 40%, transparent 50%),
-        radial-gradient(ellipse 90px 80px at 40% 70%, #556b2f 40%, transparent 50%),
-        radial-gradient(ellipse 70px 90px at 80% 60%, #4b5320 40%, transparent 50%),
-        radial-gradient(ellipse 85px 65px at 10% 80%, #3d421a 40%, transparent 50%),
-        /* Layer 2: Medium shapes */
-        radial-gradient(ellipse 50px 40px at 30% 50%, #6b8e23 35%, transparent 45%),
-        radial-gradient(ellipse 60px 45px at 60% 40%, #556b2f 35%, transparent 45%),
-        radial-gradient(ellipse 55px 50px at 85% 75%, #6b8e23 35%, transparent 45%),
-        radial-gradient(ellipse 45px 55px at 15% 55%, #556b2f 35%, transparent 45%),
-        /* Layer 3: Small dark spots */
-        radial-gradient(ellipse 25px 20px at 25% 25%, #2d3311 60%, transparent 70%),
-        radial-gradient(ellipse 30px 25px at 55% 65%, #2d3311 60%, transparent 70%),
-        radial-gradient(ellipse 20px 30px at 75% 35%, #2d3311 60%, transparent 70%),
-        radial-gradient(ellipse 28px 22px at 45% 85%, #2d3311 60%, transparent 70%),
-        /* Base color */
-        #4b5320;
-    background-size: 200px 200px;
+    background-color: #5c4a32; /* Tan/khaki base */
+    background-image:
+        /* Layer 1: Large dark brown blobs */
+        radial-gradient(ellipse 120px 80px at 15% 20%, #3b2a1a 0%, #3b2a1a 45%, transparent 50%),
+        radial-gradient(ellipse 100px 120px at 75% 15%, #3b2a1a 0%, #3b2a1a 45%, transparent 50%),
+        radial-gradient(ellipse 140px 90px at 45% 75%, #3b2a1a 0%, #3b2a1a 45%, transparent 50%),
+        radial-gradient(ellipse 90px 110px at 85% 65%, #3b2a1a 0%, #3b2a1a 45%, transparent 50%),
+        
+        /* Layer 2: Forest green shapes */
+        radial-gradient(ellipse 100px 70px at 35% 30%, #2d4a23 0%, #2d4a23 40%, transparent 45%),
+        radial-gradient(ellipse 80px 100px at 65% 50%, #2d4a23 0%, #2d4a23 40%, transparent 45%),
+        radial-gradient(ellipse 110px 75px at 20% 70%, #2d4a23 0%, #2d4a23 40%, transparent 45%),
+        radial-gradient(ellipse 70px 90px at 90% 30%, #2d4a23 0%, #2d4a23 40%, transparent 45%),
+        
+        /* Layer 3: Black accent shapes */
+        radial-gradient(ellipse 50px 35px at 25% 45%, #1a1a12 0%, #1a1a12 60%, transparent 70%),
+        radial-gradient(ellipse 40px 50px at 60% 25%, #1a1a12 0%, #1a1a12 60%, transparent 70%),
+        radial-gradient(ellipse 55px 40px at 80% 80%, #1a1a12 0%, #1a1a12 60%, transparent 70%),
+        radial-gradient(ellipse 45px 55px at 10% 90%, #1a1a12 0%, #1a1a12 60%, transparent 70%),
+        radial-gradient(ellipse 35px 45px at 50% 60%, #1a1a12 0%, #1a1a12 60%, transparent 70%),
+        
+        /* Layer 4: Light tan highlights */
+        radial-gradient(ellipse 60px 45px at 40% 15%, #8b7355 0%, #8b7355 35%, transparent 40%),
+        radial-gradient(ellipse 50px 60px at 70% 70%, #8b7355 0%, #8b7355 35%, transparent 40%),
+        radial-gradient(ellipse 55px 40px at 15% 50%, #8b7355 0%, #8b7355 35%, transparent 40%),
+        
+        /* Layer 5: Olive green mid-tones */
+        radial-gradient(ellipse 70px 55px at 55% 40%, #4a5d23 0%, #4a5d23 38%, transparent 43%),
+        radial-gradient(ellipse 60px 70px at 30% 85%, #4a5d23 0%, #4a5d23 38%, transparent 43%),
+        radial-gradient(ellipse 75px 50px at 85% 45%, #4a5d23 0%, #4a5d23 38%, transparent 43%);
+    
+    background-size: 300px 300px;
     background-attachment: fixed;
     min-height: 100vh;
 }
@@ -38,9 +51,9 @@
 [data-theme="camo"] .cta-section,
 [data-theme="camo"] .wiki-main,
 [data-theme="camo"] .wiki-sidebar {
-    background: rgba(75, 83, 32, 0.85);
-    backdrop-filter: blur(2px);
-    -webkit-backdrop-filter: blur(2px);
+    background: rgba(59, 42, 26, 0.9); /* Dark brown overlay */
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }
 
 /* === HUNTER ORANGE ACCENTS === */
@@ -74,24 +87,24 @@
     font-family: 'Impact', 'Arial Black', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #f5f5dc;
+    color: #f5e6c8; /* Warm cream/tan */
     text-shadow: 
-        2px 2px 0 #2d3311,
-        -1px -1px 0 #2d3311;
+        2px 2px 0 #1a1a12,
+        -1px -1px 0 #1a1a12;
 }
 
-/* === DOG TAGS / CARDS === */
+/* === WOODLAND CARDS === */
 [data-theme="camo"] .pricing-card,
 [data-theme="camo"] .about-card,
 [data-theme="camo"] .process-step,
 [data-theme="camo"] .testimonial-card,
 [data-theme="camo"] .wiki-category-card {
-    background: linear-gradient(145deg, #5c6324 0%, #3d421a 100%);
-    border: 2px solid #6b8e23;
+    background: linear-gradient(145deg, #4a3c2a 0%, #3b2a1a 100%);
+    border: 2px solid #5c4a32;
     border-radius: 4px;
     box-shadow: 
-        4px 4px 0 #2d3311,
-        0 0 15px rgba(0, 0, 0, 0.3);
+        4px 4px 0 #1a1a12,
+        0 0 15px rgba(0, 0, 0, 0.4);
     position: relative;
 }
 
@@ -105,7 +118,7 @@
     transform: translateX(-50%);
     width: 20px;
     height: 8px;
-    background: #2d3311;
+    background: #1a1a12;
     border-radius: 0 0 10px 10px;
 }
 
@@ -128,12 +141,12 @@
 /* === NAVIGATION BAR === */
 [data-theme="camo"] .nav-wrapper,
 [data-theme="camo"] .main-nav {
-    background: linear-gradient(180deg, #3d421a 0%, #2d3311 100%);
+    background: linear-gradient(180deg, #3b2a1a 0%, #2a1f14 100%);
     border-bottom: 3px solid #ff6600;
 }
 
 [data-theme="camo"] .menu-link {
-    color: #f5f5dc;
+    color: #f5e6c8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 600;
@@ -146,7 +159,7 @@
 
 /* === FOOTER === */
 [data-theme="camo"] footer {
-    background: linear-gradient(180deg, #2d3311 0%, #1a1a0a 100%);
+    background: linear-gradient(180deg, #2a1f14 0%, #1a1410 100%);
     border-top: 3px solid #ff6600;
 }
 
