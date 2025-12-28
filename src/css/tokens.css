@@ -432,8 +432,8 @@
     --accent-light: #00ff00;
     --highlight: #ffb000;
 
-    --muted: #00cc00;
-    --muted-light: #009900;
+    --muted: #00dd00;            /* Bright enough to read */
+    --muted-light: #00bb00;      /* Still visible */
     --line: #003300;
 
     --shadow-soft: 0 0 15px rgba(0, 255, 0, 0.15);
@@ -545,8 +545,8 @@
     --accent-light: #ffb6c1;
     --highlight: #ff69b4;
 
-    --muted: #db7093;
-    --muted-light: #ffb6c1;
+    --muted: #a03060;            /* Darker pink for readability */
+    --muted-light: #c04080;      /* Medium pink */
     --line: #ffb6c1;
 
     --shadow-soft: 0 4px 20px rgba(255, 20, 147, 0.15);
@@ -580,8 +580,8 @@
     --accent-light: #00d4ff;
     --highlight: #00ffcc;
 
-    --muted: #0099cc;
-    --muted-light: #006688;
+    --muted: #00bbdd;            /* Brighter cyan for readability */
+    --muted-light: #00aacc;      /* Still bright enough */
     --line: #003344;
 
     --shadow-soft: 0 0 20px rgba(0, 212, 255, 0.15);
