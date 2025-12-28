@@ -193,6 +193,12 @@
 }
 
 /* Theme Options */
+/* Reset CSS variables inside theme picker to prevent data-theme attribute inheritance */
+.theme-picker-menu [data-theme] {
+    --ink: #4a2c2a;
+    --chocolate: #4a2c2a;
+}
+
 .theme-picker-option {
     display: flex;
     align-items: center;
@@ -266,6 +272,12 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
+/* Dark mode: reset variables for theme picker options */
+[data-theme="dark"] .theme-picker-menu [data-theme] {
+    --ink: #f5f0e6;
+    --chocolate: #f5f0e6;
+}
+
 [data-theme="dark"] .theme-picker-option:hover {
     background: var(--canvas);
 }
@@ -293,6 +305,12 @@
     border: 3px solid var(--chocolate);
     border-radius: 12px;
     box-shadow: 4px 4px 0 var(--chocolate);
+}
+
+/* Industrial mode: reset variables for theme picker options */
+[data-theme="industrial-punchcard"] .theme-picker-menu [data-theme] {
+    --ink: #3E2723;
+    --chocolate: #3E2723;
 }
 
 [data-theme="industrial-punchcard"] .theme-picker-option {
