@@ -20,7 +20,7 @@ fogsift/
 ├── _docs/                # Johnny Decimal documentation
 │   └── 20-29_development/
 │       └── workflow_category/
-├── _work_efforts_/       # Work tracking (WE-YYMMDD-xxxx format)
+├── _work_efforts/       # Work tracking (WE-YYMMDD-xxxx format)
 ├── src/                  # Source files
 │   ├── index.html
 │   ├── css/
@@ -56,7 +56,7 @@ fogsift/
 │                                                                  │
 │  STEP 2: SEARCH                                                  │
 │  ─────────────────────────────────────────────────────────────  │
-│  Check _work_efforts_ for related/existing work.                 │
+│  Check _work_efforts for related/existing work.                 │
 │  Tool: mcp_work-efforts_search_work_efforts                      │
 │                                                                  │
 │  STEP 3: PLAN                                                    │
@@ -130,7 +130,7 @@ TKT-a1b2-001
 ### Folder Structure
 
 ```
-_work_efforts_/
+_work_efforts/
 ├── WE-251227-a1b2_feature_name/
 │   ├── WE-251227-a1b2_index.md      # Main work effort file
 │   └── tickets/
@@ -363,7 +363,7 @@ return result.json();
 │                                                                  │
 │  Docs:       _docs/20-29_development/workflow_category/         │
 │  Rules:      .cursorrules                                       │
-│  Work:       _work_efforts_/                                    │
+│  Work:       _work_efforts/                                    │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
 ```

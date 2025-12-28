@@ -1,1 +1,101 @@
-# fogsift
+# FogSift
+
+**Straight answers to complicated questions.**
+
+FogSift is a diagnostic consulting website that helps organizations cut through noise and find signal. We specialize in identifying root causes of operational challenges through systematic analysis.
+
+## Live Site
+
+🌐 **[fogsift.pages.dev](https://fogsift.pages.dev)**
+
+## Features
+
+- **Knowledge Wiki** - 31 pages of diagnostic frameworks, mental models, and case studies
+- **Testimonials** - Social proof from satisfied clients
+- **Dark/Light Theme** - User preference saved locally
+- **Secret Sleep Mode** - Easter egg screensaver (5 min + 30 sec idle)
+- **Responsive Design** - Mobile-first with slide-out navigation
+- **PWA Ready** - Installable as a standalone app
+
+## Tech Stack
+
+- **Frontend**: Vanilla HTML, CSS, JavaScript (no frameworks)
+- **Build**: Node.js build script with CSS/JS concatenation
+- **Hosting**: Cloudflare Pages
+- **Wiki**: Markdown → HTML conversion at build time
+
+## Development
+
+### Prerequisites
+
+- Node.js 18+
+- npm
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/ctavolazzi/fogsift.git
+cd fogsift
+
+# Install dependencies
+npm install
+
+# Start development server (port 5050)
+npm run dev
+```
+
+### Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Build and start dev server with hot reload |
+| `npm run build` | Build to `dist/` |
+| `npm run deploy` | Build and deploy to Cloudflare Pages |
+| `npm run quick-deploy` | Deploy with pre-flight checks |
+
+### Project Structure
+
+```
+fogsift/
+├── src/
+│   ├── index.html          # Main page
+│   ├── css/                 # Stylesheets
+│   │   ├── tokens.css      # Design tokens
+│   │   ├── base.css        # Reset, typography
+│   │   ├── components.css  # UI components
+│   │   ├── navigation.css  # Nav styles
+│   │   └── sleep.css       # Sleep mode styles
+│   ├── js/                  # JavaScript modules
+│   │   ├── main.js         # App init
+│   │   ├── theme.js        # Theme toggle
+│   │   ├── modal.js        # Modal system
+│   │   ├── toast.js        # Notifications
+│   │   └── sleep.js        # Easter egg
+│   └── wiki/               # Markdown wiki content
+├── dist/                   # Built output
+├── scripts/                # Build scripts
+├── _docs/                  # Project documentation
+└── _work_efforts/          # Work tracking
+```
+
+## Documentation
+
+- **[CHANGELOG.md](CHANGELOG.md)** - Version history
+- **[TECH_DEBT.md](TECH_DEBT.md)** - Technical debt tracking
+- **[AGENTS.md](AGENTS.md)** - AI development workflow
+- **[FEATURE_VOID_AUDIT.md](FEATURE_VOID_AUDIT.md)** - Feature gap analysis
+
+## Version
+
+**Current:** v0.0.5
+
+See [CHANGELOG.md](CHANGELOG.md) for release history.
+
+## License
+
+Private - All rights reserved.
+
+---
+
+*Built with care by [Christopher Tavolazzi](https://github.com/ctavolazzi)*

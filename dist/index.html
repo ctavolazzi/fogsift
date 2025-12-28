@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- MCP-TEST-2025-12-27: Workflow integration test marker - WE-251227-giok/TKT-giok-001 -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -44,13 +45,8 @@
     }
     </script>
 
-    <!-- Theme detection - inline to prevent FOUC -->
-    <script>
-        (function() {
-            var localTheme = localStorage.getItem('theme');
-            document.documentElement.setAttribute('data-theme', localTheme || 'light');
-        })();
-    </script>
+    <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
+    <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t||'light')})();</script>
 
     <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
          Alternative: self-host fonts for maximum security -->
@@ -313,9 +309,10 @@
                     <a href="#about">About</a>
                     <a href="#pricing">Pricing</a>
                     <a href="wiki/index.html">Wiki</a>
+                    <a href="system-status.html" title="System Status">⚙️</a>
                 </div>
                 <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT v0.1.0</span>
+                    <span>&copy; 2025 FOGSIFT v0.0.5</span>
                     <span class="footer-sep" aria-hidden="true">//</span>
                     <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
                 </div>

@@ -1,7 +1,17 @@
 {
-  "version": "0.0.3",
-  "released": "2025-12-27",
+  "version": "0.0.5",
+  "released": "2025-12-28",
   "history": [
+    {
+      "version": "0.0.4",
+      "date": "2025-12-27",
+      "type": "patch"
+    },
+    {
+      "version": "0.0.3",
+      "date": "2025-12-27",
+      "type": "patch"
+    },
     {
       "version": "0.0.2",
       "date": "2025-12-27",
