@@ -41,19 +41,94 @@ html.theme-transitioning * {
         background-color 0.3s ease,
         color 0.3s ease,
         border-color 0.3s ease,
-        box-shadow 0.3s ease !important;
+        box-shadow 0.3s ease;
 }
 
 /* Disable animations during theme transition for performance */
 html.theme-transitioning *::before,
 html.theme-transitioning *::after {
-    animation-play-state: paused !important;
+    animation-play-state: paused;
+}
+
+/* === DEMO MODE CHANNEL SWITCH EFFECT === */
+html.demo-channel-switch::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 50%,
+        transparent 100%
+    );
+    animation: channelSwitch 0.15s ease-out forwards;
+}
+
+/* Scan line effect */
+html.demo-channel-switch::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    z-index: 100000;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.8) 50%,
+        transparent 100%
+    );
+    animation: scanLine 0.15s ease-out forwards;
+}
+
+@keyframes channelSwitch {
+    0% {
+        opacity: 1;
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(255, 255, 255, 0.15) 48%,
+            rgba(0, 0, 0, 0.3) 50%,
+            rgba(255, 255, 255, 0.15) 52%,
+            transparent 100%
+        );
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes scanLine {
+    0% {
+        top: 0%;
+        opacity: 1;
+    }
+    100% {
+        top: 100%;
+        opacity: 0;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
     html.theme-transitioning,
     html.theme-transitioning * {
-        transition: none !important;
+        transition: none;
+    }
+    
+    html.demo-channel-switch::before,
+    html.demo-channel-switch::after {
+        animation: none;
+        display: none;
     }
 }
 

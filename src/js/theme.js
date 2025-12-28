@@ -187,13 +187,11 @@ const Theme = {
      * Stop demo mode
      */
     stopDemo() {
-        console.log('[DEMO] stopDemo called, _demoActive:', this._demoActive);
-        console.trace('[DEMO] Stack trace:');
-        if (!this._demoActive) {
-            console.log('[DEMO] Not active, returning');
-            return;
-        }
+        if (!this._demoActive) return;
         this._demoActive = false;
+        
+        // Remove channel switch effect if present
+        document.documentElement.classList.remove('demo-channel-switch');
 
         if (this._demoInterval) {
             clearInterval(this._demoInterval);
@@ -211,11 +209,24 @@ const Theme = {
     },
 
     /**
-     * Demo tick - switch to next theme
+     * Demo tick - switch to next theme with channel switch effect
      */
     _demoTick() {
         const theme = this.THEMES[this._demoIndex];
-        this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
+        
+        // Add channel switch effect
+        document.documentElement.classList.add('demo-channel-switch');
+        
+        // Switch theme after brief delay for effect
+        setTimeout(() => {
+            this.set(theme, { notify: true, preserveScroll: true, fromDemo: true });
+        }, 50);
+        
+        // Remove effect class
+        setTimeout(() => {
+            document.documentElement.classList.remove('demo-channel-switch');
+        }, 200);
+        
         this._demoIndex = (this._demoIndex + 1) % this.THEMES.length;
     },
 
