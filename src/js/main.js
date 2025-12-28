@@ -4,8 +4,10 @@
    ============================================ */
 
 const App = {
-    version: '0.0.2',
+    version: '0.0.5',
     _intervals: [], // Track intervals for cleanup
+    _konamiCode: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
+    _konamiIndex: 0,
 
     init() {
         Nav.init();
@@ -13,6 +15,7 @@ const App = {
         this.initClock();
         this.initAccessibility();
         this.initRotatingWords();
+        this.initKonami();
         this.logBoot();
         SleepMode.init();
     },
@@ -95,10 +98,70 @@ const App = {
         });
     },
 
+    initKonami() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key === this._konamiCode[this._konamiIndex]) {
+                this._konamiIndex++;
+                if (this._konamiIndex === this._konamiCode.length) {
+                    this._konamiIndex = 0;
+                    this.triggerEasterEgg();
+                }
+            } else {
+                this._konamiIndex = 0;
+            }
+        });
+    },
+
+    triggerEasterEgg() {
+        const fog = `
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    ░  ███████╗ ██████╗  ██████╗     ██╗     ██╗███████╗████████╗
+    ░  ██╔════╝██╔═══██╗██╔════╝     ██║     ██║██╔════╝╚══██╔══╝
+    ░  █████╗  ██║   ██║██║  ███╗    ██║     ██║█████╗     ██║   
+    ░  ██╔══╝  ██║   ██║██║   ██║    ██║     ██║██╔══╝     ██║   
+    ░  ██║     ╚██████╔╝╚██████╔╝    ███████╗██║██║        ██║   
+    ░  ╚═╝      ╚═════╝  ╚═════╝     ╚══════╝╚═╝╚═╝        ╚═╝   
+    ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+        `;
+        console.log('%c' + fog, 'color: #e07b3c; font-family: monospace;');
+        console.log('%c 🎮 KONAMI CODE ACTIVATED! ', 'background: #0d9488; color: white; padding: 10px; font-size: 16px; font-weight: bold;');
+        console.log('%c You found the secret! Here\'s a fortune cookie: ', 'color: #4a2c2a; font-style: italic;');
+        
+        const fortunes = [
+            '🔮 The fog will clear when you stop looking for the sun.',
+            '🔮 Your next breakthrough is hiding in plain sight.',
+            '🔮 Sometimes the answer is a better question.',
+            '🔮 Complexity is easy. Simplicity takes courage.',
+            '🔮 The bottleneck is rarely where you think it is.',
+            '🔮 Ask "why" five times. The truth lives on the fifth floor.',
+            '🔮 Your gut knows things your spreadsheet never will.',
+            '🔮 The best documentation is the kind you wish existed.'
+        ];
+        console.log('%c ' + fortunes[Math.floor(Math.random() * fortunes.length)], 'color: #e07b3c; font-size: 14px; padding: 5px;');
+        
+        // Visual effect
+        document.body.style.transition = 'filter 0.5s';
+        document.body.style.filter = 'hue-rotate(180deg)';
+        setTimeout(() => {
+            document.body.style.filter = 'hue-rotate(360deg)';
+            setTimeout(() => {
+                document.body.style.filter = 'none';
+            }, 500);
+        }, 500);
+    },
+
     logBoot() {
         console.log(
             '%c FOGSIFT v' + this.version + ' // SYSTEMS NOMINAL ',
             'background: #4a2c2a; color: #e07b3c; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #0d9488;'
+        );
+        console.log(
+            '%c 💤 Psst... stay a while and something might happen... ',
+            'background: #4a2c2a; color: #e07b3c; padding: 5px; font-family: monospace; font-size: 10px;'
+        );
+        console.log(
+            '%c 🎮 ...or try the old ways. ',
+            'color: #999; font-family: monospace; font-size: 10px;'
         );
     }
 };
