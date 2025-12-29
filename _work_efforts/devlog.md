@@ -299,3 +299,33 @@ Added smooth transition into deep sleep:
 3. **Elements**: More dimmed (40-60% opacity) to feel truly asleep
 
 The deep sleep animations are intentionally VERY slow (6-8 second cycles) - this is GPU friendly while still feeling alive.
+
+[2025-12-29 00:54:49] ## Tech Debt Pass - 2025-12-28
+
+### Summary
+Full tech debt cleanup pass addressing TD-015 (magic numbers) and TD-010 (theme duplication).
+
+### Changes Made
+- **src/index.html**: Removed MCP test marker artifact
+- **src/js/main.js**: Added TIMING constants, removed hardcoded version
+- **src/js/toast.js**: Added TIMING constants, fixed ARIA on dynamic container, explicit window export
+- **src/js/modal.js**: Added TIMING constants, explicit window export
+- **src/js/nav.js**: Added JSDoc for init(), explicit window export
+- **src/js/cache.js**: Added ESLint global declaration for Debug
+- **src/js/wiki-api.js**: Added ESLint global declaration for Debug
+- **src/js/debug.js**: Removed unused timestamp variable
+- **src/wiki-template.html**: Replaced inline theme init with {{THEME_INIT}}
+- **src/wiki-index-template.html**: Replaced inline theme init with {{THEME_INIT}}
+- **scripts/build.js**: Added THEME_INIT injection to wiki builds
+- **src/css/tokens.css**: Removed unused --bar-* and --breadcrumb-height variables
+- **TECH_DEBT.md**: Marked TD-015 resolved, updated TD-010 description
+
+### Tech Debt Status
+- TD-015 ✅ RESOLVED - Magic numbers consolidated into TIMING constants
+- TD-010 ✅ RESOLVED - Theme init now single source of truth in build.js
+- Lint: 0 errors, 9 warnings (intentional silent catches)
+
+### Build
+- All 29 wiki pages built successfully
+- 4 API endpoints generated
+- Version: 0.0.5

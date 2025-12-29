@@ -93,7 +93,6 @@
         log(module, message, data) {
             if (!this.enabled) return;
 
-            const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
             const msg = `%c${PREFIX} %c[${module}] %c${message}`;
 
             if (data !== undefined) {

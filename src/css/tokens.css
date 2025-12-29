@@ -47,11 +47,6 @@
     --focus-ring-width: 3px;
     --focus-ring-offset: 2px;
 
-    /* === BREADCRUMB BAR (removed but kept for transition) === */
-    --bar-bg: var(--cream-dark);
-    --bar-text: var(--chocolate);
-    --bar-border: var(--line);
-
     /* === SPACING - 8px base grid === */
     --space-xs: 0.25rem;   /* 4px */
     --space-sm: 0.5rem;    /* 8px */
@@ -107,7 +102,6 @@
 
     /* === LAYOUT === */
     --nav-height: 70px;
-    --breadcrumb-height: 0px; /* Removed breadcrumbs */
     --frame-max-width: 900px;
 
     /* === TOUCH TARGETS (WCAG 2.1) === */
@@ -140,10 +134,6 @@
     --muted: #c4b5a6;           /* Lighter muted for dark mode */
     --muted-light: #a8998a;     /* Medium muted */
     --line: #3d2e26;
-
-    --bar-bg: var(--cream-dark);
-    --bar-text: var(--chocolate);
-    --bar-border: var(--line);
 
     /* Shadows for dark mode */
     --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -195,10 +185,6 @@
     --muted: var(--chocolate-light);
     --muted-light: #8D6E63;
     --line: #D7CCC8;
-
-    --bar-bg: var(--cream-dark);
-    --bar-text: var(--chocolate);
-    --bar-border: var(--line);
 
     /* === INDUSTRIAL BORDERS (Thicker, brutalist) === */
     --border-width: 4px;
@@ -293,10 +279,6 @@
     --warning: #39FF14;
     --error: #FF0040;           /* Red for errors (Matrix red pill) */
     --info: #00FF41;
-
-    --bar-bg: var(--cream-dark);
-    --bar-text: var(--chocolate);
-    --bar-border: var(--line);
 
     /* === MATRIX BORDERS (Thin, glowing) === */
     --border-width: 1px;

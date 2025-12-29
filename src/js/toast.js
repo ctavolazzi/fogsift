@@ -5,28 +5,38 @@
 
 const Toast = {
     containerId: 'toast-container',
-    defaultDuration: 2500,
-    errorDuration: 5000,
+
+    // Timing constants (TD-015: no magic numbers)
+    TIMING: {
+        DEFAULT_DURATION: 2500,      // Default toast display time
+        ERROR_DURATION: 5000,        // Error toast display time
+        FADE_DURATION: 200,          // Slide out animation duration
+        COPY_FEEDBACK: 1000          // "COPIED" feedback display time
+    },
 
     getContainer() {
         let container = document.getElementById(this.containerId);
         if (!container) {
             container = document.createElement('div');
             container.id = this.containerId;
+            // Accessibility attributes (must match index.html)
+            container.setAttribute('role', 'status');
+            container.setAttribute('aria-live', 'polite');
+            container.setAttribute('aria-atomic', 'true');
             document.body.appendChild(container);
         }
         return container;
     },
 
-    show(message, duration = this.defaultDuration) {
+    show(message, duration = this.TIMING.DEFAULT_DURATION) {
         this._create(message, 'success', duration);
     },
 
-    error(message, duration = this.errorDuration) {
+    error(message, duration = this.TIMING.ERROR_DURATION) {
         this._create(message, 'error', duration, true);
     },
 
-    info(message, duration = this.defaultDuration) {
+    info(message, duration = this.TIMING.DEFAULT_DURATION) {
         this._create(message, 'info', duration);
     },
 
@@ -51,10 +61,10 @@ const Toast = {
                 e.stopPropagation();
                 navigator.clipboard.writeText(message).then(() => {
                     copyBtn.innerHTML = '[COPIED]';
-                    setTimeout(() => copyBtn.innerHTML = '[COPY]', 1000);
+                    setTimeout(() => copyBtn.innerHTML = '[COPY]', this.TIMING.COPY_FEEDBACK);
                 }).catch(() => {
                     copyBtn.innerHTML = '[FAILED]';
-                    setTimeout(() => copyBtn.innerHTML = '[COPY]', 1000);
+                    setTimeout(() => copyBtn.innerHTML = '[COPY]', this.TIMING.COPY_FEEDBACK);
                 });
             };
             toast.appendChild(copyBtn);
@@ -77,8 +87,11 @@ const Toast = {
     },
 
     _dismiss(toast) {
-        toast.style.animation = 'slideOut 0.2s ease forwards';
-        setTimeout(() => toast.remove(), 200);
+        const fadeMs = this.TIMING.FADE_DURATION;
+        toast.style.animation = `slideOut ${fadeMs / 1000}s ease forwards`;
+        setTimeout(() => toast.remove(), fadeMs);
     }
 };
 
+// Explicit global export for consistency with other modules
+window.Toast = Toast;

@@ -2,6 +2,7 @@
 
 **Version:** 0.0.5
 **Audit Date:** 2025-12-28
+**Last Cleanup:** 2025-12-28 (Tech debt pass)
 **Status:** LAUNCH COMPLETE — CLEANUP & MAINTENANCE
 
 ---
@@ -55,7 +56,7 @@ dist/                         # Built output (auto-generated)
 | ~~TD-003~~ | ~~**Hardcoded articles** — Content in modal.js~~ | ~~Can't add content without code change~~ | ✅ Fixed 2025-12-26 |
 | ~~TD-013~~ | ~~**Missing error handling** — localStorage, fetch, clipboard~~ | ~~Silent failures~~ | ✅ Fixed 2025-12-28 |
 | ~~TD-014~~ | ~~**Memory leaks** — Uncleared setInterval timers~~ | ~~Memory accumulation~~ | ✅ Fixed 2025-12-28 |
-| TD-015 | **Magic numbers** — Hardcoded timing values (1000, 2500, 300) | Hard to maintain |
+| ~~TD-015~~ | ~~**Magic numbers** — Hardcoded timing values (1000, 2500, 300)~~ | ~~Hard to maintain~~ | ✅ Fixed 2025-12-28 - TIMING constants in main.js, toast.js, modal.js |
 | TD-016 | **No static analysis** — ESLint now configured but needs CI integration | Bugs slip through |
 
 ### 🟡 MODERATE (Fix in next sprint)
@@ -77,7 +78,7 @@ dist/                         # Built output (auto-generated)
 | ID | Issue | Impact |
 |----|-------|--------|
 | ~~TD-009~~ | ~~**No version indicator** — No way to tell deployed version~~ | ✅ Version in footer + version.json |
-| ~~TD-010~~ | ~~**Duplicated theme logic** — Theme init in both index.html and 404.html~~ | ✅ Fixed 2025-12-28 - Wiki pages now use shared app.js |
+| ~~TD-010~~ | ~~**Duplicated theme logic** — Theme init in both index.html and 404.html~~ | ✅ Fixed 2025-12-28 - All pages use canonical THEME_INIT from build.js |
 | TD-011 | **No CSS custom property fallbacks** — Old browsers break | ~2% user impact |
 | ~~TD-012~~ | ~~**Console graffiti** — Dev logs in production~~ | ✅ Reviewed - only styled branding |
 
@@ -203,5 +204,6 @@ content/
 ---
 
 *Last updated: 2025-12-28*
-*Cleanup: Archived work efforts, updated line counts, marked TD-010 resolved*
+*Tech debt pass: TD-015 resolved (TIMING constants), TD-010 fully resolved (wiki templates),*
+*removed unused CSS variables, standardized module exports, cleaned dead code*
 

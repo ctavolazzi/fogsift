@@ -4,7 +4,14 @@
    ============================================ */
 
 const App = {
-    version: '0.0.5',
+    // Timing constants (TD-015: no magic numbers)
+    TIMING: {
+        WORD_ROTATE_INTERVAL: 2500,  // Time between word rotations
+        WORD_FADE_DURATION: 300,     // Fade transition duration
+        EASTER_EGG_EFFECT: 500,      // Hue-rotate effect duration
+        CLOCK_UPDATE: 1000           // UTC clock update interval
+    },
+
     _intervals: [], // Track intervals for cleanup
     _konamiCode: ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'],
     _konamiIndex: 0,
@@ -44,7 +51,7 @@ const App = {
         };
 
         update();
-        this._intervals.push(setInterval(update, 1000));
+        this._intervals.push(setInterval(update, this.TIMING.CLOCK_UPDATE));
     },
 
     initAccessibility() {
@@ -107,8 +114,8 @@ const App = {
                     index = (index + 1) % words.length;
                     el.textContent = words[index];
                     el.style.opacity = '1';
-                }, 300);
-            }, 2500));
+                }, this.TIMING.WORD_FADE_DURATION);
+            }, this.TIMING.WORD_ROTATE_INTERVAL));
         });
     },
 
@@ -154,19 +161,21 @@ const App = {
         console.log('%c ' + fortunes[Math.floor(Math.random() * fortunes.length)], 'color: #e07b3c; font-size: 14px; padding: 5px;');
 
         // Visual effect
-        document.body.style.transition = 'filter 0.5s';
+        const effectDuration = this.TIMING.EASTER_EGG_EFFECT;
+        document.body.style.transition = `filter ${effectDuration / 1000}s`;
         document.body.style.filter = 'hue-rotate(180deg)';
         setTimeout(() => {
             document.body.style.filter = 'hue-rotate(360deg)';
             setTimeout(() => {
                 document.body.style.filter = 'none';
-            }, 500);
-        }, 500);
+            }, effectDuration);
+        }, effectDuration);
     },
 
     logBoot() {
+        // Version is displayed in footer via build script ({{VERSION}})
         console.log(
-            '%c FOGSIFT v' + this.version + ' // SYSTEMS NOMINAL ',
+            '%c FOGSIFT // SYSTEMS NOMINAL ',
             'background: #4a2c2a; color: #e07b3c; padding: 10px; font-family: monospace; font-weight: bold; border-left: 5px solid #0d9488;'
         );
         console.log(

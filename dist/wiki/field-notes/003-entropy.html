@@ -22,14 +22,8 @@
 
     <link rel="icon" type="image/png" href="../../favicon.png">
 
-    <!-- Theme detection - inline to prevent FOUC -->
-    <script>
-        (function() {
-            var t = localStorage.getItem('theme');
-            var valid = ['light', 'dark', 'industrial-punchcard', 'matrix'];
-            document.documentElement.setAttribute('data-theme', valid.includes(t) ? t : 'light');
-        })();
-    </script>
+    <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
+    <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard','matrix','sky','synthwave','pipboy','rivendell','camo','barbie','ocean'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -308,7 +302,7 @@
 
             <footer class="wiki-footer">
                 <div class="wiki-meta">
-                    <span>Updated: 2025-12-28</span>
+                    <span>Updated: 2025-12-29</span>
                 </div>
                 <nav class="wiki-nav-footer" aria-label="Wiki navigation">
                     <a href="../index.html">

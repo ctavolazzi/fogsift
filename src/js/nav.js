@@ -31,7 +31,16 @@ const Nav = {
         document.body.classList.remove('scroll-locked');
     },
 
+    /**
+     * Initialize navigation module.
+     * Currently a no-op placeholder - navigation is declarative via HTML/CSS.
+     * Kept for consistency with other modules and future extensibility
+     * (e.g., scroll-based navbar hide, keyboard shortcuts).
+     */
     init() {
-        // Navigation initialized
+        // No initialization needed - mobile drawer handled via onclick in HTML
     }
 };
+
+// Explicit global export for consistency with other modules
+window.Nav = Nav;

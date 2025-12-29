@@ -22,14 +22,8 @@
 
     <link rel="icon" type="image/png" href="../favicon.png">
 
-    <!-- Theme detection - inline to prevent FOUC -->
-    <script>
-        (function() {
-            var t = localStorage.getItem('theme');
-            var valid = ['light', 'dark', 'industrial-punchcard', 'matrix'];
-            document.documentElement.setAttribute('data-theme', valid.includes(t) ? t : 'light');
-        })();
-    </script>
+    <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
+    {{THEME_INIT}}
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

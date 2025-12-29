@@ -8,6 +8,13 @@ const Modal = {
     articles: null, // Cache for loaded articles
     articlesPath: '/content/articles.json',
 
+    // Timing constants (TD-015: no magic numbers)
+    TIMING: {
+        FADE_IN_DELAY: 10,           // Delay before opacity transition
+        CONTENT_LOAD_DELAY: 500,     // Delay before loading content (effect)
+        FADE_OUT_DURATION: 300       // Close fade out duration
+    },
+
     getElement() {
         return document.getElementById(this.elementId);
     },
@@ -46,15 +53,15 @@ const Modal = {
         content.innerHTML = '<p>Decryption in progress...</p>';
         modal.style.display = 'block';
 
-        setTimeout(() => { modal.style.opacity = 1; }, 10);
-        setTimeout(() => this.loadContent(id, title, content), 500);
+        setTimeout(() => { modal.style.opacity = 1; }, this.TIMING.FADE_IN_DELAY);
+        setTimeout(() => this.loadContent(id, title, content), this.TIMING.CONTENT_LOAD_DELAY);
     },
 
     close() {
         const modal = this.getElement();
         modal.style.opacity = 0;
         document.body.classList.remove('scroll-locked');
-        setTimeout(() => { modal.style.display = 'none'; }, 300);
+        setTimeout(() => { modal.style.display = 'none'; }, this.TIMING.FADE_OUT_DURATION);
     },
 
     async loadContent(id, titleEl, contentEl) {
@@ -104,3 +111,5 @@ const Modal = {
     }
 };
 
+// Explicit global export for consistency with other modules
+window.Modal = Modal;

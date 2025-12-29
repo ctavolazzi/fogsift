@@ -629,6 +629,7 @@ function buildWiki() {
 
         // Process template
         let html = pageTemplate
+            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
             .replace(/\{\{PAGE_TITLE\}\}/g, title)
             .replace(/\{\{PAGE_DESCRIPTION\}\}/g, description)
             .replace(/\{\{PAGE_SLUG\}\}/g, slug)
@@ -659,6 +660,7 @@ function buildWiki() {
         const categoryCards = generateCategoryCards(wikiIndex);
         const jdSitemapIndex = generateJDSitemap(wikiIndex, 0);
         let indexHtml = indexTemplate
+            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
             .replace(/\{\{CATEGORIES\}\}/g, categoryCards)
             .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemapIndex)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
