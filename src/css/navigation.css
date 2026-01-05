@@ -114,6 +114,80 @@
     align-items: center;
 }
 
+/* === COPY PAGE TEXT BUTTON === */
+.copy-page-text-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--canvas);
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    padding: 8px;
+    width: var(--touch-min);
+    height: var(--touch-min);
+    cursor: pointer;
+    transition: all var(--ease-out);
+    color: var(--ink);
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.copy-page-text-btn:hover {
+    border-color: var(--muted);
+    background-color: var(--paper);
+}
+
+.copy-page-text-btn:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(224, 123, 60, 0.2);
+}
+
+.copy-page-text-btn:active {
+    transform: translateY(1px);
+}
+
+.copy-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.copy-icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+}
+
+/* Dark mode adjustments */
+[data-theme="dark"] .copy-page-text-btn {
+    background-color: var(--canvas);
+    border-color: var(--line);
+}
+
+[data-theme="dark"] .copy-page-text-btn:hover {
+    background-color: var(--paper);
+    border-color: var(--muted);
+}
+
+/* Industrial mode adjustments */
+[data-theme="industrial-punchcard"] .copy-page-text-btn {
+    background-color: var(--canvas);
+    border: 3px solid var(--chocolate);
+    border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--chocolate);
+}
+
+[data-theme="industrial-punchcard"] .copy-page-text-btn:hover {
+    transform: translate(1px, 1px);
+    box-shadow: 2px 2px 0 var(--chocolate);
+}
+
+[data-theme="industrial-punchcard"] .copy-page-text-btn:focus {
+    border-color: var(--primary);
+    box-shadow: 3px 3px 0 var(--primary);
+}
+
 /* === CUSTOM THEME PICKER === */
 .theme-picker {
     position: relative;
