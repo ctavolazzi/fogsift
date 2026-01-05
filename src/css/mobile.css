@@ -95,14 +95,21 @@ pre, code {
         display: inline-flex;
     }
 
-    /* Compact theme picker on mobile */
+    /* Square theme picker on mobile - matches copy button */
     .theme-picker-toggle {
-        padding: 6px 10px;
-        min-height: 36px;
+        width: var(--touch-min);
+        height: var(--touch-min);
+        padding: 0;
     }
 
     .theme-picker-label {
         display: none;
+    }
+    
+    /* Ensure copy button matches on mobile */
+    .copy-page-text-btn {
+        width: var(--touch-min);
+        height: var(--touch-min);
     }
 
     /* === MENU OVERFLOW PROTECTION === */
@@ -279,11 +286,16 @@ pre, code {
         max-width: 100px;
     }
 
-    /* Compact theme picker for tiny screens */
+    /* Square theme picker for tiny screens - matches copy button */
     .theme-picker-toggle {
-        padding: 4px 8px;
-        min-height: 32px;
-        font-size: 0.875rem;
+        width: var(--touch-min);
+        height: var(--touch-min);
+        padding: 0;
+    }
+    
+    .copy-page-text-btn {
+        width: var(--touch-min);
+        height: var(--touch-min);
     }
 
     .theme-picker-menu {
