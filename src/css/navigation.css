@@ -118,16 +118,20 @@
 .copy-page-text-btn {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
     background-color: var(--canvas);
     border: 2px solid var(--line);
     border-radius: var(--radius);
-    padding: 8px;
-    width: var(--touch-min);
-    height: var(--touch-min);
-    cursor: pointer;
-    transition: all var(--ease-out);
+    padding: 8px 12px;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     color: var(--ink);
+    cursor: pointer;
+    min-height: var(--touch-min);
+    transition: all var(--ease-out);
     -webkit-user-select: none;
     user-select: none;
 }
@@ -143,10 +147,6 @@
     box-shadow: 0 0 0 2px rgba(224, 123, 60, 0.2);
 }
 
-.copy-page-text-btn:active {
-    transform: translateY(1px);
-}
-
 .copy-icon {
     display: flex;
     align-items: center;
@@ -154,9 +154,10 @@
 }
 
 .copy-icon svg {
-    width: 20px;
-    height: 20px;
+    width: 1.1em;
+    height: 1.1em;
     stroke: currentColor;
+    opacity: 0.8;
 }
 
 /* Dark mode adjustments */
@@ -176,6 +177,7 @@
     border: 3px solid var(--chocolate);
     border-radius: 12px;
     box-shadow: 3px 3px 0 var(--chocolate);
+    font-weight: 800;
 }
 
 [data-theme="industrial-punchcard"] .copy-page-text-btn:hover {
