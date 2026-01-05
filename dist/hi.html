@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | Fogsift</title>
-    <meta name="description" content="Fogsift pricing: Free triage call, $20 deep dive, or contract engagement. Simple, transparent pricing for consulting services.">
+    <title>Let's Talk | Christopher Tavolazzi</title>
+    <meta name="description" content="Give me 15 minutes. We'll figure out what you actually need - information, services, a referral, or something else entirely.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/pricing.html">
+    <link rel="canonical" href="https://fogsift.com/hi">
 
     <!-- Theme detection -->
     <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard','matrix','sky','synthwave','pipboy','rivendell','camo','barbie','ocean'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
@@ -16,12 +16,209 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Landing page specific styles */
+
+        /* Hide main nav on this page */
+        .nav-wrapper {
+            display: none;
+        }
+
+        /* Brand anchor at top */
+        .landing-brand {
+            padding: var(--space-md) var(--space-md) 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .landing-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            text-decoration: none;
+            color: var(--foreground);
+            font-family: var(--font-display);
+            font-size: var(--text-sm);
+            font-weight: 500;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .landing-logo:hover {
+            opacity: 1;
+        }
+
+        .landing-logo img {
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Intro section */
+        .landing-intro {
+            padding: var(--space-lg) var(--space-md);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .landing-intro-content {
+            display: flex;
+            gap: var(--space-md);
+            align-items: flex-start;
+        }
+
+        .landing-avatar-small {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 2px solid var(--border);
+        }
+
+        .landing-avatar-small img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .landing-intro-text {
+            flex: 1;
+        }
+
+        .landing-greeting {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            margin: 0 0 var(--space-xs);
+        }
+
+        .landing-intro h1 {
+            font-family: var(--font-display);
+            font-size: var(--text-xl);
+            font-weight: 600;
+            margin: 0 0 var(--space-sm);
+            color: var(--foreground);
+            line-height: 1.3;
+        }
+
+        .landing-offer {
+            font-size: var(--text-md);
+            color: var(--foreground);
+            margin: 0;
+            line-height: 1.6;
+            opacity: 0.85;
+        }
+
+        /* How I Work */
+        .landing-how {
+            padding: var(--space-lg) var(--space-md);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .landing-how h2 {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--muted);
+            margin: 0 0 var(--space-md);
+        }
+
+        .landing-how ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .landing-how li {
+            padding: var(--space-xs) 0;
+            color: var(--foreground);
+            font-size: var(--text-sm);
+            line-height: 1.5;
+            padding-left: var(--space-md);
+            position: relative;
+        }
+
+        .landing-how li::before {
+            content: "—";
+            color: var(--muted);
+            position: absolute;
+            left: 0;
+        }
+
+        /* CTA */
+        .landing-cta {
+            padding: var(--space-lg) var(--space-md);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .landing-cta .cta-button {
+            font-size: var(--text-md);
+            padding: var(--space-sm) var(--space-lg);
+        }
+
+        .landing-cta p {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            margin: var(--space-sm) 0 0;
+        }
+
+        /* Credibility/proof */
+        .landing-proof {
+            padding: var(--space-lg) var(--space-md);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .landing-bio {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            line-height: 1.6;
+            margin: 0 0 var(--space-md);
+        }
+
+        .landing-stats {
+            display: flex;
+            gap: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+        }
+
+        /* Footer */
+        .landing-footer {
+            padding: var(--space-lg) var(--space-md);
+        }
+
+        .landing-footer a {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .landing-footer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 480px) {
+            .landing-intro-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .landing-intro h1 {
+                font-size: var(--text-lg);
+            }
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Mobile Navigation Overlay (click to close) -->
-    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
@@ -46,7 +243,7 @@
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
                 <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link" aria-current="page">PRICING</a></div>
+                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
@@ -135,84 +332,65 @@
     </header>
 
     <main class="frame" id="main-content">
-        <section class="section section-pricing" style="text-align: center;">
-            <h1 class="section-label">PRICING</h1>
 
-            <div class="pricing-cards">
-                <article class="pricing-card">
-                    <h4>The Call</h4>
-                    <span class="price">FREE</span>
-                    <p>15-30 minutes. Triage your problem. No pitch, no pressure.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Booking%20a%20Free%20Call" class="pricing-cta">Book a Call</a>
-                </article>
+        <!-- Brand anchor -->
+        <header class="landing-brand">
+            <a href="index.html" class="landing-logo">
+                <img src="assets/logo.png" alt="Fogsift" width="32" height="32">
+                <span>Fogsift</span>
+            </a>
+        </header>
 
-                <article class="pricing-card featured">
-                    <span class="featured-tag">POPULAR</span>
-                    <h4>Deep Dive</h4>
-                    <span class="price">$20</span>
-                    <p>The first hour of actual work. See if we're a fit.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Deep%20Dive%20Request" class="pricing-cta">Get Started</a>
-                </article>
-
-                <article class="pricing-card">
-                    <h4>Engagement</h4>
-                    <span class="price">CONTRACT</span>
-                    <p>Defined scope. No surprises. You own the output.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Contract%20Engagement%20Inquiry" class="pricing-cta">Let's Talk</a>
-                </article>
+        <!-- Intro: Acknowledge + Offer -->
+        <section class="landing-intro">
+            <div class="landing-intro-content">
+                <div class="landing-avatar-small">
+                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" width="64" height="64">
+                </div>
+                <div class="landing-intro-text">
+                    <p class="landing-greeting">Hi, I'm Christopher.</p>
+                    <h1>Something taking up more time than it should?</h1>
+                    <p class="landing-offer">I help people untangle problems — find the right vendor, research options, figure out what's actually going on. If I can't solve it myself, I'll find someone who can.</p>
+                </div>
             </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>How It Works</h2>
+        <!-- How I Work -->
+        <section class="landing-how">
+            <h2>How it works</h2>
+            <ul>
+                <li>We talk. I listen. We figure out what you actually need.</li>
+                <li>If there's work to do, I scope it and write it down first.</li>
+                <li>You pay per stage, as we go. Stop anytime.</li>
+                <li>No retainers. No surprises. You own the output.</li>
+            </ul>
+        </section>
 
-            <h3>The Call (Free)</h3>
-            <p>A quick conversation to understand your situation. No strings attached. If I can point you in the right direction in 15 minutes, I will. If you need more help, we'll discuss next steps.</p>
-
-            <h3>Deep Dive ($20)</h3>
-            <p>One hour of focused work on your problem. This is where we dig in — research, analysis, and concrete recommendations. Most people get what they need here.</p>
-
-            <h3>Contract Engagement</h3>
-            <p>For bigger projects that need ongoing attention. We define the scope together, agree on deliverables, and I get to work. Pricing depends on complexity and timeline.</p>
-
-            <h2>FAQ</h2>
-
-            <h3>Why so cheap?</h3>
-            <p>I'd rather help 100 people at accessible prices than 5 people at premium rates. The work is the same either way.</p>
-
-            <h3>What if I'm not satisfied?</h3>
-            <p>If you don't find value in our conversation, you don't pay. Simple as that.</p>
-
-            <h3>Do you do ongoing retainers?</h3>
-            <p>Sometimes, for the right fit. Let's talk about what you need.</p>
+        <!-- CTA -->
+        <section class="landing-cta">
+            <a href="mailto:christopher@fogsift.com?subject=Quick%20question" class="cta-button">Send me a note</a>
+            <p>I respond within 24 hours. No pitch, just a conversation.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section section-contact" style="text-align: center;">
-            <h3>Questions about pricing?</h3>
-            <p>Just ask. No pressure, no pitch.</p>
-            <a href="contact.html" class="cta-button">Get in Touch</a>
+        <!-- Credibility -->
+        <section class="landing-proof">
+            <p class="landing-bio">Based in Chico, CA. Background in software, real estate, journalism, and too many other things. I've worked with manufacturers, startups, service businesses, and solo operators. If you're stuck on something, I can probably help — or point you to someone who can.</p>
+            <div class="landing-stats">
+                <span>15+ engagements</span>
+                <span>•</span>
+                <span>8+ industries</span>
+            </div>
         </section>
 
-        <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
-                    <a href="about.html">About</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="wiki/index.html">Wiki</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT</span>
-                </div>
-            </div>
-        </footer>
+        <!-- Footer -->
+        <section class="landing-footer">
+            <a href="index.html">More at fogsift.com →</a>
+        </section>
+
     </main>
 
     <script src="app.js" defer></script>
