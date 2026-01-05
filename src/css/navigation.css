@@ -122,7 +122,7 @@
     background-color: var(--canvas);
     border: 2px solid var(--line);
     border-radius: var(--radius);
-    padding: 6px 10px;
+    padding: 4px 8px;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     font-weight: 700;
