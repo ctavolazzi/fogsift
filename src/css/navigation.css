@@ -118,11 +118,11 @@
 .copy-page-text-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
     background-color: var(--canvas);
     border: 2px solid var(--line);
     border-radius: var(--radius);
-    padding: 8px 12px;
+    padding: 6px 10px;
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     font-weight: 700;
@@ -130,7 +130,6 @@
     letter-spacing: 0.05em;
     color: var(--ink);
     cursor: pointer;
-    min-height: var(--touch-min);
     transition: all var(--ease-out);
     -webkit-user-select: none;
     user-select: none;
