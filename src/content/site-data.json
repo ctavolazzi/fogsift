@@ -1,0 +1,161 @@
+{
+  "site": {
+    "name": "FogSift",
+    "tagline": "Clear answers to good questions.",
+    "description": "Independent consulting for complex problems. Trace root causes. Get clarity.",
+    "url": "https://fogsift.com",
+    "version": "0.1.0"
+  },
+  "hero": {
+    "headline": "Clear answers to good questions.",
+    "subhead": "Something eating up your",
+    "rotatingWords": ["time?", "bandwidth?", "budget?", "capacity?", "energy?"],
+    "cta": "Let's solve it together.",
+    "primaryButton": {
+      "text": "Join the Queue ($20)",
+      "url": "https://ko-fi.com/fogsift",
+      "external": true
+    },
+    "secondaryButton": {
+      "text": "See the Queue",
+      "url": "queue.html",
+      "external": false
+    }
+  },
+  "process": {
+    "title": "HOW IT WORKS",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Submit",
+        "description": "Describe your problem + pay $20. That's it."
+      },
+      {
+        "number": "02",
+        "title": "Review",
+        "description": "Once a day, we review all submissions and pick two."
+      },
+      {
+        "number": "03",
+        "title": "Work",
+        "description": "Up to an hour of focused problem-solving. Filmed, no face."
+      },
+      {
+        "number": "04",
+        "title": "Deliver",
+        "description": "You get the video + a written report."
+      },
+      {
+        "number": "05",
+        "title": "Outcome",
+        "description": "One of three paths forward. You walk away with something."
+      }
+    ]
+  },
+  "about": {
+    "title": "WHO IS FOGSIFT",
+    "name": "Christopher Tavolazzi",
+    "role": "Expert Researcher",
+    "image": "images/team/christopher-badge.webp",
+    "bio": "Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it."
+  },
+  "pricing": {
+    "title": "THE DEAL",
+    "main": {
+      "tag": "THE SWEET SPOT",
+      "name": "Focus Session",
+      "price": "$20",
+      "description": "Your $20 adds your problem to the queue. It's the filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. A full-on research squad (me + AI + friends + network) focuses on your submission for up to an hour (filmed), and you get the video + a written report.",
+      "note": "Worth way more than $20, kept low so anyone can access it. Maybe we solve it. Maybe we don't. Either way, you walk away with something.",
+      "capacity": "Limited to 10 slots/week",
+      "cta": {
+        "text": "Join the Queue",
+        "url": "https://ko-fi.com/fogsift"
+      }
+    },
+    "outcomes": {
+      "title": "WHAT HAPPENS AFTER",
+      "items": [
+        {
+          "id": "go-deeper",
+          "title": "\"Let's go deeper.\"",
+          "description": "We see something here. We'd like to work on this more with you.",
+          "color": "#059669"
+        },
+        {
+          "id": "i-know-people",
+          "title": "\"I know people.\"",
+          "description": "This isn't our wheelhouse, but we know exactly who can help.",
+          "color": "#2563eb"
+        },
+        {
+          "id": "this-is-sick",
+          "title": "\"This is sick.\"",
+          "description": "This would be cool if somebody did it. You should. Here's how.",
+          "color": "#dc2626"
+        }
+      ]
+    }
+  },
+  "testimonials": {
+    "title": "WHAT CLIENTS SAY",
+    "items": [
+      {
+        "quote": "We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach.",
+        "author": "Operations Director",
+        "company": "Manufacturing Company"
+      },
+      {
+        "quote": "Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar.",
+        "author": "Founder & CEO",
+        "company": "Tech Startup"
+      },
+      {
+        "quote": "The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month.",
+        "author": "VP of Strategy",
+        "company": "Professional Services Firm"
+      }
+    ],
+    "stats": [
+      { "number": "15+", "label": "Engagements" },
+      { "number": "100%", "label": "Satisfaction" },
+      { "number": "8+", "label": "Industries" }
+    ]
+  },
+  "footer": {
+    "cta": {
+      "headline": "Something eating up your",
+      "rotatingWords": ["time?", "bandwidth?", "budget?"],
+      "description": "$20 adds you to the queue. We pick two per day.",
+      "button": {
+        "text": "Join the Queue",
+        "url": "https://ko-fi.com/fogsift"
+      }
+    },
+    "links": [
+      { "text": "Home", "url": "index.html" },
+      { "text": "Process", "url": "process.html" },
+      { "text": "Queue", "url": "queue.html" },
+      { "text": "FAQ", "url": "faq.html" },
+      { "text": "Pricing", "url": "pricing.html" },
+      { "text": "About", "url": "about.html" },
+      { "text": "Wiki", "url": "wiki/index.html" },
+      { "text": "Privacy", "url": "privacy.html" },
+      { "text": "Disclaimer", "url": "disclaimer.html" }
+    ]
+  },
+  "navigation": {
+    "logo": {
+      "src": "assets/logo-01.png",
+      "alt": "FogSift"
+    },
+    "links": [
+      { "text": "WIKI", "url": "wiki/index.html" },
+      { "text": "PROCESS", "url": "process.html" },
+      { "text": "QUEUE", "url": "queue.html" },
+      { "text": "FAQ", "url": "faq.html" },
+      { "text": "PRICING", "url": "pricing.html" },
+      { "text": "CONTACT", "url": "contact.html" }
+    ]
+  }
+}

@@ -53,18 +53,12 @@ const Theme = {
         if (this._initialized) return;
         this._initialized = true;
 
-        // Get stored theme, or detect system preference, or default to light
-        let theme = 'light';
+        // Always start in light mode (user request)
+        const theme = 'light';
         try {
-            const stored = localStorage.getItem(this.STORAGE_KEY);
-            if (this.THEMES.includes(stored)) {
-                theme = stored;
-            } else {
-                // First visit: detect system preference
-                theme = this._detectSystemTheme();
-            }
+            localStorage.setItem(this.STORAGE_KEY, theme);
         } catch {
-            theme = this._detectSystemTheme();
+            // Ignore storage errors
         }
 
         // Apply theme without notification on init

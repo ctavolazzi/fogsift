@@ -200,10 +200,72 @@ pre, code {
     .pricing-cards {
         grid-template-columns: 1fr;
         gap: var(--space-md);
+        justify-items: center;
+    }
+    
+    .pricing-cards.pricing-cards-single {
+        display: flex;
+        justify-content: center;
     }
 
     .pricing-card {
         padding: var(--space-md);
+        max-width: 100%;
+    }
+
+    .pricing-card .price {
+        margin-bottom: var(--space-sm);
+    }
+
+    .pricing-card.featured p,
+    .pricing-card.entry p,
+    .pricing-card.premium p {
+        text-align: left;
+    }
+
+    .featured-tag {
+        position: static;
+        transform: none;
+        margin: 0 auto var(--space-sm);
+        display: inline-block;
+    }
+
+    .pricing-cta {
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Ensure section content is centered */
+    .section-pricing {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .section-pricing > * {
+        width: 100%;
+        max-width: 450px;
+    }
+    
+    .section-pricing .pricing-cards {
+        max-width: 100%;
+    }
+
+    .pricing-card.featured {
+        order: 1;
+    }
+
+    .pricing-card.entry {
+        order: 2;
+    }
+
+    .pricing-card.premium {
+        order: 3;
+    }
+    
+    /* Wiki content sections centered on mobile */
+    .wiki-content {
+        padding: 0 var(--space-sm);
     }
 
     /* === CONTACT === */

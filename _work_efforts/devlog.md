@@ -329,3 +329,252 @@ Full tech debt cleanup pass addressing TD-015 (magic numbers) and TD-010 (theme 
 - All 29 wiki pages built successfully
 - 4 API endpoints generated
 - Version: 0.0.5
+
+[2026-01-22 03:35:47] ## FogSift Services PDF Generated
+
+- Created `src/content/fogsift_services.md` with "$20 Problem Shark Tank" marketing copy
+- Updated `scripts/generate_fogsift_pdf.py` with CLI args, error handling, and WAFT import check
+- Generated `fogsift_services.pdf` (2 pages, ~45KB) using `PDF.from_markdown()` with `style='premium'`
+- Content includes: The Offer, How It Works, The Three Outcomes, The Fine Print, Submit CTA
+
+**Files created:**
+- `src/content/fogsift_services.md` - Marketing content
+- `fogsift_services.pdf` - Generated PDF (44,972 bytes)
+
+[2026-01-22 03:38:31] ## Full Site Update: Problem Shark Tank Model
+
+Updated the entire FogSift site to reflect the new $20 "Problem Shark Tank" business model.
+
+### Changes Made:
+
+**index.html:**
+- Updated process section from 3 steps (Listen/Research/Deliver) to 5 steps (Submit/Review/Work/Deliver/Next Steps)
+- Replaced 3-tier pricing with single $20 "Problem Shark Tank" offer
+- Added "What Happens After" section with three outcomes
+
+**pricing.html:**
+- Complete overhaul to new model
+- Added "What You Get (Always)" section - video + report
+- Added "Three Outcomes" section
+- Added "Fine Print" with consent model
+- Updated FAQ (Why $20? What if you don't solve it? Why no face?)
+- Updated meta description
+
+**process.html:**
+- Updated to 5-step process
+- Added "Problem Shark Tank: The $20 Gamble" tagline
+- Added sections: What You Always Get, Three Outcomes, Why No Face?, Why Daily?
+- Updated meta description
+
+**contact.html:**
+- Primary CTA now points to Ko-fi ($20 submission)
+- Secondary option for free email questions
+- Updated "What to Include" with anonymization option
+- Added "What Happens Next" explaining the flow
+
+### New Model Summary:
+- $20 entry fee via Ko-fi
+- 75 minutes of filmed work (no face, Wilson style)
+- Always get: video + written report
+- Three outcomes: Go deeper / I know people / This is sick
+- Consent: Submit = agree to become content (anonymization available)
+
+[2026-01-22 03:41:48] ## Queue System Implementation
+
+### Created:
+- `src/queue.html` - New queue page showing pending and completed problems
+- `src/content/queue.json` - Queue data file with mock submissions
+
+### Updated:
+- All CTAs now say "Join the Queue" instead of "Submit Your Problem"
+- All pages now mention "adds you to the queue" in pricing copy
+- Added Queue link to navigation and all footers
+- Hero section now has "Join the Queue" as primary CTA and "See the Queue" as secondary
+
+### Queue Features:
+- Stats display (in queue, completed, avg days to pickup)
+- Mock data banner (clearly labeled as examples)
+- Pending queue with position numbers
+- Completed section with outcomes shown
+- Responsive design
+- Dynamic loading from queue.json
+
+### Mock Data Includes:
+- 3 problems in queue (various categories)
+- 4 completed problems showing all three outcomes:
+  - "Let's go deeper" (contract work)
+  - "I know people" (referral)
+  - "This is sick" (encouragement)
+
+### Next Steps for Ko-fi Integration:
+1. Create Ko-fi Commission listing for "$20 Problem Shark Tank"
+2. Set up webhook endpoint to receive payment notifications
+3. Auto-populate queue.json from webhook data
+
+[2026-01-22 03:54:15] ## FAQ Page Created
+
+### Created:
+- `src/faq.html` - Comprehensive FAQ page covering:
+  - What $20 gets you (queue position, up to 1 hour, reply)
+  - How the queue works
+  - "Up to 1 hour" explanation
+  - Refusal rights
+  - Refund policy (encouraged!)
+  - Queue bumping mechanism
+  - Working together more
+  - Direct contact (easter egg for readers)
+
+### Updated:
+- Navigation: Simplified to Wiki | Process | Queue | FAQ | Pricing | Contact
+- Removed PAPERBIN and ABOUT from main nav (less clutter)
+- All footers now include FAQ link
+- Queue page "How It Works" updated to match FAQ content
+- Added link from Queue page to FAQ
+
+### Key Business Model Clarifications:
+1. $20 = queue position + up to 1 hour + reply
+2. Daily selection: one from top, one random
+3. Bump fee available daily (prevents queue buying)
+4. Refunds encouraged if time-sensitive
+5. Direct email buried as easter egg for readers
+
+[2026-01-22 04:05:26] ## FogSift Manager MCP Server Created
+
+### Location:
+`.mcp-servers/fogsift-manager/`
+
+### Tools Available:
+
+**Build & Deploy:**
+- `fogsift_build` - Build the site
+- `fogsift_deploy` - Build and deploy to Cloudflare
+
+**Dev Server:**
+- `fogsift_dev_start` - Start dev server on port 5050
+- `fogsift_dev_stop` - Stop dev server
+
+**Queue Management:**
+- `fogsift_queue_list` - List all queue items
+- `fogsift_queue_add` - Add new problem to queue
+- `fogsift_queue_complete` - Mark item as completed with outcome
+- `fogsift_queue_remove` - Remove item (refund)
+- `fogsift_queue_bump` - Move item up in queue
+- `fogsift_queue_go_live` - Remove mock data flag
+
+**Content & Status:**
+- `fogsift_content_update` - Update content JSON files
+- `fogsift_status` - Get project status
+
+### Configuration:
+Added to `~/.cursor/mcp.json` as "fogsift"
+
+### To Activate:
+Restart Cursor IDE
+
+[2026-01-22 14:36:30] ## Plan: Mobile-first Shark Tank Offer Polish
+
+Objective: fix mobile layout for the $20 offer, restore theme/copy tools, update Ko-fi PDF link, then QA + sync dist.
+
+Plan:
+1. Update v2 header to include theme toggle + copy button (mobile-friendly).
+2. Fix pricing-card mobile layout (badge, spacing, full-width CTA).
+3. Reorder mobile tiers to show $20 offer first and update PDF link to https://ko-fi.com/s/23e227d00b.
+4. Mobile QA, update dist, and verify no console errors.
+
+[2026-01-22 15:05:33] ## Mobile Shark Tank Offer Polish (v2)
+
+- Restored theme toggle + copy button in v2 header (mobile-friendly)
+- Fixed mobile pricing card spacing, badge placement, and CTA width
+- Updated Ko-fi PDF links to https://ko-fi.com/s/23e227d00b
+- Mobile tier ordering prioritizes $20 offer
+- Synced updated v2 files to dist; QA on mobile viewport (no console errors)
+
+**Files updated:**
+- `src/v2/index.html`
+- `src/v2/app.js`
+- `src/css/v2/styles.css`
+- `dist/v2/index.html`
+- `dist/v2/app.js`
+- `dist/css/v2/styles.css`
+
+[2026-01-22 19:15:10] ## Plan: Merge v2 into src (single source)
+
+Objective: consolidate v2 improvements into main `src/`, polish mobile $20 offer, add entry + premium options, update Ko-fi product link, and QA via localhost.
+
+Plan:
+1. Merge v2 homepage content into `src/index.html` (keep NAV_HEADER + existing tooling).
+2. Fix mobile $20 pricing card layout (badge spacing, CTA width, alignment) in `src/css/mobile.css` + `components.css`.
+3. Add $5 entry PDF + $500 premium options with Ko-fi link https://ko-fi.com/s/23e227d00b.
+4. QA on `http://localhost:5050` with screenshots and sync dist.
+
+[2026-01-22 19:33:20] ## Merge v2 Into src (Single Source)
+
+- Replaced The Deal cards with $5 entry, $20 main, $500 premium offers
+- Updated Ko-fi product link to https://ko-fi.com/s/23e227d00b
+- Fixed mobile pricing badge overlap and made CTAs full width
+- Forced light mode on load while keeping theme picker available
+- Built dist with updated HTML/CSS/JS
+- Captured mobile screenshots via localhost:5050
+
+**Files updated:**
+- `src/index.html`
+- `src/css/components.css`
+- `src/css/mobile.css`
+- `src/js/theme.js`
+- `scripts/build.js`
+- `dist/index.html`
+- `dist/styles.css`
+- `dist/app.js`
+
+[2026-01-22 19:35:57 PST] ## Plan: Focus Session Rename
+
+Objective: rename "Problem Shark Tank" to "Focus Session" across source + content, update research-squad copy, and manually sync dist.
+
+Plan:
+1. Update WE-260122-m9k2 scope + add a ticket for the rename work.
+2. Replace offer naming + copy in src pages and content files.
+3. Manually sync dist HTML equivalents (no build).
+4. Verify zero Shark Tank references and update devlog/ticket status.
+
+[2026-01-22 19:36:30 PST] ## Focus Session Rename - COMPLETE
+
+- Renamed the $20 offer to "Focus Session" across src pages and content files.
+- Updated research-squad framing and accessibility filter language.
+- Manually synced dist HTML equivalents (no build scripts).
+- Verified zero "Shark Tank" references in src/dist.
+- Updated WE-260122-m9k2 with ticket TKT-m9k2-005.
+
+**Files updated:**
+- `src/index.html`
+- `src/pricing.html`
+- `src/process.html`
+- `src/faq.html`
+- `src/content/site-data.json`
+- `src/content/handout_content.md`
+- `src/content/fogsift_services.md`
+- `dist/index.html`
+- `dist/pricing.html`
+- `dist/process.html`
+- `dist/faq.html`
+
+[2026-01-22 15:13 PST] ## Plan: Homepage Consolidation + Queue/YT Funnel
+
+Objective: Consolidate homepage into a single source of truth, strengthen queue submission and YouTube delivery messaging, and remove all v2 artifacts.
+
+Plan:
+1. Update WE-260122-m9k2 scope + tickets.
+2. Consolidate persuasive v2 sections into `src/index.html` with queue/YT/friction copy.
+3. Delete v2 source/output dirs with backup check + deletion manifest.
+4. Sync `dist/index.html` to match `src/index.html` (no npm build).
+5. Quick QA pass + update work effort.
+
+[2026-01-22 15:19 PST] ## Homepage Consolidation + Queue/YT Funnel - COMPLETE
+
+- Updated homepage copy to center the queue, friction filter, and YouTube delivery.
+- Added "Why this works", "Examples from the queue", and "Common concerns" sections.
+- Removed all v2 source/output directories; deletion manifest created.
+- Synced `dist/index.html` to match `src/index.html` (no build scripts).
+
+**Files updated:**
+- `src/index.html`
+- `dist/index.html`

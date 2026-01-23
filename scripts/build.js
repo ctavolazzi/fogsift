@@ -24,113 +24,96 @@ const VERSION = pkg.version || '0.0.0';
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
 const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'];
-const THEME_INIT_SCRIPT = `<script>(function(){var t=localStorage.getItem('${THEME_STORAGE_KEY}');var valid=['${VALID_THEMES.join("','")}'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>`;
+const THEME_INIT_SCRIPT = `<script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('${THEME_STORAGE_KEY}','light');}catch(e){}})();</script>`;
 
 // Navigation partial - single source of truth for site navigation
 const NAV_LINKS = [
     { href: 'wiki/index.html', label: 'WIKI' },
     { href: 'process.html', label: 'PROCESS' },
-    { href: 'about.html', label: 'ABOUT' },
+    { href: 'queue.html', label: 'QUEUE' },
+    { href: 'faq.html', label: 'FAQ' },
     { href: 'pricing.html', label: 'PRICING' },
     { href: 'contact.html', label: 'CONTACT', cta: true },
 ];
 
-// Generate nav HTML from links array
-function generateNavHeader(currentPage = '') {
-    const menuItems = NAV_LINKS.map(link => {
-        const isCurrent = currentPage && link.href === currentPage;
-        const classes = link.cta ? 'menu-link cta-link' : 'menu-link';
-        const aria = isCurrent ? ' aria-current="page"' : '';
-        return `<div class="menu-item"><a href="${link.href}" class="${classes}"${aria}>${link.label}</a></div>`;
-    }).join('\n                ');
+// Theme picker options - single source of truth
+const THEME_OPTIONS = [
+    { id: 'light', icon: '☀', label: 'Light' },
+    { id: 'dark', icon: '●', label: 'Dark' },
+    { id: 'industrial-punchcard', icon: '▣', label: 'Industrial' },
+    { id: 'matrix', icon: '▓', label: 'Matrix' },
+    { id: 'sky', icon: '☁️', label: 'Sky' },
+    { id: 'synthwave', icon: '🌆', label: 'Synthwave' },
+    { id: 'pipboy', icon: '📟', label: 'Pip-Boy' },
+    { id: 'rivendell', icon: '🏔️', label: 'Rivendell' },
+    { id: 'camo', icon: '🦌', label: 'Camo' },
+    { id: 'barbie', icon: '💖', label: 'Barbie' },
+    { id: 'ocean', icon: '🌊', label: 'Ocean' },
+];
 
-    return `<!-- Mobile Navigation Drawer -->
-    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
-        ${NAV_LINKS.map(l => `<a href="${l.href}" class="mobile-link${l.cta ? ' cta-link' : ''}" onclick="Nav.toggleMobile()">${l.label}</a>`).join('\n        ')}
-    </nav>
+// Generate theme picker HTML - single source of truth
+function generateThemePicker() {
+    const options = THEME_OPTIONS.map(t =>
+        `<button class="theme-picker-option" data-theme="${t.id}" role="option" onclick="ThemePicker.select('${t.id}')">
+                            <span class="theme-option-icon">${t.icon}</span>
+                            <span class="theme-option-label">${t.label}</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>`
+    ).join('\n                        ');
 
-    <!-- Main Navigation -->
-    <header class="nav-wrapper" role="banner">
-        <div class="main-nav">
-            <a href="index.html" class="brand" aria-label="Fogsift home">
-                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
-            </a>
-            <nav class="menu-items" aria-label="Main navigation">
-                ${menuItems}
-            </nav>
-            <div class="nav-controls">
-                <div class="theme-picker" role="listbox" aria-label="Select theme">
+    return `<div class="theme-picker" role="listbox" aria-label="Select theme">
                     <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
-                            <span class="theme-option-icon">☀</span>
-                            <span class="theme-option-label">Light</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
-                            <span class="theme-option-icon">●</span>
-                            <span class="theme-option-label">Dark</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
-                            <span class="theme-option-icon">▣</span>
-                            <span class="theme-option-label">Industrial</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
-                            <span class="theme-option-icon">▓</span>
-                            <span class="theme-option-label">Matrix</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
-                            <span class="theme-option-icon">☁️</span>
-                            <span class="theme-option-label">Sky</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
-                            <span class="theme-option-icon">🌆</span>
-                            <span class="theme-option-label">Synthwave</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
-                            <span class="theme-option-icon">📟</span>
-                            <span class="theme-option-label">Pip-Boy</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
-                            <span class="theme-option-icon">🏔️</span>
-                            <span class="theme-option-label">Rivendell</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
-                            <span class="theme-option-icon">🦌</span>
-                            <span class="theme-option-label">Camo</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
-                            <span class="theme-option-icon">💖</span>
-                            <span class="theme-option-label">Barbie</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
-                            <span class="theme-option-icon">🌊</span>
-                            <span class="theme-option-label">Ocean</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
+                        ${options}
                         <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
                             <span class="theme-option-icon">🎬</span>
                             <span class="theme-option-label">Demo</span>
                             <span class="theme-option-check" aria-hidden="true">▶</span>
                         </button>
                     </div>
-                </div>
+                </div>`;
+}
+
+// Generate nav HTML from links array
+// pathPrefix: relative path to root (e.g., '' for root pages, '../' for wiki)
+function generateNavHeader(currentPage = '', pathPrefix = '') {
+    const menuItems = NAV_LINKS.map(link => {
+        const isCurrent = currentPage && link.href === currentPage;
+        const classes = link.cta ? 'menu-link cta-link' : 'menu-link';
+        const aria = isCurrent ? ' aria-current="page"' : '';
+        const href = pathPrefix + link.href;
+        return `<div class="menu-item"><a href="${href}" class="${classes}"${aria}>${link.label}</a></div>`;
+    }).join('\n                ');
+
+    const mobileLinks = NAV_LINKS.map(l =>
+        `<a href="${pathPrefix}${l.href}" class="mobile-link${l.cta ? ' cta-link' : ''}" onclick="Nav.toggleMobile()">${l.label}</a>`
+    ).join('\n        ');
+
+    const themePicker = generateThemePicker();
+
+    return `<!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="${pathPrefix}index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        ${mobileLinks}
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper" role="banner">
+        <div class="main-nav">
+            <a href="${pathPrefix}index.html" class="brand" aria-label="Fogsift home">
+                <img src="${pathPrefix}assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                ${menuItems}
+            </nav>
+            <div class="nav-controls">
+                ${themePicker}
                 <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -145,6 +128,33 @@ function generateNavHeader(currentPage = '') {
             </div>
         </div>
     </header>`;
+}
+
+// Footer links - single source of truth
+const FOOTER_LINKS = [
+    { href: 'index.html', label: 'Home' },
+    { href: 'process.html', label: 'Process' },
+    { href: 'about.html', label: 'About' },
+    { href: 'pricing.html', label: 'Pricing' },
+    { href: 'wiki/index.html', label: 'Wiki' },
+    { href: 'privacy.html', label: 'Privacy' },
+    { href: 'disclaimer.html', label: 'Disclaimer' },
+];
+
+// Generate footer HTML - single source of truth
+function generateFooter(pathPrefix = '') {
+    const links = FOOTER_LINKS.map(l =>
+        `<a href="${pathPrefix}${l.href}">${l.label}</a>`
+    ).join('\n                    ');
+
+    return `<footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    ${links}
+                </div>
+                <p class="footer-copy">&copy; ${new Date().getFullYear()} Fogsift Consulting</p>
+            </div>
+        </footer>`;
 }
 
 // SVG Icons for wiki categories
@@ -196,6 +206,8 @@ const JS_FILES = [
     'src/js/cache.js',    // TKT-x7k9-005: Caching layer
     'src/js/debug.js',    // TKT-x7k9-008: Debug logging
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
+    'src/js/achievement.js', // Xbox-style achievement notifications
+    'src/js/queue-widget.js', // Queue status floating widget
     'src/js/main.js',
 ];
 
@@ -209,6 +221,7 @@ const STATIC_ASSETS = [
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
     { src: 'src/content/status.json', dest: 'content/status.json' },
+    { src: 'src/content/queue.json', dest: 'content/queue.json' },
     { src: 'src/system-status.html', dest: 'system-status.html' },
     // Security files
     { src: 'src/_headers', dest: '_headers' },
@@ -574,6 +587,162 @@ function buildAPI() {
     return filesCreated;
 }
 
+// ============================================
+// QUEUE ITEM PAGE GENERATION
+// ============================================
+
+function buildQueuePages() {
+    const queueDataPath = path.join(SRC, 'content', 'queue.json');
+    const templatePath = path.join(SRC, 'queue-item-template.html');
+    const queueDir = path.join(DIST, 'queue');
+
+    if (!fs.existsSync(queueDataPath)) {
+        console.log('  ⚠ No queue.json found, skipping queue pages');
+        return 0;
+    }
+
+    if (!fs.existsSync(templatePath)) {
+        console.log('  ⚠ No queue-item-template.html found, skipping queue pages');
+        return 0;
+    }
+
+    const queueData = JSON.parse(fs.readFileSync(queueDataPath, 'utf8'));
+    const template = fs.readFileSync(templatePath, 'utf8');
+
+    ensureDir(queueDir);
+
+    let pagesBuilt = 0;
+
+    // Combine all items (queue + completed)
+    const allItems = [...queueData.queue, ...queueData.completed];
+
+    for (const item of allItems) {
+        const isCompleted = item.status === 'completed';
+        
+        // Status class and text
+        let statusClass = 'status-in-queue';
+        let statusText = 'In Queue';
+        if (isCompleted) {
+            statusClass = 'status-completed';
+            statusText = 'Completed';
+        }
+
+        // Format dates
+        const submittedDate = new Date(item.submitted);
+        const submittedStr = submittedDate.toLocaleDateString('en-US', { 
+            weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' 
+        });
+
+        // Position HTML (only for in-queue items)
+        let positionHtml = '';
+        if (!isCompleted && item.position) {
+            positionHtml = `<span class="item-meta-item">📊 Position #${item.position}</span>`;
+        }
+
+        // Outcome section (only for completed items)
+        let outcomeSection = '';
+        if (isCompleted && item.outcome) {
+            const outcomeLabels = {
+                'go_deeper': '"Let\'s go deeper."',
+                'i_know_people': '"I know people."',
+                'this_is_sick': '"This is sick."'
+            };
+            const completedDate = new Date(item.completed);
+            const completedStr = completedDate.toLocaleDateString('en-US', { 
+                weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' 
+            });
+            
+            outcomeSection = `
+            <section class="item-section">
+                <h2 class="item-section-title">Outcome</h2>
+                <div class="outcome-card">
+                    <div class="outcome-label">${outcomeLabels[item.outcome] || item.outcome}</div>
+                    <p class="outcome-text">${item.outcome_text || ''}</p>
+                    <p style="margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--muted);">
+                        Completed on ${completedStr}
+                    </p>
+                </div>
+            </section>`;
+        }
+
+        // Work log section (placeholder for now, will be populated when work is done)
+        let workLogSection = '';
+        if (isCompleted) {
+            workLogSection = `
+            <section class="item-section">
+                <h2 class="item-section-title">Work Session</h2>
+                <div class="work-log">
+                    <div class="work-log-entry">
+                        <div class="work-log-timestamp">Session completed</div>
+                        <div class="work-log-content">
+                            <p>This problem was worked on during a FogSift session. 
+                            ${item.video_published ? 'Video of the work session is available.' : ''}</p>
+                        </div>
+                    </div>
+                </div>
+            </section>`;
+        }
+
+        // Pending section (only for in-queue items)
+        let pendingSection = '';
+        if (!isCompleted) {
+            pendingSection = `
+            <section class="item-section">
+                <div class="pending-notice">
+                    <div class="pending-notice-icon">⏳</div>
+                    <h3 class="pending-notice-title">Waiting in Queue</h3>
+                    <p class="pending-notice-text">
+                        This problem hasn't been picked yet. When it is, the work session will be documented here.
+                    </p>
+                </div>
+            </section>`;
+        }
+
+        // Privacy notice
+        let privacyNotice = item.anonymized
+            ? '🔒 This submission is anonymized. Personal details are not displayed publicly.'
+            : '📢 This work page is public. Others can learn from the problem-solving process.';
+
+        // Generate nav header (queue pages are in queue/ subdirectory)
+        const navHeader = generateNavHeader('queue.html', '../');
+
+        // Process template
+        let html = template
+            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)
+            .replace(/\{\{NAV_HEADER\}\}/g, navHeader)
+            .replace(/\{\{ITEM_ID\}\}/g, item.id)
+            .replace(/\{\{PROBLEM_SUMMARY\}\}/g, escapeHtml(item.problem_summary))
+            .replace(/\{\{STATUS_CLASS\}\}/g, statusClass)
+            .replace(/\{\{STATUS_TEXT\}\}/g, statusText)
+            .replace(/\{\{DISPLAY_NAME\}\}/g, item.display_name)
+            .replace(/\{\{SUBMITTED_DATE\}\}/g, submittedStr)
+            .replace(/\{\{CATEGORY\}\}/g, item.category)
+            .replace(/\{\{POSITION_HTML\}\}/g, positionHtml)
+            .replace(/\{\{OUTCOME_SECTION\}\}/g, outcomeSection)
+            .replace(/\{\{WORK_LOG_SECTION\}\}/g, workLogSection)
+            .replace(/\{\{PENDING_SECTION\}\}/g, pendingSection)
+            .replace(/\{\{PRIVACY_NOTICE\}\}/g, privacyNotice);
+
+        const outputPath = path.join(queueDir, `${item.id}.html`);
+        fs.writeFileSync(outputPath, html);
+        pagesBuilt++;
+    }
+
+    return pagesBuilt;
+}
+
+// Helper function for HTML escaping in build script
+function escapeHtml(text) {
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
+
 function buildWiki() {
     const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
     const pageTemplatePath = path.join(SRC, 'wiki-template.html');
@@ -635,9 +804,14 @@ function buildWiki() {
         // Generate JD sitemap for this page depth
         const jdSitemap = generateJDSitemap(wikiIndex, depth);
 
+        // Calculate path prefix for nav header (wiki pages are in wiki/ subdirectory)
+        const pathPrefix = '../'.repeat(depth + 1);
+        const navHeader = generateNavHeader('wiki/index.html', pathPrefix);
+
         // Process template
         let html = pageTemplate
             .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
+            .replace(/\{\{NAV_HEADER\}\}/g, navHeader)  // DRY: single source nav
             .replace(/\{\{PAGE_TITLE\}\}/g, title)
             .replace(/\{\{PAGE_DESCRIPTION\}\}/g, description)
             .replace(/\{\{PAGE_SLUG\}\}/g, slug)
@@ -667,8 +841,11 @@ function buildWiki() {
     if (indexTemplate) {
         const categoryCards = generateCategoryCards(wikiIndex);
         const jdSitemapIndex = generateJDSitemap(wikiIndex, 0);
+        // Wiki index is at wiki/index.html, so prefix is '../' to reach root
+        const indexNavHeader = generateNavHeader('wiki/index.html', '../');
         let indexHtml = indexTemplate
             .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
+            .replace(/\{\{NAV_HEADER\}\}/g, indexNavHeader)  // DRY: single source nav
             .replace(/\{\{CATEGORIES\}\}/g, categoryCards)
             .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemapIndex)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
@@ -760,6 +937,20 @@ async function build() {
     if (processSimpleHtml('hi.html')) {
         console.log('  ✓ dist/hi.html (processed)');
     }
+    if (processSimpleHtml('paperbin-saas.html')) {
+        console.log('  ✓ dist/paperbin-saas.html (processed)');
+    }
+    if (processSimpleHtml('queue.html')) {
+        console.log('  ✓ dist/queue.html (processed)');
+    }
+    if (processSimpleHtml('faq.html')) {
+        console.log('  ✓ dist/faq.html (processed)');
+    }
+    
+    // Copy gallery.html (standalone, no template processing needed)
+    if (copyFile('src/gallery.html', 'gallery.html')) {
+        console.log('  ✓ dist/gallery.html (copied)');
+    }
 
     // Copy static assets
     console.log('\n📁 Static Assets:');
@@ -774,6 +965,13 @@ async function build() {
     const wikiPages = buildWiki();
     if (wikiPages > 0) {
         console.log(`  ✓ Built ${wikiPages} wiki pages`);
+    }
+
+    // Build queue item pages
+    console.log('\n📋 Queue Pages:');
+    const queuePages = buildQueuePages();
+    if (queuePages > 0) {
+        console.log(`  ✓ Built ${queuePages} queue item pages`);
     }
 
     // Build API (TKT-x7k9-002, TKT-x7k9-003)
