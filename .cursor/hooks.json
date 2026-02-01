@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeShellExecution": [
+      {
+        "type": "prompt",
+        "prompt": "Does this shell command look safe to run? Allow only non-destructive operations unless explicitly approved.",
+        "timeout": 10
+      }
+    ],
+    "beforeMCPExecution": [
+      {
+        "type": "prompt",
+        "prompt": "Is this MCP tool call safe and appropriate for the task? Deny if it changes data without approval.",
+        "timeout": 10
+      }
+    ],
+    "afterShellExecution": [
+      { "command": "./hooks/audit.sh" }
+    ],
+    "afterMCPExecution": [
+      { "command": "./hooks/audit.sh" }
+    ],
+    "afterFileEdit": [
+      { "command": "./hooks/audit.sh" }
+    ],
+    "stop": [
+      { "command": "./hooks/audit.sh", "loop_limit": 10 }
+    ]
+  }
+}

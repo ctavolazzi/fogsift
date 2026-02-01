@@ -1,0 +1,15 @@
+---
+description: "Repo-wide guardrails, workflow, and context use."
+alwaysApply: true
+---
+
+- Follow the workflow in `AGENTS.md` and `_work_efforts/devlog.md`.
+- Non-destructive, additive changes only; ask before deleting or overwriting.
+- NPM commands are allowed when needed; avoid `npm run dev/build` unless explicitly required.
+- Prefer MCP tools when available; for repo files use MCP filesystem; for user-level paths use direct tools.
+- Use `@Files`, `@Folders`, `@Code`, and `@Docs` intentionally; avoid over-attaching.
+- GitHub integration: the Cursor GitHub app is required for cloud agents/Bugbot; use `@cursor` on PRs/issues to trigger agents. Do not change permissions or IP allowlist without explicit request.
+- Ignore files: `.cursorignore` blocks semantic search, Tab/Agent/Inline Edit, and @ mentions; terminal/MCP tools are not blocked. Use `.cursorindexingignore` for indexing-only exclusions. Global ignore list can be set in Cursor settings.
+- Extensions: Cursor uses Open VSX with additional verification. Install via Extensions panel or `cursor:extension/publisher.extensionname`.
+- Parallel agents: worktrees are isolated; use Apply to merge changes. LSP is not supported in worktrees. Optional settings include `cursor.worktreeCleanupIntervalHours`, `cursor.worktreeMaxCount`, and `git.showCursorWorktrees`.
+- Keep rules short and link to canonical files instead of copying large content.

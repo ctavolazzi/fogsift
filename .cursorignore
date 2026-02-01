@@ -1,0 +1,13 @@
+# Approved by user: 2026-01-24
+# Security
+**/.env
+**/.env.*
+**/secrets.json
+**/credentials.json
+**/*.pem
+**/*.key
+**/id_rsa
+
+# Project noise
+.empirica/
+.empirica_reflex_logs/

@@ -1,0 +1,14 @@
+{
+  "realm_active": true,
+  "drive_path": "/Volumes/Easystore",
+  "drive_name": "Easystore",
+  "last_checked": "2026-01-16T21:17:52.283010",
+  "storage_stats": {
+    "total_content": 0,
+    "content_on_external": 0,
+    "content_local": 0,
+    "total_pdfs": 0,
+    "pdfs_on_external": 0,
+    "pdfs_local": 0
+  }
+}

@@ -339,23 +339,25 @@
     border-color: var(--matrix-green);
 }
 
+/* Override for readability - menu always uses light background */
 [data-theme="matrix"] .theme-picker-menu {
-    background: rgba(0, 0, 0, 0.98);
-    border: 1px solid var(--matrix-green);
+    background: #f5f0e6 !important; /* Force light background */
+    border: 2px solid #d4c4a8 !important; /* Light border */
 }
 
 [data-theme="matrix"] .theme-picker-option {
-    color: var(--matrix-green);
+    color: #4a2c2a !important; /* Dark text for readability */
     font-family: var(--font-mono);
     transition: background 0.15s ease;
 }
 
 [data-theme="matrix"] .theme-picker-option:hover {
-    background: rgba(0, 255, 65, 0.15);
+    background: #e8e0d0 !important; /* Light hover */
 }
 
 [data-theme="matrix"] .theme-picker-option[aria-selected="true"] {
-    background: rgba(0, 255, 65, 0.2);
+    background: #e8e0d0 !important; /* Light selected background */
+    color: #e07b3c !important; /* Orange for selected text */
 }
 
 /* === LINKS === */

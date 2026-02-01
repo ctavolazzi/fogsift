@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievement Gallery - FogSift</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #107c10, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            background: rgba(255,255,255,0.05);
+            padding: 20px 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #107c10;
+        }
+        
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            height: 20px;
+            margin: 20px 0 40px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-fill {
+            background: linear-gradient(90deg, #107c10, #4CAF50);
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.8rem;
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #107c10;
+            border-color: #107c10;
+        }
+        
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(180deg, #3a3a3a 0%, #2a2a2a 50%, #1a1a1a 100%);
+            border: 2px solid #4a4a4a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            gap: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: #107c10;
+            box-shadow: 0 10px 30px rgba(16,124,16,0.3);
+        }
+        
+        .achievement-card.locked {
+            opacity: 0.5;
+            filter: grayscale(1);
+        }
+        
+        .achievement-card.locked:hover {
+            opacity: 0.7;
+            filter: grayscale(0.5);
+        }
+        
+        .achievement-card.secret.locked .card-title,
+        .achievement-card.secret.locked .card-desc {
+            filter: blur(5px);
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #107c10 0%, #0e6b0e 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(16,124,16,0.4);
+        }
+        
+        .achievement-card.locked .card-icon {
+            background: linear-gradient(135deg, #555 0%, #333 100%);
+            box-shadow: none;
+        }
+        
+        .card-content {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 5px;
+        }
+        
+        .card-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .card-score {
+            color: #107c10;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .card-desc {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+        
+        .card-date {
+            color: #666;
+            font-size: 0.75rem;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .action-btn {
+            background: linear-gradient(180deg, #107c10 0%, #0a5a0a 100%);
+            border: none;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(16,124,16,0.4);
+        }
+        
+        .action-btn.secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .action-btn.danger {
+            background: linear-gradient(180deg, #c62828 0%, #8e0000 100%);
+        }
+        
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #333;
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+        
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .stats { gap: 20px; }
+            .stat { padding: 15px 20px; }
+            .stat-value { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏆 Achievement Gallery</h1>
+            <p class="subtitle">Your coding milestones</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" id="gamerscore">0</div>
+                <div class="stat-label">Gamerscore</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="unlocked-count">0</div>
+                <div class="stat-label">Unlocked</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" id="total-count">0</div>
+                <div class="stat-label">Total</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+            <span class="progress-text" id="progress-text">0%</span>
+        </div>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="unlocked">Unlocked</button>
+            <button class="filter-btn" data-filter="locked">Locked</button>
+        </div>
+        
+        <div class="achievements-grid" id="achievements-grid"></div>
+        
+        <div class="actions">
+            <button class="action-btn" id="unlock-random">🎲 Unlock Random</button>
+            <button class="action-btn secondary" id="export-btn">📤 Export</button>
+            <button class="action-btn danger" id="reset-btn">🗑️ Reset All</button>
+        </div>
+    </div>
+    
+    <div class="toast" id="toast"></div>
+    
+    <script>
+        // Achievement definitions
+        const ACHIEVEMENTS = [
+            { id: 'first-sale', icon: '💰', title: 'First Sale!', score: 100, desc: 'Someone paid real money for your work' },
+            { id: 'ship-it', icon: '🚀', title: 'Ship It!', score: 50, desc: 'Deployed to production' },
+            { id: 'bug-squash', icon: '🐛', title: 'Bug Squasher', score: 25, desc: 'Fixed a nasty bug' },
+            { id: 'all-green', icon: '✅', title: 'All Green', score: 25, desc: 'All tests passing' },
+            { id: 'night-owl', icon: '🌙', title: 'Night Owl', score: 10, desc: 'Coding past midnight' },
+            { id: 'early-bird', icon: '☀️', title: 'Early Bird', score: 10, desc: 'Coding before 7am' },
+            { id: 'streak-7', icon: '🔥', title: '7 Day Streak', score: 35, desc: '7 consecutive days of commits' },
+            { id: 'streak-30', icon: '🔥', title: '30 Day Streak', score: 150, desc: '30 consecutive days of commits' },
+            { id: 'hello-world', icon: '💻', title: 'Hello World', score: 15, desc: 'Made your first commit' },
+            { id: 'weekend-warrior', icon: '📅', title: 'Weekend Warrior', score: 15, desc: 'Coding on the weekend' },
+            { id: 'clean-code', icon: '✨', title: 'Clean Code', score: 30, desc: 'Refactored legacy code' },
+            { id: 'open-source', icon: '🌍', title: 'Open Sourcerer', score: 50, desc: 'Contributed to open source' },
+            { id: 'pr-merged', icon: '🔀', title: 'Merge Master', score: 25, desc: 'PR merged to main' },
+            { id: 'first-pr', icon: '🔱', title: 'Contributor', score: 25, desc: 'Opened your first PR' },
+            { id: 'docs-written', icon: '📖', title: 'Future You Thanks You', score: 20, desc: 'Wrote documentation' },
+            { id: 'secret-1', icon: '👑', title: 'Secret Achievement', score: 500, desc: 'You found the secret!', secret: true },
+            { id: 'secret-2', icon: '🏆', title: 'Completionist', score: 100, desc: 'Unlocked all achievements', secret: true },
+        ];
+        
+        const STORAGE_KEY = 'fogsift-achievements';
+        
+        // Load state from localStorage
+        function loadState() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+            } catch {
+                return {};
+            }
+        }
+        
+        // Save state to localStorage
+        function saveState(state) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+        }
+        
+        // Get unlocked achievements
+        function getUnlocked() {
+            return loadState();
+        }
+        
+        // Unlock an achievement
+        function unlock(id) {
+            const state = loadState();
+            if (!state[id]) {
+                state[id] = { unlockedAt: new Date().toISOString() };
+                saveState(state);
+                showToast(`🏆 Achievement Unlocked!`);
+                return true;
+            }
+            return false;
+        }
+        
+        // Lock an achievement
+        function lock(id) {
+            const state = loadState();
+            if (state[id]) {
+                delete state[id];
+                saveState(state);
+                return true;
+            }
+            return false;
+        }
+        
+        // Reset all achievements
+        function resetAll() {
+            if (confirm('Are you sure you want to reset all achievements?')) {
+                localStorage.removeItem(STORAGE_KEY);
+                render();
+                showToast('All achievements reset');
+            }
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+        
+        // Render the gallery
+        function render(filter = 'all') {
+            const unlocked = getUnlocked();
+            const grid = document.getElementById('achievements-grid');
+            
+            // Calculate stats
+            const unlockedCount = Object.keys(unlocked).length;
+            const totalScore = ACHIEVEMENTS
+                .filter(a => unlocked[a.id])
+                .reduce((sum, a) => sum + a.score, 0);
+            const maxScore = ACHIEVEMENTS.reduce((sum, a) => sum + a.score, 0);
+            const percent = Math.round((totalScore / maxScore) * 100);
+            
+            // Update stats
+            document.getElementById('gamerscore').textContent = totalScore;
+            document.getElementById('unlocked-count').textContent = unlockedCount;
+            document.getElementById('total-count').textContent = ACHIEVEMENTS.length;
+            document.getElementById('progress-fill').style.width = percent + '%';
+            document.getElementById('progress-text').textContent = `${percent}% Complete (${totalScore}/${maxScore}G)`;
+            
+            // Filter achievements
+            let filtered = ACHIEVEMENTS;
+            if (filter === 'unlocked') filtered = ACHIEVEMENTS.filter(a => unlocked[a.id]);
+            if (filter === 'locked') filtered = ACHIEVEMENTS.filter(a => !unlocked[a.id]);
+            
+            // Render cards
+            grid.innerHTML = filtered.map(achievement => {
+                const isUnlocked = unlocked[achievement.id];
+                const date = isUnlocked ? new Date(unlocked[achievement.id].unlockedAt).toLocaleDateString() : '';
+                const classes = [
+                    'achievement-card',
+                    isUnlocked ? '' : 'locked',
+                    achievement.secret ? 'secret' : ''
+                ].filter(Boolean).join(' ');
+                
+                const displayTitle = !isUnlocked && achievement.secret ? '???' : achievement.title;
+                const displayDesc = !isUnlocked && achievement.secret ? 'Secret achievement' : achievement.desc;
+                
+                return `
+                    <div class="${classes}" data-id="${achievement.id}">
+                        <div class="card-icon">${achievement.icon}</div>
+                        <div class="card-content">
+                            <div class="card-header">
+                                <span class="card-title">${displayTitle}</span>
+                                <span class="card-score">${achievement.score}G</span>
+                            </div>
+                            <div class="card-desc">${displayDesc}</div>
+                            ${isUnlocked ? `<div class="card-date">Unlocked ${date}</div>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+            
+            // Add click handlers
+            grid.querySelectorAll('.achievement-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = card.dataset.id;
+                    if (unlocked[id]) {
+                        lock(id);
+                    } else {
+                        unlock(id);
+                    }
+                    render(filter);
+                });
+            });
+        }
+        
+        // Export achievements
+        function exportAchievements() {
+            const data = {
+                achievements: loadState(),
+                exportedAt: new Date().toISOString()
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'fogsift-achievements.json';
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast('Achievements exported!');
+        }
+        
+        // Unlock random achievement
+        function unlockRandom() {
+            const unlocked = getUnlocked();
+            const locked = ACHIEVEMENTS.filter(a => !unlocked[a.id] && !a.secret);
+            if (locked.length === 0) {
+                showToast('All achievements unlocked!');
+                return;
+            }
+            const random = locked[Math.floor(Math.random() * locked.length)];
+            unlock(random.id);
+            render(currentFilter);
+        }
+        
+        // Initialize
+        let currentFilter = 'all';
+        
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFilter = btn.dataset.filter;
+                render(currentFilter);
+            });
+        });
+        
+        document.getElementById('unlock-random').addEventListener('click', unlockRandom);
+        document.getElementById('export-btn').addEventListener('click', exportAchievements);
+        document.getElementById('reset-btn').addEventListener('click', resetAll);
+        
+        // Initial render
+        render();
+        
+        // Log helper
+        console.log('%c🏆 Achievement Gallery loaded! Click achievements to toggle unlock state.', 
+            'color: #107c10; font-weight: bold;');
+    </script>
+</body>
+</html>

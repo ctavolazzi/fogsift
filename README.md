@@ -86,6 +86,21 @@ fogsift/
 - **[AGENTS.md](AGENTS.md)** - AI development workflow
 - **[FEATURE_VOID_AUDIT.md](FEATURE_VOID_AUDIT.md)** - Feature gap analysis
 
+## Cursor Setup
+
+- Project rules: `.cursor/rules/` (legacy `.cursorrules` retained)
+- Commands: `.cursor/commands/` (project), `~/.cursor/commands/` (global)
+- Skills: `.cursor/skills/`, `~/.cursor/skills/`
+- Subagents: `.cursor/agents/`, `~/.cursor/agents/`
+- Hooks: `.cursor/hooks.json`, `~/.cursor/hooks.json` (light audit/ask policy)
+- @Docs sources: `~/.cursor/DOCS_SOURCES.md` (add via Settings → Indexing & Docs)
+- Semantic Search: `.cursorignore` excludes secrets/noise; `.cursorindexingignore` excludes indexing-only paths (e.g., `dist/`)
+- MCP: `~/.cursor/mcp.json` (no secrets in repo; see `~/.cursor/MCP_MIGRATION_GUIDE.md`)
+- GitHub integration: Cursor GitHub app required for cloud agents/Bugbot; use `@cursor` on PRs/issues
+- Extensions: Open VSX + Cursor verification; install via Extensions panel or `cursor:extension/publisher.extensionname`
+- Parallel agents: `.cursor/worktrees.json` + setup scripts; LSP not supported in worktrees; use Apply to merge
+- Agent guardrail: avoid `npm run dev` or `npm run build` unless explicitly requested
+
 ## Version
 
 **Current:** v0.0.5

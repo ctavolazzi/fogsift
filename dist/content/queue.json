@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "description": "FogSift Problem Queue - Submissions waiting to be worked on",
+    "note": "MOCK DATA - These are example submissions to show the format. Real submissions will appear here once we go live.",
+    "updated": "2026-01-21T00:00:00Z",
+    "is_mock_data": true
+  },
+  "stats": {
+    "total_submitted": 7,
+    "completed": 4,
+    "in_queue": 3,
+    "avg_days_to_pickup": 2.3
+  },
+  "queue": [
+    {
+      "id": "PST-001",
+      "status": "in_queue",
+      "submitted": "2026-01-20T14:30:00Z",
+      "display_name": "Anonymous",
+      "problem_summary": "SaaS onboarding flow has 60% drop-off rate",
+      "category": "Product/UX",
+      "anonymized": true,
+      "position": 1
+    },
+    {
+      "id": "PST-002",
+      "status": "in_queue",
+      "submitted": "2026-01-20T09:15:00Z",
+      "display_name": "Marcus T.",
+      "problem_summary": "Can't figure out why my podcast isn't growing despite consistent uploads",
+      "category": "Marketing/Growth",
+      "anonymized": false,
+      "position": 2
+    },
+    {
+      "id": "PST-003",
+      "status": "in_queue",
+      "submitted": "2026-01-19T22:00:00Z",
+      "display_name": "Small Biz Owner",
+      "problem_summary": "Inventory system is a mess - spreadsheets everywhere, no single source of truth",
+      "category": "Operations",
+      "anonymized": true,
+      "position": 3
+    }
+  ],
+  "completed": [
+    {
+      "id": "PST-000-D",
+      "status": "completed",
+      "submitted": "2026-01-17T10:00:00Z",
+      "completed": "2026-01-19T15:30:00Z",
+      "display_name": "Tech Founder",
+      "problem_summary": "Team communication is scattered across Slack, email, and texts",
+      "category": "Operations",
+      "outcome": "go_deeper",
+      "outcome_text": "Found 3 quick wins and a deeper workflow issue worth exploring",
+      "video_published": true,
+      "anonymized": true
+    },
+    {
+      "id": "PST-000-C",
+      "status": "completed",
+      "submitted": "2026-01-15T16:45:00Z",
+      "completed": "2026-01-17T12:00:00Z",
+      "display_name": "Sarah K.",
+      "problem_summary": "Pricing my freelance services - always undercharging",
+      "category": "Business Strategy",
+      "outcome": "this_is_sick",
+      "outcome_text": "Built a simple pricing calculator framework she can use",
+      "video_published": true,
+      "anonymized": false
+    },
+    {
+      "id": "PST-000-B",
+      "status": "completed",
+      "submitted": "2026-01-14T08:30:00Z",
+      "completed": "2026-01-16T14:00:00Z",
+      "display_name": "Anonymous",
+      "problem_summary": "Website loads slowly but host says it's fine",
+      "category": "Technical",
+      "outcome": "i_know_people",
+      "outcome_text": "Identified the issue (unoptimized images + bad caching) and referred to a specialist",
+      "video_published": true,
+      "anonymized": true
+    },
+    {
+      "id": "PST-000-A",
+      "status": "completed",
+      "submitted": "2026-01-12T11:00:00Z",
+      "completed": "2026-01-14T09:30:00Z",
+      "display_name": "DevOps Dan",
+      "problem_summary": "CI/CD pipeline takes 45 minutes, killing productivity",
+      "category": "Technical",
+      "outcome": "go_deeper",
+      "outcome_text": "Found caching opportunities that could cut it to 12 minutes",
+      "video_published": true,
+      "anonymized": false
+    }
+  ]
+}

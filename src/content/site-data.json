@@ -8,7 +8,7 @@
   },
   "hero": {
     "headline": "Clear answers to good questions.",
-    "subhead": "Something eating up your",
+    "subhead": "Something taking too long with your",
     "rotatingWords": ["time?", "bandwidth?", "budget?", "capacity?", "energy?"],
     "cta": "Let's solve it together.",
     "primaryButton": {
@@ -33,17 +33,17 @@
       {
         "number": "02",
         "title": "Review",
-        "description": "Once a day, we review all submissions and pick two."
+        "description": "Once a day, we review submissions and choose what to work on next."
       },
       {
         "number": "03",
         "title": "Work",
-        "description": "Up to an hour of focused problem-solving. Filmed, no face."
+        "description": "Up to an hour of focused work on your submission."
       },
       {
         "number": "04",
         "title": "Deliver",
-        "description": "You get the video + a written report."
+        "description": "You receive a PDF write-up and a video response."
       },
       {
         "number": "05",
@@ -65,8 +65,8 @@
       "tag": "THE SWEET SPOT",
       "name": "Focus Session",
       "price": "$20",
-      "description": "Your $20 adds your problem to the queue. It's the filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. A full-on research squad (me + AI + friends + network) focuses on your submission for up to an hour (filmed), and you get the video + a written report.",
-      "note": "Worth way more than $20, kept low so anyone can access it. Maybe we solve it. Maybe we don't. Either way, you walk away with something.",
+      "description": "A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.",
+      "note": "Your $20 adds your problem to the queue. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. You receive a PDF write-up and a video response. A video may or may not be published. Submissions may be used for other purposes, including marketing. Maybe we solve it. Maybe we don't. Either way, you walk away with something.",
       "capacity": "Limited to 10 slots/week",
       "cta": {
         "text": "Join the Queue",

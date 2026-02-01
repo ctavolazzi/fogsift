@@ -1,0 +1,9 @@
+---
+description: "Scripts edits in scripts/."
+globs: "scripts/**"
+alwaysApply: false
+---
+
+- Keep scripts direct and minimal; avoid new dependencies unless required.
+- Prefer environment variables over hardcoded values.
+- Document usage updates in README or _docs when behavior changes.

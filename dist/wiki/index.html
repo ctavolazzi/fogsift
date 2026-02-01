@@ -23,7 +23,7 @@
     <link rel="icon" type="image/png" href="../favicon.png">
 
     <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
-    <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard','matrix','sky','synthwave','pipboy','rivendell','camo','barbie','ocean'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
+    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,32 +64,34 @@
     <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
+    <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
         <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
-        <a href="../index.html" class="mobile-link">HOME</a>
-        <a href="index.html" class="mobile-link wiki-nav-active">WIKI</a>
-        <a href="../index.html#process" class="mobile-link">PROCESS</a>
-        <a href="../index.html#about" class="mobile-link">ABOUT</a>
-        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
-        <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="mobile-link">CONTACT</a>
+        <a href="../index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="../wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="../process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="../queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="../faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
+        <a href="../pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <a href="../contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
-    <div class="nav-wrapper">
+    <!-- Main Navigation -->
+    <header class="nav-wrapper" role="banner">
         <div class="main-nav">
-            <a href="../index.html" class="brand">
+            <a href="../index.html" class="brand" aria-label="Fogsift home">
                 <img src="../assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
-
-            <div class="menu-items">
-                <div class="menu-item"><a href="index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
-                <div class="menu-item"><a href="../index.html#process" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="../index.html#about" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="../index.html#pricing" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="menu-link cta-link">CONTACT</a></div>
-            </div>
-
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="../wiki/index.html" class="menu-link" aria-current="page">WIKI</a></div>
+                <div class="menu-item"><a href="../process.html" class="menu-link">PROCESS</a></div>
+                <div class="menu-item"><a href="../queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="../faq.html" class="menu-link">FAQ</a></div>
+                <div class="menu-item"><a href="../pricing.html" class="menu-link">PRICING</a></div>
+                <div class="menu-item"><a href="../contact.html" class="menu-link cta-link">CONTACT</a></div>
+            </nav>
             <div class="nav-controls">
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
                     <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
@@ -172,7 +174,9 @@
                 </button>
             </div>
         </div>
+    </header>
 
+    <div class="wiki-breadcrumb-wrapper">
         <nav class="breadcrumb-bar" aria-label="Breadcrumb">
             <ol class="crumb-list">
                 <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
@@ -485,7 +489,7 @@
 
 
         <footer class="wiki-index-footer">
-            <p>Last updated: 2026-01-05</p>
+            <p>Last updated: 2026-01-23</p>
             <a href="../index.html" class="wiki-back-link">← Back to Fogsift</a>
         </footer>
     </div>

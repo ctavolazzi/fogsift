@@ -66,19 +66,28 @@ const CopyPageText = {
      * Copy page text to clipboard
      */
     async copy() {
+        const hasToast = typeof Toast !== 'undefined' && Toast.show && Toast.error;
         try {
             const text = this.extractText();
 
             if (!text) {
-                Toast.error('No text content found to copy');
+                if (hasToast) {
+                    Toast.error('No text content found to copy');
+                } else {
+                    console.warn('No text content found to copy');
+                }
                 return;
             }
 
             await navigator.clipboard.writeText(text);
-            Toast.show('Page text copied to clipboard');
+            if (hasToast) {
+                Toast.show('Page text copied to clipboard');
+            }
         } catch (err) {
             console.error('Failed to copy text:', err);
-            Toast.error('Failed to copy text to clipboard');
+            if (hasToast) {
+                Toast.error('Failed to copy text to clipboard');
+            }
         }
     }
 };

@@ -1,0 +1,11 @@
+---
+description: "Work effort tracking and devlog discipline."
+globs: "_work_efforts/**"
+alwaysApply: false
+---
+
+- Create work efforts as `WE-YYMMDD-xxxx_description` with `tickets/`.
+- Keep index metadata accurate (status, last_updated).
+- Add tickets as `TKT-xxxx-NNN` with clear acceptance criteria.
+- Update `_work_efforts/devlog.md` for plans and completion summaries.
+- Keep tickets small, sequential, and actionable.

@@ -1,0 +1,25 @@
+{
+  "project_name": "fogsift",
+  "project_path": "/Users/ctavolazzi/Code/fogsift",
+  "project_type": "web",
+  "build_system": "nodejs",
+  "language": "javascript",
+  "hosting": "cloudflare_pages",
+  "description": "FogSift - Straight answers to complicated questions. A diagnostic consulting website.",
+  "created": "2026-01-25T09:25:40-08:00",
+  "waft_version": "0.3.1-alpha",
+  "integration": {
+    "waft_agents_enabled": true,
+    "work_effort_tracking": true,
+    "storage_location": "easystore_realm",
+    "storage_path": "/Volumes/Easystore/waft/fogsift/Realms/EasyStore_Realm/_work_efforts",
+    "fallback_storage": "local",
+    "fallback_path": "/Users/ctavolazzi/Code/fogsift/_work_efforts"
+  },
+  "metadata": {
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "frameworks": [],
+    "build_tool": "npm",
+    "deploy_target": "Cloudflare Pages"
+  }
+}

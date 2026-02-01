@@ -1,0 +1,10 @@
+---
+description: "Frontend edits in src (HTML/CSS/JS)."
+globs: "src/**"
+alwaysApply: false
+---
+
+- Keep vanilla HTML/CSS/JS; no new frameworks.
+- Follow existing structure and minimal inline logic.
+- Avoid abstractions until a pattern repeats 3+ times.
+- Do not run `npm run dev` or `npm run build`; manual dist sync only when instructed.

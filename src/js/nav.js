@@ -10,6 +10,7 @@ const Nav = {
     toggleMobile() {
         const drawer = document.getElementById(this.drawerId);
         const overlay = document.getElementById(this.overlayId);
+        if (!drawer) return;
         const isOpen = drawer.classList.contains('open');
 
         if (isOpen) {

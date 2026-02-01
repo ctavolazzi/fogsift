@@ -1,0 +1,50 @@
+{
+  "genome_id": "f38e75363f81c79976dffe2cd3a8b788192eb8aadc28ee5514f1ec0c1199a60b",
+  "genes": {
+    "font": {
+      "family": "'Times New Roman', 'Times', serif",
+      "size_body": 11,
+      "size_h1": 16,
+      "size_h2": 14,
+      "size_h3": 12,
+      "size_code": 9,
+      "line_height": 1.4
+    },
+    "margin": {
+      "top": 25.4,
+      "bottom": 25.4,
+      "left": 25.4,
+      "right": 25.4,
+      "paragraph_spacing": 8,
+      "section_spacing": 12
+    },
+    "color": {
+      "text": "#000000",
+      "background": "#FFFFFF",
+      "heading": "#000000",
+      "accent": "#000000",
+      "code_bg": "#f5f5f5",
+      "code_text": "#000000",
+      "border": "#cccccc"
+    },
+    "layout": {
+      "columns": 1,
+      "density": "normal",
+      "toc_enabled": false,
+      "page_numbers": true,
+      "header_enabled": true,
+      "footer_enabled": true
+    },
+    "name": "Clinical_Standard - FogSift - How It Works",
+    "description": ""
+  },
+  "generation": 0,
+  "parent_id": null,
+  "lineage_path": [
+    "f38e75363f81c79976dffe2cd3a8b788192eb8aadc28ee5514f1ec0c1199a60b"
+  ],
+  "scientific_name": "Node Beta, the Incomplete",
+  "fitness_score": null,
+  "created_at": "2026-01-24T01:30:20.750248",
+  "last_evaluated_at": null
+}

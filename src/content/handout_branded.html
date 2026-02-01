@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>FogSift Focus Session Handout</title>
+<style>
+:root {
+  --bg: #f5f0e6;
+  --text: #4a2c2a;
+  --accent: #e07b3c;
+  --panel: #fffaf3;
+  --accent-soft: #fff1e3;
+}
+@page {
+  size: letter;
+  margin: 0.6in;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica", "Arial", sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.page {
+  page-break-after: always;
+}
+.page:last-child {
+  page-break-after: auto;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+.brand-bar {
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), #f4b87e, var(--accent));
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.logo {
+  width: 120px;
+  height: auto;
+}
+.brand h1 {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: 0.02em;
+}
+.brand p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+}
+.kicker {
+  margin: 8px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+}
+.section {
+  margin-top: 12px;
+}
+.section h2 {
+  margin: 0 0 6px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+.section p {
+  margin: 0 0 6px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 11px;
+  line-height: 1.45;
+}
+.list li {
+  margin-bottom: 4px;
+}
+.callout {
+  border: 2px solid var(--accent);
+  background: #fff4e8;
+  padding: 12px;
+  border-radius: 8px;
+}
+.callout h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+}
+.callout p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.process {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  margin-top: 8px;
+}
+.process .step {
+  border: 1px solid #e7d6c5;
+  background: var(--panel);
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  text-align: center;
+}
+.data-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+.data-card {
+  background: var(--accent-soft);
+  border: 1px solid #f0d2b6;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: 10px;
+}
+.data-card strong {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+.shots {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 8px;
+}
+.shot {
+  border: 1px solid #e7d6c5;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #ffffff;
+}
+.shot img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.shot figcaption {
+  font-size: 10px;
+  padding: 6px 8px;
+  background: #fffaf3;
+}
+.cta {
+  margin-top: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  display: inline-block;
+}
+.footer {
+  margin-top: 12px;
+  border-top: 1px solid #e7d6c5;
+  padding-top: 8px;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.footer .contact {
+  font-size: 11px;
+}
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 6px;
+}
+.small {
+  font-size: 10px;
+}
+</style>
+</head>
+<body>
+<section class="page">
+  <div class="brand-bar"></div>
+  <div class="header">
+    <img class="logo" src="../assets/logo-color-transparent.png" alt="FogSift logo">
+    <div class="brand">
+      <h1>FogSift</h1>
+      <p>Clear answers to good questions</p>
+      <div class="kicker">Something taking too long?</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>At a glance</h2>
+    <div class="data-grid">
+      <div class="data-card"><strong>Timebox</strong>Up to 60 minutes of focused analysis.</div>
+      <div class="data-card"><strong>Deliverables</strong>1 PDF write-up + 1 video response.</div>
+      <div class="data-card"><strong>Outcomes</strong>Fix, roadmap, or referral.</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>What it is</h2>
+    <p>FogSift is a focused problem solving service. We work on everything from Real Estate to Dungeons & Dragons, and we focus on whatever you submit.</p>
+    <p>You are not buying a generic report. You are buying a time-boxed session that converts confusion into a clear path forward.</p>
+  </div>
+
+  <div class="section">
+    <h2>What it does</h2>
+    <ul class="list">
+      <li>Clarifies the core problem and the decision behind it</li>
+      <li>Surfaces constraints, tradeoffs, and hidden blockers</li>
+      <li>Maps options, risks, and the next best move</li>
+      <li>Delivers usable direction instead of more noise</li>
+    </ul>
+  </div>
+
+  <div class="section callout">
+    <div class="badge">Focus Session</div>
+    <h3>$20 for up to one hour of focus</h3>
+    <p>Your submission secures up to one hour of FogSift focus, plus a PDF write-up and a video response scoped to your submission.</p>
+    <p class="small">We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+    <a class="cta" href="https://ko-fi.com/fogsift">Join the Queue</a>
+  </div>
+
+  <div class="section">
+    <h2>Mobile snapshot</h2>
+    <figure class="shot">
+      <img src="file:///var/folders/xs/91hrztpj6hvgcqdz_fkxrcdc0000gn/T/cursor/screenshots/handout-hero-mobile.png" alt="FogSift hero section screenshot">
+      <figcaption>Hero section on mobile.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="page">
+  <div class="section">
+    <h2>How it works</h2>
+    <div class="process">
+      <div class="step"><strong>Submit</strong><br>Send your problem</div>
+      <div class="step"><strong>Review</strong><br>We schedule next</div>
+      <div class="step"><strong>Work</strong><br>Up to 1 hour</div>
+      <div class="step"><strong>Deliver</strong><br>PDF + video</div>
+      <div class="step"><strong>Outcome</strong><br>Clear next step</div>
+    </div>
+    <ul class="list" style="margin-top: 6px;">
+      <li>Submit the problem, context, and what you already tried</li>
+      <li>We review daily and schedule the next work block</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Outcomes + CTA</h2>
+    <ul class="list">
+      <li><strong>Go deeper:</strong> We see something real and may propose additional work</li>
+      <li><strong>Best fit:</strong> This is not our wheelhouse and we point you to someone else</li>
+      <li><strong>Green light:</strong> You should do this and we outline the approach</li>
+    </ul>
+    <a class="cta" href="https://ko-fi.com/fogsift">Submit your Focus Session</a>
+  </div>
+
+  <div class="section">
+    <h2>What you receive</h2>
+    <ul class="list">
+      <li>A PDF write-up scoped to your submission</li>
+      <li>A video response with the reasoning process</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>What to include</h2>
+    <ul class="list">
+      <li>Your main question or decision</li>
+      <li>Relevant context and constraints</li>
+      <li>Any privacy or anonymization requests</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Queue and disclosures</h2>
+    <p>Your $20 is a one-time fee per submission. If timing is critical, say so and we will do our best, but there is no guaranteed timeline.</p>
+    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed and do not include secrets.</p>
+  </div>
+
+  <div class="section">
+    <h2>Mobile snapshots</h2>
+    <div class="shots">
+      <figure class="shot">
+        <img src="file:///var/folders/xs/91hrztpj6hvgcqdz_fkxrcdc0000gn/T/cursor/screenshots/handout-pricing-mobile.png" alt="FogSift pricing section screenshot">
+        <figcaption>The deal and outcomes on mobile.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="contact">
+      fogsift.com<br>
+      ko-fi.com/fogsift<br>
+      christopher@fogsift.com
+    </div>
+    <div class="small">Copyright 2026 FogSift</div>
+  </div>
+</section>
+</body>
+</html>

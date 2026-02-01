@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FogSift - How It Works</title>
+    <style>
+        @page {
+            size: letter;
+            margin: 25.4mm 25.4mm 25.4mm 25.4mm;
+            @top-right {
+                content: "Page " counter(page);
+                font-family: "Helvetica Neue", "Arial", sans-serif;
+                font-size: 9pt;
+                color: #000000;
+                opacity: 0.6;
+            }
+        }
+        @page :first {
+            @top-right { content: none; }
+        }
+        body {
+            font-family: 'Times New Roman', 'Times', serif;
+            font-size: 11pt;
+            line-height: 1.4;
+            color: #000000;
+            background: #FFFFFF;
+        }
+        h1 {
+            font-family: "Helvetica Neue", "Arial", sans-serif;
+            font-size: 16pt;
+            text-align: center;
+            margin-bottom: 8pt;
+        }
+        .abstract {
+            background: #f5f5f5;
+            border-left: 3pt solid #cccccc;
+            padding: 8pt;
+            margin: 8pt 0;
+        }
+        .abstract-title {
+            font-family: "Helvetica Neue", "Arial", sans-serif;
+            font-weight: 700;
+            font-size: 12pt;
+            margin-bottom: 4.0pt;
+            text-transform: uppercase;
+        }
+        .author-info {
+            font-size: 10pt;
+            text-align: center;
+            margin: 8pt 0;
+            opacity: 0.7;
+        }
+        .document-metadata {
+            font-size: 9.5pt;
+            color: #00000088;
+            margin: 8pt 0;
+            padding: 4.0pt;
+            background: #f5f5f540;
+            border-left: 3pt solid #000000;
+        }
+        .document-metadata p {
+            margin: 2pt 0;
+        }
+        .document-metadata strong {
+            font-weight: 600;
+        }
+        .diagram {
+            text-align: center;
+            margin: 8pt 0;
+        }
+        .diagram img {
+            max-width: 60%;
+            max-height: 80pt;
+            height: auto;
+            border: 0.5pt solid #cccccc;
+        }
+        .figure-caption {
+            font-size: 9.5pt;
+            font-style: italic;
+            text-align: center;
+            margin-top: 3pt;
+        }
+        h2 {
+            font-family: "Helvetica Neue", "Arial", sans-serif;
+            font-size: 14pt;
+            font-weight: 600;
+            margin-top: 12pt;
+            margin-bottom: 8pt;
+        }
+        h2::before {
+            counter-increment: section;
+            content: counter(section) ". ";
+        }
+        body {
+            counter-reset: section;
+        }
+        p {
+            margin: 0 0 8pt 0;
+            text-align: justify;
+        }
+        .pillar {
+            border-left: 4pt solid #cccccc;
+            padding: 8pt;
+            margin: 8pt 0;
+        }
+        .pillar-title {
+            font-family: "Helvetica Neue", "Arial", sans-serif;
+            font-weight: 700;
+            font-size: 12pt;
+            margin-bottom: 4.0pt;
+            text-transform: uppercase;
+        }
+        .pillar-body {
+            margin-top: 4.0pt;
+        }
+        /* Status Components Styling */
+        .status-section {
+            margin: 12pt 0;
+        }
+        .status-body {
+            margin-top: 4.0pt;
+        }
+        .epistemic-state {
+            background: #f5f5f5;
+            border-left: 3pt solid #000000;
+            padding: 8pt;
+            margin: 8pt 0;
+        }
+        .moon-phase {
+            display: flex;
+            align-items: center;
+            gap: 8pt;
+            margin-bottom: 4.0pt;
+        }
+        .moon-emoji {
+            font-size: 14pt;
+        }
+        .moon-desc {
+            font-weight: 600;
+            color: #000000;
+        }
+        .epistemic-phase {
+            text-align: center;
+            margin: 8pt 0;
+        }
+        .phase-badge {
+            display: inline-block;
+            padding: 6pt 12pt;
+            background: #000000;
+            color: #FFFFFF;
+            font-weight: 700;
+            font-size: 12pt;
+            border-radius: 4pt;
+            margin: 0;
+        }
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8pt 0;
+            font-size: 11pt;
+        }
+        table th {
+            background: #f5f5f5;
+            font-family: "Helvetica Neue", "Arial", sans-serif;
+            font-weight: 600;
+            padding: 6pt 8pt;
+            text-align: left;
+            border-bottom: 2pt solid #cccccc;
+        }
+        table td {
+            padding: 6pt 8pt;
+            border-bottom: 1pt solid #cccccc;
+        }
+        table tr:last-child td {
+            border-bottom: none;
+        }
+        .gamification-table, .health-table, .metrics-table, .grouped-metrics-table {
+            font-size: 10pt;
+        }
+        .flight-events {
+            list-style: none;
+            padding-left: 0;
+        }
+        .flight-events li {
+            margin: 4pt 0;
+            padding-left: 12pt;
+            text-indent: -12pt;
+        }
+        .flight-events li::before {
+            content: "▸ ";
+            color: #000000;
+            font-weight: bold;
+        }
+
+        /* Progress Bar (inspired by AI-DnD quest progress) */
+        .progress-container {
+            margin: 8pt 0;
+        }
+        .progress-label {
+            font-size: 11pt;
+            font-weight: bold;
+            margin-bottom: 4pt;
+            color: #000000;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 10pt;
+            background: #f5f5f5;
+            border-radius: 5pt;
+            overflow: hidden;
+            border: 1pt solid #00000020;
+        }
+        .progress-fill {
+            height: 100%;
+            background: #000000;
+            transition: width 0.3s;
+            border-radius: 5pt;
+        }
+        .progress-text {
+            font-size: 10pt;
+            color: #00000088;
+            margin-top: 2pt;
+            text-align: right;
+        }
+
+        /* Status Badges (inspired by AI-DnD status effects) */
+        .status-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4pt;
+            margin: 4.0pt 0;
+        }
+        .status-badge {
+            padding: 3pt 8pt;
+            border-radius: 4pt;
+            font-size: 10pt;
+            display: inline-block;
+            border: 1pt solid;
+            white-space: nowrap;
+        }
+        .status-badge.status-good {
+            background: #e8f5e9;
+            color: #2e7d32;
+            border-color: #4caf50;
+        }
+        .status-badge.status-warning {
+            background: #fff3e0;
+            color: #e65100;
+            border-color: #ff9800;
+        }
+        .status-badge.status-error {
+            background: #ffebee;
+            color: #c62828;
+            border-color: #f44336;
+        }
+        .status-badge.status-info {
+            background: #f5f5f5;
+            color: #000000;
+            border-color: #000000;
+        }
+
+        /* Grouped Metrics (inspired by AI-DnD inventory display) */
+        .metrics-group {
+            margin: 8pt 0;
+        }
+        .group-description {
+            font-size: 10pt;
+            color: #00000088;
+            margin-bottom: 6pt;
+            font-style: italic;
+        }
+        .grouped-metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+        .grouped-metrics-table td {
+            padding: 6pt 8pt;
+            border-bottom: 1pt solid #00000020;
+        }
+        .grouped-metrics-table tr:last-child td {
+            border-bottom: none;
+        }
+        .grouped-metrics-table .metric-label {
+            font-weight: 500;
+            color: #000000;
+            width: 60%;
+        }
+        .grouped-metrics-table .metric-value {
+            text-align: right;
+            font-weight: 600;
+            color: #000000;
+        }
+        .grouped-metrics-table .metric-value.status-good {
+            color: #2e7d32;
+        }
+        .grouped-metrics-table .metric-value.status-warning {
+            color: #e65100;
+        }
+        .grouped-metrics-table .metric-value.status-error {
+            color: #c62828;
+        }
+        .grouped-metrics-table .metric-value.status-info {
+            color: #000000;
+        }
+        .grouped-metrics-table .metric-unit {
+            font-size: 9pt;
+            color: #00000088;
+            font-weight: normal;
+            margin-left: 2pt;
+        }
+
+        /* Git Summary & Work Efforts Summary */
+        .git-summary, .work-efforts-summary {
+            margin: 8pt 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>FogSift - How It Works</h1>
+    
+    <div class="abstract"><div class="abstract-title">Abstract</div><p>You also receive a written report that captures findings, what we learned, and the most important decision in plain language.</p></div>
+    
+    <h2>Introduction</h2><div>You also receive a written report that captures findings, what we learned, and the most important decision in plain language.</div>
+    
+    <h2>Methodology</h2><div>Outcome is the final gate and the decision point, because the goal is clarity and momentum, not more noise.
+
+Work is the active analysis phase, and it is important because the thinking happens out loud, with tradeoffs stated plainly.
+
+<img src="file:///Users/ctavolazzi/Code/fogsift/src/assets/logo-color-transparent.png" alt="FogSift logo" style="width:160px; height:auto; display:block; margin-bottom:10pt;"> FogSift delivers clear answers to good questions, and the service is called Problem Shark Tank with a clear promise: make a decision that matters.
+
+The flow is Submit -> Review -> Work -> Deliver -> Outcome, and each step is a short gate that keeps the decision moving without extra noise.
+
+Submit means you send a concise problem statement with context, what you tried, and what success looks like so the work can start clean.
+
+Review is the fit and timing check, and we will decide if the problem is a match before it enters active work.</div>
+    
+    <h2>Conclusion</h2><div>The $20 price is the filter that keeps the queue open while still screening for real intent, and the call to action is simply Join Queue.
+
+What you always get is a recorded problem-solving session on video, filmed end to end so the reasoning is visible.
+
+Direction is guaranteed, and it lands as one of three outcomes with practical next steps you can act on immediately.
+
+The first outcome is "Let's go deeper," which means we found signal and want more work together on the same problem.
+
+The second outcome is "I know people," which means the issue is outside our lane and we will connect you to a better-fit expert.
+
+The third outcome is "This is sick," which means the idea is strong and you should do it, with a clear approach spelled out.
+
+Join at ko-fi.com/fogsift, email christopher@fogsift.com for questions, or visit fogsift.com for context and examples.</div>
+    
+    <div class="author-info"><p style="margin: 0;">WAFT Research Team</p><p style="margin: 2pt 0 0 0; font-size: 9.5pt;">2026-01-24</p></div>
+    
+    <div class="document-metadata" style="font-size: 9.5pt; color: #00000088; margin: 8pt 0; padding: 4.0pt; background: #f5f5f540; border-left: 3pt solid #000000;">
+                <p><strong>Author(s):</strong> WAFT Research Team</p><p style="margin-top: 4.0pt; padding-top: 4.0pt; border-top: 1pt solid #cccccc;"><strong>Generator:</strong> WAFT TwoPageGenerator | <strong>Style:</strong> Clinical_Standard - FogSift - How It Works | <strong>Generated:</strong> 2026-01-24 01:30:20 UTC | <strong>Version:</strong> 0.9.4 | <strong>Process:</strong> Adaptive component-based generation with 2-page constraint</p>
+            </div>
+    
+</body>
+</html>

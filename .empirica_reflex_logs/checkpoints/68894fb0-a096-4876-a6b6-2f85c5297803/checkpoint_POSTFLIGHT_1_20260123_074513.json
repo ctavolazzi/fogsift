@@ -1,0 +1,118 @@
+{
+  "session_id": "68894fb0-a096-4876-a6b6-2f85c5297803",
+  "phase": "POSTFLIGHT",
+  "round": 1,
+  "timestamp": "2026-01-23T07:45:10.245479+00:00",
+  "vectors": {
+    "know": 0.85,
+    "uncertainty": 0.2
+  },
+  "overall_confidence": 0.617,
+  "meta": {
+    "reasoning": "Generated branded FogSift handout PDF with custom HTML + WAFT GoldenTriangle; verified 2 pages.",
+    "task_summary": "Generated branded FogSift handout PDF with custom HTML + WAFT GoldenTriangle; verified 2 pages.",
+    "postflight_confidence": 0.8,
+    "calibration_accuracy": "moderate",
+    "deltas": {
+      "know": 0.25,
+      "uncertainty": -0.2
+    },
+    "calibration_issues": [],
+    "git_commit_sha": "fdb8b8b2371b02190fa068e6280bb9c1f4c60348",
+    "git_notes_ref": "empirica/session/68894fb0-a096-4876-a6b6-2f85c5297803/POSTFLIGHT/1"
+  },
+  "epistemic_tags": {},
+  "git_state": {
+    "head_commit": "0c933ba5dd8d9932d82d2e0f44dafa1527fca6a4",
+    "commits_since_last_checkpoint": [],
+    "uncommitted_changes": {
+      "files_modified": [
+        "_work_efforts/devlog.md",
+        "dist/404.html",
+        "dist/about.html",
+        "dist/api/articles.json",
+        "dist/api/meta.json",
+        "dist/api/wiki/index.json",
+        "dist/api/wiki/sitemap.json",
+        "dist/app.js",
+        "dist/contact.html",
+        "dist/disclaimer.html",
+        "dist/hi.html",
+        "dist/index.html",
+        "dist/pricing.html",
+        "dist/privacy.html",
+        "dist/process.html",
+        "dist/sitemap.xml",
+        "dist/styles.css",
+        "dist/wiki/case-studies/communication-breakdown.html",
+        "dist/wiki/case-studies/manufacturing-throughput.html",
+        "dist/wiki/case-studies/the-invisible-process.html",
+        "dist/wiki/concepts/cognitive-biases.html",
+        "dist/wiki/concepts/mental-models.html",
+        "dist/wiki/concepts/root-cause.html",
+        "dist/wiki/concepts/second-order-effects.html",
+        "dist/wiki/concepts/signal-vs-noise.html",
+        "dist/wiki/concepts/systems-thinking.html",
+        "dist/wiki/diagnostic-process.html",
+        "dist/wiki/faq.html",
+        "dist/wiki/field-notes/001-map-territory.html",
+        "dist/wiki/field-notes/002-precision-accuracy.html",
+        "dist/wiki/field-notes/003-entropy.html",
+        "dist/wiki/field-notes/004-bottlenecks.html",
+        "dist/wiki/field-notes/005-tribal-knowledge.html",
+        "dist/wiki/field-notes/006-incentive-alignment.html",
+        "dist/wiki/field-notes/007-documentation-debt.html",
+        "dist/wiki/frameworks/constraint-mapping.html",
+        "dist/wiki/frameworks/decision-matrix.html",
+        "dist/wiki/frameworks/feedback-loops.html",
+        "dist/wiki/frameworks/trace-protocol.html",
+        "dist/wiki/getting-started.html",
+        "dist/wiki/how-we-work.html",
+        "dist/wiki/index.html",
+        "dist/wiki/tools/fishbone-diagram.html",
+        "dist/wiki/tools/five-whys.html",
+        "dist/wiki/tools/pareto-analysis.html",
+        "dist/wiki/tools/process-mapping.html",
+        "lighthouse-report.report.html",
+        "lighthouse-report.report.json",
+        "package.json",
+        "src/contact.html",
+        "src/content/handout_content.md",
+        "src/content/site-data.json",
+        "src/css/matrix-theme.css",
+        "src/css/navigation.css",
+        "src/ferrofluid-demo.html",
+        "src/hi.html",
+        "src/index.html",
+        "src/js/copy-page-text.js",
+        "src/js/main.js",
+        "src/js/modal.js",
+        "src/js/nav.js",
+        "src/pricing.html",
+        "src/process.html",
+        "src/sitemap.xml",
+        "src/wiki-index-template.html",
+        "src/wiki-template.html"
+      ],
+      "files_added": [],
+      "files_deleted": [
+        "dist/.deploy-manifest.json",
+        "src/assets/logo-mono.png"
+      ],
+      "diff_stat": "_work_efforts/devlog.md                            |   72 +\n dist/.deploy-manifest.json                         |   21 -\n dist/404.html                                      |    2 +-\n dist/about.html                                    |    8 +-\n dist/api/articles.json                             |    4 +-\n dist/api/meta.json                                 |    4 +-\n dist/api/wiki/index.json                           |    4 +-\n dist/api/wiki/sitemap.json                         |    4 +-\n dist/app.js                                        |  306 +-\n dist/contact.html                                  |   51 +-\n dist/disclaimer.html                               |    8 +-\n dist/hi.html                                       |   14 +-\n dist/index.html                                    |  272 +-\n dist/pricing.html                                  |  104 +-\n dist/privacy.html                                  |    8 +-\n dist/process.html                                  |   69 +-\n dist/sitemap.xml                                   |   38 +-\n dist/styles.css                                    |    2 +-\n .../wiki/case-studies/communication-breakdown.html |   42 +-\n .../case-studies/manufacturing-throughput.html     |   42 +-\n dist/wiki/case-studies/the-invisible-process.html  |   42 +-\n dist/wiki/concepts/cognitive-biases.html           |   42 +-\n dist/wiki/concepts/mental-models.html              |   42 +-\n dist/wiki/concepts/root-cause.html                 |   42 +-\n dist/wiki/concepts/second-order-effects.html       |   42 +-\n dist/wiki/concepts/signal-vs-noise.html            |   42 +-\n dist/wiki/concepts/systems-thinking.html           |   42 +-\n dist/wiki/diagnostic-process.html                  |   42 +-\n dist/wiki/faq.html                                 |   42 +-\n dist/wiki/field-notes/001-map-territory.html       |   42 +-\n dist/wiki/field-notes/002-precision-accuracy.html  |   42 +-\n dist/wiki/field-notes/003-entropy.html             |   42 +-\n dist/wiki/field-notes/004-bottlenecks.html         |   42 +-\n dist/wiki/field-notes/005-tribal-knowledge.html    |   42 +-\n dist/wiki/field-notes/006-incentive-alignment.html |   42 +-\n dist/wiki/field-notes/007-documentation-debt.html  |   42 +-\n dist/wiki/frameworks/constraint-mapping.html       |   42 +-\n dist/wiki/frameworks/decision-matrix.html          |   42 +-\n dist/wiki/frameworks/feedback-loops.html           |   42 +-\n dist/wiki/frameworks/trace-protocol.html           |   42 +-\n dist/wiki/getting-started.html                     |   42 +-\n dist/wiki/how-we-work.html                         |   42 +-\n dist/wiki/index.html                               |   42 +-\n dist/wiki/tools/fishbone-diagram.html              |   42 +-\n dist/wiki/tools/five-whys.html                     |   42 +-\n dist/wiki/tools/pareto-analysis.html               |   42 +-\n dist/wiki/tools/process-mapping.html               |   42 +-\n lighthouse-report.report.html                      |    2 +-\n lighthouse-report.report.json                      | 9995 +++++++++-----------\n package.json                                       |    4 +-\n src/assets/logo-mono.png                           |  Bin 3851748 -> 0 bytes\n src/contact.html                                   |   43 +-\n src/content/handout_content.md                     |   84 +-\n src/content/site-data.json                         |   12 +-\n src/css/matrix-theme.css                           |   12 +-\n src/css/navigation.css                             |   77 +-\n src/ferrofluid-demo.html                           |    2 +\n src/hi.html                                        |    6 +-\n src/index.html                                     |   44 +-\n src/js/copy-page-text.js                           |   15 +-\n src/js/main.js                                     |   18 +-\n src/js/modal.js                                    |    6 +-\n src/js/nav.js                                      |    1 +\n src/pricing.html                                   |   96 +-\n src/process.html                                   |   61 +-\n src/sitemap.xml                                    |   38 +-\n src/wiki-index-template.html                       |  110 +-\n src/wiki-template.html                             |  110 +-\n 68 files changed, 6328 insertions(+), 6617 deletions(-)"
+    }
+  },
+  "learning_delta": {
+    "know": {
+      "prev": 0.6,
+      "curr": 0.85,
+      "delta": 0.25
+    },
+    "uncertainty": {
+      "prev": 0.4,
+      "curr": 0.2,
+      "delta": -0.2
+    }
+  },
+  "token_count": 565
+}

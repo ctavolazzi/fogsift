@@ -22,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 2rem;
+    padding: 0 clamp(1rem, 3vw, 2rem);
     max-width: 100%; /* Stay within parent */
     overflow: visible; /* Allow dropdowns to extend beyond nav */
 }
@@ -234,8 +234,8 @@
     /* Hide scrollbar but keep scrollability */
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE/Edge */
-    background: var(--paper);
-    border: 2px solid var(--line);
+    background: #f5f0e6 !important; /* Always use light cream background for readability */
+    border: 2px solid #d4c4a8; /* Light border for contrast */
     border-radius: var(--radius);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     padding: 6px;
@@ -259,9 +259,10 @@
 
 /* Theme Options */
 /* Reset CSS variables inside theme picker to prevent data-theme attribute inheritance */
+/* Force dark text on light background for all themes */
 .theme-picker-menu [data-theme] {
-    --ink: #4a2c2a;
-    --chocolate: #4a2c2a;
+    --ink: #4a2c2a !important;
+    --chocolate: #4a2c2a !important;
 }
 
 .theme-picker-option {
@@ -273,24 +274,23 @@
     background: transparent;
     border: none;
     border-radius: 6px;
-    color: var(--ink);
+    color: #4a2c2a !important; /* Always use dark brown text for readability */
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     font-weight: 500;
-    color: var(--ink);
     cursor: pointer;
     transition: all 0.1s ease;
     text-align: left;
 }
 
 .theme-picker-option:hover {
-    background: var(--canvas);
+    background: #e8e0d0 !important; /* Light cream-dark for hover */
 }
 
 .theme-picker-option:focus {
     outline: none;
-    background: var(--canvas);
-    box-shadow: inset 0 0 0 2px var(--primary);
+    background: #e8e0d0 !important; /* Light cream-dark for focus */
+    box-shadow: inset 0 0 0 2px #e07b3c; /* Burnt orange focus ring */
 }
 
 .theme-option-icon {
@@ -316,11 +316,11 @@
 }
 
 .theme-picker-option[aria-selected="true"] {
-    color: var(--primary);
+    color: #e07b3c !important; /* Burnt orange for selected */
     font-weight: 700;
 }
 
-/* Dark mode adjustments */
+/* Dark mode adjustments - menu still uses light background for readability */
 [data-theme="dark"] .theme-picker-toggle {
     background-color: var(--canvas);
     border-color: var(--line);
@@ -331,20 +331,47 @@
     border-color: var(--muted);
 }
 
-[data-theme="dark"] .theme-picker-menu {
-    background: var(--paper);
-    border-color: var(--line);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+/* Override any theme-specific menu styling to maintain readability */
+/* Force light background and dark text for all themes */
+[data-theme="dark"] .theme-picker-menu,
+[data-theme="matrix"] .theme-picker-menu,
+[data-theme="ocean"] .theme-picker-menu,
+[data-theme="synthwave"] .theme-picker-menu,
+[data-theme="pipboy"] .theme-picker-menu,
+[data-theme="camo"] .theme-picker-menu,
+[data-theme="barbie"] .theme-picker-menu,
+[data-theme="rivendell"] .theme-picker-menu,
+[data-theme="sky"] .theme-picker-menu,
+[data-theme="industrial-punchcard"] .theme-picker-menu {
+    background: #f5f0e6 !important; /* Force light background */
+    border-color: #d4c4a8 !important; /* Light border */
 }
 
-/* Dark mode: reset variables for theme picker options */
-[data-theme="dark"] .theme-picker-menu [data-theme] {
-    --ink: #f5f0e6;
-    --chocolate: #f5f0e6;
+/* Override theme-specific option text colors */
+[data-theme="dark"] .theme-picker-menu .theme-picker-option,
+[data-theme="matrix"] .theme-picker-menu .theme-picker-option,
+[data-theme="ocean"] .theme-picker-menu .theme-picker-option,
+[data-theme="synthwave"] .theme-picker-menu .theme-picker-option,
+[data-theme="pipboy"] .theme-picker-menu .theme-picker-option,
+[data-theme="camo"] .theme-picker-menu .theme-picker-option,
+[data-theme="barbie"] .theme-picker-menu .theme-picker-option,
+[data-theme="rivendell"] .theme-picker-menu .theme-picker-option,
+[data-theme="sky"] .theme-picker-menu .theme-picker-option,
+[data-theme="industrial-punchcard"] .theme-picker-menu .theme-picker-option {
+    color: #4a2c2a !important; /* Force dark text */
 }
 
-[data-theme="dark"] .theme-picker-option:hover {
-    background: var(--canvas);
+[data-theme="dark"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="matrix"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="ocean"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="synthwave"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="pipboy"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="camo"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="barbie"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="rivendell"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="sky"] .theme-picker-menu .theme-picker-option:hover,
+[data-theme="industrial-punchcard"] .theme-picker-menu .theme-picker-option:hover {
+    background: #e8e0d0 !important; /* Force light hover */
 }
 
 /* Industrial mode adjustments */
@@ -426,8 +453,8 @@
 .mobile-drawer {
     position: fixed;
     top: 0;
-    right: -300px;
-    width: 300px;
+    right: 0;
+    width: min(300px, 90vw);
     height: 100vh;
     background: var(--paper);
     border-left: var(--border-width) solid var(--line);
@@ -437,11 +464,12 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transition: right var(--ease-out);
+    transform: translateX(100%);
+    transition: transform var(--ease-out);
 }
 
 .mobile-drawer.open {
-    right: 0;
+    transform: translateX(0);
 }
 
 .mobile-close {
@@ -473,6 +501,17 @@
 }
 
 /* === RESPONSIVE NAVIGATION === */
+@media (max-width: 1024px) {
+    .menu-items {
+        gap: 0.5rem;
+    }
+
+    .menu-link {
+        font-size: 0.75rem;
+        padding: 6px 8px;
+    }
+}
+
 @media (max-width: 768px) {
     .menu-items {
         display: none;

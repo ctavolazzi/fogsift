@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fogsift | Clear answers to good questions</title>
-    <meta name="description" content="Independent consulting for complex problems. Trace root causes. Get clarity. Based in Chico, CA.">
+    <meta name="description" content="Submit your problem to the FogSift queue. Up to an hour of focus plus a PDF write-up and video response. Video may or may not be published.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
     <link rel="canonical" href="https://fogsift.com">
@@ -15,7 +15,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <meta property="og:title" content="Fogsift">
-    <meta property="og:description" content="Clear answers to good questions.">
+    <meta property="og:description" content="Submit your problem to the FogSift queue. Up to an hour of focus plus a PDF write-up and video response. Video may or may not be published.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -28,7 +28,7 @@
       "@type": "ProfessionalService",
       "name": "Fogsift",
       "image": "https://fogsift.com/og-image.png",
-      "description": "Independent consulting for complex, ambiguous problems.",
+      "description": "Independent consulting for complex problems. Queue submissions receive up to an hour of focus plus a PDF write-up and video response.",
       "url": "https://fogsift.com",
       "address": {
         "@type": "PostalAddress",
@@ -46,7 +46,7 @@
     </script>
 
     <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
-    <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard','matrix','sky','synthwave','pipboy','rivendell','camo','barbie','ocean'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
+    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
 
     <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
          Alternative: self-host fonts for maximum security -->
@@ -126,7 +126,8 @@
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
-        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
         <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
         <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
@@ -140,7 +141,8 @@
             <nav class="menu-items" aria-label="Main navigation">
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
                 <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
             </nav>
@@ -236,18 +238,33 @@
              ======================================== -->
         <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
             <div class="hero-badge">
+                <div class="gold-star" aria-hidden="true"><span>Gold Star</span></div>
                 <h1 id="hero-heading" class="headline">Clear answers to good questions.</h1>
-                <p class="subhead">Something eating up your</p>
-                <p class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></p>
-                <p class="subhead">Let's solve it together.</p>
+                <p class="subhead">Something taking too long with your <span class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></span></p>
+                <p class="subhead">We work on everything from Real Estate to Dungeons & Dragons.</p>
+                <p class="subhead">$20 secures up to an hour of FogSift focus in the queue.</p>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
                     <input type="checkbox" name="website" tabindex="-1" autocomplete="off">
                     Leave unchecked if human
                 </label>
-                <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="cta-button" data-honeypot="true">
-                    Ask Away
-                </a>
+                <div class="hero-ctas">
+                    <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
+                        Join the Queue ($20)
+                    </a>
+                    <a href="queue.html" class="cta-button cta-secondary">
+                        See the Queue
+                    </a>
+                </div>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-md); margin-bottom: 0;">
+                    $20 is the filter. It funds production and keeps the queue serious.
+                </p>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-xs); margin-bottom: 0;">
+                    You receive a PDF write-up and a video response. We may or may not publish a video.
+                </p>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-xs); margin-bottom: 0;">
+                    Your submission may be used for other purposes, including marketing. Request anonymization if needed.
+                </p>
             </div>
         </section>
 
@@ -256,29 +273,122 @@
 
         <!-- ========================================
              SECTION 2: THE PROCESS
-             3 numbered badges in a row
+             5-step Focus Session flow
              ======================================== -->
         <section id="process" class="section section-process" aria-labelledby="process-heading">
-            <h2 id="process-heading" class="section-label">THE PROCESS</h2>
+            <h2 id="process-heading" class="section-label">HOW IT WORKS</h2>
 
             <div class="process-steps">
                 <div class="process-step">
                     <div class="step-number">01</div>
-                    <h3>Listen</h3>
-                    <p>You share what's going on. He asks the questions you haven't thought of yet.</p>
+                    <h3>Submit</h3>
+                    <p>Describe your problem + pay $20. The price is the filter.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">02</div>
-                    <h3>Research</h3>
-                    <p>He digs in. Different industries, different angles, different solutions you might have missed.</p>
+                    <h3>Review</h3>
+                    <p>Each day, we review submissions and choose what to work on next.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">03</div>
-                    <h3>Deliver</h3>
-                    <p>You get a clear answer and a path forward. No fluff, no jargon.</p>
+                    <h3>Work</h3>
+                    <p>Up to an hour of focused work on your submission.</p>
                 </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Deliver</h3>
+                    <p>You receive a PDF write-up and a video response.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">05</div>
+                    <h3>Next Steps</h3>
+                    <p>You'll get one of three outcomes. If it's a fit, I'll invite you to go deeper on my terms.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 2.5: WHY THIS WORKS
+             Friction + proof + delivery
+             ======================================== -->
+        <section id="why-it-works" class="section section-process" aria-labelledby="why-heading">
+            <h2 id="why-heading" class="section-label">WHY THIS WORKS</h2>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Friction Is the Filter</h3>
+                    <p>$20 keeps the queue serious and funds production. If it doesn't filter, it doesn't work.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Work You Can Inspect</h3>
+                    <p>Sessions are recorded and may be published. Judge the thinking, not the credentials.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Time-Boxed Focus</h3>
+                    <p>One hour of undivided attention. No meetings. No Slack.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Clear Outcomes</h3>
+                    <p>You leave with either a fix, a roadmap, or a referral.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 2.75: EXAMPLES
+             Representative queue problems
+             ======================================== -->
+        <section id="examples" class="section section-pricing" aria-labelledby="examples-heading">
+            <h2 id="examples-heading" class="section-label">EXAMPLES FROM THE QUEUE</h2>
+            <p style="max-width: 65ch; margin: -1rem auto var(--space-lg); color: var(--muted);">
+                Representative examples of the kinds of problems the queue is built for. Names anonymized.
+            </p>
+
+            <div class="pricing-cards">
+                <article class="pricing-card" style="text-align: left;">
+                    <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
+                    <h4>"Our inventory counts never match."</h4>
+                    <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Diagnosis + fix</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
+                    <h4>"Our app crashes every Tuesday."</h4>
+                    <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Root cause + fix</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
+                    <h4>"Build it or buy it?"</h4>
+                    <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Decision framework</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
+                    <h4>"Signups stalled."</h4>
+                    <p>Walked the funnel live. Fixed the top three friction points during the session.</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Funnel fixes + roadmap</p>
+                </article>
             </div>
         </section>
 
@@ -299,7 +409,7 @@
                 <div class="about-info">
                     <h3 class="about-name">Christopher Tavolazzi</h3>
                     <span class="about-role">Expert Researcher</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it.</p>
+                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it. If it's a fit, he'll invite you to go deeper on his terms.</p>
                 </div>
             </div>
         </section>
@@ -373,33 +483,102 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
-             SECTION 4: PRICING
-             3 tier cards, horizontal
+             SECTION 4: THE DEAL
+             Single $20 offer + three outcomes
              ======================================== -->
         <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="section-label">PRICING</h2>
+            <h2 id="pricing-heading" class="section-label">THE DEAL</h2>
 
-            <div class="pricing-cards">
-                <article class="pricing-card">
-                    <h4>The Call</h4>
-                    <span class="price">FREE</span>
-                    <p>15-30 minutes. Triage your problem. No pitch, no pressure.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Booking%20a%20Free%20Call" class="pricing-cta">Book a Call</a>
+            <div class="pricing-cards pricing-cards-offer">
+                <!-- Entry: $5 PDF -->
+                <article class="pricing-card entry">
+                    <span class="featured-tag entry-tag">ENTRY</span>
+                    <h4>Field Guide PDF</h4>
+                    <span class="price">$5</span>
+                    <p>"How to Talk to AI": a practical guide to getting useful answers from AI tools.</p>
+                    <p class="pricing-note">PDF only. No session or queue access.</p>
+                    <p class="pricing-note">Instant download. Share freely.</p>
+                    <a href="https://ko-fi.com/s/23e227d00b" class="pricing-cta" target="_blank" rel="noopener">Get the PDF</a>
                 </article>
 
+                <!-- Main: $20 offer -->
                 <article class="pricing-card featured">
-                    <span class="featured-tag">POPULAR</span>
-                    <h4>Deep Dive</h4>
+                    <span class="featured-tag">THE SWEET SPOT</span>
+                    <h4>Focus Session</h4>
                     <span class="price">$20</span>
-                    <p>The first hour of actual work. See if we're a fit.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Deep%20Dive%20Request" class="pricing-cta">Get Started</a>
+                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
+                    <p class="pricing-note">Your $20 adds your problem to <a href="queue.html">the queue</a>. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's.</p>
+                    <p class="pricing-note">You receive a PDF write-up and a video response. We may or may not publish a video.</p>
+                    <p class="pricing-note">One-time fee per submission (not a subscription). If you're not picked right away, you stay in the queue.</p>
+                    <p class="pricing-note">Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+                    <p class="pricing-note">Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
+                    <div class="capacity-notice">
+                        <span class="capacity-icon">⚡</span>
+                        <span>Limited to <strong>10 slots/week</strong></span>
+                    </div>
+                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
                 </article>
 
-                <article class="pricing-card">
-                    <h4>Engagement</h4>
-                    <span class="price">CONTRACT</span>
-                    <p>Defined scope. No surprises. You own the output.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Contract%20Engagement%20Inquiry" class="pricing-cta">Let's Talk</a>
+                <!-- Premium: $500 -->
+                <article class="pricing-card premium">
+                    <span class="featured-tag premium-tag">PREMIUM</span>
+                    <h4>Deep Dive</h4>
+                    <span class="price">$500</span>
+                    <p>Private, scheduled session. Full documentation. Follow‑up included.</p>
+                    <p class="pricing-note">100% confidential. Best for complex problems.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Deep%20Dive%20Inquiry" class="pricing-cta">Book a Deep Dive</a>
+                </article>
+            </div>
+
+            <h3 class="section-label" style="margin-top: 3rem; font-size: 1rem;">WHAT HAPPENS AFTER</h3>
+
+            <div class="pricing-cards outcome-cards" style="margin-top: 1.5rem;">
+                <article class="pricing-card outcome-go-deeper">
+                    <h4>"Let's go deeper."</h4>
+                    <p>We see something real. If it's a fit, I'll invite you to work together on my terms.</p>
+                </article>
+
+                <article class="pricing-card outcome-i-know-people">
+                    <h4>"I know people."</h4>
+                    <p>This isn't my lane, but I can point you to someone who can help.</p>
+                </article>
+
+                <article class="pricing-card outcome-this-is-sick">
+                    <h4>"This is sick."</h4>
+                    <p>This would be cool if somebody did it. You should. Here's a path forward.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 4.5: COMMON CONCERNS
+             Friction + privacy + expectations
+             ======================================== -->
+        <section id="objections" class="section section-pricing" aria-labelledby="objections-heading">
+            <h2 id="objections-heading" class="section-label">COMMON CONCERNS</h2>
+
+            <div class="pricing-cards outcome-cards">
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>"What if you can't solve it?"</h4>
+                    <p>Then you still get the PDF write-up and video response, plus a narrower problem statement or referral.</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>"Is my problem too big?"</h4>
+                    <p>One hour is for momentum. You'll leave with clarity and next steps, even if the full fix takes longer.</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>"Why charge $20?"</h4>
+                    <p>It filters noise, funds production, and keeps it open to anyone who can get a job at McDonald's. If it doesn't sting, it doesn't filter.</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>"Will my submission be public?"</h4>
+                    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
                 </article>
             </div>
         </section>
@@ -412,16 +591,15 @@
              Minimal, clean
              ======================================== -->
         <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-            <h3 id="contact-heading">Something eating up your <span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></h3>
-            <p>Let's crack it together.</p>
-            <!-- Honeypot: hidden from humans, bots will check it -->
-            <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
-                <input type="checkbox" name="website" tabindex="-1" autocomplete="off">
-                Leave unchecked if human
-            </label>
-            <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="cta-button" data-honeypot="true">
-                Ask Away
+            <h3 id="contact-heading">Ready to put your idea in the queue?</h3>
+            <p>$20 is the filter. Up to an hour of focus on your submission. PDF write-up plus video response.</p>
+            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
+                Join the Queue
             </a>
+            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">
+                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide PDF</a>.
+            </p>
+            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">Submissions may be used for other purposes, including marketing. Request anonymization if needed.</p>
         </section>
 
         <footer role="contentinfo">
@@ -429,12 +607,13 @@
                 <div class="footer-links">
                     <a href="index.html">Home</a>
                     <a href="process.html">Process</a>
-                    <a href="about.html">About</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
                     <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About</a>
                     <a href="wiki/index.html">Wiki</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="disclaimer.html">Disclaimer</a>
-                    <a href="system-status.html" title="System Status">⚙️</a>
                 </div>
                 <div class="footer-bottom">
                     <span>&copy; 2025 FOGSIFT v0.0.5</span>

@@ -28,8 +28,13 @@ img, video, iframe, embed, object {
 /* Prevent long text from breaking layout */
 h1, h2, h3, h4, h5, h6, p, li, td, th, label, span {
     overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
+    word-break: normal;
+    hyphens: none;
+    text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6, .headline {
+    text-wrap: balance;
 }
 
 /* Code blocks scroll horizontally instead of breaking */
@@ -65,19 +70,19 @@ pre, code {
 
     /* === TYPOGRAPHY MOBILE SCALE === */
     :root {
-        --text-hero: clamp(2rem, 8vw, 3rem);
+        --text-hero: clamp(1.8rem, 7.2vw, 2.6rem);
         --text-section: clamp(1.5rem, 6vw, 2rem);
     }
 
     .headline {
         font-size: var(--text-hero);
-        line-height: 1.1;
+        line-height: 1.05;
     }
 
     /* === SPACING MOBILE SCALE === */
     section,
     .section {
-        padding: var(--space-lg) var(--space-md);
+        padding: var(--space-lg) 0;
         margin-bottom: var(--space-lg);
     }
 
@@ -145,7 +150,13 @@ pre, code {
     }
 
     .hero-badge {
-        padding: var(--space-lg);
+        padding: clamp(1.25rem, 5vw, var(--space-lg));
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .hero-bullets li {
+        font-size: clamp(1rem, 3.6vw, var(--text-lg));
     }
 
     .hero-badge .cta-button {

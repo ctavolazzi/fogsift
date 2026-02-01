@@ -1,0 +1,113 @@
+{
+  "session_id": "5f2a9e81-f0e9-4a80-829c-8d02c3486d67",
+  "phase": "POSTFLIGHT",
+  "round": 1,
+  "timestamp": "2026-01-22T23:07:17.131081+00:00",
+  "vectors": {
+    "know": 0.85,
+    "uncertainty": 0.2
+  },
+  "overall_confidence": 0.617,
+  "meta": {
+    "reasoning": "Implemented mobile-first pricing fixes, restored header tools, updated Ko-fi links, and verified mobile layout.",
+    "task_summary": "Implemented mobile-first pricing fixes, restored header tools, updated Ko-fi links, and verified mobile layout.",
+    "postflight_confidence": 0.8,
+    "calibration_accuracy": "moderate",
+    "deltas": {
+      "know": 0.15,
+      "uncertainty": -0.15
+    },
+    "calibration_issues": [],
+    "git_commit_sha": "7629210ad736ee1b4f01297dcc858b3736c1fb90",
+    "git_notes_ref": "empirica/session/5f2a9e81-f0e9-4a80-829c-8d02c3486d67/POSTFLIGHT/1"
+  },
+  "epistemic_tags": {},
+  "git_state": {
+    "head_commit": "6790dc5a0513364c56da76dcfa645c295d44bed8",
+    "commits_since_last_checkpoint": [],
+    "uncommitted_changes": {
+      "files_modified": [
+        "_work_efforts/devlog.md",
+        "dist/about.html",
+        "dist/api/articles.json",
+        "dist/api/meta.json",
+        "dist/api/wiki/index.json",
+        "dist/api/wiki/sitemap.json",
+        "dist/app.js",
+        "dist/contact.html",
+        "dist/disclaimer.html",
+        "dist/hi.html",
+        "dist/index.html",
+        "dist/pricing.html",
+        "dist/privacy.html",
+        "dist/process.html",
+        "dist/sitemap.xml",
+        "dist/styles.css",
+        "dist/wiki/case-studies/communication-breakdown.html",
+        "dist/wiki/case-studies/manufacturing-throughput.html",
+        "dist/wiki/case-studies/the-invisible-process.html",
+        "dist/wiki/concepts/cognitive-biases.html",
+        "dist/wiki/concepts/mental-models.html",
+        "dist/wiki/concepts/root-cause.html",
+        "dist/wiki/concepts/second-order-effects.html",
+        "dist/wiki/concepts/signal-vs-noise.html",
+        "dist/wiki/concepts/systems-thinking.html",
+        "dist/wiki/diagnostic-process.html",
+        "dist/wiki/faq.html",
+        "dist/wiki/field-notes/001-map-territory.html",
+        "dist/wiki/field-notes/002-precision-accuracy.html",
+        "dist/wiki/field-notes/003-entropy.html",
+        "dist/wiki/field-notes/004-bottlenecks.html",
+        "dist/wiki/field-notes/005-tribal-knowledge.html",
+        "dist/wiki/field-notes/006-incentive-alignment.html",
+        "dist/wiki/field-notes/007-documentation-debt.html",
+        "dist/wiki/frameworks/constraint-mapping.html",
+        "dist/wiki/frameworks/decision-matrix.html",
+        "dist/wiki/frameworks/feedback-loops.html",
+        "dist/wiki/frameworks/trace-protocol.html",
+        "dist/wiki/getting-started.html",
+        "dist/wiki/how-we-work.html",
+        "dist/wiki/index.html",
+        "dist/wiki/tools/fishbone-diagram.html",
+        "dist/wiki/tools/five-whys.html",
+        "dist/wiki/tools/pareto-analysis.html",
+        "dist/wiki/tools/process-mapping.html",
+        "lighthouse-report.report.html",
+        "lighthouse-report.report.json",
+        "package.json",
+        "scripts/build.js",
+        "src/contact.html",
+        "src/css/components.css",
+        "src/css/matrix-theme.css",
+        "src/css/mobile.css",
+        "src/css/navigation.css",
+        "src/ferrofluid-demo.html",
+        "src/index.html",
+        "src/pricing.html",
+        "src/process.html",
+        "src/sitemap.xml",
+        "src/wiki-index-template.html",
+        "src/wiki-template.html"
+      ],
+      "files_added": [],
+      "files_deleted": [
+        "dist/.deploy-manifest.json",
+        "src/assets/logo-mono.png"
+      ],
+      "diff_stat": "_work_efforts/devlog.md                            |  167 +\n dist/.deploy-manifest.json                         |   21 -\n dist/about.html                                    |    6 +-\n dist/api/articles.json                             |    4 +-\n dist/api/meta.json                                 |    4 +-\n dist/api/wiki/index.json                           |    4 +-\n dist/api/wiki/sitemap.json                         |    4 +-\n dist/app.js                                        |  306 +-\n dist/contact.html                                  |   49 +-\n dist/disclaimer.html                               |    6 +-\n dist/hi.html                                       |    6 +-\n dist/index.html                                    |  124 +-\n dist/pricing.html                                  |  102 +-\n dist/privacy.html                                  |    6 +-\n dist/process.html                                  |   67 +-\n dist/sitemap.xml                                   |   38 +-\n dist/styles.css                                    |    2 +-\n .../wiki/case-studies/communication-breakdown.html |   40 +-\n .../case-studies/manufacturing-throughput.html     |   40 +-\n dist/wiki/case-studies/the-invisible-process.html  |   40 +-\n dist/wiki/concepts/cognitive-biases.html           |   40 +-\n dist/wiki/concepts/mental-models.html              |   40 +-\n dist/wiki/concepts/root-cause.html                 |   40 +-\n dist/wiki/concepts/second-order-effects.html       |   40 +-\n dist/wiki/concepts/signal-vs-noise.html            |   40 +-\n dist/wiki/concepts/systems-thinking.html           |   40 +-\n dist/wiki/diagnostic-process.html                  |   40 +-\n dist/wiki/faq.html                                 |   40 +-\n dist/wiki/field-notes/001-map-territory.html       |   40 +-\n dist/wiki/field-notes/002-precision-accuracy.html  |   40 +-\n dist/wiki/field-notes/003-entropy.html             |   40 +-\n dist/wiki/field-notes/004-bottlenecks.html         |   40 +-\n dist/wiki/field-notes/005-tribal-knowledge.html    |   40 +-\n dist/wiki/field-notes/006-incentive-alignment.html |   40 +-\n dist/wiki/field-notes/007-documentation-debt.html  |   40 +-\n dist/wiki/frameworks/constraint-mapping.html       |   40 +-\n dist/wiki/frameworks/decision-matrix.html          |   40 +-\n dist/wiki/frameworks/feedback-loops.html           |   40 +-\n dist/wiki/frameworks/trace-protocol.html           |   40 +-\n dist/wiki/getting-started.html                     |   40 +-\n dist/wiki/how-we-work.html                         |   40 +-\n dist/wiki/index.html                               |   40 +-\n dist/wiki/tools/fishbone-diagram.html              |   40 +-\n dist/wiki/tools/five-whys.html                     |   40 +-\n dist/wiki/tools/pareto-analysis.html               |   40 +-\n dist/wiki/tools/process-mapping.html               |   40 +-\n lighthouse-report.report.html                      |    2 +-\n lighthouse-report.report.json                      | 9995 +++++++++-----------\n package.json                                       |    4 +-\n scripts/build.js                                   |  348 +-\n src/assets/logo-mono.png                           |  Bin 3851748 -> 0 bytes\n src/contact.html                                   |   43 +-\n src/css/components.css                             |  259 +-\n src/css/matrix-theme.css                           |   12 +-\n src/css/mobile.css                                 |   28 +\n src/css/navigation.css                             |   77 +-\n src/ferrofluid-demo.html                           |    2 +\n src/index.html                                     |  118 +-\n src/pricing.html                                   |   96 +-\n src/process.html                                   |   61 +-\n src/sitemap.xml                                    |   38 +-\n src/wiki-index-template.html                       |  110 +-\n src/wiki-template.html                             |  110 +-\n 63 files changed, 6790 insertions(+), 6589 deletions(-)"
+    }
+  },
+  "learning_delta": {
+    "know": {
+      "prev": 0.7,
+      "curr": 0.85,
+      "delta": 0.15
+    },
+    "uncertainty": {
+      "prev": 0.35,
+      "curr": 0.2,
+      "delta": -0.15
+    }
+  },
+  "token_count": 533
+}

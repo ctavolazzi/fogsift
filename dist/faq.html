@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | Fogsift</title>
+    <meta name="description" content="Frequently asked questions about FogSift's Focus Session. What $20 gets you, how the queue works, refunds, and more.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/faq.html">
+
+    <!-- Theme detection -->
+    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .faq-section {
+            max-width: 65ch;
+            margin: 0 auto;
+        }
+        .faq-item {
+            margin-bottom: var(--space-xl);
+            padding-bottom: var(--space-lg);
+            border-bottom: 1px solid var(--border);
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-question {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--accent);
+        }
+        .faq-answer {
+            color: var(--text);
+            line-height: 1.7;
+        }
+        .faq-answer p {
+            margin-bottom: var(--space-sm);
+        }
+        .faq-answer ul {
+            margin: var(--space-sm) 0;
+            padding-left: var(--space-lg);
+        }
+        .faq-answer li {
+            margin-bottom: var(--space-xs);
+        }
+        .highlight-box {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            padding: var(--space-md);
+            margin: var(--space-md) 0;
+            border-radius: var(--radius-sm);
+        }
+        .highlight-box strong {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
+        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
+        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper" role="banner">
+        <div class="main-nav">
+            <a href="index.html" class="brand" aria-label="Fogsift home">
+                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
+                <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link" aria-current="page">FAQ</a></div>
+                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
+            </nav>
+            <div class="nav-controls">
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                    <span class="copy-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                </button>
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame" id="main-content">
+        <section class="section" style="text-align: center;">
+            <h1 class="section-label">FAQ</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 1rem;">Frequently Asked Questions</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section class="faq-section">
+
+            <!-- What $20 Gets You -->
+            <div class="faq-item">
+                <h2 class="faq-question">What does $20 get me?</h2>
+                <div class="faq-answer">
+                    <div class="highlight-box">
+                        <strong>Your $20 buys you:</strong>
+                        <ul>
+                            <li>A position in <a href="queue.html">the queue</a></li>
+                            <li>Up to 1 hour of FogSift's focused attention on your submission</li>
+                            <li>A PDF write-up and a video response scoped to your submission</li>
+                        </ul>
+                        <p style="margin-top: 0.75rem;">A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. Worth way more than $20, kept low so anyone can access it.</p>
+                        <p style="margin-top: 0.75rem;">We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Queue Explanation -->
+            <div class="faq-item">
+                <h2 class="faq-question">What do you mean "a position in the queue"?</h2>
+                <div class="faq-answer">
+                    <p>When you submit your problem, it enters <a href="queue.html">the queue</a>. You can see all pending submissions there, along with recently completed ones.</p>
+                    <p>Every day, FogSift selects items from the queue to work on. Your position tells you roughly where you are in line, but selection isn't strictly first-come-first-served. More on that below.</p>
+                </div>
+            </div>
+
+            <!-- Up to 1 Hour -->
+            <div class="faq-item">
+                <h2 class="faq-question">What do you mean "up to 1 hour"? I don't get the full hour?</h2>
+                <div class="faq-answer">
+                    <p>You get <em>up to</em> the full hour.</p>
+                    <p>Every day, we choose two items from the queue:</p>
+                    <ul>
+                        <li><strong>One from the top</strong> - the highest priority item</li>
+                        <li><strong>One at random</strong> - keeps it interesting</li>
+                    </ul>
+                    <p>Each submission gets up to 1 hour of focused attention. At or before the hour mark, we stop working and begin drafting your PDF write-up and video response.</p>
+                    <p>Sometimes we crack it in 20 minutes. Sometimes the full hour isn't enough. Either way, you get what we found.</p>
+                </div>
+            </div>
+
+            <!-- Refusal Rights -->
+            <div class="faq-item">
+                <h2 class="faq-question">Can you refuse to work on my submission?</h2>
+                <div class="faq-answer">
+                    <p>Yes. FogSift reserves the right to refuse any submission for any reason at any time.</p>
+                    <p>If we refuse your submission before starting work, we'll refund your $20. If we've already started and realize we can't help, we may or may not refund depending on how much time was invested.</p>
+                    <p>This rarely happens. But we want to be upfront: if your problem is outside our wheelhouse or feels like a bad fit, we'll let you know.</p>
+                </div>
+            </div>
+
+            <!-- Refunds -->
+            <div class="faq-item">
+                <h2 class="faq-question">Can I request a refund?</h2>
+                <div class="faq-answer">
+                    <p><strong>Yes. In fact, I encourage it.</strong></p>
+                    <p>I often find myself deeply involved in projects that consume all my focus. It may be a while before I get to your request.</p>
+                    <ul>
+                        <li><strong>If you're okay waiting:</strong> Your request is safe in the queue. It'll get worked on eventually.</li>
+                        <li><strong>If it's time-sensitive:</strong> No problem! Request a refund and resubmit when timing is better. Or pay to bump your position (see below).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bumping -->
+            <div class="faq-item">
+                <h2 class="faq-question">Can I pay to move up in the queue?</h2>
+                <div class="faq-answer">
+                    <p>Yes. There's a daily "bump" option.</p>
+                    <p>Here's how it works:</p>
+                    <ul>
+                        <li>Once daily, all submitters can pay a one-time fee to bump their submission up in the queue</li>
+                        <li>This prevents abuse. People with deep pockets can't just buy out the entire queue</li>
+                        <li>It keeps things fair while giving time-sensitive requests a path forward</li>
+                    </ul>
+                    <p>Think of it as "expedited shipping" for your problem.</p>
+                </div>
+            </div>
+
+            <!-- Working Together More -->
+            <div class="faq-item">
+                <h2 class="faq-question">What if I want to work with FogSift more?</h2>
+                <div class="faq-answer">
+                    <p>Great! We want to hear from you.</p>
+                    <p>The best way to start is the same as everyone else: <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">submit your problem</a> for $20. In your submission, mention that you're interested in deeper engagement.</p>
+                    <p>If your submission is selected ahead of schedule, or if you pay the daily bump fee, we'll connect sooner.</p>
+                    <p>This is my best attempt to make incoming requests fair and accessible to as many people as possible as I scale.</p>
+                </div>
+            </div>
+
+            <!-- Direct Contact -->
+            <div class="faq-item">
+                <h2 class="faq-question">Can't I just email someone to talk about working with FogSift directly?</h2>
+                <div class="faq-answer">
+                    <p>Yes: <a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a></p>
+                </div>
+            </div>
+
+            <!-- Easter Egg -->
+            <div class="faq-item">
+                <h2 class="faq-question">Why did it take so long to find a contact email? Don't you want people to work with you?</h2>
+                <div class="faq-answer">
+                    <p>Yes, people like you who actually read. ;)</p>
+                    <p>If you made it this far, you're exactly the kind of person we want to work with. You pay attention. You do the homework. You don't skip to the end.</p>
+                    <p>That's rare. And it matters.</p>
+                </div>
+            </div>
+
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section class="section section-contact" style="text-align: center;">
+            <h3>Ready to join the queue?</h3>
+            <p>$20. Up to 1 hour. A PDF write-up and video response.</p>
+            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue</a>
+        </section>
+
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="process.html">Process</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About</a>
+                    <a href="wiki/index.html">Wiki</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; 2025 FOGSIFT</span>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

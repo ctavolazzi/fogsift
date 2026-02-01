@@ -47,6 +47,7 @@ const Modal = {
         const modal = this.getElement();
         const title = document.getElementById('modal-title');
         const content = document.getElementById('modal-body');
+        if (!modal || !title || !content) return;
 
         document.body.classList.add('scroll-locked');
         title.innerText = `RETRIEVING LOG ${id}...`;
@@ -59,6 +60,7 @@ const Modal = {
 
     close() {
         const modal = this.getElement();
+        if (!modal) return;
         modal.style.opacity = 0;
         document.body.classList.remove('scroll-locked');
         setTimeout(() => { modal.style.display = 'none'; }, this.TIMING.FADE_OUT_DURATION);
@@ -105,9 +107,9 @@ const Modal = {
             modal.addEventListener('click', (e) => {
                 if (e.target === modal) this.close();
             });
+            // Preload articles for faster first open
+            this.loadArticles();
         }
-        // Preload articles for faster first open
-        this.loadArticles();
     }
 };
 

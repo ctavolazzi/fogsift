@@ -1,0 +1,5 @@
+# Approved by user: 2026-01-24
+
+# Indexing-only exclusions
+node_modules/
+dist/

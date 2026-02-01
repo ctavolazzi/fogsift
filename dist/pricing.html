@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | Fogsift</title>
-    <meta name="description" content="Fogsift pricing: Free triage call, $20 deep dive, or contract engagement. Simple, transparent pricing for consulting services.">
+    <meta name="description" content="FogSift $20 Focus Session. Up to an hour of focus on your submission plus a PDF write-up and a video response. A video may or may not be published.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/pricing.html">
 
     <!-- Theme detection -->
-    <script>(function(){var t=localStorage.getItem('theme');var valid=['light','dark','industrial-punchcard','matrix','sky','synthwave','pipboy','rivendell','camo','barbie','ocean'];document.documentElement.setAttribute('data-theme',valid.includes(t)?t:'light')})();</script>
+    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,8 @@
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="process.html" class="mobile-link" onclick="Nav.toggleMobile()">PROCESS</a>
-        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
         <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
         <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
@@ -45,7 +46,8 @@
             <nav class="menu-items" aria-label="Main navigation">
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
                 <div class="menu-item"><a href="pricing.html" class="menu-link" aria-current="page">PRICING</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
             </nav>
@@ -135,29 +137,21 @@
 
     <main class="frame" id="main-content">
         <section class="section section-pricing" style="text-align: center;">
-            <h1 class="section-label">PRICING</h1>
+            <h1 class="section-label">THE DEAL</h1>
+            <p style="font-size: 1.25rem; margin-bottom: 2rem;">Something taking too long? We work on everything from Real Estate to Dungeons & Dragons.</p>
 
-            <div class="pricing-cards">
-                <article class="pricing-card">
-                    <h4>The Call</h4>
-                    <span class="price">FREE</span>
-                    <p>15-30 minutes. Triage your problem. No pitch, no pressure.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Booking%20a%20Free%20Call" class="pricing-cta">Book a Call</a>
-                </article>
-
+            <div class="pricing-cards pricing-cards-single">
                 <article class="pricing-card featured">
-                    <span class="featured-tag">POPULAR</span>
-                    <h4>Deep Dive</h4>
+                    <span class="featured-tag">ONE PRICE</span>
+                    <h4>Focus Session</h4>
                     <span class="price">$20</span>
-                    <p>The first hour of actual work. See if we're a fit.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Deep%20Dive%20Request" class="pricing-cta">Get Started</a>
-                </article>
-
-                <article class="pricing-card">
-                    <h4>Engagement</h4>
-                    <span class="price">CONTRACT</span>
-                    <p>Defined scope. No surprises. You own the output.</p>
-                    <a href="mailto:christopher@fogsift.com?subject=Contract%20Engagement%20Inquiry" class="pricing-cta">Let's Talk</a>
+                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
+                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 1rem;">Your $20 adds you to <a href="queue.html" style="color: inherit; text-decoration: underline;">the queue</a>. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. We work through the queue as capacity allows. You receive a PDF write-up and a video response. We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed. One-time fee per submission (not a subscription). Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
+                    <div class="capacity-notice">
+                        <span class="capacity-icon">⚡</span>
+                        <span>Limited to <strong>10 slots/week</strong></span>
+                    </div>
+                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
                 </article>
             </div>
         </section>
@@ -165,35 +159,55 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>How It Works</h2>
+            <h2>What You Get (Always)</h2>
+            <p>Every submission receives:</p>
+            <ul>
+                <li><strong>The Video Response</strong> - FogSift responding to your submission with our best attempt to move the needle.</li>
+                <li><strong>The PDF Write-up</strong> - A written document with what we found, what we tried, and what to do next.</li>
+            </ul>
 
-            <h3>The Call (Free)</h3>
-            <p>A quick conversation to understand your situation. No strings attached. If I can point you in the right direction in 15 minutes, I will. If you need more help, we'll discuss next steps.</p>
+            <h2>The Three Outcomes</h2>
+            <p>After the hour, we'll reach out with one of these:</p>
 
-            <h3>Deep Dive ($20)</h3>
-            <p>One hour of focused work on your problem. This is where we dig in — research, analysis, and concrete recommendations. Most people get what they need here.</p>
+            <h3>"Let's go deeper."</h3>
+            <p>We see something here. We'd like to work on this more with you. Here's what we think we could accomplish together...</p>
 
-            <h3>Contract Engagement</h3>
-            <p>For bigger projects that need ongoing attention. We define the scope together, agree on deliverables, and I get to work. Pricing depends on complexity and timeline.</p>
+            <h3>"I know people."</h3>
+            <p>This isn't our wheelhouse, but we know exactly who can help. Want us to set it up?</p>
+
+            <h3>"This is sick. You should do it."</h3>
+            <p>This would be cool if somebody did it. You have this opportunity. Here's how we'd approach it...</p>
+
+            <h2>The Fine Print</h2>
+            <p><strong>By submitting, you agree:</strong></p>
+            <ul>
+                <li>We may or may not publish a video</li>
+                <li>Your submission may be used for other purposes, including marketing</li>
+                <li>You can request anonymization (company/name redacted)</li>
+            </ul>
+            <p>This is how the model works. Your $20 buys the work, and your submission may be used beyond the response.</p>
 
             <h2>FAQ</h2>
 
-            <h3>Why so cheap?</h3>
-            <p>I'd rather help 100 people at accessible prices than 5 people at premium rates. The work is the same either way.</p>
+            <h3>Why $20?</h3>
+            <p>Low enough to try. High enough to filter. Kept intentionally low so anyone can access it.</p>
 
-            <h3>What if I'm not satisfied?</h3>
-            <p>If you don't find value in our conversation, you don't pay. Simple as that.</p>
+            <h3>What if you don't solve it?</h3>
+            <p>You still get the video response and PDF write-up. You still get our notes. You still get direction on what to try next. That's the deal.</p>
 
-            <h3>Do you do ongoing retainers?</h3>
-            <p>Sometimes, for the right fit. Let's talk about what you need.</p>
+            <h3>Will my submission be public?</h3>
+            <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+
+            <h3>Can I stay anonymous?</h3>
+            <p>Yes. Just note it in your submission. We'll redact your name and company from any published materials.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <section class="section section-contact" style="text-align: center;">
-            <h3>Questions about pricing?</h3>
-            <p>Just ask. No pressure, no pitch.</p>
-            <a href="contact.html" class="cta-button">Get in Touch</a>
+            <h3>Ready to roll the dice?</h3>
+            <p>$20. Up to an hour. Let's see what happens.</p>
+            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Submit Your Problem</a>
         </section>
 
         <footer role="contentinfo">
@@ -201,8 +215,10 @@
                 <div class="footer-links">
                     <a href="index.html">Home</a>
                     <a href="process.html">Process</a>
-                    <a href="about.html">About</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
                     <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About</a>
                     <a href="wiki/index.html">Wiki</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="disclaimer.html">Disclaimer</a>

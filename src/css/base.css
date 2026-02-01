@@ -199,7 +199,7 @@ body {
     font-family: var(--font-sans);
     background-color: var(--canvas);
     color: var(--ink);
-    font-size: var(--text-base);
+    font-size: clamp(1rem, 1.1vw, var(--text-base));
     line-height: var(--leading-relaxed);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -207,6 +207,11 @@ body {
     padding-bottom: 3vh;
     transition: background-color 0.3s, color 0.3s;
     overflow-x: hidden;
+}
+
+img, video, iframe {
+    max-width: 100%;
+    height: auto;
 }
 
 body.scroll-locked {
@@ -286,9 +291,9 @@ h1, h2, h3, h4, h5 {
 }
 
 .subhead {
-    font-size: var(--text-xl);
+    font-size: clamp(1rem, 2.2vw, var(--text-xl));
     color: var(--muted);
-    max-width: 55ch;
+    max-width: min(60ch, 100%);
     margin-bottom: var(--space-xl);
     line-height: var(--leading-normal);
 }
@@ -324,11 +329,12 @@ h1, h2, h3, h4, h5 {
 /* === LAYOUT === */
 .frame {
     max-width: var(--frame-max-width);
+    width: min(calc(100% - 2rem), var(--frame-max-width));
     margin: 0 auto;
     background: var(--paper);
     border: var(--border-width) solid var(--line);
     box-shadow: var(--shadow-card);
-    padding: var(--space-lg) 2.5rem;
+    padding: clamp(1.5rem, 4vw, var(--space-lg)) clamp(1rem, 4vw, 2.5rem);
     position: relative;
     border-radius: var(--radius-lg);
     overflow: visible;
@@ -378,7 +384,7 @@ section {
 /* === RESPONSIVE === */
 @media (max-width: 768px) {
     .frame {
-        padding: 40px 20px;
+        padding: clamp(1.5rem, 5vw, 2.5rem) clamp(0.75rem, 4vw, 1.25rem);
         border: none;
         box-shadow: none;
         width: 100%;

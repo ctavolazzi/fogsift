@@ -17,22 +17,22 @@ const App = {
     _konamiIndex: 0,
 
     init() {
-        Nav.init();
-        Modal.init();
+        if (typeof Nav !== 'undefined' && Nav.init) Nav.init();
+        if (typeof Modal !== 'undefined' && Modal.init) Modal.init();
         this.initClock();
         this.initAccessibility();
         this.initRotatingWords();
         this.initKonami();
         this.initHoneypot();
         this.logBoot();
-        SleepMode.init();
+        if (typeof SleepMode !== 'undefined' && SleepMode.init) SleepMode.init();
     },
 
     initHoneypot() {
         // Block mailto links if honeypot checkbox is checked (bot behavior)
         document.querySelectorAll('a[data-honeypot="true"]').forEach(link => {
             link.addEventListener('click', (e) => {
-                const honeypot = link.parentElement.querySelector('.hp-field input');
+                const honeypot = link.parentElement?.querySelector('.hp-field input');
                 if (honeypot && honeypot.checked) {
                     e.preventDefault();
                     console.log('%c 🤖 Bot detected ', 'background: #dc2626; color: white; padding: 5px;');
@@ -105,7 +105,15 @@ const App = {
     initRotatingWords() {
         const elements = document.querySelectorAll('[data-words]');
         elements.forEach(el => {
-            const words = JSON.parse(el.dataset.words);
+            const rawWords = el.dataset.words;
+            if (!rawWords) return;
+            let words;
+            try {
+                words = JSON.parse(rawWords);
+            } catch {
+                return;
+            }
+            if (!Array.isArray(words) || words.length < 2) return;
             let index = 0;
 
             this._intervals.push(setInterval(() => {

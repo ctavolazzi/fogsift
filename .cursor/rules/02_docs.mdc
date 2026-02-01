@@ -1,0 +1,9 @@
+---
+description: "Docs updates and Johnny Decimal practices."
+globs: "_docs/**"
+alwaysApply: false
+---
+
+- Use docs-maintainer MCP for `_docs` updates when possible.
+- Keep docs concise, linked, and timestamped.
+- Update repo docs (README/TECH_DEBT/CONTINUATION) when behavior changes.

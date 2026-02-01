@@ -96,3 +96,8 @@ STEP 8: PERSIST   → Store learnings in memory MCP
 - This file: `.cursorrules`
 - AI reference: `AGENTS.md`
 
+## Project Rules (Current)
+- Active project rules live in `.cursor/rules/`.
+- This `.cursorrules` file is retained for legacy compatibility.
+- See `AGENTS.md` for the full instructions.
+
