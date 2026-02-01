@@ -29,9 +29,8 @@ const THEME_INIT_SCRIPT = `<script>(function(){document.documentElement.setAttri
 // Navigation partial - single source of truth for site navigation
 const NAV_LINKS = [
     { href: 'wiki/index.html', label: 'WIKI' },
-    { href: 'process.html', label: 'PROCESS' },
+    { href: 'portfolio.html', label: 'PORTFOLIO' },
     { href: 'queue.html', label: 'QUEUE' },
-    { href: 'faq.html', label: 'FAQ' },
     { href: 'pricing.html', label: 'PRICING' },
     { href: 'contact.html', label: 'CONTACT', cta: true },
 ];
@@ -270,6 +269,8 @@ const STATIC_ASSETS = [
     { src: 'src/assets/logo-mono.png', dest: 'assets/logo-mono.png' },
     // Team images
     { src: 'src/images/team/christopher-badge.webp', dest: 'images/team/christopher-badge.webp' },
+    // Portfolio images
+    { src: 'src/images/portfolio/pixel-tiles.jpg', dest: 'images/portfolio/pixel-tiles.jpg' },
 ];
 
 function concat(files) {
@@ -994,7 +995,10 @@ async function build() {
     if (processSimpleHtml('faq.html')) {
         console.log('  ✓ dist/faq.html (processed)');
     }
-    
+    if (processSimpleHtml('portfolio.html')) {
+        console.log('  ✓ dist/portfolio.html (processed)');
+    }
+
     // Copy gallery.html (standalone, no template processing needed)
     if (copyFile('src/gallery.html', 'gallery.html')) {
         console.log('  ✓ dist/gallery.html (copied)');
