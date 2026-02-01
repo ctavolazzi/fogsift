@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Fogsift</title>
+    <meta name="description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/portfolio.html">
+
+    <!-- Mobile web app -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Portfolio | Fogsift">
+    <meta property="og:description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/portfolio.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <!-- Theme detection -->
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <main class="frame" id="main-content">
+        <section class="section" style="text-align: center;">
+            <h1 class="section-label">PORTFOLIO</h1>
+            <p style="max-width: 55ch; margin: 0 auto var(--space-lg);">
+                Projects built live on camera. Watch the full process on
+                <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a>.
+            </p>
+        </section>
+
+        <section class="portfolio-grid">
+            <!-- Featured Project: Pixel Tile Display -->
+            <article class="portfolio-card portfolio-featured">
+                <div class="portfolio-image">
+                    <img src="images/portfolio/pixel-tiles.jpg" alt="Modular pixel art tile display with interchangeable wooden frames showing forest and water scenes" loading="lazy">
+                </div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Hardware + Software</span>
+                    <h2 class="portfolio-title">Modular Pixel Tile Display</h2>
+                    <p class="portfolio-desc">
+                        A magnetic, modular display system featuring interchangeable pixel art tiles in wooden frames.
+                        Each tile runs on its own microcontroller with custom firmware. Arrange them in grids,
+                        lines, or scattered across a wall.
+                    </p>
+                    <div class="portfolio-meta">
+                        <span>Custom PCB</span>
+                        <span>3D-printed frames</span>
+                        <span>ESP32</span>
+                    </div>
+                    <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
+                        Watch the Build
+                    </a>
+                </div>
+            </article>
+
+            <!-- Placeholder for more projects -->
+            <article class="portfolio-card portfolio-coming">
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Coming Soon</span>
+                    <h3 class="portfolio-title">More Projects</h3>
+                    <p class="portfolio-desc">
+                        New builds drop regularly. Subscribe to catch them live.
+                    </p>
+                    <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="portfolio-cta portfolio-cta-secondary" target="_blank" rel="noopener">
+                        Subscribe on YouTube
+                    </a>
+                </div>
+            </article>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- YouTube CTA Section -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label">WATCH THE BUILDS</h2>
+            <p style="max-width: 50ch; margin: 0 auto var(--space-lg);">
+                Every project is documented from start to finish. See the mistakes, the breakthroughs,
+                and the thinking behind each decision.
+            </p>
+
+            <div class="youtube-showcase">
+                <div class="youtube-embed-container">
+                    <div class="youtube-placeholder" data-channel="@fogsift">
+                        <div class="youtube-placeholder-content">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48" class="youtube-play-icon">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <p class="youtube-placeholder-text">FogSift on YouTube</p>
+                        </div>
+                        <a href="https://youtube.com/@fogsift" class="youtube-channel-link" target="_blank" rel="noopener">
+                            Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: var(--space-lg);">
+                <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="cta-button" target="_blank" rel="noopener">
+                    Subscribe for New Builds
+                </a>
+            </p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section class="section" style="text-align: center;">
+            <h3>Got an idea you want to see built?</h3>
+            <p>Submit it to the queue. Maybe I'll build it on camera.</p>
+            <a href="queue.html" class="cta-button cta-secondary">Join the Queue</a>
+        </section>
+
+        {{FOOTER}}
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

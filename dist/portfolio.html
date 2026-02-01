@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing | Fogsift</title>
-    <meta name="description" content="FogSift $20 Focus Session. Up to an hour of focus on your submission plus a PDF write-up and a video response. A video may or may not be published.">
+    <title>Portfolio | Fogsift</title>
+    <meta name="description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/pricing.html">
+    <link rel="canonical" href="https://fogsift.com/portfolio.html">
+
+    <!-- Mobile web app -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Portfolio | Fogsift">
+    <meta property="og:description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/portfolio.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <!-- Theme detection -->
     <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
@@ -44,9 +56,9 @@
             </a>
             <nav class="menu-items" aria-label="Main navigation">
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
-                <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="portfolio.html" class="menu-link" aria-current="page">PORTFOLIO</a></div>
                 <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link" aria-current="page">PRICING</a></div>
+                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
@@ -134,100 +146,95 @@
     </header>
 
     <main class="frame" id="main-content">
-        <section class="section section-pricing" style="text-align: center;">
-            <h1 class="section-label">THE DEAL</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem;">Something taking too long? We work on everything from Real Estate to Dungeons & Dragons.</p>
+        <section class="section" style="text-align: center;">
+            <h1 class="section-label">PORTFOLIO</h1>
+            <p style="max-width: 55ch; margin: 0 auto var(--space-lg);">
+                Projects built live on camera. Watch the full process on
+                <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a>.
+            </p>
+        </section>
 
-            <div class="pricing-cards pricing-cards-single">
-                <article class="pricing-card featured">
-                    <span class="featured-tag">ONE PRICE</span>
-                    <h4>Focus Session</h4>
-                    <span class="price">$20</span>
-                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
-                    <p style="font-size: 0.9em; opacity: 0.8; margin-top: 1rem;">Your $20 adds you to <a href="queue.html" style="color: inherit; text-decoration: underline;">the queue</a>. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. We work through the queue as capacity allows. You receive a PDF write-up and a video response. We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed. One-time fee per submission (not a subscription). Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
-                    <div class="capacity-notice">
-                        <span class="capacity-icon">⚡</span>
-                        <span>Limited to <strong>10 slots/week</strong></span>
+        <section class="portfolio-grid">
+            <!-- Featured Project: Pixel Tile Display -->
+            <article class="portfolio-card portfolio-featured">
+                <div class="portfolio-image">
+                    <img src="images/portfolio/pixel-tiles.jpg" alt="Modular pixel art tile display with interchangeable wooden frames showing forest and water scenes" loading="lazy">
+                </div>
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Hardware + Software</span>
+                    <h2 class="portfolio-title">Modular Pixel Tile Display</h2>
+                    <p class="portfolio-desc">
+                        A magnetic, modular display system featuring interchangeable pixel art tiles in wooden frames.
+                        Each tile runs on its own microcontroller with custom firmware. Arrange them in grids,
+                        lines, or scattered across a wall.
+                    </p>
+                    <div class="portfolio-meta">
+                        <span>Custom PCB</span>
+                        <span>3D-printed frames</span>
+                        <span>ESP32</span>
                     </div>
-                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
-                </article>
-            </div>
+                    <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
+                        Watch the Build
+                    </a>
+                </div>
+            </article>
+
+            <!-- Placeholder for more projects -->
+            <article class="portfolio-card portfolio-coming">
+                <div class="portfolio-content">
+                    <span class="portfolio-tag">Coming Soon</span>
+                    <h3 class="portfolio-title">More Projects</h3>
+                    <p class="portfolio-desc">
+                        New builds drop regularly. Subscribe to catch them live.
+                    </p>
+                    <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="portfolio-cta portfolio-cta-secondary" target="_blank" rel="noopener">
+                        Subscribe on YouTube
+                    </a>
+                </div>
+            </article>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>What You Get (Always)</h2>
-            <p>Every submission receives:</p>
-            <ul>
-                <li><strong>The Video Response</strong> - FogSift responding to your submission with our best attempt to move the needle.</li>
-                <li><strong>The PDF Write-up</strong> - A written document with what we found, what we tried, and what to do next.</li>
-            </ul>
+        <!-- YouTube CTA Section -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label">WATCH THE BUILDS</h2>
+            <p style="max-width: 50ch; margin: 0 auto var(--space-lg);">
+                Every project is documented from start to finish. See the mistakes, the breakthroughs,
+                and the thinking behind each decision.
+            </p>
 
-            <h2>The Three Outcomes</h2>
-            <p>After the hour, we'll reach out with one of these:</p>
+            <div class="youtube-showcase">
+                <div class="youtube-embed-container">
+                    <div class="youtube-placeholder" data-channel="@fogsift">
+                        <div class="youtube-placeholder-content">
+                            <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48" class="youtube-play-icon">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            <p class="youtube-placeholder-text">FogSift on YouTube</p>
+                        </div>
+                        <a href="https://youtube.com/@fogsift" class="youtube-channel-link" target="_blank" rel="noopener">
+                            Visit Channel
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-            <h3>"Let's go deeper."</h3>
-            <p>We see something here. We'd like to work on this more with you. Here's what we think we could accomplish together...</p>
-
-            <h3>"I know people."</h3>
-            <p>This isn't our wheelhouse, but we know exactly who can help. Want us to set it up?</p>
-
-            <h3>"This is sick. You should do it."</h3>
-            <p>This would be cool if somebody did it. You have this opportunity. Here's how we'd approach it...</p>
-
-            <h2>The Fine Print</h2>
-            <p><strong>By submitting, you agree:</strong></p>
-            <ul>
-                <li>We may or may not publish a video</li>
-                <li>Your submission may be used for other purposes, including marketing</li>
-                <li>You can request anonymization (company/name redacted)</li>
-            </ul>
-            <p>This is how the model works. Your $20 buys the work, and your submission may be used beyond the response.</p>
-
-            <h2>FAQ</h2>
-
-            <h3>Why $20?</h3>
-            <p>Low enough to try. High enough to filter. Kept intentionally low so anyone can access it.</p>
-
-            <h3>What if you don't solve it?</h3>
-            <p>You still get the video response and PDF write-up. You still get our notes. You still get direction on what to try next. That's the deal.</p>
-
-            <h3>Will my submission be public?</h3>
-            <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
-
-            <h3>Can I stay anonymous?</h3>
-            <p>Yes. Just note it in your submission. We'll redact your name and company from any published materials.</p>
+            <p style="text-align: center; margin-top: var(--space-lg);">
+                <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="cta-button" target="_blank" rel="noopener">
+                    Subscribe for New Builds
+                </a>
+            </p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section section-contact" style="text-align: center;">
-            <h3>Ready to roll the dice?</h3>
-            <p>$20. Up to an hour. Let's see what happens.</p>
-            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Submit Your Problem</a>
+        <section class="section" style="text-align: center;">
+            <h3>Got an idea you want to see built?</h3>
+            <p>Submit it to the queue. Maybe I'll build it on camera.</p>
+            <a href="queue.html" class="cta-button cta-secondary">Join the Queue</a>
         </section>
 
-<<<<<<< HEAD
-        <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
-                    <a href="queue.html">Queue</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
-                    <a href="wiki/index.html">Wiki</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT</span>
-                </div>
-            </div>
-        </footer>
-=======
         <footer role="contentinfo">
             <div class="footer-content">
                 <div class="footer-links">
@@ -250,10 +257,8 @@
                 </div>
             </div>
         </footer>
->>>>>>> origin/claude/general-session-nWHw4
     </main>
 
     <script src="app.js" defer></script>
 </body>
 </html>
-

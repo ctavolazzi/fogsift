@@ -50,6 +50,10 @@ body.wiki-body {
     color: var(--teal);
     text-decoration: none;
     transition: color var(--ease-out);
+    padding: 0.5rem 0.25rem;
+    min-height: var(--touch-min);
+    display: inline-flex;
+    align-items: center;
 }
 
 .crumb-link:hover {
@@ -710,6 +714,53 @@ body.wiki-body {
     font-family: var(--font-mono);
     font-size: var(--text-sm);
     color: var(--muted);
+}
+
+/* === WIKI SHARE BUTTONS === */
+.wiki-share {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.wiki-share-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--muted);
+}
+
+.wiki-share-buttons {
+    display: flex;
+    gap: var(--space-xs);
+}
+
+.wiki-share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--touch-min);
+    height: var(--touch-min);
+    background: var(--cream);
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all var(--ease-out);
+}
+
+.wiki-share-btn:hover {
+    background: var(--burnt-orange);
+    border-color: var(--burnt-orange);
+    color: var(--cream);
+}
+
+.wiki-share-btn:active {
+    transform: scale(0.95);
+}
+
+.wiki-share-btn svg {
+    flex-shrink: 0;
 }
 
 .wiki-nav-footer a {
