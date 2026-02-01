@@ -976,6 +976,63 @@ footer {
     padding: var(--space-xl);
 }
 
+/* Portfolio Gallery */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 var(--space-md);
+}
+
+@media (min-width: 640px) {
+    .portfolio-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .portfolio-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.gallery-item {
+    margin: 0;
+    background: var(--cream);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(74, 44, 42, 0.15);
+}
+
+.gallery-item img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item figcaption {
+    padding: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-align: center;
+    color: var(--muted);
+    background: var(--cream-dark);
+}
+
 /* Portfolio preview card (for homepage) */
 .portfolio-preview {
     display: block;

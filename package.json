@@ -19,7 +19,9 @@
     "mcp:watch": "node scripts/mcp-status-writer.js --watch",
     "mcp:dev": "npm run mcp:status && npm run dev",
     "lint": "eslint src/js/",
-    "lint:fix": "eslint src/js/ --fix"
+    "lint:fix": "eslint src/js/ --fix",
+    "lint:images": "node scripts/lint-images.js",
+    "audit": "npm run lint:images && npm run build"
   },
   "keywords": [
     "consulting",

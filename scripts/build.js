@@ -267,11 +267,23 @@ const STATIC_ASSETS = [
     { src: 'src/assets/icon-512.png', dest: 'assets/icon-512.png' },
     { src: 'src/assets/logo-color-transparent.png', dest: 'assets/logo.png' },
     { src: 'src/assets/logo-mono.png', dest: 'assets/logo-mono.png' },
+    { src: 'src/assets/logo-patch.png', dest: 'assets/logo-patch.png' },
     // Team images
     { src: 'src/images/team/christopher-badge.webp', dest: 'images/team/christopher-badge.webp' },
-    // Portfolio images
-    { src: 'src/images/portfolio/pixel-tiles.jpg', dest: 'images/portfolio/pixel-tiles.jpg' },
 ];
+
+// Dynamically get all portfolio images
+function getPortfolioImages() {
+    const portfolioDir = path.join(SRC, 'images/portfolio');
+    if (!fs.existsSync(portfolioDir)) return [];
+
+    return fs.readdirSync(portfolioDir)
+        .filter(f => /\.(jpg|jpeg|png|gif|webp|svg)$/i.test(f))
+        .map(f => ({
+            src: `src/images/portfolio/${f}`,
+            dest: `images/portfolio/${f}`
+        }));
+}
 
 function concat(files) {
     return files
@@ -998,6 +1010,9 @@ async function build() {
     if (processSimpleHtml('portfolio.html')) {
         console.log('  ✓ dist/portfolio.html (processed)');
     }
+    if (processSimpleHtml('terms.html')) {
+        console.log('  ✓ dist/terms.html (processed)');
+    }
 
     // Copy gallery.html (standalone, no template processing needed)
     if (copyFile('src/gallery.html', 'gallery.html')) {
@@ -1007,6 +1022,14 @@ async function build() {
     // Copy static assets
     console.log('\n📁 Static Assets:');
     STATIC_ASSETS.forEach(asset => {
+        if (copyFile(asset.src, asset.dest)) {
+            console.log(`  ✓ dist/${asset.dest}`);
+        }
+    });
+
+    // Copy all portfolio images dynamically
+    const portfolioImages = getPortfolioImages();
+    portfolioImages.forEach(asset => {
         if (copyFile(asset.src, asset.dest)) {
             console.log(`  ✓ dist/${asset.dest}`);
         }

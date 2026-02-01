@@ -1,7 +1,7 @@
 {
   "name": "Fogsift",
   "short_name": "Fogsift",
-  "description": "Clear answers to good questions.",
+  "description": "Clear answers to good questions. DIY problem-solving on YouTube.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#f5f0e6",
@@ -11,6 +11,12 @@
       "src": "favicon.png",
       "sizes": "192x192",
       "type": "image/png"
+    },
+    {
+      "src": "assets/logo-patch.png",
+      "sizes": "500x500",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "assets/icon-512.png",
