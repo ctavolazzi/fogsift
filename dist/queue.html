@@ -3,11 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Fogsift</title>
-    <meta name="description" content="Meet Christopher Tavolazzi - the expert researcher behind Fogsift. Software developer, former realtor, journalist, author, and Eagle Scout.">
+    <title>The Queue | Fogsift</title>
+    <meta name="description" content="See what's in the FogSift queue. Submit your problem for $20, get picked, and watch me work through it live on camera.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/about.html">
+    <link rel="canonical" href="https://fogsift.com/queue.html">
+
+    <!-- Mobile web app -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="The Queue | Fogsift">
+    <meta property="og:description" content="See what's in the FogSift queue. Submit your problem, get picked, watch me solve it live.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/queue.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <!-- Theme detection -->
     <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
@@ -46,7 +58,7 @@
             <nav class="menu-items" aria-label="Main navigation">
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="process.html" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link" aria-current="page">QUEUE</a></div>
                 <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
                 <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
@@ -136,71 +148,93 @@
     </header>
 
     <main class="frame" id="main-content">
-        <section class="section section-about" style="text-align: center;">
-            <h1 class="section-label">WHO IS FOGSIFT</h1>
+        <section class="section section-hero">
+            <div class="hero-badge">
+                <h1 class="headline">The Queue</h1>
+                <p class="subhead">Submit your problem. I pick two per day. One highest-rated, one random. Work happens live on camera.</p>
+                <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
+            </div>
+        </section>
 
-            <div class="about-card">
-                <div class="about-avatar">
-                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
-                </div>
-                <div class="about-info">
-                    <h2 class="about-name">Christopher Tavolazzi</h2>
-                    <span class="about-role">Expert Researcher</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it.</p>
-                </div>
+        <section class="section">
+            <h2 class="section-label">HOW IT WORKS</h2>
+            <div class="process-steps">
+                <article class="process-step">
+                    <span class="step-number">1</span>
+                    <h3>Submit</h3>
+                    <p>Pay $20 and describe your problem. Be specific about what's stuck.</p>
+                </article>
+                <article class="process-step">
+                    <span class="step-number">2</span>
+                    <h3>Wait</h3>
+                    <p>Your problem enters the queue. I pick 2 per day: one top-rated, one random.</p>
+                </article>
+                <article class="process-step">
+                    <span class="step-number">3</span>
+                    <h3>Watch</h3>
+                    <p>I work your problem live on camera for up to an hour. You get the video + a written summary.</p>
+                </article>
             </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section section-testimonials" style="text-align: center;">
-            <h2 class="section-label">WHAT CLIENTS SAY</h2>
-
-            <div class="testimonials-grid">
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Operations Director</span>
-                                <span class="author-title">Manufacturing Company</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Founder &amp; CEO</span>
-                                <span class="author-title">Tech Startup</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"Most consultants tell you what you want to hear. This one told us what we needed to hear. Saved us from a costly mistake."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Project Manager</span>
-                                <span class="author-title">Construction Firm</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
+        <section class="section" id="queue-status">
+            <h2 class="section-label">QUEUE STATUS</h2>
+            <div class="queue-stats" style="display: flex; justify-content: center; gap: var(--space-xl); flex-wrap: wrap; margin-bottom: var(--space-lg);">
+                <div class="stat-item">
+                    <span class="stat-number" id="queue-count">--</span>
+                    <span class="stat-label">In Queue</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="completed-count">--</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="avg-wait">--</span>
+                    <span class="stat-label">Avg Wait (days)</span>
+                </div>
             </div>
+            <p style="text-align: center; color: var(--muted); font-size: var(--text-sm);">Queue data updates when sessions are completed.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section class="section">
+            <h2 class="section-label">RECENT SESSIONS</h2>
+            <p style="text-align: center; margin-bottom: var(--space-lg);">Watch previous sessions on YouTube to see how this works.</p>
+            <div style="text-align: center;">
+                <a href="https://youtube.com/@fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">Watch on YouTube</a>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
+            <h2>What You Get</h2>
+            <ul>
+                <li><strong>Video of the work session</strong> - Watch my actual thought process as I tackle your problem</li>
+                <li><strong>Written summary</strong> - Key findings, recommendations, and next steps</li>
+                <li><strong>Public by default</strong> - Others can learn from your problem (anonymization available)</li>
+            </ul>
+
+            <h2>What Makes a Good Submission?</h2>
+            <ul>
+                <li><strong>Specific</strong> - "Our checkout flow has a 67% drop-off" beats "sales are bad"</li>
+                <li><strong>Bounded</strong> - Something I can meaningfully address in an hour</li>
+                <li><strong>Actionable</strong> - You're ready to act on what we find</li>
+            </ul>
+
+            <h2>Privacy Options</h2>
+            <p>By default, sessions are public so others can learn. If your problem involves sensitive details, you can request anonymization. I'll obscure identifying information while keeping the diagnostic process visible.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <section class="section section-contact" style="text-align: center;">
             <h3>Ready to get unstuck?</h3>
-            <p>Let's crack it together.</p>
-            <a href="contact.html" class="cta-button">Get in Touch</a>
+            <p>$20 gets your problem in front of me. No pitch, just work.</p>
+            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue</a>
         </section>
 
         <footer role="contentinfo">
@@ -230,4 +264,3 @@
     <script src="app.js" defer></script>
 </body>
 </html>
-

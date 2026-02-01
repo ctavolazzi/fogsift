@@ -134,25 +134,63 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
 const FOOTER_LINKS = [
     { href: 'index.html', label: 'Home' },
     { href: 'process.html', label: 'Process' },
-    { href: 'about.html', label: 'About' },
+    { href: 'queue.html', label: 'Queue' },
+    { href: 'faq.html', label: 'FAQ' },
     { href: 'pricing.html', label: 'Pricing' },
+    { href: 'about.html', label: 'About' },
     { href: 'wiki/index.html', label: 'Wiki' },
     { href: 'privacy.html', label: 'Privacy' },
     { href: 'disclaimer.html', label: 'Disclaimer' },
 ];
 
+// Social links - single source of truth
+const SOCIAL_LINKS = [
+    { href: 'https://youtube.com/@fogsift', label: 'YouTube', icon: 'youtube' },
+    { href: 'https://threads.net/@fogsift', label: 'Threads', icon: 'threads' },
+];
+
+// Social icons SVG
+const SOCIAL_ICONS = {
+    youtube: `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
+    threads: `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.858-.712 2.037-1.122 3.412-1.187.953-.046 1.863.03 2.723.228-.054-.89-.312-1.568-.77-2.016-.548-.535-1.405-.808-2.549-.808l-.025.001c-1.311.015-2.326.426-3.015 1.222l-1.504-1.38c1.06-1.223 2.553-1.85 4.494-1.876h.04c1.682 0 3.008.472 3.942 1.402.857.853 1.327 2.063 1.399 3.6l.015.386c1.17.553 2.103 1.38 2.707 2.418.858 1.476.997 3.628-.614 5.748-1.857 2.442-4.542 3.282-7.97 3.313zm-.159-7.18c-.927.044-1.652.27-2.095.654-.384.333-.526.713-.5 1.065.043.615.593 1.342 1.912 1.342.057 0 .116-.002.176-.006 1.034-.056 1.807-.46 2.298-1.2.364-.548.608-1.295.728-2.229-.556-.107-1.134-.166-1.73-.166-.263 0-.528.012-.79.04z"/></svg>`,
+};
+
 // Generate footer HTML - single source of truth
-function generateFooter(pathPrefix = '') {
+// Options: { pathPrefix, showVersion, showClock }
+function generateFooter(pathPrefix = '', options = {}) {
+    const { showVersion = false, showClock = false } = options;
+
     const links = FOOTER_LINKS.map(l =>
         `<a href="${pathPrefix}${l.href}">${l.label}</a>`
     ).join('\n                    ');
+
+    const socialLinks = SOCIAL_LINKS.map(l =>
+        `<a href="${l.href}" class="footer-social-link" target="_blank" rel="noopener" aria-label="${l.label}">${SOCIAL_ICONS[l.icon]}</a>`
+    ).join('\n                    ');
+
+    // Build footer bottom content
+    let footerBottom = `<span>&copy; ${new Date().getFullYear()} FOGSIFT`;
+    if (showVersion) {
+        footerBottom += ` v{{VERSION}}`;
+    }
+    footerBottom += `</span>`;
+
+    if (showClock) {
+        footerBottom += `\n                    <span class="footer-sep" aria-hidden="true">//</span>
+                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>`;
+    }
 
     return `<footer role="contentinfo">
             <div class="footer-content">
                 <div class="footer-links">
                     ${links}
                 </div>
-                <p class="footer-copy">&copy; ${new Date().getFullYear()} Fogsift Consulting</p>
+                <div class="footer-social">
+                    ${socialLinks}
+                </div>
+                <div class="footer-bottom">
+                    ${footerBottom}
+                </div>
             </div>
         </footer>`;
 }
@@ -283,6 +321,10 @@ function processHtml() {
     // Inject nav header (DRY: single source of truth for navigation)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
 
+    // Inject footer (DRY: single source of truth for footer with social links)
+    // Homepage gets version and clock
+    html = html.replace(/\{\{FOOTER\}\}/g, generateFooter('', { showVersion: true, showClock: true }));
+
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
@@ -310,6 +352,9 @@ function process404Html() {
     // Inject nav header (DRY: single source of truth for navigation)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
 
+    // Inject footer (DRY: single source of truth for footer with social links)
+    html = html.replace(/\{\{FOOTER\}\}/g, generateFooter());
+
     fs.writeFileSync(path.join(DIST, '404.html'), html);
     return true;
 }
@@ -329,6 +374,9 @@ function processSimpleHtml(filename) {
 
     // Inject nav header with current page highlighted (DRY: single source of truth)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader(filename));
+
+    // Inject footer (DRY: single source of truth for footer with social links)
+    html = html.replace(/\{\{FOOTER\}\}/g, generateFooter());
 
     fs.writeFileSync(path.join(DIST, filename), html);
     return true;
