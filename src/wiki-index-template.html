@@ -64,125 +64,25 @@
     <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
-    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <a href="../index.html" class="mobile-link">HOME</a>
-        <a href="index.html" class="mobile-link wiki-nav-active">WIKI</a>
-        <a href="../index.html#process" class="mobile-link">PROCESS</a>
-        <a href="../index.html#about" class="mobile-link">ABOUT</a>
-        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
-        <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="mobile-link">CONTACT</a>
+    {{NAV_HEADER}}
+
+    <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+        <ol class="crumb-list">
+            <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
+            <li class="crumb-item crumb-separator">/</li>
+            <li class="crumb-item"><span class="crumb-current">WIKI</span></li>
+        </ol>
     </nav>
 
-    <div class="nav-wrapper">
-        <div class="main-nav">
-            <a href="../index.html" class="brand">
-                <img src="../assets/logo.png" alt="Fogsift" class="brand-logo">
-            </a>
-
-            <div class="menu-items">
-                <div class="menu-item"><a href="index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
-                <div class="menu-item"><a href="../index.html#process" class="menu-link">PROCESS</a></div>
-                <div class="menu-item"><a href="../index.html#about" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="../index.html#pricing" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="menu-link cta-link">CONTACT</a></div>
-            </div>
-
-            <div class="nav-controls">
-                <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
-                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
-                        <span class="theme-picker-label">Theme</span>
-                    </button>
-                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
-                            <span class="theme-option-icon">☀</span>
-                            <span class="theme-option-label">Light</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
-                            <span class="theme-option-icon">●</span>
-                            <span class="theme-option-label">Dark</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
-                            <span class="theme-option-icon">▣</span>
-                            <span class="theme-option-label">Industrial</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
-                            <span class="theme-option-icon">▓</span>
-                            <span class="theme-option-label">Matrix</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
-                            <span class="theme-option-icon">☁️</span>
-                            <span class="theme-option-label">Sky</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
-                            <span class="theme-option-icon">🌆</span>
-                            <span class="theme-option-label">Synthwave</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
-                            <span class="theme-option-icon">📟</span>
-                            <span class="theme-option-label">Pip-Boy</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
-                            <span class="theme-option-icon">🏔️</span>
-                            <span class="theme-option-label">Rivendell</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
-                            <span class="theme-option-icon">🦌</span>
-                            <span class="theme-option-label">Camo</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
-                            <span class="theme-option-icon">💖</span>
-                            <span class="theme-option-label">Barbie</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
-                            <span class="theme-option-icon">🌊</span>
-                            <span class="theme-option-label">Ocean</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
-                            <span class="theme-option-icon">🎬</span>
-                            <span class="theme-option-label">Demo</span>
-                            <span class="theme-option-check" aria-hidden="true">▶</span>
-                        </button>
-                    </div>
-                </div>
-                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
-                    <span class="copy-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                        </svg>
-                    </span>
-                </button>
-                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
-                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
-                </button>
-            </div>
-        </div>
-
-        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
-            <ol class="crumb-list">
-                <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
-                <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">WIKI</span></li>
-            </ol>
-        </nav>
-    </div>
-
     <div class="wiki-index-layout">
+        <!-- AI Content Disclaimer Banner -->
+        <div class="wiki-ai-disclaimer" role="alert">
+            <span class="wiki-ai-icon" aria-hidden="true">🤖</span>
+            <span class="wiki-ai-text">
+                <strong>AI-Generated Content:</strong> This wiki is primarily AI-generated and may not have been fully reviewed.
+                Always verify information before acting on it.
+            </span>
+        </div>
         <header class="wiki-index-header">
             <h1 class="wiki-index-title">Fogsift Wiki</h1>
             <p class="wiki-index-desc">Knowledge base, documentation, and field notes from our consulting work.</p>

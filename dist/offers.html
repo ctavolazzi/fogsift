@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offers | Fogsift</title>
+    <meta name="description" content="FogSift offers: Free triage calls, $5 Field Guide, $20 Queue Response, $500 Deep Dive, or custom engagement. Pick what works for you.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/offers.html">
+
+    <!-- Mobile web app -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Offers | Fogsift">
+    <meta property="og:description" content="FogSift offers: Free triage calls, $5 Field Guide, $20 Queue Response, $500 Deep Dive, or custom engagement.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/offers.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <!-- Theme detection -->
+    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper">
+        <div class="main-nav">
+            <a href="index.html" class="brand" aria-label="Fogsift home">
+                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="offers.html" class="menu-link" aria-current="page">OFFERS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
+                <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
+            </nav>
+            <div class="nav-controls">
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                    <span class="copy-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                </button>
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Development Notice Banner -->
+    <div class="dev-banner" role="alert">
+        <span class="dev-banner-icon" aria-hidden="true">🚧</span>
+        <span class="dev-banner-text">
+            <strong>Site under active development.</strong>
+            Subject to change at any time.
+            Questions? <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> or <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.
+        </span>
+    </div>
+
+    <main class="frame" id="main-content">
+
+        <!-- Hero Section -->
+        <section class="section section-hero" style="text-align: center;">
+            <h1 class="headline">Choose Your Path</h1>
+            <p class="subhead" style="max-width: 50ch; margin: 0 auto;">No subscriptions. No hidden fees. Pick what works for you.</p>
+        </section>
+
+        <!-- Pricing Cards -->
+        <section class="section section-pricing">
+            <div class="pricing-cards pricing-cards-offer">
+
+                <!-- FREE: Triage Call -->
+                <article class="pricing-card">
+                    <h4>The Call</h4>
+                    <span class="price">FREE</span>
+                    <p>15-30 minute triage. Understand your situation. No pitch, no pressure.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Booking%20a%20Free%20Call" class="pricing-cta">Book a Call</a>
+                </article>
+
+                <!-- $5: Field Guide -->
+                <article class="pricing-card entry">
+                    <span class="featured-tag entry-tag">STARTER</span>
+                    <h4>Field Guide PDF</h4>
+                    <span class="price">$5</span>
+                    <p>Practical guide to getting useful answers from AI tools. Instant download.</p>
+                    <a href="https://ko-fi.com/s/23e227d00b" class="pricing-cta" target="_blank" rel="noopener">Get the PDF</a>
+                </article>
+
+                <!-- $20: Queue Response -->
+                <article class="pricing-card featured">
+                    <span class="featured-tag">MOST POPULAR</span>
+                    <h4>Queue Response</h4>
+                    <span class="price">$20</span>
+                    <p>Submit your request. Get a report + video response (30-90 sec) with our findings.</p>
+                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
+                </article>
+
+                <!-- $500: Deep Dive -->
+                <article class="pricing-card premium">
+                    <span class="featured-tag premium-tag">PRIVATE</span>
+                    <h4>Deep Dive</h4>
+                    <span class="price">$500</span>
+                    <p>Private scheduled session. Full documentation. Follow-up included. 100% confidential.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Deep%20Dive%20Inquiry" class="pricing-cta">Book a Deep Dive</a>
+                </article>
+
+                <!-- Custom: Boutique -->
+                <article class="pricing-card custom">
+                    <span class="featured-tag custom-tag">BOUTIQUE</span>
+                    <h4>Custom Engagement</h4>
+                    <span class="price">By Quote</span>
+                    <p>One client per work term. Extended collaboration on your terms. Limited availability.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Custom%20Engagement%20Inquiry" class="pricing-cta">Inquire</a>
+                </article>
+
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Detailed Explanations -->
+        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
+
+            <h2>What Each Offer Includes</h2>
+
+            <h3 id="call">The Call (Free)</h3>
+            <p>A quick 15-30 minute conversation to understand your situation. No strings attached. If we can point you in the right direction quickly, we will. If you need more help, we'll discuss which offer fits best.</p>
+            <ul>
+                <li>Video call or phone, your preference</li>
+                <li>Honest assessment of your situation</li>
+                <li>No sales pitch, just conversation</li>
+                <li>Schedule via email</li>
+            </ul>
+
+            <h3 id="fieldguide">Field Guide PDF ($5)</h3>
+            <p>A practical guide to getting genuinely useful answers from AI tools like ChatGPT, Claude, and others. Not hype, not theory—just techniques that actually work.</p>
+            <ul>
+                <li>Instant download after purchase</li>
+                <li>Real prompting strategies</li>
+                <li>Common pitfalls to avoid</li>
+                <li>When AI helps and when it doesn't</li>
+            </ul>
+            <p><a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Get the Field Guide &rarr;</a></p>
+
+            <h3 id="queue">Queue Response ($20)</h3>
+            <p>Our main offer. Submit your request to the queue, and we'll research, analyze, and respond with a report and short video. Public by default (so others can learn), but you can request privacy.</p>
+            <ul>
+                <li>Written report with findings and recommendations</li>
+                <li>Video response (30-90 seconds) summarizing key points</li>
+                <li>Up to 3 requests processed daily</li>
+                <li>May become a YouTube video at our discretion</li>
+            </ul>
+            <p><strong>Good for:</strong> Technical questions, research requests, "how do I..." problems, second opinions, feasibility checks.</p>
+            <p><a href="queue.html">Learn more about the Queue &rarr;</a></p>
+
+            <h3 id="deepdive">Deep Dive ($500)</h3>
+            <p>For situations that need real attention. A private, scheduled session where we dig into your specific problem. Everything stays confidential—nothing goes public without your explicit permission.</p>
+            <ul>
+                <li>Scheduled 1-2 hour working session</li>
+                <li>Full written documentation</li>
+                <li>One follow-up session included</li>
+                <li>100% confidential—nothing published</li>
+                <li>Direct access via email/chat for 2 weeks after</li>
+            </ul>
+            <p><strong>Good for:</strong> Sensitive business problems, strategic decisions, technical architecture review, when you need a thinking partner.</p>
+
+            <h3 id="custom">Custom Engagement (By Quote)</h3>
+            <p>Boutique consulting for extended collaboration. We take on one client per work term to give focused attention without splitting priorities. Pricing depends on scope and duration.</p>
+            <ul>
+                <li>One client at a time (no competing priorities)</li>
+                <li>Flexible structure based on your needs</li>
+                <li>Weekly check-ins or async collaboration</li>
+                <li>All deliverables and IP belong to you</li>
+                <li>Can include team training, process development, etc.</li>
+            </ul>
+            <p><strong>Good for:</strong> Ongoing projects, team augmentation, building something together over time.</p>
+
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Comparison Table -->
+        <section class="section" style="overflow-x: auto;">
+            <h2 class="section-label">COMPARE OPTIONS</h2>
+            <table style="width: 100%; max-width: 900px; margin: 0 auto; border-collapse: collapse; font-size: var(--text-sm);">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--line);">
+                        <th style="text-align: left; padding: var(--space-sm);">Feature</th>
+                        <th style="text-align: center; padding: var(--space-sm);">Call</th>
+                        <th style="text-align: center; padding: var(--space-sm);">Guide</th>
+                        <th style="text-align: center; padding: var(--space-sm);">Queue</th>
+                        <th style="text-align: center; padding: var(--space-sm);">Deep Dive</th>
+                        <th style="text-align: center; padding: var(--space-sm);">Custom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Price</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Free</td>
+                        <td style="text-align: center; padding: var(--space-sm);">$5</td>
+                        <td style="text-align: center; padding: var(--space-sm);">$20</td>
+                        <td style="text-align: center; padding: var(--space-sm);">$500</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Quote</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Written deliverable</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">PDF</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Report</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Full docs</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Custom</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Video response</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">30-90s</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Optional</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Optional</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Live interaction</td>
+                        <td style="text-align: center; padding: var(--space-sm);">15-30m</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">1-2h</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Ongoing</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Confidential</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
+                        <td style="text-align: center; padding: var(--space-sm);">N/A</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Public*</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--line);">
+                        <td style="padding: var(--space-sm);">Follow-up included</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">—</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
+                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="text-align: center; margin-top: var(--space-md); font-size: var(--text-xs); color: var(--muted);">
+                *Queue responses are public by default so others can learn. Privacy requests respected where possible, but not guaranteed.
+            </p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- FAQ Section -->
+        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
+            <h2>Frequently Asked Questions</h2>
+
+            <h3>Which offer should I choose?</h3>
+            <p><strong>Not sure what you need?</strong> Book a free call first. We'll figure it out together.</p>
+            <p><strong>Have a specific question?</strong> The $20 Queue Response is probably right.</p>
+            <p><strong>Need something confidential?</strong> Deep Dive or Custom Engagement.</p>
+            <p><strong>Just curious about AI?</strong> Grab the $5 Field Guide.</p>
+
+            <h3>Why is the Queue so cheap?</h3>
+            <p>We'd rather help 100 people at accessible prices than 5 people at premium rates. The queue also becomes content for the YouTube channel, so everyone benefits—you get help, others learn from watching.</p>
+
+            <h3>What if I'm not satisfied?</h3>
+            <p>For the Queue: if your request hasn't been processed yet, request a refund through Ko-fi anytime. No questions asked.</p>
+            <p>For Deep Dive and Custom: if you don't find value, we'll make it right. We'd rather have a good relationship than keep your money.</p>
+
+            <h3>Do you do ongoing retainers?</h3>
+            <p>That's what the Custom Engagement is for. We take on one client per work term to give focused attention. Limited availability—reach out to discuss.</p>
+
+            <h3>Can I upgrade from Queue to Deep Dive?</h3>
+            <p>Yes. If your Queue submission reveals something that needs more attention, we can discuss upgrading. Your $20 counts toward the Deep Dive fee.</p>
+
+            <h3>What kinds of problems do you work on?</h3>
+            <p>Technical questions, research requests, feasibility checks, process problems, "should I build or buy" decisions, debugging, architecture review, and more. If you're stuck on something concrete, we can probably help.</p>
+            <p>We don't do: financial/investment advice, legal advice, interpersonal disputes, or anything illegal/unethical.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Final CTA -->
+        <section class="section section-contact" style="text-align: center;">
+            <h3>Not sure where to start?</h3>
+            <p style="max-width: 45ch; margin: 0 auto var(--space-lg);">Book a free call. No pitch, no pressure. Just a conversation.</p>
+            <a href="mailto:fogsift@gmail.com?subject=Booking%20a%20Free%20Call" class="cta-button">Book a Free Call</a>
+            <p style="margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted);">
+                Or jump straight in: <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Join the Queue ($20)</a>
+            </p>
+            <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-muted);">
+                By participating, you agree to our <a href="terms.html">Terms & Conditions</a>.
+            </p>
+        </section>
+
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="offers.html">Offers</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="wiki/index.html">Wiki</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@fogsift" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://threads.net/@fogsift" class="footer-social-link" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.858-.712 2.037-1.122 3.412-1.187.953-.046 1.863.03 2.723.228-.054-.89-.312-1.568-.77-2.016-.548-.535-1.405-.808-2.549-.808l-.025.001c-1.311.015-2.326.426-3.015 1.222l-1.504-1.38c1.06-1.223 2.553-1.85 4.494-1.876h.04c1.682 0 3.008.472 3.942 1.402.857.853 1.327 2.063 1.399 3.6l.015.386c1.17.553 2.103 1.38 2.707 2.418.858 1.476.997 3.628-.614 5.748-1.857 2.442-4.542 3.282-7.97 3.313zm-.159-7.18c-.927.044-1.652.27-2.095.654-.384.333-.526.713-.5 1.065.043.615.593 1.342 1.912 1.342.057 0 .116-.002.176-.006 1.034-.056 1.807-.46 2.298-1.2.364-.548.608-1.295.728-2.229-.556-.107-1.134-.166-1.73-.166-.263 0-.528.012-.79.04z"/></svg></a>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; 2026 FOGSIFT</span>
+                </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

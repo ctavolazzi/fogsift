@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move the Needle | Fogsift Queue</title>
-    <meta name="description" content="Submit your problem for $20. Get up to an hour of focused attention, a video response, and a PDF report. Watch the process live on YouTube.">
+    <title>The Queue | Fogsift</title>
+    <meta name="description" content="Submit your request for $20. Get a report and video response. Watch your request move through the FogSift queue.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/queue.html">
@@ -15,8 +15,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Move the Needle | Fogsift Queue">
-    <meta property="og:description" content="Submit your problem for $20. Get focused attention, a video response, and a PDF report.">
+    <meta property="og:title" content="The Queue | Fogsift">
+    <meta property="og:description" content="Submit your request for $20. Get a report and video response.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com/queue.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -28,6 +28,195 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Queue-specific styles */
+        .queue-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .queue-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .queue-stat {
+            text-align: center;
+        }
+
+        .queue-stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--burnt-orange);
+            display: block;
+        }
+
+        .queue-stat-label {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            color: var(--muted);
+        }
+
+        .queue-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .queue-item {
+            background: var(--paper);
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            position: relative;
+            transition: all var(--ease-out);
+        }
+
+        .queue-item:hover {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .queue-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .queue-item-name {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .queue-item-status {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            padding: 4px 8px;
+            border-radius: var(--radius-badge);
+        }
+
+        .queue-item-status.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .queue-item-status.in_progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .queue-item-status.completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .queue-item-message {
+            color: var(--muted);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+        }
+
+        .queue-item-meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .queue-empty {
+            text-align: center;
+            padding: var(--space-2xl);
+            color: var(--muted);
+        }
+
+        .queue-loading {
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .queue-loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--line);
+            border-top-color: var(--burnt-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .queue-error {
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--rust);
+            background: #fef2f2;
+            border-radius: var(--radius);
+        }
+
+        .queue-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .queue-tab {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            padding: 8px 16px;
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius-badge);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all var(--ease-out);
+        }
+
+        .queue-tab:hover {
+            border-color: var(--burnt-orange);
+            color: var(--burnt-orange);
+        }
+
+        .queue-tab.active {
+            background: var(--burnt-orange);
+            border-color: var(--burnt-orange);
+            color: var(--cream);
+        }
+
+        .queue-refresh {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        .queue-refresh button {
+            background: none;
+            border: none;
+            color: var(--teal);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -38,11 +227,13 @@
     {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
+
+        <!-- Hero Section -->
         <section class="section section-hero">
             <div class="hero-badge">
                 <span class="hero-tag" style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--burnt-orange);">The Queue</span>
                 <h1 class="headline">Sifting the Queue</h1>
-                <p class="subhead">Put your request in the queue. Get a response.</p>
+                <p class="subhead">Submit your request. Get a response.</p>
                 <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
                     Join the Queue ($20)
                 </a>
@@ -52,34 +243,85 @@
             </div>
         </section>
 
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Live Queue Display -->
+        <section class="section">
+            <h2 class="section-label">LIVE QUEUE</h2>
+
+            <div class="queue-container">
+                <!-- Queue Stats -->
+                <div class="queue-stats" id="queue-stats">
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-pending">-</span>
+                        <span class="queue-stat-label">Pending</span>
+                    </div>
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-in-progress">-</span>
+                        <span class="queue-stat-label">In Progress</span>
+                    </div>
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-completed">-</span>
+                        <span class="queue-stat-label">Completed</span>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="queue-tabs">
+                    <button type="button" class="queue-tab active" data-filter="all" onclick="QueueUI.filter('all')">All</button>
+                    <button type="button" class="queue-tab" data-filter="pending" onclick="QueueUI.filter('pending')">Pending</button>
+                    <button type="button" class="queue-tab" data-filter="in_progress" onclick="QueueUI.filter('in_progress')">In Progress</button>
+                    <button type="button" class="queue-tab" data-filter="completed" onclick="QueueUI.filter('completed')">Completed</button>
+                </div>
+
+                <!-- Queue List -->
+                <div class="queue-list" id="queue-list">
+                    <div class="queue-loading">
+                        <div class="queue-loading-spinner"></div>
+                        <p>Loading queue...</p>
+                    </div>
+                </div>
+
+                <!-- Refresh Info -->
+                <div class="queue-refresh">
+                    Updated <span id="queue-updated">just now</span> ·
+                    <button type="button" onclick="QueueUI.refresh()">Refresh</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- How It Works -->
         <section class="section">
             <h2 class="section-label">HOW IT WORKS</h2>
             <div class="process-steps">
                 <article class="process-step">
                     <span class="step-number">1</span>
                     <h3>Submit</h3>
-                    <p>Describe your request and pay $20 to enter the queue.</p>
+                    <p>Pay $20 on Ko-fi and describe your request in the message.</p>
                 </article>
                 <article class="process-step">
                     <span class="step-number">2</span>
+                    <h3>Queue</h3>
+                    <p>Your request appears here. We pick up to 3 daily.</p>
+                </article>
+                <article class="process-step">
+                    <span class="step-number">3</span>
                     <h3>Research</h3>
                     <p>We dig into finding research, analysis, and data.</p>
                 </article>
                 <article class="process-step">
-                    <span class="step-number">3</span>
+                    <span class="step-number">4</span>
                     <h3>Respond</h3>
                     <p>You get a report + video response with our findings.</p>
                 </article>
             </div>
-
-            <p style="max-width: 65ch; margin: var(--space-lg) auto 0; text-align: center; color: var(--muted); font-size: var(--text-sm);">
-                Put your request for a FogSift response in our work queue. We pick up to 3 requests each day to respond to with a custom video and report, based on the order in which requests were received and the content of each request.
-            </p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- What to Include in Your Submission -->
+        <!-- What to Include -->
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>What to Include in Your Submission</h2>
             <p>When you submit on Ko-fi, include in your message:</p>
@@ -87,14 +329,13 @@
                 <li><strong>The request</strong>: What do you need help with? Be specific.</li>
                 <li><strong>Context</strong>: What have you tried? What's the situation?</li>
                 <li><strong>Goal</strong>: What would "solved" look like?</li>
-                <li><strong>Privacy preference</strong>: Public (default) or private request (no guarantees)</li>
                 <li><strong>Contact info</strong>: Email where we can send your report</li>
             </ol>
 
             <div style="background: var(--surface-alt); padding: var(--space-md); border-radius: var(--radius); margin: var(--space-lg) 0; border-left: 4px solid var(--accent);">
                 <p style="margin: 0; font-size: var(--text-sm);"><strong>Example submission:</strong></p>
                 <p style="margin: var(--space-sm) 0 0 0; font-style: italic; color: var(--text-muted);">
-                    "My Raspberry Pi project keeps crashing after ~2 hours of runtime. I've checked the power supply and it seems fine. Running a Python script that reads sensor data. Want it to run 24/7 reliably. Public is fine. Email: me@example.com"
+                    "My Raspberry Pi project keeps crashing after ~2 hours of runtime. I've checked the power supply and it seems fine. Running a Python script that reads sensor data. Want it to run 24/7 reliably. Email: me@example.com"
                 </p>
             </div>
 
@@ -105,59 +346,29 @@
             </ul>
             <p style="color: var(--muted); font-size: var(--text-sm);">We may or may not choose to make a YouTube video about your request at our discretion.</p>
 
-            <h2>What Makes a Good Submission?</h2>
-            <ul>
-                <li><strong>Specific</strong>: "My 3D prints have layer separation at 40mm height" beats "prints aren't working"</li>
-                <li><strong>Bounded</strong>: Something I can meaningfully research</li>
-                <li><strong>Actionable</strong>: You're ready to act on what I find</li>
-            </ul>
+            <h2>FAQ</h2>
 
-            <h2>What We Don't Do</h2>
-            <ul>
-                <li>Financial advice or investment questions</li>
-                <li>Legal advice</li>
-                <li>Interpersonal disputes or drama</li>
-                <li>Anything illegal or unethical</li>
-            </ul>
-            <p>See our full <a href="terms.html">Terms & Conditions</a> for details.</p>
-        </section>
+            <h3>Will my request be public?</h3>
+            <p>By default, yes, so others can learn. We'll respect privacy requests where possible, but we can't guarantee anything submitted online stays private.</p>
 
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <section class="section">
-            <h2 class="section-label">SEE HOW IT WORKS</h2>
-            <p style="text-align: center; margin-bottom: var(--space-lg);">Watch previous sessions on YouTube to see the process in action.</p>
-            <div style="text-align: center;">
-                <a href="https://youtube.com/@fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">Watch on YouTube</a>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>Frequently Asked Questions</h2>
-
-            <h3>How long until my problem gets addressed?</h3>
-            <p>We can't give a specific timeline. Could be days, could be weeks. We aim for up to 2 per day but life happens. If you need something faster, <a href="contact.html">reach out directly</a> about consulting.</p>
+            <h3>How long until my request gets picked?</h3>
+            <p>Could be days, could be weeks. We aim for up to 3 per day. If you need something faster, consider a <a href="offers.html#deepdive">Deep Dive</a>.</p>
 
             <h3>Can I get a refund?</h3>
-            <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet, or if you change your mind. No hard feelings.</p>
+            <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet. No hard feelings.</p>
 
-            <h3>Will my problem be public?</h3>
-            <p>By default, yes, so others can learn. You can request privacy, and we'll do our best to respect it. But we can't guarantee anything submitted online stays private.</p>
-
-            <h3>What if you can't solve my problem?</h3>
-            <p>That's part of it. We'll document what we tried, what we learned, and point you in the right direction. The value is in the process, not just the outcome.</p>
+            <p><a href="faq.html">See full FAQ &rarr;</a></p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
+        <!-- Final CTA -->
         <section class="section section-contact" style="text-align: center;">
             <h3>Ready to submit a request?</h3>
             <p style="max-width: 45ch; margin: 0 auto var(--space-lg);">Get a report + video response with our findings.</p>
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
-            <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-muted);">
-                Questions? <a href="contact.html">Get in touch</a> or check the <a href="faq.html">FAQ</a>.
+            <p style="margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted);">
+                Want something private? Check our <a href="offers.html">other offers</a>.
             </p>
         </section>
 
@@ -165,5 +376,6 @@
     </main>
 
     <script src="app.js" defer></script>
+    <script src="queue-ui.js" defer></script>
 </body>
 </html>

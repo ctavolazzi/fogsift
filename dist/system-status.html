@@ -324,7 +324,7 @@
         <h1>🔒 SYSTEM STATUS</h1>
         <p style="color: var(--text-secondary); margin-bottom: 1rem;">Enter access code</p>
         <input type="password" id="password-input" placeholder="••••••••••••" autofocus>
-        <button onclick="authenticate()">ACCESS</button>
+        <button type="button" onclick="authenticate()">ACCESS</button>
         <div id="auth-error"></div>
     </div>
 
@@ -334,7 +334,7 @@
             <h1>⚡ MCP SYSTEM STATUS</h1>
             <div style="display: flex; align-items: center; gap: 1rem;">
                 <span class="last-updated">Last updated: <span id="last-updated">--</span></span>
-                <button id="refresh-btn" onclick="loadStatus()">↻ Refresh</button>
+                <button type="button" id="refresh-btn" onclick="loadStatus()">↻ Refresh</button>
             </div>
         </header>
 

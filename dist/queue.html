@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Move the Needle | Fogsift Queue</title>
-    <meta name="description" content="Submit your problem for $20. Get up to an hour of focused attention, a video response, and a PDF report. Watch the process live on YouTube.">
+    <title>The Queue | Fogsift</title>
+    <meta name="description" content="Submit your request for $20. Get a report and video response. Watch your request move through the FogSift queue.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/queue.html">
@@ -15,8 +15,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Move the Needle | Fogsift Queue">
-    <meta property="og:description" content="Submit your problem for $20. Get focused attention, a video response, and a PDF report.">
+    <meta property="og:title" content="The Queue | Fogsift">
+    <meta property="og:description" content="Submit your request for $20. Get a report and video response.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com/queue.html">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -28,6 +28,195 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Queue-specific styles */
+        .queue-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .queue-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .queue-stat {
+            text-align: center;
+        }
+
+        .queue-stat-number {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            color: var(--burnt-orange);
+            display: block;
+        }
+
+        .queue-stat-label {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            color: var(--muted);
+        }
+
+        .queue-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .queue-item {
+            background: var(--paper);
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+            position: relative;
+            transition: all var(--ease-out);
+        }
+
+        .queue-item:hover {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .queue-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--space-sm);
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+
+        .queue-item-name {
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        .queue-item-status {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            padding: 4px 8px;
+            border-radius: var(--radius-badge);
+        }
+
+        .queue-item-status.pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .queue-item-status.in_progress {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .queue-item-status.completed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .queue-item-message {
+            color: var(--muted);
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            margin-bottom: var(--space-sm);
+        }
+
+        .queue-item-meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .queue-empty {
+            text-align: center;
+            padding: var(--space-2xl);
+            color: var(--muted);
+        }
+
+        .queue-loading {
+            text-align: center;
+            padding: var(--space-xl);
+        }
+
+        .queue-loading-spinner {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--line);
+            border-top-color: var(--burnt-orange);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .queue-error {
+            text-align: center;
+            padding: var(--space-xl);
+            color: var(--rust);
+            background: #fef2f2;
+            border-radius: var(--radius);
+        }
+
+        .queue-tabs {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .queue-tab {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            padding: 8px 16px;
+            border: var(--border-width) solid var(--line);
+            border-radius: var(--radius-badge);
+            background: transparent;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all var(--ease-out);
+        }
+
+        .queue-tab:hover {
+            border-color: var(--burnt-orange);
+            color: var(--burnt-orange);
+        }
+
+        .queue-tab.active {
+            background: var(--burnt-orange);
+            border-color: var(--burnt-orange);
+            color: var(--cream);
+        }
+
+        .queue-refresh {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            text-align: center;
+            margin-top: var(--space-md);
+        }
+
+        .queue-refresh button {
+            background: none;
+            border: none;
+            color: var(--teal);
+            cursor: pointer;
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -37,100 +226,100 @@
 
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
-        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
-        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
-        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+        <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
     <!-- Main Navigation -->
-    <header class="nav-wrapper" role="banner">
+    <header class="nav-wrapper">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link" aria-current="page">QUEUE</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
-                <div class="menu-item"><a href="queue.html" class="menu-link" aria-current="page">QUEUE</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
                             <span class="theme-option-icon">☀</span>
                             <span class="theme-option-label">Light</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
                             <span class="theme-option-icon">●</span>
                             <span class="theme-option-label">Dark</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
                             <span class="theme-option-icon">▣</span>
                             <span class="theme-option-label">Industrial</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
                             <span class="theme-option-icon">▓</span>
                             <span class="theme-option-label">Matrix</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
                             <span class="theme-option-icon">☁️</span>
                             <span class="theme-option-label">Sky</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
                             <span class="theme-option-icon">🌆</span>
                             <span class="theme-option-label">Synthwave</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
                             <span class="theme-option-icon">📟</span>
                             <span class="theme-option-label">Pip-Boy</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
                             <span class="theme-option-icon">🏔️</span>
                             <span class="theme-option-label">Rivendell</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
                             <span class="theme-option-icon">🦌</span>
                             <span class="theme-option-label">Camo</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
                             <span class="theme-option-icon">💖</span>
                             <span class="theme-option-label">Barbie</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
                             <span class="theme-option-icon">🌊</span>
                             <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
                             <span class="theme-option-icon">🎬</span>
                             <span class="theme-option-label">Demo</span>
                             <span class="theme-option-check" aria-hidden="true">▶</span>
                         </button>
                     </div>
                 </div>
-                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -138,7 +327,7 @@
                         </svg>
                     </span>
                 </button>
-                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
             </div>
@@ -156,13 +345,15 @@
     </div>
 
     <main class="frame" id="main-content">
+
+        <!-- Hero Section -->
         <section class="section section-hero">
             <div class="hero-badge">
                 <span class="hero-tag" style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--burnt-orange);">The Queue</span>
-                <h1 class="headline">Move the Needle</h1>
-                <p class="subhead">$20 holds your spot. Up to an hour of focused attention on your problem. Video response + PDF report.</p>
+                <h1 class="headline">Sifting the Queue</h1>
+                <p class="subhead">Submit your request. Get a response.</p>
                 <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                    Join the Queue on Ko-fi ($20)
+                    Join the Queue ($20)
                 </a>
                 <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-muted);">
                     By joining, you agree to our <a href="terms.html">Terms & Conditions</a>.
@@ -170,108 +361,132 @@
             </div>
         </section>
 
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Live Queue Display -->
+        <section class="section">
+            <h2 class="section-label">LIVE QUEUE</h2>
+
+            <div class="queue-container">
+                <!-- Queue Stats -->
+                <div class="queue-stats" id="queue-stats">
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-pending">-</span>
+                        <span class="queue-stat-label">Pending</span>
+                    </div>
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-in-progress">-</span>
+                        <span class="queue-stat-label">In Progress</span>
+                    </div>
+                    <div class="queue-stat">
+                        <span class="queue-stat-number" id="stat-completed">-</span>
+                        <span class="queue-stat-label">Completed</span>
+                    </div>
+                </div>
+
+                <!-- Filter Tabs -->
+                <div class="queue-tabs">
+                    <button type="button" class="queue-tab active" data-filter="all" onclick="QueueUI.filter('all')">All</button>
+                    <button type="button" class="queue-tab" data-filter="pending" onclick="QueueUI.filter('pending')">Pending</button>
+                    <button type="button" class="queue-tab" data-filter="in_progress" onclick="QueueUI.filter('in_progress')">In Progress</button>
+                    <button type="button" class="queue-tab" data-filter="completed" onclick="QueueUI.filter('completed')">Completed</button>
+                </div>
+
+                <!-- Queue List -->
+                <div class="queue-list" id="queue-list">
+                    <div class="queue-loading">
+                        <div class="queue-loading-spinner"></div>
+                        <p>Loading queue...</p>
+                    </div>
+                </div>
+
+                <!-- Refresh Info -->
+                <div class="queue-refresh">
+                    Updated <span id="queue-updated">just now</span> ·
+                    <button type="button" onclick="QueueUI.refresh()">Refresh</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- How It Works -->
         <section class="section">
             <h2 class="section-label">HOW IT WORKS</h2>
             <div class="process-steps">
                 <article class="process-step">
                     <span class="step-number">1</span>
-                    <h3>Submit on Ko-fi</h3>
-                    <p>Pay $20 and describe your problem in the message field. Be specific about what's stuck.</p>
+                    <h3>Submit</h3>
+                    <p>Pay $20 on Ko-fi and describe your request in the message.</p>
                 </article>
                 <article class="process-step">
                     <span class="step-number">2</span>
-                    <h3>Wait for Your Turn</h3>
-                    <p>Your problem enters the queue. We aim for up to 2 per day, circumstances permitting.</p>
+                    <h3>Queue</h3>
+                    <p>Your request appears here. We pick up to 3 daily.</p>
                 </article>
                 <article class="process-step">
                     <span class="step-number">3</span>
-                    <h3>Get Your Response</h3>
-                    <p>Up to an hour of focused work. You receive a PDF report and short video. Possibly a YouTube episode.</p>
+                    <h3>Research</h3>
+                    <p>We dig into finding research, analysis, and data.</p>
+                </article>
+                <article class="process-step">
+                    <span class="step-number">4</span>
+                    <h3>Respond</h3>
+                    <p>You get a report + video response with our findings.</p>
                 </article>
             </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- What to Include in Your Submission -->
+        <!-- What to Include -->
         <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
             <h2>What to Include in Your Submission</h2>
             <p>When you submit on Ko-fi, include in your message:</p>
             <ol>
-                <li><strong>The problem</strong> — What's stuck? Be specific.</li>
-                <li><strong>Context</strong> — What have you tried? What's the situation?</li>
-                <li><strong>Goal</strong> — What would "solved" look like?</li>
-                <li><strong>Privacy preference</strong> — Public (default), anonymous, or private (if applicable)</li>
-                <li><strong>Contact info</strong> — Email where we can send your report</li>
+                <li><strong>The request</strong>: What do you need help with? Be specific.</li>
+                <li><strong>Context</strong>: What have you tried? What's the situation?</li>
+                <li><strong>Goal</strong>: What would "solved" look like?</li>
+                <li><strong>Contact info</strong>: Email where we can send your report</li>
             </ol>
 
             <div style="background: var(--surface-alt); padding: var(--space-md); border-radius: var(--radius); margin: var(--space-lg) 0; border-left: 4px solid var(--accent);">
                 <p style="margin: 0; font-size: var(--text-sm);"><strong>Example submission:</strong></p>
                 <p style="margin: var(--space-sm) 0 0 0; font-style: italic; color: var(--text-muted);">
-                    "My Raspberry Pi project keeps crashing after ~2 hours of runtime. I've checked the power supply and it seems fine. Running a Python script that reads sensor data. Want it to run 24/7 reliably. Public is fine. Email: me@example.com"
+                    "My Raspberry Pi project keeps crashing after ~2 hours of runtime. I've checked the power supply and it seems fine. Running a Python script that reads sensor data. Want it to run 24/7 reliably. Email: me@example.com"
                 </p>
             </div>
 
             <h2>What You Get</h2>
             <ul>
-                <li><strong>PDF Report</strong> — Findings, recommendations, and next steps</li>
-                <li><strong>Video Response</strong> — Usually 15-90 seconds summarizing what we found</li>
-                <li><strong>Maybe a YouTube Video</strong> — If the problem is interesting enough, we might make a full episode</li>
+                <li><strong>Report</strong>: Findings, recommendations, and next steps</li>
+                <li><strong>Video Response</strong>: 30-90 seconds summarizing our findings</li>
             </ul>
+            <p style="color: var(--muted); font-size: var(--text-sm);">We may or may not choose to make a YouTube video about your request at our discretion.</p>
 
-            <h2>What Makes a Good Submission?</h2>
-            <ul>
-                <li><strong>Specific</strong> — "My 3D prints have layer separation at 40mm height" beats "prints aren't working"</li>
-                <li><strong>Bounded</strong> — Something that can be meaningfully addressed in an hour</li>
-                <li><strong>Actionable</strong> — You're ready to try what we suggest</li>
-            </ul>
+            <h2>FAQ</h2>
 
-            <h2>What We Don't Do</h2>
-            <ul>
-                <li>Financial advice or investment questions</li>
-                <li>Legal advice</li>
-                <li>Interpersonal disputes or drama</li>
-                <li>Anything illegal or unethical</li>
-            </ul>
-            <p>See our full <a href="terms.html">Terms & Conditions</a> for details.</p>
-        </section>
+            <h3>Will my request be public?</h3>
+            <p>By default, yes, so others can learn. We'll respect privacy requests where possible, but we can't guarantee anything submitted online stays private.</p>
 
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <section class="section">
-            <h2 class="section-label">SEE HOW IT WORKS</h2>
-            <p style="text-align: center; margin-bottom: var(--space-lg);">Watch previous sessions on YouTube to see the process in action.</p>
-            <div style="text-align: center;">
-                <a href="https://youtube.com/@fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">Watch on YouTube</a>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>Frequently Asked Questions</h2>
-
-            <h3>How long until my problem gets addressed?</h3>
-            <p>We can't give a specific timeline. Could be days, could be weeks. We aim for up to 2 per day but life happens. If you need something faster, <a href="contact.html">reach out directly</a> about consulting.</p>
+            <h3>How long until my request gets picked?</h3>
+            <p>Could be days, could be weeks. We aim for up to 3 per day. If you need something faster, consider a <a href="offers.html#deepdive">Deep Dive</a>.</p>
 
             <h3>Can I get a refund?</h3>
-            <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet, or if you change your mind. No hard feelings.</p>
+            <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet. No hard feelings.</p>
 
-            <h3>Will my problem be public?</h3>
-            <p>By default, yes — so others can learn. You can request anonymization (we obscure identifying details) or mention if you need privacy. Note: we can't guarantee complete privacy for anything submitted online.</p>
-
-            <h3>What if you can't solve my problem?</h3>
-            <p>That's part of it. We'll document what we tried, what we learned, and point you in the right direction. The value is in the process, not just the outcome.</p>
+            <p><a href="faq.html">See full FAQ &rarr;</a></p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
+        <!-- Final CTA -->
         <section class="section section-contact" style="text-align: center;">
-            <h3>Ready to move the needle?</h3>
-            <p style="max-width: 45ch; margin: 0 auto var(--space-lg);">$20 gets your problem in front of me. Describe it clearly, and I'll give it up to an hour of focused attention.</p>
-            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue on Ko-fi</a>
-            <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-muted);">
-                Questions? <a href="contact.html">Get in touch</a> or check the <a href="faq.html">FAQ</a>.
+            <h3>Ready to submit a request?</h3>
+            <p style="max-width: 45ch; margin: 0 auto var(--space-lg);">Get a report + video response with our findings.</p>
+            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
+            <p style="margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted);">
+                Want something private? Check our <a href="offers.html">other offers</a>.
             </p>
         </section>
 
@@ -279,12 +494,12 @@
             <div class="footer-content">
                 <div class="footer-links">
                     <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
+                    <a href="offers.html">Offers</a>
                     <a href="queue.html">Queue</a>
                     <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
+                    <a href="portfolio.html">Portfolio</a>
                     <a href="wiki/index.html">Wiki</a>
+                    <a href="contact.html">Contact</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="disclaimer.html">Disclaimer</a>
                 </div>
@@ -295,10 +510,14 @@
                 <div class="footer-bottom">
                     <span>&copy; 2026 FOGSIFT</span>
                 </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
+                </div>
             </div>
         </footer>
     </main>
 
     <script src="app.js" defer></script>
+    <script src="queue-ui.js" defer></script>
 </body>
 </html>

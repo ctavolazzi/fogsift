@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fogsift | Clear answers to good questions</title>
-    <meta name="description" content="Submit your problem to the FogSift queue. We pick two per day, work on camera, and publish the session on YouTube.">
+    <title>Fogsift | Clear answers to good questions 🌤 🔭</title>
+    <meta name="description" content="Submit your problem to the FogSift queue for $20. Get a report and video response. Clear answers to good questions.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
+    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://fogsift.com">
 
     <link rel="manifest" href="manifest.json">
@@ -14,11 +15,20 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Fogsift">
-    <meta property="og:description" content="Submit your problem to the FogSift queue. We pick two per day, work on camera, and publish the session on YouTube.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Fogsift | Clear answers to good questions">
+    <meta property="og:description" content="Submit your problem to the FogSift queue for $20. Get a report and video response.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
+    <meta property="og:site_name" content="Fogsift">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fogsift | Clear answers to good questions">
+    <meta name="twitter:description" content="Submit your problem to the FogSift queue for $20. Get a report and video response.">
+    <meta name="twitter:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -27,9 +37,13 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Fogsift",
+      "alternateName": "FogSift",
       "image": "https://fogsift.com/og-image.png",
-      "description": "Independent consulting for complex problems. Queue submissions become recorded work sessions and written reports.",
+      "logo": "https://fogsift.com/assets/logo.png",
+      "description": "Submit your problem to the queue for $20. Get a report and video response. Clear answers to good questions.",
       "url": "https://fogsift.com",
+      "telephone": "",
+      "email": "fogsift@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chico",
@@ -41,17 +55,28 @@
         "latitude": 39.7285,
         "longitude": -121.8375
       },
-      "priceRange": "$$"
+      "priceRange": "$",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      },
+      "sameAs": [
+        "https://youtube.com/@fogsift",
+        "https://threads.net/@fogsift",
+        "https://ko-fi.com/fogsift"
+      ]
     }
     </script>
 
     <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
     <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
 
-    <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
-         Alternative: self-host fonts for maximum security -->
+    <!-- Fonts - preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- External Stylesheet with error handling -->
@@ -106,7 +131,7 @@
     <!-- Article Modal -->
     <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <button class="close-modal" onclick="Modal.close()" aria-label="Close modal">
+            <button type="button" class="close-modal" onclick="Modal.close()" aria-label="Close modal">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
             </button>
@@ -120,100 +145,100 @@
 
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
-        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
-        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
-        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+        <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
     <!-- Main Navigation -->
-    <header class="nav-wrapper" role="banner">
+    <header class="nav-wrapper">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
-                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
                             <span class="theme-option-icon">☀</span>
                             <span class="theme-option-label">Light</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
                             <span class="theme-option-icon">●</span>
                             <span class="theme-option-label">Dark</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
                             <span class="theme-option-icon">▣</span>
                             <span class="theme-option-label">Industrial</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
                             <span class="theme-option-icon">▓</span>
                             <span class="theme-option-label">Matrix</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
                             <span class="theme-option-icon">☁️</span>
                             <span class="theme-option-label">Sky</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
                             <span class="theme-option-icon">🌆</span>
                             <span class="theme-option-label">Synthwave</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
                             <span class="theme-option-icon">📟</span>
                             <span class="theme-option-label">Pip-Boy</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
                             <span class="theme-option-icon">🏔️</span>
                             <span class="theme-option-label">Rivendell</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
                             <span class="theme-option-icon">🦌</span>
                             <span class="theme-option-label">Camo</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
                             <span class="theme-option-icon">💖</span>
                             <span class="theme-option-label">Barbie</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
                             <span class="theme-option-icon">🌊</span>
                             <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
                             <span class="theme-option-icon">🎬</span>
                             <span class="theme-option-label">Demo</span>
                             <span class="theme-option-check" aria-hidden="true">▶</span>
                         </button>
                     </div>
                 </div>
-                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -221,7 +246,7 @@
                         </svg>
                     </span>
                 </button>
-                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
             </div>
@@ -249,7 +274,7 @@
                 <h1 id="hero-heading" class="headline">Clear answers to good questions.</h1>
                 <p class="subhead">Something eating up your</p>
                 <p class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></p>
-                <p class="subhead">Put it in the queue. I pick two per day, work on camera, and publish the session.</p>
+                <p class="subhead">Put it in the queue. Get a response.</p>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
                     <input type="checkbox" name="website" tabindex="-1" autocomplete="off">
@@ -259,14 +284,8 @@
                     Join the Queue ($20)
                 </a>
                 <a href="queue.html" class="cta-button cta-secondary">
-                    See the Queue
+                    How It Works
                 </a>
-                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-md); margin-bottom: 0;">
-                    $20 is the filter. It funds production and keeps the queue serious.
-                </p>
-                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-xs); margin-bottom: 0;">
-                    Episodes publish on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">FogSift YouTube</a> + you get a written report. Public by default; anonymization available.
-                </p>
             </div>
         </section>
 
@@ -284,112 +303,80 @@
                 <div class="process-step">
                     <div class="step-number">01</div>
                     <h3>Submit</h3>
-                    <p>Describe your problem + pay $20. The price is the filter.</p>
+                    <p>Describe your request and pay $20 to enter the queue.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">02</div>
-                    <h3>Review</h3>
-                    <p>Each day, I review submissions and pick two: one from the top, one at random.</p>
+                    <h3>Queue</h3>
+                    <p>Your request enters the work queue.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">03</div>
-                    <h3>Work</h3>
-                    <p>Up to an hour of focused work on camera. No face — just the work.</p>
+                    <h3>Research</h3>
+                    <p>We dig into finding research, analysis, and data.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">04</div>
-                    <h3>Deliver</h3>
-                    <p>You get the YouTube link + a written report with findings.</p>
+                    <h3>Compile</h3>
+                    <p>We compile our findings into a report and video.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">05</div>
-                    <h3>Next Steps</h3>
-                    <p>You'll get one of three outcomes. If it's a fit, I'll invite you to go deeper on my terms.</p>
+                    <h3>Respond</h3>
+                    <p>You get a report + video response with our findings.</p>
                 </div>
             </div>
+
+            <p style="max-width: 65ch; margin: var(--space-lg) auto 0; text-align: center; color: var(--muted); font-size: var(--text-sm);">
+                Put your request for a FogSift response in our work queue. We pick up to 3 requests each day to respond to with a custom video and report, based on the order in which requests were received and the content of each request. We may or may not choose to make a YouTube video on our channel about your request at our discretion.
+            </p>
         </section>
 
-        <!-- Section Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ========================================
-             SECTION 2.5: WHY THIS WORKS
-             Friction + proof + delivery
-             ======================================== -->
-        <section id="why-it-works" class="section section-process" aria-labelledby="why-heading">
-            <h2 id="why-heading" class="section-label">WHY THIS WORKS</h2>
-
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h3>Friction Is the Filter</h3>
-                    <p>$20 keeps the queue serious and funds production. If it doesn't filter, it doesn't work.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>Public Work, Real Proof</h3>
-                    <p>Sessions are recorded and published. Judge the thinking, not the credentials.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>Time-Boxed Focus</h3>
-                    <p>One hour of undivided attention. No meetings. No Slack.</p>
-                </div>
-
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>Clear Outcomes</h3>
-                    <p>You leave with either a fix, a roadmap, or a referral.</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Section Divider -->
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
              SECTION 2.75: EXAMPLES
-             Representative queue problems
+             Representative queue problems (clickable)
              ======================================== -->
         <section id="examples" class="section section-pricing" aria-labelledby="examples-heading">
             <h2 id="examples-heading" class="section-label">EXAMPLES FROM THE QUEUE</h2>
             <p style="max-width: 65ch; margin: -1rem auto var(--space-lg); color: var(--muted);">
-                Representative examples of the kinds of problems the queue is built for. Names anonymized.
+                Representative examples. Click to see the full story.
             </p>
 
             <div class="pricing-cards">
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
                     <h4>"Our inventory counts never match."</h4>
                     <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Diagnosis + fix</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
                     <h4>"Our app crashes every Tuesday."</h4>
                     <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Root cause + fix</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
                     <h4>"Build it or buy it?"</h4>
                     <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Decision framework</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
                     <h4>"Signups stalled."</h4>
                     <p>Walked the funnel live. Fixed the top three friction points during the session.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Funnel fixes + roadmap</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
                 </article>
             </div>
         </section>
@@ -399,19 +386,19 @@
 
         <!-- ========================================
              SECTION 3: ABOUT
-             Photo + bio in badge card
+             Clean, centered bio card
              ======================================== -->
         <section id="about" class="section section-about" aria-labelledby="about-heading">
             <h2 id="about-heading" class="section-label">WHO IS FOGSIFT</h2>
 
             <div class="about-card">
                 <div class="about-avatar">
-                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
+                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="150" height="150">
                 </div>
                 <div class="about-info">
                     <h3 class="about-name">Christopher Tavolazzi</h3>
-                    <span class="about-role">Expert Researcher</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it. If it's a fit, he'll invite you to go deeper on his terms.</p>
+                    <span class="about-role">Researcher / Builder / Problem Solver</span>
+                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. Lived in a van across America's national parks. Played music on three continents. Whatever you're stuck on, we can probably find someone who knows how to fix it.</p>
                 </div>
             </div>
         </section>
@@ -449,62 +436,102 @@
 
         <!-- ========================================
              SECTION 3.5: TESTIMONIALS
-             Social proof from clients
+             Continuous ticker-style rotation
              ======================================== -->
         <section id="testimonials" class="section section-testimonials" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" class="section-label">WHAT CLIENTS SAY</h2>
 
-            <div class="testimonials-grid">
-                <article class="testimonial-card">
-                    <blockquote>
+            <div class="testimonials-ticker">
+                <div class="ticker-track">
+                    <!-- First set of testimonials -->
+                    <article class="ticker-item">
                         <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
                         <footer class="testimonial-author">
-                            <cite>
+                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
                                 <span class="author-name">Operations Director</span>
                                 <span class="author-title">Manufacturing Company</span>
-                            </cite>
+                            </div>
                         </footer>
-                    </blockquote>
-                </article>
+                    </article>
 
-                <article class="testimonial-card">
-                    <blockquote>
+                    <article class="ticker-item">
                         <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
                         <footer class="testimonial-author">
-                            <cite>
+                            <img src="https://images.pexels.com/photos/6510860/pexels-photo-6510860.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
                                 <span class="author-name">Founder &amp; CEO</span>
                                 <span class="author-title">Tech Startup</span>
-                            </cite>
+                            </div>
                         </footer>
-                    </blockquote>
-                </article>
+                    </article>
 
-                <article class="testimonial-card">
-                    <blockquote>
+                    <article class="ticker-item">
                         <p class="testimonial-quote">"The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month."</p>
                         <footer class="testimonial-author">
-                            <cite>
+                            <img src="https://images.pexels.com/photos/9724435/pexels-photo-9724435.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
                                 <span class="author-name">VP of Strategy</span>
                                 <span class="author-title">Professional Services Firm</span>
-                            </cite>
+                            </div>
                         </footer>
-                    </blockquote>
-                </article>
-            </div>
+                    </article>
 
-            <!-- Stats Row -->
-            <div class="testimonials-stats" aria-label="Client statistics">
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Engagements</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Satisfaction</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">8+</span>
-                    <span class="stat-label">Industries</span>
+                    <article class="ticker-item">
+                        <p class="testimonial-quote">"I was skeptical, but the hour of focused work saved us weeks of back-and-forth. Exactly what we needed."</p>
+                        <footer class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
+                                <span class="author-name">Product Manager</span>
+                                <span class="author-title">SaaS Company</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <!-- Duplicate set for seamless loop -->
+                    <article class="ticker-item">
+                        <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
+                        <footer class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
+                                <span class="author-name">Operations Director</span>
+                                <span class="author-title">Manufacturing Company</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="ticker-item">
+                        <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
+                        <footer class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/6510860/pexels-photo-6510860.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
+                                <span class="author-name">Founder &amp; CEO</span>
+                                <span class="author-title">Tech Startup</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="ticker-item">
+                        <p class="testimonial-quote">"The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month."</p>
+                        <footer class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/9724435/pexels-photo-9724435.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
+                                <span class="author-name">VP of Strategy</span>
+                                <span class="author-title">Professional Services Firm</span>
+                            </div>
+                        </footer>
+                    </article>
+
+                    <article class="ticker-item">
+                        <p class="testimonial-quote">"I was skeptical, but the hour of focused work saved us weeks of back-and-forth. Exactly what we needed."</p>
+                        <footer class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
+                            <div class="author-info">
+                                <span class="author-name">Product Manager</span>
+                                <span class="author-title">SaaS Company</span>
+                            </div>
+                        </footer>
+                    </article>
                 </div>
             </div>
         </section>
@@ -548,67 +575,52 @@
 
         <!-- ========================================
              SECTION 4: THE DEAL
-             Single $20 offer + three outcomes
+             Clean pricing tiers
              ======================================== -->
         <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="section-label">THE DEAL</h2>
+            <h2 id="pricing-heading" class="section-label">CHOOSE YOUR PATH</h2>
+            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg); color: var(--muted);">
+                Pick what works for you. No subscriptions, no hidden fees.
+            </p>
 
             <div class="pricing-cards pricing-cards-offer">
                 <!-- Entry: $5 PDF -->
                 <article class="pricing-card entry">
-                    <span class="featured-tag entry-tag">ENTRY</span>
+                    <span class="featured-tag entry-tag">STARTER</span>
                     <h4>Field Guide PDF</h4>
                     <span class="price">$5</span>
-                    <p>"How to Talk to AI" — a practical guide to getting useful answers from AI tools.</p>
-                    <p class="pricing-note">Instant download. Share freely.</p>
+                    <p>Practical guide to getting useful answers from AI tools. Instant download.</p>
                     <a href="https://ko-fi.com/s/23e227d00b" class="pricing-cta" target="_blank" rel="noopener">Get the PDF</a>
                 </article>
 
                 <!-- Main: $20 offer -->
                 <article class="pricing-card featured">
-                    <span class="featured-tag">THE SWEET SPOT</span>
-                    <h4>Focus Session</h4>
+                    <span class="featured-tag">MOST POPULAR</span>
+                    <h4>Queue Response</h4>
                     <span class="price">$20</span>
-                    <p>Your $20 adds your problem to <a href="queue.html">the queue</a>. It's the filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's. A full-on research squad (me + AI + friends + network) focuses on your submission for up to an hour on camera, then publishes the session on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">FogSift YouTube</a>. You get the video + a written report.</p>
-                    <p class="pricing-note">Worth way more than $20, kept low so anyone can access it.</p>
-                    <p class="pricing-note">Public by default. Request anonymization at submission time.</p>
-                    <p class="pricing-note">Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
-                    <div class="capacity-notice">
-                        <span class="capacity-icon">⚡</span>
-                        <span>Limited to <strong>10 slots/week</strong></span>
-                    </div>
+                    <p>Report + video response (30-90 sec) to your request.</p>
                     <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
                 </article>
 
                 <!-- Premium: $500 -->
                 <article class="pricing-card premium">
-                    <span class="featured-tag premium-tag">PREMIUM</span>
+                    <span class="featured-tag premium-tag">PRIVATE</span>
                     <h4>Deep Dive</h4>
                     <span class="price">$500</span>
-                    <p>Private, scheduled session. Full documentation. Follow‑up included.</p>
-                    <p class="pricing-note">100% confidential. Best for complex problems.</p>
+                    <p>Private scheduled session. Full documentation. Follow-up included. 100% confidential.</p>
                     <a href="mailto:fogsift@gmail.com?subject=Deep%20Dive%20Inquiry" class="pricing-cta">Book a Deep Dive</a>
                 </article>
-            </div>
 
-            <h3 class="section-label" style="margin-top: 3rem; font-size: 1rem;">WHAT HAPPENS AFTER</h3>
-            
-            <div class="pricing-cards outcome-cards" style="margin-top: 1.5rem;">
-                <article class="pricing-card outcome-go-deeper">
-                    <h4>"Let's go deeper."</h4>
-                    <p>We see something real. If it's a fit, I'll invite you to work together on my terms.</p>
-                </article>
-
-                <article class="pricing-card outcome-i-know-people">
-                    <h4>"I know people."</h4>
-                    <p>This isn't my lane, but I can point you to someone who can help.</p>
-                </article>
-
-                <article class="pricing-card outcome-this-is-sick">
-                    <h4>"This is sick."</h4>
-                    <p>This would be cool if somebody did it. You should. Here's a path forward.</p>
+                <!-- Custom: Boutique -->
+                <article class="pricing-card custom">
+                    <span class="featured-tag custom-tag">BOUTIQUE</span>
+                    <h4>Custom Engagement</h4>
+                    <span class="price">By Quote</span>
+                    <p>One client per work term. Extended collaboration on your terms. Limited availability.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Custom%20Engagement%20Inquiry" class="pricing-cta">Inquire</a>
                 </article>
             </div>
+
         </section>
 
         <!-- Section Divider -->
@@ -616,7 +628,7 @@
 
         <!-- ========================================
              SECTION 4.5: COMMON CONCERNS
-             Friction + privacy + expectations
+             Links to FAQ
              ======================================== -->
         <section id="objections" class="section section-pricing" aria-labelledby="objections-heading">
             <h2 id="objections-heading" class="section-label">COMMON CONCERNS</h2>
@@ -624,24 +636,23 @@
             <div class="pricing-cards outcome-cards">
                 <article class="pricing-card" style="text-align: left;">
                     <h4>"What if you can't solve it?"</h4>
-                    <p>Then you still get the video + report, plus a narrower problem statement or referral.</p>
+                    <p>You still get the video + report, plus a narrower problem statement or referral.</p>
                 </article>
 
                 <article class="pricing-card" style="text-align: left;">
                     <h4>"Is my problem too big?"</h4>
-                    <p>One hour is for momentum. You'll leave with clarity and next steps, even if the full fix takes longer.</p>
-                </article>
-
-                <article class="pricing-card" style="text-align: left;">
-                    <h4>"Why charge $20?"</h4>
-                    <p>It filters noise, funds production, and keeps it open to anyone who can get a job at McDonald's. If it doesn't sting, it doesn't filter.</p>
+                    <p>One hour is for momentum. You'll leave with clarity and next steps.</p>
                 </article>
 
                 <article class="pricing-card" style="text-align: left;">
                     <h4>"Will my problem be public?"</h4>
-                    <p>Public by default. Request anonymization at submission time.</p>
+                    <p>Public by default. We'll do our best to respect privacy requests, but we can't guarantee anything submitted online stays private.</p>
                 </article>
             </div>
+
+            <p style="text-align: center; margin-top: var(--space-lg);">
+                <a href="faq.html" class="cta-button cta-secondary">See Full FAQ</a>
+            </p>
         </section>
 
         <!-- Section Divider -->
@@ -652,27 +663,26 @@
              Minimal, clean
              ======================================== -->
         <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-            <h3 id="contact-heading">Ready to put your idea in the queue?</h3>
-            <p>$20 is the filter. Two picked per day. Sessions publish on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">FogSift YouTube</a>.</p>
+            <h3 id="contact-heading">Ready to put your request in the queue?</h3>
+            <p>Get a report + video response with our findings.</p>
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                Join the Queue
+                Join the Queue ($20)
             </a>
             <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">
-                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide PDF</a>.
+                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide</a>.
             </p>
-            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">Public by default; request anonymization at submission time.</p>
         </section>
 
         <footer role="contentinfo">
             <div class="footer-content">
                 <div class="footer-links">
                     <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
+                    <a href="offers.html">Offers</a>
                     <a href="queue.html">Queue</a>
                     <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
+                    <a href="portfolio.html">Portfolio</a>
                     <a href="wiki/index.html">Wiki</a>
+                    <a href="contact.html">Contact</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="disclaimer.html">Disclaimer</a>
                 </div>
@@ -684,6 +694,9 @@
                     <span>&copy; 2026 FOGSIFT v0.0.5</span>
                     <span class="footer-sep" aria-hidden="true">//</span>
                     <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
+                </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
                 </div>
             </div>
         </footer>

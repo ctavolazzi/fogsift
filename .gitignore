@@ -1,5 +1,33 @@
-.playwright-mcp/
+# Dependencies
 node_modules/
+
+# Build artifacts (comment out if you want to track dist)
+# dist/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Cloudflare
 .wrangler/
+
+# Playwright
+.playwright-mcp/
+
+# Logs
 *.log
+npm-debug.log*
+
+# IDE/Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Work efforts (internal)
 _work_efforts/
+
+# Audit history (can be tracked but regenerated)
+audit-history.json

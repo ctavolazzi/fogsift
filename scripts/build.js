@@ -27,12 +27,13 @@ const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 
 const THEME_INIT_SCRIPT = `<script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('${THEME_STORAGE_KEY}','light');}catch(e){}})();</script>`;
 
 // Navigation partial - single source of truth for site navigation
+// Order: conversion-focused flow from offers → queue → learn → connect
 const NAV_LINKS = [
+    { href: 'offers.html', label: 'OFFERS' },
+    { href: 'queue.html', label: 'QUEUE' },
     { href: 'wiki/index.html', label: 'WIKI' },
     { href: 'portfolio.html', label: 'PORTFOLIO' },
-    { href: 'queue.html', label: 'QUEUE' },
-    { href: 'pricing.html', label: 'PRICING' },
-    { href: 'contact.html', label: 'CONTACT', cta: true },
+    { href: 'contact.html', label: 'CONTACT' },
 ];
 
 // Theme picker options - single source of truth
@@ -53,7 +54,7 @@ const THEME_OPTIONS = [
 // Generate theme picker HTML - single source of truth
 function generateThemePicker() {
     const options = THEME_OPTIONS.map(t =>
-        `<button class="theme-picker-option" data-theme="${t.id}" role="option" onclick="ThemePicker.select('${t.id}')">
+        `<button type="button" class="theme-picker-option" data-theme="${t.id}" role="option" onclick="ThemePicker.select('${t.id}')">
                             <span class="theme-option-icon">${t.icon}</span>
                             <span class="theme-option-label">${t.label}</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
@@ -61,13 +62,13 @@ function generateThemePicker() {
     ).join('\n                        ');
 
     return `<div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
                         ${options}
-                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
                             <span class="theme-option-icon">🎬</span>
                             <span class="theme-option-label">Demo</span>
                             <span class="theme-option-check" aria-hidden="true">▶</span>
@@ -95,7 +96,7 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
 
     return `<!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="${pathPrefix}index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
@@ -103,7 +104,7 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
     </nav>
 
     <!-- Main Navigation -->
-    <header class="nav-wrapper" role="banner">
+    <header class="nav-wrapper">
         <div class="main-nav">
             <a href="${pathPrefix}index.html" class="brand" aria-label="Fogsift home">
                 <img src="${pathPrefix}assets/logo.png" alt="Fogsift" class="brand-logo">
@@ -113,7 +114,7 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
             </nav>
             <div class="nav-controls">
                 ${themePicker}
-                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -121,7 +122,7 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
                         </svg>
                     </span>
                 </button>
-                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
             </div>
@@ -140,14 +141,15 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
 }
 
 // Footer links - single source of truth
+// Note: pricing.html, process.html, about.html were legacy pages - content merged to homepage/offers
 const FOOTER_LINKS = [
     { href: 'index.html', label: 'Home' },
-    { href: 'process.html', label: 'Process' },
+    { href: 'offers.html', label: 'Offers' },
     { href: 'queue.html', label: 'Queue' },
     { href: 'faq.html', label: 'FAQ' },
-    { href: 'pricing.html', label: 'Pricing' },
-    { href: 'about.html', label: 'About' },
+    { href: 'portfolio.html', label: 'Portfolio' },
     { href: 'wiki/index.html', label: 'Wiki' },
+    { href: 'contact.html', label: 'Contact' },
     { href: 'privacy.html', label: 'Privacy' },
     { href: 'disclaimer.html', label: 'Disclaimer' },
 ];
@@ -199,6 +201,9 @@ function generateFooter(pathPrefix = '', options = {}) {
                 </div>
                 <div class="footer-bottom">
                     ${footerBottom}
+                </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
                 </div>
             </div>
         </footer>`;
@@ -262,6 +267,8 @@ const JS_FILES = [
 // Static assets to copy from src/ to dist/
 // Note: 404.html is processed separately (TD-010 theme init injection)
 const STATIC_ASSETS = [
+    // Page-specific scripts (not bundled with app.js)
+    { src: 'src/js/queue-ui.js', dest: 'queue-ui.js' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
     { src: 'src/manifest.json', dest: 'manifest.json' },
@@ -1000,8 +1007,8 @@ async function build() {
     if (processSimpleHtml('process.html')) {
         console.log('  ✓ dist/process.html (processed)');
     }
-    if (processSimpleHtml('pricing.html')) {
-        console.log('  ✓ dist/pricing.html (processed)');
+    if (processSimpleHtml('offers.html')) {
+        console.log('  ✓ dist/offers.html (processed)');
     }
     if (processSimpleHtml('contact.html')) {
         console.log('  ✓ dist/contact.html (processed)');
@@ -1021,6 +1028,9 @@ async function build() {
     }
     if (processSimpleHtml('portfolio.html')) {
         console.log('  ✓ dist/portfolio.html (processed)');
+    }
+    if (processSimpleHtml('vision.html')) {
+        console.log('  ✓ dist/vision.html (processed)');
     }
     if (processSimpleHtml('terms.html')) {
         console.log('  ✓ dist/terms.html (processed)');

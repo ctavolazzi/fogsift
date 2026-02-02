@@ -1,11 +1,9 @@
 /* ============================================
-   FOGSIFT WIKI STYLES - 70's/80's RETRO AESTHETIC
-   Layout and typography for wiki pages
+   FOGSIFT WIKI STYLES - CLEAN BOX MODEL LAYOUT
    ============================================ */
 
-/* === WIKI BODY (shared) === */
+/* === WIKI BODY === */
 body.wiki-body {
-    padding-top: clamp(100px, 15vh, 140px); /* Fluid padding: nav + breadcrumb + extra space */
     min-height: 100vh;
     scroll-behavior: smooth;
 }
@@ -14,10 +12,10 @@ body.wiki-body {
 .wiki-content h1,
 .wiki-content h2,
 .wiki-content h3 {
-    scroll-margin-top: 160px;
+    scroll-margin-top: 100px;
 }
 
-/* === BREADCRUMB BAR === */
+/* === BREADCRUMB BAR - Static, flows with content === */
 .breadcrumb-bar {
     background: var(--cream);
     border-bottom: var(--border-width) solid var(--line);
@@ -50,10 +48,7 @@ body.wiki-body {
     color: var(--teal);
     text-decoration: none;
     transition: color var(--ease-out);
-    padding: 0.5rem 0.25rem;
-    min-height: var(--touch-min);
-    display: inline-flex;
-    align-items: center;
+    padding: 0.25rem;
 }
 
 .crumb-link:hover {
@@ -63,6 +58,35 @@ body.wiki-body {
 .crumb-current {
     color: var(--muted);
     font-weight: 700;
+}
+
+/* === AI CONTENT DISCLAIMER BANNER === */
+.wiki-ai-disclaimer {
+    background: linear-gradient(90deg, #fff3cd 0%, #ffeeba 100%);
+    border: 1px solid #d4a800;
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin: 0 auto var(--space-lg);
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    text-align: center;
+}
+
+.wiki-ai-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.wiki-ai-text {
+    color: #664d03;
+}
+
+.wiki-ai-text strong {
+    font-weight: 600;
 }
 
 /* ============================================
