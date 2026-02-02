@@ -102,7 +102,9 @@
 
     /* === LAYOUT === */
     --nav-height: 70px;
-    --frame-max-width: 900px;
+    --content-width: min(90vw, 1400px);
+    --text-width: min(65ch, 90vw);
+    --card-grid-width: min(95vw, 1400px);
 
     /* === TOUCH TARGETS (WCAG 2.1) === */
     --touch-min: 44px;

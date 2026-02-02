@@ -253,8 +253,9 @@ const JS_FILES = [
     'src/js/cache.js',    // TKT-x7k9-005: Caching layer
     'src/js/debug.js',    // TKT-x7k9-008: Debug logging
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
-    'src/js/achievement.js', // Xbox-style achievement notifications
-    'src/js/queue-widget.js', // Queue status floating widget
+    // Future features (uncomment when implemented):
+    // 'src/js/achievement.js', // Xbox-style achievement notifications
+    // 'src/js/queue-widget.js', // Queue status floating widget
     'src/js/main.js',
 ];
 
@@ -268,7 +269,7 @@ const STATIC_ASSETS = [
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
     { src: 'src/content/status.json', dest: 'content/status.json' },
-    { src: 'src/content/queue.json', dest: 'content/queue.json' },
+    // { src: 'src/content/queue.json', dest: 'content/queue.json' }, // Enable when queue data exists
     { src: 'src/system-status.html', dest: 'system-status.html' },
     // Security files
     { src: 'src/_headers', dest: '_headers' },
@@ -1008,9 +1009,10 @@ async function build() {
     if (processSimpleHtml('hi.html')) {
         console.log('  ✓ dist/hi.html (processed)');
     }
-    if (processSimpleHtml('paperbin-saas.html')) {
-        console.log('  ✓ dist/paperbin-saas.html (processed)');
-    }
+    // Future pages (uncomment when implemented):
+    // if (processSimpleHtml('paperbin-saas.html')) {
+    //     console.log('  ✓ dist/paperbin-saas.html (processed)');
+    // }
     if (processSimpleHtml('queue.html')) {
         console.log('  ✓ dist/queue.html (processed)');
     }
@@ -1024,10 +1026,10 @@ async function build() {
         console.log('  ✓ dist/terms.html (processed)');
     }
 
-    // Copy gallery.html (standalone, no template processing needed)
-    if (copyFile('src/gallery.html', 'gallery.html')) {
-        console.log('  ✓ dist/gallery.html (copied)');
-    }
+    // Future pages (uncomment when implemented):
+    // if (copyFile('src/gallery.html', 'gallery.html')) {
+    //     console.log('  ✓ dist/gallery.html (copied)');
+    // }
 
     // Copy static assets
     console.log('\n📁 Static Assets:');
