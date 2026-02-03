@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "npm run build && npm-run-all --parallel serve watch",
     "dev:functions": "npm run build && npx wrangler pages dev dist",
-    "serve": "browser-sync start --server dist --port 5050 --no-open --files 'dist/**/*'",
+    "serve": "browser-sync start --config bs-config.js",
     "watch": "chokidar 'src/**/*' -c 'node scripts/build.js'",
     "build": "node scripts/build.js",
     "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift --branch main",
