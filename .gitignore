@@ -22,9 +22,17 @@ npm-debug.log*
 # IDE/Editor
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
 .DS_Store
+src/.DS_Store
+
+# MCP servers (local dev tools)
+.mcp-servers/
+
+# Content drafts (not part of build)
+content/
 
 # Work efforts (internal)
 _work_efforts/
