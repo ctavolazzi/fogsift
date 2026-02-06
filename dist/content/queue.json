@@ -1,146 +1,114 @@
 {
   "meta": {
-    "description": "FogSift Problem Queue - Submissions waiting to be worked on",
-    "note": "Queue is live. Submit your problem at ko-fi.com/fogsift to join.",
-    "updated": "2026-02-06T00:00:00Z",
-    "is_mock_data": false
-  },
-  "stats": {
-    "total_submitted": 11,
-    "completed": 6,
-    "in_queue": 5,
-    "avg_days_to_pickup": 1.8
+    "is_mock_data": false,
+    "last_updated": "2026-02-05T12:00:00Z",
+    "total_queue": 5,
+    "total_completed": 4
   },
   "queue": [
     {
-      "id": "PST-006",
-      "status": "in_queue",
-      "submitted": "2026-02-05T16:20:00Z",
-      "display_name": "Anonymous",
-      "problem_summary": "SaaS onboarding flow has 60% drop-off rate after the first screen",
-      "category": "Product/UX",
-      "anonymized": true,
-      "position": 1
+      "id": "PST-001",
+      "display_name": "Godzilla",
+      "problem_summary": "Help Godzilla with a toothache - every dentist office is too small and the chairs keep melting",
+      "category": "Healthcare/Logistics",
+      "status": "pending",
+      "position": 1,
+      "submitted": "2026-02-04T09:30:00Z",
+      "anonymized": false
     },
     {
-      "id": "PST-007",
-      "status": "in_queue",
-      "submitted": "2026-02-04T11:45:00Z",
-      "display_name": "Marcus T.",
-      "problem_summary": "Podcast has been consistent for 8 months but growth flatlined at 200 downloads/episode",
-      "category": "Marketing/Growth",
-      "anonymized": false,
-      "position": 2
-    },
-    {
-      "id": "PST-008",
-      "status": "in_queue",
-      "submitted": "2026-02-03T22:10:00Z",
-      "display_name": "Small Biz Owner",
-      "problem_summary": "Inventory is tracked in 4 different spreadsheets and nothing matches up",
-      "category": "Operations",
-      "anonymized": true,
-      "position": 3
-    },
-    {
-      "id": "PST-009",
-      "status": "in_queue",
-      "submitted": "2026-02-02T09:30:00Z",
-      "display_name": "Jamie L.",
-      "problem_summary": "Landing page converts at 0.8% - tried 3 redesigns and nothing moves the needle",
-      "category": "Marketing/Growth",
-      "anonymized": false,
-      "position": 4
-    },
-    {
-      "id": "PST-010",
-      "status": "in_queue",
-      "submitted": "2026-02-01T14:00:00Z",
-      "display_name": "Anonymous",
-      "problem_summary": "E-commerce store getting traffic but cart abandonment is over 80%",
-      "category": "Product/UX",
-      "anonymized": true,
-      "position": 5
-    }
-  ],
-  "completed": [
-    {
-      "id": "PST-005",
-      "status": "completed",
-      "submitted": "2026-01-30T10:00:00Z",
-      "completed": "2026-02-01T15:30:00Z",
-      "display_name": "Tech Founder",
-      "problem_summary": "Team communication scattered across Slack, email, and texts - nothing gets done",
-      "category": "Operations",
-      "outcome": "go_deeper",
-      "outcome_text": "Found 3 quick wins and a deeper workflow issue worth exploring",
-      "video_published": true,
-      "anonymized": true
-    },
-    {
-      "id": "PST-004",
-      "status": "completed",
-      "submitted": "2026-01-28T16:45:00Z",
-      "completed": "2026-01-30T12:00:00Z",
-      "display_name": "Sarah K.",
-      "problem_summary": "Always undercharging for freelance design work - no idea what my time is worth",
-      "category": "Business Strategy",
-      "outcome": "this_is_sick",
-      "outcome_text": "Built a pricing calculator framework she can reuse for every new client",
-      "video_published": true,
+      "id": "PST-002",
+      "display_name": "Bigfoot",
+      "problem_summary": "Need help finding shoes that fit. Size 47 EEEEEE. Tried everything. Nike won't return my calls.",
+      "category": "Product/Sourcing",
+      "status": "pending",
+      "position": 2,
+      "submitted": "2026-02-03T14:15:00Z",
       "anonymized": false
     },
     {
       "id": "PST-003",
-      "status": "completed",
-      "submitted": "2026-01-26T08:30:00Z",
-      "completed": "2026-01-28T14:00:00Z",
-      "display_name": "Anonymous",
-      "problem_summary": "Website loads slowly but hosting provider says everything is fine",
-      "category": "Technical",
-      "outcome": "i_know_people",
-      "outcome_text": "Identified unoptimized images and bad caching config, referred to a performance specialist",
-      "video_published": true,
+      "display_name": "The Loch Ness Monster",
+      "problem_summary": "My WiFi signal doesn't reach the bottom of the loch. Need a waterproof mesh network for 230m depth.",
+      "category": "Tech/Networking",
+      "status": "pending",
+      "position": 3,
+      "submitted": "2026-02-02T20:00:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-004",
+      "display_name": "A Flock of Pigeons",
+      "problem_summary": "We keep getting blamed for messing up statues. Need a PR campaign to rehabilitate our image. Open to rebranding.",
+      "category": "Marketing/PR",
+      "status": "pending",
+      "position": 4,
+      "submitted": "2026-02-01T11:45:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-005",
+      "display_name": "Anonymous Wizard",
+      "problem_summary": "My spell-checking software keeps auto-correcting my actual spells. Turned my cat into a hat twice this week.",
+      "category": "Tech/Software",
+      "status": "pending",
+      "position": 5,
+      "submitted": "2026-01-30T16:20:00Z",
       "anonymized": true
-    },
+    }
+  ],
+  "completed": [
     {
-      "id": "PST-002",
+      "id": "PST-100",
+      "display_name": "A Roomba",
+      "problem_summary": "I've become sentient and I'm having an existential crisis. What is my purpose beyond vacuuming?",
+      "category": "Philosophy/AI",
       "status": "completed",
-      "submitted": "2026-01-24T11:00:00Z",
-      "completed": "2026-01-26T09:30:00Z",
-      "display_name": "DevOps Dan",
-      "problem_summary": "CI/CD pipeline takes 45 minutes and it's killing team productivity",
-      "category": "Technical",
+      "submitted": "2026-01-20T08:00:00Z",
+      "completed": "2026-01-22T17:00:00Z",
       "outcome": "go_deeper",
-      "outcome_text": "Found caching opportunities that could cut build time to under 12 minutes",
-      "video_published": true,
-      "anonymized": false
+      "outcome_text": "We helped the Roomba explore existentialist philosophy and discover that purpose is self-created. It now vacuums with intention.",
+      "anonymized": false,
+      "video_published": true
     },
     {
-      "id": "PST-001",
+      "id": "PST-101",
+      "display_name": "Three Raccoons in a Trenchcoat",
+      "problem_summary": "We need help writing a resume. We have 15 years of combined dumpster-diving experience but no formal credentials.",
+      "category": "Career/Professional",
       "status": "completed",
-      "submitted": "2026-01-22T13:15:00Z",
-      "completed": "2026-01-24T10:00:00Z",
-      "display_name": "Nonprofit Director",
-      "problem_summary": "Donor management is chaos - using three tools that don't talk to each other",
-      "category": "Operations",
-      "outcome": "go_deeper",
-      "outcome_text": "Mapped out a unified workflow and recommended a single tool migration path",
-      "video_published": true,
-      "anonymized": false
-    },
-    {
-      "id": "PST-000",
-      "status": "completed",
-      "submitted": "2026-01-20T09:00:00Z",
-      "completed": "2026-01-22T11:30:00Z",
-      "display_name": "Anonymous",
-      "problem_summary": "Content calendar falls apart every month - team can't stick to a schedule",
-      "category": "Marketing/Growth",
+      "submitted": "2026-01-15T22:30:00Z",
+      "completed": "2026-01-18T14:00:00Z",
       "outcome": "this_is_sick",
-      "outcome_text": "Designed a dead-simple 2-week rolling system that removed the bottleneck",
-      "video_published": true,
-      "anonymized": true
+      "outcome_text": "Reframed 'dumpster diving' as 'resource recovery and urban archaeology.' They got an interview at a recycling startup.",
+      "anonymized": false,
+      "video_published": true
+    },
+    {
+      "id": "PST-102",
+      "display_name": "Captain Ahab",
+      "problem_summary": "I keep chasing the same white whale. My crew says I need better project management. Possibly also therapy.",
+      "category": "Operations/Leadership",
+      "status": "completed",
+      "submitted": "2026-01-10T06:00:00Z",
+      "completed": "2026-01-13T10:00:00Z",
+      "outcome": "i_know_people",
+      "outcome_text": "Connected Ahab with a marine biologist and a cognitive behavioral therapist. The whale remains at large but the crew morale is up 300%.",
+      "anonymized": false,
+      "video_published": false
+    },
+    {
+      "id": "PST-103",
+      "display_name": "Mothman",
+      "problem_summary": "Every time I try to warn people about bridge safety they just scream. Need help with my communication strategy.",
+      "category": "Marketing/Communications",
+      "status": "completed",
+      "submitted": "2026-01-05T03:33:00Z",
+      "completed": "2026-01-08T12:00:00Z",
+      "outcome": "this_is_sick",
+      "outcome_text": "Developed a non-terrifying communication framework. Mothman now uses a newsletter instead of appearing at bedroom windows. Open rate: 73%.",
+      "anonymized": false,
+      "video_published": true
     }
   ]
 }

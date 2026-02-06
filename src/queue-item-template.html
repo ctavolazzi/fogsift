@@ -7,7 +7,7 @@
     <meta name="description" content="{{PROBLEM_SUMMARY}}">
 
     <link rel="icon" type="image/png" href="../favicon.png">
-    
+
     <!-- Theme detection -->
     {{THEME_INIT}}
 
@@ -24,7 +24,7 @@
         .item-header {
             margin-bottom: var(--space-xl);
             padding-bottom: var(--space-lg);
-            border-bottom: 2px solid var(--border);
+            border-bottom: 2px solid var(--line);
         }
         .item-id-badge {
             display: inline-flex;
@@ -35,15 +35,15 @@
         .item-id {
             font-family: var(--font-mono);
             font-size: var(--text-sm);
-            color: var(--accent);
+            color: var(--burnt-orange);
             font-weight: 600;
-            background: var(--bg);
+            background: var(--paper);
             padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
         }
         .item-status {
             padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-sm);
+            border-radius: var(--radius);
             font-family: var(--font-mono);
             font-size: var(--text-xs);
             font-weight: 600;
@@ -55,10 +55,6 @@
         .status-completed {
             background: #d1fae5;
             color: #065f46;
-        }
-        .status-in-progress {
-            background: #dbeafe;
-            color: #1e40af;
         }
         .item-title {
             font-family: var(--font-display);
@@ -78,7 +74,6 @@
             align-items: center;
             gap: 0.35rem;
         }
-        
         .item-section {
             margin-bottom: var(--space-xl);
         }
@@ -89,12 +84,11 @@
             letter-spacing: 0.05em;
             margin-bottom: var(--space-md);
             padding-bottom: var(--space-xs);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--line);
         }
-        
         .problem-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
+            background: var(--paper);
+            border: 1px solid var(--line);
             border-radius: var(--radius);
             padding: var(--space-lg);
         }
@@ -102,32 +96,30 @@
             font-size: var(--text-lg);
             line-height: 1.6;
         }
-        
         .outcome-card {
-            background: linear-gradient(135deg, var(--surface) 0%, rgba(224, 123, 60, 0.05) 100%);
-            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, var(--paper) 0%, rgba(224, 123, 60, 0.05) 100%);
+            border: 2px solid var(--burnt-orange);
             border-radius: var(--radius);
             padding: var(--space-lg);
         }
         .outcome-label {
             font-family: var(--font-display);
             font-size: var(--text-xl);
-            color: var(--accent);
+            color: var(--burnt-orange);
             margin-bottom: var(--space-sm);
         }
         .outcome-text {
             font-size: var(--text-lg);
             line-height: 1.6;
         }
-        
         .work-log {
-            background: var(--bg);
+            background: var(--paper);
             border-radius: var(--radius);
             padding: var(--space-lg);
         }
         .work-log-entry {
             padding: var(--space-md) 0;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--line);
         }
         .work-log-entry:last-child {
             border-bottom: none;
@@ -141,12 +133,11 @@
         .work-log-content {
             line-height: 1.6;
         }
-        
         .pending-notice {
             text-align: center;
             padding: var(--space-xl);
-            background: var(--surface);
-            border: 2px dashed var(--border);
+            background: var(--paper);
+            border: 2px dashed var(--line);
             border-radius: var(--radius);
         }
         .pending-notice-icon {
@@ -163,17 +154,15 @@
             max-width: 40ch;
             margin: 0 auto;
         }
-        
         .privacy-notice {
-            background: var(--bg);
-            border-radius: var(--radius-sm);
+            background: var(--paper);
+            border-radius: var(--radius);
             padding: var(--space-sm) var(--space-md);
             font-size: var(--text-sm);
             color: var(--muted);
             text-align: center;
             margin-top: var(--space-xl);
         }
-        
         .back-link {
             display: inline-flex;
             align-items: center;
@@ -185,9 +174,8 @@
             transition: color 0.2s;
         }
         .back-link:hover {
-            color: var(--accent);
+            color: var(--burnt-orange);
         }
-        
         @media (max-width: 600px) {
             .item-title {
                 font-size: var(--text-xl);
@@ -209,8 +197,8 @@
 
     <main class="frame" id="main-content">
         <div class="queue-item-page">
-            <a href="../queue.html" class="back-link">← Back to Queue</a>
-            
+            <a href="../queue.html" class="back-link">&larr; Back to Queue</a>
+
             <header class="item-header">
                 <div class="item-id-badge">
                     <span class="item-id">{{ITEM_ID}}</span>
@@ -218,9 +206,9 @@
                 </div>
                 <h1 class="item-title">{{PROBLEM_SUMMARY}}</h1>
                 <div class="item-meta">
-                    <span class="item-meta-item">👤 {{DISPLAY_NAME}}</span>
-                    <span class="item-meta-item">📅 {{SUBMITTED_DATE}}</span>
-                    <span class="item-meta-item">📁 {{CATEGORY}}</span>
+                    <span class="item-meta-item">{{DISPLAY_NAME}}</span>
+                    <span class="item-meta-item">{{SUBMITTED_DATE}}</span>
+                    <span class="item-meta-item">{{CATEGORY}}</span>
                     {{POSITION_HTML}}
                 </div>
             </header>
@@ -251,24 +239,7 @@
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Submit Your Problem</a>
         </section>
 
-        <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="../index.html">Home</a>
-                    <a href="../process.html">Process</a>
-                    <a href="../queue.html">Queue</a>
-                    <a href="../faq.html">FAQ</a>
-                    <a href="../pricing.html">Pricing</a>
-                    <a href="../about.html">About</a>
-                    <a href="../wiki/index.html">Wiki</a>
-                    <a href="../privacy.html">Privacy</a>
-                    <a href="../disclaimer.html">Disclaimer</a>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT</span>
-                </div>
-            </div>
-        </footer>
+        {{FOOTER}}
     </main>
 
     <script src="../app.js" defer></script>

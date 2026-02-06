@@ -10,7 +10,7 @@
     <link rel="canonical" href="https://fogsift.com/about.html">
 
     <!-- Theme detection -->
-    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
+    <script src="theme-init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,100 +25,100 @@
 
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
-        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
-        <a href="pricing.html" class="mobile-link" onclick="Nav.toggleMobile()">PRICING</a>
-        <a href="contact.html" class="mobile-link cta-link" onclick="Nav.toggleMobile()">CONTACT</a>
+        <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
     <!-- Main Navigation -->
-    <header class="nav-wrapper" role="banner">
+    <header class="nav-wrapper">
         <div class="main-nav">
             <a href="index.html" class="brand" aria-label="Fogsift home">
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
-                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
-                <div class="menu-item"><a href="pricing.html" class="menu-link">PRICING</a></div>
-                <div class="menu-item"><a href="contact.html" class="menu-link cta-link">CONTACT</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
                             <span class="theme-option-icon">☀</span>
                             <span class="theme-option-label">Light</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
                             <span class="theme-option-icon">●</span>
                             <span class="theme-option-label">Dark</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
                             <span class="theme-option-icon">▣</span>
                             <span class="theme-option-label">Industrial</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
                             <span class="theme-option-icon">▓</span>
                             <span class="theme-option-label">Matrix</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
                             <span class="theme-option-icon">☁️</span>
                             <span class="theme-option-label">Sky</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
                             <span class="theme-option-icon">🌆</span>
                             <span class="theme-option-label">Synthwave</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
                             <span class="theme-option-icon">📟</span>
                             <span class="theme-option-label">Pip-Boy</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
                             <span class="theme-option-icon">🏔️</span>
                             <span class="theme-option-label">Rivendell</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
                             <span class="theme-option-icon">🦌</span>
                             <span class="theme-option-label">Camo</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
                             <span class="theme-option-icon">💖</span>
                             <span class="theme-option-label">Barbie</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
                             <span class="theme-option-icon">🌊</span>
                             <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
                             <span class="theme-option-icon">🎬</span>
                             <span class="theme-option-label">Demo</span>
                             <span class="theme-option-check" aria-hidden="true">▶</span>
                         </button>
                     </div>
                 </div>
-                <button class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
@@ -126,7 +126,7 @@
                         </svg>
                     </span>
                 </button>
-                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
             </div>
@@ -205,12 +205,12 @@
             <div class="footer-content">
                 <div class="footer-links">
                     <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
+                    <a href="offers.html">Offers</a>
                     <a href="queue.html">Queue</a>
                     <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
+                    <a href="portfolio.html">Portfolio</a>
                     <a href="wiki/index.html">Wiki</a>
+                    <a href="contact.html">Contact</a>
                     <a href="privacy.html">Privacy</a>
                     <a href="disclaimer.html">Disclaimer</a>
                 </div>
@@ -220,6 +220,12 @@
                 </div>
                 <div class="footer-bottom">
                     <span>&copy; 2026 FOGSIFT</span>
+                </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
+                </div>
+                <div class="footer-dev-notice">
+                    <small>Site under active development. Follow along on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> &amp; <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.</small>
                 </div>
             </div>
         </footer>

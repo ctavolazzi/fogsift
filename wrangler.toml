@@ -1,0 +1,27 @@
+# Cloudflare Pages Configuration
+# This file configures the Cloudflare Pages project including KV bindings
+
+name = "fogsift"
+compatibility_date = "2024-01-01"
+
+# Pages-specific configuration
+[env.production]
+kv_namespaces = [
+    { binding = "QUEUE_KV", id = "YOUR_KV_NAMESPACE_ID" }
+]
+
+[env.preview]
+kv_namespaces = [
+    { binding = "QUEUE_KV", id = "YOUR_PREVIEW_KV_NAMESPACE_ID" }
+]
+
+# Environment variables (secrets should be set in Cloudflare dashboard)
+# KOFI_VERIFICATION_TOKEN = set in Cloudflare Pages environment variables
+
+# Build configuration
+[build]
+command = "npm run build"
+
+# Development
+[dev]
+port = 8788

@@ -3,62 +3,31 @@
     <!-- Main Pages -->
     <url>
         <loc>https://fogsift.com/</loc>
-<<<<<<< HEAD
-        <lastmod>2025-01-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>1.0</priority>
-    </url>
-    <url>
-        <loc>https://fogsift.com/paperbin-saas.html</loc>
-        <lastmod>2025-01-20</lastmod>
-=======
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://fogsift.com/about.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://fogsift.com/portfolio.html</loc>
-        <lastmod>2025-01-26</lastmod>
->>>>>>> origin/claude/general-session-nWHw4
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-<<<<<<< HEAD
-        <loc>https://fogsift.com/about.html</loc>
-        <lastmod>2025-01-20</lastmod>
-=======
-        <loc>https://fogsift.com/pricing.html</loc>
-        <lastmod>2025-01-26</lastmod>
->>>>>>> origin/claude/general-session-nWHw4
+        <loc>https://fogsift.com/offers.html</loc>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://fogsift.com/process.html</loc>
-<<<<<<< HEAD
-        <lastmod>2025-01-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://fogsift.com/pricing.html</loc>
-        <lastmod>2025-01-20</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://fogsift.com/contact.html</loc>
-        <lastmod>2025-01-20</lastmod>
-=======
-        <lastmod>2025-01-26</lastmod>
->>>>>>> origin/claude/general-session-nWHw4
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -72,31 +41,37 @@
 </urlset>
 =======
         <loc>https://fogsift.com/queue.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://fogsift.com/faq.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://fogsift.com/contact.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://fogsift.com/vision.html</loc>
+        <lastmod>2026-02-02</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://fogsift.com/privacy.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://fogsift.com/disclaimer.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -105,31 +80,31 @@
     <!-- Wiki Main -->
     <url>
         <loc>https://fogsift.com/wiki/index.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/getting-started.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/diagnostic-process.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/how-we-work.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/faq.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -137,37 +112,37 @@
     <!-- Wiki Concepts -->
     <url>
         <loc>https://fogsift.com/wiki/concepts/cognitive-biases.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/concepts/mental-models.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/concepts/root-cause.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/concepts/second-order-effects.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/concepts/signal-vs-noise.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/concepts/systems-thinking.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -175,25 +150,25 @@
     <!-- Wiki Frameworks -->
     <url>
         <loc>https://fogsift.com/wiki/frameworks/constraint-mapping.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/frameworks/decision-matrix.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/frameworks/feedback-loops.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/frameworks/trace-protocol.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -201,25 +176,25 @@
     <!-- Wiki Tools -->
     <url>
         <loc>https://fogsift.com/wiki/tools/fishbone-diagram.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/tools/five-whys.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/tools/pareto-analysis.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/tools/process-mapping.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -227,43 +202,43 @@
     <!-- Wiki Field Notes -->
     <url>
         <loc>https://fogsift.com/wiki/field-notes/001-map-territory.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/002-precision-accuracy.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/003-entropy.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/004-bottlenecks.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/005-tribal-knowledge.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/006-incentive-alignment.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/field-notes/007-documentation-debt.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
@@ -271,19 +246,19 @@
     <!-- Wiki Case Studies -->
     <url>
         <loc>https://fogsift.com/wiki/case-studies/communication-breakdown.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/case-studies/manufacturing-throughput.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://fogsift.com/wiki/case-studies/the-invisible-process.html</loc>
-        <lastmod>2025-01-26</lastmod>
+        <lastmod>2026-02-02</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>

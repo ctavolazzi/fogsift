@@ -5,10 +5,11 @@
   "private": true,
   "scripts": {
     "dev": "npm run build && npm-run-all --parallel serve watch",
-    "serve": "browser-sync start --server dist --port 5050 --no-open --files 'dist/**/*'",
+    "dev:functions": "npm run build && npx wrangler pages dev dist",
+    "serve": "browser-sync start --config bs-config.js",
     "watch": "chokidar 'src/**/*' -c 'node scripts/build.js'",
     "build": "node scripts/build.js",
-    "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift",
+    "deploy": "npm run build && npx wrangler pages deploy dist --project-name fogsift --branch main",
     "quick-deploy": "node scripts/deploy.js",
     "deploy:dry": "node scripts/deploy.js --dry-run",
     "preview": "npm run build && npm run dev",
@@ -20,8 +21,12 @@
     "mcp:dev": "npm run mcp:status && npm run dev",
     "lint": "eslint src/js/",
     "lint:fix": "eslint src/js/ --fix",
-    "gallery": "node scripts/open-gallery.js",
-    "gallery:dev": "npm run build && npm-run-all --parallel serve watch gallery"
+    "lint:images": "node scripts/lint-images.js",
+    "audit": "npm run build && node scripts/audit.js",
+    "audit:quick": "node scripts/audit.js",
+    "test:webhook": "node scripts/test-webhook.js",
+    "test:webhook:shop": "node scripts/test-webhook.js http://localhost:8788/api/webhook/kofi shopOrder",
+    "test:webhook:commission": "node scripts/test-webhook.js http://localhost:8788/api/webhook/kofi commission"
   },
   "keywords": [
     "consulting",

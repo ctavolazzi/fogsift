@@ -2,6 +2,9 @@
 # https://developers.cloudflare.com/pages/configuration/headers/
 
 /*
+  # HSTS - Force HTTPS for 1 year, include subdomains
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
   # Prevent MIME type sniffing
   X-Content-Type-Options: nosniff
 
@@ -15,14 +18,20 @@
   X-XSS-Protection: 1; mode=block
 
   # Permissions Policy - restrict browser features
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
 
   # Content Security Policy
-  # - default-src 'self': Only allow resources from same origin by default
-  # - script-src 'self': Scripts only from our domain
-  # - style-src 'self' https://fonts.googleapis.com: Styles from us + Google Fonts
-  # - font-src 'self' https://fonts.gstatic.com: Fonts from us + Google
-  # - img-src 'self' data:: Images from us + inline data URIs
-  # - connect-src 'self': XHR/fetch only to our domain
-  # - frame-ancestors 'none': Prevent embedding in iframes
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://solarpunkstation.com; connect-src 'self' https://cloudflareinsights.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+
+# Cache static assets aggressively
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.css
+  Cache-Control: public, max-age=86400
+
+/*.js
+  Cache-Control: public, max-age=86400

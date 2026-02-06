@@ -198,7 +198,73 @@ const App = {
     }
 };
 
-document.addEventListener('DOMContentLoaded', () => App.init());
+
+// Example Modal System
+const ExampleModal = {
+    examples: {
+        inventory: {
+            title: 'Inventory Count Mismatch',
+            category: 'Operations',
+            problem: 'A distribution company noticed their inventory counts never matched between their warehouse system and accounting software. Every month, they spent days reconciling discrepancies.',
+            process: 'We traced the data flow between systems and found two different rounding rules being applied. The warehouse system rounded to nearest unit, while accounting rounded down.',
+            solution: 'Aligned the rounding rules in both systems and added a daily automated check. Problem solved in one session.',
+            outcome: 'Diagnosis + fix'
+        },
+        tuesday: {
+            title: 'Tuesday Crashes',
+            category: 'Technical',
+            problem: 'A SaaS company reported their app crashed every Tuesday around 2 PM. Support tickets spiked, and the team couldn\'t figure out why.',
+            process: 'We looked at server logs and noticed a pattern: memory usage spiked right before crashes. Cross-referenced with scheduled tasks.',
+            solution: 'A weekly report generation cron job ran at 2 PM Tuesday, coinciding with peak user traffic. Moving it to 3 AM eliminated the crashes.',
+            outcome: 'Root cause + fix'
+        },
+        buildbuy: {
+            title: 'Build vs. Buy Decision',
+            category: 'Strategy',
+            problem: 'A startup needed inventory management. The CTO wanted to build custom. The CEO wanted to buy off-the-shelf. They\'d been stuck for months.',
+            process: 'We mapped out hidden costs: build time, maintenance burden, opportunity cost. Also mapped timing risk and team capacity.',
+            solution: 'Recommendation: buy an existing solution now to move fast, plan migration to custom build in 18 months when you have more data on actual needs.',
+            outcome: 'Decision framework'
+        },
+        signups: {
+            title: 'Stalled Signups',
+            category: 'Marketing',
+            problem: 'A B2B SaaS saw signups plateau despite increased ad spend. Traffic was up, but conversions weren\'t following.',
+            process: 'We walked through the signup flow live, clicking through like a real user. Found three major friction points.',
+            solution: 'Fixed: confusing pricing toggle, broken mobile layout on signup form, and a required field that shouldn\'t have been required.',
+            outcome: 'Funnel fixes + roadmap'
+        }
+    },
+
+    open(id) {
+        const example = this.examples[id];
+        if (!example) return;
+
+        const modal = document.getElementById('article-modal');
+        const title = document.getElementById('modal-title');
+        const body = document.getElementById('modal-body');
+
+        if (!modal || !title || !body) return;
+
+        title.textContent = example.title;
+        body.innerHTML = `
+            <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; color: var(--muted); margin-bottom: var(--space-md);">${example.category}</p>
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-sm);">The Problem</h3>
+            <p style="margin-bottom: var(--space-md);">${example.problem}</p>
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-sm);">The Process</h3>
+            <p style="margin-bottom: var(--space-md);">${example.process}</p>
+            <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-sm);">The Solution</h3>
+            <p style="margin-bottom: var(--space-md);">${example.solution}</p>
+            <p style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--burnt-orange); margin-top: var(--space-lg);">Outcome: ${example.outcome}</p>
+        `;
+
+        Modal.open();
+    }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    App.init();
+});
 
 // Cleanup on page unload to prevent memory leaks
 window.addEventListener('unload', () => {

@@ -308,34 +308,6 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
-             SECTION 3.25: PORTFOLIO PREVIEW
-             Link to builds/portfolio
-             ======================================== -->
-        <section id="portfolio" class="section" aria-labelledby="portfolio-heading">
-            <h2 id="portfolio-heading" class="section-label">SEE IT BUILT</h2>
-            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg);">
-                Watch projects come together from start to finish on YouTube.
-            </p>
-
-            <a href="portfolio.html" class="portfolio-preview">
-                <img src="images/portfolio/pixel-tiles.jpg" alt="Modular pixel art tile display" class="portfolio-preview-image" loading="lazy">
-                <div class="portfolio-preview-content">
-                    <h3 class="portfolio-preview-title">Modular Pixel Tile Display</h3>
-                    <p class="portfolio-preview-desc">Custom PCB, 3D-printed frames, and pixel art animations. Watch the full build.</p>
-                </div>
-            </a>
-
-            <p style="text-align: center; margin-top: var(--space-lg);">
-                <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="cta-button cta-secondary" target="_blank" rel="noopener">
-                    Subscribe for New Builds
-                </a>
-            </p>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ========================================
              SECTION 3.5: TESTIMONIALS
              Social proof from clients
              ======================================== -->
@@ -395,40 +367,6 @@
                     <span class="stat-label">Industries</span>
                 </div>
             </div>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ========================================
-             SECTION 3.75: WATCH IT HAPPEN
-             YouTube video showcase
-             ======================================== -->
-        <section id="watch" class="section" aria-labelledby="watch-heading">
-            <h2 id="watch-heading" class="section-label">WATCH IT HAPPEN</h2>
-            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg);">See how FogSift sessions work. Real problems, real thinking, real results.</p>
-
-            <div class="youtube-showcase">
-                <div class="youtube-embed-container">
-                    <div class="youtube-placeholder" data-channel="@fogsift">
-                        <div class="youtube-placeholder-content">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48" class="youtube-play-icon">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                            <p class="youtube-placeholder-text">Watch sessions on YouTube</p>
-                        </div>
-                        <a href="https://youtube.com/@fogsift" class="youtube-channel-link" target="_blank" rel="noopener">
-                            Visit Channel
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <p style="text-align: center; margin-top: var(--space-md);">
-                <a href="https://youtube.com/@fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">
-                    Subscribe on YouTube
-                </a>
-            </p>
         </section>
 
         <!-- Section Divider -->
@@ -554,7 +492,26 @@
             <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">Submissions may be used for other purposes, including marketing. Request anonymization if needed.</p>
         </section>
 
-        {{FOOTER}}
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="process.html">Process</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About</a>
+                    <a href="wiki/index.html">Wiki</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; 2025 FOGSIFT v{{VERSION}}</span>
+                    <span class="footer-sep" aria-hidden="true">//</span>
+                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
+                </div>
+            </div>
+        </footer>
 
     </main>
 

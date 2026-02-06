@@ -134,27 +134,28 @@
     },
     "links": [
       { "text": "Home", "url": "index.html" },
-      { "text": "Process", "url": "process.html" },
+      { "text": "Offers", "url": "offers.html" },
       { "text": "Queue", "url": "queue.html" },
-      { "text": "FAQ", "url": "faq.html" },
-      { "text": "Pricing", "url": "pricing.html" },
-      { "text": "About", "url": "about.html" },
       { "text": "Wiki", "url": "wiki/index.html" },
+      { "text": "Portfolio", "url": "portfolio.html" },
+      { "text": "Vision", "url": "vision.html" },
+      { "text": "FAQ", "url": "faq.html" },
+      { "text": "Contact", "url": "contact.html" },
       { "text": "Privacy", "url": "privacy.html" },
-      { "text": "Disclaimer", "url": "disclaimer.html" }
+      { "text": "Disclaimer", "url": "disclaimer.html" },
+      { "text": "Terms", "url": "terms.html" }
     ]
   },
   "navigation": {
     "logo": {
-      "src": "assets/logo-01.png",
+      "src": "assets/logo.png",
       "alt": "FogSift"
     },
     "links": [
-      { "text": "WIKI", "url": "wiki/index.html" },
-      { "text": "PROCESS", "url": "process.html" },
+      { "text": "OFFERS", "url": "offers.html" },
       { "text": "QUEUE", "url": "queue.html" },
-      { "text": "FAQ", "url": "faq.html" },
-      { "text": "PRICING", "url": "pricing.html" },
+      { "text": "WIKI", "url": "wiki/index.html" },
+      { "text": "PORTFOLIO", "url": "portfolio.html" },
       { "text": "CONTACT", "url": "contact.html" }
     ]
   }
