@@ -132,17 +132,7 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
                 </button>
             </div>
         </div>
-    </header>
-
-    <!-- Development Notice Banner -->
-    <div class="dev-banner" role="alert">
-        <span class="dev-banner-icon" aria-hidden="true">🚧</span>
-        <span class="dev-banner-text">
-            <strong>Site under active development.</strong>
-            Subject to change at any time.
-            Questions? <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> or <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.
-        </span>
-    </div>`;
+    </header>`;
 }
 
 // Footer links - single source of truth
@@ -209,6 +199,9 @@ function generateFooter(pathPrefix = '', options = {}) {
                 </div>
                 <div class="footer-ai-disclaimer">
                     <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
+                </div>
+                <div class="footer-dev-notice">
+                    <small>Site under active development. Follow along on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> &amp; <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.</small>
                 </div>
             </div>
         </footer>`;

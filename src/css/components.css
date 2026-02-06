@@ -804,6 +804,24 @@ footer {
     color: var(--line);
 }
 
+.footer-ai-disclaimer,
+.footer-dev-notice {
+    text-align: center;
+    margin-top: var(--space-sm);
+    color: var(--muted);
+    opacity: 0.6;
+}
+
+.footer-dev-notice a {
+    color: var(--muted);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+}
+
+.footer-dev-notice a:hover {
+    color: var(--burnt-orange);
+}
+
 /* === TOAST NOTIFICATIONS === */
 #toast-container {
     position: fixed;
