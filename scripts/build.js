@@ -20,11 +20,16 @@ const DIST = path.join(ROOT, 'dist');
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8'));
 const VERSION = pkg.version || '0.0.0';
 
-// Theme init script - injected into HTML <head> to prevent FOUC
+// Theme init script - external file to be CSP-compliant (no unsafe-inline needed)
 // Single source of truth for theme initialization (TD-010)
 const THEME_STORAGE_KEY = 'theme';
 const VALID_THEMES = ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'];
-const THEME_INIT_SCRIPT = `<script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('${THEME_STORAGE_KEY}','light');}catch(e){}})();</script>`;
+
+// Generate theme init script tag with correct relative path
+// No defer/async - must block rendering to prevent FOUC
+function generateThemeInitScript(prefix = '') {
+    return `<script src="${prefix}theme-init.js"></script>`;
+}
 
 // Navigation partial - single source of truth for site navigation
 // Order: conversion-focused flow from offers → queue → learn → connect
@@ -268,6 +273,7 @@ const JS_FILES = [
 // Note: 404.html is processed separately (TD-010 theme init injection)
 const STATIC_ASSETS = [
     // Page-specific scripts (not bundled with app.js)
+    { src: 'src/js/theme-init.js', dest: 'theme-init.js' },
     { src: 'src/js/queue-ui.js', dest: 'queue-ui.js' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
@@ -276,7 +282,7 @@ const STATIC_ASSETS = [
     { src: 'src/og-image.png', dest: 'og-image.png' },
     { src: 'src/content/articles.json', dest: 'content/articles.json' },
     { src: 'src/content/status.json', dest: 'content/status.json' },
-    // { src: 'src/content/queue.json', dest: 'content/queue.json' }, // Enable when queue data exists
+    { src: 'src/content/queue.json', dest: 'content/queue.json' },
     { src: 'src/system-status.html', dest: 'system-status.html' },
     // Security files
     { src: 'src/_headers', dest: '_headers' },
@@ -347,7 +353,7 @@ function processHtml() {
     let html = fs.readFileSync(templatePath, 'utf8');
 
     // Inject theme init script (TD-010: single source of truth)
-    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+    html = html.replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript());
 
     // Inject nav header (DRY: single source of truth for navigation)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
@@ -378,7 +384,7 @@ function process404Html() {
     let html = fs.readFileSync(templatePath, 'utf8');
 
     // Inject theme init script (TD-010: single source of truth)
-    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+    html = html.replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript());
 
     // Inject nav header (DRY: single source of truth for navigation)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader());
@@ -401,7 +407,7 @@ function processSimpleHtml(filename) {
     let html = fs.readFileSync(templatePath, 'utf8');
 
     // Inject theme init script (TD-010: single source of truth)
-    html = html.replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT);
+    html = html.replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript());
 
     // Inject nav header with current page highlighted (DRY: single source of truth)
     html = html.replace(/\{\{NAV_HEADER\}\}/g, generateNavHeader(filename));
@@ -787,7 +793,7 @@ function buildQueuePages() {
 
         // Process template
         let html = template
-            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)
+            .replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript('../'))
             .replace(/\{\{NAV_HEADER\}\}/g, navHeader)
             .replace(/\{\{ITEM_ID\}\}/g, item.id)
             .replace(/\{\{PROBLEM_SUMMARY\}\}/g, escapeHtml(item.problem_summary))
@@ -889,7 +895,7 @@ function buildWiki() {
 
         // Process template
         let html = pageTemplate
-            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
+            .replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript(pathPrefix))  // TD-010: FOUC prevention
             .replace(/\{\{NAV_HEADER\}\}/g, navHeader)  // DRY: single source nav
             .replace(/\{\{PAGE_TITLE\}\}/g, title)
             .replace(/\{\{PAGE_DESCRIPTION\}\}/g, description)
@@ -923,7 +929,7 @@ function buildWiki() {
         // Wiki index is at wiki/index.html, so prefix is '../' to reach root
         const indexNavHeader = generateNavHeader('wiki/index.html', '../');
         let indexHtml = indexTemplate
-            .replace(/\{\{THEME_INIT\}\}/g, THEME_INIT_SCRIPT)  // TD-010: FOUC prevention
+            .replace(/\{\{THEME_INIT\}\}/g, generateThemeInitScript('../'))  // TD-010: FOUC prevention
             .replace(/\{\{NAV_HEADER\}\}/g, indexNavHeader)  // DRY: single source nav
             .replace(/\{\{CATEGORIES\}\}/g, categoryCards)
             .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemapIndex)

@@ -22,7 +22,7 @@
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <!-- Theme detection -->
-    <script>(function(){document.documentElement.setAttribute('data-theme','light');try{localStorage.setItem('theme','light');}catch(e){}})();</script>
+    <script src="theme-init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -215,6 +215,185 @@
             color: var(--teal);
             cursor: pointer;
             text-decoration: underline;
+        }
+
+        /* Clickable queue items */
+        .queue-item-clickable {
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .queue-item-clickable:hover {
+            border-color: var(--burnt-orange);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .queue-item-clickable:active {
+            transform: translateY(0);
+        }
+
+        .queue-item-clickable:focus-visible {
+            outline: 2px solid var(--burnt-orange);
+            outline-offset: 2px;
+        }
+
+        /* Queue Modal - backdrop */
+        .queue-modal-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0);
+            z-index: 6000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            transition: background 250ms ease;
+        }
+
+        .queue-modal-backdrop.is-open {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* Queue Modal - content panel */
+        .queue-modal-panel {
+            background: var(--paper);
+            border: var(--border-width) solid var(--burnt-orange);
+            border-radius: var(--radius-lg);
+            max-width: 520px;
+            width: 100%;
+            max-height: 85vh;
+            max-height: 85dvh;
+            overflow-y: auto;
+            padding: var(--space-xl);
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            transform: scale(0.9) translateY(20px);
+            opacity: 0;
+            transition: transform 250ms cubic-bezier(0.34, 1.56, 0.64, 1),
+                        opacity 200ms ease;
+        }
+
+        .queue-modal-backdrop.is-open .queue-modal-panel {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+        }
+
+        /* Queue Modal - close button */
+        .queue-modal-close {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: transparent;
+            border: none;
+            font-size: 1.75rem;
+            line-height: 1;
+            cursor: pointer;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--muted);
+            border-radius: var(--radius);
+            transition: color 0.2s, background 0.2s;
+        }
+
+        .queue-modal-close:hover {
+            color: var(--ink);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Queue Modal - header */
+        .queue-modal-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .queue-modal-id {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            color: var(--burnt-orange);
+            font-weight: 600;
+            background: rgba(224, 123, 60, 0.1);
+            padding: 4px 10px;
+            border-radius: var(--radius);
+        }
+
+        .queue-modal-name {
+            font-family: var(--font-display);
+            font-size: clamp(1.25rem, 4vw, 1.75rem);
+            font-weight: 700;
+            margin: 0 0 var(--space-md);
+            padding-right: 40px;
+        }
+
+        .queue-modal-message {
+            color: var(--muted);
+            line-height: 1.7;
+            font-size: var(--text-base);
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--line);
+        }
+
+        .queue-modal-meta {
+            font-family: var(--font-mono);
+            font-size: var(--text-xs);
+            color: var(--muted);
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+            margin-bottom: var(--space-lg);
+        }
+
+        .queue-modal-detail-link {
+            display: block;
+            text-align: center;
+            padding: 12px 24px;
+            background: var(--burnt-orange);
+            color: var(--cream, #fff);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: var(--radius);
+            transition: opacity 0.2s, transform 0.15s;
+        }
+
+        .queue-modal-detail-link:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .queue-modal-detail-link:active {
+            transform: translateY(0);
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 600px) {
+            .queue-modal-backdrop {
+                padding: 8px;
+                align-items: flex-end;
+            }
+
+            .queue-modal-panel {
+                max-height: 90vh;
+                max-height: 90dvh;
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+                transform: translateY(100%);
+                opacity: 1;
+                transition: transform 300ms cubic-bezier(0.22, 1, 0.36, 1);
+            }
+
+            .queue-modal-backdrop.is-open .queue-modal-panel {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -516,6 +695,13 @@
             </div>
         </footer>
     </main>
+
+    <!-- Queue Item Modal -->
+    <div id="queue-modal" class="queue-modal-backdrop" role="dialog" aria-modal="true" aria-label="Queue item details">
+        <div id="queue-modal-inner" class="queue-modal-panel">
+            <!-- Content injected by QueueUI.openModal() -->
+        </div>
+    </div>
 
     <script src="app.js" defer></script>
     <script src="queue-ui.js" defer></script>

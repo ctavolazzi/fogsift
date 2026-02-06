@@ -1,83 +1,31 @@
-# FOGSIFT
+# FogSift - How It Works
 
-## Clear answers to good questions.
+<img src="../assets/logo-color-transparent.png" alt="FogSift logo" style="width:160px; height:auto; display:block; margin-bottom:10pt;"> FogSift delivers clear answers to good questions, and the service is called Problem Shark Tank with a clear promise: make a decision that matters.
 
----
+The flow is Submit -> Review -> Work -> Deliver -> Outcome, and each step is a short gate that keeps the decision moving without extra noise.
 
-### Focus Session: The $20 Gamble
+Submit means you send a concise problem statement with context, what you tried, and what success looks like so the work can start clean.
 
-Something eating up your **time**? **Budget**? **Sanity**?
+Review is the fit and timing check, and we will decide if the problem is a match before it enters active work.
 
-Let's solve it together.
+Work is the active analysis phase, and it is important because the thinking happens out loud, with tradeoffs stated plainly.
 
----
+Deliver means you receive a response package that you can act on immediately, not a vague summary.
 
-## HOW IT WORKS
+Outcome is the final gate and the decision point, because the goal is clarity and momentum, not more noise.
 
-| Step | Action | What Happens |
-|:----:|--------|--------------|
-| **01** | **SUBMIT** | Describe your problem + pay $20. It's the filter that keeps it serious and accessible. |
-| **02** | **REVIEW** | Once a day, we review all submissions. We pick two. |
-| **03** | **WORK** | Up to an hour of focused problem-solving. Filmed, no face. |
-| **04** | **DELIVER** | You get the video + a written report. Always. |
-| **05** | **OUTCOME** | One of three paths forward. Either way, you got something. |
+The $20 price is the filter that keeps the queue open while still screening for real intent, and the call to action is simply Join Queue.
 
----
+What you always get is a recorded problem-solving session on video, filmed end to end so the reasoning is visible.
 
-## THE DEAL
+You also receive a written report that captures findings, what we learned, and the most important decision in plain language.
 
-**$20** gets you into the queue.
+Direction is guaranteed, and it lands as one of three outcomes with practical next steps you can act on immediately.
 
-It's the filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's.
+The first outcome is "Let's go deeper," which means we found signal and want more work together on the same problem.
 
-A full-on research squad (me + AI + friends + network) focuses on your submission for up to an hour.
+The second outcome is "I know people," which means the issue is outside our lane and we will connect you to a better-fit expert.
 
-We pick **2 per day** — one from the top, one at random.
+The third outcome is "This is sick," which means the idea is strong and you should do it, with a clear approach spelled out.
 
-Limited to **10 slots/week**.
-
----
-
-\pagebreak
-
----
-
-## WHAT YOU ALWAYS GET
-
-**The Video**
-Me working on your problem out loud, like a scientist in the lab. Think Wilson from Home Improvement — voice over the fence, pure problem-solving, no performance.
-
-**The Report**
-Written findings documenting what we tried and what we learned. A formal record of the investigation.
-
-**Direction**
-One of three outcomes with clear next steps. You never walk away empty-handed.
-
----
-
-## THE THREE OUTCOMES
-
-**"Let's go deeper."**
-We see something here. We'd like to work on this more with you. Here's what we think we could accomplish together...
-
-**"I know people."**
-This isn't our wheelhouse, but we know exactly who can help. Want us to set it up?
-
-**"This is sick."**
-This would be cool if somebody did it. You have this opportunity. Here's how we'd approach it...
-
----
-
-## JOIN THE QUEUE
-
-**Web:** fogsift.com
-
-**Ko-fi:** ko-fi.com/fogsift
-
-**Email:** christopher@fogsift.com
-
----
-
-*A Focus Session is a research squad focused on your submission for up to an hour. Low-risk entry. Always walk away with something.*
-
-**© 2025 FOGSIFT**
+Join at ko-fi.com/fogsift, email christopher@fogsift.com for questions, or visit fogsift.com for context and examples.

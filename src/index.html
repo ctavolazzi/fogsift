@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fogsift | Clear answers to good questions 🌤 🔭</title>
-    <meta name="description" content="Submit your problem to the FogSift queue for $20. Get a report and video response. Clear answers to good questions.">
+    <title>Fogsift | Clear answers to good questions</title>
+    <meta name="description" content="Submit your problem to the FogSift queue. Up to an hour of focus plus a PDF write-up and video response. Video may or may not be published.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://fogsift.com">
 
     <link rel="manifest" href="manifest.json">
@@ -15,20 +14,11 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- Open Graph -->
-    <meta property="og:title" content="Fogsift | Clear answers to good questions">
-    <meta property="og:description" content="Submit your problem to the FogSift queue for $20. Get a report and video response.">
+    <meta property="og:title" content="Fogsift">
+    <meta property="og:description" content="Submit your problem to the FogSift queue. Up to an hour of focus plus a PDF write-up and video response. Video may or may not be published.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
-    <meta property="og:site_name" content="Fogsift">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fogsift | Clear answers to good questions">
-    <meta name="twitter:description" content="Submit your problem to the FogSift queue for $20. Get a report and video response.">
-    <meta name="twitter:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -37,13 +27,9 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Fogsift",
-      "alternateName": "FogSift",
       "image": "https://fogsift.com/og-image.png",
-      "logo": "https://fogsift.com/assets/logo.png",
-      "description": "Submit your problem to the queue for $20. Get a report and video response. Clear answers to good questions.",
+      "description": "Independent consulting for complex problems. Queue submissions receive up to an hour of focus plus a PDF write-up and video response.",
       "url": "https://fogsift.com",
-      "telephone": "",
-      "email": "fogsift@gmail.com",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Chico",
@@ -55,28 +41,17 @@
         "latitude": 39.7285,
         "longitude": -121.8375
       },
-      "priceRange": "$",
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "09:00",
-        "closes": "17:00"
-      },
-      "sameAs": [
-        "https://youtube.com/@fogsift",
-        "https://threads.net/@fogsift",
-        "https://ko-fi.com/fogsift"
-      ]
+      "priceRange": "$$"
     }
     </script>
 
     <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
     {{THEME_INIT}}
 
-    <!-- Fonts - preconnect for performance -->
+    <!-- Google Fonts - SRI not possible (CSS is dynamically generated per User-Agent)
+         Alternative: self-host fonts for maximum security -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- External Stylesheet with error handling -->
@@ -131,7 +106,7 @@
     <!-- Article Modal -->
     <div id="article-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content">
-            <button type="button" class="close-modal" onclick="Modal.close()" aria-label="Close modal">
+            <button class="close-modal" onclick="Modal.close()" aria-label="Close modal">
                 <span aria-hidden="true">&times;</span>
                 <span class="sr-only">Close</span>
             </button>
@@ -153,21 +128,33 @@
              ======================================== -->
         <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
             <div class="hero-badge">
+                <div class="gold-star" aria-hidden="true"><span>Gold Star</span></div>
                 <h1 id="hero-heading" class="headline">Clear answers to good questions.</h1>
-                <p class="subhead">Something eating up your</p>
-                <p class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></p>
-                <p class="subhead">Put it in the queue. Get a response.</p>
+                <p class="subhead">Something taking too long with your <span class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></span></p>
+                <p class="subhead">We work on everything from Real Estate to Dungeons & Dragons.</p>
+                <p class="subhead">$20 secures up to an hour of FogSift focus in the queue.</p>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
                     <input type="checkbox" name="website" tabindex="-1" autocomplete="off">
                     Leave unchecked if human
                 </label>
-                <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                    Join the Queue ($20)
-                </a>
-                <a href="queue.html" class="cta-button cta-secondary">
-                    How It Works
-                </a>
+                <div class="hero-ctas">
+                    <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
+                        Join the Queue ($20)
+                    </a>
+                    <a href="queue.html" class="cta-button cta-secondary">
+                        See the Queue
+                    </a>
+                </div>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-md); margin-bottom: 0;">
+                    $20 is the filter. It funds production and keeps the queue serious.
+                </p>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-xs); margin-bottom: 0;">
+                    You receive a PDF write-up and a video response. We may or may not publish a video.
+                </p>
+                <p class="subhead" style="font-size: var(--text-base); margin-top: var(--space-xs); margin-bottom: 0;">
+                    Your submission may be used for other purposes, including marketing. Request anonymization if needed.
+                </p>
             </div>
         </section>
 
@@ -185,80 +172,112 @@
                 <div class="process-step">
                     <div class="step-number">01</div>
                     <h3>Submit</h3>
-                    <p>Describe your request and pay $20 to enter the queue.</p>
+                    <p>Describe your problem + pay $20. The price is the filter.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">02</div>
-                    <h3>Queue</h3>
-                    <p>Your request enters the work queue.</p>
+                    <h3>Review</h3>
+                    <p>Each day, we review submissions and choose what to work on next.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">03</div>
-                    <h3>Research</h3>
-                    <p>We dig into finding research, analysis, and data.</p>
+                    <h3>Work</h3>
+                    <p>Up to an hour of focused work on your submission.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">04</div>
-                    <h3>Compile</h3>
-                    <p>We compile our findings into a report and video.</p>
+                    <h3>Deliver</h3>
+                    <p>You receive a PDF write-up and a video response.</p>
                 </div>
 
                 <div class="process-step">
                     <div class="step-number">05</div>
-                    <h3>Respond</h3>
-                    <p>You get a report + video response with our findings.</p>
+                    <h3>Next Steps</h3>
+                    <p>You'll get one of three outcomes. If it's a fit, I'll invite you to go deeper on my terms.</p>
                 </div>
             </div>
-
-            <p style="max-width: 65ch; margin: var(--space-lg) auto 0; text-align: center; color: var(--muted); font-size: var(--text-sm);">
-                Put your request for a FogSift response in our work queue. We pick up to 3 requests each day to respond to with a custom video and report, based on the order in which requests were received and the content of each request. We may or may not choose to make a YouTube video on our channel about your request at our discretion.
-            </p>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 2.5: WHY THIS WORKS
+             Friction + proof + delivery
+             ======================================== -->
+        <section id="why-it-works" class="section section-process" aria-labelledby="why-heading">
+            <h2 id="why-heading" class="section-label">WHY THIS WORKS</h2>
+
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Friction Is the Filter</h3>
+                    <p>$20 keeps the queue serious and funds production. If it doesn't filter, it doesn't work.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Work You Can Inspect</h3>
+                    <p>Sessions are recorded and may be published. Judge the thinking, not the credentials.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Time-Boxed Focus</h3>
+                    <p>One hour of undivided attention. No meetings. No Slack.</p>
+                </div>
+
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Clear Outcomes</h3>
+                    <p>You leave with either a fix, a roadmap, or a referral.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- Section Divider -->
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
              SECTION 2.75: EXAMPLES
-             Representative queue problems (clickable)
+             Representative queue problems
              ======================================== -->
         <section id="examples" class="section section-pricing" aria-labelledby="examples-heading">
             <h2 id="examples-heading" class="section-label">EXAMPLES FROM THE QUEUE</h2>
             <p style="max-width: 65ch; margin: -1rem auto var(--space-lg); color: var(--muted);">
-                Representative examples. Click to see the full story.
+                Representative examples of the kinds of problems the queue is built for. Names anonymized.
             </p>
 
             <div class="pricing-cards">
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')">
+                <article class="pricing-card" style="text-align: left;">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
                     <h4>"Our inventory counts never match."</h4>
                     <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Diagnosis + fix</p>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')">
+                <article class="pricing-card" style="text-align: left;">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
                     <h4>"Our app crashes every Tuesday."</h4>
                     <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Root cause + fix</p>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')">
+                <article class="pricing-card" style="text-align: left;">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
                     <h4>"Build it or buy it?"</h4>
                     <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Decision framework</p>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')">
+                <article class="pricing-card" style="text-align: left;">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
                     <h4>"Signups stalled."</h4>
                     <p>Walked the funnel live. Fixed the top three friction points during the session.</p>
-                    <p class="mono" style="font-size: var(--text-xs); color: var(--burnt-orange); margin-top: var(--space-sm);">Click for details &rarr;</p>
+                    <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Funnel fixes + roadmap</p>
                 </article>
             </div>
         </section>
@@ -268,49 +287,21 @@
 
         <!-- ========================================
              SECTION 3: ABOUT
-             Clean, centered bio card
+             Photo + bio in badge card
              ======================================== -->
         <section id="about" class="section section-about" aria-labelledby="about-heading">
             <h2 id="about-heading" class="section-label">WHO IS FOGSIFT</h2>
 
             <div class="about-card">
                 <div class="about-avatar">
-                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="150" height="150">
+                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
                 </div>
                 <div class="about-info">
                     <h3 class="about-name">Christopher Tavolazzi</h3>
-                    <span class="about-role">Researcher / Builder / Problem Solver</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. Lived in a van across America's national parks. Played music on three continents. Whatever you're stuck on, we can probably find someone who knows how to fix it.</p>
+                    <span class="about-role">Expert Researcher</span>
+                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it. If it's a fit, he'll invite you to go deeper on his terms.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ========================================
-             SECTION 3.25: PORTFOLIO PREVIEW
-             Link to builds/portfolio
-             ======================================== -->
-        <section id="portfolio" class="section" aria-labelledby="portfolio-heading">
-            <h2 id="portfolio-heading" class="section-label">SEE IT BUILT</h2>
-            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg);">
-                Watch projects come together from start to finish on YouTube.
-            </p>
-
-            <a href="portfolio.html" class="portfolio-preview">
-                <img src="images/portfolio/TMGotcha-Main-Advert-Image.jpg" alt="TMGotcha - Modern virtual pet hardware" class="portfolio-preview-image" loading="lazy">
-                <div class="portfolio-preview-content">
-                    <h3 class="portfolio-preview-title">TMGotcha</h3>
-                    <p class="portfolio-preview-desc">A modern virtual pet experience. Modular hardware, collectible editions. Watch the full build.</p>
-                </div>
-            </a>
-
-            <p style="text-align: center; margin-top: var(--space-lg);">
-                <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="cta-button cta-secondary" target="_blank" rel="noopener">
-                    Subscribe for New Builds
-                </a>
-            </p>
         </section>
 
         <!-- Section Divider -->
@@ -318,138 +309,64 @@
 
         <!-- ========================================
              SECTION 3.5: TESTIMONIALS
-             Continuous ticker-style rotation
+             Social proof from clients
              ======================================== -->
         <section id="testimonials" class="section section-testimonials" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" class="section-label">WHAT CLIENTS SAY</h2>
 
-            <div class="testimonials-ticker">
-                <div class="ticker-track">
-                    <!-- First set of testimonials -->
-                    <article class="ticker-item">
+            <div class="testimonials-grid">
+                <article class="testimonial-card">
+                    <blockquote>
                         <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
                         <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
+                            <cite>
                                 <span class="author-name">Operations Director</span>
                                 <span class="author-title">Manufacturing Company</span>
-                            </div>
+                            </cite>
                         </footer>
-                    </article>
+                    </blockquote>
+                </article>
 
-                    <article class="ticker-item">
+                <article class="testimonial-card">
+                    <blockquote>
                         <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
                         <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/6510860/pexels-photo-6510860.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
+                            <cite>
                                 <span class="author-name">Founder &amp; CEO</span>
                                 <span class="author-title">Tech Startup</span>
-                            </div>
+                            </cite>
                         </footer>
-                    </article>
+                    </blockquote>
+                </article>
 
-                    <article class="ticker-item">
+                <article class="testimonial-card">
+                    <blockquote>
                         <p class="testimonial-quote">"The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month."</p>
                         <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/9724435/pexels-photo-9724435.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
+                            <cite>
                                 <span class="author-name">VP of Strategy</span>
                                 <span class="author-title">Professional Services Firm</span>
-                            </div>
+                            </cite>
                         </footer>
-                    </article>
-
-                    <article class="ticker-item">
-                        <p class="testimonial-quote">"I was skeptical, but the hour of focused work saved us weeks of back-and-forth. Exactly what we needed."</p>
-                        <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
-                                <span class="author-name">Product Manager</span>
-                                <span class="author-title">SaaS Company</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <!-- Duplicate set for seamless loop -->
-                    <article class="ticker-item">
-                        <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
-                        <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
-                                <span class="author-name">Operations Director</span>
-                                <span class="author-title">Manufacturing Company</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <article class="ticker-item">
-                        <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
-                        <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/6510860/pexels-photo-6510860.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
-                                <span class="author-name">Founder &amp; CEO</span>
-                                <span class="author-title">Tech Startup</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <article class="ticker-item">
-                        <p class="testimonial-quote">"The diagnostic process revealed three bottlenecks we'd been ignoring for years. Fixed them in a month."</p>
-                        <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/9724435/pexels-photo-9724435.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
-                                <span class="author-name">VP of Strategy</span>
-                                <span class="author-title">Professional Services Firm</span>
-                            </div>
-                        </footer>
-                    </article>
-
-                    <article class="ticker-item">
-                        <p class="testimonial-quote">"I was skeptical, but the hour of focused work saved us weeks of back-and-forth. Exactly what we needed."</p>
-                        <footer class="testimonial-author">
-                            <img src="https://images.pexels.com/photos/5894033/pexels-photo-5894033.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop" alt="" role="presentation" class="author-photo" loading="lazy">
-                            <div class="author-info">
-                                <span class="author-name">Product Manager</span>
-                                <span class="author-title">SaaS Company</span>
-                            </div>
-                        </footer>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Section Divider -->
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ========================================
-             SECTION 3.75: WATCH IT HAPPEN
-             YouTube video showcase
-             ======================================== -->
-        <section id="watch" class="section" aria-labelledby="watch-heading">
-            <h2 id="watch-heading" class="section-label">WATCH IT HAPPEN</h2>
-            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg);">See how FogSift sessions work. Real problems, real thinking, real results.</p>
-
-            <div class="youtube-showcase">
-                <div class="youtube-embed-container">
-                    <div class="youtube-placeholder" data-channel="@fogsift">
-                        <div class="youtube-placeholder-content">
-                            <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48" class="youtube-play-icon">
-                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                            </svg>
-                            <p class="youtube-placeholder-text">Watch sessions on YouTube</p>
-                        </div>
-                        <a href="https://youtube.com/@fogsift" class="youtube-channel-link" target="_blank" rel="noopener">
-                            Visit Channel
-                        </a>
-                    </div>
-                </div>
+                    </blockquote>
+                </article>
             </div>
 
-            <p style="text-align: center; margin-top: var(--space-md);">
-                <a href="https://youtube.com/@fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">
-                    Subscribe on YouTube
-                </a>
-            </p>
+            <!-- Stats Row -->
+            <div class="testimonials-stats" aria-label="Client statistics">
+                <div class="stat-item">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Engagements</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Satisfaction</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Industries</span>
+                </div>
+            </div>
         </section>
 
         <!-- Section Divider -->
@@ -457,52 +374,70 @@
 
         <!-- ========================================
              SECTION 4: THE DEAL
-             Clean pricing tiers
+             Single $20 offer + three outcomes
              ======================================== -->
         <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="section-label">CHOOSE YOUR PATH</h2>
-            <p style="text-align: center; max-width: 50ch; margin: 0 auto var(--space-lg); color: var(--muted);">
-                Pick what works for you. No subscriptions, no hidden fees.
-            </p>
+            <h2 id="pricing-heading" class="section-label">THE DEAL</h2>
 
             <div class="pricing-cards pricing-cards-offer">
                 <!-- Entry: $5 PDF -->
                 <article class="pricing-card entry">
-                    <span class="featured-tag entry-tag">STARTER</span>
+                    <span class="featured-tag entry-tag">ENTRY</span>
                     <h4>Field Guide PDF</h4>
                     <span class="price">$5</span>
-                    <p>Practical guide to getting useful answers from AI tools. Instant download.</p>
+                    <p>"How to Talk to AI": a practical guide to getting useful answers from AI tools.</p>
+                    <p class="pricing-note">PDF only. No session or queue access.</p>
+                    <p class="pricing-note">Instant download. Share freely.</p>
                     <a href="https://ko-fi.com/s/23e227d00b" class="pricing-cta" target="_blank" rel="noopener">Get the PDF</a>
                 </article>
 
                 <!-- Main: $20 offer -->
                 <article class="pricing-card featured">
-                    <span class="featured-tag">MOST POPULAR</span>
-                    <h4>Queue Response</h4>
+                    <span class="featured-tag">THE SWEET SPOT</span>
+                    <h4>Focus Session</h4>
                     <span class="price">$20</span>
-                    <p>Report + video response (30-90 sec) to your request.</p>
+                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
+                    <p class="pricing-note">Your $20 adds your problem to <a href="queue.html">the queue</a>. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's.</p>
+                    <p class="pricing-note">You receive a PDF write-up and a video response. We may or may not publish a video.</p>
+                    <p class="pricing-note">One-time fee per submission (not a subscription). If you're not picked right away, you stay in the queue.</p>
+                    <p class="pricing-note">Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+                    <p class="pricing-note">Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
+                    <div class="capacity-notice">
+                        <span class="capacity-icon">⚡</span>
+                        <span>Limited to <strong>10 slots/week</strong></span>
+                    </div>
                     <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
                 </article>
 
                 <!-- Premium: $500 -->
                 <article class="pricing-card premium">
-                    <span class="featured-tag premium-tag">PRIVATE</span>
+                    <span class="featured-tag premium-tag">PREMIUM</span>
                     <h4>Deep Dive</h4>
                     <span class="price">$500</span>
-                    <p>Private scheduled session. Full documentation. Follow-up included. 100% confidential.</p>
+                    <p>Private, scheduled session. Full documentation. Follow‑up included.</p>
+                    <p class="pricing-note">100% confidential. Best for complex problems.</p>
                     <a href="mailto:fogsift@gmail.com?subject=Deep%20Dive%20Inquiry" class="pricing-cta">Book a Deep Dive</a>
-                </article>
-
-                <!-- Custom: Boutique -->
-                <article class="pricing-card custom">
-                    <span class="featured-tag custom-tag">BOUTIQUE</span>
-                    <h4>Custom Engagement</h4>
-                    <span class="price">By Quote</span>
-                    <p>One client per work term. Extended collaboration on your terms. Limited availability.</p>
-                    <a href="mailto:fogsift@gmail.com?subject=Custom%20Engagement%20Inquiry" class="pricing-cta">Inquire</a>
                 </article>
             </div>
 
+            <h3 class="section-label" style="margin-top: 3rem; font-size: 1rem;">WHAT HAPPENS AFTER</h3>
+
+            <div class="pricing-cards outcome-cards" style="margin-top: 1.5rem;">
+                <article class="pricing-card outcome-go-deeper">
+                    <h4>"Let's go deeper."</h4>
+                    <p>We see something real. If it's a fit, I'll invite you to work together on my terms.</p>
+                </article>
+
+                <article class="pricing-card outcome-i-know-people">
+                    <h4>"I know people."</h4>
+                    <p>This isn't my lane, but I can point you to someone who can help.</p>
+                </article>
+
+                <article class="pricing-card outcome-this-is-sick">
+                    <h4>"This is sick."</h4>
+                    <p>This would be cool if somebody did it. You should. Here's a path forward.</p>
+                </article>
+            </div>
         </section>
 
         <!-- Section Divider -->
@@ -510,7 +445,7 @@
 
         <!-- ========================================
              SECTION 4.5: COMMON CONCERNS
-             Links to FAQ
+             Friction + privacy + expectations
              ======================================== -->
         <section id="objections" class="section section-pricing" aria-labelledby="objections-heading">
             <h2 id="objections-heading" class="section-label">COMMON CONCERNS</h2>
@@ -518,23 +453,24 @@
             <div class="pricing-cards outcome-cards">
                 <article class="pricing-card" style="text-align: left;">
                     <h4>"What if you can't solve it?"</h4>
-                    <p>You still get the video + report, plus a narrower problem statement or referral.</p>
+                    <p>Then you still get the PDF write-up and video response, plus a narrower problem statement or referral.</p>
                 </article>
 
                 <article class="pricing-card" style="text-align: left;">
                     <h4>"Is my problem too big?"</h4>
-                    <p>One hour is for momentum. You'll leave with clarity and next steps.</p>
+                    <p>One hour is for momentum. You'll leave with clarity and next steps, even if the full fix takes longer.</p>
                 </article>
 
                 <article class="pricing-card" style="text-align: left;">
-                    <h4>"Will my problem be public?"</h4>
-                    <p>Public by default. We'll do our best to respect privacy requests, but we can't guarantee anything submitted online stays private.</p>
+                    <h4>"Why charge $20?"</h4>
+                    <p>It filters noise, funds production, and keeps it open to anyone who can get a job at McDonald's. If it doesn't sting, it doesn't filter.</p>
+                </article>
+
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>"Will my submission be public?"</h4>
+                    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
                 </article>
             </div>
-
-            <p style="text-align: center; margin-top: var(--space-lg);">
-                <a href="faq.html" class="cta-button cta-secondary">See Full FAQ</a>
-            </p>
         </section>
 
         <!-- Section Divider -->
@@ -545,17 +481,37 @@
              Minimal, clean
              ======================================== -->
         <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-            <h3 id="contact-heading">Ready to put your request in the queue?</h3>
-            <p>Get a report + video response with our findings.</p>
+            <h3 id="contact-heading">Ready to put your idea in the queue?</h3>
+            <p>$20 is the filter. Up to an hour of focus on your submission. PDF write-up plus video response.</p>
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                Join the Queue ($20)
+                Join the Queue
             </a>
             <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">
-                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide</a>.
+                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide PDF</a>.
             </p>
+            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">Submissions may be used for other purposes, including marketing. Request anonymization if needed.</p>
         </section>
 
-        {{FOOTER}}
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="process.html">Process</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="pricing.html">Pricing</a>
+                    <a href="about.html">About</a>
+                    <a href="wiki/index.html">Wiki</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; 2025 FOGSIFT v{{VERSION}}</span>
+                    <span class="footer-sep" aria-hidden="true">//</span>
+                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
+                </div>
+            </div>
+        </footer>
 
     </main>
 

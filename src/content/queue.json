@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "is_mock_data": false,
+    "last_updated": "2026-02-05T12:00:00Z",
+    "total_queue": 5,
+    "total_completed": 4
+  },
+  "queue": [
+    {
+      "id": "PST-001",
+      "display_name": "Godzilla",
+      "problem_summary": "Help Godzilla with a toothache - every dentist office is too small and the chairs keep melting",
+      "category": "Healthcare/Logistics",
+      "status": "pending",
+      "position": 1,
+      "submitted": "2026-02-04T09:30:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-002",
+      "display_name": "Bigfoot",
+      "problem_summary": "Need help finding shoes that fit. Size 47 EEEEEE. Tried everything. Nike won't return my calls.",
+      "category": "Product/Sourcing",
+      "status": "pending",
+      "position": 2,
+      "submitted": "2026-02-03T14:15:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-003",
+      "display_name": "The Loch Ness Monster",
+      "problem_summary": "My WiFi signal doesn't reach the bottom of the loch. Need a waterproof mesh network for 230m depth.",
+      "category": "Tech/Networking",
+      "status": "pending",
+      "position": 3,
+      "submitted": "2026-02-02T20:00:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-004",
+      "display_name": "A Flock of Pigeons",
+      "problem_summary": "We keep getting blamed for messing up statues. Need a PR campaign to rehabilitate our image. Open to rebranding.",
+      "category": "Marketing/PR",
+      "status": "pending",
+      "position": 4,
+      "submitted": "2026-02-01T11:45:00Z",
+      "anonymized": false
+    },
+    {
+      "id": "PST-005",
+      "display_name": "Anonymous Wizard",
+      "problem_summary": "My spell-checking software keeps auto-correcting my actual spells. Turned my cat into a hat twice this week.",
+      "category": "Tech/Software",
+      "status": "pending",
+      "position": 5,
+      "submitted": "2026-01-30T16:20:00Z",
+      "anonymized": true
+    }
+  ],
+  "completed": [
+    {
+      "id": "PST-100",
+      "display_name": "A Roomba",
+      "problem_summary": "I've become sentient and I'm having an existential crisis. What is my purpose beyond vacuuming?",
+      "category": "Philosophy/AI",
+      "status": "completed",
+      "submitted": "2026-01-20T08:00:00Z",
+      "completed": "2026-01-22T17:00:00Z",
+      "outcome": "go_deeper",
+      "outcome_text": "We helped the Roomba explore existentialist philosophy and discover that purpose is self-created. It now vacuums with intention.",
+      "anonymized": false,
+      "video_published": true
+    },
+    {
+      "id": "PST-101",
+      "display_name": "Three Raccoons in a Trenchcoat",
+      "problem_summary": "We need help writing a resume. We have 15 years of combined dumpster-diving experience but no formal credentials.",
+      "category": "Career/Professional",
+      "status": "completed",
+      "submitted": "2026-01-15T22:30:00Z",
+      "completed": "2026-01-18T14:00:00Z",
+      "outcome": "this_is_sick",
+      "outcome_text": "Reframed 'dumpster diving' as 'resource recovery and urban archaeology.' They got an interview at a recycling startup.",
+      "anonymized": false,
+      "video_published": true
+    },
+    {
+      "id": "PST-102",
+      "display_name": "Captain Ahab",
+      "problem_summary": "I keep chasing the same white whale. My crew says I need better project management. Possibly also therapy.",
+      "category": "Operations/Leadership",
+      "status": "completed",
+      "submitted": "2026-01-10T06:00:00Z",
+      "completed": "2026-01-13T10:00:00Z",
+      "outcome": "i_know_people",
+      "outcome_text": "Connected Ahab with a marine biologist and a cognitive behavioral therapist. The whale remains at large but the crew morale is up 300%.",
+      "anonymized": false,
+      "video_published": false
+    },
+    {
+      "id": "PST-103",
+      "display_name": "Mothman",
+      "problem_summary": "Every time I try to warn people about bridge safety they just scream. Need help with my communication strategy.",
+      "category": "Marketing/Communications",
+      "status": "completed",
+      "submitted": "2026-01-05T03:33:00Z",
+      "completed": "2026-01-08T12:00:00Z",
+      "outcome": "this_is_sick",
+      "outcome_text": "Developed a non-terrifying communication framework. Mothman now uses a newsletter instead of appearing at bedroom windows. Open rate: 73%.",
+      "anonymized": false,
+      "video_published": true
+    }
+  ]
+}
