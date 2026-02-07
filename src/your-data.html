@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Data | Fogsift</title>
+    <meta name="description" content="See exactly what data your browser shares with every website you visit. No tracking, no storage — just transparency.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/your-data">
+
+    <meta property="og:title" content="Your Data — What Every Website Sees">
+    <meta property="og:description" content="See exactly what data your browser shares with every website you visit. No tracking, no storage — just transparency.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/your-data">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <!-- Theme detection -->
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <main class="frame" id="main-content">
+
+        <!-- Hero -->
+        <section class="section" aria-labelledby="yd-heading" style="padding-bottom: 0;">
+            <h1 id="yd-heading" class="section-label">YOUR DIGITAL FOOTPRINT</h1>
+            <p style="max-width: 65ch; margin: 0 auto var(--space-md); color: var(--muted); text-align: center;">
+                Every website you visit can see the data below. No permissions needed. No popups.
+                Your browser hands it over automatically.
+            </p>
+            <div style="max-width: 55ch; margin: 0 auto var(--space-lg); padding: var(--space-sm) var(--space-md); border: 1px solid var(--line); border-radius: var(--radius); background: var(--canvas); text-align: center;">
+                <p style="font-family: var(--font-mono); font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); margin: 0;">
+                    Nothing on this page is stored, tracked, or sent anywhere. Everything runs locally in your browser.
+                    <br>This page was built with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a> to promote data literacy.
+                </p>
+            </div>
+        </section>
+
+        <!-- Data Categories -->
+        <section class="section" style="padding-top: var(--space-md);">
+
+            <!-- Browser & OS -->
+            <div class="yd-card" id="yd-browser">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Browser & Operating System</h2>
+                    <span class="yd-risk-tag yd-risk-low">Always Shared</span>
+                </div>
+                <p class="yd-card-desc">Your browser identifies itself to every server it talks to. This is how websites decide what code to send you.</p>
+                <div class="yd-grid" id="yd-browser-data">
+                    <div class="yd-item"><span class="yd-label">Browser</span><span class="yd-value" id="yd-browser-name">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Engine</span><span class="yd-value" id="yd-browser-engine">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Platform</span><span class="yd-value" id="yd-platform">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Language</span><span class="yd-value" id="yd-language">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Languages</span><span class="yd-value" id="yd-languages">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Cookies Enabled</span><span class="yd-value" id="yd-cookies">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Do Not Track</span><span class="yd-value" id="yd-dnt">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Java Enabled</span><span class="yd-value" id="yd-java">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">PDF Viewer</span><span class="yd-value" id="yd-pdf">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">User Agent</span><span class="yd-value yd-value-small" id="yd-ua">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Screen & Display -->
+            <div class="yd-card" id="yd-screen">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Screen & Display</h2>
+                    <span class="yd-risk-tag yd-risk-low">Always Shared</span>
+                </div>
+                <p class="yd-card-desc">Screen dimensions and color capabilities help sites render correctly — but also help identify your specific device.</p>
+                <div class="yd-grid" id="yd-screen-data">
+                    <div class="yd-item"><span class="yd-label">Screen Resolution</span><span class="yd-value" id="yd-resolution">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Available Size</span><span class="yd-value" id="yd-avail">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Viewport Size</span><span class="yd-value" id="yd-viewport">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Color Depth</span><span class="yd-value" id="yd-color-depth">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Pixel Ratio</span><span class="yd-value" id="yd-pixel-ratio">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Orientation</span><span class="yd-value" id="yd-orientation">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Touch Support</span><span class="yd-value" id="yd-touch">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Pointer Type</span><span class="yd-value" id="yd-pointer">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Hardware -->
+            <div class="yd-card" id="yd-hardware">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Hardware</h2>
+                    <span class="yd-risk-tag yd-risk-medium">Fingerprinting Risk</span>
+                </div>
+                <p class="yd-card-desc">JavaScript can detect your CPU cores, memory, and GPU without asking. Combined, these create a hardware "fingerprint."</p>
+                <div class="yd-grid" id="yd-hardware-data">
+                    <div class="yd-item"><span class="yd-label">CPU Cores</span><span class="yd-value" id="yd-cores">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Device Memory</span><span class="yd-value" id="yd-memory">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">GPU Vendor</span><span class="yd-value" id="yd-gpu-vendor">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">GPU Renderer</span><span class="yd-value yd-value-small" id="yd-gpu-renderer">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Max Texture Size</span><span class="yd-value" id="yd-texture">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">WebGL Version</span><span class="yd-value" id="yd-webgl">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Network & Connection -->
+            <div class="yd-card" id="yd-network">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Network & Connection</h2>
+                    <span class="yd-risk-tag yd-risk-medium">Fingerprinting Risk</span>
+                </div>
+                <p class="yd-card-desc">Your connection type and online status are freely accessible. Your IP address is visible to every server.</p>
+                <div class="yd-grid" id="yd-network-data">
+                    <div class="yd-item"><span class="yd-label">Online</span><span class="yd-value" id="yd-online">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Connection Type</span><span class="yd-value" id="yd-connection">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Downlink Speed</span><span class="yd-value" id="yd-downlink">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Round-Trip Time</span><span class="yd-value" id="yd-rtt">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Data Saver</span><span class="yd-value" id="yd-datasaver">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Location (IP-based) -->
+            <div class="yd-card" id="yd-location">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Approximate Location (via IP)</h2>
+                    <span class="yd-risk-tag yd-risk-high">High Exposure</span>
+                </div>
+                <p class="yd-card-desc">Your IP address reveals your approximate location without any permission prompt. This is a free API lookup — no GPS involved.</p>
+                <div class="yd-grid" id="yd-location-data">
+                    <div class="yd-item"><span class="yd-label">IP Address</span><span class="yd-value" id="yd-ip">Looking up...</span></div>
+                    <div class="yd-item"><span class="yd-label">City</span><span class="yd-value" id="yd-city">Looking up...</span></div>
+                    <div class="yd-item"><span class="yd-label">Region</span><span class="yd-value" id="yd-region">Looking up...</span></div>
+                    <div class="yd-item"><span class="yd-label">Country</span><span class="yd-value" id="yd-country">Looking up...</span></div>
+                    <div class="yd-item"><span class="yd-label">ISP</span><span class="yd-value" id="yd-isp">Looking up...</span></div>
+                    <div class="yd-item"><span class="yd-label">Timezone</span><span class="yd-value" id="yd-timezone">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">UTC Offset</span><span class="yd-value" id="yd-utc-offset">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Local Time</span><span class="yd-value" id="yd-local-time">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Canvas & Audio Fingerprint -->
+            <div class="yd-card" id="yd-fingerprint">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Canvas & Audio Fingerprinting</h2>
+                    <span class="yd-risk-tag yd-risk-high">High Exposure</span>
+                </div>
+                <p class="yd-card-desc">
+                    Websites can draw invisible images and generate silent audio, then hash the output.
+                    Tiny rendering differences between devices create a unique "fingerprint" — even without cookies.
+                </p>
+                <div class="yd-grid" id="yd-fingerprint-data">
+                    <div class="yd-item"><span class="yd-label">Canvas Hash</span><span class="yd-value yd-value-small" id="yd-canvas-hash">Computing...</span></div>
+                    <div class="yd-item"><span class="yd-label">Canvas Preview</span><span class="yd-value" id="yd-canvas-preview"><canvas id="yd-canvas" width="280" height="40" style="border-radius: 4px; border: 1px solid var(--line);"></canvas></span></div>
+                    <div class="yd-item"><span class="yd-label">Audio Hash</span><span class="yd-value yd-value-small" id="yd-audio-hash">Computing...</span></div>
+                    <div class="yd-item"><span class="yd-label">WebGL Hash</span><span class="yd-value yd-value-small" id="yd-webgl-hash">Computing...</span></div>
+                </div>
+            </div>
+
+            <!-- Storage & Capabilities -->
+            <div class="yd-card" id="yd-storage">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Storage & Capabilities</h2>
+                    <span class="yd-risk-tag yd-risk-low">Always Shared</span>
+                </div>
+                <p class="yd-card-desc">Sites can check what features your browser supports and what storage mechanisms are available.</p>
+                <div class="yd-grid" id="yd-storage-data">
+                    <div class="yd-item"><span class="yd-label">LocalStorage</span><span class="yd-value" id="yd-localstorage">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">SessionStorage</span><span class="yd-value" id="yd-sessionstorage">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">IndexedDB</span><span class="yd-value" id="yd-indexeddb">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Service Workers</span><span class="yd-value" id="yd-sw">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Web Workers</span><span class="yd-value" id="yd-ww">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">WebAssembly</span><span class="yd-value" id="yd-wasm">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">WebRTC</span><span class="yd-value" id="yd-webrtc">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Clipboard API</span><span class="yd-value" id="yd-clipboard">Scanning...</span></div>
+                </div>
+            </div>
+
+            <!-- Referrer & Session -->
+            <div class="yd-card" id="yd-session">
+                <div class="yd-card-header">
+                    <h2 class="yd-card-title">Session & Referral</h2>
+                    <span class="yd-risk-tag yd-risk-low">Always Shared</span>
+                </div>
+                <p class="yd-card-desc">Websites know where you came from, what page you're on, and basic timing info.</p>
+                <div class="yd-grid" id="yd-session-data">
+                    <div class="yd-item"><span class="yd-label">Referrer</span><span class="yd-value yd-value-small" id="yd-referrer">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Current URL</span><span class="yd-value yd-value-small" id="yd-current-url">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">Page Load Time</span><span class="yd-value" id="yd-loadtime">Scanning...</span></div>
+                    <div class="yd-item"><span class="yd-label">History Length</span><span class="yd-value" id="yd-history">Scanning...</span></div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Uniqueness Score -->
+        <section class="section" style="padding-top: 0;">
+            <div style="max-width: 60ch; margin: 0 auto; padding: var(--space-lg); border: 2px solid var(--burnt-orange); border-radius: var(--radius); text-align: center; background: var(--canvas);">
+                <h2 style="font-family: var(--font-display); font-size: var(--text-xl); margin-bottom: var(--space-xs);">Your Fingerprint Uniqueness</h2>
+                <p id="yd-uniqueness" style="font-family: var(--font-mono); font-size: var(--text-lg); color: var(--burnt-orange); font-weight: 700; margin-bottom: var(--space-sm);">
+                    Calculating...
+                </p>
+                <p style="font-size: var(--text-sm); color: var(--muted); max-width: 50ch; margin: 0 auto;">
+                    We combined your screen, hardware, canvas, and browser data into a single hash.
+                    This hash is likely unique to your device — even without cookies or logins.
+                </p>
+            </div>
+        </section>
+
+        <!-- Bonus: Live API Data -->
+        <section class="section" style="padding-top: 0;">
+            <h2 class="section-label">LIVE DATA FROM FREE APIS</h2>
+            <p style="max-width: 65ch; margin: -1rem auto var(--space-lg); color: var(--muted); text-align: center;">
+                These widgets pull live data from free, public APIs — no API keys, no accounts. This is what the open web looks like.
+            </p>
+            <div class="yd-api-grid">
+
+                <!-- Weather (Open Meteo) -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Local Weather</h3>
+                        <span class="yd-risk-tag yd-risk-low">Open Meteo</span>
+                    </div>
+                    <p class="yd-card-desc">Your timezone + IP location = weather forecast. No GPS needed.</p>
+                    <div id="yd-weather" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Loading weather...</p>
+                    </div>
+                </div>
+
+                <!-- HTTP Cat -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">HTTP Status Cat</h3>
+                        <span class="yd-risk-tag yd-risk-low">http.cat</span>
+                    </div>
+                    <p class="yd-card-desc">Every HTTP status code has a cat. Here's one for your page load.</p>
+                    <div id="yd-httpcat" style="text-align: center;">
+                        <img id="yd-httpcat-img" src="https://http.cat/200" alt="HTTP 200 OK cat" loading="lazy" style="width: 100%; max-width: 280px; border-radius: var(--radius); border: 1px solid var(--line);">
+                        <p id="yd-httpcat-label" style="font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-xs);">200 — OK</p>
+                    </div>
+                </div>
+
+                <!-- ISS Position -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">ISS Location</h3>
+                        <span class="yd-risk-tag yd-risk-low">open-notify.org</span>
+                    </div>
+                    <p class="yd-card-desc">The International Space Station's current position, updated live.</p>
+                    <div id="yd-iss" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Locating ISS...</p>
+                    </div>
+                </div>
+
+                <!-- Random Fact -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Random Fact</h3>
+                        <span class="yd-risk-tag yd-risk-low">uselessfacts.jsph.pl</span>
+                    </div>
+                    <p class="yd-card-desc">A random fact from a free API. Because why not.</p>
+                    <div id="yd-fact" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Loading fact...</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- What Can You Do -->
+        <section class="section" style="padding-top: 0;">
+            <h2 class="section-label">WHAT CAN YOU DO ABOUT IT</h2>
+            <div style="max-width: 65ch; margin: 0 auto;">
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">01</div>
+                        <h3>Use a Privacy-Focused Browser</h3>
+                        <p>Firefox, Brave, and Tor Browser actively resist fingerprinting by normalizing data points.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">02</div>
+                        <h3>Install Privacy Extensions</h3>
+                        <p>uBlock Origin, Privacy Badger, and Canvas Blocker reduce what sites can collect.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">03</div>
+                        <h3>Use a VPN</h3>
+                        <p>Masks your IP address and approximate location. Doesn't fix fingerprinting, but limits one major vector.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">04</div>
+                        <h3>Stay Informed</h3>
+                        <p>Understanding what's exposed is the first step. Tools like <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener">EFF's Cover Your Tracks</a> can help.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learn More / Resources -->
+        <section class="section" style="padding-top: 0;">
+            <h2 class="section-label">GO DEEPER</h2>
+            <div style="max-width: 65ch; margin: 0 auto;">
+                <div class="pricing-cards" style="margin-bottom: var(--space-lg);">
+
+                    <!-- YouTube Series -->
+                    <article class="pricing-card" style="text-align: left;">
+                        <a href="https://youtu.be/9HOpanT0GRs?si=V5d_iW53ytyLCZKq" target="_blank" rel="noopener" style="display: block; margin-bottom: var(--space-sm); border-radius: var(--radius); overflow: hidden; position: relative;">
+                            <img src="https://img.youtube.com/vi/9HOpanT0GRs/hqdefault.jpg" alt="Cybersecurity for Normal People video thumbnail" loading="lazy" style="width: 100%; display: block; border-radius: var(--radius);">
+                            <span style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 48px; height: 48px; background: rgba(0,0,0,0.7); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                        </a>
+                        <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Free Video Series</span>
+                        <h4>Cybersecurity for Normal People</h4>
+                        <p>Clear, jargon-free walkthrough of how your data moves through the internet and what you can do about it.</p>
+                        <a href="https://youtu.be/9HOpanT0GRs?si=V5d_iW53ytyLCZKq" target="_blank" rel="noopener" class="pricing-cta" style="margin-top: var(--space-sm); display: inline-block;">Watch on YouTube</a>
+                    </article>
+
+                    <!-- EFF Tool -->
+                    <article class="pricing-card" style="text-align: left;">
+                        <div style="margin-bottom: var(--space-sm); padding: var(--space-md); background: var(--canvas); border-radius: var(--radius); text-align: center;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--burnt-orange)" stroke-width="1.5" width="48" height="48" style="margin: 0 auto;" aria-hidden="true">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4" stroke="var(--success)" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Free Tool</span>
+                        <h4>EFF: Cover Your Tracks</h4>
+                        <p>Test how well your browser protects you against tracking. Built by the Electronic Frontier Foundation.</p>
+                        <a href="https://coveryourtracks.eff.org" target="_blank" rel="noopener" class="pricing-cta" style="margin-top: var(--space-sm); display: inline-block;">Test Your Browser</a>
+                    </article>
+
+                    <!-- FogSift Queue -->
+                    <article class="pricing-card" style="text-align: left;">
+                        <div style="margin-bottom: var(--space-sm); padding: var(--space-md); background: var(--canvas); border-radius: var(--radius); text-align: center;">
+                            <img src="assets/logo.png" alt="FogSift logo" loading="lazy" style="height: 48px; width: auto; opacity: 0.85;">
+                        </div>
+                        <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">FogSift Service</span>
+                        <h4>Got a Security Question?</h4>
+                        <p>Submit your privacy or security question to the FogSift queue. $20 gets you a written report and video response.</p>
+                        <a href="queue.html" class="pricing-cta" style="margin-top: var(--space-sm); display: inline-block;">Join the Queue</a>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Disclaimer -->
+        <section class="section" style="padding-top: 0; padding-bottom: var(--space-xl);">
+            <div style="max-width: 65ch; margin: 0 auto; padding: var(--space-md); border: 1px solid var(--line); border-radius: var(--radius); background: var(--canvas);">
+                <h3 style="font-family: var(--font-mono); font-size: var(--text-sm); text-transform: uppercase; letter-spacing: var(--letter-wide); margin-bottom: var(--space-sm); color: var(--muted);">Transparency Notice</h3>
+                <ul style="font-size: var(--text-sm); color: var(--muted); padding-left: 1.5rem; line-height: 1.8;">
+                    <li>This page is 100% client-side. Nothing is sent to our servers.</li>
+                    <li>IP geolocation uses the free <a href="http://ip-api.com" target="_blank" rel="noopener">ip-api.com</a> service (their privacy policy applies to that one request).</li>
+                    <li>No cookies are set by this page. No analytics. No tracking pixels.</li>
+                    <li>This page was built by FogSift using <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a> to promote data literacy.</li>
+                    <li>Source code is open. <a href="https://github.com/ctavolazzi/fogsift" target="_blank" rel="noopener">View on GitHub</a>.</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    {{FOOTER}}
+
+    <script src="app.js" defer></script>
+    <script>
+    /* ============================================
+       YOUR DATA — Client-side fingerprint scanner
+       Zero tracking. Zero storage. Pure education.
+       ============================================ */
+    (function() {
+        'use strict';
+
+        function ready(fn) {
+            if (document.readyState !== 'loading') fn();
+            else document.addEventListener('DOMContentLoaded', fn);
+        }
+
+        function set(id, value) {
+            const el = document.getElementById(id);
+            if (el) el.textContent = value || 'Not available';
+        }
+
+        // Simple hash function (djb2)
+        function hash(str) {
+            let h = 5381;
+            for (let i = 0; i < str.length; i++) {
+                h = ((h << 5) + h) + str.charCodeAt(i);
+                h = h & h; // Convert to 32-bit integer
+            }
+            return (h >>> 0).toString(16).padStart(8, '0');
+        }
+
+        // ---- Browser & OS ----
+        function scanBrowser() {
+            const ua = navigator.userAgent;
+            set('yd-ua', ua);
+            set('yd-platform', navigator.platform || navigator.userAgentData?.platform || 'Unknown');
+            set('yd-language', navigator.language);
+            set('yd-languages', (navigator.languages || []).join(', '));
+            set('yd-cookies', navigator.cookieEnabled ? 'Yes' : 'No');
+            set('yd-dnt', navigator.doNotTrack === '1' ? 'Enabled' : navigator.doNotTrack === '0' ? 'Disabled' : 'Not set');
+            set('yd-java', navigator.javaEnabled ? (navigator.javaEnabled() ? 'Yes' : 'No') : 'API unavailable');
+            set('yd-pdf', navigator.pdfViewerEnabled !== undefined ? (navigator.pdfViewerEnabled ? 'Built-in' : 'No') : 'Unknown');
+
+            // Detect browser
+            let browser = 'Unknown';
+            if (ua.includes('Firefox/')) browser = 'Firefox ' + ua.split('Firefox/')[1].split(' ')[0];
+            else if (ua.includes('Edg/')) browser = 'Edge ' + ua.split('Edg/')[1].split(' ')[0];
+            else if (ua.includes('Chrome/') && !ua.includes('Edg/')) browser = 'Chrome ' + ua.split('Chrome/')[1].split(' ')[0];
+            else if (ua.includes('Safari/') && !ua.includes('Chrome/')) browser = 'Safari ' + (ua.split('Version/')[1] || '').split(' ')[0];
+            set('yd-browser-name', browser);
+
+            // Engine
+            let engine = 'Unknown';
+            if (ua.includes('Gecko/') && ua.includes('Firefox')) engine = 'Gecko';
+            else if (ua.includes('AppleWebKit/')) engine = 'WebKit/Blink';
+            set('yd-browser-engine', engine);
+        }
+
+        // ---- Screen & Display ----
+        function scanScreen() {
+            set('yd-resolution', screen.width + ' x ' + screen.height + ' px');
+            set('yd-avail', screen.availWidth + ' x ' + screen.availHeight + ' px');
+            set('yd-viewport', window.innerWidth + ' x ' + window.innerHeight + ' px');
+            set('yd-color-depth', screen.colorDepth + '-bit');
+            set('yd-pixel-ratio', window.devicePixelRatio + 'x');
+            set('yd-orientation', screen.orientation ? screen.orientation.type.replace('-', ' ') : 'Unknown');
+            set('yd-touch', ('ontouchstart' in window || navigator.maxTouchPoints > 0) ?
+                'Yes (' + navigator.maxTouchPoints + ' points)' : 'No');
+            const pointer = matchMedia('(pointer: fine)').matches ? 'Mouse/Trackpad' :
+                            matchMedia('(pointer: coarse)').matches ? 'Touch' : 'Unknown';
+            set('yd-pointer', pointer);
+        }
+
+        // ---- Hardware ----
+        function scanHardware() {
+            set('yd-cores', navigator.hardwareConcurrency || 'Hidden');
+            set('yd-memory', navigator.deviceMemory ? navigator.deviceMemory + ' GB' : 'Hidden by browser');
+
+            // WebGL GPU detection
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl) {
+                    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+                    if (ext) {
+                        set('yd-gpu-vendor', gl.getParameter(ext.UNMASKED_VENDOR_WEBGL));
+                        set('yd-gpu-renderer', gl.getParameter(ext.UNMASKED_RENDERER_WEBGL));
+                    } else {
+                        set('yd-gpu-vendor', gl.getParameter(gl.VENDOR));
+                        set('yd-gpu-renderer', 'Hidden (debug info blocked)');
+                    }
+                    set('yd-texture', gl.getParameter(gl.MAX_TEXTURE_SIZE) + ' px');
+                    set('yd-webgl', gl.getParameter(gl.VERSION));
+                }
+            } catch {
+                set('yd-gpu-vendor', 'WebGL unavailable');
+                set('yd-gpu-renderer', 'WebGL unavailable');
+                set('yd-texture', 'N/A');
+                set('yd-webgl', 'Unavailable');
+            }
+        }
+
+        // ---- Network ----
+        function scanNetwork() {
+            set('yd-online', navigator.onLine ? 'Yes' : 'No');
+            const conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+            if (conn) {
+                set('yd-connection', conn.effectiveType || 'Unknown');
+                set('yd-downlink', conn.downlink ? conn.downlink + ' Mbps' : 'Unknown');
+                set('yd-rtt', conn.rtt !== undefined ? conn.rtt + ' ms' : 'Unknown');
+                set('yd-datasaver', conn.saveData ? 'Enabled' : 'Disabled');
+            } else {
+                set('yd-connection', 'API not supported');
+                set('yd-downlink', 'API not supported');
+                set('yd-rtt', 'API not supported');
+                set('yd-datasaver', 'API not supported');
+            }
+        }
+
+        // ---- Location (IP-based) ----
+        function scanLocation() {
+            // Local timezone info (no API needed)
+            const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            set('yd-timezone', tz);
+            const offset = new Date().getTimezoneOffset();
+            const sign = offset <= 0 ? '+' : '-';
+            const hrs = Math.floor(Math.abs(offset) / 60);
+            const mins = Math.abs(offset) % 60;
+            set('yd-utc-offset', 'UTC' + sign + String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0'));
+            set('yd-local-time', new Date().toLocaleString());
+
+            // IP geolocation via free API (http only — ip-api.com free tier)
+            fetch('http://ip-api.com/json/?fields=query,city,regionName,country,isp')
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    set('yd-ip', d.query || 'Blocked');
+                    set('yd-city', d.city || 'Unknown');
+                    set('yd-region', d.regionName || 'Unknown');
+                    set('yd-country', d.country || 'Unknown');
+                    set('yd-isp', d.isp || 'Unknown');
+                })
+                .catch(function() {
+                    set('yd-ip', 'Blocked (HTTPS or ad-blocker)');
+                    set('yd-city', 'Unavailable');
+                    set('yd-region', 'Unavailable');
+                    set('yd-country', 'Unavailable');
+                    set('yd-isp', 'Unavailable');
+                });
+        }
+
+        // ---- Canvas Fingerprint ----
+        function scanCanvas() {
+            try {
+                const canvas = document.getElementById('yd-canvas');
+                const ctx = canvas.getContext('2d');
+
+                // Draw a complex scene
+                ctx.fillStyle = '#f0e6d2';
+                ctx.fillRect(0, 0, 280, 40);
+                ctx.fillStyle = '#4a2c2a';
+                ctx.font = '14px Arial, sans-serif';
+                ctx.fillText('FogSift canvas fingerprint test', 4, 16);
+                ctx.fillStyle = '#e07b3c';
+                ctx.font = '11px Georgia, serif';
+                ctx.fillText('Every device renders this differently', 4, 32);
+                ctx.beginPath();
+                ctx.arc(250, 20, 14, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(224, 123, 60, 0.5)';
+                ctx.fill();
+                ctx.strokeStyle = '#4a2c2a';
+                ctx.lineWidth = 1.5;
+                ctx.stroke();
+
+                const dataUrl = canvas.toDataURL();
+                set('yd-canvas-hash', hash(dataUrl));
+            } catch {
+                set('yd-canvas-hash', 'Blocked');
+            }
+        }
+
+        // ---- Audio Fingerprint ----
+        function scanAudio() {
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) { set('yd-audio-hash', 'API unavailable'); return; }
+                const ctx = new AudioCtx();
+                const oscillator = ctx.createOscillator();
+                const analyser = ctx.createAnalyser();
+                const gain = ctx.createGain();
+                const script = ctx.createScriptProcessor(4096, 1, 1);
+
+                gain.gain.value = 0; // Silent
+                oscillator.type = 'triangle';
+                oscillator.frequency.value = 10000;
+                oscillator.connect(analyser);
+                analyser.connect(script);
+                script.connect(gain);
+                gain.connect(ctx.destination);
+
+                oscillator.start(0);
+                script.onaudioprocess = function(e) {
+                    const data = new Float32Array(analyser.frequencyBinCount);
+                    analyser.getFloatFrequencyData(data);
+                    // Hash the first 20 frequency values
+                    const slice = Array.from(data.slice(0, 20)).map(function(v) { return v.toFixed(2); }).join(',');
+                    set('yd-audio-hash', hash(slice));
+                    oscillator.stop();
+                    script.disconnect();
+                    ctx.close();
+                };
+            } catch {
+                set('yd-audio-hash', 'Blocked');
+            }
+        }
+
+        // ---- WebGL Fingerprint ----
+        function scanWebGL() {
+            try {
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl');
+                if (!gl) { set('yd-webgl-hash', 'Unavailable'); return; }
+
+                const params = [
+                    gl.getParameter(gl.VERSION),
+                    gl.getParameter(gl.SHADING_LANGUAGE_VERSION),
+                    gl.getParameter(gl.VENDOR),
+                    gl.getParameter(gl.RENDERER),
+                    gl.getParameter(gl.MAX_TEXTURE_SIZE),
+                    gl.getParameter(gl.MAX_VERTEX_ATTRIBS),
+                    gl.getParameter(gl.MAX_VERTEX_UNIFORM_VECTORS),
+                    gl.getParameter(gl.MAX_FRAGMENT_UNIFORM_VECTORS),
+                ].join('|');
+                set('yd-webgl-hash', hash(params));
+            } catch {
+                set('yd-webgl-hash', 'Blocked');
+            }
+        }
+
+        // ---- Storage & Capabilities ----
+        function scanStorage() {
+            set('yd-localstorage', testFeature(function() { return !!window.localStorage; }));
+            set('yd-sessionstorage', testFeature(function() { return !!window.sessionStorage; }));
+            set('yd-indexeddb', testFeature(function() { return !!window.indexedDB; }));
+            set('yd-sw', 'serviceWorker' in navigator ? 'Supported' : 'Not supported');
+            set('yd-ww', typeof Worker !== 'undefined' ? 'Supported' : 'Not supported');
+            set('yd-wasm', typeof WebAssembly !== 'undefined' ? 'Supported' : 'Not supported');
+            set('yd-webrtc', (typeof RTCPeerConnection !== 'undefined' || typeof webkitRTCPeerConnection !== 'undefined') ? 'Supported' : 'Not supported');
+            set('yd-clipboard', navigator.clipboard ? 'Supported' : 'Not supported');
+        }
+
+        function testFeature(fn) {
+            try { return fn() ? 'Available' : 'Not available'; }
+            catch { return 'Blocked'; }
+        }
+
+        // ---- Session ----
+        function scanSession() {
+            set('yd-referrer', document.referrer || 'Direct visit (no referrer)');
+            set('yd-current-url', window.location.href);
+            set('yd-history', window.history.length + ' entries');
+
+            // Page load time
+            if (window.performance && performance.timing) {
+                const t = performance.timing;
+                const loadTime = t.loadEventEnd - t.navigationStart;
+                if (loadTime > 0) {
+                    set('yd-loadtime', loadTime + ' ms');
+                } else {
+                    setTimeout(function() {
+                        const lt = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                        set('yd-loadtime', lt > 0 ? lt + ' ms' : 'Measuring...');
+                    }, 100);
+                }
+            } else {
+                set('yd-loadtime', 'API not supported');
+            }
+        }
+
+        // ---- Uniqueness Score ----
+        function computeUniqueness() {
+            const points = [
+                navigator.userAgent,
+                screen.width + 'x' + screen.height,
+                screen.colorDepth,
+                window.devicePixelRatio,
+                navigator.hardwareConcurrency,
+                navigator.language,
+                (navigator.languages || []).join(','),
+                Intl.DateTimeFormat().resolvedOptions().timeZone,
+                navigator.platform,
+                navigator.maxTouchPoints,
+            ].join('|');
+
+            const fp = hash(points);
+            const el = document.getElementById('yd-uniqueness');
+            if (el) {
+                el.innerHTML = '<span style="font-size: var(--text-2xl);">' + fp + '</span>' +
+                    '<br><span style="font-size: var(--text-sm); color: var(--muted);">Combined device fingerprint hash (from ' +
+                    points.split('|').length + ' data points)</span>';
+            }
+        }
+
+        // ---- Free API Widgets ----
+        function fetchWeather() {
+            // First get approximate coords from IP lookup, then fetch weather
+            fetch('http://ip-api.com/json/?fields=lat,lon,city')
+                .then(function(r) { return r.json(); })
+                .then(function(loc) {
+                    if (!loc.lat) throw new Error('No location');
+                    return fetch('https://api.open-meteo.com/v1/forecast?latitude=' + loc.lat + '&longitude=' + loc.lon + '&current=temperature_2m,weathercode,windspeed_10m&temperature_unit=fahrenheit')
+                        .then(function(r) { return r.json(); })
+                        .then(function(w) {
+                            var c = w.current;
+                            var codes = {0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Rime fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Heavy showers',95:'Thunderstorm'};
+                            var desc = codes[c.weathercode] || 'Code ' + c.weathercode;
+                            var el = document.getElementById('yd-weather');
+                            if (el) el.innerHTML =
+                                '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">' + Math.round(c.temperature_2m) + '&deg;F</div>' +
+                                '<div>' + desc + '</div>' +
+                                '<div style="color: var(--muted);">Wind: ' + c.windspeed_10m + ' mph</div>' +
+                                '<div style="color: var(--muted); font-size: var(--text-xs); margin-top: var(--space-xs);">Near ' + (loc.city || 'your location') + '</div>';
+                        });
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-weather');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Weather unavailable (blocked or no location)</p>';
+                });
+        }
+
+        function fetchISS() {
+            fetch('http://api.open-notify.org/iss-now.json')
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    var pos = d.iss_position;
+                    var el = document.getElementById('yd-iss');
+                    if (el) el.innerHTML =
+                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lat:</span> ' + parseFloat(pos.latitude).toFixed(4) + '</div>' +
+                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lon:</span> ' + parseFloat(pos.longitude).toFixed(4) + '</div>' +
+                        '<div style="color: var(--muted); font-size: var(--text-xs);">Updated: ' + new Date(d.timestamp * 1000).toLocaleTimeString() + '</div>';
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-iss');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">ISS data unavailable</p>';
+                });
+        }
+
+        function fetchFact() {
+            fetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en')
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    var el = document.getElementById('yd-fact');
+                    if (el) el.innerHTML = '<p style="line-height: 1.5;">' + d.text + '</p>' +
+                        '<p style="color: var(--muted); font-size: var(--text-xs); margin-top: var(--space-xs);">Source: ' + (d.source || 'Unknown') + '</p>';
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-fact');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Fact unavailable</p>';
+                });
+        }
+
+        function setupHttpCat() {
+            // Pick a fun status code based on the time
+            var codes = [200, 201, 204, 301, 302, 400, 401, 403, 404, 418, 429, 500, 502, 503];
+            var labels = {200:'OK',201:'Created',204:'No Content',301:'Moved',302:'Found',400:'Bad Request',401:'Unauthorized',403:'Forbidden',404:'Not Found',418:'I\'m a Teapot',429:'Too Many Requests',500:'Internal Server Error',502:'Bad Gateway',503:'Service Unavailable'};
+            var code = codes[Math.floor(Math.random() * codes.length)];
+            var img = document.getElementById('yd-httpcat-img');
+            var label = document.getElementById('yd-httpcat-label');
+            if (img) { img.src = 'https://http.cat/' + code; img.alt = 'HTTP ' + code + ' cat'; }
+            if (label) label.textContent = code + ' — ' + (labels[code] || 'Unknown');
+        }
+
+        // ---- Run All ----
+        ready(function() {
+            scanBrowser();
+            scanScreen();
+            scanHardware();
+            scanNetwork();
+            scanLocation();
+            scanCanvas();
+            scanAudio();
+            scanWebGL();
+            scanStorage();
+            scanSession();
+            computeUniqueness();
+            fetchWeather();
+            fetchISS();
+            fetchFact();
+            setupHttpCat();
+        });
+    })();
+    </script>
+</body>
+</html>

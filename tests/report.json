@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T11:11:00.359Z",
+  "timestamp": "2026-02-07T11:26:48.096Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,12 +60,12 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 54",
+          "test": "HTML pages built: 55",
           "status": "pass",
-          "detail": "Found 54 HTML files"
+          "detail": "Found 55 HTML files"
         },
         {
-          "test": "styles.css size: 168.2KB",
+          "test": "styles.css size: 170.9KB",
           "status": "pass",
           "detail": ""
         },
@@ -351,9 +351,14 @@
           "test": "wiki/tools/process-mapping.html",
           "status": "pass",
           "detail": ""
+        },
+        {
+          "test": "your-data.html",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 54,
+      "passed": 55,
       "failed": 0,
       "warned": 0
     },
@@ -376,7 +381,7 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "27 issue(s)"
+          "detail": "31 issue(s)"
         },
         {
           "test": "about.html",
@@ -396,7 +401,7 @@
         {
           "test": "contact.html",
           "status": "warn",
-          "detail": "10 issue(s)"
+          "detail": "11 issue(s)"
         },
         {
           "test": "queue.html",
@@ -417,7 +422,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "52 broken links out of 3131",
+          "test": "52 broken links out of 3187",
           "status": "fail",
           "detail": "wiki/case-studies/communication-breakdown.html → /wiki/field-notes/001-map-territory.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/005-tribal-knowledge.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/004-bottlenecks.html; wiki/concepts/mental-models.html → /wiki/concepts/second-order-effects.html; wiki/concepts/mental-models.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/mental-models.html → /wiki/frameworks/feedback-loops.html; wiki/concepts/root-cause.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/systems-thinking.html → /wiki/frameworks/feedback-loops.html; wiki/diagnostic-process.html → /wiki/frameworks/trace-protocol.html; wiki/field-notes/001-map-territory.html → /wiki/concepts/root-cause.html"
         }
@@ -440,22 +445,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 40 entries",
+          "test": "Index has 41 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "40/40 entries have valid structure",
+          "test": "41/41 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "40/40 index URLs resolve to files",
+          "test": "41/41 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 181.1KB",
+          "test": "Index size: 186.1KB",
           "status": "pass",
           "detail": ""
         }
@@ -468,7 +473,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 16.04MB",
+          "test": "Total dist/ size: 16.11MB",
           "status": "pass",
           "detail": ""
         },
@@ -544,12 +549,12 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 58",
+          "test": "Performance: 60",
           "status": "warn",
           "detail": ""
         },
         {
-          "test": "Accessibility: 84",
+          "test": "Accessibility: 85",
           "status": "warn",
           "detail": ""
         },
@@ -566,7 +571,7 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":58,\"accessibility\":84,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":60,\"accessibility\":85,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,
@@ -575,8 +580,8 @@
     }
   ],
   "summary": {
-    "total": 100,
-    "passed": 87,
+    "total": 101,
+    "passed": 88,
     "failed": 1,
     "warned": 12
   }

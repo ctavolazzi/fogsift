@@ -2416,3 +2416,170 @@ footer {
         display: none;
     }
 }
+
+/* ============================================
+   YOUR DATA — Data Awareness Page
+   ============================================ */
+.yd-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    max-width: 72ch;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.yd-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.yd-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin: 0;
+}
+
+.yd-card-desc {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+}
+
+.yd-risk-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    padding: 0.15rem 0.6rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+.yd-risk-low {
+    background: rgba(5, 150, 105, 0.12);
+    color: var(--success);
+    border: 1px solid rgba(5, 150, 105, 0.25);
+}
+
+.yd-risk-medium {
+    background: rgba(234, 179, 8, 0.12);
+    color: #b45309;
+    border: 1px solid rgba(234, 179, 8, 0.25);
+}
+
+.yd-risk-high {
+    background: rgba(220, 38, 38, 0.12);
+    color: #dc2626;
+    border: 1px solid rgba(220, 38, 38, 0.25);
+}
+
+.yd-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.yd-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--line);
+    gap: var(--space-md);
+}
+
+.yd-item:last-child {
+    border-bottom: none;
+}
+
+.yd-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--muted);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.yd-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--ink);
+    text-align: right;
+    word-break: break-all;
+}
+
+.yd-value-small {
+    font-size: var(--text-xs);
+    line-height: 1.4;
+}
+
+/* Footprint teaser widget (homepage) */
+.footprint-teaser {
+    max-width: 65ch;
+    margin: 0 auto;
+    padding: var(--space-lg);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--canvas);
+    text-align: center;
+}
+
+.footprint-teaser-title {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--muted);
+    margin-bottom: var(--space-sm);
+}
+
+.footprint-teaser-data {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-lg);
+    margin-bottom: var(--space-md);
+}
+
+.footprint-teaser-item {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    color: var(--ink);
+}
+
+.footprint-teaser-item .ft-label {
+    color: var(--muted);
+    font-size: var(--text-xs);
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    margin-bottom: 2px;
+}
+
+.yd-api-grid {
+    max-width: 72ch;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 600px) {
+    .yd-card { padding: var(--space-md); }
+    .yd-card-header { flex-direction: column; align-items: flex-start; }
+    .yd-item { flex-direction: column; gap: 2px; }
+    .yd-value { text-align: left; }
+    .footprint-teaser-data { flex-direction: column; align-items: center; }
+    .yd-api-grid { grid-template-columns: 1fr; }
+}

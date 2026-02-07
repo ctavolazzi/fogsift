@@ -157,6 +157,7 @@ const FOOTER_LINKS = [
     { href: 'contact.html', label: 'Contact' },
     { href: 'privacy.html', label: 'Privacy' },
     { href: 'disclaimer.html', label: 'Disclaimer' },
+    { href: 'your-data.html', label: 'Your Data' },
 ];
 
 // Social links - single source of truth
@@ -1009,6 +1010,7 @@ function buildSearchIndex() {
         { file: 'terms.html', url: 'terms.html', category: 'Legal' },
         { file: 'privacy.html', url: 'privacy.html', category: 'Legal' },
         { file: 'disclaimer.html', url: 'disclaimer.html', category: 'Legal' },
+        { file: 'your-data.html', url: 'your-data.html', category: 'Privacy' },
     ];
 
     // Index main pages from dist (after they've been built)
@@ -1162,6 +1164,9 @@ async function build() {
     }
     if (processSimpleHtml('terms.html')) {
         console.log('  ✓ dist/terms.html (processed)');
+    }
+    if (processSimpleHtml('your-data.html')) {
+        console.log('  ✓ dist/your-data.html (processed)');
     }
 
     // Future pages (uncomment when implemented):

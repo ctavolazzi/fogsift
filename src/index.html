@@ -147,7 +147,7 @@
                     </a>
                 </div>
                 <p style="font-size: var(--text-sm); margin-top: var(--space-md); color: var(--muted); max-width: 45ch; margin-left: auto; margin-right: auto;">
-                    By submitting, you agree to our <a href="terms.html">Terms</a>. Submissions may be used for content. Request anonymization if needed.
+                    By submitting, you agree to our <a href="terms.html">Terms</a>. Submissions may be used for content.
                 </p>
             </div>
         </section>
@@ -458,7 +458,7 @@
                     <p class="pricing-note">Your $20 adds your problem to <a href="queue.html">the queue</a>.</p>
                     <p class="pricing-note">You receive a PDF write-up and a video response. We may or may not publish a video.</p>
                     <p class="pricing-note">One-time fee per submission (not a subscription). If you're not picked right away, you stay in the queue.</p>
-                    <p class="pricing-note">Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+                    <p class="pricing-note">Your submission may be used for other purposes, including marketing.</p>
                     <p class="pricing-note">Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
                     <div class="capacity-notice">
                         <span class="capacity-icon">⚡</span>
@@ -508,7 +508,7 @@
 
                 <details>
                     <summary>"Will my submission be public?"</summary>
-                    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
+                    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing.</p>
                 </details>
             </div>
         </section>
@@ -521,15 +521,42 @@
              Minimal, clean
              ======================================== -->
         <section id="contact" class="section section-contact" aria-labelledby="contact-heading">
-            <h3 id="contact-heading">Ready to put your idea in the queue?</h3>
-            <p>$20. You get a report and video response.</p>
-            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                Join the Queue
-            </a>
-            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">
-                Just browsing? <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Grab the $5 Field Guide PDF</a>.
+            <h3 id="contact-heading">Stay in the loop</h3>
+            <p>Get updates on new queue results, tools, and behind-the-scenes content.</p>
+            <div style="max-width: 400px; margin: var(--space-md) auto 0;">
+                <p class="monte-construction" style="font-size: var(--text-sm); margin-bottom: var(--space-sm);">Newsletter signup coming soon. Email <a href="mailto:newsletter@fogsift.com">newsletter@fogsift.com</a> to get on the list.</p>
+                <div style="display: flex; gap: var(--space-xs);">
+                    <input type="email" placeholder="your@email.com" disabled style="flex: 1; padding: 0.6rem 0.8rem; border: 1px solid var(--line); border-radius: var(--radius); font-family: var(--font-mono); font-size: var(--text-sm); opacity: 0.5;">
+                    <button type="button" class="cta-button" disabled style="white-space: nowrap; opacity: 0.5;">Coming Soon</button>
+                </div>
+            </div>
+            <p style="font-size: var(--text-sm); margin-top: var(--space-lg);">
+                Ready now? <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Join the Queue ($20)</a> or <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">grab the $5 Field Guide</a>.
             </p>
-            <p style="font-size: var(--text-sm); margin-top: var(--space-sm);">Submissions may be used for other purposes, including marketing. Request anonymization if needed.</p>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 6: DIGITAL FOOTPRINT TEASER
+             Invites visitors to see what data they expose
+             ======================================== -->
+        <section class="section" aria-labelledby="footprint-heading" style="padding-bottom: var(--space-xl);">
+            <div class="footprint-teaser">
+                <p class="footprint-teaser-title" id="footprint-heading">Your digital footprint right now</p>
+                <div class="footprint-teaser-data" id="footprint-data">
+                    <div class="footprint-teaser-item"><span class="ft-label">Browser</span><span id="ft-browser">...</span></div>
+                    <div class="footprint-teaser-item"><span class="ft-label">OS</span><span id="ft-os">...</span></div>
+                    <div class="footprint-teaser-item"><span class="ft-label">Screen</span><span id="ft-screen">...</span></div>
+                    <div class="footprint-teaser-item"><span class="ft-label">GPU</span><span id="ft-gpu">...</span></div>
+                    <div class="footprint-teaser-item"><span class="ft-label">Timezone</span><span id="ft-tz">...</span></div>
+                </div>
+                <p style="font-size: var(--text-sm); color: var(--muted); margin-bottom: var(--space-md);">
+                    Your browser shares this — and much more — with every site you visit. No permission needed.
+                </p>
+                <a href="your-data.html" class="cta-button cta-secondary">See Your Full Footprint</a>
+            </div>
         </section>
 
         {{FOOTER}}
@@ -569,5 +596,35 @@
 
     <!-- External JavaScript -->
     <script src="app.js" defer></script>
+    <script>
+    /* Footprint teaser — populates the homepage widget */
+    (function() {
+        function ready(fn) {
+            if (document.readyState !== 'loading') fn();
+            else document.addEventListener('DOMContentLoaded', fn);
+        }
+        ready(function() {
+            var s = function(id, v) { var e = document.getElementById(id); if (e) e.textContent = v; };
+            var ua = navigator.userAgent;
+            var browser = 'Unknown';
+            if (ua.indexOf('Firefox/') > -1) browser = 'Firefox';
+            else if (ua.indexOf('Edg/') > -1) browser = 'Edge';
+            else if (ua.indexOf('Chrome/') > -1) browser = 'Chrome';
+            else if (ua.indexOf('Safari/') > -1) browser = 'Safari';
+            s('ft-browser', browser);
+            s('ft-os', navigator.platform || 'Unknown');
+            s('ft-screen', screen.width + 'x' + screen.height);
+            s('ft-tz', Intl.DateTimeFormat().resolvedOptions().timeZone);
+            try {
+                var c = document.createElement('canvas');
+                var gl = c.getContext('webgl');
+                var ext = gl && gl.getExtension('WEBGL_debug_renderer_info');
+                var gpu = ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : 'Hidden';
+                if (gpu.length > 30) gpu = gpu.substring(0, 28) + '...';
+                s('ft-gpu', gpu);
+            } catch(e) { s('ft-gpu', 'Hidden'); }
+        });
+    })();
+    </script>
 </body>
 </html>
