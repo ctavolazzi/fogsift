@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Captain FogLift's Quality Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+  --void: #0a0b0d;
+  --deep: #0f1114;
+  --hull: #161921;
+  --deck: #1c2029;
+  --rigging: #252a35;
+  --mast: #2f3545;
+  --rope: #3d4456;
+  --salt: #6b7590;
+  --foam: #9aa3bc;
+  --cloud: #c8cfe0;
+  --signal: #e8ecf4;
+  --flare: #c2662d;
+  --flare-hot: #e07a3a;
+  --flare-glow: rgba(194,102,45,0.15);
+  --flare-ember: rgba(194,102,45,0.06);
+  --green-lamp: #2dd4a0;
+  --green-dim: rgba(45,212,160,0.12);
+  --amber-lamp: #f0a930;
+  --amber-dim: rgba(240,169,48,0.12);
+  --red-lamp: #ef4444;
+  --red-dim: rgba(239,68,68,0.12);
+  --radius: 8px;
+  --radius-lg: 14px;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--foam);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* === ATMOSPHERIC GRAIN === */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* === LIGHTHOUSE BEAM SWEEP === */
+@keyframes beamSweep {
+  0% { transform: rotate(-15deg); opacity: 0; }
+  10% { opacity: 0.06; }
+  20% { opacity: 0; }
+  100% { opacity: 0; transform: rotate(15deg); }
+}
+
+.beam {
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  width: 800px;
+  height: 1200px;
+  background: conic-gradient(from -2deg, transparent 0deg, rgba(194,102,45,0.04) 1deg, rgba(194,102,45,0.08) 2deg, rgba(194,102,45,0.04) 3deg, transparent 4deg);
+  transform-origin: top center;
+  animation: beamSweep 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* === LAYOUT === */
+.page { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 0 24px 80px; }
+
+/* === MAST HEAD === */
+.masthead {
+  padding: 48px 0 40px;
+  text-align: center;
+  position: relative;
+}
+
+.masthead::after {
+  content: '';
+  display: block;
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--flare), transparent);
+  margin: 32px auto 0;
+}
+
+.lighthouse-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.lighthouse-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes lanternPulse {
+  0%, 100% { opacity: 0.5; r: 4; }
+  50% { opacity: 1; r: 7; }
+}
+
+.lantern-glow {
+  animation: lanternPulse 3s ease-in-out infinite;
+  fill: var(--flare);
+}
+
+.masthead h1 {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  color: var(--signal);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.masthead h1 span {
+  color: var(--flare);
+}
+
+.masthead .subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--salt);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.timestamp {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--rope);
+  margin-top: 12px;
+}
+
+@keyframes refreshPulse {
+  0%, 90%, 100% { opacity: 0.3; }
+  95% { opacity: 1; }
+}
+
+.refresh-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green-lamp);
+  margin-right: 6px;
+  vertical-align: middle;
+  animation: refreshPulse 30s linear infinite;
+}
+
+/* === HERO STATS === */
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rigging);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 40px;
+  border: 1px solid var(--rigging);
+}
+
+.hero-stat {
+  background: var(--deep);
+  padding: 28px 16px;
+  text-align: center;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.hero-stat:hover {
+  background: var(--hull);
+}
+
+.hero-stat .value {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.hero-stat .label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--salt);
+}
+
+.hero-stat.stat-total .value { color: var(--signal); }
+.hero-stat.stat-passed .value { color: var(--green-lamp); }
+.hero-stat.stat-warned .value { color: var(--amber-lamp); }
+.hero-stat.stat-failed .value { color: var(--red-lamp); }
+
+.hero-stat.stat-passed { background: var(--green-dim); }
+
+/* === PASS RATE BAR === */
+.pass-rate-wrap {
+  margin-bottom: 48px;
+}
+
+.pass-rate-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.pass-rate-header .label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--salt);
+}
+
+.pass-rate-header .pct {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.4rem;
+  color: var(--signal);
+}
+
+.pass-rate-track {
+  height: 8px;
+  background: var(--hull);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pass-rate-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--green-lamp), var(--flare-hot));
+  transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.pass-rate-fill::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -2px;
+  width: 4px;
+  height: 12px;
+  background: var(--signal);
+  border-radius: 2px;
+  box-shadow: 0 0 12px rgba(255,255,255,0.4);
+}
+
+/* === LIGHTHOUSE GAUGES === */
+.gauges-section {
+  margin-bottom: 48px;
+}
+
+.gauges-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cloud);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gauges-section h2::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--flare);
+  border-radius: 2px;
+}
+
+.gauges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.gauge-card {
+  background: var(--deep);
+  border: 1px solid var(--rigging);
+  border-radius: var(--radius-lg);
+  padding: 28px 16px 24px;
+  text-align: center;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.gauge-card:hover {
+  border-color: var(--mast);
+  transform: translateY(-2px);
+}
+
+.gauge-wrap {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px;
+  position: relative;
+}
+
+.gauge-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.gauge-bg {
+  fill: none;
+  stroke: var(--hull);
+  stroke-width: 6;
+}
+
+.gauge-fill {
+  fill: none;
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gauge-score {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.6rem;
+  color: var(--signal);
+}
+
+.gauge-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--salt);
+}
+
+/* === SUITE ACCORDIONS === */
+.suites-section h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cloud);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.suites-section h2::before {
+  content: '';
+  width: 3px;
+  height: 18px;
+  background: var(--flare);
+  border-radius: 2px;
+}
+
+.suite {
+  background: var(--deep);
+  border: 1px solid var(--rigging);
+  border-radius: var(--radius-lg);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: border-color 0.3s ease;
+}
+
+.suite:hover { border-color: var(--mast); }
+
+.suite-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.suite-header:hover { background: var(--hull); }
+
+.suite-chevron {
+  width: 18px;
+  height: 18px;
+  color: var(--salt);
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.suite.open .suite-chevron { transform: rotate(90deg); }
+
+.suite-name {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--cloud);
+  flex: 1;
+}
+
+.suite-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 100px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.badge-pass { background: var(--green-dim); color: var(--green-lamp); }
+.badge-warn { background: var(--amber-dim); color: var(--amber-lamp); }
+.badge-fail { background: var(--red-dim); color: var(--red-lamp); }
+
+.suite-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.suite.open .suite-body {
+  max-height: 4000px;
+}
+
+.suite-tests {
+  padding: 0 22px 18px;
+  border-top: 1px solid var(--rigging);
+}
+
+.test-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--hull);
+  animation: testSlideIn 0.3s ease-out both;
+}
+
+.test-row:last-child { border-bottom: none; }
+
+@keyframes testSlideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.test-status-pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.test-status-pip.s-pass { background: var(--green-lamp); box-shadow: 0 0 8px var(--green-dim); }
+.test-status-pip.s-warn { background: var(--amber-lamp); box-shadow: 0 0 8px var(--amber-dim); }
+.test-status-pip.s-fail { background: var(--red-lamp); box-shadow: 0 0 8px var(--red-dim); }
+
+.test-info { flex: 1; min-width: 0; }
+
+.test-name {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--foam);
+  word-break: break-word;
+}
+
+.test-detail {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--salt);
+  margin-top: 3px;
+  word-break: break-word;
+}
+
+/* === FOOTER === */
+.report-footer {
+  text-align: center;
+  padding: 40px 0 20px;
+  border-top: 1px solid var(--rigging);
+  margin-top: 40px;
+}
+
+.report-footer p {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--rope);
+  letter-spacing: 0.08em;
+}
+
+.report-footer .lore {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--salt);
+  margin-bottom: 12px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* === STAGGER ANIMATIONS === */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .gauges-grid { grid-template-columns: repeat(2, 1fr); }
+  .masthead { padding: 32px 0 28px; }
+  .hero-stat { padding: 20px 12px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 0 16px 60px; }
+  .hero-stats { grid-template-columns: 1fr 1fr; }
+  .gauges-grid { grid-template-columns: 1fr 1fr; }
+  .suite-header { padding: 14px 16px; }
+  .suite-tests { padding: 0 16px 14px; }
+  .suite-badges { gap: 4px; }
+  .badge { font-size: 0.55rem; padding: 2px 7px; }
+}
+</style>
+</head>
+<body>
+<div class="beam"></div>
+
+<div class="page">
+  <!-- MASTHEAD -->
+  <header class="masthead animate-in">
+    <div class="lighthouse-icon">
+      <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="24" y="24" width="16" height="34" rx="2" fill="#252a35" stroke="#3d4456" stroke-width="1.5"/>
+        <rect x="22" y="54" width="20" height="6" rx="1" fill="#252a35" stroke="#3d4456" stroke-width="1.5"/>
+        <rect x="26" y="18" width="12" height="8" rx="1" fill="#1c2029" stroke="#3d4456" stroke-width="1.5"/>
+        <polygon points="28,18 32,10 36,18" fill="#1c2029" stroke="#3d4456" stroke-width="1.5" stroke-linejoin="round"/>
+        <circle class="lantern-glow" cx="32" cy="14" r="4" opacity="0.8"/>
+        <line x1="32" y1="6" x2="32" y2="2" stroke="#c2662d" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+        <line x1="22" y1="14" x2="14" y2="12" stroke="#c2662d" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+        <line x1="42" y1="14" x2="50" y2="12" stroke="#c2662d" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+        <rect x="28" y="30" width="3" height="4" rx="0.5" fill="#3d4456" opacity="0.5"/>
+        <rect x="33" y="30" width="3" height="4" rx="0.5" fill="#3d4456" opacity="0.5"/>
+        <rect x="28" y="38" width="3" height="4" rx="0.5" fill="#3d4456" opacity="0.5"/>
+        <rect x="33" y="38" width="3" height="4" rx="0.5" fill="#3d4456" opacity="0.5"/>
+      </svg>
+    </div>
+    <h1>Captain FogLift's <span>Quality Report</span></h1>
+    <p class="subtitle">Signal Clarity Dashboard</p>
+    <p class="timestamp" id="timestamp"><span class="refresh-dot"></span>Loading...</p>
+  </header>
+
+  <!-- HERO STATS -->
+  <div class="hero-stats animate-in delay-1" id="hero-stats"></div>
+
+  <!-- PASS RATE BAR -->
+  <div class="pass-rate-wrap animate-in delay-2">
+    <div class="pass-rate-header">
+      <span class="label">Signal Clarity</span>
+      <span class="pct" id="pass-pct">--</span>
+    </div>
+    <div class="pass-rate-track">
+      <div class="pass-rate-fill" id="pass-fill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <!-- LIGHTHOUSE GAUGES -->
+  <section class="gauges-section animate-in delay-3">
+    <h2>Lighthouse Readings</h2>
+    <div class="gauges-grid" id="gauges"></div>
+  </section>
+
+  <!-- TEST SUITES -->
+  <section class="suites-section animate-in delay-4" id="suites">
+    <h2>Test Suites</h2>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="report-footer">
+    <p class="lore">"The fog doesn't lift itself."</p>
+    <p>FOGSIFT LIGHTHOUSE // INTERNAL QUALITY SYSTEM // PORT 5065</p>
+  </footer>
+</div>
+
+<script>
+// ── DATA ──
+let report = null;
+
+async function loadReport() {
+  try {
+    const res = await fetch('/report.json?t=' + Date.now());
+    report = await res.json();
+  } catch {
+    // Fallback: try embedded data
+    report = window.__REPORT_DATA || null;
+  }
+  if (report) render(report);
+}
+
+// ── RENDER ──
+function render(data) {
+  renderTimestamp(data.timestamp);
+  renderHeroStats(data.summary);
+  renderPassRate(data.summary);
+  renderGauges(data.suites);
+  renderSuites(data.suites);
+}
+
+function renderTimestamp(ts) {
+  const d = new Date(ts);
+  const fmt = d.toLocaleString('en-US', {
+    year: 'numeric', month: 'short', day: 'numeric',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  });
+  document.getElementById('timestamp').innerHTML =
+    '<span class="refresh-dot"></span>' + fmt + ' // Auto-refresh 30s';
+}
+
+function renderHeroStats(s) {
+  const el = document.getElementById('hero-stats');
+  el.innerHTML = `
+    <div class="hero-stat stat-total">
+      <div class="value">${s.total}</div>
+      <div class="label">Total Tests</div>
+    </div>
+    <div class="hero-stat stat-passed">
+      <div class="value">${s.passed}</div>
+      <div class="label">Passed</div>
+    </div>
+    <div class="hero-stat stat-warned">
+      <div class="value">${s.warned}</div>
+      <div class="label">Warnings</div>
+    </div>
+    <div class="hero-stat stat-failed">
+      <div class="value">${s.failed}</div>
+      <div class="label">Failed</div>
+    </div>
+  `;
+}
+
+function renderPassRate(s) {
+  const pct = ((s.passed / s.total) * 100).toFixed(1);
+  document.getElementById('pass-pct').textContent = pct + '%';
+  requestAnimationFrame(() => {
+    document.getElementById('pass-fill').style.width = pct + '%';
+  });
+}
+
+function gaugeColor(score) {
+  if (score >= 90) return 'var(--green-lamp)';
+  if (score >= 50) return 'var(--amber-lamp)';
+  return 'var(--red-lamp)';
+}
+
+function renderGauges(suites) {
+  const lh = suites.find(s => s.name === 'Lighthouse');
+  if (!lh) return;
+
+  const scores = {};
+  lh.tests.forEach(t => {
+    const m = t.test.match(/^(\w[\w\s-]+?):\s*(\d+)$/);
+    if (m) scores[m[1]] = parseInt(m[2]);
+  });
+
+  const items = [
+    { label: 'Performance', key: 'Performance' },
+    { label: 'Accessibility', key: 'Accessibility' },
+    { label: 'Best Practices', key: 'Best Practices' },
+    { label: 'SEO', key: 'SEO' },
+  ];
+
+  const C = 2 * Math.PI * 42; // circumference for r=42
+
+  document.getElementById('gauges').innerHTML = items.map(item => {
+    const score = scores[item.key] || 0;
+    const offset = C - (score / 100) * C;
+    const color = gaugeColor(score);
+    return `
+      <div class="gauge-card">
+        <div class="gauge-wrap">
+          <svg class="gauge-svg" viewBox="0 0 100 100">
+            <circle class="gauge-bg" cx="50" cy="50" r="42"/>
+            <circle class="gauge-fill" cx="50" cy="50" r="42"
+              stroke="${color}"
+              stroke-dasharray="${C}"
+              stroke-dashoffset="${C}"
+              data-target="${offset}"/>
+          </svg>
+          <div class="gauge-score">${score}</div>
+        </div>
+        <div class="gauge-label">${item.label}</div>
+      </div>
+    `;
+  }).join('');
+
+  // Animate gauges
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      document.querySelectorAll('.gauge-fill').forEach(el => {
+        el.style.strokeDashoffset = el.dataset.target;
+      });
+    }, 200);
+  });
+}
+
+function renderSuites(suites) {
+  const container = document.getElementById('suites');
+  // Keep the h2
+  const heading = container.querySelector('h2');
+  container.innerHTML = '';
+  container.appendChild(heading);
+
+  suites.forEach((suite, i) => {
+    const div = document.createElement('div');
+    div.className = 'suite';
+    div.style.animationDelay = (i * 0.06) + 's';
+
+    const badges = [];
+    if (suite.passed > 0) badges.push(`<span class="badge badge-pass">${suite.passed} pass</span>`);
+    if (suite.warned > 0) badges.push(`<span class="badge badge-warn">${suite.warned} warn</span>`);
+    if (suite.failed > 0) badges.push(`<span class="badge badge-fail">${suite.failed} fail</span>`);
+
+    div.innerHTML = `
+      <div class="suite-header" onclick="this.parentElement.classList.toggle('open')">
+        <svg class="suite-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="9 6 15 12 9 18"/>
+        </svg>
+        <span class="suite-name">${suite.name}</span>
+        <div class="suite-badges">${badges.join('')}</div>
+      </div>
+      <div class="suite-body">
+        <div class="suite-tests">
+          ${suite.tests.map((t, j) => `
+            <div class="test-row" style="animation-delay: ${j * 0.03}s">
+              <div class="test-status-pip s-${t.status}"></div>
+              <div class="test-info">
+                <div class="test-name">${escHtml(t.test)}</div>
+                ${t.detail ? `<div class="test-detail">${escHtml(t.detail)}</div>` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
+function escHtml(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+// ── INIT ──
+loadReport();
+setInterval(loadReport, 30000);
+</script>
+</body>
+</html>

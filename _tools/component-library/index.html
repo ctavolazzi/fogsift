@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Signal Workshop | FogSift Component Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Mono:wght@400;500&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+:root {
+  --bg:#0c0d10;--bg-raised:#12141a;--bg-surface:#181b24;--bg-hover:#1e222e;
+  --border:#252a38;--border-hover:#333a4d;
+  --text-1:#e8ecf4;--text-2:#9aa3bc;--text-3:#6b7590;--text-4:#3d4456;
+  --flare:#c2662d;--flare-hot:#e07a3a;--flare-glow:rgba(194,102,45,0.12);
+  --green:#2dd4a0;--amber:#f0a930;--red:#ef4444;
+  --radius:8px;--radius-lg:12px;
+  --font-display:'Outfit',sans-serif;--font-mono:'DM Mono',monospace;
+}
+
+html{font-size:15px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text-2);font-family:var(--font-display);line-height:1.6;min-height:100vh}
+
+/* Layout */
+.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+
+/* Sidebar */
+.sidebar{
+  background:var(--bg-raised);border-right:1px solid var(--border);
+  position:sticky;top:0;height:100vh;overflow-y:auto;padding:0;
+  display:flex;flex-direction:column;
+}
+
+.sidebar-brand{padding:24px 20px;border-bottom:1px solid var(--border)}
+.sidebar-brand h1{font-weight:700;font-size:0.85rem;color:var(--text-1);letter-spacing:0.04em}
+.sidebar-brand .sub{font-family:var(--font-mono);font-size:0.6rem;color:var(--text-3);margin-top:3px;letter-spacing:0.1em;text-transform:uppercase}
+
+.sidebar-section{padding:12px 0}
+.sidebar-section-title{
+  font-family:var(--font-mono);font-size:0.55rem;font-weight:500;
+  color:var(--text-4);letter-spacing:0.14em;text-transform:uppercase;
+  padding:8px 20px;
+}
+
+.sidebar-link{
+  display:flex;align-items:center;gap:10px;padding:8px 20px;
+  cursor:pointer;border-left:2px solid transparent;
+  transition:all 0.15s ease;text-decoration:none;color:var(--text-2);font-size:0.82rem;
+}
+.sidebar-link:hover{background:var(--bg-hover);color:var(--text-1);border-left-color:var(--border-hover)}
+.sidebar-link.active{background:var(--flare-glow);color:var(--flare-hot);border-left-color:var(--flare)}
+.sidebar-link .pip{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0;opacity:0.6}
+.sidebar-link .pip.warn{background:var(--amber)}
+.sidebar-link .pip.fail{background:var(--red)}
+
+.sidebar-footer{
+  margin-top:auto;padding:16px 20px;border-top:1px solid var(--border);
+  font-family:var(--font-mono);font-size:0.55rem;color:var(--text-4);
+  letter-spacing:0.06em;
+}
+
+/* Main Content */
+.main{padding:40px 48px 80px;overflow-y:auto}
+.main h2{font-weight:700;font-size:1.5rem;color:var(--text-1);margin-bottom:6px}
+.main .section-desc{color:var(--text-3);margin-bottom:32px;max-width:640px}
+
+/* Component Card */
+.comp-card{
+  background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-lg);
+  margin-bottom:24px;overflow:hidden;scroll-margin-top:24px;
+}
+.comp-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 24px;border-bottom:1px solid var(--border);
+}
+.comp-header h3{font-weight:600;font-size:1rem;color:var(--text-1)}
+.comp-meta{display:flex;gap:8px;align-items:center}
+.tag{
+  font-family:var(--font-mono);font-size:0.55rem;font-weight:500;
+  padding:3px 10px;border-radius:100px;letter-spacing:0.04em;text-transform:uppercase;
+}
+.tag-js{background:rgba(250,204,21,0.1);color:#fbbf24}
+.tag-css{background:rgba(59,130,246,0.1);color:#60a5fa}
+.tag-html{background:rgba(239,68,68,0.1);color:#f87171}
+.tag-a11y{background:rgba(45,212,160,0.1);color:var(--green)}
+
+/* Preview area */
+.comp-preview{
+  padding:32px 24px;background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  min-height:120px;position:relative;
+}
+
+/* Tabs */
+.comp-tabs{display:flex;border-bottom:1px solid var(--border)}
+.comp-tab{
+  padding:10px 20px;font-family:var(--font-mono);font-size:0.68rem;
+  color:var(--text-3);cursor:pointer;border-bottom:2px solid transparent;
+  letter-spacing:0.04em;text-transform:uppercase;transition:all 0.15s ease;
+}
+.comp-tab:hover{color:var(--text-2)}
+.comp-tab.active{color:var(--flare);border-bottom-color:var(--flare)}
+
+.comp-content{padding:20px 24px}
+.comp-content pre{
+  background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 20px;overflow-x:auto;font-family:var(--font-mono);font-size:0.72rem;
+  color:var(--text-2);line-height:1.7;
+}
+.comp-content p{color:var(--text-2);font-size:0.85rem;margin-bottom:12px}
+.comp-content ul{margin:8px 0 16px 20px;color:var(--text-3);font-size:0.82rem}
+.comp-content li{margin-bottom:4px}
+
+/* Preview components - emulated */
+.preview-toast{
+  background:#1a1612;border:1px solid #d4c4a8;color:#f5f0e6;
+  padding:10px 16px;border-radius:6px;font-family:'Outfit',sans-serif;font-size:0.8rem;
+  display:flex;align-items:center;gap:10px;max-width:320px;
+  box-shadow:0 4px 24px rgba(0,0,0,0.3);
+}
+.preview-toast.error{border-color:#dc2626;color:#fca5a5}
+.preview-toast .copy-tag{
+  font-family:var(--font-mono);font-size:0.6rem;color:var(--text-3);
+  cursor:pointer;white-space:nowrap;
+}
+
+.preview-modal-trigger{
+  background:var(--flare);color:white;border:none;padding:10px 24px;
+  border-radius:6px;font-family:var(--font-display);font-size:0.82rem;
+  font-weight:600;cursor:pointer;transition:background 0.2s ease;
+}
+.preview-modal-trigger:hover{background:var(--flare-hot)}
+
+.preview-nav{
+  display:flex;gap:16px;padding:10px 20px;background:#1a1612;border-radius:8px;
+  font-family:'Outfit',sans-serif;font-size:0.78rem;
+}
+.preview-nav a{color:#8b7355;text-decoration:none;transition:color 0.15s}
+.preview-nav a:hover{color:#e07b3c}
+.preview-nav a.active{color:#e07b3c;font-weight:600}
+
+.preview-badge{
+  display:inline-block;padding:4px 14px;border-radius:100px;
+  font-family:var(--font-mono);font-size:0.65rem;font-weight:500;
+  letter-spacing:0.04em;text-transform:uppercase;
+}
+.preview-badge.green{background:rgba(45,212,160,0.12);color:var(--green)}
+.preview-badge.amber{background:rgba(240,169,48,0.12);color:var(--amber)}
+.preview-badge.red{background:rgba(239,68,68,0.12);color:var(--red)}
+
+.preview-token-grid{
+  display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;width:100%;
+}
+.preview-swatch{
+  aspect-ratio:1;border-radius:var(--radius);display:flex;align-items:flex-end;
+  padding:6px;font-family:var(--font-mono);font-size:0.5rem;color:white;
+  text-shadow:0 1px 3px rgba(0,0,0,0.5);
+}
+
+.preview-btn{
+  padding:10px 28px;border-radius:6px;font-family:var(--font-display);
+  font-size:0.85rem;font-weight:600;cursor:pointer;border:none;
+  transition:all 0.2s ease;
+}
+.preview-btn.primary{background:#e07b3c;color:white}
+.preview-btn.primary:hover{background:#c2410c}
+.preview-btn.secondary{background:transparent;border:1px solid #d4c4a8;color:#8b7355}
+.preview-btn.secondary:hover{border-color:#e07b3c;color:#e07b3c}
+
+.preview-feature{
+  display:flex;align-items:flex-start;gap:16px;text-align:left;
+  padding:16px;border-radius:10px;max-width:400px;
+}
+.preview-feature:hover{background:rgba(194,102,45,0.06)}
+.preview-feature .icon{
+  width:36px;height:36px;border-radius:8px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(194,102,45,0.1);color:#e07b3c;
+}
+.preview-feature h4{font-size:0.85rem;color:var(--text-1);margin-bottom:2px}
+.preview-feature p{font-size:0.75rem;color:var(--text-3)}
+
+/* Test results mini */
+.test-results-mini{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.test-mini{
+  font-family:var(--font-mono);font-size:0.55rem;padding:2px 8px;
+  border-radius:100px;letter-spacing:0.04em;
+}
+.test-mini.pass{background:rgba(45,212,160,0.08);color:var(--green)}
+.test-mini.warn{background:rgba(240,169,48,0.08);color:var(--amber)}
+
+@media(max-width:768px){
+  .shell{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid var(--border)}
+  .main{padding:24px 16px 60px}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <nav class="sidebar">
+    <div class="sidebar-brand">
+      <h1>The Signal Workshop</h1>
+      <div class="sub">FogSift Component Library // Port 5030</div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Foundation</div>
+      <a href="#tokens" class="sidebar-link active"><span class="pip"></span> Design Tokens</a>
+      <a href="#typography" class="sidebar-link"><span class="pip"></span> Typography</a>
+      <a href="#buttons" class="sidebar-link"><span class="pip"></span> Buttons</a>
+      <a href="#badges" class="sidebar-link"><span class="pip"></span> Badges</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Components</div>
+      <a href="#toast" class="sidebar-link"><span class="pip"></span> Toast</a>
+      <a href="#modal" class="sidebar-link"><span class="pip"></span> Modal</a>
+      <a href="#navigation" class="sidebar-link"><span class="pip"></span> Navigation</a>
+      <a href="#feature-list" class="sidebar-link"><span class="pip"></span> Feature List</a>
+      <a href="#pricing-cards" class="sidebar-link"><span class="pip warn"></span> Pricing Cards</a>
+      <a href="#wiki-cards" class="sidebar-link"><span class="pip"></span> Wiki Cards</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Patterns</div>
+      <a href="#search" class="sidebar-link"><span class="pip"></span> Search Overlay</a>
+      <a href="#theme-picker" class="sidebar-link"><span class="pip"></span> Theme Picker</a>
+      <a href="#rotating-words" class="sidebar-link"><span class="pip"></span> Rotating Words</a>
+      <a href="#stats-row" class="sidebar-link"><span class="pip"></span> Stats Row</a>
+      <a href="#newsletter" class="sidebar-link"><span class="pip warn"></span> Newsletter Signup</a>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">Easter Eggs</div>
+      <a href="#sleep-mode" class="sidebar-link"><span class="pip"></span> Sleep Mode</a>
+      <a href="#achievements" class="sidebar-link"><span class="pip"></span> Achievements</a>
+    </div>
+
+    <div class="sidebar-footer">
+      "Foggie Sifter here, broadcasting<br>from The Signal Workshop."<br><br>
+      WSFT // FOGSIFT LIGHTHOUSE
+    </div>
+  </nav>
+
+  <main class="main">
+    <h2>FogSift Component Library</h2>
+    <p class="section-desc">Every signal in the FogSift system, cataloged and tested. Built by Foggie Sifter for Captain FogLift's approval.</p>
+
+    <!-- DESIGN TOKENS -->
+    <div class="comp-card" id="tokens">
+      <div class="comp-header">
+        <h3>Design Tokens</h3>
+        <div class="comp-meta"><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div class="preview-token-grid">
+          <div class="preview-swatch" style="background:#f5f0e6;color:#4a2c2a">cream</div>
+          <div class="preview-swatch" style="background:#4a2c2a">chocolate</div>
+          <div class="preview-swatch" style="background:#e07b3c">burnt-orange</div>
+          <div class="preview-swatch" style="background:#c2410c">rust</div>
+          <div class="preview-swatch" style="background:#0d9488">teal</div>
+          <div class="preview-swatch" style="background:#8b5a2b">earth-mid</div>
+          <div class="preview-swatch" style="background:#059669">success</div>
+          <div class="preview-swatch" style="background:#d97706">warning</div>
+          <div class="preview-swatch" style="background:#dc2626">error</div>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/css/tokens.css</code></p>
+        <p>8px base grid spacing system. Retro-modern 70s/80s palette. Semantic color mappings layer on top of the raw palette so themes can remap without touching component CSS.</p>
+        <ul>
+          <li>Spacing: xs(4) / sm(8) / md(16) / lg(32) / xl(64) / 2xl(96) / 3xl(128)</li>
+          <li>Radii: sm(4px) / md(8px) / lg(12px) / xl(16px) / full(9999px)</li>
+          <li>11 theme variants override these tokens</li>
+        </ul>
+        <div class="test-results-mini">
+          <span class="test-mini pass">CSS Valid</span>
+          <span class="test-mini pass">Custom Properties</span>
+          <span class="test-mini pass">Fallbacks Defined</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="comp-card" id="buttons">
+      <div class="comp-header">
+        <h3>Buttons</h3>
+        <div class="comp-meta"><span class="tag tag-css">CSS</span><span class="tag tag-a11y">WCAG AA</span></div>
+      </div>
+      <div class="comp-preview" style="gap:16px">
+        <button class="preview-btn primary">Submit a Problem</button>
+        <button class="preview-btn secondary">Learn More</button>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/css/components.css</code> (.cta-button)</p>
+        <p>Two button variants: primary (burnt-orange fill) and secondary (outline). Both use the Outfit font family at 600 weight. Hover states darken primary and colorize secondary border.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">Contrast 7.2:1</span>
+          <span class="test-mini pass">Focus Ring</span>
+          <span class="test-mini pass">Touch Target 44px</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BADGES -->
+    <div class="comp-card" id="badges">
+      <div class="comp-header">
+        <h3>Status Badges</h3>
+        <div class="comp-meta"><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview" style="gap:12px">
+        <span class="preview-badge green">Operational</span>
+        <span class="preview-badge amber">13 Warnings</span>
+        <span class="preview-badge red">2 Failed</span>
+      </div>
+      <div class="comp-content">
+        <p>Pill-shaped status indicators. Used in the test viewer, system status page, and queue system. Monospace font, uppercase, tight tracking.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">Contrast OK</span>
+          <span class="test-mini pass">Color + Text</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="comp-card" id="toast">
+      <div class="comp-header">
+        <h3>Toast Notifications</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS Module</span><span class="tag tag-a11y">aria-live</span></div>
+      </div>
+      <div class="comp-preview" style="flex-direction:column;gap:12px">
+        <div class="preview-toast">Theme switched to Industrial</div>
+        <div class="preview-toast error">Failed to load articles <span class="copy-tag">[COPY]</span></div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/toast.js</code> (97 lines)</p>
+        <p>Self-contained notification system. Creates its own container on first use. Error toasts include a [COPY] button for clipboard. Uses <code>aria-live="polite"</code> for screen reader compatibility.</p>
+        <p><strong>API:</strong></p>
+        <pre>Toast.show('Message')           // Success, 2.5s
+Toast.error('Error details')    // Error, 5s, copyable
+Toast.info('Info message')      // Info, 2.5s</pre>
+        <p><strong>Configuration:</strong></p>
+        <ul>
+          <li>DEFAULT_DURATION: 2500ms</li>
+          <li>ERROR_DURATION: 5000ms</li>
+          <li>FADE_DURATION: 200ms</li>
+          <li>COPY_FEEDBACK: 1000ms</li>
+        </ul>
+        <div class="test-results-mini">
+          <span class="test-mini pass">HTML Valid</span>
+          <span class="test-mini pass">aria-live</span>
+          <span class="test-mini pass">Click Dismiss</span>
+          <span class="test-mini pass">Auto Dismiss</span>
+          <span class="test-mini pass">Clipboard API</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL -->
+    <div class="comp-card" id="modal">
+      <div class="comp-header">
+        <h3>Modal</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS Module</span><span class="tag tag-html">HTML</span></div>
+      </div>
+      <div class="comp-preview">
+        <button class="preview-modal-trigger" onclick="alert('Modal preview — see live site for full behavior')">Open Modal</button>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/modal.js</code> (117 lines)</p>
+        <p>Article modal with async content loading from <code>/content/articles.json</code>. Scroll-locks the body on open. Builds DOM elements safely to prevent XSS (uses textContent, not innerHTML).</p>
+        <p><strong>API:</strong></p>
+        <pre>Modal.open('article-id')    // Open with loading animation
+Modal.close()               // Fade out and unlock scroll
+Modal.loadArticles()        // Preload article cache</pre>
+        <div class="test-results-mini">
+          <span class="test-mini pass">XSS Prevention</span>
+          <span class="test-mini pass">Scroll Lock</span>
+          <span class="test-mini pass">Backdrop Close</span>
+          <span class="test-mini warn">Focus Trap Missing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <div class="comp-card" id="navigation">
+      <div class="comp-header">
+        <h3>Navigation</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS Module</span><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div class="preview-nav">
+          <a href="#" class="active">Home</a>
+          <a href="#">About</a>
+          <a href="#">Offers</a>
+          <a href="#">Wiki</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/nav.js</code> (47 lines) + <code>src/css/navigation.css</code> (473 lines)</p>
+        <p>Desktop horizontal nav with mobile drawer. Generated by <code>generateNavHeader()</code> in build.js from a single NAV_LINKS array. Mobile overlay with scroll-lock.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">Mobile Drawer</span>
+          <span class="test-mini pass">Scroll Lock</span>
+          <span class="test-mini pass">Active State</span>
+          <span class="test-mini warn">Keyboard Nav</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FEATURE LIST -->
+    <div class="comp-card" id="feature-list">
+      <div class="comp-header">
+        <h3>Feature List</h3>
+        <div class="comp-meta"><span class="tag tag-html">HTML</span><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview" style="flex-direction:column;gap:0">
+        <div class="preview-feature">
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div>
+            <h4>Skin in the Game</h4>
+            <p>$20 keeps submissions real and funds production.</p>
+          </div>
+        </div>
+        <div class="preview-feature">
+          <div class="icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <h4>Clear Outcomes</h4>
+            <p>You leave with either a fix, a roadmap, or a referral.</p>
+          </div>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/index.html</code> (Why This Works section) + <code>src/css/components.css</code></p>
+        <p>Icon + text list used for value propositions. Each item has an SVG icon in a rounded box, a heading, and a description. Subtle hover highlight with the flare color.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">aria-hidden on icons</span>
+          <span class="test-mini pass">Semantic list (ul/li)</span>
+          <span class="test-mini pass">Responsive</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRICING CARDS -->
+    <div class="comp-card" id="pricing-cards">
+      <div class="comp-header">
+        <h3>Example / Pricing Cards</h3>
+        <div class="comp-meta"><span class="tag tag-html">HTML</span><span class="tag tag-css">CSS</span><span class="tag tag-js">JS</span></div>
+      </div>
+      <div class="comp-preview" style="gap:12px;flex-wrap:wrap">
+        <div style="background:var(--bg-raised);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;max-width:260px;text-align:left">
+          <div style="font-family:var(--font-mono);font-size:0.55rem;color:var(--text-3);text-transform:uppercase;letter-spacing:0.12em;margin-bottom:6px">Operations</div>
+          <div style="font-weight:600;color:var(--text-1);font-size:0.9rem;margin-bottom:6px">"Our inventory counts never match."</div>
+          <div style="font-size:0.78rem;color:var(--text-3)">Two systems were rounding differently.</div>
+          <div style="font-family:var(--font-mono);font-size:0.6rem;color:var(--text-4);margin-top:8px">Outcome: Diagnosis + fix</div>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/index.html</code> + <code>src/css/components.css</code> (.pricing-card)</p>
+        <p>Case study cards with category label, quote heading, description, and outcome. Recently updated to be clickable with ExampleModal integration. Uses <code>role="button"</code> and <code>tabindex="0"</code> for keyboard accessibility.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">role=button</span>
+          <span class="test-mini pass">tabindex</span>
+          <span class="test-mini warn">onclick handler</span>
+          <span class="test-mini warn">Contrast: category label</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="comp-card" id="search">
+      <div class="comp-header">
+        <h3>Search Overlay</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS</span><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div style="background:rgba(0,0,0,0.85);border-radius:var(--radius-lg);padding:20px 24px;width:100%;max-width:500px">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-3)" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span style="color:var(--text-4);font-size:0.82rem">Search FogSift...</span>
+            <span style="margin-left:auto;font-family:var(--font-mono);font-size:0.55rem;color:var(--text-4);background:rgba(255,255,255,0.05);padding:2px 6px;border-radius:3px">Ctrl+K</span>
+          </div>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/search.js</code> (16,258 lines total incl. wiki-api)</p>
+        <p>Full-text search against 56-page search index (291KB). Animated overlay, keyboard-driven (Ctrl+K / Cmd+K to open, Escape to close, arrow keys to navigate results). Context-aware — searches page titles, content, and wiki entries.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">Keyboard Shortcut</span>
+          <span class="test-mini pass">56 Pages Indexed</span>
+          <span class="test-mini warn">Index Size 291KB</span>
+          <span class="test-mini pass">Escape to Close</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- THEME PICKER -->
+    <div class="comp-card" id="theme-picker">
+      <div class="comp-header">
+        <h3>Theme Picker</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS Module</span><span class="tag tag-css">11 Themes</span></div>
+      </div>
+      <div class="comp-preview">
+        <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <span class="preview-badge" style="background:rgba(245,240,230,0.1);color:#f5f0e6;border:1px solid rgba(245,240,230,0.2)">Light</span>
+          <span class="preview-badge" style="background:rgba(30,30,30,0.8);color:#aaa;border:1px solid rgba(255,255,255,0.1)">Dark</span>
+          <span class="preview-badge" style="background:rgba(194,102,45,0.15);color:#e07b3c">Industrial</span>
+          <span class="preview-badge" style="background:rgba(0,255,0,0.08);color:#0f0">Matrix</span>
+          <span class="preview-badge" style="background:rgba(135,206,250,0.1);color:#87ceeb">Sky</span>
+          <span class="preview-badge" style="background:rgba(255,0,255,0.1);color:#ff00ff">Synthwave</span>
+          <span class="preview-badge" style="background:rgba(0,255,0,0.1);color:#00ff41">Pip-Boy</span>
+          <span class="preview-badge" style="background:rgba(218,165,32,0.1);color:#daa520">Rivendell</span>
+          <span class="preview-badge" style="background:rgba(85,107,47,0.2);color:#6b8e23">Camo</span>
+          <span class="preview-badge" style="background:rgba(255,105,180,0.1);color:#ff69b4">Barbie</span>
+          <span class="preview-badge" style="background:rgba(0,119,190,0.1);color:#0077be">Ocean</span>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/theme.js</code> (462 lines) + 11 theme CSS files</p>
+        <p>Full theme system with localStorage persistence, cross-tab synchronization via BroadcastChannel, and FOUC prevention via theme-init.js. Includes demo mode that auto-cycles through themes. Each theme overrides the CSS custom properties in tokens.css.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">localStorage</span>
+          <span class="test-mini pass">Cross-Tab Sync</span>
+          <span class="test-mini pass">FOUC Prevention</span>
+          <span class="test-mini pass">CSP Compliant</span>
+          <span class="test-mini pass">11 Themes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROTATING WORDS -->
+    <div class="comp-card" id="rotating-words">
+      <div class="comp-header">
+        <h3>Rotating Words</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS</span><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div style="font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:700;color:var(--text-1)">
+          We solve <span style="color:var(--flare);display:inline-block;min-width:10ch" id="rotating-demo">hard problems</span>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/main.js</code> (initRotatingWords) + <code>src/css/components.css</code></p>
+        <p>Hero text effect that cycles through words with a fade transition. Uses <code>data-words</code> attribute for word list. Dynamically measures the longest word to set min-width, preventing layout shift. Opacity transition at 300ms.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">No Layout Shift</span>
+          <span class="test-mini pass">CSS Transition</span>
+          <span class="test-mini pass">Dynamic Sizing</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLEEP MODE -->
+    <div class="comp-card" id="sleep-mode">
+      <div class="comp-header">
+        <h3>Sleep Mode (Easter Egg)</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS</span><span class="tag tag-css">CSS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-3);text-align:center">
+          <div style="font-size:2rem;margin-bottom:8px">&#128164;</div>
+          Activates after 5 min page time + 30 sec idle<br>
+          Flying toasters + floating Z letters + CRT scanlines<br>
+          <code style="font-size:0.65rem;margin-top:8px;display:inline-block">SleepMode._debugSleep()</code>
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/sleep.js</code> (596 lines) + <code>src/css/sleep.css</code> (779 lines)</p>
+        <p>Classic Mac screensaver homage. Flying 8-bit pixel art toasters, glowing Z letters, CRT scanline overlay. TV flash wake-up effect on mouse/key interaction. Manual trigger via footer button.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">Auto Activate</span>
+          <span class="test-mini pass">Manual Trigger</span>
+          <span class="test-mini pass">Wake on Input</span>
+          <span class="test-mini warn">596 Lines (Large)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ACHIEVEMENTS -->
+    <div class="comp-card" id="achievements">
+      <div class="comp-header">
+        <h3>Achievement System</h3>
+        <div class="comp-meta"><span class="tag tag-js">JS</span></div>
+      </div>
+      <div class="comp-preview">
+        <div style="font-family:var(--font-mono);font-size:0.75rem;color:var(--text-3);text-align:center">
+          <div style="font-size:2rem;margin-bottom:8px">&#127942;</div>
+          Gamification layer for site exploration<br>
+          Konami code: &#8593;&#8593;&#8595;&#8595;&#8592;&#8594;&#8592;&#8594;BA
+        </div>
+      </div>
+      <div class="comp-content">
+        <p><strong>Source:</strong> <code>src/js/achievement.js</code> (8,010 lines)</p>
+        <p>Tracks user interactions and unlocks achievements. Persists to localStorage. Includes the Konami code easter egg for triggering special achievements.</p>
+        <div class="test-results-mini">
+          <span class="test-mini pass">localStorage</span>
+          <span class="test-mini pass">Konami Code</span>
+          <span class="test-mini pass">Non-Intrusive</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Rotating word demo
+const words = ['hard problems', 'bottlenecks', 'confusion', 'complexity'];
+let wordIdx = 0;
+const rotEl = document.getElementById('rotating-demo');
+if (rotEl) {
+  setInterval(() => {
+    rotEl.style.opacity = '0';
+    setTimeout(() => {
+      wordIdx = (wordIdx + 1) % words.length;
+      rotEl.textContent = words[wordIdx];
+      rotEl.style.opacity = '1';
+    }, 300);
+  }, 2500);
+  rotEl.style.transition = 'opacity 0.3s ease';
+}
+
+// Active sidebar link on scroll
+const sections = document.querySelectorAll('.comp-card[id]');
+const links = document.querySelectorAll('.sidebar-link');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const match = document.querySelector(`.sidebar-link[href="#${e.target.id}"]`);
+      if (match) match.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>

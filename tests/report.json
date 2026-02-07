@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T16:50:22.788Z",
+  "timestamp": "2026-02-07T21:15:55.543Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -65,12 +65,12 @@
           "detail": "Found 70 HTML files"
         },
         {
-          "test": "styles.css size: 171.8KB",
+          "test": "styles.css size: 172.7KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 60.1KB",
+          "test": "app.js size: 60.2KB",
           "status": "pass",
           "detail": ""
         }
@@ -456,7 +456,7 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "33 issue(s)"
+          "detail": "34 issue(s)"
         },
         {
           "test": "about.html",
@@ -497,7 +497,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 5800 internal links valid",
+          "test": "All 5803 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -535,7 +535,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 291.0KB",
+          "test": "Index size: 291.4KB",
           "status": "warn",
           "detail": ""
         }
@@ -624,12 +624,12 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 77",
+          "test": "Performance: 58",
           "status": "warn",
           "detail": ""
         },
         {
-          "test": "Accessibility: 85",
+          "test": "Accessibility: 87",
           "status": "warn",
           "detail": ""
         },
@@ -646,7 +646,7 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":77,\"accessibility\":85,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":58,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,

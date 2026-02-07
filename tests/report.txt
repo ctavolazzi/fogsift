@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-07T16:50:22.788Z
+Generated: 2026-02-07T21:15:55.543Z
 ============================================================
 
 SUMMARY
@@ -22,8 +22,8 @@ SUMMARY
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
   [PASS] HTML pages built: 70 — Found 70 HTML files
-  [PASS] styles.css size: 171.8KB
-  [PASS] app.js size: 60.1KB
+  [PASS] styles.css size: 172.7KB
+  [PASS] app.js size: 60.2KB
 
 ── HTML Validation ──
   [PASS] 404.html
@@ -101,7 +101,7 @@ SUMMARY
   [WARN] ESLint warnings only — 19 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — 33 issue(s)
+  [WARN] index.html — 34 issue(s)
   [WARN] about.html — 4 issue(s)
   [WARN] offers.html — 20 issue(s)
   [WARN] faq.html — 9 issue(s)
@@ -110,7 +110,7 @@ SUMMARY
   [WARN] portfolio.html — 9 issue(s)
 
 ── Internal Link Integrity ──
-  [PASS] All 5800 internal links valid
+  [PASS] All 5803 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -118,7 +118,7 @@ SUMMARY
   [PASS] Index has 56 entries
   [PASS] 56/56 entries have valid structure
   [PASS] 56/56 index URLs resolve to files
-  [WARN] Index size: 291.0KB
+  [WARN] Index size: 291.4KB
 
 ── Asset Audit ──
   [PASS] Total dist/ size: 16.95MB
@@ -137,11 +137,11 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ── Lighthouse ──
-  [WARN] Performance: 77
-  [WARN] Accessibility: 85
+  [WARN] Performance: 58
+  [WARN] Accessibility: 87
   [WARN] Best Practices: 81
   [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":77,"accessibility":85,"best-practices":81,"seo":100}
+  [PASS] Lighthouse report generated — {"performance":58,"accessibility":87,"best-practices":81,"seo":100}
 
 ============================================================
 VERDICT: READY TO DEPLOY
