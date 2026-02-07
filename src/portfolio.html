@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Fogsift</title>
-    <meta name="description" content="Projects and builds by Christopher Tavolazzi. Hardware, software, and everything in between. Watch the full build process on YouTube.">
+    <meta name="description" content="Projects and builds by Christopher Tavolazzi. Hardware, software, AI tools, and everything in between. Watch the full build process on YouTube.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/portfolio">
@@ -16,10 +16,25 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Portfolio | Fogsift">
-    <meta property="og:description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
+    <meta property="og:description" content="Projects and builds by Christopher Tavolazzi. Hardware, software, AI tools.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com/portfolio">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Portfolio | Fogsift",
+      "description": "Projects and builds by Christopher Tavolazzi. Hardware, software, AI tools.",
+      "url": "https://fogsift.com/portfolio",
+      "author": {
+        "@type": "Person",
+        "name": "Christopher Tavolazzi",
+        "url": "https://fogsift.com"
+      }
+    }
+    </script>
 
     <!-- Theme detection -->
     {{THEME_INIT}}
@@ -31,38 +46,41 @@
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
+
+        <!-- Page Header -->
         <section class="section" style="text-align: center;">
             <h1 class="section-label">PORTFOLIO</h1>
             <p style="max-width: 55ch; margin: 0 auto var(--space-lg);">
-                Projects built live on camera. Hardware, software, and everything in between.
-                Watch the full process on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a>.
+                Real projects, built live on camera. Hardware, software, AI tools, and everything in between.
             </p>
         </section>
 
-        <!-- Featured Project: TMGotcha -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- Featured Project: TMGotcha                      -->
+        <!-- ═══════════════════════════════════════════════ -->
         <section class="portfolio-grid">
-            <article class="portfolio-card portfolio-featured">
-                <div class="portfolio-image">
-                    <img src="images/portfolio/TMGotcha-Main-Advert-Image.jpg" alt="TMGotcha - A modern take on virtual pet companions" loading="lazy">
+            <article class="portfolio-card portfolio-featured portfolio-stacked">
+                <div class="portfolio-image portfolio-image-wide">
+                    <img src="images/portfolio/TMGotcha-Banner-Image.jpg" alt="TMGotcha - A modern virtual pet platform with modular hardware cubes" loading="lazy">
                 </div>
                 <div class="portfolio-content">
-                    <span class="portfolio-tag">Hardware + Software</span>
+                    <span class="portfolio-tag">Featured &middot; Hardware + Software</span>
                     <h2 class="portfolio-title">TMGotcha</h2>
                     <p class="portfolio-desc">
-                        A modern reimagining of the virtual pet experience. Modular hardware cubes,
-                        collectible editions, and desk-friendly displays. Think Tamagotchi meets maker culture.
+                        A modern reimagining of the virtual pet. Modular hardware cubes,
+                        collectible editions, desk-friendly displays, and a holographic Pepper's Ghost effect.
+                        Tamagotchi meets maker culture.
                     </p>
                     <div class="portfolio-meta">
                         <span>Custom Hardware</span>
                         <span>Embedded Software</span>
                         <span>Product Design</span>
+                        <span>3D Printing</span>
                     </div>
                     <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
                         Watch the Build
@@ -71,81 +89,74 @@
             </article>
         </section>
 
-        <!-- TMGotcha Gallery -->
+        <!-- TMGotcha Concept Gallery -->
         <section class="section">
-            <h2 class="section-label" style="font-size: var(--text-lg);">CONCEPT ART & DESIGNS</h2>
+            <h2 class="section-label" style="font-size: var(--text-lg);">CONCEPT ART &amp; DESIGNS</h2>
             <div class="portfolio-gallery">
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Cube-Concept-Art.jpg" alt="TMGotcha Cube concept art" loading="lazy">
-                    <figcaption>Cube Design</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Hardware-Concept-Art.jpg" alt="TMGotcha hardware concept" loading="lazy">
+                    <img src="images/portfolio/TMGotcha-Hardware-Concept-Art.jpg" alt="TMGotcha hardware internals concept" loading="lazy">
                     <figcaption>Hardware Concept</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg" alt="TMGotcha starter and expansion sets" loading="lazy">
-                    <figcaption>Starter & Expansion</figcaption>
+                    <img src="images/portfolio/TMGotcha-Cube-Concept-Art.jpg" alt="TMGotcha Cube modular design" loading="lazy">
+                    <figcaption>Cube Design</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Toy-Editions-Banner.jpg" alt="TMGotcha toy editions" loading="lazy">
-                    <figcaption>Toy Editions</figcaption>
-                </figure>
-                <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Limited-Editions.jpeg" alt="TMGotcha limited editions" loading="lazy">
+                    <img src="images/portfolio/TMGotcha-Limited-Editions.jpeg" alt="TMGotcha collectible limited editions" loading="lazy">
                     <figcaption>Limited Editions</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg" alt="TMGotcha desktop idle display" loading="lazy">
+                    <img src="images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg" alt="TMGotcha full product lineup" loading="lazy">
+                    <figcaption>Product Lineup</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg" alt="TMGotcha desktop idle display mode" loading="lazy">
                     <figcaption>Desktop Display</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg" alt="TMGotcha wall grid installation" loading="lazy">
-                    <figcaption>Wall Grid</figcaption>
+                    <img src="images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg" alt="TMGotcha Pepper's Ghost hologram cube" loading="lazy">
+                    <figcaption>Pepper's Ghost</figcaption>
                 </figure>
                 <figure class="gallery-item">
-                    <img src="images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg" alt="TMGotcha Pepper's Ghost hologram effect" loading="lazy">
-                    <figcaption>Pepper's Ghost Effect</figcaption>
+                    <img src="images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg" alt="TMGotcha starter kit and expansion packs" loading="lazy">
+                    <figcaption>Starter &amp; Expansion</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/portfolio/TMGotya-Box-Concept.jpeg" alt="TMGotcha retail packaging concept" loading="lazy">
+                    <figcaption>Box Concept</figcaption>
                 </figure>
             </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- WAFT Project -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- Featured Project: WAFT Framework                -->
+        <!-- ═══════════════════════════════════════════════ -->
         <section class="portfolio-grid">
-            <article class="portfolio-card">
+            <article class="portfolio-card portfolio-featured">
                 <div class="portfolio-image">
-                    <img src="images/portfolio/WAFT_Profile_Default.png" alt="WAFT - Web Application Framework Toolkit" loading="lazy">
+                    <img src="images/portfolio/WAFT_Profile_Default.png" alt="WAFT - The Evolutionary Code Laboratory" loading="lazy">
                 </div>
                 <div class="portfolio-content">
-                    <span class="portfolio-tag">Software</span>
+                    <span class="portfolio-tag">Open Source &middot; AI Framework</span>
                     <h2 class="portfolio-title">WAFT</h2>
                     <p class="portfolio-desc">
-                        Web Application Framework Toolkit. A collection of tools and patterns for building
-                        modern web applications. Built live, documented thoroughly.
+                        An evolutionary code laboratory for self-modifying AI agents.
+                        Agents write their own code, spawn variants with mutations, and evolve through
+                        directed selection. Genome tracking, fitness evaluation, and complete lineage telemetry.
+                    </p>
+                    <p class="portfolio-desc" style="flex-grow: 0;">
+                        Don't just build agents. Breed them.
                     </p>
                     <div class="portfolio-meta">
-                        <span>Web Dev</span>
+                        <span>Python</span>
+                        <span>AI Agents</span>
+                        <span>Evolutionary Design</span>
                         <span>Open Source</span>
-                        <span>Developer Tools</span>
                     </div>
-                    <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
-                        Watch the Build
-                    </a>
-                </div>
-            </article>
-
-            <!-- More Coming -->
-            <article class="portfolio-card portfolio-coming">
-                <div class="portfolio-content">
-                    <span class="portfolio-tag">Coming Soon</span>
-                    <h3 class="portfolio-title">More Projects</h3>
-                    <p class="portfolio-desc">
-                        New builds drop regularly. Subscribe to catch them live.
-                    </p>
-                    <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="portfolio-cta portfolio-cta-secondary" target="_blank" rel="noopener">
-                        Subscribe on YouTube
+                    <a href="https://github.com/ctavolazzi/waft" class="portfolio-cta" target="_blank" rel="noopener">
+                        View on GitHub
                     </a>
                 </div>
             </article>
@@ -153,35 +164,86 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- Skills & Tools -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- AI-Native Development (Vibe Coding)             -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <section class="section" style="text-align: center;" aria-labelledby="vibe-heading">
+            <h2 id="vibe-heading" class="section-label">AI-NATIVE DEVELOPMENT</h2>
+            <p style="max-width: 55ch; margin: 0 auto var(--space-lg);">
+                Every project on this page was built with AI tools. Not as a gimmick&mdash;as a multiplier.
+                Faster iteration, broader exploration, tighter feedback loops.
+            </p>
+
+            <div class="vibe-grid">
+                <div class="vibe-card">
+                    <div class="vibe-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                    </div>
+                    <h3 class="vibe-name">Claude Code</h3>
+                    <p class="vibe-desc">AI pair programming. Architecture, generation, and real-time iteration from the terminal.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                    </div>
+                    <h3 class="vibe-name">Codex</h3>
+                    <p class="vibe-desc">Multi-file prototyping and rapid feature scaffolding. Describe it, build it, ship it.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 15c6.667-6 13.333 0 20-6"/><path d="M9 22c1.798-1.998 2.518-3.995 2.807-5.993"/><path d="M15 2c-1.798 1.998-2.518 3.995-2.807 5.993"/><path d="M17 6l-2.5-2.5"/><path d="M14 8l-1-1"/><path d="M7 18l2.5 2.5"/><path d="M3.5 14.5l.5.5"/><path d="M20 9l.5.5"/><path d="M6.5 12.5l1 1"/><path d="M16.5 10.5l1 1"/><path d="M10 16l1.5 1.5"/></svg>
+                    </div>
+                    <h3 class="vibe-name">WAFT Framework</h3>
+                    <p class="vibe-desc">Custom-built evolutionary lab. AI agents that write, mutate, and improve their own code.</p>
+                </div>
+                <div class="vibe-card">
+                    <div class="vibe-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
+                    <h3 class="vibe-name">Custom Tooling</h3>
+                    <p class="vibe-desc">Build scripts, automation pipelines, and dev tools. If a tool doesn't exist yet, I make one.</p>
+                </div>
+            </div>
+
+            <p class="vibe-footnote">
+                This entire site was built with Claude Code.
+                <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">Watch the process.</a>
+            </p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- Skills & Tools                                  -->
+        <!-- ═══════════════════════════════════════════════ -->
         <section class="section" style="text-align: center;">
             <h2 class="section-label">SKILLS &amp; TOOLS</h2>
-            <p style="max-width: 55ch; margin: 0 auto var(--space-md); color: var(--muted);">
-                What gets used depends on what the problem needs.
-            </p>
-            <div class="pricing-cards outcome-cards" style="margin-top: var(--space-md);">
-                <article class="pricing-card" style="text-align: left;">
-                    <h4>Software</h4>
-                    <p style="font-size: var(--text-sm);">JavaScript/TypeScript, Python, Node.js, React, Svelte, REST APIs, databases, CI/CD, cloud infrastructure</p>
-                </article>
-                <article class="pricing-card" style="text-align: left;">
-                    <h4>Hardware</h4>
-                    <p style="font-size: var(--text-sm);">Arduino, Raspberry Pi, ESP32, 3D printing, PCB design, embedded systems, IoT prototyping</p>
-                </article>
-                <article class="pricing-card" style="text-align: left;">
-                    <h4>Strategy</h4>
-                    <p style="font-size: var(--text-sm);">Root cause analysis, process mapping, decision frameworks, market research, competitive analysis, roadmapping</p>
-                </article>
+            <p class="contact-subtitle">What gets used depends on what the problem needs.</p>
+            <div class="contact-topics" style="margin-top: var(--space-md);">
+                <div class="contact-topic">
+                    <strong>Software</strong>
+                    <span>JavaScript/TypeScript, Python, Node.js, React, Svelte, REST APIs, databases, CI/CD, cloud infrastructure</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Hardware</strong>
+                    <span>Arduino, Raspberry Pi, ESP32, 3D printing, PCB design, embedded systems, IoT prototyping</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Strategy</strong>
+                    <span>Root cause analysis, process mapping, decision frameworks, systems thinking, competitive analysis</span>
+                </div>
             </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- YouTube CTA Section -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- YouTube CTA                                     -->
+        <!-- ═══════════════════════════════════════════════ -->
         <section class="section" style="text-align: center;">
             <h2 class="section-label">WATCH THE BUILDS</h2>
             <p style="max-width: 50ch; margin: 0 auto var(--space-lg);">
-                Every project is documented from start to finish. See the mistakes, the breakthroughs,
+                Every project is documented start to finish. The mistakes, the breakthroughs,
                 and the thinking behind each decision.
             </p>
 
@@ -210,12 +272,13 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section section-contact" style="text-align: center;">
-            <h3>Got an idea you want to see built?</h3>
-            <p>Submit it to the queue. Maybe we'll build it on camera.</p>
+        <!-- Final CTA -->
+        <section class="section" style="text-align: center;">
+            <h3 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink); margin-bottom: var(--space-sm);">Got something you want built?</h3>
+            <p style="max-width: 45ch; margin: 0 auto var(--space-lg); color: var(--muted);">Submit it to the queue or just say hello.</p>
             <div class="hero-ctas" style="justify-content: center;">
                 <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
-                <a href="queue.html" class="cta-button cta-secondary">See the Queue</a>
+                <a href="contact.html" class="cta-button cta-secondary">Get in Touch</a>
             </div>
         </section>
 

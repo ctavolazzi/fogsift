@@ -53,5 +53,5 @@ Best for: Organizations that need ongoing access to diagnostic expertise.
 
 The first conversation is free. We'll talk about what's going on, and if it's something we can help with, we'll figure out the right format together.
 
-[Get in touch](mailto:christopher@fogsift.com?subject=Inquiry%20from%20Wiki)
+[Get in touch](mailto:info@fogsift.com?subject=Inquiry%20from%20Wiki)
 

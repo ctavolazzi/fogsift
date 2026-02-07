@@ -80,5 +80,5 @@ Specific methods for investigation and analysis.
 
 ## Need Help?
 
-If you have a weird question that doesn't fit in a standard box, use the [Weird Question Hotline](mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline).
+If you have a weird question that doesn't fit in a standard box, use the [Weird Question Hotline](mailto:info@fogsift.com?subject=Weird%20Question%20Hotline).
 

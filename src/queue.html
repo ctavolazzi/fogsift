@@ -395,6 +395,118 @@
                 transform: translateY(0);
             }
         }
+
+        /* Section headings */
+        .queue-section-heading {
+            font-family: var(--font-display);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            font-size: var(--text-lg);
+            text-align: center;
+            margin-bottom: var(--space-lg);
+            color: var(--ink);
+        }
+
+        /* Deliverables cards */
+        .queue-deliverables {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+        .queue-deliverable {
+            background: var(--paper);
+            border: 2px solid var(--line);
+            border-radius: var(--radius);
+            padding: var(--space-lg) var(--space-md);
+            text-align: center;
+            transition: border-color var(--ease-out), box-shadow var(--ease-out);
+        }
+        .queue-deliverable:hover {
+            border-color: var(--burnt-orange);
+            box-shadow: var(--shadow-soft);
+        }
+        .queue-deliverable-icon {
+            font-size: 2rem;
+            margin-bottom: var(--space-sm);
+        }
+        .queue-deliverable h3 {
+            font-family: var(--font-display);
+            font-size: var(--text-base);
+            margin-bottom: var(--space-xs);
+        }
+        .queue-deliverable p {
+            font-size: var(--text-sm);
+            color: var(--muted);
+            margin: 0;
+        }
+
+        /* FAQ accordion */
+        .queue-faq {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--line);
+            border: 2px solid var(--line);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+        .queue-faq-item {
+            background: var(--paper);
+        }
+        .queue-faq-item summary {
+            padding: var(--space-md) var(--space-lg);
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: var(--text-base);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--ease-out);
+        }
+        .queue-faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+        .queue-faq-item summary::after {
+            content: '+';
+            font-family: var(--font-mono);
+            font-size: var(--text-lg);
+            color: var(--muted);
+            transition: transform var(--ease-out);
+        }
+        .queue-faq-item[open] summary::after {
+            content: '\2212';
+            color: var(--burnt-orange);
+        }
+        .queue-faq-item summary:hover {
+            background: var(--canvas);
+        }
+        .queue-faq-item p {
+            padding: 0 var(--space-lg) var(--space-lg);
+            margin: 0;
+            color: var(--muted);
+            line-height: var(--leading-normal);
+        }
+
+        /* FAQ link */
+        .queue-faq-link {
+            color: var(--muted);
+            font-size: var(--text-sm);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--muted);
+            transition: color var(--ease-out), border-color var(--ease-out);
+        }
+        .queue-faq-link:hover {
+            color: var(--burnt-orange);
+            border-color: var(--burnt-orange);
+        }
+
+        @media (max-width: 500px) {
+            .queue-deliverables {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -519,25 +631,37 @@
                 </p>
             </div>
 
-            <h2>What You Get</h2>
-            <ul>
-                <li><strong>Report</strong>: Findings, recommendations, and next steps</li>
-                <li><strong>Video Response</strong>: 30-90 seconds summarizing our findings</li>
-            </ul>
-            <p style="color: var(--muted); font-size: var(--text-sm);">We may or may not choose to make a YouTube video about your request at our discretion.</p>
+            <h2 class="queue-section-heading">What You Get</h2>
+            <div class="queue-deliverables">
+                <div class="queue-deliverable">
+                    <div class="queue-deliverable-icon">&#x1F4CB;</div>
+                    <h3>Report</h3>
+                    <p>Findings, recommendations, and next steps</p>
+                </div>
+                <div class="queue-deliverable">
+                    <div class="queue-deliverable-icon">&#x1F3AC;</div>
+                    <h3>Video Response</h3>
+                    <p>30-90 seconds summarizing our findings</p>
+                </div>
+            </div>
+            <p style="color: var(--muted); font-size: var(--text-sm); text-align: center; margin-top: var(--space-sm);">We may or may not choose to make a YouTube video about your request at our discretion.</p>
 
-            <h2>FAQ</h2>
-
-            <h3>Will my request be public?</h3>
-            <p>By default, yes, so others can learn. We'll respect privacy requests where possible, but we can't guarantee anything submitted online stays private.</p>
-
-            <h3>How long until my request gets picked?</h3>
-            <p>Could be days, could be weeks. We aim for up to 3 per day. If you need something faster, consider a <a href="offers.html#deepdive">Deep Dive</a>.</p>
-
-            <h3>Can I get a refund?</h3>
-            <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet. No hard feelings.</p>
-
-            <p><a href="faq.html">See full FAQ &rarr;</a></p>
+            <h2 class="queue-section-heading" style="margin-top: var(--space-xl);">FAQ</h2>
+            <div class="queue-faq">
+                <details class="queue-faq-item">
+                    <summary>Will my request be public?</summary>
+                    <p>By default, yes, so others can learn. We'll respect privacy requests where possible, but we can't guarantee anything submitted online stays private.</p>
+                </details>
+                <details class="queue-faq-item">
+                    <summary>How long until my request gets picked?</summary>
+                    <p>Could be days, could be weeks. We aim for up to 3 per day. If you need something faster, consider a <a href="offers.html#deepdive">Deep Dive</a>.</p>
+                </details>
+                <details class="queue-faq-item">
+                    <summary>Can I get a refund?</summary>
+                    <p>Yes. Request a refund through Ko-fi if we haven't addressed your request yet. No hard feelings.</p>
+                </details>
+            </div>
+            <p style="text-align: center; margin-top: var(--space-lg);"><a href="faq.html" class="queue-faq-link">See full FAQ &rarr;</a></p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>

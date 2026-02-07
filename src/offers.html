@@ -7,7 +7,7 @@
     <meta name="description" content="FogSift offers: Free triage calls, $5 Field Guide, $20 Queue Response, $500 Deep Dive, or custom engagement. Pick what works for you.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/offers.html">
+    <link rel="canonical" href="https://fogsift.com/offers">
 
     <!-- Mobile web app -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,7 +18,7 @@
     <meta property="og:title" content="Offers | Fogsift">
     <meta property="og:description" content="FogSift offers: Free triage calls, $5 Field Guide, $20 Queue Response, $500 Deep Dive, or custom engagement.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fogsift.com/offers.html">
+    <meta property="og:url" content="https://fogsift.com/offers">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <!-- Theme detection -->
@@ -40,14 +40,14 @@
     <main class="frame" id="main-content">
 
         <!-- Hero Section -->
-        <section class="section section-hero" style="text-align: center;">
-            <h1 class="headline">Choose Your Path</h1>
-            <p class="subhead" style="max-width: 50ch; margin: 0 auto;">No subscriptions. No hidden fees. Pick what works for you.</p>
+        <section class="section" style="text-align: center;">
+            <h1 class="section-label">CHOOSE YOUR PATH</h1>
+            <p style="max-width: 50ch; margin: 0 auto var(--space-lg);">No subscriptions. No hidden fees. Pick what works for you.</p>
         </section>
 
-        <!-- Pricing Cards -->
+        <!-- Pricing Cards: 3 top + 2 centered bottom -->
         <section class="section section-pricing">
-            <div class="pricing-cards pricing-cards-offer">
+            <div class="pricing-cards pricing-cards-offer pricing-cards-offer-5">
 
                 <!-- FREE: Triage Call -->
                 <article class="pricing-card">
@@ -98,165 +98,201 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- Detailed Explanations -->
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
+        <!-- What Each Offer Includes -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label">WHAT'S INCLUDED</h2>
 
-            <h2>What Each Offer Includes</h2>
+            <div class="offers-detail-grid">
 
-            <h3 id="call">The Call (Free)</h3>
-            <p>A quick 15-30 minute conversation to understand your situation. No strings attached. If we can point you in the right direction quickly, we will. If you need more help, we'll discuss which offer fits best.</p>
-            <ul>
-                <li>Video call or phone, your preference</li>
-                <li>Honest assessment of your situation</li>
-                <li>No sales pitch, just conversation</li>
-                <li>Schedule via email</li>
-            </ul>
+                <div class="offer-detail-card">
+                    <div class="offer-detail-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        <h3>The Call</h3>
+                        <span class="offer-detail-price">Free</span>
+                    </div>
+                    <p>A quick 15-30 minute conversation to understand your situation. No strings attached.</p>
+                    <ul>
+                        <li>Video call or phone, your preference</li>
+                        <li>Honest assessment of your situation</li>
+                        <li>No sales pitch, just conversation</li>
+                    </ul>
+                </div>
 
-            <h3 id="fieldguide">Field Guide PDF ($5)</h3>
-            <p>A practical guide to getting genuinely useful answers from AI tools like ChatGPT, Claude, and others. Not hype, not theory—just techniques that actually work.</p>
-            <ul>
-                <li>Instant download after purchase</li>
-                <li>Real prompting strategies</li>
-                <li>Common pitfalls to avoid</li>
-                <li>When AI helps and when it doesn't</li>
-            </ul>
-            <p><a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Get the Field Guide &rarr;</a></p>
+                <div class="offer-detail-card">
+                    <div class="offer-detail-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        <h3>Field Guide PDF</h3>
+                        <span class="offer-detail-price">$5</span>
+                    </div>
+                    <p>A practical guide to getting genuinely useful answers from AI tools. Not hype, not theory.</p>
+                    <ul>
+                        <li>Instant download after purchase</li>
+                        <li>Real prompting strategies</li>
+                        <li>Common pitfalls to avoid</li>
+                    </ul>
+                    <p><a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">Get the Field Guide &rarr;</a></p>
+                </div>
 
-            <h3 id="queue">Queue Response ($20)</h3>
-            <p>Our main offer. Submit your request to the queue, and we'll research, analyze, and respond with a report and short video. Public by default (so others can learn), but you can request privacy.</p>
-            <ul>
-                <li>Written report with findings and recommendations</li>
-                <li>Video response (30-90 seconds) summarizing key points</li>
-                <li>Up to 3 requests processed daily</li>
-                <li>May become a YouTube video at our discretion</li>
-            </ul>
-            <p><strong>Good for:</strong> Technical questions, research requests, "how do I..." problems, second opinions, feasibility checks.</p>
-            <p><a href="queue.html">Learn more about the Queue &rarr;</a></p>
+                <div class="offer-detail-card offer-detail-featured">
+                    <div class="offer-detail-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        <h3>Queue Response</h3>
+                        <span class="offer-detail-price">$20</span>
+                    </div>
+                    <p>Our main offer. Submit your request, and we'll research, analyze, and respond with a report and short video.</p>
+                    <ul>
+                        <li>Written report with findings and recommendations</li>
+                        <li>Video response (30-90 seconds)</li>
+                        <li>Up to 3 requests processed daily</li>
+                        <li>May become a YouTube video at our discretion</li>
+                    </ul>
+                    <p><strong>Good for:</strong> Technical questions, research requests, second opinions, feasibility checks.</p>
+                    <p><a href="queue.html">Learn more about the Queue &rarr;</a></p>
+                </div>
 
-            <h3 id="deepdive">Deep Dive ($500)</h3>
-            <p>For situations that need real attention. A private, scheduled session where we dig into your specific problem. Everything stays confidential—nothing goes public without your explicit permission.</p>
-            <ul>
-                <li>Scheduled 1-2 hour working session</li>
-                <li>Full written documentation</li>
-                <li>One follow-up session included</li>
-                <li>100% confidential—nothing published</li>
-                <li>Direct access via email/chat for 2 weeks after</li>
-            </ul>
-            <p><strong>Good for:</strong> Sensitive business problems, strategic decisions, technical architecture review, when you need a thinking partner.</p>
+                <div class="offer-detail-card">
+                    <div class="offer-detail-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                        <h3>Deep Dive</h3>
+                        <span class="offer-detail-price">$500</span>
+                    </div>
+                    <p>For situations that need real attention. Private, scheduled, 100% confidential.</p>
+                    <ul>
+                        <li>Scheduled 1-2 hour working session</li>
+                        <li>Full written documentation</li>
+                        <li>One follow-up session included</li>
+                        <li>Direct access via email/chat for 2 weeks</li>
+                    </ul>
+                    <p><strong>Good for:</strong> Sensitive business problems, strategic decisions, architecture review.</p>
+                </div>
 
-            <h3 id="custom">Custom Engagement (By Quote)</h3>
-            <p>Boutique consulting for extended collaboration. We take on one client per work term to give focused attention without splitting priorities. Pricing depends on scope and duration.</p>
-            <ul>
-                <li>One client at a time (no competing priorities)</li>
-                <li>Flexible structure based on your needs</li>
-                <li>Weekly check-ins or async collaboration</li>
-                <li>All deliverables and IP belong to you</li>
-                <li>Can include team training, process development, etc.</li>
-            </ul>
-            <p><strong>Good for:</strong> Ongoing projects, team augmentation, building something together over time.</p>
+                <div class="offer-detail-card">
+                    <div class="offer-detail-header">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <h3>Custom Engagement</h3>
+                        <span class="offer-detail-price">By Quote</span>
+                    </div>
+                    <p>Boutique consulting. One client per work term. Focused attention without splitting priorities.</p>
+                    <ul>
+                        <li>One client at a time (no competing priorities)</li>
+                        <li>Flexible structure based on your needs</li>
+                        <li>All deliverables and IP belong to you</li>
+                    </ul>
+                    <p><strong>Good for:</strong> Ongoing projects, team augmentation, building something together over time.</p>
+                </div>
 
+            </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- Comparison Table -->
-        <section class="section" style="overflow-x: auto;">
+        <section class="section" style="text-align: center;">
             <h2 class="section-label">COMPARE OPTIONS</h2>
-            <table style="width: 100%; max-width: 900px; margin: 0 auto; border-collapse: collapse; font-size: var(--text-sm);">
-                <thead>
-                    <tr style="border-bottom: 2px solid var(--line);">
-                        <th style="text-align: left; padding: var(--space-sm);">Feature</th>
-                        <th style="text-align: center; padding: var(--space-sm);">Call</th>
-                        <th style="text-align: center; padding: var(--space-sm);">Guide</th>
-                        <th style="text-align: center; padding: var(--space-sm);">Queue</th>
-                        <th style="text-align: center; padding: var(--space-sm);">Deep Dive</th>
-                        <th style="text-align: center; padding: var(--space-sm);">Custom</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Price</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Free</td>
-                        <td style="text-align: center; padding: var(--space-sm);">$5</td>
-                        <td style="text-align: center; padding: var(--space-sm);">$20</td>
-                        <td style="text-align: center; padding: var(--space-sm);">$500</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Quote</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Written deliverable</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">PDF</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Report</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Full docs</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Custom</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Video response</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">30-90s</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Optional</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Optional</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Live interaction</td>
-                        <td style="text-align: center; padding: var(--space-sm);">15-30m</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">1-2h</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Ongoing</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Confidential</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
-                        <td style="text-align: center; padding: var(--space-sm);">N/A</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Public*</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
-                    </tr>
-                    <tr style="border-bottom: 1px solid var(--line);">
-                        <td style="padding: var(--space-sm);">Follow-up included</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">—</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
-                        <td style="text-align: center; padding: var(--space-sm);">Yes</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="text-align: center; margin-top: var(--space-md); font-size: var(--text-xs); color: var(--muted);">
-                *Queue responses are public by default so others can learn. Privacy requests respected where possible, but not guaranteed.
+            <div class="offers-table-wrap">
+                <table class="offers-table">
+                    <thead>
+                        <tr>
+                            <th class="offers-table-feature">Feature</th>
+                            <th>Call</th>
+                            <th>Guide</th>
+                            <th class="offers-table-highlight">Queue</th>
+                            <th>Deep Dive</th>
+                            <th>Custom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="offers-table-feature">Price</td>
+                            <td>Free</td>
+                            <td>$5</td>
+                            <td class="offers-table-highlight">$20</td>
+                            <td>$500</td>
+                            <td>Quote</td>
+                        </tr>
+                        <tr>
+                            <td class="offers-table-feature">Written deliverable</td>
+                            <td>&mdash;</td>
+                            <td>PDF</td>
+                            <td class="offers-table-highlight">Report</td>
+                            <td>Full docs</td>
+                            <td>Custom</td>
+                        </tr>
+                        <tr>
+                            <td class="offers-table-feature">Video response</td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td class="offers-table-highlight">30-90s</td>
+                            <td>Optional</td>
+                            <td>Optional</td>
+                        </tr>
+                        <tr>
+                            <td class="offers-table-feature">Live interaction</td>
+                            <td>15-30m</td>
+                            <td>&mdash;</td>
+                            <td class="offers-table-highlight">&mdash;</td>
+                            <td>1-2h</td>
+                            <td>Ongoing</td>
+                        </tr>
+                        <tr>
+                            <td class="offers-table-feature">Confidential</td>
+                            <td>Yes</td>
+                            <td>N/A</td>
+                            <td class="offers-table-highlight">Public*</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td class="offers-table-feature">Follow-up included</td>
+                            <td>&mdash;</td>
+                            <td>&mdash;</td>
+                            <td class="offers-table-highlight">&mdash;</td>
+                            <td>Yes</td>
+                            <td>Yes</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p style="margin-top: var(--space-md); font-size: var(--text-xs); color: var(--muted);">
+                *Queue responses are public by default so others can learn. Privacy requests respected where possible.
             </p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- FAQ Section -->
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>Frequently Asked Questions</h2>
-
-            <h3>Which offer should I choose?</h3>
-            <p><strong>Not sure what you need?</strong> Book a free call first. We'll figure it out together.</p>
-            <p><strong>Have a specific question?</strong> The $20 Queue Response is probably right.</p>
-            <p><strong>Need something confidential?</strong> Deep Dive or Custom Engagement.</p>
-            <p><strong>Just curious about AI?</strong> Grab the $5 Field Guide.</p>
-
-            <h3>Why is the Queue so cheap?</h3>
-            <p>We'd rather help 100 people at accessible prices than 5 people at premium rates. The queue also becomes content for the YouTube channel, so everyone benefits—you get help, others learn from watching.</p>
-
-            <h3>What if I'm not satisfied?</h3>
-            <p>For the Queue: if your request hasn't been processed yet, request a refund through Ko-fi anytime. No questions asked.</p>
-            <p>For Deep Dive and Custom: if you don't find value, we'll make it right. We'd rather have a good relationship than keep your money.</p>
-
-            <h3>Do you do ongoing retainers?</h3>
-            <p>That's what the Custom Engagement is for. We take on one client per work term to give focused attention. Limited availability—reach out to discuss.</p>
-
-            <h3>Can I upgrade from Queue to Deep Dive?</h3>
-            <p>Yes. If your Queue submission reveals something that needs more attention, we can discuss upgrading. Your $20 counts toward the Deep Dive fee.</p>
-
-            <h3>What kinds of problems do you work on?</h3>
-            <p>Technical questions, research requests, feasibility checks, process problems, "should I build or buy" decisions, debugging, architecture review, and more. If you're stuck on something concrete, we can probably help.</p>
-            <p>We don't do: financial/investment advice, legal advice, interpersonal disputes, or anything illegal/unethical.</p>
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label">COMMON QUESTIONS</h2>
+            <div class="concerns-accordion">
+                <details>
+                    <summary>Which offer should I choose?</summary>
+                    <p><strong>Not sure what you need?</strong> Book a free call first. We'll figure it out together.<br>
+                    <strong>Have a specific question?</strong> The $20 Queue Response is probably right.<br>
+                    <strong>Need something confidential?</strong> Deep Dive or Custom Engagement.<br>
+                    <strong>Just curious about AI?</strong> Grab the $5 Field Guide.</p>
+                </details>
+                <details>
+                    <summary>Why is the Queue so cheap?</summary>
+                    <p>We'd rather help 100 people at accessible prices than 5 people at premium rates. The queue also becomes content for the YouTube channel, so everyone benefits&mdash;you get help, others learn from watching.</p>
+                </details>
+                <details>
+                    <summary>What if I'm not satisfied?</summary>
+                    <p>For the Queue: if your request hasn't been processed yet, request a refund through Ko-fi anytime. No questions asked. For Deep Dive and Custom: if you don't find value, we'll make it right. We'd rather have a good relationship than keep your money.</p>
+                </details>
+                <details>
+                    <summary>Do you do ongoing retainers?</summary>
+                    <p>That's what the Custom Engagement is for. We take on one client per work term to give focused attention. Limited availability&mdash;reach out to discuss.</p>
+                </details>
+                <details>
+                    <summary>Can I upgrade from Queue to Deep Dive?</summary>
+                    <p>Yes. If your Queue submission reveals something that needs more attention, we can discuss upgrading. Your $20 counts toward the Deep Dive fee.</p>
+                </details>
+                <details>
+                    <summary>What kinds of problems do you work on?</summary>
+                    <p>Technical questions, research requests, feasibility checks, process problems, "should I build or buy" decisions, debugging, architecture review, and more. If you're stuck on something concrete, we can probably help.</p>
+                    <p style="margin-top: var(--space-sm);">We don't do: financial/investment advice, legal advice, interpersonal disputes, or anything illegal/unethical.</p>
+                </details>
+            </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
@@ -266,10 +302,10 @@
             <h3>Not sure where to start?</h3>
             <p style="max-width: 45ch; margin: 0 auto var(--space-lg);">Book a free call. No pitch, no pressure. Just a conversation.</p>
             <a href="mailto:fogsift@gmail.com?subject=Booking%20a%20Free%20Call" class="cta-button">Book a Free Call</a>
-            <p style="margin-top: var(--space-lg); font-size: var(--text-sm); color: var(--text-muted);">
+            <p style="margin-top: var(--space-lg); font-size: var(--text-sm);">
                 Or jump straight in: <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Join the Queue ($20)</a>
             </p>
-            <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--text-muted);">
+            <p style="margin-top: var(--space-md); font-size: var(--text-sm);">
                 By participating, you agree to our <a href="terms.html">Terms & Conditions</a>.
             </p>
         </section>

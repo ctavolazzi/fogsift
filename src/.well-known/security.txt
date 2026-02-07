@@ -2,7 +2,7 @@
 # https://securitytxt.org/ (RFC 9116)
 
 # Contact for reporting security vulnerabilities
-Contact: mailto:christopher@fogsift.com
+Contact: mailto:info@fogsift.com
 Contact: https://fogsift.com
 
 # Preferred language for security reports

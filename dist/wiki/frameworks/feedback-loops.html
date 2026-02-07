@@ -22,46 +22,17 @@
 
     <link rel="icon" type="image/png" href="../../favicon.png">
 
-    <!-- Theme detection - inline to prevent FOUC (TD-010: injected by build) -->
     <script src="../../theme-init.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <!-- External Stylesheet with error handling -->
-    <link rel="stylesheet" href="../../styles.css" id="main-styles" onerror="window.__cssLoadError='styles.css'">
-
-    <!-- CSS Load Verification -->
-    <script>
-    (function() {
-        window.__cssErrors = [];
-        document.addEventListener('DOMContentLoaded', function() {
-            if (window.__cssLoadError) {
-                console.error('[FOGSIFT Wiki] CSS Load Error:', window.__cssLoadError);
-                window.__cssErrors.push(window.__cssLoadError);
-            }
-            var computed = getComputedStyle(document.documentElement);
-            if (!computed.getPropertyValue('--primary').trim()) {
-                console.warn('[FOGSIFT Wiki] CSS variables not detected');
-                window.__cssErrors.push('CSS variables missing');
-            }
-            if (window.__cssErrors.length === 0) {
-                console.log('%c[FOGSIFT Wiki] Styles loaded', 'color: #4CAF50');
-            } else {
-                document.body.style.fontFamily = 'Inter, system-ui, sans-serif';
-                document.body.style.backgroundColor = '#f5f0e6';
-                document.body.style.color = '#4a2c2a';
-            }
-        });
-    })();
-    </script>
+    <link rel="stylesheet" href="../../styles.css" id="main-styles">
 </head>
-<body class="wiki-body">
+<body class="wiki-body wiki-page">
 
     <div id="toast-container"></div>
-
-    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     <!-- Mobile Navigation Drawer -->
@@ -178,33 +149,29 @@
         </div>
     </header>
 
-    <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
-        <ol class="wiki-breadcrumb__list">
-            <li class="wiki-breadcrumb__item"><a href="../../index.html" class="wiki-breadcrumb__link">FOGSIFT</a></li>
-            <li class="wiki-breadcrumb__item wiki-breadcrumb__separator">/</li>
-            <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
-            <li class="wiki-breadcrumb__item wiki-breadcrumb__separator">/</li>
-            <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current">FEEDBACK LOOPS</span></li>
-        </ol>
-    </nav>
+    <div class="wiki-container">
+        <!-- Breadcrumb -->
+        <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
+            <ol class="wiki-breadcrumb__list">
+                <li class="wiki-breadcrumb__item"><a href="../../index.html" class="wiki-breadcrumb__link">FOGSIFT</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">FEEDBACK LOOPS</span></li>
+            </ol>
+        </nav>
 
-    <div class="wiki-layout">
-        <!-- Mobile Sidebar Toggle -->
-        <button class="wiki-sidebar-toggle" aria-expanded="false" aria-controls="wiki-sidebar" onclick="WikiNav.toggle()">
-            <span class="toggle-text">Navigation</span>
-            <span class="toggle-icon" aria-hidden="true">+</span>
-        </button>
-
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar -->
         <aside id="wiki-sidebar" class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
-            <div class="wiki-sidebar-inner">
-                <div class="wiki-sidebar-header">
-                    <a href="../index.html" class="wiki-home-link">
-                        <span aria-hidden="true">←</span> Wiki Home
-                    </a>
-                </div>
-                <div class="wiki-sidebar-content">
-                    <div class="wiki-nav-category">
+            <button class="wiki-sidebar__toggle" aria-expanded="false" aria-controls="wiki-sidebar-nav" onclick="WikiNav.toggle()">
+                <span>Navigation</span>
+                <span class="wiki-sidebar__toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="wiki-sidebar-nav" class="wiki-sidebar__nav">
+                <a href="../index.html" class="wiki-sidebar__home">
+                    <span aria-hidden="true">&larr;</span> Wiki Home
+                </a>
+                <div class="wiki-nav-category">
   <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg></span>Documentation</h4>
   <ul class="wiki-nav-list">
     <li><a href="../getting-started.html">Getting Started</a></li>
@@ -263,13 +230,12 @@
   </ul>
 </div>
 
-                </div>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="wiki-main" role="main">
-            <article class="wiki-content">
+            <article class="wiki-article">
                 <h1>Feedback Loop Analysis</h1>
 <p>Feedback loops are circular chains of cause and effect where the output of a system influences its own input. Understanding them is essential for diagnosing persistent problems and designing effective interventions.</p>
 <h2>The Basics</h2>
@@ -404,13 +370,13 @@
 
             </article>
 
-            <footer class="wiki-footer">
-                <div class="wiki-meta">
+            <footer class="wiki-article-footer">
+                <div class="wiki-article-footer__meta">
                     <span>Updated: 2026-02-07</span>
                 </div>
-                <nav class="wiki-nav-footer" aria-label="Wiki navigation">
+                <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">
-                        <span aria-hidden="true">←</span> Back to Wiki
+                        <span aria-hidden="true">&larr;</span> Back to Wiki
                     </a>
                 </nav>
             </footer>
@@ -645,24 +611,20 @@
         </main>
     </div>
 
-    <!-- Shared JS bundle (Theme, ThemePicker, Nav, Toast) -->
     <script src="../../app.js" defer></script>
 
-    <!-- Wiki-specific JS -->
     <script>
-        // Wiki sidebar accordion toggle
         const WikiNav = {
             sidebar: null,
-            toggle: null,
+            toggleBtn: null,
+            navPanel: null,
 
             init() {
                 this.sidebar = document.getElementById('wiki-sidebar');
-                this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
-
-                // Mark active page in navigation
+                this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
+                this.navPanel = document.getElementById('wiki-sidebar-nav');
                 this.highlightActivePage();
 
-                // Auto-close sidebar when clicking nav links (mobile/tablet)
                 if (this.sidebar) {
                     this.sidebar.addEventListener('click', (e) => {
                         if (e.target.closest('.wiki-nav-list a')) {
@@ -673,31 +635,31 @@
             },
 
             toggle() {
-                if (!this.sidebar || !this.toggleBtn) {
-                    this.sidebar = document.getElementById('wiki-sidebar');
-                    this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
+                if (!this.toggleBtn) {
+                    this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
+                    this.navPanel = document.getElementById('wiki-sidebar-nav');
                 }
-                if (!this.sidebar || !this.toggleBtn) return;
+                if (!this.sidebar) this.sidebar = document.getElementById('wiki-sidebar');
+                if (!this.toggleBtn) return;
 
                 const expanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
-                this.toggleBtn.setAttribute('aria-expanded', !expanded);
-                this.sidebar.classList.toggle('open');
+                this.toggleBtn.setAttribute('aria-expanded', String(!expanded));
+                this.sidebar.classList.toggle('wiki-sidebar--open');
 
-                const icon = this.toggleBtn.querySelector('.toggle-icon');
-                if (icon) icon.textContent = expanded ? '+' : '−';
+                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
+                if (icon) icon.textContent = expanded ? '+' : '\u2212';
             },
 
             close() {
                 if (!this.sidebar || !this.toggleBtn) return;
                 this.toggleBtn.setAttribute('aria-expanded', 'false');
-                this.sidebar.classList.remove('open');
-                const icon = this.toggleBtn.querySelector('.toggle-icon');
+                this.sidebar.classList.remove('wiki-sidebar--open');
+                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
                 if (icon) icon.textContent = '+';
             },
 
             highlightActivePage() {
-                const currentPath = window.location.pathname;
-                const currentPage = currentPath.split('/').pop();
+                const currentPage = window.location.pathname.split('/').pop();
                 document.querySelectorAll('.wiki-nav-list a').forEach(link => {
                     const href = link.getAttribute('href');
                     if (href && (href === currentPage || href.endsWith(currentPage))) {
@@ -708,7 +670,6 @@
             }
         };
 
-        // Init WikiNav when DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => WikiNav.init());
         } else {
@@ -717,4 +678,3 @@
     </script>
 </body>
 </html>
-

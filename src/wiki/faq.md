@@ -89,9 +89,9 @@ The same diagnostic principles apply. If you've got a weird personal problem tha
 
 ### What if I don't have a specific problem, I just want to talk?
 
-Use the [Weird Question Hotline](mailto:christopher@fogsift.com?subject=Weird%20Question%20Hotline). It exists for exactly this purpose.
+Use the [Weird Question Hotline](mailto:info@fogsift.com?subject=Weird%20Question%20Hotline). It exists for exactly this purpose.
 
 ---
 
-*Still have questions? [Get in touch.](mailto:christopher@fogsift.com?subject=Question%20from%20FAQ)*
+*Still have questions? [Get in touch.](mailto:info@fogsift.com?subject=Question%20from%20FAQ)*
 
