@@ -700,6 +700,11 @@ function buildQueuePages() {
     const queueData = JSON.parse(fs.readFileSync(queueDataPath, 'utf8'));
     const template = fs.readFileSync(templatePath, 'utf8');
 
+    // Clean stale queue pages before rebuilding
+    if (fs.existsSync(queueDir)) {
+        const staleFiles = fs.readdirSync(queueDir).filter(f => f.endsWith('.html'));
+        staleFiles.forEach(f => fs.unlinkSync(path.join(queueDir, f)));
+    }
     ensureDir(queueDir);
 
     let pagesBuilt = 0;

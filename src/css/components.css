@@ -425,7 +425,7 @@ label.hp-field,
 /* Rotating word effect */
 [data-words] {
     display: inline-block;
-    min-width: 0;
+    min-width: 12ch;
     text-align: center;
     transition: opacity 0.3s ease;
     color: var(--burnt-orange);
@@ -444,7 +444,7 @@ label.hp-field,
 }
 
 .rotating-highlight [data-words] {
-    min-width: 0;
+    min-width: 12ch;
 }
 
 /* Hero CTA buttons container */

@@ -1,0 +1,618 @@
+{
+  "timestamp": "2026-02-07T10:52:13.041Z",
+  "suites": [
+    {
+      "name": "Build Verification",
+      "tests": [
+        {
+          "test": "dist/ directory exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/index.html exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/styles.css exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/app.js exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/theme-init.js exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/favicon.png exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/manifest.json exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/robots.txt exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/sitemap.xml exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/404.html exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "dist/search-index.json exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "HTML pages built: 61",
+          "status": "pass",
+          "detail": "Found 61 HTML files"
+        },
+        {
+          "test": "styles.css size: 168.2KB",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "app.js size: 60.1KB",
+          "status": "pass",
+          "detail": ""
+        }
+      ],
+      "passed": 14,
+      "failed": 0,
+      "warned": 0
+    },
+    {
+      "name": "HTML Validation",
+      "tests": [
+        {
+          "test": "404.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "about.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "contact.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "disclaimer.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "faq.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "gallery.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "hi.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "index.html",
+          "status": "fail",
+          "detail": "7 error(s), 3 warning(s)"
+        },
+        {
+          "test": "offers.html",
+          "status": "fail",
+          "detail": "3 error(s), 0 warning(s)"
+        },
+        {
+          "test": "paperbin-saas.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "portfolio.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "privacy.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "process.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-000.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-001.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-002.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-003.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-004.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-005.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-006.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-007.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-008.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-009.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-010.html",
+          "status": "fail",
+          "detail": "3 error(s), 16 warning(s)"
+        },
+        {
+          "test": "queue/PST-100.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-101.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-102.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue/PST-103.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "queue.html",
+          "status": "fail",
+          "detail": "3 error(s), 0 warning(s)"
+        },
+        {
+          "test": "system-status.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "terms.html",
+          "status": "fail",
+          "detail": "5 error(s), 0 warning(s)"
+        },
+        {
+          "test": "vision.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "wiki/case-studies/communication-breakdown.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/case-studies/manufacturing-throughput.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/case-studies/the-invisible-process.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/cognitive-biases.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/mental-models.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/root-cause.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/second-order-effects.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/signal-vs-noise.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/concepts/systems-thinking.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/diagnostic-process.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/faq.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/001-map-territory.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/002-precision-accuracy.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/003-entropy.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/004-bottlenecks.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/005-tribal-knowledge.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/006-incentive-alignment.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/field-notes/007-documentation-debt.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/frameworks/constraint-mapping.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/frameworks/decision-matrix.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/frameworks/feedback-loops.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/frameworks/trace-protocol.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/getting-started.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/how-we-work.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/index.html",
+          "status": "fail",
+          "detail": "6 error(s), 0 warning(s)"
+        },
+        {
+          "test": "wiki/tools/fishbone-diagram.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/tools/five-whys.html",
+          "status": "fail",
+          "detail": "2 error(s), 0 warning(s)"
+        },
+        {
+          "test": "wiki/tools/pareto-analysis.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        },
+        {
+          "test": "wiki/tools/process-mapping.html",
+          "status": "fail",
+          "detail": "8 error(s), 1 warning(s)"
+        }
+      ],
+      "passed": 3,
+      "failed": 58,
+      "warned": 0
+    },
+    {
+      "name": "ESLint (Source JS)",
+      "tests": [
+        {
+          "test": "ESLint warnings only",
+          "status": "warn",
+          "detail": "19 warning(s)"
+        }
+      ],
+      "passed": 0,
+      "failed": 0,
+      "warned": 1
+    },
+    {
+      "name": "Accessibility (pa11y WCAG2AA)",
+      "tests": [
+        {
+          "test": "index.html",
+          "status": "warn",
+          "detail": "27 issue(s)"
+        },
+        {
+          "test": "about.html",
+          "status": "warn",
+          "detail": "4 issue(s)"
+        },
+        {
+          "test": "offers.html",
+          "status": "warn",
+          "detail": "20 issue(s)"
+        },
+        {
+          "test": "faq.html",
+          "status": "warn",
+          "detail": "9 issue(s)"
+        },
+        {
+          "test": "contact.html",
+          "status": "warn",
+          "detail": "10 issue(s)"
+        },
+        {
+          "test": "queue.html",
+          "status": "warn",
+          "detail": "16 issue(s)"
+        },
+        {
+          "test": "portfolio.html",
+          "status": "warn",
+          "detail": "9 issue(s)"
+        }
+      ],
+      "passed": 0,
+      "failed": 0,
+      "warned": 7
+    },
+    {
+      "name": "Internal Link Integrity",
+      "tests": [
+        {
+          "test": "73 broken links out of 3311",
+          "status": "fail",
+          "detail": "paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-007.html → ../pricing.html"
+        }
+      ],
+      "passed": 0,
+      "failed": 1,
+      "warned": 0
+    },
+    {
+      "name": "Search Index",
+      "tests": [
+        {
+          "test": "search-index.json is valid JSON",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Index is an array",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Index has 40 entries",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "40/40 entries have valid structure",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "40/40 index URLs resolve to files",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Index size: 181.0KB",
+          "status": "pass",
+          "detail": ""
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "warned": 0
+    },
+    {
+      "name": "Asset Audit",
+      "tests": [
+        {
+          "test": "Total dist/ size: 16.17MB",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "11 file(s) over 500KB",
+          "status": "warn",
+          "detail": "assets/icon-512.png: 840.6KB; assets/logo-01.png: 821.7KB; assets/logo-mono.png: 552.7KB; images/portfolio/TMGotcha-Banner-Image.jpg: 1.23MB; images/portfolio/TMGotcha-Build-Cycle-Banner.jpg: 951.2KB; images/portfolio/TMGotcha-Cube-Concept-Art.jpg: 1.21MB; images/portfolio/TMGotcha-Hardware-Concept-Art.jpg: 1.18MB; images/portfolio/TMGotcha-Main-Advert-Image.jpg: 1.02MB; images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg: 1.08MB; images/portfolio/TMGotcha-Toy-Editions-Banner.jpg: 1.12MB; og-image.png: 726.0KB"
+        },
+        {
+          "test": "assets/logo.png present",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "images/team/christopher-badge.webp present",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "manifest.json present",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "favicon.png present",
+          "status": "pass",
+          "detail": ""
+        }
+      ],
+      "passed": 5,
+      "failed": 0,
+      "warned": 1
+    },
+    {
+      "name": "Security Headers",
+      "tests": [
+        {
+          "test": "_headers file exists",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "X-Frame-Options",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "X-Content-Type-Options",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Content-Security-Policy",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Referrer-Policy",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Permissions-Policy",
+          "status": "pass",
+          "detail": ""
+        }
+      ],
+      "passed": 6,
+      "failed": 0,
+      "warned": 0
+    },
+    {
+      "name": "Lighthouse",
+      "tests": [
+        {
+          "test": "Performance: 60",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "Accessibility: 84",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "Best Practices: 81",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "SEO: 100",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Lighthouse report generated",
+          "status": "pass",
+          "detail": "{\"performance\":60,\"accessibility\":84,\"best-practices\":81,\"seo\":100}"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "warned": 3
+    }
+  ],
+  "summary": {
+    "total": 107,
+    "passed": 36,
+    "failed": 59,
+    "warned": 12
+  }
+}
