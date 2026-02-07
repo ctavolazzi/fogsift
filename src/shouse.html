@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Shouse | FogSift Research</title>
+    <meta name="description" content="The Shouse: shop + house. A deep research brief on the integrated live-work structure — from Roman tabernae to modern scavenger architecture. 2/3 shop, 1/3 living space.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/shouse.html">
+
+    <meta property="og:title" content="The Shouse | FogSift Research">
+    <meta property="og:description" content="Shop + House = Shouse. A research brief on the integrated live-work structure.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/shouse.html">
+
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* === SHOUSE PAGE: INDUSTRIAL NOIR EDITORIAL === */
+
+        .sh-page {
+            --sh-dark: #1a1410;
+            --sh-dark-mid: #2a2118;
+            --sh-warm: #3d2e20;
+            --sh-cream: #f5f0e6;
+            --sh-orange: #e07b3c;
+            --sh-rust: #c2410c;
+            --sh-steel: #8b8178;
+            --sh-line: #4a3f34;
+        }
+
+        /* Hero */
+        .sh-hero {
+            background: var(--sh-dark);
+            color: var(--sh-cream);
+            padding: clamp(4rem, 12vw, 10rem) 0 clamp(3rem, 8vw, 6rem);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .sh-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(255,255,255,0.03) 59px, rgba(255,255,255,0.03) 60px),
+                repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(255,255,255,0.03) 59px, rgba(255,255,255,0.03) 60px);
+            pointer-events: none;
+        }
+        .sh-hero-inner {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        .sh-kicker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--sh-orange);
+            margin-bottom: var(--space-lg);
+            display: block;
+        }
+        .sh-hero h1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 0.95;
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.03em;
+        }
+        .sh-hero h1 span {
+            display: block;
+            font-weight: 400;
+            font-size: 0.35em;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--sh-steel);
+            margin-top: var(--space-sm);
+        }
+        .sh-hero-equation {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            color: var(--sh-orange);
+            margin-bottom: var(--space-xl);
+            letter-spacing: 0.05em;
+        }
+        .sh-hero-equation em {
+            font-style: normal;
+            color: var(--sh-cream);
+        }
+        .sh-hero-desc {
+            font-size: var(--text-lg);
+            line-height: 1.7;
+            color: var(--sh-steel);
+            max-width: 55ch;
+            margin: 0 auto;
+        }
+
+        /* Ratio bar */
+        .sh-ratio {
+            display: flex;
+            max-width: 500px;
+            margin: var(--space-xl) auto 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 48px;
+            border: 2px solid var(--sh-line);
+        }
+        .sh-ratio-shop {
+            flex: 2;
+            background: var(--sh-orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-sm);
+            font-weight: 700;
+            color: var(--sh-dark);
+        }
+        .sh-ratio-live {
+            flex: 1;
+            background: var(--sh-warm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-sm);
+            font-weight: 700;
+            color: var(--sh-cream);
+        }
+
+        /* Section system */
+        .sh-section {
+            padding: clamp(3rem, 6vw, 5rem) var(--space-lg);
+        }
+        .sh-section-dark {
+            background: var(--sh-dark);
+            color: var(--sh-cream);
+        }
+        .sh-section-dark a {
+            color: var(--sh-orange);
+        }
+        .sh-section-alt {
+            background: var(--sh-dark-mid);
+            color: var(--sh-cream);
+        }
+        .sh-section-alt a {
+            color: var(--sh-orange);
+        }
+        .sh-inner {
+            max-width: 780px;
+            margin: 0 auto;
+        }
+        .sh-wide {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Section headers */
+        .sh-section-num {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: clamp(4rem, 10vw, 8rem);
+            line-height: 1;
+            color: var(--sh-orange);
+            opacity: 0.15;
+            margin-bottom: -1.5rem;
+            display: block;
+        }
+        .sh-section-dark .sh-section-num {
+            opacity: 0.1;
+        }
+        .sh-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            line-height: 1.15;
+            margin-bottom: var(--space-lg);
+            letter-spacing: -0.02em;
+        }
+        .sh-section-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--sh-orange);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        /* Body text */
+        .sh-text {
+            font-size: var(--text-base);
+            line-height: 1.75;
+            margin-bottom: var(--space-lg);
+        }
+        .sh-text:last-child {
+            margin-bottom: 0;
+        }
+        .sh-section-dark .sh-text {
+            color: rgba(245, 240, 230, 0.8);
+        }
+
+        /* Pull quotes */
+        .sh-pull {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            line-height: 1.4;
+            border-left: 4px solid var(--sh-orange);
+            padding: var(--space-md) 0 var(--space-md) var(--space-lg);
+            margin: var(--space-xl) 0;
+            color: var(--sh-orange);
+        }
+        .sh-section-dark .sh-pull {
+            color: var(--sh-cream);
+            border-color: var(--sh-orange);
+        }
+
+        /* Sub-headers */
+        .sh-h3 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: var(--text-xl);
+            margin: var(--space-xl) 0 var(--space-md);
+            letter-spacing: -0.01em;
+        }
+        .sh-h3:first-child {
+            margin-top: 0;
+        }
+
+        /* Data cards */
+        .sh-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin: var(--space-xl) 0;
+        }
+        .sh-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--sh-line);
+            border-radius: var(--radius);
+            padding: var(--space-lg);
+        }
+        .sh-card-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--sh-orange);
+            margin-bottom: var(--space-sm);
+        }
+        .sh-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: var(--text-lg);
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+        }
+        .sh-card p {
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            color: rgba(245, 240, 230, 0.7);
+            margin: 0;
+        }
+
+        /* Timeline */
+        .sh-timeline {
+            position: relative;
+            padding-left: var(--space-xl);
+            margin: var(--space-xl) 0;
+        }
+        .sh-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--sh-line);
+        }
+        .sh-timeline-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+        }
+        .sh-timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .sh-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1 * var(--space-xl) - 5px);
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--sh-orange);
+            border: 2px solid var(--sh-dark);
+        }
+        .sh-timeline-era {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--sh-orange);
+            margin-bottom: var(--space-xs);
+        }
+        .sh-timeline-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: var(--text-lg);
+            margin-bottom: var(--space-sm);
+        }
+        .sh-timeline-text {
+            font-size: var(--text-sm);
+            line-height: 1.7;
+            color: rgba(245, 240, 230, 0.75);
+        }
+
+        /* Tables */
+        .sh-table-wrap {
+            overflow-x: auto;
+            margin: var(--space-xl) 0;
+            border: 1px solid var(--sh-line);
+            border-radius: var(--radius);
+        }
+        .sh-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: var(--text-sm);
+        }
+        .sh-table th {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: var(--sh-warm);
+            color: var(--sh-orange);
+            padding: var(--space-md);
+            text-align: left;
+            white-space: nowrap;
+            border-bottom: 2px solid var(--sh-orange);
+        }
+        .sh-table td {
+            padding: var(--space-md);
+            border-bottom: 1px solid var(--sh-line);
+            vertical-align: top;
+            line-height: 1.5;
+        }
+        .sh-table tr:last-child td {
+            border-bottom: none;
+        }
+        .sh-table tbody tr:hover {
+            background: rgba(224, 123, 60, 0.05);
+        }
+        .sh-table .sh-row-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: var(--text-xs);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--sh-orange);
+            white-space: nowrap;
+        }
+
+        /* Bullet list */
+        .sh-list {
+            list-style: none;
+            padding: 0;
+            margin: var(--space-md) 0 var(--space-lg);
+        }
+        .sh-list li {
+            padding: var(--space-sm) 0 var(--space-sm) var(--space-lg);
+            position: relative;
+            font-size: var(--text-sm);
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .sh-list li:last-child {
+            border-bottom: none;
+        }
+        .sh-list li::before {
+            content: '\25A0';
+            position: absolute;
+            left: 0;
+            color: var(--sh-orange);
+            font-size: 0.6em;
+            top: calc(var(--space-sm) + 0.4em);
+        }
+
+        /* CTA band */
+        .sh-cta {
+            background: var(--sh-orange);
+            color: var(--sh-dark);
+            text-align: center;
+            padding: var(--space-xl) var(--space-lg);
+        }
+        .sh-cta h2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: var(--text-2xl);
+            margin-bottom: var(--space-sm);
+        }
+        .sh-cta p {
+            font-size: var(--text-base);
+            margin-bottom: var(--space-lg);
+            max-width: 50ch;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .sh-cta-btn {
+            display: inline-block;
+            background: var(--sh-dark);
+            color: var(--sh-cream);
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: var(--text-sm);
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .sh-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Divider */
+        .sh-divider {
+            width: 60px;
+            height: 3px;
+            background: var(--sh-orange);
+            margin: var(--space-xl) auto;
+            border: none;
+        }
+        .sh-section-dark .sh-divider {
+            opacity: 0.4;
+        }
+
+        /* Source footer */
+        .sh-sources {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            line-height: 1.8;
+            color: var(--sh-steel);
+            padding: var(--space-xl) var(--space-lg);
+            background: var(--sh-dark);
+            border-top: 1px solid var(--sh-line);
+        }
+        .sh-sources a {
+            color: var(--sh-steel);
+            text-decoration: underline;
+            text-decoration-color: var(--sh-line);
+        }
+        .sh-sources a:hover {
+            color: var(--sh-orange);
+        }
+
+        /* Light-mode sections */
+        .sh-section-light {
+            background: var(--sh-cream);
+            color: var(--sh-dark);
+        }
+        .sh-section-light .sh-text {
+            color: var(--sh-dark-mid);
+        }
+        .sh-section-light .sh-card {
+            background: rgba(0,0,0,0.03);
+            border-color: rgba(0,0,0,0.1);
+        }
+        .sh-section-light .sh-card p {
+            color: var(--sh-warm);
+        }
+        .sh-section-light .sh-list li {
+            border-color: rgba(0,0,0,0.06);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .sh-section {
+                padding: var(--space-xl) var(--space-md);
+            }
+            .sh-timeline {
+                padding-left: var(--space-lg);
+            }
+            .sh-timeline-item::before {
+                left: calc(-1 * var(--space-lg) - 5px);
+            }
+            .sh-ratio {
+                height: 36px;
+            }
+            .sh-table {
+                font-size: var(--text-xs);
+            }
+            .sh-table th, .sh-table td {
+                padding: var(--space-sm);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <div class="sh-page" id="main-content">
+
+        <!-- HERO -->
+        <section class="sh-hero">
+            <div class="sh-hero-inner">
+                <span class="sh-kicker">FogSift Research Brief</span>
+                <h1>
+                    SHOUSE
+                    <span>Shop + House = The Original Way to Live</span>
+                </h1>
+                <div class="sh-hero-equation">
+                    <em>Shop</em> + <em>House</em> = Shouse
+                </div>
+                <p class="sh-hero-desc">
+                    Two-thirds workshop. One-third living space. The living quarters sit <em>above</em> the shop &mdash;
+                    elevated on a ramp for an RV or a lifted container structure. This isn't a trend. It's a return
+                    to how humans have always lived: with their work.
+                </p>
+                <div class="sh-ratio" aria-label="2/3 shop, 1/3 living space">
+                    <div class="sh-ratio-shop">2/3 SHOP</div>
+                    <div class="sh-ratio-live">1/3 LIVE</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: HISTORICAL LINEAGE -->
+        <section class="sh-section sh-section-dark">
+            <div class="sh-inner">
+                <span class="sh-section-num">01</span>
+                <span class="sh-section-subtitle">Historical Lineage</span>
+                <h2 class="sh-section-title">The Live-Work Unit Is the Default</h2>
+                <p class="sh-text">
+                    The single-use residential suburb is a historical aberration. For the vast majority of civilized history,
+                    the strict separation of domestic life from economic production was nonexistent. The artisan slept above
+                    the workshop. The merchant lived behind the storefront. The farmer's quarters were indistinguishable
+                    from the agricultural infrastructure.
+                </p>
+                <p class="sh-text">
+                    The spatial separation of "home" and "work" is a relatively recent anomaly &mdash; a byproduct of the
+                    Industrial Revolution that physically removed the worker from the means of production, creating what
+                    modern sociology describes as <em>"constitutive homelessness."</em>
+                </p>
+
+                <div class="sh-pull">
+                    "To build one's own world is the ultimate act of freedom."
+                </div>
+
+                <div class="sh-timeline">
+                    <div class="sh-timeline-item">
+                        <div class="sh-timeline-era">Antiquity</div>
+                        <div class="sh-timeline-title">The Roman Taberna &amp; Insula</div>
+                        <div class="sh-timeline-text">
+                            The ground floors of Roman apartment blocks (insulae) were universally dedicated to tabernae &mdash;
+                            shop-dwellings where a wooden mezzanine provided sleeping quarters directly above the business.
+                            The threshold between street and shop was porous: wide shutters opened the facade by day and
+                            barred it into a fortress by night. Even wealthy homes flanked their entrances with rented-out
+                            tabernae, creating an economic buffer. The shouse was not a sign of poverty &mdash; it was urban vitality.
+                        </div>
+                    </div>
+                    <div class="sh-timeline-item">
+                        <div class="sh-timeline-era">Medieval</div>
+                        <div class="sh-timeline-title">The Guild House</div>
+                        <div class="sh-timeline-text">
+                            Medieval European towns were defined by the house-workshop. Ground floor: sales and fabrication.
+                            First floor: the master's family hall. Upper floors: raw materials and apprentice dormitories.
+                            The term "company" (from <em>con panis</em>, "with bread") originated here &mdash; apprentices
+                            lived, worked, and ate with the master. The household was the unit of production. The physical
+                            building bore the Guild Sign: a precursor to modern branding that marked the quality of goods
+                            produced within.
+                        </div>
+                    </div>
+                    <div class="sh-timeline-item">
+                        <div class="sh-timeline-era">19th Century</div>
+                        <div class="sh-timeline-title">The Asian Shophouse</div>
+                        <div class="sh-timeline-text">
+                            The Tong Lau of Southern China and its diasporic evolution across Southeast Asia. The "Five-Foot
+                            Way" &mdash; a covered arcade mandated by colonial ordinances &mdash; blurred public and private.
+                            Internal "airwells" brought light into deep narrow lots. The family business on the ground floor
+                            supported generations living above. During downturns, the family owned both their shelter and their
+                            means of production. Overheads dropped to nearly zero.
+                        </div>
+                    </div>
+                    <div class="sh-timeline-item">
+                        <div class="sh-timeline-era">1849</div>
+                        <div class="sh-timeline-title">Gold Rush Ship Architecture</div>
+                        <div class="sh-timeline-text">
+                            San Francisco had no timber, no brickworks, no infrastructure. Hundreds of ships abandoned in
+                            Yerba Buena Cove became buildings. The whaling ship <em>Niantic</em> was run aground and
+                            metamorphosed &mdash; hull partitioned into warehouses, deck level became offices, upper structure
+                            a hotel. When it burned in 1851, the charred hull served as foundation for the next building.
+                            The <em>Arkansas</em> became the Old Ship Saloon &mdash; a door cut directly through the oak hull.
+                            That saloon has operated on the same spot for over 170 years.
+                        </div>
+                    </div>
+                    <div class="sh-timeline-item">
+                        <div class="sh-timeline-era">Now</div>
+                        <div class="sh-timeline-title">The Modern Scavenger Shouse</div>
+                        <div class="sh-timeline-text">
+                            Recycled steel, shipping containers, tire walls, demolished building materials.
+                            Two-thirds workshop, one-third living space elevated above. The live-work unit returns &mdash;
+                            not as nostalgia, but as the most rational response to the economics and ecology of the
+                            Anthropocene.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE OPERATOR -->
+        <section class="sh-section sh-section-light">
+            <div class="sh-inner">
+                <span class="sh-section-num">02</span>
+                <span class="sh-section-subtitle">Sociology</span>
+                <h2 class="sh-section-title">The Operator Mindset</h2>
+                <p class="sh-text">
+                    The return to the shouse model is driven by the rise of the <strong>Neo-Industrialist</strong> &mdash;
+                    an individual who rejects the passive role of consumer in favor of the active, generative role of
+                    the Operator. This is not a "DIY hobby." It's a complete identity shift from consumer to producer.
+                </p>
+
+                <div class="sh-pull">
+                    Living with one's tools changes the relationship to production. It moves from wage labor
+                    &mdash; selling time &mdash; to vocation: building value.
+                </div>
+
+                <h3 class="sh-h3">The Ghost Protocol Aesthetic</h3>
+                <p class="sh-text">
+                    The "Ghost Protocol" aesthetic in the maker community is characterized by <strong>faceless content</strong>.
+                    Channels focus entirely on the hands and the process. The creator is anonymous; the work is the protagonist.
+                    Raw process footage. Natural sound. The ASMR of metalworking. The "Grandpa Edit" &mdash; slow, methodical,
+                    emphasizing competence over personality.
+                </p>
+                <p class="sh-text">
+                    Just as a medieval stonemason left a mark on a cathedral stone to prove worth, the Ghost Protocol video
+                    serves as a digital portfolio of competence. It signals: <em>"I am an Operator. I built this. My identity
+                    is irrelevant; my skill is absolute."</em>
+                </p>
+
+                <div class="sh-cards">
+                    <div class="sh-card">
+                        <div class="sh-card-label">Identity</div>
+                        <h4>Producer, Not Consumer</h4>
+                        <p>Control the entire vertical stack: power generation, shelter fabrication, workshop production.</p>
+                    </div>
+                    <div class="sh-card">
+                        <div class="sh-card-label">Aesthetic</div>
+                        <h4>Industrial Noir</h4>
+                        <p>Dark, heavy, authentic, functional. Raw steel and concrete. The building looks like a fortress because it is one.</p>
+                    </div>
+                    <div class="sh-card">
+                        <div class="sh-card-label">Content</div>
+                        <h4>The Grandpa Edit</h4>
+                        <p>Long takes, natural sound, minimal talking. The rhythm and patience of fabrication, not the frenzy of TikTok.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MATERIALS -->
+        <section class="sh-section sh-section-alt">
+            <div class="sh-inner">
+                <span class="sh-section-num">03</span>
+                <span class="sh-section-subtitle">Materials &amp; Methods</span>
+                <h2 class="sh-section-title">The Modern Scavenger</h2>
+                <p class="sh-text">
+                    The modern scavenger does not "demolish" &mdash; they <strong>deconstruct</strong>.
+                    Demolition destroys value; deconstruction mines it. The city is viewed as a quarry. Buildings
+                    slated for removal are sources of seasoned timber, high-quality steel, and vintage fixtures
+                    often superior to modern store-bought materials.
+                </p>
+
+                <h3 class="sh-h3">Material Sources</h3>
+                <ul class="sh-list">
+                    <li><strong>Reclaimed Industrial Steel</strong> &mdash; Scavenged I-beams, pipe from oil fields, factory grating. Over-engineered for residential use. A beam designed for a factory roof will handle a living loft without breaking a sweat.</li>
+                    <li><strong>Shipping Containers</strong> &mdash; Modular, weatherproof, stackable. The elevated living quarter sits on top of or beside the main shop structure.</li>
+                    <li><strong>Earthship Tire Walls</strong> &mdash; Pioneered by Mike Reynolds. Tires packed with earth create massive thermal batteries. Fireproof, structural, and waste disposal in one.</li>
+                    <li><strong>Demolition Salvage</strong> &mdash; Seasoned timber, cut stone, architectural fixtures. Programs like "The Reuse People" mandate deconstruction for older homes. Urban mining as civic duty.</li>
+                    <li><strong>Agricultural Surplus</strong> &mdash; Grain silos for bathrooms, barn beams for framing, metal roofing for cladding.</li>
+                </ul>
+
+                <div class="sh-pull">
+                    The architecture is not drawn and then built &mdash; it is fabricated in real-time.
+                    The welding torch becomes the architect's pen.
+                </div>
+
+                <h3 class="sh-h3">Structural Integrity</h3>
+                <p class="sh-text">
+                    Most scavenger builders, aware of unknown variables in their materials, tend to massively
+                    over-engineer their structures. Projects like the Fryerstown house in Victoria use salvaged
+                    railway beams and grain silos while fully complying with strict building codes. The aesthetic
+                    result: a sense of permanence and weight often lacking in modern stick-frame construction.
+                    It feels like a fortress because, materially, it often is one.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 4: FREEDOM ZONES -->
+        <section class="sh-section sh-section-dark">
+            <div class="sh-wide">
+                <span class="sh-section-num">04</span>
+                <span class="sh-section-subtitle">Regulatory Landscape</span>
+                <h2 class="sh-section-title">Freedom Zones</h2>
+                <p class="sh-text" style="max-width: 780px;">
+                    The greatest barrier to the modern shouse is not technical but bureaucratic. The "freedom to build"
+                    is heavily restricted by zoning laws designed for suburban conformity. These are the zones where
+                    the Operator can still build.
+                </p>
+
+                <div class="sh-table-wrap">
+                    <table class="sh-table">
+                        <thead>
+                            <tr>
+                                <th>Region</th>
+                                <th>Regulatory Leniency</th>
+                                <th>Scavenger Potential</th>
+                                <th>Primary Risks</th>
+                                <th>Cultural Vibe</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="sh-row-label">US Opt-Out Counties<br><small style="color:var(--sh-steel);font-weight:400;text-transform:none;letter-spacing:0;">(MO, TX, WV)</small></td>
+                                <td>High &mdash; no inspections in some areas</td>
+                                <td>High &mdash; ag focus, plenty of space</td>
+                                <td>Insurance, resale, neighbors</td>
+                                <td>Libertarian, individualist</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Mexico<br><small style="color:var(--sh-steel);font-weight:400;text-transform:none;letter-spacing:0;">(Baja / Yucat&aacute;n)</small></td>
+                                <td>Very high &mdash; de facto freedom</td>
+                                <td>Medium &mdash; transport can be hard</td>
+                                <td>Land title security, infrastructure</td>
+                                <td>"Poco a Poco," community-based</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Eastern Europe<br><small style="color:var(--sh-steel);font-weight:400;text-transform:none;letter-spacing:0;">(Bulgaria / Albania)</small></td>
+                                <td>Medium-high &mdash; lax on renovations</td>
+                                <td>High &mdash; abundant old stone/brick ruins</td>
+                                <td>Bureaucracy, language barrier</td>
+                                <td>Resilient, agrarian, DIY-friendly</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Portugal Interior</td>
+                                <td>Medium &mdash; renovation easier than new build</td>
+                                <td>Medium &mdash; EU regulations increasing</td>
+                                <td>Fire codes, gentrification</td>
+                                <td>Eco-conscious, expat-heavy</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="sh-h3" style="color: var(--sh-cream);">The Agricultural Exemption</h3>
+                <p class="sh-text">
+                    A reliable legal vehicle: in many US states, "ag-buildings" (barns, workshops) are subject to far fewer
+                    inspections than residences. The Shouse, by definition, is a workshop. By prioritizing the
+                    agricultural/industrial function in permitting &mdash; <em>"This is a tractor repair shop with an
+                    accessory caretaker unit"</em> &mdash; builders can often bypass the most restrictive residential codes.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 5: COMPARATIVE TABLE -->
+        <section class="sh-section sh-section-alt">
+            <div class="sh-wide">
+                <span class="sh-section-num">05</span>
+                <span class="sh-section-subtitle">Comparative Analysis</span>
+                <h2 class="sh-section-title">Shouse Models Across History</h2>
+
+                <div class="sh-table-wrap">
+                    <table class="sh-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Roman Taberna</th>
+                                <th>Medieval Guild House</th>
+                                <th>Gold Rush Ship</th>
+                                <th>Modern Shouse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="sh-row-label">Material</td>
+                                <td>Brick, concrete, wood</td>
+                                <td>Timber frame, wattle &amp; daub</td>
+                                <td>Ship hulls (oak/copper), canvas</td>
+                                <td>Recycled steel, tires, concrete</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Integration</td>
+                                <td>High: mezzanine living</td>
+                                <td>Total: "company" lived together</td>
+                                <td>High: living in hull/deckhouse</td>
+                                <td>Total: workshop is the living room</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Status</td>
+                                <td>Commoner / merchant</td>
+                                <td>Master craftsman (high status)</td>
+                                <td>Argonaut / entrepreneur</td>
+                                <td>Neo-industrialist / maker</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Regulation</td>
+                                <td>Imperial zoning / fire codes</td>
+                                <td>Guild regulations</td>
+                                <td>Minimal / vigilante committee</td>
+                                <td>"No code" counties / ag exemptions</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Aesthetic</td>
+                                <td>Utilitarian / public-facing</td>
+                                <td>Corporate / defensive</td>
+                                <td>Opportunistic / adaptive</td>
+                                <td>Industrial Noir / Ghost Protocol</td>
+                            </tr>
+                            <tr>
+                                <td class="sh-row-label">Spolia Usage</td>
+                                <td>Reused stone &amp; brick</td>
+                                <td>Reused Roman foundations</td>
+                                <td>Ships as buildings</td>
+                                <td>Industrial scrap / urban mining</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: THE PLAN -->
+        <section class="sh-section sh-section-light">
+            <div class="sh-inner">
+                <span class="sh-section-num">06</span>
+                <span class="sh-section-subtitle">The FogSift Shouse</span>
+                <h2 class="sh-section-title">The Build Plan</h2>
+                <p class="sh-text">
+                    The FogSift Shouse concept: a purpose-built structure that prioritizes the workshop. Two-thirds
+                    of the footprint is shop space &mdash; fabrication, storage, and project staging. The remaining
+                    third is living quarters, elevated <em>above</em> the shop level.
+                </p>
+
+                <h3 class="sh-h3">Elevated Living</h3>
+                <p class="sh-text">
+                    The living space sits above the shop via one of two methods: a built ramp accommodating an RV
+                    or motorhome as the living unit, or a lifted shipping container converted into a compact,
+                    efficient living module. Either approach keeps the shop floor uncompromised while providing
+                    comfortable, self-contained quarters with views over the workspace.
+                </p>
+
+                <h3 class="sh-h3">Why This Works</h3>
+                <ul class="sh-list">
+                    <li><strong>Zero commute</strong> &mdash; Walk downstairs. You're at work.</li>
+                    <li><strong>24/7 security</strong> &mdash; Your tools and projects are beneath you. Always.</li>
+                    <li><strong>Ag exemption eligible</strong> &mdash; Primary use is workshop/agricultural. Living space is accessory.</li>
+                    <li><strong>Scavenger-built</strong> &mdash; Reclaimed steel, salvaged materials, over-engineered for permanence.</li>
+                    <li><strong>Vertical efficiency</strong> &mdash; Maximize shop footprint without sacrificing living comfort.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="sh-cta">
+            <h2>This is a FogSift project.</h2>
+            <p>
+                We're documenting the research, the build process, and the regulatory landscape.
+                Follow along or submit your own problem to the queue.
+            </p>
+            <a href="queue.html" class="sh-cta-btn">See the Queue</a>
+        </section>
+
+        <!-- SOURCES -->
+        <section class="sh-sources">
+            <div class="sh-inner">
+                <p style="margin-bottom: var(--space-sm);"><strong style="color: var(--sh-orange);">Sources</strong></p>
+                <p>
+                    Cambridge Companion to Ancient Rome (Ch. 9: Housing &amp; Domestic Architecture) &bull;
+                    Medieval Britain: The Medieval House &bull;
+                    The Collector: 9 Things to Know About Asia's Iconic Shophouse &bull;
+                    NPS: Niantic &mdash; Buried Gold Rush Ship &bull;
+                    SF Heritage: Old Ship Saloon &bull;
+                    ResearchGate: From Longhouse to Live/Work Unit &bull;
+                    ResearchGate: Emergence of the Maker Movement &bull;
+                    ACE Hub: Turning Reclaimed Materials Into Sustainable Homes &bull;
+                    Green Builder Media: States Without Building Codes &bull;
+                    UNECE: Informal Settlements in the Pan-European Region
+                </p>
+                <p style="margin-top: var(--space-sm);">
+                    Full bibliography with 54 cited works available on request.
+                    Email <a href="mailto:info@fogsift.com">info@fogsift.com</a>.
+                </p>
+            </div>
+        </section>
+
+        {{FOOTER}}
+    </div>
+
+    <script src="app.js" defer></script>
+</body>
+</html>

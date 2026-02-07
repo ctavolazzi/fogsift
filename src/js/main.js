@@ -116,6 +116,16 @@ const App = {
             if (!Array.isArray(words) || words.length < 2) return;
             let index = 0;
 
+            // Measure the longest word and set min-width so text trails right
+            const original = el.textContent;
+            let maxW = 0;
+            for (const w of words) {
+                el.textContent = w;
+                maxW = Math.max(maxW, el.scrollWidth);
+            }
+            el.style.minWidth = maxW + 'px';
+            el.textContent = original;
+
             this._intervals.push(setInterval(() => {
                 el.style.opacity = '0';
                 setTimeout(() => {
