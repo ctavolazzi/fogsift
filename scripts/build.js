@@ -372,6 +372,27 @@ function processHtml() {
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
+    // Inject wiki stats and daily data for homepage section
+    const wikiIndexPath2 = path.join(WIKI_SRC, 'index.json');
+    if (fs.existsSync(wikiIndexPath2)) {
+        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath2, 'utf8'));
+        const totalPages = wikiIndex.categories.reduce((sum, cat) => sum + cat.pages.length, 0);
+        const catNames = wikiIndex.categories.map(c => c.title.toLowerCase()).join(', ');
+        const statsLine = `${totalPages} articles across ${catNames}.`;
+        html = html.replace(/\{\{WIKI_STATS\}\}/g, statsLine);
+
+        const dailyEntries = [];
+        for (const cat of wikiIndex.categories) {
+            for (const page of cat.pages) {
+                dailyEntries.push({ slug: page.slug, title: page.title, category: cat.title });
+            }
+        }
+        html = html.replace(/\{\{WIKI_DAILY_DATA\}\}/g, JSON.stringify(dailyEntries));
+    } else {
+        html = html.replace(/\{\{WIKI_STATS\}\}/g, 'Explore the knowledge base.');
+        html = html.replace(/\{\{WIKI_DAILY_DATA\}\}/g, '[]');
+    }
+
     // Update lastmod in any inline schema
     const today = new Date().toISOString().split('T')[0];
     html = html.replace(/<lastmod>.*?<\/lastmod>/g, `<lastmod>${today}</lastmod>`);

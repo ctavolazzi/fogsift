@@ -2137,6 +2137,48 @@ details p {
 }
 
 /* === FOOTER === */
+/* ── Wiki Daily Pick (homepage) ── */
+.wiki-daily-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    max-width: 480px;
+    margin: 0 auto;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color var(--ease-out), background var(--ease-out);
+}
+.wiki-daily-card:hover {
+    border-color: var(--burnt-orange);
+    background: var(--canvas);
+}
+.wiki-daily-cat {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--burnt-orange);
+    white-space: nowrap;
+}
+.wiki-daily-title {
+    flex: 1;
+    font-weight: 600;
+    font-size: var(--text-sm);
+    text-align: left;
+}
+.wiki-daily-arrow {
+    font-size: var(--text-lg);
+    color: var(--muted);
+    transition: color var(--ease-out), transform var(--ease-out);
+}
+.wiki-daily-card:hover .wiki-daily-arrow {
+    color: var(--burnt-orange);
+    transform: translateX(3px);
+}
+
 footer {
     margin-top: var(--space-xl);
     padding-top: var(--space-lg);

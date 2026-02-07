@@ -266,8 +266,8 @@
                     <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
                         Join the Queue ($20)
                     </a>
-                    <a href="queue.html" class="cta-button cta-secondary">
-                        See the Queue
+                    <a href="process.html" class="cta-button cta-secondary">
+                        How It Works
                     </a>
                 </div>
                 <p style="font-size: var(--text-sm); margin-top: var(--space-md); color: var(--muted); max-width: 45ch; margin-left: auto; margin-right: auto;">
@@ -641,6 +641,26 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
+             SECTION 4.75: FROM THE WIKI
+             Daily rotating concept + stats + quote
+             Build-time generated, zero API calls
+             ======================================== -->
+        <section class="section" aria-labelledby="wiki-teaser-heading" style="text-align: center;">
+            <h2 id="wiki-teaser-heading" class="section-label">FROM THE WIKI</h2>
+            <p style="color: var(--muted); margin-bottom: var(--space-lg);">43 articles across documentation, concepts, frameworks, field notes, case studies, tools & techniques.</p>
+
+            <div class="wiki-daily" id="wiki-daily">
+                <div class="wiki-daily-quote" id="wiki-daily-quote"></div>
+                <div class="wiki-daily-pick" id="wiki-daily-pick"></div>
+            </div>
+
+            <a href="wiki/index.html" class="cta-button cta-secondary" style="margin-top: var(--space-lg);">Explore the Wiki</a>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
              SECTION 5: FOOTER + FINAL CTA
              Minimal, clean
              ======================================== -->
@@ -777,6 +797,83 @@
                 if (gpu.length > 30) gpu = gpu.substring(0, 28) + '...';
                 s('ft-gpu', gpu);
             } catch(e) { s('ft-gpu', 'Hidden'); }
+        });
+    })();
+    </script>
+    <script>
+    /* Daily wiki pick + curated quote — zero API calls */
+    (function() {
+        var quotes = [
+            { text: "For every complex problem, there is an answer that is clear, simple, and wrong.", author: "H.L. Mencken" },
+            { text: "We cannot solve our problems with the same thinking we used when we created them.", author: "Albert Einstein" },
+            { text: "The measure of intelligence is the ability to change.", author: "Albert Einstein" },
+            { text: "If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.", author: "Albert Einstein" },
+            { text: "It is not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change.", author: "Charles Darwin" },
+            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+            { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
+            { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
+            { text: "What gets measured gets managed.", author: "Peter Drucker" },
+            { text: "Plans are worthless, but planning is everything.", author: "Dwight D. Eisenhower" },
+            { text: "The bottleneck is always at the top of the bottle.", author: "Peter Drucker" },
+            { text: "You can't manage what you can't measure, and you can't measure what you don't define.", author: "W. Edwards Deming" },
+            { text: "Every system is perfectly designed to get the results it gets.", author: "W. Edwards Deming" },
+            { text: "The significant problems we face cannot be solved at the same level of thinking we were at when we created them.", author: "Albert Einstein" },
+            { text: "In theory, theory and practice are the same. In practice, they are not.", author: "Yogi Berra" },
+            { text: "The map is not the territory.", author: "Alfred Korzybski" },
+            { text: "Give me six hours to chop down a tree and I will spend the first four sharpening the axe.", author: "Abraham Lincoln" },
+            { text: "There is nothing so useless as doing efficiently that which should not be done at all.", author: "Peter Drucker" },
+            { text: "To understand is to perceive patterns.", author: "Isaiah Berlin" },
+            { text: "The first step in solving a problem is recognizing there is one.", author: "Aaron Sorkin" },
+            { text: "Not everything that counts can be counted, and not everything that can be counted counts.", author: "William Bruce Cameron" },
+            { text: "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.", author: "Daniel J. Boorstin" },
+            { text: "Efficiency is doing things right; effectiveness is doing the right things.", author: "Peter Drucker" },
+            { text: "A problem well stated is a problem half solved.", author: "Charles Kettering" },
+            { text: "If you can't explain it simply, you don't understand it well enough.", author: "Richard Feynman" },
+            { text: "The more you know, the more you realize you don't know.", author: "Aristotle" },
+            { text: "Compound interest is the eighth wonder of the world.", author: "Albert Einstein (attributed)" },
+            { text: "In preparing for battle I have always found that plans are useless, but planning is indispensable.", author: "Dwight D. Eisenhower" },
+            { text: "Culture eats strategy for breakfast.", author: "Peter Drucker" },
+            { text: "The obstacle is the way.", author: "Marcus Aurelius" }
+        ];
+
+        var wikiEntries = [{"slug":"getting-started","title":"Getting Started","category":"Documentation"},{"slug":"how-we-work","title":"How We Work","category":"Documentation"},{"slug":"diagnostic-process","title":"The Diagnostic Process","category":"Documentation"},{"slug":"faq","title":"Frequently Asked Questions","category":"Documentation"},{"slug":"concepts/root-cause","title":"Root Cause Analysis","category":"Concepts"},{"slug":"concepts/mental-models","title":"Mental Models","category":"Concepts"},{"slug":"concepts/systems-thinking","title":"Systems Thinking","category":"Concepts"},{"slug":"concepts/cognitive-biases","title":"Cognitive Biases","category":"Concepts"},{"slug":"concepts/second-order-effects","title":"Second-Order Effects","category":"Concepts"},{"slug":"concepts/signal-vs-noise","title":"Signal vs Noise","category":"Concepts"},{"slug":"concepts/first-principles","title":"First Principles Thinking","category":"Concepts"},{"slug":"concepts/opportunity-cost","title":"Opportunity Cost","category":"Concepts"},{"slug":"concepts/compounding","title":"Compounding Effects","category":"Concepts"},{"slug":"concepts/survivorship-bias","title":"Survivorship Bias","category":"Concepts"},{"slug":"frameworks/trace-protocol","title":"The TRACE Protocol","category":"Frameworks"},{"slug":"frameworks/decision-matrix","title":"Decision Matrix","category":"Frameworks"},{"slug":"frameworks/constraint-mapping","title":"Constraint Mapping","category":"Frameworks"},{"slug":"frameworks/feedback-loops","title":"Feedback Loop Analysis","category":"Frameworks"},{"slug":"frameworks/swot-analysis","title":"SWOT Analysis","category":"Frameworks"},{"slug":"frameworks/risk-assessment","title":"Risk Assessment","category":"Frameworks"},{"slug":"frameworks/prioritization-matrix","title":"Prioritization Matrix","category":"Frameworks"},{"slug":"field-notes/001-map-territory","title":"The Map Is Not The Territory","category":"Field Notes"},{"slug":"field-notes/002-precision-accuracy","title":"Precision vs Accuracy","category":"Field Notes"},{"slug":"field-notes/003-entropy","title":"Entropy","category":"Field Notes"},{"slug":"field-notes/004-bottlenecks","title":"Finding the Bottleneck","category":"Field Notes"},{"slug":"field-notes/005-tribal-knowledge","title":"Tribal Knowledge","category":"Field Notes"},{"slug":"field-notes/006-incentive-alignment","title":"Incentive Alignment","category":"Field Notes"},{"slug":"field-notes/007-documentation-debt","title":"Documentation Debt","category":"Field Notes"},{"slug":"field-notes/008-sunk-cost-trap","title":"The Sunk Cost Trap","category":"Field Notes"},{"slug":"field-notes/009-scope-creep","title":"Scope Creep","category":"Field Notes"},{"slug":"field-notes/010-communication-overhead","title":"Communication Overhead","category":"Field Notes"},{"slug":"case-studies/manufacturing-throughput","title":"Manufacturing Throughput Crisis","category":"Case Studies"},{"slug":"case-studies/communication-breakdown","title":"The Communication Breakdown","category":"Case Studies"},{"slug":"case-studies/the-invisible-process","title":"The Invisible Process","category":"Case Studies"},{"slug":"case-studies/the-startup-pivot","title":"The Startup That Wouldn't Pivot","category":"Case Studies"},{"slug":"case-studies/the-data-migration","title":"The Data Migration Disaster","category":"Case Studies"},{"slug":"tools/five-whys","title":"The Five Whys","category":"Tools & Techniques"},{"slug":"tools/fishbone-diagram","title":"Fishbone Diagrams","category":"Tools & Techniques"},{"slug":"tools/pareto-analysis","title":"Pareto Analysis","category":"Tools & Techniques"},{"slug":"tools/process-mapping","title":"Process Mapping","category":"Tools & Techniques"},{"slug":"tools/time-boxing","title":"Time-Boxing","category":"Tools & Techniques"},{"slug":"tools/assumption-mapping","title":"Assumption Mapping","category":"Tools & Techniques"},{"slug":"tools/retrospective","title":"Retrospective","category":"Tools & Techniques"}];
+
+        function dayOfYear() {
+            var now = new Date();
+            var start = new Date(now.getFullYear(), 0, 0);
+            return Math.floor((now - start) / 86400000);
+        }
+
+        function ready(fn) {
+            if (document.readyState !== 'loading') fn();
+            else document.addEventListener('DOMContentLoaded', fn);
+        }
+
+        ready(function() {
+            var day = dayOfYear();
+
+            // Daily quote
+            var q = quotes[day % quotes.length];
+            var qEl = document.getElementById('wiki-daily-quote');
+            if (qEl) {
+                qEl.innerHTML = '<blockquote style="font-style: italic; font-size: var(--text-lg); max-width: 55ch; margin: 0 auto var(--space-lg); line-height: 1.6; color: var(--ink);">' +
+                    '\u201C' + q.text + '\u201D' +
+                    '<footer style="font-style: normal; font-size: var(--text-sm); color: var(--muted); margin-top: var(--space-xs);">\u2014 ' + q.author + '</footer>' +
+                    '</blockquote>';
+            }
+
+            // Daily wiki pick
+            if (wikiEntries.length > 0) {
+                var entry = wikiEntries[day % wikiEntries.length];
+                var pEl = document.getElementById('wiki-daily-pick');
+                if (pEl) {
+                    pEl.innerHTML = '<a href="wiki/' + entry.slug + '.html" class="wiki-daily-card">' +
+                        '<span class="wiki-daily-cat">' + entry.category + '</span>' +
+                        '<span class="wiki-daily-title">' + entry.title + '</span>' +
+                        '<span class="wiki-daily-arrow">&rarr;</span>' +
+                        '</a>';
+                }
+            }
         });
     })();
     </script>

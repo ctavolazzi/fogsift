@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T11:51:46.470Z",
+  "timestamp": "2026-02-07T16:50:22.788Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,12 +60,12 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 55",
+          "test": "HTML pages built: 70",
           "status": "pass",
-          "detail": "Found 55 HTML files"
+          "detail": "Found 70 HTML files"
         },
         {
-          "test": "styles.css size: 170.9KB",
+          "test": "styles.css size: 171.8KB",
           "status": "pass",
           "detail": ""
         },
@@ -218,7 +218,17 @@
           "detail": ""
         },
         {
+          "test": "wiki/case-studies/the-data-migration.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/case-studies/the-invisible-process.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/case-studies/the-startup-pivot.html",
           "status": "pass",
           "detail": ""
         },
@@ -228,7 +238,22 @@
           "detail": ""
         },
         {
+          "test": "wiki/concepts/compounding.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/first-principles.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/concepts/mental-models.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/opportunity-cost.html",
           "status": "pass",
           "detail": ""
         },
@@ -244,6 +269,11 @@
         },
         {
           "test": "wiki/concepts/signal-vs-noise.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/survivorship-bias.html",
           "status": "pass",
           "detail": ""
         },
@@ -298,6 +328,21 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/008-sunk-cost-trap.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/009-scope-creep.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/010-communication-overhead.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -309,6 +354,21 @@
         },
         {
           "test": "wiki/frameworks/feedback-loops.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/frameworks/prioritization-matrix.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/frameworks/risk-assessment.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/frameworks/swot-analysis.html",
           "status": "pass",
           "detail": ""
         },
@@ -333,6 +393,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/tools/assumption-mapping.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/tools/fishbone-diagram.html",
           "status": "pass",
           "detail": ""
@@ -353,12 +418,22 @@
           "detail": ""
         },
         {
+          "test": "wiki/tools/retrospective.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/tools/time-boxing.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "your-data.html",
           "status": "pass",
           "detail": ""
         }
       ],
-      "passed": 55,
+      "passed": 70,
       "failed": 0,
       "warned": 0
     },
@@ -381,7 +456,7 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "31 issue(s)"
+          "detail": "33 issue(s)"
         },
         {
           "test": "about.html",
@@ -422,13 +497,13 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "55 broken links out of 3190",
-          "status": "fail",
-          "detail": "wiki/case-studies/communication-breakdown.html → /wiki/field-notes/001-map-territory.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/005-tribal-knowledge.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/004-bottlenecks.html; wiki/concepts/mental-models.html → /wiki/concepts/second-order-effects.html; wiki/concepts/mental-models.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/mental-models.html → /wiki/frameworks/feedback-loops.html; wiki/concepts/root-cause.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/systems-thinking.html → /wiki/frameworks/feedback-loops.html; wiki/diagnostic-process.html → /wiki/frameworks/trace-protocol.html; wiki/field-notes/001-map-territory.html → /wiki/concepts/root-cause.html"
+          "test": "All 5800 internal links valid",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
-      "failed": 1,
+      "passed": 1,
+      "failed": 0,
       "warned": 0
     },
     {
@@ -445,35 +520,35 @@
           "detail": ""
         },
         {
-          "test": "Index has 41 entries",
+          "test": "Index has 56 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "41/41 entries have valid structure",
+          "test": "56/56 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "41/41 index URLs resolve to files",
+          "test": "56/56 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 186.6KB",
-          "status": "pass",
+          "test": "Index size: 291.0KB",
+          "status": "warn",
           "detail": ""
         }
       ],
-      "passed": 6,
+      "passed": 5,
       "failed": 0,
-      "warned": 0
+      "warned": 1
     },
     {
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 16.12MB",
+          "test": "Total dist/ size: 16.95MB",
           "status": "pass",
           "detail": ""
         },
@@ -580,9 +655,9 @@
     }
   ],
   "summary": {
-    "total": 101,
-    "passed": 88,
-    "failed": 1,
-    "warned": 12
+    "total": 116,
+    "passed": 103,
+    "failed": 0,
+    "warned": 13
   }
 }

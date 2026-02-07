@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-02-07T16:34:55.042Z",
-  "buildTimestamp": 1770482095042,
+  "buildDate": "2026-02-07T16:49:58.502Z",
+  "buildTimestamp": 1770482998502,
   "categories": [
     {
       "id": "docs",
@@ -76,6 +76,30 @@
           "title": "Signal vs Noise",
           "jdNumber": "20.06",
           "href": "concepts/signal-vs-noise.html"
+        },
+        {
+          "slug": "concepts/first-principles",
+          "title": "First Principles Thinking",
+          "jdNumber": "20.07",
+          "href": "concepts/first-principles.html"
+        },
+        {
+          "slug": "concepts/opportunity-cost",
+          "title": "Opportunity Cost",
+          "jdNumber": "20.08",
+          "href": "concepts/opportunity-cost.html"
+        },
+        {
+          "slug": "concepts/compounding",
+          "title": "Compounding Effects",
+          "jdNumber": "20.09",
+          "href": "concepts/compounding.html"
+        },
+        {
+          "slug": "concepts/survivorship-bias",
+          "title": "Survivorship Bias",
+          "jdNumber": "20.10",
+          "href": "concepts/survivorship-bias.html"
         }
       ]
     },
@@ -108,6 +132,24 @@
           "title": "Feedback Loop Analysis",
           "jdNumber": "30.04",
           "href": "frameworks/feedback-loops.html"
+        },
+        {
+          "slug": "frameworks/swot-analysis",
+          "title": "SWOT Analysis",
+          "jdNumber": "30.05",
+          "href": "frameworks/swot-analysis.html"
+        },
+        {
+          "slug": "frameworks/risk-assessment",
+          "title": "Risk Assessment",
+          "jdNumber": "30.06",
+          "href": "frameworks/risk-assessment.html"
+        },
+        {
+          "slug": "frameworks/prioritization-matrix",
+          "title": "Prioritization Matrix",
+          "jdNumber": "30.07",
+          "href": "frameworks/prioritization-matrix.html"
         }
       ]
     },
@@ -158,6 +200,24 @@
           "title": "Documentation Debt",
           "jdNumber": "40.07",
           "href": "field-notes/007-documentation-debt.html"
+        },
+        {
+          "slug": "field-notes/008-sunk-cost-trap",
+          "title": "The Sunk Cost Trap",
+          "jdNumber": "40.08",
+          "href": "field-notes/008-sunk-cost-trap.html"
+        },
+        {
+          "slug": "field-notes/009-scope-creep",
+          "title": "Scope Creep",
+          "jdNumber": "40.09",
+          "href": "field-notes/009-scope-creep.html"
+        },
+        {
+          "slug": "field-notes/010-communication-overhead",
+          "title": "Communication Overhead",
+          "jdNumber": "40.10",
+          "href": "field-notes/010-communication-overhead.html"
         }
       ]
     },
@@ -184,6 +244,18 @@
           "title": "The Invisible Process",
           "jdNumber": "50.03",
           "href": "case-studies/the-invisible-process.html"
+        },
+        {
+          "slug": "case-studies/the-startup-pivot",
+          "title": "The Startup That Wouldn't Pivot",
+          "jdNumber": "50.04",
+          "href": "case-studies/the-startup-pivot.html"
+        },
+        {
+          "slug": "case-studies/the-data-migration",
+          "title": "The Data Migration Disaster",
+          "jdNumber": "50.05",
+          "href": "case-studies/the-data-migration.html"
         }
       ]
     },
@@ -216,6 +288,24 @@
           "title": "Process Mapping",
           "jdNumber": "60.04",
           "href": "tools/process-mapping.html"
+        },
+        {
+          "slug": "tools/time-boxing",
+          "title": "Time-Boxing",
+          "jdNumber": "60.05",
+          "href": "tools/time-boxing.html"
+        },
+        {
+          "slug": "tools/assumption-mapping",
+          "title": "Assumption Mapping",
+          "jdNumber": "60.06",
+          "href": "tools/assumption-mapping.html"
+        },
+        {
+          "slug": "tools/retrospective",
+          "title": "Retrospective",
+          "jdNumber": "60.07",
+          "href": "tools/retrospective.html"
         }
       ]
     }
