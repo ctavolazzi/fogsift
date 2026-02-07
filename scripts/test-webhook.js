@@ -15,8 +15,8 @@
 const https = require('https');
 const http = require('http');
 
-// Your Ko-fi verification token
-const VERIFICATION_TOKEN = '27722335-f189-4460-9fe5-9e3c2ceaaa55';
+// Ko-fi verification token - set via KOFI_VERIFICATION_TOKEN env var
+const VERIFICATION_TOKEN = process.env.KOFI_VERIFICATION_TOKEN || 'test-token-set-env-var';
 
 // Sample Ko-fi webhook payloads
 const samplePayloads = {

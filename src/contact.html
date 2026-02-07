@@ -4,10 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact | Fogsift</title>
-    <meta name="description" content="Get in touch with Fogsift. Ask a question, book a call, or start a conversation about your problem.">
+    <meta name="description" content="Get in touch with Fogsift. Submit a problem for $20, ask a free question, or book a triage call.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/contact.html">
+    <link rel="canonical" href="https://fogsift.com/contact">
+
+    <meta property="og:title" content="Contact Fogsift">
+    <meta property="og:description" content="Submit a problem for $20, ask a free question, or book a triage call.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/contact">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "name": "Contact Fogsift",
+      "url": "https://fogsift.com/contact",
+      "mainEntity": {
+        "@type": "ProfessionalService",
+        "name": "Fogsift",
+        "email": "info@fogsift.com",
+        "url": "https://fogsift.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Chico",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        }
+      }
+    }
+    </script>
 
     <!-- Theme detection -->
     {{THEME_INIT}}
@@ -20,45 +47,56 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
-        <section class="section section-contact" style="text-align: center; margin-bottom: var(--space-xl);">
-            <h1 style="font-size: var(--text-2xl); margin-bottom: var(--space-md);">Something eating up your <span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></h1>
-            <p style="margin-bottom: var(--space-lg);">$20 adds you to <a href="queue.html">the queue</a>. We pick two per day.</p>
+
+        <!-- Hero CTA -->
+        <section class="section section-contact" aria-labelledby="contact-heading">
+            <h1 id="contact-heading" class="headline" style="font-size: var(--text-2xl); margin-bottom: var(--space-md);">Something eating up your <span class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></span></h1>
+            <p style="margin-bottom: var(--space-lg);">$20 adds you to <a href="queue.html">the queue</a>.</p>
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
                 Join the Queue ($20)
             </a>
             <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--muted);">
-                Or <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift">email me</a> if you just have a question.
+                Or <a href="mailto:info@fogsift.com?subject=Question%20for%20FogSift">email me</a> if you just have a question.
             </p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>Two Ways to Connect</h2>
+        <!-- Contact Methods -->
+        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;" aria-labelledby="ways-heading">
+            <h2 id="ways-heading">Three Ways to Connect</h2>
 
             <h3>Submit a Problem ($20)</h3>
-            <p>The main way to work with FogSift. You submit your problem + $20, we spend up to an hour working on it, and you receive a PDF write-up and video response. A video may or may not be published.</p>
-            <p><a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Submit via Ko-fi →</a></p>
+            <p>The main way to work with FogSift. Submit your problem + $20, we spend up to an hour on it, and you get a PDF write-up and video response.</p>
+            <p><a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Submit via Ko-fi</a></p>
 
             <h3>Just Ask a Question (Free)</h3>
-            <p>Got a quick question? Just curious about something? Email me. No pressure, no pitch.</p>
-            <p><a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a></p>
+            <p>Got a quick question? Just curious? No pressure, no pitch.</p>
+            <p><a href="mailto:info@fogsift.com">info@fogsift.com</a></p>
 
-            <h3>Book a Call</h3>
-            <p>The first call is free. 15-30 minutes to triage your problem and see if I can help. No pitch, no pressure.</p>
-            <p><a href="mailto:christopher@fogsift.com?subject=Booking%20a%20Free%20Call">Email to schedule →</a></p>
+            <h3>Book a Triage Call (Free)</h3>
+            <p>15-30 minutes to figure out what you actually need. No obligation.</p>
+            <p><a href="mailto:info@fogsift.com?subject=Booking%20a%20Free%20Call">Email to schedule</a></p>
 
             <h3>Social</h3>
             <p>Follow along with builds, projects, and behind-the-scenes content:</p>
             <ul>
-                <li><a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube @fogsift</a>: Full build videos and tutorials</li>
-                <li><a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads @FogSift</a>: Quick updates and conversation</li>
+                <li><a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube @fogsift</a> &mdash; Full build videos and tutorials</li>
+                <li><a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads @fogsift</a> &mdash; Quick updates and conversation</li>
+            </ul>
+
+            <h2>People Reach Out About...</h2>
+            <ul>
+                <li><strong>Tech that isn't working</strong> &mdash; apps crashing, integrations failing, builds breaking</li>
+                <li><strong>Processes that feel broken</strong> &mdash; bottlenecks, handoff failures, invisible waste</li>
+                <li><strong>Decisions they're stuck on</strong> &mdash; build vs. buy, hire vs. outsource, pivot vs. stay</li>
+                <li><strong>Ideas they want pressure-tested</strong> &mdash; business models, product concepts, side projects</li>
+                <li><strong>Things nobody else will look at</strong> &mdash; weird data, legacy systems, "it's always been that way"</li>
             </ul>
 
             <h2>What to Include</h2>
@@ -69,47 +107,78 @@
                 <li>What would success look like?</li>
                 <li>Any privacy constraints or anonymization requests?</li>
             </ul>
-            <p>Don't worry if you don't have all the answers. That's what we'll figure out together.</p>
+            <p>Don't worry if you don't have all the answers. That's what we figure out together.</p>
 
             <h2>What Happens Next</h2>
-            <p>We review submissions and schedule what we can handle next. You'll get your PDF write-up and video response after your submission is worked, plus one of three outcomes:</p>
+            <p>We review submissions and pick what to work on next. You get a PDF write-up and video response, plus one of three outcomes:</p>
             <ul>
-                <li><strong>"Let's go deeper."</strong> - We want to work on this more with you</li>
-                <li><strong>"I know people."</strong> - We can connect you with the right expert</li>
-                <li><strong>"This is sick."</strong> - You should do this, here's how</li>
+                <li><strong>"Let's go deeper."</strong> &mdash; We want to keep working on this with you</li>
+                <li><strong>"I know people."</strong> &mdash; We can connect you with the right expert</li>
+                <li><strong>"This is sick."</strong> &mdash; You should build this, here's a path forward</li>
             </ul>
+
+            <h2>Quick Answers</h2>
+            <details>
+                <summary><strong>What if you can't solve my problem?</strong></summary>
+                <p>You still get the PDF write-up and video response, plus a narrower problem statement or referral. The $20 covers the session, not a guaranteed fix.</p>
+            </details>
+            <details>
+                <summary><strong>How long until I hear back?</strong></summary>
+                <p>We review submissions daily and work through the queue in order. Most submissions are addressed within a week.</p>
+            </details>
+            <details>
+                <summary><strong>Is my submission confidential?</strong></summary>
+                <p>We may publish a video response. Your submission may be used for marketing. You can request anonymization at any time.</p>
+            </details>
+            <details>
+                <summary><strong>Can I get a refund?</strong></summary>
+                <p>If we haven't started work yet, yes. Once we begin the session, the $20 is non-refundable. See our <a href="terms.html">Terms</a>.</p>
+            </details>
+            <p style="margin-top: var(--space-md);">More questions? See the full <a href="faq.html">FAQ</a>.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
+        <!-- Location easter egg: click to cycle through locations -->
         <section style="text-align: center; padding: var(--space-lg) 0;">
-            <p style="color: var(--muted); font-family: var(--font-mono); font-size: var(--text-sm);">
-                Based in Chico, California<br>
+            <p id="location-text" style="color: var(--muted); font-family: var(--font-mono); font-size: var(--text-sm); cursor: default; user-select: none;" title="Click me">
+                Based in <span id="location-city">Chico, California</span><br>
                 Working with clients everywhere
             </p>
         </section>
 
-        <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
-                    <a href="queue.html">Queue</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
-                    <a href="wiki/index.html">Wiki</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT</span>
-                </div>
-            </div>
-        </footer>
+        {{FOOTER}}
     </main>
 
     <script src="app.js" defer></script>
+    <script>
+    // Easter egg: click location to cycle through places Christopher has been
+    (function() {
+        var places = [
+            'Chico, California',
+            'a van in Yosemite',
+            'a brewery in Portland',
+            'a hostel in Tokyo',
+            'a cafe in Melbourne',
+            'the middle of nowhere, Nevada',
+            'a coworking space in Lisbon',
+            'somewhere with WiFi',
+            'right here, right now'
+        ];
+        var idx = 0;
+        var city = document.getElementById('location-city');
+        var text = document.getElementById('location-text');
+        if (!city || !text) return;
+        text.addEventListener('click', function() {
+            idx = (idx + 1) % places.length;
+            city.style.transition = 'opacity 0.2s';
+            city.style.opacity = '0';
+            setTimeout(function() {
+                city.textContent = places[idx];
+                city.style.opacity = '1';
+            }, 200);
+        });
+    })();
+    </script>
 </body>
 </html>
-

@@ -8,8 +8,7 @@
  * Webhook types: Donation, Subscription, Commission, Shop Order
  */
 
-// Your Ko-fi verification token (set in Cloudflare Pages environment variables)
-const KOFI_VERIFICATION_TOKEN = '27722335-f189-4460-9fe5-9e3c2ceaaa55';
+// Ko-fi verification token - MUST be set as KOFI_VERIFICATION_TOKEN in Cloudflare Pages environment variables
 
 export async function onRequestPost(context) {
     const { request, env } = context;
@@ -29,9 +28,8 @@ export async function onRequestPost(context) {
         // Parse the JSON data
         const data = JSON.parse(dataString);
 
-        // Verify the token (lightweight security check)
-        if (data.verification_token !== KOFI_VERIFICATION_TOKEN &&
-            data.verification_token !== env.KOFI_VERIFICATION_TOKEN) {
+        // Verify the token via Cloudflare environment variable
+        if (!env.KOFI_VERIFICATION_TOKEN || data.verification_token !== env.KOFI_VERIFICATION_TOKEN) {
             console.error('Invalid verification token');
             return new Response(JSON.stringify({ error: 'Invalid token' }), {
                 status: 401,

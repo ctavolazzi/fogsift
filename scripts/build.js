@@ -34,10 +34,12 @@ function generateThemeInitScript(prefix = '') {
 // Navigation partial - single source of truth for site navigation
 // Order: conversion-focused flow from offers → queue → learn → connect
 const NAV_LINKS = [
+    { href: 'about.html', label: 'ABOUT' },
     { href: 'offers.html', label: 'OFFERS' },
     { href: 'queue.html', label: 'QUEUE' },
     { href: 'wiki/index.html', label: 'WIKI' },
     { href: 'portfolio.html', label: 'PORTFOLIO' },
+    { href: 'faq.html', label: 'FAQ' },
     { href: 'contact.html', label: 'CONTACT' },
 ];
 
@@ -256,6 +258,7 @@ const JS_FILES = [
     'src/js/cache.js',    // TKT-x7k9-005: Caching layer
     'src/js/debug.js',    // TKT-x7k9-008: Debug logging
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
+    'src/js/monte.js',    // Three card monte hero easter egg
     // Future features (uncomment when implemented):
     // 'src/js/achievement.js', // Xbox-style achievement notifications
     // 'src/js/queue-widget.js', // Queue status floating widget
@@ -799,7 +802,8 @@ function buildQueuePages() {
             .replace(/\{\{OUTCOME_SECTION\}\}/g, outcomeSection)
             .replace(/\{\{WORK_LOG_SECTION\}\}/g, workLogSection)
             .replace(/\{\{PENDING_SECTION\}\}/g, pendingSection)
-            .replace(/\{\{PRIVACY_NOTICE\}\}/g, privacyNotice);
+            .replace(/\{\{PRIVACY_NOTICE\}\}/g, privacyNotice)
+            .replace(/\{\{FOOTER\}\}/g, generateFooter('../'));
 
         const outputPath = path.join(queueDir, `${item.id}.html`);
         fs.writeFileSync(outputPath, html);

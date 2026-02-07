@@ -7,7 +7,7 @@
     <meta name="description" content="Projects and builds by Christopher Tavolazzi. Hardware, software, and everything in between. Watch the full build process on YouTube.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/portfolio.html">
+    <link rel="canonical" href="https://fogsift.com/portfolio">
 
     <!-- Mobile web app -->
     <meta name="mobile-web-app-capable" content="yes">
@@ -18,7 +18,7 @@
     <meta property="og:title" content="Portfolio | Fogsift">
     <meta property="og:description" content="Projects and builds by Christopher Tavolazzi. Watch the full build process on YouTube.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://fogsift.com/portfolio.html">
+    <meta property="og:url" content="https://fogsift.com/portfolio">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <!-- Theme detection -->
@@ -41,10 +41,12 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
         <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
         <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
         <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
@@ -55,10 +57,12 @@
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
                 <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
                 <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="portfolio.html" class="menu-link" aria-current="page">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
@@ -261,6 +265,30 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
+        <!-- Skills & Tools -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label">SKILLS &amp; TOOLS</h2>
+            <p style="max-width: 55ch; margin: 0 auto var(--space-md); color: var(--muted);">
+                What gets used depends on what the problem needs.
+            </p>
+            <div class="pricing-cards outcome-cards" style="margin-top: var(--space-md);">
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>Software</h4>
+                    <p style="font-size: var(--text-sm);">JavaScript/TypeScript, Python, Node.js, React, Svelte, REST APIs, databases, CI/CD, cloud infrastructure</p>
+                </article>
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>Hardware</h4>
+                    <p style="font-size: var(--text-sm);">Arduino, Raspberry Pi, ESP32, 3D printing, PCB design, embedded systems, IoT prototyping</p>
+                </article>
+                <article class="pricing-card" style="text-align: left;">
+                    <h4>Strategy</h4>
+                    <p style="font-size: var(--text-sm);">Root cause analysis, process mapping, decision frameworks, market research, competitive analysis, roadmapping</p>
+                </article>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
         <!-- YouTube CTA Section -->
         <section class="section" style="text-align: center;">
             <h2 class="section-label">WATCH THE BUILDS</h2>
@@ -294,10 +322,13 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section" style="text-align: center;">
+        <section class="section section-contact" style="text-align: center;">
             <h3>Got an idea you want to see built?</h3>
-            <p>Submit it to the queue. Maybe I'll build it on camera.</p>
-            <a href="queue.html" class="cta-button cta-secondary">Join the Queue</a>
+            <p>Submit it to the queue. Maybe we'll build it on camera.</p>
+            <div class="hero-ctas" style="justify-content: center;">
+                <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
+                <a href="queue.html" class="cta-button cta-secondary">See the Queue</a>
+            </div>
         </section>
 
         <footer role="contentinfo">

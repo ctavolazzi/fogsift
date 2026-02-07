@@ -7,7 +7,31 @@
     <meta name="description" content="Meet Christopher Tavolazzi - the expert researcher behind Fogsift. Software developer, former realtor, journalist, author, and Eagle Scout.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/about.html">
+    <link rel="canonical" href="https://fogsift.com/about">
+
+    <meta property="og:title" content="About Fogsift">
+    <meta property="og:description" content="Meet Christopher Tavolazzi - software developer, former realtor, journalist, author, and Eagle Scout.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/about">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Christopher Tavolazzi",
+        "jobTitle": "Founder & FogSift Operator",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Fogsift",
+          "url": "https://fogsift.com"
+        },
+        "description": "Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout."
+      }
+    }
+    </script>
 
     <!-- Theme detection -->
     <script src="theme-init.js"></script>
@@ -20,7 +44,6 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     <!-- Mobile Navigation Drawer -->
@@ -29,10 +52,12 @@
             <span aria-hidden="true">&times;</span>
         </button>
         <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
         <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
         <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
         <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
         <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
         <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
     </nav>
 
@@ -43,10 +68,12 @@
                 <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
             <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="about.html" class="menu-link" aria-current="page">ABOUT</a></div>
                 <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
                 <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
                 <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
                 <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
                 <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
@@ -134,16 +161,16 @@
     </header>
 
     <main class="frame" id="main-content">
-        <section class="section section-about" style="text-align: center;">
-            <h1 class="section-label">WHO IS FOGSIFT</h1>
+        <section class="section section-about" aria-labelledby="about-heading">
+            <h1 id="about-heading" class="section-label">WHO IS FOGSIFT</h1>
 
             <div class="about-card">
                 <div class="about-avatar">
-                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
+                    <img id="about-photo" src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
                 </div>
                 <div class="about-info">
                     <h2 class="about-name">Christopher Tavolazzi</h2>
-                    <span class="about-role">Expert Researcher</span>
+                    <span class="about-role" id="about-role">Founder &amp; FogSift Operator</span>
                     <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it.</p>
                 </div>
             </div>
@@ -151,8 +178,8 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="section section-testimonials" style="text-align: center;">
-            <h2 class="section-label">WHAT CLIENTS SAY</h2>
+        <section class="section section-testimonials" aria-labelledby="testimonials-heading">
+            <h2 id="testimonials-heading" class="section-label">WHAT CLIENTS SAY</h2>
 
             <div class="testimonials-grid">
                 <article class="testimonial-card">
@@ -195,6 +222,18 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
+        <section class="section" style="text-align: center; max-width: 55ch; margin: 0 auto;" aria-labelledby="volunteer-heading">
+            <h2 id="volunteer-heading" class="section-label">VOLUNTEER WITH US</h2>
+            <p>FogSift is growing. We're looking for volunteers who want to help research, write, produce videos, or contribute in ways we haven't thought of yet.</p>
+            <p style="color: var(--muted); font-size: var(--text-sm);">No formal requirements. Just curiosity and follow-through.</p>
+            <a href="mailto:christopher@fogsift.com?subject=Volunteering%20with%20FogSift" class="cta-button" style="margin-top: var(--space-md);">Get in Touch</a>
+            <p style="margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--muted);">
+                Email <a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a>
+            </p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
         <section class="section section-contact" style="text-align: center;">
             <h3>Ready to get unstuck?</h3>
             <p>Let's crack it together.</p>
@@ -232,6 +271,37 @@
     </main>
 
     <script src="app.js" defer></script>
+    <script>
+    // Easter egg: click the role title to cycle through Christopher's many hats
+    (function() {
+        var roles = [
+            'Founder & FogSift Operator',
+            'Software Developer',
+            'Former Realtor',
+            'Brewery Tour Guide',
+            'Journalist',
+            'Author',
+            'Eagle Scout',
+            'Van Dweller',
+            'Multi-Continental Musician',
+            'Professional Problem Finder',
+            'Signal > Noise Enthusiast'
+        ];
+        var idx = 0;
+        var el = document.getElementById('about-role');
+        if (!el) return;
+        el.style.cursor = 'pointer';
+        el.title = 'Click to see more roles';
+        el.addEventListener('click', function() {
+            idx = (idx + 1) % roles.length;
+            el.style.transition = 'opacity 0.15s';
+            el.style.opacity = '0';
+            setTimeout(function() {
+                el.textContent = roles[idx];
+                el.style.opacity = '1';
+            }, 150);
+        });
+    })();
+    </script>
 </body>
 </html>
-

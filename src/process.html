@@ -3,11 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Process | Fogsift</title>
-    <meta name="description" content="How FogSift works: Submit your problem ($20), up to an hour of focus, and you receive a PDF write-up and video response.">
+    <title>How It Works | Fogsift</title>
+    <meta name="description" content="How FogSift works: Submit your problem ($20), up to an hour of focus, PDF write-up and video response. Five steps to clarity.">
 
     <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="canonical" href="https://fogsift.com/process.html">
+    <link rel="canonical" href="https://fogsift.com/process">
+
+    <meta property="og:title" content="How It Works | Fogsift">
+    <meta property="og:description" content="Submit your problem, get up to an hour of focused research, receive a PDF write-up and video response.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/process">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "How FogSift Focus Sessions Work",
+      "description": "Submit your problem for $20, get up to an hour of focused research, receive a PDF write-up and video response.",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Submit", "text": "Describe your problem and pay $20 on Ko-fi." },
+        { "@type": "HowToStep", "position": 2, "name": "Review", "text": "We review submissions daily and schedule what we can handle next." },
+        { "@type": "HowToStep", "position": 3, "name": "Work", "text": "Up to an hour of focused work on your submission." },
+        { "@type": "HowToStep", "position": 4, "name": "Deliver", "text": "You receive a PDF write-up and a video response." },
+        { "@type": "HowToStep", "position": 5, "name": "Outcome", "text": "One of three paths forward: go deeper, get a referral, or get a roadmap." }
+      ]
+    }
+    </script>
 
     <!-- Theme detection -->
     {{THEME_INIT}}
@@ -20,42 +42,41 @@
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
     {{NAV_HEADER}}
 
     <main class="frame" id="main-content">
-        <section class="section section-process" style="text-align: center;">
-            <h1 class="section-label">HOW IT WORKS</h1>
-            <p style="font-size: 1.25rem; margin-bottom: 2rem;">Focus Session: Research squad + one hour</p>
+        <section class="section section-process" aria-labelledby="process-heading">
+            <h1 id="process-heading" class="section-label">HOW IT WORKS</h1>
+            <p style="font-size: var(--text-lg); margin-bottom: var(--space-lg);">Focus Session: Research squad + one hour</p>
 
             <div class="process-steps">
-                <div class="process-step">
+                <div class="process-step" id="step-01">
                     <div class="step-number">01</div>
                     <h3>Submit</h3>
-                    <p>Describe your problem + pay $20. $20 is the accessibility filter that keeps it serious and keeps it open to anyone who can get a job at McDonald's.</p>
+                    <p>Describe your problem + pay $20 on Ko-fi.</p>
                 </div>
 
-                <div class="process-step">
+                <div class="process-step" id="step-02">
                     <div class="step-number">02</div>
                     <h3>Review</h3>
-                    <p>Once a day, we review submissions and schedule what we can handle next.</p>
+                    <p>Daily, we review submissions and schedule what we can handle next.</p>
                 </div>
 
-                <div class="process-step">
+                <div class="process-step" id="step-03">
                     <div class="step-number">03</div>
                     <h3>Work</h3>
                     <p>Up to an hour of focused work on your submission.</p>
                 </div>
 
-                <div class="process-step">
+                <div class="process-step" id="step-04">
                     <div class="step-number">04</div>
                     <h3>Deliver</h3>
                     <p>You receive a PDF write-up and a video response.</p>
                 </div>
 
-                <div class="process-step">
+                <div class="process-step" id="step-05">
                     <div class="step-number">05</div>
                     <h3>Outcome</h3>
                     <p>One of three paths forward. Either way, you got something.</p>
@@ -65,61 +86,67 @@
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;">
-            <h2>Why This Works</h2>
+        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;" aria-labelledby="why-heading">
+            <h2 id="why-heading">Why This Works</h2>
 
-            <p>A Focus Session is a full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it. You walk away with actionable output.</p>
+            <p>A Focus Session is a full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
 
             <h3>What You Always Get</h3>
             <ul>
-                <li><strong>Clarity</strong>: A clear understanding of what's actually happening</li>
-                <li><strong>Options</strong>: Multiple paths forward, with tradeoffs explained</li>
-                <li><strong>Action</strong>: Concrete next steps you can take immediately</li>
+                <li><strong>Clarity</strong> &mdash; A clear understanding of what's actually happening</li>
+                <li><strong>Options</strong> &mdash; Multiple paths forward, with tradeoffs explained</li>
+                <li><strong>Action</strong> &mdash; Concrete next steps you can take immediately</li>
             </ul>
 
             <h3>The Three Outcomes</h3>
             <ul>
-                <li><strong>"Let's go deeper."</strong> - We want to work on this more with you</li>
-                <li><strong>"I know people."</strong> - We can connect you with the right expert</li>
-                <li><strong>"This is sick."</strong> - You should do this, here's how I'd approach it</li>
+                <li><strong>"Let's go deeper."</strong> &mdash; We want to work on this more with you</li>
+                <li><strong>"I know people."</strong> &mdash; We can connect you with the right expert</li>
+                <li><strong>"This is sick."</strong> &mdash; You should do this, here's a path forward</li>
             </ul>
 
             <h3>Will my submission be public?</h3>
             <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing. Request anonymization if needed.</p>
-
-            <h3>Why Daily?</h3>
-            <p>Once a day, we review everything and decide what we can take on next. That balance keeps the queue fair.</p>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <section class="section section-contact" style="text-align: center;">
             <h3>Ready to roll the dice?</h3>
-            <p>$20 adds you to <a href="queue.html">the queue</a>. We work through it as capacity allows.</p>
+            <p>$20 adds you to <a href="queue.html">the queue</a>.</p>
             <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue</a>
         </section>
 
-        <footer role="contentinfo">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="process.html">Process</a>
-                    <a href="queue.html">Queue</a>
-                    <a href="faq.html">FAQ</a>
-                    <a href="pricing.html">Pricing</a>
-                    <a href="about.html">About</a>
-                    <a href="wiki/index.html">Wiki</a>
-                    <a href="privacy.html">Privacy</a>
-                    <a href="disclaimer.html">Disclaimer</a>
-                </div>
-                <div class="footer-bottom">
-                    <span>&copy; 2025 FOGSIFT</span>
-                </div>
-            </div>
-        </footer>
+        {{FOOTER}}
     </main>
 
     <script src="app.js" defer></script>
+    <script>
+    // Easter egg: click step numbers in order 05-04-03-02-01 (reverse) to unlock a message
+    (function() {
+        var seq = ['step-05','step-04','step-03','step-02','step-01'];
+        var pos = 0;
+        seq.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (!el) return;
+            el.addEventListener('click', function() {
+                if (seq[pos] === id) {
+                    pos++;
+                    if (pos === seq.length) {
+                        var num = el.querySelector('.step-number');
+                        if (num) {
+                            num.textContent = '\u2605';
+                            num.style.color = '#f5c842';
+                            num.title = 'You cracked the code. WINNER2026';
+                        }
+                        pos = 0;
+                    }
+                } else {
+                    pos = 0;
+                }
+            });
+        });
+    })();
+    </script>
 </body>
 </html>
-
