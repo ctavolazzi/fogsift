@@ -329,31 +329,47 @@
         <section id="why-it-works" class="section section-process" aria-labelledby="why-heading">
             <h2 id="why-heading" class="section-label">WHY THIS WORKS</h2>
 
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">01</div>
-                    <h3>Skin in the Game</h3>
-                    <p>$20 keeps submissions real and funds production.</p>
-                </div>
+            <ul class="features-list">
+                <li class="feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </span>
+                    <div>
+                        <h3>Skin in the Game</h3>
+                        <p>$20 keeps submissions real and funds production.</p>
+                    </div>
+                </li>
 
-                <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>Work You Can Inspect</h3>
-                    <p>Sessions are recorded and may be published. Judge the thinking, not the credentials.</p>
-                </div>
+                <li class="feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </span>
+                    <div>
+                        <h3>Work You Can Inspect</h3>
+                        <p>Sessions are recorded and may be published. Judge the thinking, not the credentials.</p>
+                    </div>
+                </li>
 
-                <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>Time-Boxed Focus</h3>
-                    <p>One hour of undivided attention. No meetings. No Slack.</p>
-                </div>
+                <li class="feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    </span>
+                    <div>
+                        <h3>Time-Boxed Focus</h3>
+                        <p>One hour of undivided attention. No meetings. No Slack.</p>
+                    </div>
+                </li>
 
-                <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>Clear Outcomes</h3>
-                    <p>You leave with either a fix, a roadmap, or a referral.</p>
-                </div>
-            </div>
+                <li class="feature-item">
+                    <span class="feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </span>
+                    <div>
+                        <h3>Clear Outcomes</h3>
+                        <p>You leave with either a fix, a roadmap, or a referral.</p>
+                    </div>
+                </li>
+            </ul>
         </section>
 
         <!-- Section Divider -->
@@ -370,32 +386,36 @@
             </p>
 
             <div class="pricing-cards">
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')" role="button" tabindex="0" aria-label="Read more about Inventory Count Mismatch">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
                     <h4>"Our inventory counts never match."</h4>
                     <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
                     <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Diagnosis + fix</p>
+                    <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')" role="button" tabindex="0" aria-label="Read more about Tuesday Crashes">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
                     <h4>"Our app crashes every Tuesday."</h4>
                     <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
                     <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Root cause + fix</p>
+                    <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')" role="button" tabindex="0" aria-label="Read more about Build vs. Buy Decision">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
                     <h4>"Build it or buy it?"</h4>
                     <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
                     <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Decision framework</p>
+                    <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card" style="text-align: left;">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')" role="button" tabindex="0" aria-label="Read more about Stalled Signups">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
                     <h4>"Signups stalled."</h4>
                     <p>Walked the funnel live. Fixed the top three friction points during the session.</p>
                     <p class="mono" style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">Outcome: Funnel fixes + roadmap</p>
+                    <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
             </div>
         </section>
@@ -578,12 +598,14 @@
                     <span class="featured-tag">THE SWEET SPOT</span>
                     <h4>Focus Session</h4>
                     <span class="price">$20</span>
-                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour. Worth way more than $20, kept low so anyone can access it.</p>
-                    <p class="pricing-note">Your $20 adds your problem to <a href="queue.html">the queue</a>.</p>
-                    <p class="pricing-note">You receive a PDF write-up and a video response. We may or may not publish a video.</p>
-                    <p class="pricing-note">One-time fee per submission (not a subscription). If you're not picked right away, you stay in the queue.</p>
-                    <p class="pricing-note">Your submission may be used for other purposes, including marketing.</p>
-                    <p class="pricing-note">Maybe we solve it. Maybe we don't. Either way, you walk away with something.</p>
+                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour.</p>
+                    <ul class="pricing-bullets">
+                        <li>Your $20 adds your problem to <a href="queue.html">the queue</a></li>
+                        <li>You receive a PDF write-up and a video response</li>
+                        <li>One-time fee per submission (not a subscription)</li>
+                        <li>If you're not picked right away, you stay in the queue</li>
+                        <li>Maybe we solve it. Maybe we don't. Either way, you walk away with something</li>
+                    </ul>
                     <div class="capacity-notice">
                         <span class="capacity-icon">⚡</span>
                         <span>Limited to <strong>10 slots/week</strong></span>
