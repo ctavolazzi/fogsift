@@ -193,7 +193,7 @@ function generateFooter(pathPrefix = '', options = {}) {
 
     if (showClock) {
         footerBottom += `\n                    <span class="footer-sep" aria-hidden="true">//</span>
-                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>`;
+                    <span id="utc-clock" role="timer" aria-label="Current UTC time">LOADING...</span>`;
     }
 
     return `<footer role="contentinfo">
@@ -479,7 +479,8 @@ function extractDescription(markdown) {
             continue;
         }
         if (foundTitle && line.trim() && !line.startsWith('#') && !line.startsWith('**')) {
-            return line.trim().substring(0, 160);
+            // Escape quotes for safe use in HTML attributes
+            return line.trim().substring(0, 160).replace(/"/g, '&quot;');
         }
     }
     return 'Fogsift Wiki';

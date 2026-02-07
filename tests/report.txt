@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-07T10:52:13.041Z
+Generated: 2026-02-07T11:11:00.359Z
 ============================================================
 
 SUMMARY
-  Total:    107
-  Passed:   36
-  Failed:   59
+  Total:    100
+  Passed:   87
+  Failed:   1
   Warnings: 12
-  Pass rate: 33.6%
+  Pass rate: 87.0%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,72 +21,65 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 61 — Found 61 HTML files
+  [PASS] HTML pages built: 54 — Found 54 HTML files
   [PASS] styles.css size: 168.2KB
   [PASS] app.js size: 60.1KB
 
 ── HTML Validation ──
   [PASS] 404.html
-  [FAIL] about.html — 2 error(s), 0 warning(s)
-  [FAIL] contact.html — 2 error(s), 0 warning(s)
-  [FAIL] disclaimer.html — 2 error(s), 0 warning(s)
-  [FAIL] faq.html — 2 error(s), 0 warning(s)
+  [PASS] about.html
+  [PASS] contact.html
+  [PASS] disclaimer.html
+  [PASS] faq.html
   [PASS] gallery.html
-  [FAIL] hi.html — 2 error(s), 0 warning(s)
-  [FAIL] index.html — 7 error(s), 3 warning(s)
-  [FAIL] offers.html — 3 error(s), 0 warning(s)
-  [FAIL] paperbin-saas.html — 3 error(s), 16 warning(s)
-  [FAIL] portfolio.html — 2 error(s), 0 warning(s)
-  [FAIL] privacy.html — 2 error(s), 0 warning(s)
-  [FAIL] process.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-000.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-001.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-002.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-003.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-004.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-005.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-006.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-007.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-008.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-009.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-010.html — 3 error(s), 16 warning(s)
-  [FAIL] queue/PST-100.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-101.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-102.html — 2 error(s), 0 warning(s)
-  [FAIL] queue/PST-103.html — 2 error(s), 0 warning(s)
-  [FAIL] queue.html — 3 error(s), 0 warning(s)
+  [PASS] hi.html
+  [PASS] index.html
+  [PASS] offers.html
+  [PASS] portfolio.html
+  [PASS] privacy.html
+  [PASS] process.html
+  [PASS] queue/PST-001.html
+  [PASS] queue/PST-002.html
+  [PASS] queue/PST-003.html
+  [PASS] queue/PST-004.html
+  [PASS] queue/PST-005.html
+  [PASS] queue/PST-100.html
+  [PASS] queue/PST-101.html
+  [PASS] queue/PST-102.html
+  [PASS] queue/PST-103.html
+  [PASS] queue.html
   [PASS] system-status.html
-  [FAIL] terms.html — 5 error(s), 0 warning(s)
-  [FAIL] vision.html — 2 error(s), 0 warning(s)
-  [FAIL] wiki/case-studies/communication-breakdown.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/case-studies/manufacturing-throughput.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/case-studies/the-invisible-process.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/cognitive-biases.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/mental-models.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/root-cause.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/second-order-effects.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/signal-vs-noise.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/concepts/systems-thinking.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/diagnostic-process.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/faq.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/001-map-territory.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/002-precision-accuracy.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/003-entropy.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/004-bottlenecks.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/005-tribal-knowledge.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/006-incentive-alignment.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/field-notes/007-documentation-debt.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/frameworks/constraint-mapping.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/frameworks/decision-matrix.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/frameworks/feedback-loops.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/frameworks/trace-protocol.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/getting-started.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/how-we-work.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/index.html — 6 error(s), 0 warning(s)
-  [FAIL] wiki/tools/fishbone-diagram.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/tools/five-whys.html — 2 error(s), 0 warning(s)
-  [FAIL] wiki/tools/pareto-analysis.html — 8 error(s), 1 warning(s)
-  [FAIL] wiki/tools/process-mapping.html — 8 error(s), 1 warning(s)
+  [PASS] terms.html
+  [PASS] vision.html
+  [PASS] wiki/case-studies/communication-breakdown.html
+  [PASS] wiki/case-studies/manufacturing-throughput.html
+  [PASS] wiki/case-studies/the-invisible-process.html
+  [PASS] wiki/concepts/cognitive-biases.html
+  [PASS] wiki/concepts/mental-models.html
+  [PASS] wiki/concepts/root-cause.html
+  [PASS] wiki/concepts/second-order-effects.html
+  [PASS] wiki/concepts/signal-vs-noise.html
+  [PASS] wiki/concepts/systems-thinking.html
+  [PASS] wiki/diagnostic-process.html
+  [PASS] wiki/faq.html
+  [PASS] wiki/field-notes/001-map-territory.html
+  [PASS] wiki/field-notes/002-precision-accuracy.html
+  [PASS] wiki/field-notes/003-entropy.html
+  [PASS] wiki/field-notes/004-bottlenecks.html
+  [PASS] wiki/field-notes/005-tribal-knowledge.html
+  [PASS] wiki/field-notes/006-incentive-alignment.html
+  [PASS] wiki/field-notes/007-documentation-debt.html
+  [PASS] wiki/frameworks/constraint-mapping.html
+  [PASS] wiki/frameworks/decision-matrix.html
+  [PASS] wiki/frameworks/feedback-loops.html
+  [PASS] wiki/frameworks/trace-protocol.html
+  [PASS] wiki/getting-started.html
+  [PASS] wiki/how-we-work.html
+  [PASS] wiki/index.html
+  [PASS] wiki/tools/fishbone-diagram.html
+  [PASS] wiki/tools/five-whys.html
+  [PASS] wiki/tools/pareto-analysis.html
+  [PASS] wiki/tools/process-mapping.html
 
 ── ESLint (Source JS) ──
   [WARN] ESLint warnings only — 19 warning(s)
@@ -101,7 +94,7 @@ SUMMARY
   [WARN] portfolio.html — 9 issue(s)
 
 ── Internal Link Integrity ──
-  [FAIL] 73 broken links out of 3311 — paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-007.html → ../pricing.html
+  [FAIL] 52 broken links out of 3131 — wiki/case-studies/communication-breakdown.html → /wiki/field-notes/001-map-territory.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/005-tribal-knowledge.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/004-bottlenecks.html; wiki/concepts/mental-models.html → /wiki/concepts/second-order-effects.html; wiki/concepts/mental-models.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/mental-models.html → /wiki/frameworks/feedback-loops.html; wiki/concepts/root-cause.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/systems-thinking.html → /wiki/frameworks/feedback-loops.html; wiki/diagnostic-process.html → /wiki/frameworks/trace-protocol.html; wiki/field-notes/001-map-territory.html → /wiki/concepts/root-cause.html
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -109,10 +102,10 @@ SUMMARY
   [PASS] Index has 40 entries
   [PASS] 40/40 entries have valid structure
   [PASS] 40/40 index URLs resolve to files
-  [PASS] Index size: 181.0KB
+  [PASS] Index size: 181.1KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 16.17MB
+  [PASS] Total dist/ size: 16.04MB
   [WARN] 11 file(s) over 500KB — assets/icon-512.png: 840.6KB; assets/logo-01.png: 821.7KB; assets/logo-mono.png: 552.7KB; images/portfolio/TMGotcha-Banner-Image.jpg: 1.23MB; images/portfolio/TMGotcha-Build-Cycle-Banner.jpg: 951.2KB; images/portfolio/TMGotcha-Cube-Concept-Art.jpg: 1.21MB; images/portfolio/TMGotcha-Hardware-Concept-Art.jpg: 1.18MB; images/portfolio/TMGotcha-Main-Advert-Image.jpg: 1.02MB; images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg: 1.08MB; images/portfolio/TMGotcha-Toy-Editions-Banner.jpg: 1.12MB; og-image.png: 726.0KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
@@ -128,11 +121,11 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ── Lighthouse ──
-  [WARN] Performance: 60
+  [WARN] Performance: 58
   [WARN] Accessibility: 84
   [WARN] Best Practices: 81
   [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":60,"accessibility":84,"best-practices":81,"seo":100}
+  [PASS] Lighthouse report generated — {"performance":58,"accessibility":84,"best-practices":81,"seo":100}
 
 ============================================================
-VERDICT: NOT READY — 59 failure(s)
+VERDICT: NOT READY — 1 failure(s)

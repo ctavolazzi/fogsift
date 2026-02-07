@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T10:52:13.041Z",
+  "timestamp": "2026-02-07T11:11:00.359Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 61",
+          "test": "HTML pages built: 54",
           "status": "pass",
-          "detail": "Found 61 HTML files"
+          "detail": "Found 54 HTML files"
         },
         {
           "test": "styles.css size: 168.2KB",
@@ -89,23 +89,23 @@
         },
         {
           "test": "about.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "contact.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "disclaimer.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "faq.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "gallery.html",
@@ -114,118 +114,83 @@
         },
         {
           "test": "hi.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "index.html",
-          "status": "fail",
-          "detail": "7 error(s), 3 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "offers.html",
-          "status": "fail",
-          "detail": "3 error(s), 0 warning(s)"
-        },
-        {
-          "test": "paperbin-saas.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "portfolio.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "privacy.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "process.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
-        },
-        {
-          "test": "queue/PST-000.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-001.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-002.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-003.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-004.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-005.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
-        },
-        {
-          "test": "queue/PST-006.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
-        },
-        {
-          "test": "queue/PST-007.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
-        },
-        {
-          "test": "queue/PST-008.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
-        },
-        {
-          "test": "queue/PST-009.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
-        },
-        {
-          "test": "queue/PST-010.html",
-          "status": "fail",
-          "detail": "3 error(s), 16 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-100.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-101.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-102.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue/PST-103.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "queue.html",
-          "status": "fail",
-          "detail": "3 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "system-status.html",
@@ -234,162 +199,162 @@
         },
         {
           "test": "terms.html",
-          "status": "fail",
-          "detail": "5 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "vision.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/case-studies/communication-breakdown.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/case-studies/manufacturing-throughput.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/case-studies/the-invisible-process.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/cognitive-biases.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/mental-models.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/root-cause.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/second-order-effects.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/signal-vs-noise.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/concepts/systems-thinking.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/diagnostic-process.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/faq.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/001-map-territory.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/002-precision-accuracy.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/003-entropy.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/004-bottlenecks.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/005-tribal-knowledge.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/006-incentive-alignment.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/field-notes/007-documentation-debt.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/frameworks/constraint-mapping.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/frameworks/decision-matrix.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/frameworks/feedback-loops.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/frameworks/trace-protocol.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/getting-started.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/how-we-work.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/index.html",
-          "status": "fail",
-          "detail": "6 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/tools/fishbone-diagram.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/tools/five-whys.html",
-          "status": "fail",
-          "detail": "2 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/tools/pareto-analysis.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/tools/process-mapping.html",
-          "status": "fail",
-          "detail": "8 error(s), 1 warning(s)"
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 3,
-      "failed": 58,
+      "passed": 54,
+      "failed": 0,
       "warned": 0
     },
     {
@@ -452,9 +417,9 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "73 broken links out of 3311",
+          "test": "52 broken links out of 3131",
           "status": "fail",
-          "detail": "paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; paperbin-saas.html → pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-000.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-006.html → ../pricing.html; queue/PST-007.html → ../pricing.html"
+          "detail": "wiki/case-studies/communication-breakdown.html → /wiki/field-notes/001-map-territory.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/005-tribal-knowledge.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/004-bottlenecks.html; wiki/concepts/mental-models.html → /wiki/concepts/second-order-effects.html; wiki/concepts/mental-models.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/mental-models.html → /wiki/frameworks/feedback-loops.html; wiki/concepts/root-cause.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/systems-thinking.html → /wiki/frameworks/feedback-loops.html; wiki/diagnostic-process.html → /wiki/frameworks/trace-protocol.html; wiki/field-notes/001-map-territory.html → /wiki/concepts/root-cause.html"
         }
       ],
       "passed": 0,
@@ -490,7 +455,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 181.0KB",
+          "test": "Index size: 181.1KB",
           "status": "pass",
           "detail": ""
         }
@@ -503,7 +468,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 16.17MB",
+          "test": "Total dist/ size: 16.04MB",
           "status": "pass",
           "detail": ""
         },
@@ -579,7 +544,7 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 60",
+          "test": "Performance: 58",
           "status": "warn",
           "detail": ""
         },
@@ -601,7 +566,7 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":60,\"accessibility\":84,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":58,\"accessibility\":84,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,
@@ -610,9 +575,9 @@
     }
   ],
   "summary": {
-    "total": 107,
-    "passed": 36,
-    "failed": 59,
+    "total": 100,
+    "passed": 87,
+    "failed": 1,
     "warned": 12
   }
 }

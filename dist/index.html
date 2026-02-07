@@ -259,7 +259,7 @@
                 <p class="subhead">$20. Report + video response.</p>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
-                    <input type="checkbox" name="website" tabindex="-1" autocomplete="off">
+                    <input type="checkbox" name="website" tabindex="-1">
                     Leave unchecked if human
                 </label>
                 <div class="hero-ctas">
@@ -432,7 +432,7 @@
         <section id="testimonials" class="section section-testimonials" aria-labelledby="testimonials-heading">
             <h2 id="testimonials-heading" class="section-label">WHAT CLIENTS SAY</h2>
 
-            <div class="testimonials-ticker" aria-label="Client testimonials">
+            <div class="testimonials-ticker" role="region" aria-label="Client testimonials">
                 <div class="ticker-track">
                     <!-- Set 1 -->
                     <article class="testimonial-card">
@@ -535,7 +535,7 @@
             </div>
 
             <!-- Stats Row -->
-            <div class="testimonials-stats" aria-label="Client statistics">
+            <div class="testimonials-stats" role="region" aria-label="Client statistics">
                 <div class="stat-item">
                     <span class="stat-number">15+</span>
                     <span class="stat-label">Engagements</span>
@@ -676,7 +676,7 @@
                 <div class="footer-bottom">
                     <span>&copy; 2026 FOGSIFT v0.0.5</span>
                     <span class="footer-sep" aria-hidden="true">//</span>
-                    <span id="utc-clock" aria-label="Current UTC time">LOADING...</span>
+                    <span id="utc-clock" role="timer" aria-label="Current UTC time">LOADING...</span>
                 </div>
                 <div class="footer-ai-disclaimer">
                     <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
