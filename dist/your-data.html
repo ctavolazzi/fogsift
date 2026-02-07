@@ -391,6 +391,54 @@
                     </div>
                 </div>
 
+                <!-- Wikipedia Today -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Wikipedia: Random</h3>
+                        <span class="yd-risk-tag yd-risk-low">wikimedia.org</span>
+                    </div>
+                    <p class="yd-card-desc">A random Wikipedia article summary, pulled from the free Wikimedia API.</p>
+                    <div id="yd-wiki" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Loading article...</p>
+                    </div>
+                </div>
+
+                <!-- REST Countries -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Your Country</h3>
+                        <span class="yd-risk-tag yd-risk-low">restcountries.com</span>
+                    </div>
+                    <p class="yd-card-desc">Detailed info about your country, pulled from a free API using your IP location.</p>
+                    <div id="yd-country-info" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Loading country data...</p>
+                    </div>
+                </div>
+
+                <!-- Open Library -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Random Book</h3>
+                        <span class="yd-risk-tag yd-risk-low">openlibrary.org</span>
+                    </div>
+                    <p class="yd-card-desc">A random book on problem-solving from the Open Library's free catalog.</p>
+                    <div id="yd-book" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Finding a book...</p>
+                    </div>
+                </div>
+
+                <!-- Bitcoin Price -->
+                <div class="yd-card" style="margin-bottom: 0;">
+                    <div class="yd-card-header">
+                        <h3 class="yd-card-title" style="font-size: var(--text-base);">Bitcoin Price</h3>
+                        <span class="yd-risk-tag yd-risk-low">coindesk.com</span>
+                    </div>
+                    <p class="yd-card-desc">Live Bitcoin price index from CoinDesk's free API. Because it's 2026.</p>
+                    <div id="yd-btc" style="font-family: var(--font-mono); font-size: var(--text-sm);">
+                        <p style="color: var(--muted);">Loading price...</p>
+                    </div>
+                </div>
+
             </div>
         </section>
 
@@ -537,6 +585,42 @@
             if (el) el.textContent = value || 'Not available';
         }
 
+        // ---- Cached Fetch (localStorage + TTL) ----
+        // Caches API responses to reduce requests. TTL in minutes.
+        function cachedFetch(url, ttlMinutes) {
+            var key = 'yd_cache_' + url;
+            try {
+                var cached = localStorage.getItem(key);
+                if (cached) {
+                    var parsed = JSON.parse(cached);
+                    if (parsed.expiry > Date.now()) {
+                        return Promise.resolve(new Response(JSON.stringify(parsed.data), {
+                            status: 200, headers: { 'Content-Type': 'application/json' }
+                        }));
+                    }
+                    localStorage.removeItem(key);
+                }
+            } catch(e) { /* cache miss, proceed with fetch */ }
+
+            return fetch(url).then(function(response) {
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+                return response.json().then(function(data) {
+                    try {
+                        localStorage.setItem(key, JSON.stringify({
+                            data: data,
+                            expiry: Date.now() + (ttlMinutes * 60 * 1000)
+                        }));
+                    } catch(e) { /* storage full, skip caching */ }
+                    return new Response(JSON.stringify(data), {
+                        status: 200, headers: { 'Content-Type': 'application/json' }
+                    });
+                });
+            });
+        }
+
+        // Shared promise for location-dependent widgets
+        var locationPromise = null;
+
         // Simple hash function (djb2)
         function hash(str) {
             let h = 5381;
@@ -647,22 +731,24 @@
             set('yd-utc-offset', 'UTC' + sign + String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0'));
             set('yd-local-time', new Date().toLocaleString());
 
-            // IP geolocation via free API (http only — ip-api.com free tier)
-            fetch('http://ip-api.com/json/?fields=query,city,regionName,country,isp')
+            // IP geolocation via ipapi.co (HTTPS, free 1000 req/day)
+            locationPromise = cachedFetch('https://ipapi.co/json/', 60)
                 .then(function(r) { return r.json(); })
                 .then(function(d) {
-                    set('yd-ip', d.query || 'Blocked');
+                    set('yd-ip', d.ip || 'Blocked');
                     set('yd-city', d.city || 'Unknown');
-                    set('yd-region', d.regionName || 'Unknown');
-                    set('yd-country', d.country || 'Unknown');
-                    set('yd-isp', d.isp || 'Unknown');
+                    set('yd-region', d.region || 'Unknown');
+                    set('yd-country', d.country_name || 'Unknown');
+                    set('yd-isp', d.org || 'Unknown');
+                    return { lat: d.latitude, lon: d.longitude, city: d.city, country: d.country_name };
                 })
                 .catch(function() {
-                    set('yd-ip', 'Blocked (HTTPS or ad-blocker)');
+                    set('yd-ip', 'Blocked by browser or ad-blocker');
                     set('yd-city', 'Unavailable');
                     set('yd-region', 'Unavailable');
                     set('yd-country', 'Unavailable');
                     set('yd-isp', 'Unavailable');
+                    return null;
                 });
         }
 
@@ -820,41 +906,46 @@
 
         // ---- Free API Widgets ----
         function fetchWeather() {
-            // First get approximate coords from IP lookup, then fetch weather
-            fetch('http://ip-api.com/json/?fields=lat,lon,city')
-                .then(function(r) { return r.json(); })
-                .then(function(loc) {
-                    if (!loc.lat) throw new Error('No location');
-                    return fetch('https://api.open-meteo.com/v1/forecast?latitude=' + loc.lat + '&longitude=' + loc.lon + '&current=temperature_2m,weathercode,windspeed_10m&temperature_unit=fahrenheit')
-                        .then(function(r) { return r.json(); })
-                        .then(function(w) {
-                            var c = w.current;
-                            var codes = {0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Rime fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Heavy showers',95:'Thunderstorm'};
-                            var desc = codes[c.weathercode] || 'Code ' + c.weathercode;
-                            var el = document.getElementById('yd-weather');
-                            if (el) el.innerHTML =
-                                '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">' + Math.round(c.temperature_2m) + '&deg;F</div>' +
-                                '<div>' + desc + '</div>' +
-                                '<div style="color: var(--muted);">Wind: ' + c.windspeed_10m + ' mph</div>' +
-                                '<div style="color: var(--muted); font-size: var(--text-xs); margin-top: var(--space-xs);">Near ' + (loc.city || 'your location') + '</div>';
-                        });
-                })
-                .catch(function() {
+            // Chains off locationPromise for lat/lon (avoids extra IP lookup)
+            if (!locationPromise) return;
+            locationPromise.then(function(loc) {
+                if (!loc || !loc.lat) {
                     var el = document.getElementById('yd-weather');
-                    if (el) el.innerHTML = '<p style="color: var(--muted);">Weather unavailable (blocked or no location)</p>';
-                });
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Weather unavailable (no location)</p>';
+                    return;
+                }
+                var weatherUrl = 'https://api.open-meteo.com/v1/forecast?latitude=' + loc.lat + '&longitude=' + loc.lon + '&current=temperature_2m,weathercode,windspeed_10m&temperature_unit=fahrenheit';
+                cachedFetch(weatherUrl, 30)
+                    .then(function(r) { return r.json(); })
+                    .then(function(w) {
+                        var c = w.current;
+                        var codes = {0:'Clear sky',1:'Mainly clear',2:'Partly cloudy',3:'Overcast',45:'Foggy',48:'Rime fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',71:'Light snow',73:'Snow',75:'Heavy snow',80:'Rain showers',81:'Heavy showers',95:'Thunderstorm'};
+                        var desc = codes[c.weathercode] || 'Code ' + c.weathercode;
+                        var el = document.getElementById('yd-weather');
+                        if (el) el.innerHTML =
+                            '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">' + Math.round(c.temperature_2m) + '&deg;F</div>' +
+                            '<div>' + desc + '</div>' +
+                            '<div style="color: var(--muted);">Wind: ' + c.windspeed_10m + ' mph</div>' +
+                            '<div style="color: var(--muted); font-size: var(--text-xs); margin-top: var(--space-xs);">Near ' + (loc.city || 'your location') + '</div>';
+                    })
+                    .catch(function() {
+                        var el = document.getElementById('yd-weather');
+                        if (el) el.innerHTML = '<p style="color: var(--muted);">Weather unavailable</p>';
+                    });
+            });
         }
 
         function fetchISS() {
-            fetch('http://api.open-notify.org/iss-now.json')
+            // wheretheiss.at provides HTTPS (open-notify.org is HTTP-only)
+            cachedFetch('https://api.wheretheiss.at/v1/satellites/25544', 2)
                 .then(function(r) { return r.json(); })
                 .then(function(d) {
-                    var pos = d.iss_position;
                     var el = document.getElementById('yd-iss');
                     if (el) el.innerHTML =
-                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lat:</span> ' + parseFloat(pos.latitude).toFixed(4) + '</div>' +
-                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lon:</span> ' + parseFloat(pos.longitude).toFixed(4) + '</div>' +
-                        '<div style="color: var(--muted); font-size: var(--text-xs);">Updated: ' + new Date(d.timestamp * 1000).toLocaleTimeString() + '</div>';
+                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lat:</span> ' + parseFloat(d.latitude).toFixed(4) + '</div>' +
+                        '<div style="margin-bottom: var(--space-xs);"><span style="color: var(--burnt-orange);">Lon:</span> ' + parseFloat(d.longitude).toFixed(4) + '</div>' +
+                        '<div style="color: var(--muted); font-size: var(--text-xs);">Altitude: ' + parseFloat(d.altitude).toFixed(1) + ' km</div>' +
+                        '<div style="color: var(--muted); font-size: var(--text-xs);">Speed: ' + parseFloat(d.velocity).toFixed(0) + ' km/h</div>';
                 })
                 .catch(function() {
                     var el = document.getElementById('yd-iss');
@@ -863,7 +954,7 @@
         }
 
         function fetchFact() {
-            fetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en')
+            cachedFetch('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en', 5)
                 .then(function(r) { return r.json(); })
                 .then(function(d) {
                     var el = document.getElementById('yd-fact');
@@ -887,6 +978,102 @@
             if (label) label.textContent = code + ' — ' + (labels[code] || 'Unknown');
         }
 
+        // ---- Wikipedia Random Article ----
+        function fetchWiki() {
+            cachedFetch('https://en.wikipedia.org/api/rest_v1/page/random/summary', 10)
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    var el = document.getElementById('yd-wiki');
+                    if (!el) return;
+                    var thumb = d.thumbnail ? '<img src="' + d.thumbnail.source + '" alt="" style="width: 60px; height: 60px; object-fit: cover; border-radius: var(--radius); float: right; margin-left: var(--space-sm);">' : '';
+                    el.innerHTML = thumb +
+                        '<div style="font-weight: 700; margin-bottom: 4px;">' + d.title + '</div>' +
+                        '<div style="font-size: var(--text-xs); line-height: 1.5; color: var(--muted);">' + (d.extract || '').substring(0, 150) + '...</div>' +
+                        '<a href="' + d.content_urls.desktop.page + '" target="_blank" rel="noopener" style="font-size: var(--text-xs); margin-top: var(--space-xs); display: inline-block;">Read on Wikipedia</a>';
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-wiki');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Wikipedia unavailable</p>';
+                });
+        }
+
+        // ---- REST Countries ----
+        function fetchCountry() {
+            // Chains off locationPromise for country name (avoids extra IP lookup)
+            if (!locationPromise) return;
+            locationPromise.then(function(loc) {
+                if (!loc || !loc.country) {
+                    var el = document.getElementById('yd-country-info');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Country data unavailable</p>';
+                    return;
+                }
+                cachedFetch('https://restcountries.com/v3.1/name/' + encodeURIComponent(loc.country) + '?fields=name,capital,population,region,subregion,languages,currencies,flag', 1440)
+                    .then(function(r) { return r.json(); })
+                    .then(function(data) {
+                        var c = data[0];
+                        if (!c) throw new Error('Not found');
+                        var langs = c.languages ? Object.values(c.languages).join(', ') : 'Unknown';
+                        var curr = c.currencies ? Object.values(c.currencies).map(function(v) { return v.name + ' (' + v.symbol + ')'; }).join(', ') : 'Unknown';
+                        var el = document.getElementById('yd-country-info');
+                        if (el) el.innerHTML =
+                            '<div style="font-size: var(--text-2xl); float: right;">' + (c.flag || '') + '</div>' +
+                            '<div><span style="color: var(--burnt-orange);">Country:</span> ' + c.name.common + '</div>' +
+                            '<div><span style="color: var(--burnt-orange);">Capital:</span> ' + (c.capital ? c.capital[0] : 'N/A') + '</div>' +
+                            '<div><span style="color: var(--burnt-orange);">Region:</span> ' + c.region + (c.subregion ? ' / ' + c.subregion : '') + '</div>' +
+                            '<div><span style="color: var(--burnt-orange);">Population:</span> ' + (c.population ? c.population.toLocaleString() : 'N/A') + '</div>' +
+                            '<div style="font-size: var(--text-xs); color: var(--muted); margin-top: 4px;">Languages: ' + langs + '</div>' +
+                            '<div style="font-size: var(--text-xs); color: var(--muted);">Currency: ' + curr + '</div>';
+                    })
+                    .catch(function() {
+                        var el = document.getElementById('yd-country-info');
+                        if (el) el.innerHTML = '<p style="color: var(--muted);">Country data unavailable</p>';
+                    });
+            });
+        }
+
+        // ---- Open Library ----
+        function fetchBook() {
+            var subjects = ['problem_solving', 'critical_thinking', 'systems_thinking', 'decision_making', 'logic'];
+            var subject = subjects[Math.floor(Math.random() * subjects.length)];
+            cachedFetch('https://openlibrary.org/subjects/' + subject + '.json?limit=10&offset=' + Math.floor(Math.random() * 20), 60)
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    if (!d.works || !d.works.length) throw new Error('No books');
+                    var book = d.works[Math.floor(Math.random() * d.works.length)];
+                    var cover = book.cover_id ? 'https://covers.openlibrary.org/b/id/' + book.cover_id + '-S.jpg' : '';
+                    var el = document.getElementById('yd-book');
+                    if (el) el.innerHTML =
+                        (cover ? '<img src="' + cover + '" alt="" style="width: 40px; float: right; margin-left: var(--space-sm); border-radius: 2px; border: 1px solid var(--line);">' : '') +
+                        '<div style="font-weight: 700; margin-bottom: 4px;">' + book.title + '</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted);">by ' + (book.authors ? book.authors.map(function(a) { return a.name; }).join(', ') : 'Unknown') + '</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted); margin-top: 4px;">Subject: ' + subject.replace(/_/g, ' ') + '</div>' +
+                        '<a href="https://openlibrary.org' + book.key + '" target="_blank" rel="noopener" style="font-size: var(--text-xs); margin-top: var(--space-xs); display: inline-block;">View on Open Library</a>';
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-book');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Book data unavailable</p>';
+                });
+        }
+
+        // ---- Bitcoin Price (CoinDesk) ----
+        function fetchBitcoin() {
+            cachedFetch('https://api.coindesk.com/v1/bpi/currentprice.json', 5)
+                .then(function(r) { return r.json(); })
+                .then(function(d) {
+                    var usd = d.bpi.USD;
+                    var el = document.getElementById('yd-btc');
+                    if (el) el.innerHTML =
+                        '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">' + usd.rate + '</div>' +
+                        '<div style="color: var(--muted);">' + usd.description + '</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted); margin-top: 4px;">Updated: ' + d.time.updated + '</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted);">Powered by <a href="https://www.coindesk.com/price/bitcoin" target="_blank" rel="noopener">CoinDesk</a></div>';
+                })
+                .catch(function() {
+                    var el = document.getElementById('yd-btc');
+                    if (el) el.innerHTML = '<p style="color: var(--muted);">Price unavailable</p>';
+                });
+        }
+
         // ---- Run All ----
         ready(function() {
             scanBrowser();
@@ -904,6 +1091,10 @@
             fetchISS();
             fetchFact();
             setupHttpCat();
+            fetchWiki();
+            fetchCountry();
+            fetchBook();
+            fetchBitcoin();
         });
     })();
     </script>

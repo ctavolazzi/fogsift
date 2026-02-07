@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T11:26:48.096Z",
+  "timestamp": "2026-02-07T11:51:46.470Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -422,7 +422,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "52 broken links out of 3187",
+          "test": "55 broken links out of 3190",
           "status": "fail",
           "detail": "wiki/case-studies/communication-breakdown.html → /wiki/field-notes/001-map-territory.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/005-tribal-knowledge.html; wiki/case-studies/manufacturing-throughput.html → /wiki/field-notes/004-bottlenecks.html; wiki/concepts/mental-models.html → /wiki/concepts/second-order-effects.html; wiki/concepts/mental-models.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/mental-models.html → /wiki/frameworks/feedback-loops.html; wiki/concepts/root-cause.html → /wiki/field-notes/001-map-territory.html; wiki/concepts/systems-thinking.html → /wiki/frameworks/feedback-loops.html; wiki/diagnostic-process.html → /wiki/frameworks/trace-protocol.html; wiki/field-notes/001-map-territory.html → /wiki/concepts/root-cause.html"
         }
@@ -460,7 +460,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 186.1KB",
+          "test": "Index size: 186.6KB",
           "status": "pass",
           "detail": ""
         }
@@ -473,7 +473,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 16.11MB",
+          "test": "Total dist/ size: 16.12MB",
           "status": "pass",
           "detail": ""
         },
@@ -549,7 +549,7 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 60",
+          "test": "Performance: 77",
           "status": "warn",
           "detail": ""
         },
@@ -571,7 +571,7 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":60,\"accessibility\":85,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":77,\"accessibility\":85,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,
