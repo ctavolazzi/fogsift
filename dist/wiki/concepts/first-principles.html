@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Principles Thinking | Fogsift Wiki</title>
+    <meta name="description" content="First principles thinking is the practice of breaking a problem down to its most fundamental truths and reasoning up from there, rather than reasoning by analog">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f5f0e6">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/first-principles.html">
+
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="First Principles Thinking | Fogsift Wiki">
+    <meta property="og:description" content="First principles thinking is the practice of breaking a problem down to its most fundamental truths and reasoning up from there, rather than reasoning by analog">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/first-principles.html">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="../../favicon.png">
+
+    <script src="../../theme-init.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../styles.css" id="main-styles">
+</head>
+<body class="wiki-body wiki-page">
+
+    <div id="toast-container"></div>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="../../index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="../../about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="../../offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="../../queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="../../wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="../../portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="../../faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
+        <a href="../../contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper">
+        <div class="main-nav">
+            <a href="../../index.html" class="brand" aria-label="Fogsift home">
+                <img src="../../assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="../../about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="../../offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="../../queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="../../wiki/index.html" class="menu-link" aria-current="page">WIKI</a></div>
+                <div class="menu-item"><a href="../../portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="../../faq.html" class="menu-link">FAQ</a></div>
+                <div class="menu-item"><a href="../../contact.html" class="menu-link">CONTACT</a></div>
+            </nav>
+            <div class="nav-controls">
+                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
+                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="aurora" role="option" onclick="ThemePicker.select('aurora')">
+                            <span class="theme-option-icon">🌌</span>
+                            <span class="theme-option-label">Aurora</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                    <span class="copy-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                </button>
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-container">
+        <!-- Breadcrumb -->
+        <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
+            <ol class="wiki-breadcrumb__list">
+                <li class="wiki-breadcrumb__item"><a href="../../index.html" class="wiki-breadcrumb__link">FOGSIFT</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">FIRST PRINCIPLES</span></li>
+            </ol>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside id="wiki-sidebar" class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
+            <button class="wiki-sidebar__toggle" aria-expanded="false" aria-controls="wiki-sidebar-nav" onclick="WikiNav.toggle()">
+                <span>Navigation</span>
+                <span class="wiki-sidebar__toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="wiki-sidebar-nav" class="wiki-sidebar__nav">
+                <a href="../index.html" class="wiki-sidebar__home">
+                    <span aria-hidden="true">&larr;</span> Wiki Home
+                </a>
+                <div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg></span>Documentation</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../how-we-work.html">How We Work</a></li>
+    <li><a href="../diagnostic-process.html">The Diagnostic Process</a></li>
+    <li><a href="../faq.html">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"></path></svg></span>Concepts</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
+    <li><a href="../concepts/mental-models.html">Mental Models</a></li>
+    <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
+    <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
+    <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
+    <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></span>Frameworks</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
+    <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
+    <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
+    <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>Field Notes</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
+    <li><a href="../field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
+    <li><a href="../field-notes/003-entropy.html">Entropy</a></li>
+    <li><a href="../field-notes/004-bottlenecks.html">Finding the Bottleneck</a></li>
+    <li><a href="../field-notes/005-tribal-knowledge.html">Tribal Knowledge</a></li>
+    <li><a href="../field-notes/006-incentive-alignment.html">Incentive Alignment</a></li>
+    <li><a href="../field-notes/007-documentation-debt.html">Documentation Debt</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>Case Studies</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../case-studies/manufacturing-throughput.html">Manufacturing Throughput Crisis</a></li>
+    <li><a href="../case-studies/communication-breakdown.html">The Communication Breakdown</a></li>
+    <li><a href="../case-studies/the-invisible-process.html">The Invisible Process</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></span>Tools & Techniques</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../tools/five-whys.html">The Five Whys</a></li>
+    <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
+    <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
+    <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
+  </ul>
+</div>
+
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="wiki-main" role="main">
+            <article class="wiki-article">
+                <h1>First Principles Thinking</h1>
+<p>First principles thinking is the practice of breaking a problem down to its most fundamental truths and reasoning up from there, rather than reasoning by analogy or convention.</p>
+<h2>The Principle</h2>
+<blockquote>
+<p>&quot;I think it&#39;s important to reason from first principles rather than by analogy. The normal way we conduct our lives is we reason by analogy. We are doing this because it&#39;s like something else that was done. But with first principles, you boil things down to the most fundamental truths and then reason up from there.&quot; — Elon Musk</p>
+</blockquote>
+<p>Most thinking is derivative. We copy patterns we&#39;ve seen work elsewhere. First principles thinking asks: <em>what do we actually know to be true?</em></p>
+<h2>Why It Matters</h2>
+<p>Reasoning by analogy is efficient. It&#39;s also the reason every new software startup builds the same product with different branding. First principles force you to question assumptions that everyone else treats as fixed.</p>
+<p><strong>Analogy reasoning:</strong> &quot;Other companies in our space charge per seat, so we should too.&quot;
+<strong>First principles:</strong> &quot;What value do we create? How does that value scale? What pricing model aligns cost with value delivered?&quot;</p>
+<p>The first approach is fast. The second is how you find opportunities everyone else missed.</p>
+<h2>The Method</h2>
+<h3>1. Identify Your Assumptions</h3>
+<p>What are you taking for granted? What &quot;rules&quot; are you following that might not be rules at all?</p>
+<ul>
+<li>&quot;We need an office to do good work&quot;</li>
+<li>&quot;Enterprise sales require a 6-month cycle&quot;</li>
+<li>&quot;Users won&#39;t pay for this feature&quot;</li>
+</ul>
+<h3>2. Break Down to Fundamentals</h3>
+<p>For each assumption, ask: <em>Is this a law of physics, or a convention?</em></p>
+<p><strong>Laws of physics</strong> can&#39;t be broken:</p>
+<ul>
+<li>You can&#39;t transmit data faster than light</li>
+<li>You can&#39;t create energy from nothing</li>
+<li>Human attention is finite</li>
+</ul>
+<p><strong>Conventions</strong> can be broken:</p>
+<ul>
+<li>&quot;Software is sold through salespeople&quot;</li>
+<li>&quot;Reports must be delivered as PDFs&quot;</li>
+<li>&quot;Meetings are 30 or 60 minutes&quot;</li>
+</ul>
+<h3>3. Rebuild From the Ground Up</h3>
+<p>Starting from only what you know to be true, construct the best solution. Ignore what exists. Ignore what competitors do. What would you build if you were starting from scratch?</p>
+<h2>Example: The $20 Problem Session</h2>
+<p>Traditional consulting says: &quot;Bill by the hour. Minimum engagement: $10,000.&quot;</p>
+<p>First principles ask:</p>
+<ul>
+<li>What does the client actually need? → <em>Clarity on a specific problem</em></li>
+<li>How long does initial clarity take? → <em>Often under an hour</em></li>
+<li>What&#39;s the barrier to getting help? → <em>Cost and commitment</em></li>
+<li>What&#39;s the minimum viable engagement? → <em>One focused session</em></li>
+</ul>
+<p>Result: A $20 problem submission that delivers a PDF and video response. Not because other consultants do it. Because the fundamentals say it works.</p>
+<h2>Common Traps</h2>
+<h3>Mistaking Conventions for Laws</h3>
+<p>&quot;You can&#39;t build a profitable business at that price point&quot; is a convention, not a law. The math either works or it doesn&#39;t. Check the math.</p>
+<h3>Going Too Deep</h3>
+<p>Not every problem requires first principles. If you&#39;re deciding where to eat lunch, analogy reasoning is fine. Save first principles for decisions where the conventional approach is failing or where the stakes justify the effort.</p>
+<h3>Ignoring Implementation Reality</h3>
+<p>First principles give you the theoretical optimum. Reality includes budgets, timelines, politics, and existing systems. The best answer is the one you can actually execute.</p>
+<h3>Arrogance</h3>
+<p>&quot;I figured this out from first principles&quot; sometimes means &quot;I ignored 50 years of industry learning.&quot; Other people&#39;s solutions exist for reasons. Understand those reasons before dismissing them.</p>
+<h2>When to Use This</h2>
+<p>First principles thinking is expensive. It requires deep thought, domain knowledge, and willingness to be wrong. Use it when:</p>
+<ul>
+<li>The conventional approach is clearly failing</li>
+<li>You&#39;re entering a new market or building something novel</li>
+<li>The cost of being wrong is high enough to justify the investment</li>
+<li>You suspect &quot;that&#39;s how it&#39;s always been done&quot; is the real answer to &quot;why?&quot;</li>
+</ul>
+<hr>
+<p><em>See also: <a href="/wiki/concepts/mental-models.html">Mental Models</a> | <a href="/wiki/concepts/root-cause.html">Root Cause Analysis</a> | <a href="/wiki/frameworks/decision-matrix.html">Decision Matrix</a></em></p>
+
+            </article>
+
+            <footer class="wiki-article-footer">
+                <div class="wiki-article-footer__meta">
+                    <span>Updated: 2026-02-07</span>
+                </div>
+                <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
+                    <a href="../index.html">
+                        <span aria-hidden="true">&larr;</span> Back to Wiki
+                    </a>
+                </nav>
+            </footer>
+
+            <div class="jd-sitemap">
+  <div class="jd-sitemap-header">
+    <h3 class="jd-sitemap-title">Sitemap</h3>
+  </div>
+  <div class="jd-sitemap-grid">
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">10-19</span>
+        <h4 class="jd-category-name">Documentation</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../getting-started.html" class="jd-page-link">
+            <span class="jd-number">10.01</span>
+            <span class="jd-page-title">Getting Started</span>
+          </a>
+        </li>
+        <li>
+          <a href="../how-we-work.html" class="jd-page-link">
+            <span class="jd-number">10.02</span>
+            <span class="jd-page-title">How We Work</span>
+          </a>
+        </li>
+        <li>
+          <a href="../diagnostic-process.html" class="jd-page-link">
+            <span class="jd-number">10.03</span>
+            <span class="jd-page-title">The Diagnostic Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="../faq.html" class="jd-page-link">
+            <span class="jd-number">10.04</span>
+            <span class="jd-page-title">Frequently Asked Questions</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">20-29</span>
+        <h4 class="jd-category-name">Concepts</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../concepts/root-cause.html" class="jd-page-link">
+            <span class="jd-number">20.01</span>
+            <span class="jd-page-title">Root Cause Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/mental-models.html" class="jd-page-link">
+            <span class="jd-number">20.02</span>
+            <span class="jd-page-title">Mental Models</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/systems-thinking.html" class="jd-page-link">
+            <span class="jd-number">20.03</span>
+            <span class="jd-page-title">Systems Thinking</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/cognitive-biases.html" class="jd-page-link">
+            <span class="jd-number">20.04</span>
+            <span class="jd-page-title">Cognitive Biases</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/second-order-effects.html" class="jd-page-link">
+            <span class="jd-number">20.05</span>
+            <span class="jd-page-title">Second-Order Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/signal-vs-noise.html" class="jd-page-link">
+            <span class="jd-number">20.06</span>
+            <span class="jd-page-title">Signal vs Noise</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">30-39</span>
+        <h4 class="jd-category-name">Frameworks</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../frameworks/trace-protocol.html" class="jd-page-link">
+            <span class="jd-number">30.01</span>
+            <span class="jd-page-title">The TRACE Protocol</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/decision-matrix.html" class="jd-page-link">
+            <span class="jd-number">30.02</span>
+            <span class="jd-page-title">Decision Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/constraint-mapping.html" class="jd-page-link">
+            <span class="jd-number">30.03</span>
+            <span class="jd-page-title">Constraint Mapping</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/feedback-loops.html" class="jd-page-link">
+            <span class="jd-number">30.04</span>
+            <span class="jd-page-title">Feedback Loop Analysis</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">40-49</span>
+        <h4 class="jd-category-name">Field Notes</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../field-notes/001-map-territory.html" class="jd-page-link">
+            <span class="jd-number">40.01</span>
+            <span class="jd-page-title">The Map Is Not The Territory</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/002-precision-accuracy.html" class="jd-page-link">
+            <span class="jd-number">40.02</span>
+            <span class="jd-page-title">Precision vs Accuracy</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/003-entropy.html" class="jd-page-link">
+            <span class="jd-number">40.03</span>
+            <span class="jd-page-title">Entropy</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/004-bottlenecks.html" class="jd-page-link">
+            <span class="jd-number">40.04</span>
+            <span class="jd-page-title">Finding the Bottleneck</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/005-tribal-knowledge.html" class="jd-page-link">
+            <span class="jd-number">40.05</span>
+            <span class="jd-page-title">Tribal Knowledge</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/006-incentive-alignment.html" class="jd-page-link">
+            <span class="jd-number">40.06</span>
+            <span class="jd-page-title">Incentive Alignment</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/007-documentation-debt.html" class="jd-page-link">
+            <span class="jd-number">40.07</span>
+            <span class="jd-page-title">Documentation Debt</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">50-59</span>
+        <h4 class="jd-category-name">Case Studies</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../case-studies/manufacturing-throughput.html" class="jd-page-link">
+            <span class="jd-number">50.01</span>
+            <span class="jd-page-title">Manufacturing Throughput Crisis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/communication-breakdown.html" class="jd-page-link">
+            <span class="jd-number">50.02</span>
+            <span class="jd-page-title">The Communication Breakdown</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/the-invisible-process.html" class="jd-page-link">
+            <span class="jd-number">50.03</span>
+            <span class="jd-page-title">The Invisible Process</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">60-69</span>
+        <h4 class="jd-category-name">Tools & Techniques</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../tools/five-whys.html" class="jd-page-link">
+            <span class="jd-number">60.01</span>
+            <span class="jd-page-title">The Five Whys</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/fishbone-diagram.html" class="jd-page-link">
+            <span class="jd-number">60.02</span>
+            <span class="jd-page-title">Fishbone Diagrams</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/pareto-analysis.html" class="jd-page-link">
+            <span class="jd-number">60.03</span>
+            <span class="jd-page-title">Pareto Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/process-mapping.html" class="jd-page-link">
+            <span class="jd-number">60.04</span>
+            <span class="jd-page-title">Process Mapping</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="jd-sitemap-footer">
+    <p class="jd-sitemap-note">Organized using the <a href="https://johnnydecimal.com/" target="_blank" rel="noopener">Johnny Decimal</a> system</p>
+  </div>
+</div>
+
+        </main>
+    </div>
+
+    <script src="../../app.js" defer></script>
+
+    <script>
+        const WikiNav = {
+            sidebar: null,
+            toggleBtn: null,
+            navPanel: null,
+
+            init() {
+                this.sidebar = document.getElementById('wiki-sidebar');
+                this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
+                this.navPanel = document.getElementById('wiki-sidebar-nav');
+                this.highlightActivePage();
+
+                if (this.sidebar) {
+                    this.sidebar.addEventListener('click', (e) => {
+                        if (e.target.closest('.wiki-nav-list a')) {
+                            setTimeout(() => this.close(), 150);
+                        }
+                    });
+                }
+            },
+
+            toggle() {
+                if (!this.toggleBtn) {
+                    this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
+                    this.navPanel = document.getElementById('wiki-sidebar-nav');
+                }
+                if (!this.sidebar) this.sidebar = document.getElementById('wiki-sidebar');
+                if (!this.toggleBtn) return;
+
+                const expanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
+                this.toggleBtn.setAttribute('aria-expanded', String(!expanded));
+                this.sidebar.classList.toggle('wiki-sidebar--open');
+
+                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
+                if (icon) icon.textContent = expanded ? '+' : '\u2212';
+            },
+
+            close() {
+                if (!this.sidebar || !this.toggleBtn) return;
+                this.toggleBtn.setAttribute('aria-expanded', 'false');
+                this.sidebar.classList.remove('wiki-sidebar--open');
+                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
+                if (icon) icon.textContent = '+';
+            },
+
+            highlightActivePage() {
+                const currentPage = window.location.pathname.split('/').pop();
+                document.querySelectorAll('.wiki-nav-list a').forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href && (href === currentPage || href.endsWith(currentPage))) {
+                        link.setAttribute('aria-current', 'page');
+                        link.closest('li')?.classList.add('active');
+                    }
+                });
+            }
+        };
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => WikiNav.init());
+        } else {
+            WikiNav.init();
+        }
+    </script>
+</body>
+</html>

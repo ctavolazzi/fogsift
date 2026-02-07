@@ -313,13 +313,15 @@ function testLinkIntegrity() {
         let match;
         while ((match = linkRegex.exec(html)) !== null) {
             const ref = match[1];
-            // Skip external, data, mailto, tel, javascript
+            // Skip external, data, mailto, tel, javascript, and JS template expressions
             if (!ref || ref.startsWith('http') || ref.startsWith('data:') ||
                 ref.startsWith('mailto:') || ref.startsWith('tel:') ||
-                ref.startsWith('javascript:') || ref.startsWith('//')) continue;
+                ref.startsWith('javascript:') || ref.startsWith('//') ||
+                ref.includes("' +") || ref.includes("'+")) continue;
 
             totalLinks++;
-            const resolved = path.resolve(relDir, ref);
+            // Absolute paths (starting with /) resolve relative to dist/ root
+            const resolved = ref.startsWith('/') ? path.join(DIST, ref) : path.resolve(relDir, ref);
             if (!fs.existsSync(resolved)) {
                 brokenLinks++;
                 const relFile = path.relative(DIST, file);
