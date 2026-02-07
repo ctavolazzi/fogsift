@@ -44,6 +44,8 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     padding: var(--space-sm) var(--space-md);
+    max-width: 1400px;
+    margin: var(--space-sm) auto;
 }
 
 .wiki-breadcrumb__list {

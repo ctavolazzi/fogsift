@@ -66,17 +66,15 @@
 
     {{NAV_HEADER}}
 
-    <div class="wiki-breadcrumb-wrapper">
-        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
-            <ol class="crumb-list">
-                <li class="crumb-item"><a href="{{ROOT_PATH}}" class="crumb-link">FOGSIFT</a></li>
-                <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><a href="{{WIKI_INDEX_PATH}}" class="crumb-link">WIKI</a></li>
-                <li class="crumb-item crumb-separator">/</li>
-                <li class="crumb-item"><span class="crumb-current">{{BREADCRUMB}}</span></li>
-            </ol>
-        </nav>
-    </div>
+    <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
+        <ol class="wiki-breadcrumb__list">
+            <li class="wiki-breadcrumb__item"><a href="{{ROOT_PATH}}" class="wiki-breadcrumb__link">FOGSIFT</a></li>
+            <li class="wiki-breadcrumb__item wiki-breadcrumb__separator">/</li>
+            <li class="wiki-breadcrumb__item"><a href="{{WIKI_INDEX_PATH}}" class="wiki-breadcrumb__link">WIKI</a></li>
+            <li class="wiki-breadcrumb__item wiki-breadcrumb__separator">/</li>
+            <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current">{{BREADCRUMB}}</span></li>
+        </ol>
+    </nav>
 
     <div class="wiki-layout">
         <!-- Mobile Sidebar Toggle -->
