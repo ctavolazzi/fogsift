@@ -372,25 +372,71 @@ function processHtml() {
     // Inject version number where {{VERSION}} placeholder exists
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
-    // Inject wiki stats and daily data for homepage section
+    // Inject wiki content cards for homepage section
     const wikiIndexPath2 = path.join(WIKI_SRC, 'index.json');
     if (fs.existsSync(wikiIndexPath2)) {
         const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath2, 'utf8'));
         const totalPages = wikiIndex.categories.reduce((sum, cat) => sum + cat.pages.length, 0);
-        const catNames = wikiIndex.categories.map(c => c.title.toLowerCase()).join(', ');
-        const statsLine = `${totalPages} articles across ${catNames}.`;
+        const statsLine = `${totalPages} free articles. Concepts, frameworks, tools, field notes, and case studies.`;
         html = html.replace(/\{\{WIKI_STATS\}\}/g, statsLine);
 
-        const dailyEntries = [];
+        // Build all entries with excerpts from markdown source
+        const allEntries = [];
         for (const cat of wikiIndex.categories) {
+            if (cat.id === 'docs') continue; // skip meta docs
             for (const page of cat.pages) {
-                dailyEntries.push({ slug: page.slug, title: page.title, category: cat.title });
+                const mdPath = path.join(WIKI_SRC, page.slug + '.md');
+                if (!fs.existsSync(mdPath)) continue;
+                const md = fs.readFileSync(mdPath, 'utf8');
+                // Extract first substantive paragraph (skip title, date, hr, empty lines)
+                const lines = md.split('\n');
+                let excerpt = '';
+                for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (!trimmed || trimmed.startsWith('#') || trimmed.startsWith('---') ||
+                        trimmed.startsWith('**Date:') || trimmed.startsWith('**Sector:') ||
+                        trimmed.startsWith('**Read Time:') || trimmed.startsWith('>')) continue;
+                    excerpt = trimmed.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // strip md links
+                                     .replace(/\*\*([^*]+)\*\*/g, '$1')       // strip bold
+                                     .replace(/\*([^*]+)\*/g, '$1');           // strip italic
+                    if (excerpt.length > 20) break;
+                }
+                if (excerpt.length > 140) excerpt = excerpt.substring(0, 137) + '...';
+                allEntries.push({
+                    slug: page.slug,
+                    title: page.title,
+                    category: cat.title,
+                    excerpt: excerpt
+                });
             }
         }
-        html = html.replace(/\{\{WIKI_DAILY_DATA\}\}/g, JSON.stringify(dailyEntries));
+
+        // Pick 3 entries: one concept/framework, one tool, one field-note/case-study
+        // Deterministic by day-of-year so they rotate daily
+        const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0)) / 86400000);
+        const buckets = {
+            thinking: allEntries.filter(e => e.category === 'Concepts' || e.category === 'Frameworks'),
+            doing: allEntries.filter(e => e.category === 'Tools & Techniques'),
+            stories: allEntries.filter(e => e.category === 'Field Notes' || e.category === 'Case Studies')
+        };
+        const picks = [
+            buckets.thinking[dayOfYear % buckets.thinking.length],
+            buckets.doing[dayOfYear % buckets.doing.length],
+            buckets.stories[dayOfYear % buckets.stories.length]
+        ].filter(Boolean);
+
+        const cardsHtml = picks.map(entry =>
+            `<a href="wiki/${entry.slug}.html" class="wiki-card-link">
+                    <span class="wiki-card-cat">${entry.category}</span>
+                    <span class="wiki-card-title">${entry.title}</span>
+                    <span class="wiki-card-excerpt">${entry.excerpt}</span>
+                    <span class="wiki-card-read">Read &rarr;</span>
+                </a>`
+        ).join('\n                ');
+        html = html.replace(/\{\{WIKI_CARDS\}\}/g, cardsHtml);
     } else {
         html = html.replace(/\{\{WIKI_STATS\}\}/g, 'Explore the knowledge base.');
-        html = html.replace(/\{\{WIKI_DAILY_DATA\}\}/g, '[]');
+        html = html.replace(/\{\{WIKI_CARDS\}\}/g, '');
     }
 
     // Update lastmod in any inline schema

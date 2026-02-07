@@ -518,19 +518,20 @@
 
         <!-- ========================================
              SECTION 4.75: FROM THE WIKI
-             Daily rotating concept + stats + quote
-             Build-time generated, zero API calls
+             3-card content grid with real excerpts
+             Build-time generated from markdown source
              ======================================== -->
-        <section class="section" aria-labelledby="wiki-teaser-heading" style="text-align: center;">
-            <h2 id="wiki-teaser-heading" class="section-label">FROM THE WIKI</h2>
-            <p style="color: var(--muted); margin-bottom: var(--space-lg);">{{WIKI_STATS}}</p>
+        <section class="section" aria-labelledby="wiki-teaser-heading">
+            <h2 id="wiki-teaser-heading" class="section-label" style="text-align: center;">GO DEEPER</h2>
+            <p style="color: var(--muted); text-align: center; margin-bottom: var(--space-lg);">{{WIKI_STATS}}</p>
 
-            <div class="wiki-daily" id="wiki-daily">
-                <div class="wiki-daily-quote" id="wiki-daily-quote"></div>
-                <div class="wiki-daily-pick" id="wiki-daily-pick"></div>
+            <div class="wiki-cards" id="wiki-cards">
+                {{WIKI_CARDS}}
             </div>
 
-            <a href="wiki/index.html" class="cta-button cta-secondary" style="margin-top: var(--space-lg);">Explore the Wiki</a>
+            <p style="text-align: center; margin-top: var(--space-lg);">
+                <a href="wiki/index.html" class="cta-button cta-secondary">Browse All Articles</a>
+            </p>
         </section>
 
         <!-- Section Divider -->
@@ -646,82 +647,6 @@
         });
     })();
     </script>
-    <script>
-    /* Daily wiki pick + curated quote — zero API calls */
-    (function() {
-        var quotes = [
-            { text: "For every complex problem, there is an answer that is clear, simple, and wrong.", author: "H.L. Mencken" },
-            { text: "We cannot solve our problems with the same thinking we used when we created them.", author: "Albert Einstein" },
-            { text: "The measure of intelligence is the ability to change.", author: "Albert Einstein" },
-            { text: "If I had an hour to solve a problem, I'd spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.", author: "Albert Einstein" },
-            { text: "It is not the strongest of the species that survives, nor the most intelligent, but the one most responsive to change.", author: "Charles Darwin" },
-            { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
-            { text: "Simplicity is the ultimate sophistication.", author: "Leonardo da Vinci" },
-            { text: "The best time to plant a tree was 20 years ago. The second best time is now.", author: "Chinese Proverb" },
-            { text: "What gets measured gets managed.", author: "Peter Drucker" },
-            { text: "Plans are worthless, but planning is everything.", author: "Dwight D. Eisenhower" },
-            { text: "The bottleneck is always at the top of the bottle.", author: "Peter Drucker" },
-            { text: "You can't manage what you can't measure, and you can't measure what you don't define.", author: "W. Edwards Deming" },
-            { text: "Every system is perfectly designed to get the results it gets.", author: "W. Edwards Deming" },
-            { text: "The significant problems we face cannot be solved at the same level of thinking we were at when we created them.", author: "Albert Einstein" },
-            { text: "In theory, theory and practice are the same. In practice, they are not.", author: "Yogi Berra" },
-            { text: "The map is not the territory.", author: "Alfred Korzybski" },
-            { text: "Give me six hours to chop down a tree and I will spend the first four sharpening the axe.", author: "Abraham Lincoln" },
-            { text: "There is nothing so useless as doing efficiently that which should not be done at all.", author: "Peter Drucker" },
-            { text: "To understand is to perceive patterns.", author: "Isaiah Berlin" },
-            { text: "The first step in solving a problem is recognizing there is one.", author: "Aaron Sorkin" },
-            { text: "Not everything that counts can be counted, and not everything that can be counted counts.", author: "William Bruce Cameron" },
-            { text: "The greatest enemy of knowledge is not ignorance, it is the illusion of knowledge.", author: "Daniel J. Boorstin" },
-            { text: "Efficiency is doing things right; effectiveness is doing the right things.", author: "Peter Drucker" },
-            { text: "A problem well stated is a problem half solved.", author: "Charles Kettering" },
-            { text: "If you can't explain it simply, you don't understand it well enough.", author: "Richard Feynman" },
-            { text: "The more you know, the more you realize you don't know.", author: "Aristotle" },
-            { text: "Compound interest is the eighth wonder of the world.", author: "Albert Einstein (attributed)" },
-            { text: "In preparing for battle I have always found that plans are useless, but planning is indispensable.", author: "Dwight D. Eisenhower" },
-            { text: "Culture eats strategy for breakfast.", author: "Peter Drucker" },
-            { text: "The obstacle is the way.", author: "Marcus Aurelius" }
-        ];
-
-        var wikiEntries = {{WIKI_DAILY_DATA}};
-
-        function dayOfYear() {
-            var now = new Date();
-            var start = new Date(now.getFullYear(), 0, 0);
-            return Math.floor((now - start) / 86400000);
-        }
-
-        function ready(fn) {
-            if (document.readyState !== 'loading') fn();
-            else document.addEventListener('DOMContentLoaded', fn);
-        }
-
-        ready(function() {
-            var day = dayOfYear();
-
-            // Daily quote
-            var q = quotes[day % quotes.length];
-            var qEl = document.getElementById('wiki-daily-quote');
-            if (qEl) {
-                qEl.innerHTML = '<blockquote style="font-style: italic; font-size: var(--text-lg); max-width: 55ch; margin: 0 auto var(--space-lg); line-height: 1.6; color: var(--ink);">' +
-                    '\u201C' + q.text + '\u201D' +
-                    '<footer style="font-style: normal; font-size: var(--text-sm); color: var(--muted); margin-top: var(--space-xs);">\u2014 ' + q.author + '</footer>' +
-                    '</blockquote>';
-            }
-
-            // Daily wiki pick
-            if (wikiEntries.length > 0) {
-                var entry = wikiEntries[day % wikiEntries.length];
-                var pEl = document.getElementById('wiki-daily-pick');
-                if (pEl) {
-                    pEl.innerHTML = '<a href="wiki/' + entry.slug + '.html" class="wiki-daily-card">' +
-                        '<span class="wiki-daily-cat">' + entry.category + '</span>' +
-                        '<span class="wiki-daily-title">' + entry.title + '</span>' +
-                        '<span class="wiki-daily-arrow">&rarr;</span>' +
-                        '</a>';
-                }
-            }
-        });
-    })();
-    </script>
+    <!-- wiki cards are build-time rendered, no JS needed -->
 </body>
 </html>
