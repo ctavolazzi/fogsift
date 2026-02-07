@@ -18,7 +18,7 @@ const Theme = {
     EVENT_NAME: 'themechange',
 
     // Available themes - order matters for cycle()
-    THEMES: ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean'],
+    THEMES: ['light', 'dark', 'industrial-punchcard', 'matrix', 'sky', 'synthwave', 'pipboy', 'rivendell', 'camo', 'barbie', 'ocean', 'aurora'],
 
     // Human-readable theme names for UI
     THEME_LABELS: {
@@ -33,6 +33,7 @@ const Theme = {
         'camo': 'Camo',
         'barbie': 'Barbie',
         'ocean': 'Ocean',
+        'aurora': 'Aurora',
         'demo': 'Demo'
     },
 

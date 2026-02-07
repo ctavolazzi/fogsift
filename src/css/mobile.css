@@ -490,6 +490,11 @@ pre, code {
         display: none; /* Hide extra bubbles */
     }
 
+    /* === AURORA: Simplify curtains === */
+    [data-theme="aurora"] body::after {
+        display: none; /* Hide secondary aurora layer */
+    }
+
     /* === BARBIE: Simplify sparkles === */
     [data-theme="barbie"] body::before,
     [data-theme="barbie"] body::after {

@@ -56,6 +56,7 @@ const THEME_OPTIONS = [
     { id: 'camo', icon: '🦌', label: 'Camo' },
     { id: 'barbie', icon: '💖', label: 'Barbie' },
     { id: 'ocean', icon: '🌊', label: 'Ocean' },
+    { id: 'aurora', icon: '🌌', label: 'Aurora' },
 ];
 
 // Generate theme picker HTML - single source of truth
@@ -120,6 +121,13 @@ function generateNavHeader(currentPage = '', pathPrefix = '') {
                 ${menuItems}
             </nav>
             <div class="nav-controls">
+                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
+                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
                 ${themePicker}
                 <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
                     <span class="copy-icon" aria-hidden="true">
@@ -242,6 +250,7 @@ const CSS_FILES = [
     'src/css/camo-theme.css',       // Camo military woodland theme
     'src/css/barbie-theme.css',     // Barbie hot pink dream theme
     'src/css/ocean-theme.css',      // Ocean deep sea bioluminescence theme
+    'src/css/aurora-theme.css',     // Aurora borealis northern lights theme
     'src/css/sleep.css',            // Sleep mode animations (easter egg)
     'src/css/wiki.css',             // Wiki page styles
     'src/css/mobile.css',           // Mobile-first overrides - must be last
@@ -259,6 +268,7 @@ const JS_FILES = [
     'src/js/debug.js',    // TKT-x7k9-008: Debug logging
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
     'src/js/monte.js',    // Three card monte hero easter egg
+    'src/js/search.js',   // Client-side search/filter
     // Future features (uncomment when implemented):
     // 'src/js/achievement.js', // Xbox-style achievement notifications
     // 'src/js/queue-widget.js', // Queue status floating widget
@@ -939,6 +949,115 @@ function buildWiki() {
     return pagesBuilt;
 }
 
+// ============================================
+// SEARCH INDEX BUILDER
+// Generates search-index.json for client-side site search
+// ============================================
+
+function stripHtmlTags(html) {
+    return html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+}
+
+function extractSearchContent(html) {
+    // Extract title from <title> tag
+    const titleMatch = html.match(/<title[^>]*>([^<]+)<\/title>/i);
+    const title = titleMatch ? titleMatch[1].replace(/\s*\|.*$/, '').trim() : '';
+
+    // Extract meta description
+    const descMatch = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i);
+    const description = descMatch ? descMatch[1] : '';
+
+    // Extract main content (between <main> tags, skip nav/footer)
+    const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
+    const mainHtml = mainMatch ? mainMatch[1] : '';
+
+    // Extract headings
+    const headings = [];
+    const headingRegex = /<h[1-6][^>]*>([^<]+(?:<[^>]+>[^<]*)*)<\/h[1-6]>/gi;
+    let hMatch;
+    while ((hMatch = headingRegex.exec(mainHtml)) !== null) {
+        headings.push(stripHtmlTags(hMatch[1]));
+    }
+
+    // Get text content from main, strip tags
+    const textContent = stripHtmlTags(mainHtml)
+        .replace(/\{\{[^}]+\}\}/g, '') // Remove template placeholders
+        .substring(0, 500); // Limit content length
+
+    return { title, description, headings, content: textContent };
+}
+
+function buildSearchIndex() {
+    const index = [];
+
+    // Pages to index with their source files
+    const pages = [
+        { file: 'index.html', url: 'index.html', category: 'Home' },
+        { file: 'about.html', url: 'about.html', category: 'About' },
+        { file: 'offers.html', url: 'offers.html', category: 'Offers' },
+        { file: 'queue.html', url: 'queue.html', category: 'Queue' },
+        { file: 'faq.html', url: 'faq.html', category: 'FAQ' },
+        { file: 'portfolio.html', url: 'portfolio.html', category: 'Portfolio' },
+        { file: 'contact.html', url: 'contact.html', category: 'Contact' },
+        { file: 'vision.html', url: 'vision.html', category: 'Vision' },
+        { file: 'terms.html', url: 'terms.html', category: 'Legal' },
+        { file: 'privacy.html', url: 'privacy.html', category: 'Legal' },
+        { file: 'disclaimer.html', url: 'disclaimer.html', category: 'Legal' },
+    ];
+
+    // Index main pages from dist (after they've been built)
+    for (const page of pages) {
+        const filePath = path.join(DIST, page.file);
+        if (!fs.existsSync(filePath)) continue;
+
+        const html = fs.readFileSync(filePath, 'utf8');
+        const { title, description, headings, content } = extractSearchContent(html);
+
+        if (title) {
+            index.push({
+                url: page.url,
+                title,
+                description,
+                headings,
+                content,
+                category: page.category,
+            });
+        }
+    }
+
+    // Index wiki pages
+    const wikiDir = path.join(DIST, 'wiki');
+    if (fs.existsSync(wikiDir)) {
+        const walkWiki = (dir) => {
+            const entries = fs.readdirSync(dir, { withFileTypes: true });
+            for (const entry of entries) {
+                const fullPath = path.join(dir, entry.name);
+                if (entry.isDirectory()) {
+                    walkWiki(fullPath);
+                } else if (entry.name.endsWith('.html')) {
+                    const html = fs.readFileSync(fullPath, 'utf8');
+                    const { title, description, headings, content } = extractSearchContent(html);
+                    const relPath = path.relative(DIST, fullPath);
+                    if (title) {
+                        index.push({
+                            url: relPath,
+                            title,
+                            description,
+                            headings,
+                            content,
+                            category: 'Wiki',
+                        });
+                    }
+                }
+            }
+        };
+        walkWiki(wikiDir);
+    }
+
+    fs.writeFileSync(path.join(DIST, 'search-index.json'), JSON.stringify(index));
+    return index.length;
+}
+
 async function minifyCSS(css) {
     const result = await esbuild.transform(css, {
         loader: 'css',
@@ -1078,6 +1197,11 @@ async function build() {
     console.log('\n🔌 API:');
     const apiFiles = buildAPI();
     console.log(`  ✓ Generated ${apiFiles} API endpoints`);
+
+    // Build search index (must run after all pages are built)
+    console.log('\n🔍 Search Index:');
+    const searchEntries = buildSearchIndex();
+    console.log(`  ✓ Indexed ${searchEntries} pages → dist/search-index.json`);
 
     console.log(`\n✨ Build complete! v${VERSION}`);
     console.log('   Run: npm run dev\n');

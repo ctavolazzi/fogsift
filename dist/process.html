@@ -75,6 +75,13 @@
                 <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
             </nav>
             <div class="nav-controls">
+                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
+                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
                     <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
@@ -134,6 +141,11 @@
                         <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
                             <span class="theme-option-icon">🌊</span>
                             <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="aurora" role="option" onclick="ThemePicker.select('aurora')">
+                            <span class="theme-option-icon">🌌</span>
+                            <span class="theme-option-label">Aurora</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
                         <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">

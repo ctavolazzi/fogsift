@@ -576,6 +576,66 @@
     --radius: 8px;
 }
 
+/* === PALETTE: AURORA BOREALIS === */
+/* Northern lights over arctic night - Ethereal, shimmering, cold beauty */
+[data-theme="aurora"] {
+    --cream: #0a0e27;             /* Arctic night sky */
+    --cream-dark: #060914;        /* Deepest dark */
+    --chocolate: #e0f7fa;         /* Ice-white text */
+    --chocolate-light: #80deea;   /* Softer cyan text */
+    --burnt-orange: #48c9b0;      /* Aurora green - CTA */
+    --rust: #22d3ee;              /* Bright cyan - hover */
+    --earth-mid: #7c3aed;         /* Aurora purple */
+    --earth-dark: #4c1d95;        /* Deep violet */
+
+    /* Semantic mappings */
+    --ink: var(--chocolate);
+    --paper: var(--cream);
+    --canvas: var(--cream-dark);
+    --primary: var(--burnt-orange);
+    --primary-hover: var(--rust);
+    --secondary: var(--chocolate-light);
+    --accent: #a855f7;            /* Violet accent */
+    --accent-light: #c084fc;      /* Light violet */
+    --highlight: #22d3ee;         /* Bright cyan */
+
+    /* Legacy compatibility */
+    --copper: var(--primary);
+    --electric: var(--accent);
+
+    /* Text colors */
+    --muted: #80deea;             /* Cyan for readability */
+    --muted-light: #4dd0e1;       /* Medium cyan */
+    --line: rgba(72, 201, 176, 0.12);
+
+    /* Status colors */
+    --success: #48c9b0;
+    --warning: #fbbf24;
+    --error: #f87171;
+    --info: #22d3ee;
+
+    /* Shadows - ethereal glow */
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --shadow-hard: 0 0 15px rgba(72, 201, 176, 0.2);
+    --shadow-hover: 0 0 25px rgba(72, 201, 176, 0.3);
+    --shadow-active: 0 0 8px rgba(72, 201, 176, 0.3);
+
+    /* Radius - soft, rounded */
+    --radius: 12px;
+    --radius-lg: 20px;
+    --radius-badge: 24px;
+
+    /* Motion - smooth, ethereal */
+    --snap: 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-bounce: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    /* Typography */
+    --font-display: 'Outfit', sans-serif;
+}
+
 /* === THEME TRANSITIONS === */
 /* Smooth color transitions when switching themes */
 :root {
