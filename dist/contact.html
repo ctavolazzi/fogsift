@@ -165,97 +165,152 @@
 
     <main class="frame" id="main-content">
 
-        <!-- Hero CTA -->
-        <section class="section section-contact" aria-labelledby="contact-heading">
-            <h1 id="contact-heading" class="headline" style="font-size: var(--text-2xl); margin-bottom: var(--space-md);">Something eating up your <span class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></span></h1>
-            <p style="margin-bottom: var(--space-lg);">$20 adds you to <a href="queue.html">the queue</a>.</p>
-            <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                Join the Queue ($20)
-            </a>
-            <p style="margin-top: var(--space-md); font-size: var(--text-sm); color: var(--muted);">
-                Or <a href="mailto:info@fogsift.com?subject=Question%20for%20FogSift">email me</a> if you just have a question.
-            </p>
+        <!-- Page Title -->
+        <section class="section" style="text-align: center;" aria-labelledby="contact-heading">
+            <h1 id="contact-heading" class="section-label">CONTACT</h1>
+            <p class="contact-subtitle">Have a question, a problem, or an idea? Pick the option that fits.</p>
+        </section>
+
+        <!-- Contact Cards -->
+        <section class="section" aria-label="Contact methods">
+            <div class="contact-grid">
+                <article class="contact-card">
+                    <div class="contact-card-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                    </div>
+                    <div class="contact-card-body">
+                        <h2 class="contact-card-title">Email Us</h2>
+                        <p class="contact-card-desc">Questions, ideas, or just curious. No pressure, no pitch.</p>
+                    </div>
+                    <a href="mailto:info@fogsift.com" class="contact-card-btn">Send an Email</a>
+                    <span class="contact-card-note">Free &middot; info@fogsift.com</span>
+                </article>
+
+                <article class="contact-card">
+                    <div class="contact-card-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="contact-card-body">
+                        <h2 class="contact-card-title">Book a Call</h2>
+                        <p class="contact-card-desc">15-30 min triage call to figure out what you actually need.</p>
+                    </div>
+                    <a href="mailto:info@fogsift.com?subject=Booking%20a%20Free%20Call" class="contact-card-btn">Schedule a Call</a>
+                    <span class="contact-card-note">Free &middot; No obligation</span>
+                </article>
+
+                <article class="contact-card contact-card-primary">
+                    <div class="contact-card-icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                    </div>
+                    <div class="contact-card-body">
+                        <h2 class="contact-card-title">Join the Queue</h2>
+                        <p class="contact-card-desc">Full focus session. You get a PDF write-up and video response.</p>
+                    </div>
+                    <a href="https://ko-fi.com/fogsift" class="contact-card-btn" target="_blank" rel="noopener">Submit a Problem</a>
+                    <span class="contact-card-note">$20 &middot; <a href="queue.html">See the queue</a></span>
+                </article>
+            </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- Contact Methods -->
-        <section class="wiki-content" style="max-width: 65ch; margin: 0 auto;" aria-labelledby="ways-heading">
-            <h2 id="ways-heading">Three Ways to Connect</h2>
-
-            <h3>Submit a Problem ($20)</h3>
-            <p>The main way to work with FogSift. Submit your problem + $20, we spend up to an hour on it, and you get a PDF write-up and video response.</p>
-            <p><a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Submit via Ko-fi</a></p>
-
-            <h3>Just Ask a Question (Free)</h3>
-            <p>Got a quick question? Just curious? No pressure, no pitch.</p>
-            <p><a href="mailto:info@fogsift.com">info@fogsift.com</a></p>
-
-            <h3>Book a Triage Call (Free)</h3>
-            <p>15-30 minutes to figure out what you actually need. No obligation.</p>
-            <p><a href="mailto:info@fogsift.com?subject=Booking%20a%20Free%20Call">Email to schedule</a></p>
-
-            <h3>Social</h3>
-            <p>Follow along with builds, projects, and behind-the-scenes content:</p>
-            <ul>
-                <li><a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube @fogsift</a> &mdash; Full build videos and tutorials</li>
-                <li><a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads @fogsift</a> &mdash; Quick updates and conversation</li>
-            </ul>
-
-            <h2>People Reach Out About...</h2>
-            <ul>
-                <li><strong>Tech that isn't working</strong> &mdash; apps crashing, integrations failing, builds breaking</li>
-                <li><strong>Processes that feel broken</strong> &mdash; bottlenecks, handoff failures, invisible waste</li>
-                <li><strong>Decisions they're stuck on</strong> &mdash; build vs. buy, hire vs. outsource, pivot vs. stay</li>
-                <li><strong>Ideas they want pressure-tested</strong> &mdash; business models, product concepts, side projects</li>
-                <li><strong>Things nobody else will look at</strong> &mdash; weird data, legacy systems, "it's always been that way"</li>
-            </ul>
-
-            <h2>What to Include</h2>
-            <p>When you reach out, it helps to know:</p>
-            <ul>
-                <li>What's the problem you're trying to solve?</li>
-                <li>What have you already tried?</li>
-                <li>What would success look like?</li>
-                <li>Any privacy constraints or anonymization requests?</li>
-            </ul>
-            <p>Don't worry if you don't have all the answers. That's what we figure out together.</p>
-
-            <h2>What Happens Next</h2>
-            <p>We review submissions and pick what to work on next. You get a PDF write-up and video response, plus one of three outcomes:</p>
-            <ul>
-                <li><strong>"Let's go deeper."</strong> &mdash; We want to keep working on this with you</li>
-                <li><strong>"I know people."</strong> &mdash; We can connect you with the right expert</li>
-                <li><strong>"This is sick."</strong> &mdash; You should build this, here's a path forward</li>
-            </ul>
-
-            <h2>Quick Answers</h2>
-            <details>
-                <summary><strong>What if you can't solve my problem?</strong></summary>
-                <p>You still get the PDF write-up and video response, plus a narrower problem statement or referral. The $20 covers the session, not a guaranteed fix.</p>
-            </details>
-            <details>
-                <summary><strong>How long until I hear back?</strong></summary>
-                <p>We review submissions daily and work through the queue in order. Most submissions are addressed within a week.</p>
-            </details>
-            <details>
-                <summary><strong>Is my submission confidential?</strong></summary>
-                <p>We may publish a video response. Your submission may be used for marketing. You can request anonymization at any time.</p>
-            </details>
-            <details>
-                <summary><strong>Can I get a refund?</strong></summary>
-                <p>If we haven't started work yet, yes. Once we begin the session, the $20 is non-refundable. See our <a href="terms.html">Terms</a>.</p>
-            </details>
-            <p style="margin-top: var(--space-md);">More questions? See the full <a href="faq.html">FAQ</a>.</p>
+        <!-- What People Ask About -->
+        <section class="section" aria-labelledby="reasons-heading">
+            <h2 id="reasons-heading" class="section-label">WHAT PEOPLE ASK ABOUT</h2>
+            <div class="contact-topics">
+                <div class="contact-topic">
+                    <strong>Tech that isn't working</strong>
+                    <span>Apps crashing, integrations failing, builds breaking</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Processes that feel broken</strong>
+                    <span>Bottlenecks, handoff failures, invisible waste</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Decisions they're stuck on</strong>
+                    <span>Build vs. buy, hire vs. outsource, pivot vs. stay</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Ideas to pressure-test</strong>
+                    <span>Business models, product concepts, side projects</span>
+                </div>
+                <div class="contact-topic">
+                    <strong>Things nobody else will look at</strong>
+                    <span>Weird data, legacy systems, "it's always been that way"</span>
+                </div>
+            </div>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
-        <!-- Location easter egg: click to cycle through locations -->
-        <section style="text-align: center; padding: var(--space-lg) 0;">
-            <p id="location-text" style="color: var(--muted); font-family: var(--font-mono); font-size: var(--text-sm); cursor: default; user-select: none;" title="Click me">
-                Based in <span id="location-city">Chico, California</span><br>
-                Working with clients everywhere
+        <!-- What to Include -->
+        <section class="section" aria-labelledby="include-heading">
+            <h2 id="include-heading" class="section-label">WHAT TO INCLUDE</h2>
+            <div class="contact-checklist">
+                <div class="contact-checklist-item">
+                    <span class="contact-check" aria-hidden="true">&#10003;</span>
+                    <span>What's the problem you're trying to solve?</span>
+                </div>
+                <div class="contact-checklist-item">
+                    <span class="contact-check" aria-hidden="true">&#10003;</span>
+                    <span>What have you already tried?</span>
+                </div>
+                <div class="contact-checklist-item">
+                    <span class="contact-check" aria-hidden="true">&#10003;</span>
+                    <span>What would success look like?</span>
+                </div>
+                <div class="contact-checklist-item">
+                    <span class="contact-check" aria-hidden="true">&#10003;</span>
+                    <span>Any privacy or anonymization needs?</span>
+                </div>
+            </div>
+            <p class="contact-reassurance">Don't worry if you don't have all the answers. That's what we figure out together.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Quick Answers -->
+        <section class="section" aria-labelledby="faq-heading">
+            <h2 id="faq-heading" class="section-label">QUICK ANSWERS</h2>
+            <div class="contact-faq">
+                <details>
+                    <summary><strong>What if you can't solve my problem?</strong></summary>
+                    <p>You still get the PDF write-up and video response, plus a narrower problem statement or referral. The $20 covers the session, not a guaranteed fix.</p>
+                </details>
+                <details>
+                    <summary><strong>How long until I hear back?</strong></summary>
+                    <p>We review submissions daily and work through the queue in order. Most submissions are addressed within a week.</p>
+                </details>
+                <details>
+                    <summary><strong>Is my submission confidential?</strong></summary>
+                    <p>We may publish a video response. Your submission may be used for marketing. You can request anonymization at any time.</p>
+                </details>
+                <details>
+                    <summary><strong>Can I get a refund?</strong></summary>
+                    <p>If we haven't started work yet, yes. Once we begin the session, the $20 is non-refundable. See our <a href="terms.html">Terms</a>.</p>
+                </details>
+            </div>
+            <p class="contact-faq-link">More questions? See the full <a href="faq.html">FAQ</a>.</p>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Social + Location -->
+        <section class="section" style="text-align: center;">
+            <h2 class="section-label" style="font-size: var(--text-base);">FIND US ELSEWHERE</h2>
+            <div class="contact-social">
+                <a href="https://youtube.com/@fogsift" class="contact-social-link" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    YouTube
+                </a>
+                <a href="https://threads.net/@fogsift" class="contact-social-link" target="_blank" rel="noopener">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.48C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.59 12c.025 3.086.718 5.496 2.057 7.164 1.432 1.784 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.282-1.592-1.64a8.927 8.927 0 0 1-.167 2.095c-.264 1.32-.834 2.382-1.702 3.158-1.08.967-2.535 1.478-4.208 1.478h-.002c-1.904-.012-3.396-.67-4.432-1.958-.946-1.175-1.433-2.774-1.433-4.686v-.003c0-1.908.487-3.507 1.433-4.682 1.036-1.29 2.528-1.948 4.432-1.96h.002c1.928.013 3.399.659 4.375 1.92.468.604.806 1.355 1.013 2.212l-2.014.569c-.288-1.279-1.084-2.576-3.374-2.59-1.247.008-2.193.413-2.813 1.202-.678.864-1.022 2.088-1.022 3.332v.003c0 1.247.344 2.473 1.022 3.336.622.792 1.572 1.197 2.824 1.205 1.171-.008 2.077-.326 2.691-.944.467-.47.776-1.12.918-1.928a4.279 4.279 0 0 0-.15.003c-1.334 0-2.378-.3-3.106-.89-.81-.656-1.221-1.61-1.221-2.835 0-1.855 1.265-3.263 3.406-3.263 1.112 0 2.017.345 2.691 1.024.66.666 1.078 1.62 1.236 2.836.165 1.28.07 2.756-.31 3.914-.474 1.444-1.355 2.573-2.612 3.346-1.149.706-2.564 1.092-4.21 1.092h-.012z"/></svg>
+                    Threads
+                </a>
+            </div>
+            <p id="location-text" class="contact-location" title="Click me">
+                Based in <span id="location-city">Chico, California</span>.
+                Working with clients everywhere.
             </p>
         </section>
 
