@@ -1,0 +1,1192 @@
+{
+  "generated": "2026-02-08T03:42:52.883Z",
+  "generator": "project-snapshot.js v1.0",
+  "git": {
+    "branch": "main",
+    "status": [
+      "M dist/api/articles.json",
+      " M dist/api/meta.json",
+      " M dist/api/wiki/index.json",
+      " M dist/api/wiki/sitemap.json",
+      " M scripts/dev-start.js",
+      "?? _tools/snapshots/previous.json"
+    ],
+    "unpushed": 0,
+    "recentCommits": [
+      "94d58e2 Add dev startup script with full Lighthouse suite",
+      "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
+      "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
+      "d004e2b Rebuild dist from latest source",
+      "6cafc66 Add development infrastructure: test viewer, component library, AI journal",
+      "ecf3bd9 Redesign Why This Works section, add shouse research page",
+      "764a6f7 Redesign wiki section into 3-card content grid with real excerpts",
+      "0a7da9b Add homepage wiki section with daily rotation, stats, and quotes",
+      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test",
+      "524c421 Polish newsletter signup and switch footer links to 3-column grid"
+    ],
+    "tags": [
+      "v0.0.4",
+      "v0.0.5",
+      "v0.0.3",
+      "v0.0.2",
+      "v0.0.1"
+    ],
+    "lastTag": "v0.0.5",
+    "commitsSinceTag": 100,
+    "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
+  },
+  "package": {
+    "name": "fogsift",
+    "version": "0.0.5",
+    "description": "Straight answers to complicated questions",
+    "scripts": [
+      "start",
+      "start:site",
+      "dev",
+      "dev:functions",
+      "serve",
+      "watch",
+      "build",
+      "deploy",
+      "quick-deploy",
+      "deploy:dry",
+      "preview",
+      "version:patch",
+      "version:minor",
+      "version:major",
+      "mcp:status",
+      "mcp:watch",
+      "mcp:dev",
+      "test",
+      "lint",
+      "lint:fix",
+      "lint:images",
+      "audit",
+      "audit:quick",
+      "test:webhook",
+      "test:webhook:shop",
+      "test:webhook:commission"
+    ],
+    "dependencies": [
+      "marked"
+    ],
+    "devDependencies": [
+      "@eslint/js",
+      "browser-sync",
+      "chokidar-cli",
+      "esbuild",
+      "eslint",
+      "globals",
+      "html-validate",
+      "lighthouse",
+      "npm-run-all",
+      "pa11y"
+    ]
+  },
+  "source": {
+    "css": [
+      {
+        "path": "css/aurora-theme.css",
+        "size": 17857,
+        "modified": "2026-02-07T10:33:41.769Z",
+        "lines": 625
+      },
+      {
+        "path": "css/barbie-theme.css",
+        "size": 7265,
+        "modified": "2025-12-28T10:31:52.699Z",
+        "lines": 265
+      },
+      {
+        "path": "css/base.css",
+        "size": 8426,
+        "modified": "2026-02-06T23:31:57.625Z",
+        "lines": 406
+      },
+      {
+        "path": "css/camo-theme.css",
+        "size": 6906,
+        "modified": "2025-12-28T11:10:28.151Z",
+        "lines": 210
+      },
+      {
+        "path": "css/components.css",
+        "size": 59111,
+        "modified": "2026-02-07T17:08:49.104Z",
+        "lines": 2690
+      },
+      {
+        "path": "css/ferrofluid.css",
+        "size": 11152,
+        "modified": "2026-01-21T14:56:46.897Z",
+        "lines": 442
+      },
+      {
+        "path": "css/industrial-theme.css",
+        "size": 15179,
+        "modified": "2025-12-28T09:14:40.597Z",
+        "lines": 498
+      },
+      {
+        "path": "css/lava-blob.css",
+        "size": 5078,
+        "modified": "2025-12-28T10:16:47.165Z",
+        "lines": 219
+      },
+      {
+        "path": "css/matrix-theme.css",
+        "size": 12586,
+        "modified": "2026-02-06T04:01:56.969Z",
+        "lines": 496
+      },
+      {
+        "path": "css/mobile.css",
+        "size": 12956,
+        "modified": "2026-02-08T03:37:47.045Z",
+        "lines": 596
+      },
+      {
+        "path": "css/navigation.css",
+        "size": 22767,
+        "modified": "2026-02-08T03:37:36.266Z",
+        "lines": 962
+      },
+      {
+        "path": "css/ocean-theme.css",
+        "size": 8291,
+        "modified": "2025-12-28T10:31:52.700Z",
+        "lines": 311
+      },
+      {
+        "path": "css/pipboy-theme.css",
+        "size": 6456,
+        "modified": "2025-12-28T10:31:52.702Z",
+        "lines": 269
+      },
+      {
+        "path": "css/rivendell-theme.css",
+        "size": 7332,
+        "modified": "2025-12-28T10:31:52.703Z",
+        "lines": 269
+      },
+      {
+        "path": "css/sky-theme.css",
+        "size": 8496,
+        "modified": "2025-12-28T11:20:34.310Z",
+        "lines": 327
+      },
+      {
+        "path": "css/sleep.css",
+        "size": 25294,
+        "modified": "2025-12-28T22:57:03.873Z",
+        "lines": 1053
+      },
+      {
+        "path": "css/synthwave-theme.css",
+        "size": 8089,
+        "modified": "2025-12-28T10:31:52.704Z",
+        "lines": 305
+      },
+      {
+        "path": "css/tokens.css",
+        "size": 22514,
+        "modified": "2026-02-07T10:33:59.437Z",
+        "lines": 721
+      },
+      {
+        "path": "css/wiki.css",
+        "size": 15883,
+        "modified": "2026-02-07T10:20:57.510Z",
+        "lines": 726
+      }
+    ],
+    "js": [
+      {
+        "path": "js/achievement.js",
+        "size": 8010,
+        "modified": "2026-02-06T04:01:56.980Z",
+        "lines": 190
+      },
+      {
+        "path": "js/cache.js",
+        "size": 6424,
+        "modified": "2025-12-29T00:54:57.364Z",
+        "lines": 208
+      },
+      {
+        "path": "js/copy-page-text.js",
+        "size": 3051,
+        "modified": "2026-02-06T04:01:56.981Z",
+        "lines": 98
+      },
+      {
+        "path": "js/debug.js",
+        "size": 5877,
+        "modified": "2025-12-29T00:54:57.362Z",
+        "lines": 193
+      },
+      {
+        "path": "js/main.js",
+        "size": 13180,
+        "modified": "2026-02-07T17:08:04.993Z",
+        "lines": 283
+      },
+      {
+        "path": "js/matrix-rain.js",
+        "size": 5114,
+        "modified": "2025-12-28T10:02:41.566Z",
+        "lines": 168
+      },
+      {
+        "path": "js/modal.js",
+        "size": 4080,
+        "modified": "2026-02-06T04:01:56.983Z",
+        "lines": 118
+      },
+      {
+        "path": "js/monte.js",
+        "size": 15562,
+        "modified": "2026-02-07T05:23:48.605Z",
+        "lines": 483
+      },
+      {
+        "path": "js/nav.js",
+        "size": 1575,
+        "modified": "2026-02-06T04:01:56.984Z",
+        "lines": 48
+      },
+      {
+        "path": "js/queue-ui.js",
+        "size": 15240,
+        "modified": "2026-02-06T23:31:57.867Z",
+        "lines": 428
+      },
+      {
+        "path": "js/queue-widget.js",
+        "size": 9314,
+        "modified": "2026-02-06T04:01:56.985Z",
+        "lines": 335
+      },
+      {
+        "path": "js/search.js",
+        "size": 16258,
+        "modified": "2026-02-07T10:45:42.872Z",
+        "lines": 411
+      },
+      {
+        "path": "js/sleep.js",
+        "size": 25109,
+        "modified": "2025-12-28T22:57:03.873Z",
+        "lines": 697
+      },
+      {
+        "path": "js/theme-init.js",
+        "size": 659,
+        "modified": "2026-02-06T23:31:57.867Z",
+        "lines": 28
+      },
+      {
+        "path": "js/theme.js",
+        "size": 21364,
+        "modified": "2026-02-07T10:34:18.406Z",
+        "lines": 709
+      },
+      {
+        "path": "js/toast.js",
+        "size": 3461,
+        "modified": "2025-12-28T23:37:59.486Z",
+        "lines": 98
+      },
+      {
+        "path": "js/wiki-api.js",
+        "size": 3679,
+        "modified": "2025-12-29T00:54:57.361Z",
+        "lines": 128
+      }
+    ],
+    "html": [
+      {
+        "path": "404.html",
+        "size": 2225,
+        "modified": "2025-12-28T06:23:50.030Z",
+        "lines": 56
+      },
+      {
+        "path": "about.html",
+        "size": 7859,
+        "modified": "2026-02-07T05:26:46.456Z",
+        "lines": 169
+      },
+      {
+        "path": "contact.html",
+        "size": 13999,
+        "modified": "2026-02-07T11:22:30.779Z",
+        "lines": 240
+      },
+      {
+        "path": "content/handout_branded.html",
+        "size": 8148,
+        "modified": "2026-02-06T04:01:56.962Z",
+        "lines": 323
+      },
+      {
+        "path": "disclaimer.html",
+        "size": 4018,
+        "modified": "2026-02-07T00:06:05.884Z",
+        "lines": 73
+      },
+      {
+        "path": "faq.html",
+        "size": 13970,
+        "modified": "2026-02-07T05:25:36.063Z",
+        "lines": 310
+      },
+      {
+        "path": "ferrofluid-demo.html",
+        "size": 12222,
+        "modified": "2026-02-06T04:01:56.976Z",
+        "lines": 385
+      },
+      {
+        "path": "gallery.html",
+        "size": 18305,
+        "modified": "2026-02-06T04:01:56.977Z",
+        "lines": 523
+      },
+      {
+        "path": "hi.html",
+        "size": 9130,
+        "modified": "2026-02-07T05:27:23.015Z",
+        "lines": 297
+      },
+      {
+        "path": "index.html",
+        "size": 37428,
+        "modified": "2026-02-07T17:09:20.491Z",
+        "lines": 675
+      },
+      {
+        "path": "keepers-log.html",
+        "size": 15832,
+        "modified": "2026-02-08T03:32:46.960Z",
+        "lines": 455
+      },
+      {
+        "path": "lava-demo.html",
+        "size": 10208,
+        "modified": "2025-12-28T10:16:47.167Z",
+        "lines": 341
+      },
+      {
+        "path": "offers.html",
+        "size": 18215,
+        "modified": "2026-02-07T11:01:26.855Z",
+        "lines": 319
+      },
+      {
+        "path": "paperbin-saas.html",
+        "size": 18275,
+        "modified": "2026-02-07T05:22:08.484Z",
+        "lines": 471
+      },
+      {
+        "path": "portfolio.html",
+        "size": 19988,
+        "modified": "2026-02-08T03:33:26.946Z",
+        "lines": 321
+      },
+      {
+        "path": "privacy.html",
+        "size": 3513,
+        "modified": "2026-02-07T00:06:02.280Z",
+        "lines": 78
+      },
+      {
+        "path": "process.html",
+        "size": 7111,
+        "modified": "2026-02-07T11:22:12.857Z",
+        "lines": 153
+      },
+      {
+        "path": "queue-item-template.html",
+        "size": 7997,
+        "modified": "2026-02-06T23:31:57.870Z",
+        "lines": 248
+      },
+      {
+        "path": "queue.html",
+        "size": 24685,
+        "modified": "2026-02-06T23:56:46.404Z",
+        "lines": 693
+      },
+      {
+        "path": "shouse.html",
+        "size": 40746,
+        "modified": "2026-02-07T00:16:03.613Z",
+        "lines": 916
+      },
+      {
+        "path": "system-status.html",
+        "size": 14817,
+        "modified": "2026-02-06T23:31:57.873Z",
+        "lines": 483
+      },
+      {
+        "path": "terms.html",
+        "size": 7494,
+        "modified": "2026-02-07T00:06:04.961Z",
+        "lines": 143
+      },
+      {
+        "path": "vision.html",
+        "size": 7966,
+        "modified": "2026-02-06T23:31:57.874Z",
+        "lines": 166
+      },
+      {
+        "path": "wiki-index-template.html",
+        "size": 3069,
+        "modified": "2026-02-07T10:19:52.716Z",
+        "lines": 71
+      },
+      {
+        "path": "wiki-template.html",
+        "size": 6670,
+        "modified": "2026-02-07T10:19:40.271Z",
+        "lines": 154
+      },
+      {
+        "path": "your-data.html",
+        "size": 59532,
+        "modified": "2026-02-07T11:51:25.174Z",
+        "lines": 951
+      }
+    ],
+    "other": [
+      {
+        "path": ".well-known/security.txt",
+        "size": 733,
+        "modified": "2026-02-07T00:06:08.599Z",
+        "lines": 25
+      },
+      {
+        "path": "FS-Default-Image-Circle.png",
+        "size": 312313,
+        "modified": "2026-02-06T23:31:57.355Z",
+        "lines": 1137
+      },
+      {
+        "path": "FS-Default-Image-Circle_250x250px.png",
+        "size": 80341,
+        "modified": "2026-02-06T23:31:57.358Z",
+        "lines": 395
+      },
+      {
+        "path": "FS-Default-Image-Circle_500x500px.png",
+        "size": 312313,
+        "modified": "2026-02-06T23:31:57.362Z",
+        "lines": 1137
+      },
+      {
+        "path": "_headers",
+        "size": 1444,
+        "modified": "2026-02-06T23:31:57.363Z",
+        "lines": 38
+      },
+      {
+        "path": "assets/.DS_Store",
+        "size": 6148,
+        "modified": "2026-02-06T23:31:57.363Z",
+        "lines": 3
+      },
+      {
+        "path": "assets/FogSift-Banner-Large.PNG",
+        "size": 6439878,
+        "modified": "2026-02-06T23:31:57.452Z",
+        "lines": 23256
+      },
+      {
+        "path": "assets/FogSift-Fancy-Logo_500x500px.png",
+        "size": 257608,
+        "modified": "2026-02-06T23:31:57.480Z",
+        "lines": 943
+      },
+      {
+        "path": "assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
+        "size": 1686469,
+        "modified": "2026-02-06T23:31:57.510Z",
+        "lines": 3568
+      },
+      {
+        "path": "assets/badge-orange-line.png",
+        "size": 737012,
+        "modified": "2026-02-06T23:31:57.526Z",
+        "lines": 2820
+      },
+      {
+        "path": "assets/badge-owner.png",
+        "size": 728342,
+        "modified": "2026-02-06T23:31:57.540Z",
+        "lines": 2797
+      },
+      {
+        "path": "assets/badge-profile.png",
+        "size": 988931,
+        "modified": "2026-02-06T23:31:57.552Z",
+        "lines": 3458
+      },
+      {
+        "path": "assets/icon-512.png",
+        "size": 860740,
+        "modified": "2026-02-06T23:31:57.567Z",
+        "lines": 2700
+      },
+      {
+        "path": "assets/logo-01.png",
+        "size": 656670,
+        "modified": "2026-02-06T23:31:57.577Z",
+        "lines": 2442
+      },
+      {
+        "path": "assets/logo-color-transparent.png",
+        "size": 279554,
+        "modified": "2025-12-27T05:23:31.237Z",
+        "lines": 788
+      },
+      {
+        "path": "assets/logo-color.png",
+        "size": 528779,
+        "modified": "2026-02-06T23:31:57.614Z",
+        "lines": 2010
+      },
+      {
+        "path": "assets/logo-mono.png",
+        "size": 566009,
+        "modified": "2026-02-06T23:31:57.619Z",
+        "lines": 2112
+      },
+      {
+        "path": "assets/logo-patch.png",
+        "size": 246355,
+        "modified": "2026-02-06T23:31:57.622Z",
+        "lines": 948
+      },
+      {
+        "path": "content/articles.json",
+        "size": 1110,
+        "modified": "2025-12-27T01:26:11.868Z",
+        "lines": 33
+      },
+      {
+        "path": "content/fogsift_services.md",
+        "size": 2576,
+        "modified": "2026-02-06T04:01:56.961Z",
+        "lines": 67
+      },
+      {
+        "path": "content/handout_content.md",
+        "size": 2032,
+        "modified": "2026-02-06T03:23:24.228Z",
+        "lines": 32
+      },
+      {
+        "path": "content/how_to_talk_to_ai.md",
+        "size": 4747,
+        "modified": "2026-02-06T04:01:56.963Z",
+        "lines": 169
+      },
+      {
+        "path": "content/queue.json",
+        "size": 4432,
+        "modified": "2026-02-06T23:31:57.624Z",
+        "lines": 115
+      },
+      {
+        "path": "content/site-data.json",
+        "size": 5817,
+        "modified": "2026-02-06T23:31:57.624Z",
+        "lines": 163
+      },
+      {
+        "path": "content/status.json",
+        "size": 1910,
+        "modified": "2025-12-28T06:23:50.031Z",
+        "lines": 96
+      },
+      {
+        "path": "content/testimonials.json",
+        "size": 1645,
+        "modified": "2025-12-28T06:24:27.544Z",
+        "lines": 53
+      },
+      {
+        "path": "favicon.png",
+        "size": 53500,
+        "modified": "2025-12-27T05:23:54.016Z",
+        "lines": 231
+      },
+      {
+        "path": "images/.DS_Store",
+        "size": 6148,
+        "modified": "2026-02-06T23:31:57.630Z",
+        "lines": 4
+      },
+      {
+        "path": "images/portfolio/.DS_Store",
+        "size": 8196,
+        "modified": "2026-02-06T23:31:57.631Z",
+        "lines": 1
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Banner-Image.jpg",
+        "size": 1293273,
+        "modified": "2026-02-06T23:31:57.648Z",
+        "lines": 3792
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
+        "size": 974075,
+        "modified": "2026-02-06T23:31:57.669Z",
+        "lines": 3207
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
+        "size": 1270381,
+        "modified": "2026-02-06T23:31:57.695Z",
+        "lines": 4099
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
+        "size": 284687,
+        "modified": "2026-02-06T23:31:57.709Z",
+        "lines": 752
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
+        "size": 244924,
+        "modified": "2026-02-06T23:31:57.713Z",
+        "lines": 760
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
+        "size": 1241602,
+        "modified": "2026-02-06T23:31:57.740Z",
+        "lines": 3841
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
+        "size": 249923,
+        "modified": "2026-02-06T23:31:57.748Z",
+        "lines": 810
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Limited-Editions.jpeg",
+        "size": 347019,
+        "modified": "2026-02-06T23:31:57.755Z",
+        "lines": 1052
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Main-Advert-Image.jpg",
+        "size": 1073990,
+        "modified": "2026-02-06T23:31:57.774Z",
+        "lines": 3466
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Premium-Limited-Edition-Concept-Art.jpeg",
+        "size": 147741,
+        "modified": "2026-02-06T23:31:57.779Z",
+        "lines": 460
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
+        "size": 307431,
+        "modified": "2026-02-06T23:31:57.785Z",
+        "lines": 857
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
+        "size": 1129753,
+        "modified": "2026-02-06T23:31:57.811Z",
+        "lines": 3563
+      },
+      {
+        "path": "images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
+        "size": 1177098,
+        "modified": "2026-02-06T23:31:57.837Z",
+        "lines": 3951
+      },
+      {
+        "path": "images/portfolio/TMGotya-Box-Concept.jpeg",
+        "size": 271861,
+        "modified": "2026-02-06T23:31:57.842Z",
+        "lines": 818
+      },
+      {
+        "path": "images/portfolio/WAFT-PFP-DEFAULT_125x125px.png",
+        "size": 15334,
+        "modified": "2026-02-06T23:31:57.843Z",
+        "lines": 87
+      },
+      {
+        "path": "images/portfolio/WAFT-PFP-DEFAULT_500x500px.png",
+        "size": 131529,
+        "modified": "2026-02-06T23:31:57.845Z",
+        "lines": 564
+      },
+      {
+        "path": "images/portfolio/WAFT-PFP-DEFAULT_50x50px.png",
+        "size": 5276,
+        "modified": "2026-02-06T23:31:57.845Z",
+        "lines": 60
+      },
+      {
+        "path": "images/portfolio/WAFT_Profile_Default.png",
+        "size": 466842,
+        "modified": "2026-02-06T23:31:57.854Z",
+        "lines": 1761
+      },
+      {
+        "path": "images/portfolio/fogsift-logo-transparent-rectangle.png",
+        "size": 279554,
+        "modified": "2026-02-06T23:31:57.860Z",
+        "lines": 788
+      },
+      {
+        "path": "images/portfolio/pixel-tiles.jpg",
+        "size": 131529,
+        "modified": "2026-02-06T23:31:57.864Z",
+        "lines": 564
+      },
+      {
+        "path": "images/team/christopher-badge.webp",
+        "size": 9794,
+        "modified": "2025-12-27T05:28:20.712Z",
+        "lines": 36
+      },
+      {
+        "path": "manifest.json",
+        "size": 591,
+        "modified": "2026-02-06T23:31:57.868Z",
+        "lines": 28
+      },
+      {
+        "path": "og-image.png",
+        "size": 743412,
+        "modified": "2025-12-27T05:23:54.247Z",
+        "lines": 2946
+      },
+      {
+        "path": "robots.txt",
+        "size": 250,
+        "modified": "2025-12-27T02:19:20.543Z",
+        "lines": 17
+      },
+      {
+        "path": "sitemap.xml",
+        "size": 8576,
+        "modified": "2026-02-06T23:31:57.872Z",
+        "lines": 266
+      },
+      {
+        "path": "wiki/case-studies/communication-breakdown.md",
+        "size": 5130,
+        "modified": "2025-12-27T07:31:17.831Z",
+        "lines": 153
+      },
+      {
+        "path": "wiki/case-studies/manufacturing-throughput.md",
+        "size": 5091,
+        "modified": "2025-12-27T07:31:17.833Z",
+        "lines": 152
+      },
+      {
+        "path": "wiki/case-studies/the-data-migration.md",
+        "size": 6217,
+        "modified": "2026-02-07T16:34:46.910Z",
+        "lines": 124
+      },
+      {
+        "path": "wiki/case-studies/the-invisible-process.md",
+        "size": 5568,
+        "modified": "2025-12-27T07:31:17.834Z",
+        "lines": 174
+      },
+      {
+        "path": "wiki/case-studies/the-startup-pivot.md",
+        "size": 5435,
+        "modified": "2026-02-07T16:34:08.971Z",
+        "lines": 114
+      },
+      {
+        "path": "wiki/concepts/cognitive-biases.md",
+        "size": 5730,
+        "modified": "2025-12-27T07:31:17.835Z",
+        "lines": 175
+      },
+      {
+        "path": "wiki/concepts/compounding.md",
+        "size": 4810,
+        "modified": "2026-02-07T16:28:31.315Z",
+        "lines": 102
+      },
+      {
+        "path": "wiki/concepts/first-principles.md",
+        "size": 4145,
+        "modified": "2026-02-07T16:27:38.461Z",
+        "lines": 90
+      },
+      {
+        "path": "wiki/concepts/mental-models.md",
+        "size": 4490,
+        "modified": "2025-12-27T07:31:17.836Z",
+        "lines": 123
+      },
+      {
+        "path": "wiki/concepts/opportunity-cost.md",
+        "size": 4171,
+        "modified": "2026-02-07T16:28:02.426Z",
+        "lines": 91
+      },
+      {
+        "path": "wiki/concepts/root-cause.md",
+        "size": 1863,
+        "modified": "2025-12-27T06:32:57.862Z",
+        "lines": 54
+      },
+      {
+        "path": "wiki/concepts/second-order-effects.md",
+        "size": 5423,
+        "modified": "2025-12-27T07:31:17.837Z",
+        "lines": 157
+      },
+      {
+        "path": "wiki/concepts/signal-vs-noise.md",
+        "size": 4912,
+        "modified": "2025-12-27T07:31:17.842Z",
+        "lines": 157
+      },
+      {
+        "path": "wiki/concepts/survivorship-bias.md",
+        "size": 4731,
+        "modified": "2026-02-07T16:28:58.099Z",
+        "lines": 88
+      },
+      {
+        "path": "wiki/concepts/systems-thinking.md",
+        "size": 5358,
+        "modified": "2025-12-27T07:31:17.843Z",
+        "lines": 145
+      },
+      {
+        "path": "wiki/diagnostic-process.md",
+        "size": 3282,
+        "modified": "2025-12-27T07:31:17.844Z",
+        "lines": 109
+      },
+      {
+        "path": "wiki/faq.md",
+        "size": 3828,
+        "modified": "2026-02-07T00:06:18.459Z",
+        "lines": 98
+      },
+      {
+        "path": "wiki/field-notes/001-map-territory.md",
+        "size": 1310,
+        "modified": "2025-12-27T06:00:04.864Z",
+        "lines": 41
+      },
+      {
+        "path": "wiki/field-notes/002-precision-accuracy.md",
+        "size": 1890,
+        "modified": "2025-12-27T06:32:57.862Z",
+        "lines": 59
+      },
+      {
+        "path": "wiki/field-notes/003-entropy.md",
+        "size": 1652,
+        "modified": "2025-12-27T06:32:57.862Z",
+        "lines": 53
+      },
+      {
+        "path": "wiki/field-notes/004-bottlenecks.md",
+        "size": 3140,
+        "modified": "2025-12-27T07:31:17.848Z",
+        "lines": 76
+      },
+      {
+        "path": "wiki/field-notes/005-tribal-knowledge.md",
+        "size": 3665,
+        "modified": "2025-12-27T07:31:17.849Z",
+        "lines": 96
+      },
+      {
+        "path": "wiki/field-notes/006-incentive-alignment.md",
+        "size": 4572,
+        "modified": "2025-12-27T07:31:17.850Z",
+        "lines": 134
+      },
+      {
+        "path": "wiki/field-notes/007-documentation-debt.md",
+        "size": 4114,
+        "modified": "2025-12-27T07:31:17.851Z",
+        "lines": 125
+      },
+      {
+        "path": "wiki/field-notes/008-sunk-cost-trap.md",
+        "size": 4355,
+        "modified": "2026-02-07T16:32:38.132Z",
+        "lines": 91
+      },
+      {
+        "path": "wiki/field-notes/009-scope-creep.md",
+        "size": 4242,
+        "modified": "2026-02-07T16:33:04.027Z",
+        "lines": 91
+      },
+      {
+        "path": "wiki/field-notes/010-communication-overhead.md",
+        "size": 4816,
+        "modified": "2026-02-07T16:33:34.024Z",
+        "lines": 104
+      },
+      {
+        "path": "wiki/frameworks/constraint-mapping.md",
+        "size": 4365,
+        "modified": "2025-12-27T07:31:17.852Z",
+        "lines": 166
+      },
+      {
+        "path": "wiki/frameworks/decision-matrix.md",
+        "size": 4268,
+        "modified": "2025-12-27T07:31:17.853Z",
+        "lines": 132
+      },
+      {
+        "path": "wiki/frameworks/feedback-loops.md",
+        "size": 4976,
+        "modified": "2025-12-27T07:31:17.854Z",
+        "lines": 165
+      },
+      {
+        "path": "wiki/frameworks/prioritization-matrix.md",
+        "size": 4947,
+        "modified": "2026-02-07T16:30:25.190Z",
+        "lines": 120
+      },
+      {
+        "path": "wiki/frameworks/risk-assessment.md",
+        "size": 5148,
+        "modified": "2026-02-07T16:29:55.954Z",
+        "lines": 135
+      },
+      {
+        "path": "wiki/frameworks/swot-analysis.md",
+        "size": 4953,
+        "modified": "2026-02-07T16:29:31.585Z",
+        "lines": 115
+      },
+      {
+        "path": "wiki/frameworks/trace-protocol.md",
+        "size": 4182,
+        "modified": "2025-12-27T07:31:17.856Z",
+        "lines": 139
+      },
+      {
+        "path": "wiki/getting-started.md",
+        "size": 4214,
+        "modified": "2026-02-07T00:06:17.359Z",
+        "lines": 85
+      },
+      {
+        "path": "wiki/how-we-work.md",
+        "size": 1942,
+        "modified": "2026-02-07T00:06:19.236Z",
+        "lines": 58
+      },
+      {
+        "path": "wiki/index.json",
+        "size": 4305,
+        "modified": "2026-02-07T16:47:55.095Z",
+        "lines": 92
+      },
+      {
+        "path": "wiki/tools/assumption-mapping.md",
+        "size": 5771,
+        "modified": "2026-02-07T16:31:32.473Z",
+        "lines": 140
+      },
+      {
+        "path": "wiki/tools/fishbone-diagram.md",
+        "size": 5704,
+        "modified": "2025-12-27T07:31:17.860Z",
+        "lines": 155
+      },
+      {
+        "path": "wiki/tools/five-whys.md",
+        "size": 3833,
+        "modified": "2025-12-27T07:31:17.861Z",
+        "lines": 118
+      },
+      {
+        "path": "wiki/tools/pareto-analysis.md",
+        "size": 4931,
+        "modified": "2025-12-27T07:31:17.862Z",
+        "lines": 154
+      },
+      {
+        "path": "wiki/tools/process-mapping.md",
+        "size": 5761,
+        "modified": "2025-12-27T07:31:17.863Z",
+        "lines": 192
+      },
+      {
+        "path": "wiki/tools/retrospective.md",
+        "size": 5624,
+        "modified": "2026-02-07T16:32:06.851Z",
+        "lines": 145
+      },
+      {
+        "path": "wiki/tools/time-boxing.md",
+        "size": 4868,
+        "modified": "2026-02-07T16:31:01.749Z",
+        "lines": 112
+      }
+    ]
+  },
+  "build": {
+    "exists": true,
+    "htmlPageCount": 71,
+    "keyFileSizes": {
+      "styles.css": 178058,
+      "app.js": 61664,
+      "theme-init.js": 659,
+      "search-index.json": 300384,
+      "index.html": 52802
+    },
+    "totalFiles": 118
+  },
+  "tests": {
+    "timestamp": "2026-02-07T21:15:55.543Z",
+    "summary": {
+      "total": 116,
+      "passed": 103,
+      "failed": 0,
+      "warned": 13
+    },
+    "suiteNames": [
+      {
+        "name": "Build Verification",
+        "passed": 14,
+        "failed": 0,
+        "warned": 0
+      },
+      {
+        "name": "HTML Validation",
+        "passed": 70,
+        "failed": 0,
+        "warned": 0
+      },
+      {
+        "name": "ESLint (Source JS)",
+        "passed": 0,
+        "failed": 0,
+        "warned": 1
+      },
+      {
+        "name": "Accessibility (pa11y WCAG2AA)",
+        "passed": 0,
+        "failed": 0,
+        "warned": 7
+      },
+      {
+        "name": "Internal Link Integrity",
+        "passed": 1,
+        "failed": 0,
+        "warned": 0
+      },
+      {
+        "name": "Search Index",
+        "passed": 5,
+        "failed": 0,
+        "warned": 1
+      },
+      {
+        "name": "Asset Audit",
+        "passed": 5,
+        "failed": 0,
+        "warned": 1
+      },
+      {
+        "name": "Security Headers",
+        "passed": 6,
+        "failed": 0,
+        "warned": 0
+      },
+      {
+        "name": "Lighthouse",
+        "passed": 2,
+        "failed": 0,
+        "warned": 3
+      }
+    ]
+  },
+  "wiki": {
+    "exists": true,
+    "totalPages": 43,
+    "categories": {
+      "case-studies": 5,
+      "concepts": 10,
+      "root": 4,
+      "field-notes": 10,
+      "frameworks": 7,
+      "tools": 7
+    }
+  },
+  "infrastructure": {
+    "tools": [
+      {
+        "name": "component-library",
+        "hasServer": true
+      },
+      {
+        "name": "scripts",
+        "hasServer": false
+      },
+      {
+        "name": "snapshots",
+        "hasServer": false
+      },
+      {
+        "name": "test-viewer",
+        "hasServer": true
+      }
+    ],
+    "journalExists": true,
+    "journalEntries": 4,
+    "portMap": {
+      "5001": "AI Journal (The Keeper's Log)",
+      "5030": "Component Library (The Signal Workshop)",
+      "5050": "FogSift dev server (The Lighthouse)",
+      "5065": "Test Suite Viewer (Captain FogLift's Quality Report)",
+      "8788": "Wrangler dev server (The Harbor)"
+    }
+  },
+  "summary": {
+    "version": "0.0.5",
+    "branch": "main",
+    "uncommittedFiles": 6,
+    "unpushedCommits": 0,
+    "commitsSinceRelease": 100,
+    "srcCssFiles": 19,
+    "srcJsFiles": 17,
+    "srcHtmlFiles": 26,
+    "srcTotalLines": 25027,
+    "builtPages": 71,
+    "wikiPages": 43,
+    "testsPassed": 103,
+    "testsFailed": 0,
+    "testsWarned": 13,
+    "toolsCount": 4,
+    "journalEntries": 4
+  }
+}
