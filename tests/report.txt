@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-08T07:59:15.754Z
+Generated: 2026-02-08T10:06:14.841Z
 ============================================================
 
 SUMMARY
@@ -102,13 +102,20 @@ SUMMARY
   [WARN] ESLint warnings only — 20 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — 35 issue(s)
-  [WARN] about.html — 5 issue(s)
-  [WARN] offers.html — 21 issue(s)
-  [WARN] faq.html — 10 issue(s)
-  [WARN] contact.html — 11 issue(s)
-  [WARN] queue.html — 17 issue(s)
-  [WARN] portfolio.html — 10 issue(s)
+  [WARN] index.html — 35 a11y issue(s)
+  [WARN] about.html — 5 a11y issue(s)
+  [WARN] offers.html — 21 a11y issue(s)
+  [WARN] faq.html — 10 a11y issue(s)
+  [WARN] contact.html — 12 a11y issue(s)
+  [WARN] queue.html — 17 a11y issue(s)
+  [WARN] portfolio.html — 10 a11y issue(s)
+
+── Lighthouse ──
+  [WARN] Performance: 58
+  [WARN] Accessibility: 87
+  [WARN] Best Practices: 81
+  [PASS] SEO: 100
+  [PASS] Lighthouse report generated — {"performance":58,"accessibility":87,"best-practices":81,"seo":100}
 
 ── Internal Link Integrity ──
   [PASS] All 5858 internal links valid
@@ -136,13 +143,6 @@ SUMMARY
   [PASS] Content-Security-Policy
   [PASS] Referrer-Policy
   [PASS] Permissions-Policy
-
-── Lighthouse ──
-  [WARN] Performance: 58
-  [WARN] Accessibility: 87
-  [WARN] Best Practices: 81
-  [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":58,"accessibility":87,"best-practices":81,"seo":100}
 
 ============================================================
 VERDICT: READY TO DEPLOY

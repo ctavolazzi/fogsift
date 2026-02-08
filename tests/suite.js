@@ -19,12 +19,66 @@
 
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
 const { execSync, exec } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const SRC  = path.join(ROOT, 'src');
 const REPORT_DIR = __dirname;
+
+// ─── Test Server ────────────────────────────────────────────
+// Spins up a temporary static file server for pa11y + Lighthouse
+
+const MIME_TYPES = {
+    '.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript',
+    '.json': 'application/json', '.png': 'image/png', '.jpg': 'image/jpeg',
+    '.jpeg': 'image/jpeg', '.gif': 'image/gif', '.svg': 'image/svg+xml',
+    '.webp': 'image/webp', '.ico': 'image/x-icon', '.woff2': 'font/woff2',
+    '.woff': 'font/woff', '.xml': 'text/xml', '.txt': 'text/plain',
+    '.webmanifest': 'application/manifest+json',
+};
+
+let testServer = null;
+let testPort = 0;
+
+function startTestServer() {
+    return new Promise((resolve, reject) => {
+        testServer = http.createServer((req, res) => {
+            const url = new URL(req.url, `http://localhost`);
+            let filePath = path.join(DIST, decodeURIComponent(url.pathname));
+            // Default to index.html for directories
+            if (filePath.endsWith('/') || !path.extname(filePath)) {
+                const asHtml = filePath + '.html';
+                const asIndex = path.join(filePath, 'index.html');
+                if (fs.existsSync(asHtml)) filePath = asHtml;
+                else if (fs.existsSync(asIndex)) filePath = asIndex;
+            }
+            if (!fs.existsSync(filePath)) {
+                res.writeHead(404);
+                res.end('Not found');
+                return;
+            }
+            const ext = path.extname(filePath).toLowerCase();
+            const mime = MIME_TYPES[ext] || 'application/octet-stream';
+            const data = fs.readFileSync(filePath);
+            res.writeHead(200, { 'Content-Type': mime });
+            res.end(data);
+        });
+        testServer.listen(0, '127.0.0.1', () => {
+            testPort = testServer.address().port;
+            resolve(testPort);
+        });
+        testServer.on('error', reject);
+    });
+}
+
+function stopTestServer() {
+    return new Promise(resolve => {
+        if (testServer) testServer.close(resolve);
+        else resolve();
+    });
+}
 
 // ─── Utilities ──────────────────────────────────────────────
 
@@ -248,18 +302,27 @@ async function testAccessibility() {
     const suite = 'Accessibility (pa11y WCAG2AA)';
     console.log(`\n${colors.bold}[4/9] ${suite}${colors.reset}`);
 
+    let pa11y;
+    try {
+        pa11y = (await import('pa11y')).default;
+    } catch {
+        addResult(suite, 'pa11y module', 'warn', 'Could not load pa11y');
+        console.log(`  ${badge('warn')} Could not load pa11y module`);
+        return;
+    }
+
     const pages = ['index.html', 'about.html', 'offers.html', 'faq.html', 'contact.html', 'queue.html', 'portfolio.html'];
     let totalIssues = 0;
 
     for (const page of pages) {
-        const url = `http://localhost:5050/${page}`;
+        const url = `http://localhost:${testPort}/${page}`;
         try {
-            const result = execSync(
-                `npx pa11y --standard WCAG2AA --reporter json "${url}" 2>/dev/null`,
-                { encoding: 'utf8', timeout: 30000, cwd: ROOT }
-            );
-            const json = JSON.parse(result);
-            const issues = json.issues ? json.issues.length : (Array.isArray(json) ? json.length : 0);
+            const results = await pa11y(url, {
+                standard: 'WCAG2AA',
+                timeout: 30000,
+                wait: 1000,
+            });
+            const issues = results.issues ? results.issues.length : 0;
             totalIssues += issues;
 
             if (issues === 0) {
@@ -268,25 +331,13 @@ async function testAccessibility() {
             } else {
                 addResult(suite, page, 'warn', `${issues} a11y issue(s)`);
                 console.log(`  ${badge('warn')} ${page} — ${issues} issue(s)`);
-                // Show first 2
-                const issueList = json.issues || json;
-                (issueList || []).slice(0, 2).forEach(issue => {
-                    console.log(`    ${colors.dim}${issue.message?.substring(0, 100) || issue.type}${colors.reset}`);
+                results.issues.slice(0, 2).forEach(issue => {
+                    console.log(`    ${colors.dim}${(issue.message || '').substring(0, 100)}${colors.reset}`);
                 });
             }
         } catch (err) {
-            // pa11y exits non-zero when issues found
-            const stdout = err.stdout || '';
-            try {
-                const json = JSON.parse(stdout);
-                const issues = json.issues ? json.issues.length : (Array.isArray(json) ? json.length : 0);
-                totalIssues += issues;
-                addResult(suite, page, issues > 0 ? 'warn' : 'pass', `${issues} issue(s)`);
-                console.log(`  ${badge(issues > 0 ? 'warn' : 'pass')} ${page} — ${issues} issue(s)`);
-            } catch {
-                addResult(suite, page, 'warn', 'pa11y could not test');
-                console.log(`  ${badge('warn')} ${page} — could not test`);
-            }
+            addResult(suite, page, 'warn', `pa11y error: ${(err.message || '').substring(0, 80)}`);
+            console.log(`  ${badge('warn')} ${page} — ${(err.message || 'error').substring(0, 80)}`);
         }
     }
 
@@ -503,17 +554,86 @@ async function testLighthouse() {
     const suite = 'Lighthouse';
     console.log(`\n${colors.bold}[9/9] ${suite}${colors.reset}`);
 
-    const url = 'http://localhost:5050/index.html';
+    const url = `http://localhost:${testPort}/index.html`;
     const outPath = path.join(REPORT_DIR, 'lighthouse-report.json');
 
+    // Find Chrome
+    const chromePaths = [
+        '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
+        '/usr/bin/google-chrome',
+        '/usr/bin/chromium',
+        '/usr/bin/chromium-browser',
+    ];
+    const chromePath = chromePaths.find(p => fs.existsSync(p));
+
+    if (!chromePath) {
+        addResult(suite, 'Lighthouse execution', 'warn', 'Chrome/Chromium not found');
+        console.log(`  ${badge('warn')} Chrome/Chromium not found — skipping`);
+        return;
+    }
+
     try {
-        execSync(
-            `npx lighthouse "${url}" --output=json --output-path="${outPath}" --chrome-flags="--headless --no-sandbox --disable-gpu" --only-categories=performance,accessibility,best-practices,seo --quiet 2>/dev/null`,
-            { encoding: 'utf8', timeout: 120000, cwd: ROOT, stdio: ['pipe', 'pipe', 'pipe'] }
+        let lighthouse;
+        try {
+            lighthouse = (await import('lighthouse')).default;
+        } catch {
+            addResult(suite, 'Lighthouse module', 'warn', 'Could not load lighthouse');
+            console.log(`  ${badge('warn')} Could not load lighthouse module`);
+            return;
+        }
+
+        console.log(`  ${colors.dim}Running Lighthouse (this takes ~30s)...${colors.reset}`);
+
+        // Launch Chrome
+        const { launch } = await import('lighthouse/chrome-launcher/chrome-launcher.js').catch(() =>
+            import('chrome-launcher')
         );
 
-        const lhReport = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+        let chrome;
+        try {
+            chrome = await launch({
+                chromeFlags: ['--headless=new', '--no-sandbox', '--disable-gpu', '--disable-dev-shm-usage'],
+                chromePath,
+            });
+        } catch {
+            // Fallback: try CLI approach
+            console.log(`  ${colors.dim}Chrome launcher failed, trying CLI...${colors.reset}`);
+            const env = { ...process.env, CHROME_PATH: chromePath };
+            execSync(
+                `npx lighthouse "${url}" --output=json --output-path="${outPath}" --chrome-flags="--headless=new --no-sandbox --disable-gpu --disable-dev-shm-usage" --only-categories=performance,accessibility,best-practices,seo --quiet 2>/dev/null`,
+                { encoding: 'utf8', timeout: 120000, cwd: ROOT, env }
+            );
+            chrome = null;
+        }
+
+        let lhReport;
+        if (chrome) {
+            const result = await lighthouse(url, {
+                port: chrome.port,
+                output: 'json',
+                onlyCategories: ['performance', 'accessibility', 'best-practices', 'seo'],
+            });
+            lhReport = result.lhr;
+            await chrome.kill();
+        } else if (fs.existsSync(outPath)) {
+            lhReport = JSON.parse(fs.readFileSync(outPath, 'utf8'));
+        }
+
+        if (!lhReport || lhReport.runtimeError) {
+            const msg = lhReport?.runtimeError?.message || 'No report generated';
+            addResult(suite, 'Lighthouse execution', 'warn', msg);
+            console.log(`  ${badge('warn')} ${msg}`);
+            return;
+        }
+
+        // Save report
+        fs.writeFileSync(outPath, JSON.stringify(lhReport, null, 2));
+
         const cats = lhReport.categories;
+        if (!cats) {
+            addResult(suite, 'Lighthouse execution', 'warn', 'No category scores');
+            return;
+        }
 
         const scores = {};
         for (const [key, cat] of Object.entries(cats)) {
@@ -524,13 +644,12 @@ async function testLighthouse() {
             console.log(`  ${badge(status)} ${cat.title}: ${score}/100`);
         }
 
-        // Save summary
         addResult(suite, 'Lighthouse report generated', 'pass', JSON.stringify(scores));
         console.log(`  ${colors.dim}Full report: tests/lighthouse-report.json${colors.reset}`);
     } catch (err) {
-        addResult(suite, 'Lighthouse execution', 'warn', 'Lighthouse could not run (Chrome required)');
-        console.log(`  ${badge('warn')} Lighthouse could not run — Chrome/Chromium required`);
-        console.log(`  ${colors.dim}${(err.message || '').substring(0, 120)}${colors.reset}`);
+        const msg = (err.message || '').substring(0, 120);
+        addResult(suite, 'Lighthouse execution', 'warn', msg);
+        console.log(`  ${badge('warn')} Lighthouse failed: ${msg}`);
     }
 }
 
@@ -619,12 +738,23 @@ async function main() {
     testBuild();
     testHtmlValidation();
     testEslint();
-    await testAccessibility();
+
+    // Start temporary server for pa11y + Lighthouse
+    try {
+        const port = await startTestServer();
+        console.log(`\n${colors.dim}  Test server started on port ${port}${colors.reset}`);
+        await testAccessibility();
+        await testLighthouse();
+    } catch (err) {
+        console.log(`\n${colors.warn}  Could not start test server: ${err.message}${colors.reset}`);
+    } finally {
+        await stopTestServer();
+    }
+
     testLinkIntegrity();
     testSearchIndex();
     testAssetAudit();
     testSecurityHeaders();
-    await testLighthouse();
 
     const failures = generateReport();
     process.exit(failures > 0 ? 1 : 0);

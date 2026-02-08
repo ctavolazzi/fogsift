@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-08T07:59:15.754Z",
+  "timestamp": "2026-02-08T10:06:14.841Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -461,42 +461,75 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "35 issue(s)"
+          "detail": "35 a11y issue(s)"
         },
         {
           "test": "about.html",
           "status": "warn",
-          "detail": "5 issue(s)"
+          "detail": "5 a11y issue(s)"
         },
         {
           "test": "offers.html",
           "status": "warn",
-          "detail": "21 issue(s)"
+          "detail": "21 a11y issue(s)"
         },
         {
           "test": "faq.html",
           "status": "warn",
-          "detail": "10 issue(s)"
+          "detail": "10 a11y issue(s)"
         },
         {
           "test": "contact.html",
           "status": "warn",
-          "detail": "11 issue(s)"
+          "detail": "12 a11y issue(s)"
         },
         {
           "test": "queue.html",
           "status": "warn",
-          "detail": "17 issue(s)"
+          "detail": "17 a11y issue(s)"
         },
         {
           "test": "portfolio.html",
           "status": "warn",
-          "detail": "10 issue(s)"
+          "detail": "10 a11y issue(s)"
         }
       ],
       "passed": 0,
       "failed": 0,
       "warned": 7
+    },
+    {
+      "name": "Lighthouse",
+      "tests": [
+        {
+          "test": "Performance: 58",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "Accessibility: 87",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "Best Practices: 81",
+          "status": "warn",
+          "detail": ""
+        },
+        {
+          "test": "SEO: 100",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "Lighthouse report generated",
+          "status": "pass",
+          "detail": "{\"performance\":58,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
+        }
+      ],
+      "passed": 2,
+      "failed": 0,
+      "warned": 3
     },
     {
       "name": "Internal Link Integrity",
@@ -624,39 +657,6 @@
       "passed": 6,
       "failed": 0,
       "warned": 0
-    },
-    {
-      "name": "Lighthouse",
-      "tests": [
-        {
-          "test": "Performance: 58",
-          "status": "warn",
-          "detail": ""
-        },
-        {
-          "test": "Accessibility: 87",
-          "status": "warn",
-          "detail": ""
-        },
-        {
-          "test": "Best Practices: 81",
-          "status": "warn",
-          "detail": ""
-        },
-        {
-          "test": "SEO: 100",
-          "status": "pass",
-          "detail": ""
-        },
-        {
-          "test": "Lighthouse report generated",
-          "status": "pass",
-          "detail": "{\"performance\":58,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
-        }
-      ],
-      "passed": 2,
-      "failed": 0,
-      "warned": 3
     }
   ],
   "summary": {
