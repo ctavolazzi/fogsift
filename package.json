@@ -4,6 +4,8 @@
   "description": "Straight answers to complicated questions",
   "private": true,
   "scripts": {
+    "start": "node scripts/dev-start.js",
+    "start:site": "node scripts/dev-start.js --no-helpers",
     "dev": "npm run build && npm-run-all --parallel serve watch",
     "dev:functions": "npm run build && npx wrangler pages dev dist",
     "serve": "browser-sync start --config bs-config.js",
