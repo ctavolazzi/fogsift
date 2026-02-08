@@ -328,6 +328,58 @@ pre, code {
     }
 }
 
+/* === LANDSCAPE PHONES: Restore desktop-like layout === */
+/* Covers iPhone SE landscape (667px) through phones up to 768px */
+@media (max-width: 768px) and (orientation: landscape) and (min-width: 568px) {
+    /* Restore horizontal process steps */
+    .process-steps {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .process-step {
+        max-width: 220px;
+    }
+
+    /* Restore horizontal footer */
+    .footer-links {
+        flex-direction: row;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+    }
+
+    .footer-sep {
+        display: inline;
+    }
+
+    /* Testimonials: 2-col grid */
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Pricing: 2-col grid */
+    .pricing-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Hero: don't force full-width CTAs */
+    .hero-badge .cta-button {
+        width: auto;
+    }
+
+    /* Modal: floating card, not full-screen */
+    .modal-content {
+        width: 90%;
+        max-width: 600px;
+        height: auto;
+        max-height: 80vh;
+        border-radius: var(--radius-lg);
+        margin: auto;
+    }
+}
+
 /* === SMALL MOBILE: 375px and below === */
 @media (max-width: 375px) {
     section,

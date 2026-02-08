@@ -766,12 +766,14 @@
 /* === SEARCH RESPONSIVE === */
 @media (max-width: 768px) {
     .search-panel {
-        width: 100vw;
-        max-height: 100vh;
-        margin-top: 0;
-        border-radius: 0;
-        border: none;
-        height: 100vh;
+        width: min(600px, 92vw);
+        max-height: 70vh;
+        margin-top: calc(var(--nav-height) + 12px);
+        border-radius: var(--radius-lg);
+        border: var(--border-width) solid var(--line);
+        box-shadow: var(--shadow-elevated);
+        /* Same bouncy pop-down as desktop */
+        transform: translateY(-20px) scale(0.96);
     }
 
     .search-overlay.open .search-panel {
@@ -910,6 +912,46 @@
         padding: 6px 28px 6px 10px;
         font-size: 0.7rem;
         background-position: right 8px center;
+    }
+}
+
+/* === LANDSCAPE PHONES: Restore desktop nav === */
+/* Covers iPhone SE landscape (667px) and all larger phones */
+@media (max-width: 768px) and (orientation: landscape) and (min-width: 568px) {
+    .menu-items {
+        display: flex !important;
+        gap: 0.5rem;
+    }
+
+    .menu-toggle {
+        display: none !important;
+    }
+
+    .menu-link {
+        font-size: 0.7rem;
+        padding: 4px 6px;
+    }
+
+    /* Compact theme dropdown in landscape */
+    .nav-controls .theme-dropdown {
+        min-width: 80px;
+        padding: 4px 24px 4px 8px;
+        font-size: 0.65rem;
+    }
+
+    /* Search panel: same floating card as desktop */
+    .search-panel {
+        width: min(600px, 92vw);
+        max-height: 60vh;
+        margin-top: calc(var(--nav-height) + 12px);
+        border-radius: var(--radius-lg);
+        border: var(--border-width) solid var(--line);
+        box-shadow: var(--shadow-elevated);
+        transform: translateY(-20px) scale(0.96);
+    }
+
+    .search-overlay.open .search-panel {
+        transform: translateY(0) scale(1);
     }
 }
 
