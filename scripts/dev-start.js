@@ -184,9 +184,9 @@ function runTests() {
   if (fs.existsSync(reportPath)) {
     try {
       const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-      const p = report.summary?.pass || 0;
-      const f = report.summary?.fail || 0;
-      const w = report.summary?.warn || 0;
+      const p = report.summary?.passed || report.summary?.pass || 0;
+      const f = report.summary?.failed || report.summary?.fail || 0;
+      const w = report.summary?.warned || report.summary?.warn || 0;
       if (f > 0) {
         warn(`${c.green}${p} pass${c.reset}, ${c.red}${f} fail${c.reset}, ${c.yellow}${w} warn${c.reset}`);
       } else {

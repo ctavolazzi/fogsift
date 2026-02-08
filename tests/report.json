@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-07T21:15:55.543Z",
+  "timestamp": "2026-02-08T07:59:15.754Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,17 +60,17 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 70",
+          "test": "HTML pages built: 71",
           "status": "pass",
-          "detail": "Found 70 HTML files"
+          "detail": "Found 71 HTML files"
         },
         {
-          "test": "styles.css size: 172.7KB",
+          "test": "styles.css size: 175.3KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 60.2KB",
+          "test": "app.js size: 62.3KB",
           "status": "pass",
           "detail": ""
         }
@@ -119,6 +119,11 @@
         },
         {
           "test": "index.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "keepers-log.html",
           "status": "pass",
           "detail": ""
         },
@@ -433,7 +438,7 @@
           "detail": ""
         }
       ],
-      "passed": 70,
+      "passed": 71,
       "failed": 0,
       "warned": 0
     },
@@ -443,7 +448,7 @@
         {
           "test": "ESLint warnings only",
           "status": "warn",
-          "detail": "19 warning(s)"
+          "detail": "20 warning(s)"
         }
       ],
       "passed": 0,
@@ -456,22 +461,22 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "34 issue(s)"
+          "detail": "35 issue(s)"
         },
         {
           "test": "about.html",
           "status": "warn",
-          "detail": "4 issue(s)"
+          "detail": "5 issue(s)"
         },
         {
           "test": "offers.html",
           "status": "warn",
-          "detail": "20 issue(s)"
+          "detail": "21 issue(s)"
         },
         {
           "test": "faq.html",
           "status": "warn",
-          "detail": "9 issue(s)"
+          "detail": "10 issue(s)"
         },
         {
           "test": "contact.html",
@@ -481,12 +486,12 @@
         {
           "test": "queue.html",
           "status": "warn",
-          "detail": "16 issue(s)"
+          "detail": "17 issue(s)"
         },
         {
           "test": "portfolio.html",
           "status": "warn",
-          "detail": "9 issue(s)"
+          "detail": "10 issue(s)"
         }
       ],
       "passed": 0,
@@ -497,7 +502,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 5803 internal links valid",
+          "test": "All 5858 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -535,7 +540,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 291.4KB",
+          "test": "Index size: 291.8KB",
           "status": "warn",
           "detail": ""
         }
@@ -548,7 +553,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 16.95MB",
+          "test": "Total dist/ size: 16.99MB",
           "status": "pass",
           "detail": ""
         },
@@ -655,8 +660,8 @@
     }
   ],
   "summary": {
-    "total": 116,
-    "passed": 103,
+    "total": 117,
+    "passed": 104,
     "failed": 0,
     "warned": 13
   }

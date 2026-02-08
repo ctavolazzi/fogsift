@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-07T21:15:55.543Z
+Generated: 2026-02-08T07:59:15.754Z
 ============================================================
 
 SUMMARY
-  Total:    116
-  Passed:   103
+  Total:    117
+  Passed:   104
   Failed:   0
   Warnings: 13
-  Pass rate: 88.8%
+  Pass rate: 88.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,9 +21,9 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 70 — Found 70 HTML files
-  [PASS] styles.css size: 172.7KB
-  [PASS] app.js size: 60.2KB
+  [PASS] HTML pages built: 71 — Found 71 HTML files
+  [PASS] styles.css size: 175.3KB
+  [PASS] app.js size: 62.3KB
 
 ── HTML Validation ──
   [PASS] 404.html
@@ -34,6 +34,7 @@ SUMMARY
   [PASS] gallery.html
   [PASS] hi.html
   [PASS] index.html
+  [PASS] keepers-log.html
   [PASS] offers.html
   [PASS] portfolio.html
   [PASS] privacy.html
@@ -98,19 +99,19 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [WARN] ESLint warnings only — 19 warning(s)
+  [WARN] ESLint warnings only — 20 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — 34 issue(s)
-  [WARN] about.html — 4 issue(s)
-  [WARN] offers.html — 20 issue(s)
-  [WARN] faq.html — 9 issue(s)
+  [WARN] index.html — 35 issue(s)
+  [WARN] about.html — 5 issue(s)
+  [WARN] offers.html — 21 issue(s)
+  [WARN] faq.html — 10 issue(s)
   [WARN] contact.html — 11 issue(s)
-  [WARN] queue.html — 16 issue(s)
-  [WARN] portfolio.html — 9 issue(s)
+  [WARN] queue.html — 17 issue(s)
+  [WARN] portfolio.html — 10 issue(s)
 
 ── Internal Link Integrity ──
-  [PASS] All 5803 internal links valid
+  [PASS] All 5858 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -118,10 +119,10 @@ SUMMARY
   [PASS] Index has 56 entries
   [PASS] 56/56 entries have valid structure
   [PASS] 56/56 index URLs resolve to files
-  [WARN] Index size: 291.4KB
+  [WARN] Index size: 291.8KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 16.95MB
+  [PASS] Total dist/ size: 16.99MB
   [WARN] 11 file(s) over 500KB — assets/icon-512.png: 840.6KB; assets/logo-01.png: 821.7KB; assets/logo-mono.png: 552.7KB; images/portfolio/TMGotcha-Banner-Image.jpg: 1.23MB; images/portfolio/TMGotcha-Build-Cycle-Banner.jpg: 951.2KB; images/portfolio/TMGotcha-Cube-Concept-Art.jpg: 1.21MB; images/portfolio/TMGotcha-Hardware-Concept-Art.jpg: 1.18MB; images/portfolio/TMGotcha-Main-Advert-Image.jpg: 1.02MB; images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg: 1.08MB; images/portfolio/TMGotcha-Toy-Editions-Banner.jpg: 1.12MB; og-image.png: 726.0KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present

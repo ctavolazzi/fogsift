@@ -11,13 +11,14 @@ export default [
         Theme: "readonly",
         Modal: "readonly",
         Nav: "readonly",
-        SleepMode: "readonly"
+        SleepMode: "readonly",
+        CookieConsent: "readonly"
       }
     },
     rules: {
       "no-unused-vars": ["warn", {
         "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^(Toast|Theme|Modal|Nav|App|SleepMode)$"
+        "varsIgnorePattern": "^(Toast|Theme|Modal|Nav|App|SleepMode|CookieConsent)$"
       }],
       "no-undef": "error",
       "no-empty": "warn",
