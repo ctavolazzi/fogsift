@@ -79,6 +79,13 @@ fogsift/
 └── _work_efforts/          # Work tracking
 ```
 
+## Ideas & Planning
+
+- **[v0.1.0 Release Plan](V0.1.0-RELEASE-PLAN.md)** - Current release roadmap
+- **[Feature Void Audit](FEATURE_VOID_AUDIT.md)** - 42 identified feature gaps
+- **[Tech Debt Tracker](TECH_DEBT.md)** - Known issues and priorities
+- **[The Keeper's Log](_AI_Journal/)** - AI development journal and reflections
+
 ## Documentation
 
 - **[CHANGELOG.md](CHANGELOG.md)** - Version history

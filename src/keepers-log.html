@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>// | Fogsift</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Theme detection -->
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Hide main nav and footer on this page */
+        .nav-wrapper,
+        footer[role="contentinfo"] {
+            display: none !important;
+        }
+
+        body {
+            background: #0a0a0f;
+            color: #c0c0c8;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .frame {
+            padding: 0;
+            max-width: none;
+        }
+
+        /* ── Scanline overlay ── */
+        .keeper-scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(0, 0, 0, 0.08) 2px,
+                rgba(0, 0, 0, 0.08) 4px
+            );
+        }
+
+        /* ── Vignette ── */
+        .keeper-vignette {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 999;
+            background: radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
+        /* ── Main container ── */
+        .keeper-gate {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Lighthouse beacon ── */
+        .keeper-beacon {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .keeper-beacon svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(255, 200, 100, 0.3));
+        }
+
+        .keeper-beacon-glow {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 200, 100, 0.8) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: beacon-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes beacon-pulse {
+            0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+            50% { opacity: 1; transform: translateX(-50%) scale(1.8); }
+        }
+
+        /* ── Title ── */
+        .keeper-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #4a4a5a;
+            margin-bottom: 2.5rem;
+            animation: flicker 4s ease-in-out infinite;
+        }
+
+        @keyframes flicker {
+            0%, 95%, 100% { opacity: 1; }
+            96% { opacity: 0.4; }
+            97% { opacity: 0.9; }
+            98% { opacity: 0.3; }
+        }
+
+        /* ── Hint text ── */
+        .keeper-hint {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: #6a6a7a;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            max-width: 300px;
+            line-height: 1.6;
+        }
+
+        /* ── Input area ── */
+        .keeper-input-wrap {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+
+        .keeper-input {
+            background: transparent;
+            border: 1px solid #2a2a3a;
+            border-bottom: 2px solid #3a3a4a;
+            color: #e0e0e8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            padding: 0.8rem 1.2rem;
+            width: 240px;
+            text-align: center;
+            letter-spacing: 0.15em;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            caret-color: rgba(255, 200, 100, 0.7);
+        }
+
+        .keeper-input::placeholder {
+            color: #2a2a3a;
+            letter-spacing: 0.3em;
+        }
+
+        .keeper-input:focus {
+            border-color: #4a4a5a;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* ── Response messages ── */
+        .keeper-response {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            height: 1.5rem;
+            color: #4a3a3a;
+            margin-top: 0.5rem;
+            transition: color 0.3s;
+            text-align: center;
+        }
+
+        .keeper-response.wrong {
+            color: #6a3a3a;
+            animation: shake 0.4s ease-in-out;
+        }
+
+        .keeper-response.correct {
+            color: #3a6a4a;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-6px); }
+            75% { transform: translateX(6px); }
+        }
+
+        /* ── Glitch effect on wrong password ── */
+        .keeper-glitch {
+            animation: glitch-shift 0.3s ease-in-out;
+        }
+
+        @keyframes glitch-shift {
+            0% { transform: translate(0); filter: hue-rotate(0deg); }
+            20% { transform: translate(-3px, 2px); filter: hue-rotate(90deg); }
+            40% { transform: translate(2px, -1px); filter: hue-rotate(-90deg); }
+            60% { transform: translate(-1px, 3px); filter: hue-rotate(180deg); }
+            80% { transform: translate(3px, -2px); filter: hue-rotate(-180deg); }
+            100% { transform: translate(0); filter: hue-rotate(0deg); }
+        }
+
+        /* ── Revealed content ── */
+        .keeper-revealed {
+            display: none;
+            text-align: center;
+            animation: fade-in 1.5s ease-out;
+        }
+
+        .keeper-revealed.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @keyframes fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .keeper-welcome {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            color: #c0c0c8;
+            margin-bottom: 0.5rem;
+        }
+
+        .keeper-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: #4a4a5a;
+            letter-spacing: 0.15em;
+            margin-bottom: 2.5rem;
+        }
+
+        .keeper-entries {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .keeper-entry-link {
+            display: block;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid #1a1a2a;
+            text-decoration: none;
+            color: #8a8a9a;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            text-align: left;
+        }
+
+        .keeper-entry-link:hover {
+            background: rgba(255, 200, 100, 0.03);
+            border-color: #3a3a4a;
+            color: #c0c0c8;
+            transform: translateX(4px);
+        }
+
+        .keeper-entry-label {
+            display: block;
+            font-size: 0.65rem;
+            color: #3a3a4a;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.3rem;
+        }
+
+        .keeper-back {
+            margin-top: 3rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #3a3a4a;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+        }
+
+        .keeper-back:hover {
+            color: #6a6a7a;
+        }
+
+        /* ── Mobile ── */
+        @media (max-width: 480px) {
+            .keeper-hint {
+                font-size: 1rem;
+            }
+            .keeper-input {
+                width: 200px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <main class="frame" id="main-content">
+        <div class="keeper-scanlines" aria-hidden="true"></div>
+        <div class="keeper-vignette" aria-hidden="true"></div>
+
+        <!-- Gate -->
+        <div class="keeper-gate" id="keeper-gate">
+            <!-- Lighthouse beacon -->
+            <div class="keeper-beacon" aria-hidden="true">
+                <div class="keeper-beacon-glow"></div>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="32" y="20" width="16" height="45" rx="2" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="28" y="60" width="24" height="6" rx="1" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="30" y="66" width="20" height="4" rx="1" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="34" y="12" width="12" height="10" rx="1" fill="#2a2a3a" stroke="#4a4a5a" stroke-width="1"/>
+                    <rect x="36" y="14" width="8" height="6" rx="1" fill="rgba(255,200,100,0.15)" stroke="rgba(255,200,100,0.3)" stroke-width="0.5"/>
+                    <polygon points="30,12 40,4 50,12" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="keeper-title">SIGNAL RECEIVED</div>
+
+            <p class="keeper-hint">What doesn't lift itself?</p>
+
+            <div class="keeper-input-wrap">
+                <input
+                    type="text"
+                    class="keeper-input"
+                    id="keeper-password"
+                    placeholder="..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Enter the password"
+                >
+            </div>
+            <div class="keeper-response" id="keeper-response" aria-live="polite"></div>
+        </div>
+
+        <!-- Revealed content -->
+        <div class="keeper-revealed" id="keeper-revealed">
+            <div class="keeper-beacon" aria-hidden="true" style="margin-bottom: 1.5rem;">
+                <div class="keeper-beacon-glow" style="animation-duration: 1.5s;"></div>
+                <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="32" y="20" width="16" height="45" rx="2" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="28" y="60" width="24" height="6" rx="1" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="30" y="66" width="20" height="4" rx="1" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                    <rect x="34" y="12" width="12" height="10" rx="1" fill="#2a2a3a" stroke="#4a4a5a" stroke-width="1"/>
+                    <rect x="36" y="14" width="8" height="6" rx="1" fill="rgba(255,200,100,0.4)" stroke="rgba(255,200,100,0.6)" stroke-width="0.5"/>
+                    <polygon points="30,12 40,4 50,12" fill="#1a1a2a" stroke="#3a3a4a" stroke-width="1"/>
+                </svg>
+            </div>
+
+            <div class="keeper-welcome">The Keeper's Log</div>
+            <div class="keeper-subtitle">AI development journal & reflections</div>
+
+            <div class="keeper-entries">
+                <a href="https://github.com/ctavolazzi/fogsift/tree/main/_AI_Journal" class="keeper-entry-link" target="_blank" rel="noopener">
+                    <span class="keeper-entry-label">Journal</span>
+                    AI Journal — Development notes, reflections, lore
+                </a>
+                <a href="https://github.com/ctavolazzi/fogsift/blob/main/V0.1.0-RELEASE-PLAN.md" class="keeper-entry-link" target="_blank" rel="noopener">
+                    <span class="keeper-entry-label">Planning</span>
+                    v0.1.0 Release Plan — Current roadmap
+                </a>
+                <a href="https://github.com/ctavolazzi/fogsift/blob/main/FEATURE_VOID_AUDIT.md" class="keeper-entry-link" target="_blank" rel="noopener">
+                    <span class="keeper-entry-label">Audit</span>
+                    Feature Void Audit — 42 identified gaps
+                </a>
+                <a href="https://github.com/ctavolazzi/fogsift/blob/main/TECH_DEBT.md" class="keeper-entry-link" target="_blank" rel="noopener">
+                    <span class="keeper-entry-label">Debt</span>
+                    Tech Debt Tracker — Known issues & priorities
+                </a>
+            </div>
+
+            <a href="index.html" class="keeper-back">&larr; return to shore</a>
+        </div>
+
+        {{FOOTER}}
+    </main>
+
+    <script src="app.js" defer></script>
+    <script>
+    (function() {
+        var gate = document.getElementById('keeper-gate');
+        var revealed = document.getElementById('keeper-revealed');
+        var input = document.getElementById('keeper-password');
+        var response = document.getElementById('keeper-response');
+
+        var wrongMessages = [
+            'The fog remains.',
+            'Not quite. Listen closer.',
+            'The signal fades...',
+            'Try again. The answer is simple.',
+            'Still searching...',
+            'The lighthouse waits.'
+        ];
+
+        var attempts = 0;
+
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                var val = input.value.trim().toLowerCase();
+
+                if (val === 'fog' || val === 'the fog') {
+                    // Correct
+                    response.textContent = 'Signal locked.';
+                    response.className = 'keeper-response correct';
+                    input.disabled = true;
+
+                    setTimeout(function() {
+                        gate.style.transition = 'opacity 0.8s';
+                        gate.style.opacity = '0';
+
+                        setTimeout(function() {
+                            gate.style.display = 'none';
+                            revealed.classList.add('active');
+                            document.body.style.overflow = 'auto';
+                        }, 800);
+                    }, 600);
+                } else {
+                    // Wrong
+                    attempts++;
+                    var msg = wrongMessages[(attempts - 1) % wrongMessages.length];
+                    response.textContent = msg;
+                    response.className = 'keeper-response wrong';
+                    gate.classList.add('keeper-glitch');
+                    input.value = '';
+
+                    setTimeout(function() {
+                        gate.classList.remove('keeper-glitch');
+                    }, 300);
+                }
+            }
+        });
+
+        // Auto-focus
+        input.focus();
+    })();
+    </script>
+</body>
+</html>

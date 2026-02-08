@@ -211,6 +211,7 @@ function generateFooter(pathPrefix = '', options = {}) {
                 <div class="footer-ai-disclaimer">
                     <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
                 </div>
+                <div class="footer-signal" style="margin-top:0.5rem;"><a href="${pathPrefix}keepers-log.html" style="color:inherit;opacity:0.15;font-family:monospace;font-size:0.6rem;text-decoration:none;letter-spacing:0.2em;" aria-hidden="true">5001</a></div>
                 <div class="footer-dev-notice">
                     <small>Site under active development. Follow along on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> &amp; <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.</small>
                 </div>
@@ -1234,6 +1235,9 @@ async function build() {
     }
     if (processSimpleHtml('your-data.html')) {
         console.log('  ✓ dist/your-data.html (processed)');
+    }
+    if (processSimpleHtml('keepers-log.html')) {
+        console.log('  ✓ dist/keepers-log.html (processed)');
     }
 
     // Future pages (uncomment when implemented):

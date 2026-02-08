@@ -39,3 +39,6 @@ _work_efforts/
 
 # Audit history (can be tracked but regenerated)
 audit-history.json
+
+# Screenshots
+FogSift-*-screencapture-*.png
