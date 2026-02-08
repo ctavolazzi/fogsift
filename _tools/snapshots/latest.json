@@ -1,40 +1,33 @@
 {
-  "generated": "2026-02-07T21:36:22.407Z",
+  "generated": "2026-02-08T03:52:34.122Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "main",
     "status": [
-      "M dist/api/articles.json",
+      "M _tools/snapshots/latest.json",
+      " M _tools/snapshots/previous.json",
+      " M _tools/snapshots/session-log.json",
+      " M dist/api/articles.json",
       " M dist/api/meta.json",
       " M dist/api/wiki/index.json",
       " M dist/api/wiki/sitemap.json",
-      " M dist/app.js",
-      " M dist/index.html",
-      " M dist/search-index.json",
-      " M dist/styles.css",
-      " M src/css/components.css",
-      " M src/index.html",
-      " M src/js/main.js",
-      " M tests/lighthouse-report.json",
-      " M tests/report.json",
-      " M tests/report.txt",
-      "?? V0.1.0-RELEASE-PLAN.md",
-      "?? _AI_Journal/",
-      "?? _tools/",
-      "?? src/shouse.html"
+      " M scripts/dev-start.js",
+      "?? _tools/snapshots/snapshot-2026-02-08T03-42-53.json",
+      "?? _tools/snapshots/snapshot-2026-02-08T03-43-09.json",
+      "?? _tools/snapshots/snapshot-2026-02-08T03-48-50.json"
     ],
-    "unpushed": 1,
+    "unpushed": 0,
     "recentCommits": [
+      "f96cb34 Enhance dev startup with tests, snapshot diffing, and pyrite work efforts",
+      "94d58e2 Add dev startup script with full Lighthouse suite",
+      "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
+      "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
+      "d004e2b Rebuild dist from latest source",
+      "6cafc66 Add development infrastructure: test viewer, component library, AI journal",
+      "ecf3bd9 Redesign Why This Works section, add shouse research page",
       "764a6f7 Redesign wiki section into 3-card content grid with real excerpts",
       "0a7da9b Add homepage wiki section with daily rotation, stats, and quotes",
-      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test",
-      "524c421 Polish newsletter signup and switch footer links to 3-column grid",
-      "ab199e4 Fix HTTPS compatibility and add localStorage caching for all API calls",
-      "ce1ef17 Add data awareness page, homepage footprint widget, fix anonymization claims",
-      "36a4c0d Fix HTML validation errors: escape wiki descriptions, fix aria-label usage",
-      "7c60dc5 Fix rotating hero word layout shift, add test suite, clean stale artifacts",
-      "0f95edd Add context-aware site search with animated overlay",
-      "367bcb4 Replace auto-fit grids with intentional layouts, redesign offers page"
+      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test"
     ],
     "tags": [
       "v0.0.4",
@@ -44,7 +37,7 @@
       "v0.0.1"
     ],
     "lastTag": "v0.0.5",
-    "commitsSinceTag": 94,
+    "commitsSinceTag": 101,
     "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
   },
   "package": {
@@ -52,6 +45,8 @@
     "version": "0.0.5",
     "description": "Straight answers to complicated questions",
     "scripts": [
+      "start",
+      "start:site",
       "dev",
       "dev:functions",
       "serve",
@@ -151,15 +146,15 @@
       },
       {
         "path": "css/mobile.css",
-        "size": 11810,
-        "modified": "2026-02-07T10:34:26.299Z",
-        "lines": 544
+        "size": 12956,
+        "modified": "2026-02-08T03:37:47.045Z",
+        "lines": 596
       },
       {
         "path": "css/navigation.css",
-        "size": 21499,
-        "modified": "2026-02-07T10:51:48.730Z",
-        "lines": 920
+        "size": 22767,
+        "modified": "2026-02-08T03:37:36.266Z",
+        "lines": 962
       },
       {
         "path": "css/ocean-theme.css",
@@ -376,6 +371,12 @@
         "lines": 675
       },
       {
+        "path": "keepers-log.html",
+        "size": 15832,
+        "modified": "2026-02-08T03:32:46.960Z",
+        "lines": 455
+      },
+      {
         "path": "lava-demo.html",
         "size": 10208,
         "modified": "2025-12-28T10:16:47.167Z",
@@ -395,9 +396,9 @@
       },
       {
         "path": "portfolio.html",
-        "size": 17608,
-        "modified": "2026-02-07T10:11:02.443Z",
-        "lines": 291
+        "size": 19988,
+        "modified": "2026-02-08T03:33:26.946Z",
+        "lines": 321
       },
       {
         "path": "privacy.html",
@@ -1059,15 +1060,15 @@
   },
   "build": {
     "exists": true,
-    "htmlPageCount": 70,
+    "htmlPageCount": 71,
     "keyFileSizes": {
-      "styles.css": 176868,
+      "styles.css": 178058,
       "app.js": 61664,
       "theme-init.js": 659,
-      "search-index.json": 300041,
-      "index.html": 52554
+      "search-index.json": 300384,
+      "index.html": 52802
     },
-    "totalFiles": 117
+    "totalFiles": 118
   },
   "tests": {
     "timestamp": "2026-02-07T21:15:55.543Z",
@@ -1171,21 +1172,21 @@
       "5001": "AI Journal (The Keeper's Log)",
       "5030": "Component Library (The Signal Workshop)",
       "5050": "FogSift dev server (The Lighthouse)",
-      "5065": "Test Suite Viewer (Captain FogLifter's Quality Report)",
+      "5065": "Test Suite Viewer (Captain FogLift's Quality Report)",
       "8788": "Wrangler dev server (The Harbor)"
     }
   },
   "summary": {
     "version": "0.0.5",
     "branch": "main",
-    "uncommittedFiles": 18,
-    "unpushedCommits": 1,
-    "commitsSinceRelease": 94,
+    "uncommittedFiles": 11,
+    "unpushedCommits": 0,
+    "commitsSinceRelease": 101,
     "srcCssFiles": 19,
     "srcJsFiles": 17,
-    "srcHtmlFiles": 25,
-    "srcTotalLines": 24448,
-    "builtPages": 70,
+    "srcHtmlFiles": 26,
+    "srcTotalLines": 25027,
+    "builtPages": 71,
     "wikiPages": 43,
     "testsPassed": 103,
     "testsFailed": 0,

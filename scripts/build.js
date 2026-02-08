@@ -271,6 +271,7 @@ const JS_FILES = [
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
     'src/js/monte.js',    // Three card monte hero easter egg
     'src/js/search.js',   // Client-side search/filter
+    'src/js/cookie-consent.js', // GDPR/CCPA cookie consent banner
     // Future features (uncomment when implemented):
     // 'src/js/achievement.js', // Xbox-style achievement notifications
     // 'src/js/queue-widget.js', // Queue status floating widget

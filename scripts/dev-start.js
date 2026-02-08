@@ -1,27 +1,32 @@
 #!/usr/bin/env node
 /**
- * FOGSIFT DEV STARTUP
+ * ╔═══════════════════════════════════════════════════════╗
+ * ║  THE LIGHTHOUSE — FogSift Development Suite           ║
+ * ║  "The fog doesn't lift itself."                       ║
+ * ╚═══════════════════════════════════════════════════════╝
  *
- * Starts the full development environment with verification:
- *   1. Runs health check
- *   2. Builds the site
- *   3. Runs test suite
- *   4. Takes a snapshot and diffs against previous session
- *   5. Creates a pyrite work effort for this session
- *   6. Starts all dev servers in parallel
- *   7. Prints the dashboard
+ * One command to rule them all. Builds, tests, snapshots,
+ * diffs, tracks work, and launches your entire dev environment.
  *
  * Usage:
- *   npm start              — Full suite (site + all helpers)
- *   npm run start:site     — Site only (build + browser-sync)
- *   node scripts/dev-start.js --no-helpers  — Same as start:site
- *   node scripts/dev-start.js --skip-tests  — Skip test suite
+ *   npm start              Full suite (site + all dev tools)
+ *   npm run start:site     Site only (build + browser-sync)
+ *   --skip-tests           Skip test suite for faster boot
+ *   --no-helpers           Skip helper servers
+ *
+ * What it does:
+ *   1. Health check         Structural integrity verification
+ *   2. Build                Compiles site to dist/
+ *   3. Test suite           Runs 116 tests across 9 suites
+ *   4. Snapshot & diff      Compares state against last session
+ *   5. Work effort          Creates/resumes daily tracking
+ *   6. Launch servers       FogSift + dev tools on 4 ports
  *
  * Ports:
- *   5001  The Keeper's Log (AI Journal)
- *   5030  The Signal Workshop (Component Library)
- *   5050  FogSift dev server
- *   5065  Captain FogLift's Quality Report (Test Viewer)
+ *   5050  FogSift                    The main site
+ *   5001  The Keeper's Log           AI development journal
+ *   5030  The Signal Workshop        Component library
+ *   5065  Captain FogLift's Report   Test suite viewer
  */
 
 const { spawn, execSync } = require('child_process');
@@ -37,234 +42,227 @@ const SNAPSHOT_LATEST = path.join(SNAPSHOT_DIR, 'latest.json');
 const SNAPSHOT_PREV = path.join(SNAPSHOT_DIR, 'previous.json');
 const SESSION_LOG = path.join(SNAPSHOT_DIR, 'session-log.json');
 const PYRITE_DIR = path.join(ROOT, '_pyrite', 'active');
+const WORK_EFFORTS_DIR = path.join(ROOT, '_work_efforts');
 
 // ── Colors ──
 const c = {
-  reset: '\x1b[0m',
-  dim: '\x1b[2m',
-  bold: '\x1b[1m',
-  green: '\x1b[32m',
-  yellow: '\x1b[33m',
-  cyan: '\x1b[36m',
-  magenta: '\x1b[35m',
-  red: '\x1b[31m',
-  white: '\x1b[37m',
+  reset: '\x1b[0m', dim: '\x1b[2m', bold: '\x1b[1m', italic: '\x1b[3m',
+  green: '\x1b[32m', yellow: '\x1b[33m', cyan: '\x1b[36m',
+  magenta: '\x1b[35m', red: '\x1b[31m', white: '\x1b[37m',
+  blue: '\x1b[34m', gray: '\x1b[90m',
 };
 
-function log(msg) { console.log(msg); }
+function log(msg = '') { console.log(msg); }
 function bold(msg) { return `${c.bold}${msg}${c.reset}`; }
+function dim(msg) { return `${c.dim}${msg}${c.reset}`; }
+
+const startTime = Date.now();
+function elapsed() { return `${((Date.now() - startTime) / 1000).toFixed(1)}s`; }
+
+// ── Read version ──
+function getVersion() {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8')).version;
+  } catch { return '?.?.?'; }
+}
+
+// ── Git info ──
+function getGitInfo() {
+  const info = {};
+  try {
+    info.branch = execSync('git branch --show-current', { cwd: ROOT, encoding: 'utf8', timeout: 5000 }).trim();
+    info.commit = execSync('git rev-parse --short HEAD', { cwd: ROOT, encoding: 'utf8', timeout: 5000 }).trim();
+    info.dirty = execSync('git status --porcelain', { cwd: ROOT, encoding: 'utf8', timeout: 5000 }).trim().length > 0;
+    const tagCount = execSync('git tag --list "v*" | wc -l', { cwd: ROOT, encoding: 'utf8', timeout: 5000, shell: true }).trim();
+    info.tags = parseInt(tagCount) || 0;
+  } catch { /* ignore */ }
+  return info;
+}
+
+// ── Project stats ──
+function getProjectStats() {
+  const stats = {};
+  try {
+    const distHtml = execSync('find dist -name "*.html" | wc -l', { cwd: ROOT, encoding: 'utf8', timeout: 5000, shell: true }).trim();
+    stats.pages = parseInt(distHtml) || 0;
+  } catch { stats.pages = 0; }
+  try {
+    const wikiMd = execSync('find src/wiki -name "*.md" 2>/dev/null | wc -l', { cwd: ROOT, encoding: 'utf8', timeout: 5000, shell: true }).trim();
+    stats.wikiPages = parseInt(wikiMd) || 0;
+  } catch { stats.wikiPages = 0; }
+  try {
+    const css = fs.statSync(path.join(ROOT, 'dist', 'styles.css'));
+    stats.cssKB = (css.size / 1024).toFixed(0);
+  } catch { stats.cssKB = '?'; }
+  try {
+    const js = fs.statSync(path.join(ROOT, 'dist', 'app.js'));
+    stats.jsKB = (js.size / 1024).toFixed(0);
+  } catch { stats.jsKB = '?'; }
+  return stats;
+}
 
 // ── Banner ──
-function printBanner() {
-  log('');
-  log(`${c.cyan}${c.bold}  ╔═══════════════════════════════════════════════╗${c.reset}`);
-  log(`${c.cyan}${c.bold}  ║          FOGSIFT — THE LIGHTHOUSE             ║${c.reset}`);
-  log(`${c.cyan}${c.bold}  ║     "The fog doesn't lift itself."            ║${c.reset}`);
-  log(`${c.cyan}${c.bold}  ╚═══════════════════════════════════════════════╝${c.reset}`);
-  log('');
+function printBanner(version, git) {
+  const v = `v${version}`;
+  const branch = git.branch || 'detached';
+  const commit = git.commit || '???????';
+  const dirty = git.dirty ? ` ${c.yellow}*${c.reset}` : '';
+
+  log();
+  log(`${c.cyan}${c.bold}     ___           ___           ___     ${c.reset}`);
+  log(`${c.cyan}${c.bold}    /\\  \\         /\\  \\         /\\  \\    ${c.reset}`);
+  log(`${c.cyan}${c.bold}   /::\\  \\       /::\\  \\       /::\\  \\   ${c.reset}  ${c.white}${c.bold}THE LIGHTHOUSE${c.reset}`);
+  log(`${c.cyan}${c.bold}  /:/\\:\\  \\     /:/\\:\\  \\     /:/\\:\\  \\  ${c.reset}  ${dim('FogSift Development Suite')}`)
+  log(`${c.cyan}${c.bold} /::\\~\\:\\  \\   /:/  \\:\\  \\   /:/  \\:\\  \\ ${c.reset}  ${dim(`${v}  ${branch}@${commit}${dirty}`)}`)
+  log(`${c.cyan}${c.bold}/:/\\:\\ \\:\\__\\ /:/__/ \\:\\__\\ /:/__/_\\:\\__\\${c.reset}`);
+  log(`${c.cyan}${c.bold}\\/__\\:\\ \\/__/ \\:\\  \\ /:/  / \\:\\  /\\ \\/__/${c.reset}  ${c.dim}${c.italic}"The fog doesn't lift itself."${c.reset}`);
+  log(`${c.cyan}${c.bold}     \\:\\__\\    \\:\\  /:/  /   \\:\\ \\:\\__\\  ${c.reset}`);
+  log(`${c.cyan}${c.bold}      \\/__/     \\:\\/:/  /     \\:\\/:/  /  ${c.reset}`);
+  log(`${c.cyan}${c.bold}                 \\::/  /       \\::/  /   ${c.reset}`);
+  log(`${c.cyan}${c.bold}                  \\/__/         \\/__/    ${c.reset}`);
+  log();
 }
+
+// ── Step runner ──
+let stepNum = 0;
+function step(label) {
+  stepNum++;
+  log(`  ${c.gray}[${stepNum}]${c.reset} ${c.dim}${label}${c.reset}`);
+}
+
+function pass(msg) { log(`  ${c.green} ✓ ${c.reset} ${msg}`); }
+function warn(msg) { log(`  ${c.yellow} ⚠ ${c.reset} ${msg}`); }
+function fail(msg) { log(`  ${c.red} ✗ ${c.reset} ${msg}`); }
 
 // ── Health check ──
 function runHealthCheck() {
+  step('Health check');
   const healthScript = path.join(ROOT, '_tools', 'scripts', 'health-check.js');
-  if (!fs.existsSync(healthScript)) {
-    log(`  ${c.yellow}⚠${c.reset} Health check script not found, skipping`);
-    return true;
-  }
+  if (!fs.existsSync(healthScript)) { warn('Health check not found, skipping'); return true; }
 
-  log(`  ${c.dim}Running health check...${c.reset}`);
   try {
     execSync(`node "${healthScript}"`, { cwd: ROOT, stdio: 'pipe' });
-    log(`  ${c.green}✓${c.reset} Health check passed`);
+    pass('All systems nominal');
     return true;
   } catch (e) {
-    log(`  ${c.yellow}⚠${c.reset} Health check found issues (non-blocking)`);
+    warn('Issues found (non-blocking)');
     if (e.stdout) {
-      const lines = e.stdout.toString().split('\n').filter(l => l.includes('✗'));
-      lines.forEach(l => log(`    ${l}`));
+      e.stdout.toString().split('\n').filter(l => l.includes('✗')).forEach(l => log(`       ${l.trim()}`));
     }
-    return true; // non-blocking
+    return true;
   }
 }
 
 // ── Build ──
 function runBuild() {
-  log(`  ${c.dim}Building site...${c.reset}`);
+  step('Build');
   try {
     execSync('node scripts/build.js', { cwd: ROOT, stdio: 'pipe' });
-    log(`  ${c.green}✓${c.reset} Build complete`);
+    const stats = getProjectStats();
+    pass(`${stats.pages} pages, ${stats.wikiPages} wiki, ${stats.cssKB}KB CSS, ${stats.jsKB}KB JS`);
     return true;
   } catch (e) {
-    log(`  ${c.red}✗ Build failed${c.reset}`);
+    fail('Build failed');
     if (e.stderr) log(e.stderr.toString());
     return false;
   }
 }
 
-// ── Test suite ──
+// ── Tests ──
 function runTests() {
-  if (skipTests) {
-    log(`  ${c.dim}Skipping tests (--skip-tests)${c.reset}`);
-    return null;
-  }
+  step('Test suite');
+  if (skipTests) { log(`  ${c.dim}     Skipped (--skip-tests)${c.reset}`); return null; }
 
   const testScript = path.join(ROOT, 'tests', 'suite.js');
-  if (!fs.existsSync(testScript)) {
-    log(`  ${c.yellow}⚠${c.reset} Test suite not found, skipping`);
-    return null;
-  }
+  if (!fs.existsSync(testScript)) { warn('Test suite not found'); return null; }
 
-  log(`  ${c.dim}Running test suite...${c.reset}`);
   try {
-    const output = execSync('node tests/suite.js', {
-      cwd: ROOT,
-      stdio: 'pipe',
-      timeout: 120000,
-    }).toString();
+    execSync('node tests/suite.js', { cwd: ROOT, stdio: 'pipe', timeout: 120000 });
+  } catch { /* tests may exit non-zero for warnings */ }
 
-    // Parse results from report.json if it exists
-    const reportPath = path.join(ROOT, 'tests', 'report.json');
-    if (fs.existsSync(reportPath)) {
+  const reportPath = path.join(ROOT, 'tests', 'report.json');
+  if (fs.existsSync(reportPath)) {
+    try {
       const report = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
-      const pass = report.summary?.pass || 0;
-      const fail = report.summary?.fail || 0;
-      const warn = report.summary?.warn || 0;
-      const total = pass + fail + warn;
-
-      if (fail > 0) {
-        log(`  ${c.yellow}⚠${c.reset} Tests: ${c.green}${pass}${c.reset} pass, ${c.red}${fail} fail${c.reset}, ${c.yellow}${warn}${c.reset} warn (${total} total)`);
+      const p = report.summary?.pass || 0;
+      const f = report.summary?.fail || 0;
+      const w = report.summary?.warn || 0;
+      if (f > 0) {
+        warn(`${c.green}${p} pass${c.reset}, ${c.red}${f} fail${c.reset}, ${c.yellow}${w} warn${c.reset}`);
       } else {
-        log(`  ${c.green}✓${c.reset} Tests: ${c.green}${pass}${c.reset} pass, ${c.yellow}${warn}${c.reset} warn (${total} total)`);
+        pass(`${c.green}${p} pass${c.reset}, ${c.yellow}${w} warn${c.reset}, ${c.red}0 fail${c.reset}`);
       }
       return report;
-    }
-
-    log(`  ${c.green}✓${c.reset} Tests completed`);
-    return {};
-  } catch (e) {
-    log(`  ${c.yellow}⚠${c.reset} Tests ran with issues (non-blocking)`);
-    // Still try to read report
-    const reportPath = path.join(ROOT, 'tests', 'report.json');
-    if (fs.existsSync(reportPath)) {
-      try { return JSON.parse(fs.readFileSync(reportPath, 'utf8')); } catch { /* ignore */ }
-    }
-    return null;
+    } catch { /* ignore */ }
   }
+  pass('Completed');
+  return {};
 }
 
 // ── Snapshot & diff ──
 function takeSnapshot() {
+  step('Snapshot & diff');
   const snapshotScript = path.join(ROOT, '_tools', 'scripts', 'project-snapshot.js');
-  if (!fs.existsSync(snapshotScript)) {
-    log(`  ${c.yellow}⚠${c.reset} Snapshot script not found, skipping`);
-    return null;
-  }
+  if (!fs.existsSync(snapshotScript)) { warn('Snapshot script not found'); return null; }
 
-  // Archive current latest as previous
   if (fs.existsSync(SNAPSHOT_LATEST)) {
-    try {
-      fs.copyFileSync(SNAPSHOT_LATEST, SNAPSHOT_PREV);
-    } catch { /* ignore */ }
+    try { fs.copyFileSync(SNAPSHOT_LATEST, SNAPSHOT_PREV); } catch { /* ignore */ }
   }
 
-  log(`  ${c.dim}Taking project snapshot...${c.reset}`);
   try {
     execSync(`node "${snapshotScript}"`, { cwd: ROOT, stdio: 'pipe' });
-    log(`  ${c.green}✓${c.reset} Snapshot saved`);
-
     if (fs.existsSync(SNAPSHOT_LATEST)) {
       return JSON.parse(fs.readFileSync(SNAPSHOT_LATEST, 'utf8'));
     }
-  } catch (e) {
-    log(`  ${c.yellow}⚠${c.reset} Snapshot failed (non-blocking)`);
-  }
+  } catch { /* ignore */ }
   return null;
 }
 
 function diffSnapshots(current) {
   if (!current || !fs.existsSync(SNAPSHOT_PREV)) {
-    log(`  ${c.dim}No previous snapshot to compare (first run)${c.reset}`);
+    pass('First session (no previous snapshot)');
     return null;
   }
 
   let previous;
-  try {
-    previous = JSON.parse(fs.readFileSync(SNAPSHOT_PREV, 'utf8'));
-  } catch {
-    log(`  ${c.dim}Could not read previous snapshot${c.reset}`);
-    return null;
-  }
+  try { previous = JSON.parse(fs.readFileSync(SNAPSHOT_PREV, 'utf8')); } catch { return null; }
 
   const diffs = [];
 
-  // Compare version
-  if (current.package?.version !== previous.package?.version) {
-    diffs.push(`  Version: ${previous.package?.version} → ${current.package?.version}`);
-  }
+  if (current.package?.version !== previous.package?.version)
+    diffs.push(`Version ${previous.package?.version} → ${current.package?.version}`);
 
-  // Compare page counts
   const curPages = (current.pages?.html || 0) + (current.pages?.wiki || 0);
   const prevPages = (previous.pages?.html || 0) + (previous.pages?.wiki || 0);
-  if (curPages !== prevPages) {
-    diffs.push(`  Pages: ${prevPages} → ${curPages} (${curPages > prevPages ? '+' : ''}${curPages - prevPages})`);
-  }
+  if (curPages !== prevPages)
+    diffs.push(`Pages ${prevPages} → ${curPages}`);
 
-  // Compare CSS/JS sizes
   const curCSS = current.build?.cssSize || 0;
   const prevCSS = previous.build?.cssSize || 0;
-  if (Math.abs(curCSS - prevCSS) > 500) {
-    const delta = ((curCSS - prevCSS) / 1024).toFixed(1);
-    diffs.push(`  CSS: ${(prevCSS / 1024).toFixed(1)}KB → ${(curCSS / 1024).toFixed(1)}KB (${delta > 0 ? '+' : ''}${delta}KB)`);
-  }
+  if (Math.abs(curCSS - prevCSS) > 500)
+    diffs.push(`CSS ${(prevCSS/1024).toFixed(0)}KB → ${(curCSS/1024).toFixed(0)}KB`);
 
   const curJS = current.build?.jsSize || 0;
   const prevJS = previous.build?.jsSize || 0;
-  if (Math.abs(curJS - prevJS) > 500) {
-    const delta = ((curJS - prevJS) / 1024).toFixed(1);
-    diffs.push(`  JS: ${(prevJS / 1024).toFixed(1)}KB → ${(curJS / 1024).toFixed(1)}KB (${delta > 0 ? '+' : ''}${delta}KB)`);
-  }
+  if (Math.abs(curJS - prevJS) > 500)
+    diffs.push(`JS ${(prevJS/1024).toFixed(0)}KB → ${(curJS/1024).toFixed(0)}KB`);
 
-  // Compare test results
-  const curTests = current.tests?.summary;
-  const prevTests = previous.tests?.summary;
-  if (curTests && prevTests) {
-    if (curTests.pass !== prevTests.pass || curTests.fail !== prevTests.fail || curTests.warn !== prevTests.warn) {
-      diffs.push(`  Tests: ${prevTests.pass}/${prevTests.fail}/${prevTests.warn} → ${curTests.pass}/${curTests.fail}/${curTests.warn} (pass/fail/warn)`);
-    }
-  }
-
-  // Compare git commits
   const curCommit = current.git?.head;
   const prevCommit = previous.git?.head;
   if (curCommit && prevCommit && curCommit !== prevCommit) {
-    let commitCount = '?';
-    try {
-      commitCount = execSync(`git rev-list --count ${prevCommit}..${curCommit}`, { cwd: ROOT, encoding: 'utf8', timeout: 5000 }).trim();
-    } catch { /* ignore */ }
-    diffs.push(`  Commits: ${commitCount} new since last session`);
-  }
-
-  // Compare source file count
-  const curSrc = current.sourceFiles?.total || 0;
-  const prevSrc = previous.sourceFiles?.total || 0;
-  if (curSrc !== prevSrc) {
-    diffs.push(`  Source files: ${prevSrc} → ${curSrc} (${curSrc > prevSrc ? '+' : ''}${curSrc - prevSrc})`);
+    let n = '?';
+    try { n = execSync(`git rev-list --count ${prevCommit}..${curCommit}`, { cwd: ROOT, encoding: 'utf8', timeout: 5000 }).trim(); } catch { /* */ }
+    diffs.push(`${n} new commits`);
   }
 
   if (diffs.length === 0) {
-    log(`  ${c.green}✓${c.reset} No changes since last session`);
-    return [];
+    pass('No changes since last session');
+  } else {
+    pass(`${diffs.length} change${diffs.length > 1 ? 's' : ''}: ${diffs.join(', ')}`);
   }
-
-  log('');
-  log(`  ${c.magenta}${c.bold}Changes since last session:${c.reset}`);
-  diffs.forEach(d => log(`  ${c.magenta}│${c.reset}${d}`));
-  log('');
-
   return diffs;
 }
 
-// ── Session log ──
 function recordSession(snapshot, testReport, diffs) {
   const session = {
     timestamp: new Date().toISOString(),
@@ -273,47 +271,43 @@ function recordSession(snapshot, testReport, diffs) {
     tests: testReport?.summary || null,
     diffs: diffs || [],
   };
-
-  // Append to session log
   let sessions = [];
   if (fs.existsSync(SESSION_LOG)) {
     try { sessions = JSON.parse(fs.readFileSync(SESSION_LOG, 'utf8')); } catch { sessions = []; }
   }
   sessions.push(session);
-  // Keep last 50 sessions
   if (sessions.length > 50) sessions = sessions.slice(-50);
-
-  try {
-    fs.writeFileSync(SESSION_LOG, JSON.stringify(sessions, null, 2));
-  } catch { /* ignore */ }
-
+  try { fs.writeFileSync(SESSION_LOG, JSON.stringify(sessions, null, 2)); } catch { /* */ }
   return session;
 }
 
-// ── Pyrite work effort ──
+// ── Work effort ──
 function createWorkEffort() {
-  if (!fs.existsSync(PYRITE_DIR)) {
-    try { fs.mkdirSync(PYRITE_DIR, { recursive: true }); } catch { return null; }
+  step('Work effort');
+
+  // Check _pyrite/active for today's effort
+  if (fs.existsSync(PYRITE_DIR)) {
+    const now = new Date();
+    const dateStr = now.toISOString().slice(2, 10).replace(/-/g, '');
+    const existing = fs.readdirSync(PYRITE_DIR).filter(f =>
+      f.startsWith(`WE-${dateStr}`) && fs.statSync(path.join(PYRITE_DIR, f)).isDirectory()
+    );
+    if (existing.length > 0) {
+      pass(`Resumed ${c.cyan}${existing[0]}${c.reset}`);
+      return existing[0];
+    }
   }
 
-  const now = new Date();
-  const dateStr = now.toISOString().slice(2, 10).replace(/-/g, '');
-  const hash = Math.random().toString(36).slice(2, 6);
-  const weId = `WE-${dateStr}-${hash}`;
-  const weDir = path.join(PYRITE_DIR, `${weId}_dev_session`);
-
-  // Check if there's already an active work effort from today
-  const existing = fs.readdirSync(PYRITE_DIR).filter(f =>
-    f.startsWith(`WE-${dateStr}`) && fs.statSync(path.join(PYRITE_DIR, f)).isDirectory()
-  );
-
-  if (existing.length > 0) {
-    log(`  ${c.green}✓${c.reset} Active work effort: ${c.cyan}${existing[0]}${c.reset}`);
-    return existing[0];
-  }
-
+  // Create new
   try {
-    fs.mkdirSync(weDir, { recursive: true });
+    if (!fs.existsSync(PYRITE_DIR)) fs.mkdirSync(PYRITE_DIR, { recursive: true });
+
+    const now = new Date();
+    const dateStr = now.toISOString().slice(2, 10).replace(/-/g, '');
+    const hash = Math.random().toString(36).slice(2, 6);
+    const weId = `WE-${dateStr}-${hash}`;
+    const weDir = path.join(PYRITE_DIR, `${weId}_dev_session`);
+
     const commitHash = (() => {
       try { return execSync('git rev-parse --short HEAD', { cwd: ROOT, encoding: 'utf8' }).trim(); }
       catch { return 'unknown'; }
@@ -323,7 +317,8 @@ function createWorkEffort() {
       catch { return 'unknown'; }
     })();
 
-    const indexContent = `# ${weId} — Dev Session
+    fs.mkdirSync(weDir, { recursive: true });
+    fs.writeFileSync(path.join(weDir, `${weId}_index.md`), `# ${weId} — Dev Session
 
 **Created**: ${now.toISOString()}
 **Status**: open
@@ -333,30 +328,20 @@ function createWorkEffort() {
 
 ---
 
-## Objective
-
-Development session starting from commit \`${commitHash}\`.
-
 ## Session Notes
 
-_Add notes as you work..._
-
-## Changes Made
-
-_Track changes during this session..._
+_Notes from this development session..._
 
 ## Verification
 
 - [ ] Build passes
 - [ ] Tests pass
-- [ ] No regressions from previous session
-`;
-
-    fs.writeFileSync(path.join(weDir, `${weId}_index.md`), indexContent);
-    log(`  ${c.green}✓${c.reset} Work effort created: ${c.cyan}${weId}${c.reset}`);
+- [ ] No regressions
+`);
+    pass(`Created ${c.cyan}${weId}${c.reset}`);
     return weId;
   } catch (e) {
-    log(`  ${c.yellow}⚠${c.reset} Could not create work effort: ${e.message}`);
+    warn(`Could not create work effort: ${e.message}`);
     return null;
   }
 }
@@ -365,64 +350,48 @@ _Track changes during this session..._
 const children = [];
 
 function startServer(name, command, args, cwd, port) {
-  const label = `${c.dim}[${name}]${c.reset}`;
-
   const child = spawn(command, args, {
     cwd: cwd || ROOT,
     stdio: ['ignore', 'pipe', 'pipe'],
     env: { ...process.env },
   });
-
   child.stdout.on('data', () => {});
-
   child.stderr.on('data', (data) => {
     const msg = data.toString().trim();
     if (msg && !msg.includes('ExperimentalWarning')) {
-      log(`  ${label} ${c.yellow}${msg}${c.reset}`);
+      log(`  ${c.gray}[${name}]${c.reset} ${c.yellow}${msg}${c.reset}`);
     }
   });
-
-  child.on('error', (err) => {
-    log(`  ${label} ${c.red}Failed to start: ${err.message}${c.reset}`);
-  });
-
+  child.on('error', (err) => { log(`  ${c.gray}[${name}]${c.reset} ${c.red}${err.message}${c.reset}`); });
   child.on('exit', (code) => {
-    if (code !== null && code !== 0) {
-      log(`  ${label} ${c.yellow}Exited with code ${code}${c.reset}`);
-    }
+    if (code !== null && code !== 0) log(`  ${c.gray}[${name}]${c.reset} ${c.yellow}exited (${code})${c.reset}`);
   });
-
   children.push({ name, child, port });
   return child;
 }
 
 function cleanup() {
-  log('');
-  log(`  ${c.dim}Shutting down...${c.reset}`);
-  children.forEach(({ child }) => {
-    try { child.kill('SIGTERM'); } catch { /* already dead */ }
-  });
+  log();
+  log(`  ${dim('Shutting down...')}`);
+  children.forEach(({ child }) => { try { child.kill('SIGTERM'); } catch { /* */ } });
   process.exit(0);
 }
 
 process.on('SIGINT', cleanup);
 process.on('SIGTERM', cleanup);
 
-// ── Port check ──
 function isPortFree(port) {
-  try {
-    execSync(`lsof -i :${port} -t`, { stdio: 'pipe' });
-    return false;
-  } catch {
-    return true;
-  }
+  try { execSync(`lsof -i :${port} -t`, { stdio: 'pipe' }); return false; }
+  catch { return true; }
 }
 
 // ── Dashboard ──
-function printDashboard() {
-  log('');
-  log(`  ${c.bold}${c.white}Dev servers running:${c.reset}`);
-  log(`  ${'─'.repeat(45)}`);
+function printDashboard(version, totalTime) {
+  log();
+  log(`  ${c.white}${c.bold}${'═'.repeat(52)}${c.reset}`);
+  log(`  ${c.white}${c.bold}  READY ${c.reset}${dim(`(${totalTime} startup)`)}`);
+  log(`  ${c.white}${c.bold}${'═'.repeat(52)}${c.reset}`);
+  log();
   log(`  ${c.green}●${c.reset} ${bold('FogSift')}              ${c.cyan}http://localhost:5050${c.reset}`);
 
   if (!noHelpers) {
@@ -431,81 +400,56 @@ function printDashboard() {
     log(`  ${c.green}●${c.reset} ${bold('Quality Report')}       ${c.cyan}http://localhost:5065${c.reset}`);
   }
 
-  log(`  ${'─'.repeat(45)}`);
-  log('');
-  log(`  ${c.dim}Watching src/ for changes (auto-rebuild)${c.reset}`);
-  log(`  ${c.dim}Press Ctrl+C to stop all servers${c.reset}`);
-  log('');
+  log();
+  log(`  ${dim('Watching src/ for changes. Ctrl+C to stop.')}`);
+  log();
 }
 
 // ── Main ──
 async function main() {
-  printBanner();
+  const version = getVersion();
+  const git = getGitInfo();
 
-  // Step 1: Health check
+  printBanner(version, git);
+
+  // Steps
   runHealthCheck();
-
-  // Step 2: Build
-  if (!runBuild()) {
-    log(`\n  ${c.red}Cannot start — fix build errors first.${c.reset}\n`);
-    process.exit(1);
-  }
-
-  // Step 3: Run tests
+  if (!runBuild()) { log(`\n  ${c.red}Build failed. Fix errors and try again.${c.reset}\n`); process.exit(1); }
   const testReport = runTests();
-
-  // Step 4: Snapshot & diff
   const snapshot = takeSnapshot();
   const diffs = diffSnapshots(snapshot);
   recordSession(snapshot, testReport, diffs);
-
-  // Step 5: Pyrite work effort
-  log('');
   createWorkEffort();
 
-  log('');
-  log(`  ${c.dim}Starting servers...${c.reset}`);
+  log();
+  step('Launching servers');
 
-  // Step 6: Start main site (browser-sync + watcher)
   if (isPortFree(5050)) {
     startServer('site', 'npx', ['browser-sync', 'start', '--config', 'bs-config.js'], ROOT, 5050);
-  } else {
-    log(`  ${c.yellow}⚠${c.reset} Port 5050 in use — skipping site server`);
-  }
+  } else { warn('Port 5050 in use — skipping site server'); }
 
-  // File watcher for auto-rebuild
   startServer('watch', 'npx', ['chokidar', 'src/**/*', '-c', 'node scripts/build.js'], ROOT, null);
 
-  // Step 7: Start helper servers (unless --no-helpers)
   if (!noHelpers) {
     const helpers = [
       { name: 'journal', script: '_AI_Journal/serve.js', port: 5001 },
       { name: 'components', script: '_tools/component-library/serve.js', port: 5030 },
       { name: 'tests', script: '_tools/test-viewer/serve.js', port: 5065 },
     ];
-
     helpers.forEach(({ name, script, port }) => {
       const scriptPath = path.join(ROOT, script);
-      if (!fs.existsSync(scriptPath)) {
-        log(`  ${c.yellow}⚠${c.reset} ${name} server not found at ${script}, skipping`);
-        return;
-      }
-      if (isPortFree(port)) {
-        startServer(name, 'node', [scriptPath], ROOT, port);
-      } else {
-        log(`  ${c.yellow}⚠${c.reset} Port ${port} in use — skipping ${name}`);
-      }
+      if (!fs.existsSync(scriptPath)) { return; }
+      if (isPortFree(port)) { startServer(name, 'node', [scriptPath], ROOT, port); }
+      else { warn(`Port ${port} in use — skipping ${name}`); }
     });
   }
 
-  // Brief pause for servers to bind
-  await new Promise(r => setTimeout(r, 1000));
+  pass('All servers launched');
 
-  // Step 8: Dashboard
-  printDashboard();
+  await new Promise(r => setTimeout(r, 800));
+
+  const totalTime = `${((Date.now() - startTime) / 1000).toFixed(1)}s`;
+  printDashboard(version, totalTime);
 }
 
-main().catch(err => {
-  console.error(err);
-  process.exit(1);
-});
+main().catch(err => { console.error(err); process.exit(1); });

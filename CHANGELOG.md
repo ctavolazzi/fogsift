@@ -4,6 +4,69 @@ All notable changes to FogSift will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.0] - 2026-02-08
+### Minor Release - "The Lighthouse"
+
+The first minor version bump. 101 commits since v0.0.5, marking the transition from "initial experiments" (0.0.x) to "functional product" (0.1.x).
+
+#### New Features
+- **Full-text search** with animated overlay, compiled search index (56 pages)
+- **11 themes**: Default, Dark, Synthwave, Ocean, Aurora, Barbie, Camo, Rivendell, Pip-Boy, Matrix, Sky
+- **Theme demo mode**: Cycles through all themes automatically
+- **Portfolio page** with YouTube showcase and responsive grid
+- **Queue system** with Ko-fi webhook integration and animated modal
+- **Data awareness page** with homepage footprint widget
+- **Cookie consent banner** (GDPR/CCPA compliant)
+- **Secret Keeper's Log** easter egg: password-protected splash page (Meow Wolf-inspired)
+- **Hidden footer link** to the Keeper's Log (find the "5001")
+- **Konami code** easter egg with fortune cookies
+
+#### Development Infrastructure
+- **The Lighthouse** (`npm start`): Full dev suite startup script
+  - Health check, build, test suite, snapshot diffing, work effort tracking
+  - ASCII art banner with version/branch/commit info
+  - Launches 4 servers: site (:5050), journal (:5001), components (:5030), test viewer (:5065)
+- **The Keeper's Log** (:5001): AI development journal viewer
+- **The Signal Workshop** (:5030): Component library
+- **Captain FogLift's Quality Report** (:5065): Test suite viewer
+- **Test suite**: 9 suites, 116 tests (HTML validation, a11y, Lighthouse, links, images, security)
+- **Session state tracking**: Snapshot diffing between dev sessions
+- **WAFT work effort system**: Daily tracking with templates and verification checklists
+
+#### Wiki Expansion
+- Expanded from 29 to 44 pages
+- Redesigned wiki section into 3-card content grid with daily rotation
+- Added wiki stats and quotes to homepage
+
+#### Design & UX
+- Mobile search panel: bouncy floating card animation (matches desktop)
+- Landscape phone support: rotate iPhone to see desktop layout
+- Redesigned Why This Works section
+- Redesigned contact page with SVG icons
+- Redesigned concerns section
+- 3-column footer link grid
+- Behind the Build section on portfolio page
+- Site-wide polish: SEO, accessibility, design, security
+
+#### Technical
+- Image compression: 70MB to 15MB
+- CSS modularization with design tokens
+- HTTPS compatibility fixes
+- localStorage caching for API calls
+- HTML validation fixes (escaped wiki descriptions, aria-label usage)
+- Honeypot bot protection on contact forms
+- CSP-compliant theme initialization
+- Build script: nav/footer injection, search index generation, template system
+- Deploy script with pre-flight checks
+
+#### Documentation
+- Developer-facing README rewrite with Lighthouse showcase
+- Ideas & Planning section with links to planning docs
+- AI Journal with lore bible and session reflections
+- WAFT work effort templates and standards
+
+---
+
 ## [0.0.5] - 2025-12-28
 ### Patch Release - "Consolidation"
 

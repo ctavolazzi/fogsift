@@ -1,18 +1,22 @@
 {
-  "generated": "2026-02-08T03:42:52.883Z",
+  "generated": "2026-02-08T03:48:49.331Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "main",
     "status": [
-      "M dist/api/articles.json",
+      "M _tools/snapshots/latest.json",
+      " M _tools/snapshots/previous.json",
+      " M dist/api/articles.json",
       " M dist/api/meta.json",
       " M dist/api/wiki/index.json",
       " M dist/api/wiki/sitemap.json",
       " M scripts/dev-start.js",
-      "?? _tools/snapshots/previous.json"
+      "?? _tools/snapshots/snapshot-2026-02-08T03-42-53.json",
+      "?? _tools/snapshots/snapshot-2026-02-08T03-43-09.json"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "f96cb34 Enhance dev startup with tests, snapshot diffing, and pyrite work efforts",
       "94d58e2 Add dev startup script with full Lighthouse suite",
       "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
       "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
@@ -21,8 +25,7 @@
       "ecf3bd9 Redesign Why This Works section, add shouse research page",
       "764a6f7 Redesign wiki section into 3-card content grid with real excerpts",
       "0a7da9b Add homepage wiki section with daily rotation, stats, and quotes",
-      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test",
-      "524c421 Polish newsletter signup and switch footer links to 3-column grid"
+      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test"
     ],
     "tags": [
       "v0.0.4",
@@ -32,7 +35,7 @@
       "v0.0.1"
     ],
     "lastTag": "v0.0.5",
-    "commitsSinceTag": 100,
+    "commitsSinceTag": 101,
     "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
   },
   "package": {
@@ -1174,9 +1177,9 @@
   "summary": {
     "version": "0.0.5",
     "branch": "main",
-    "uncommittedFiles": 6,
+    "uncommittedFiles": 9,
     "unpushedCommits": 0,
-    "commitsSinceRelease": 100,
+    "commitsSinceRelease": 101,
     "srcCssFiles": 19,
     "srcJsFiles": 17,
     "srcHtmlFiles": 26,
