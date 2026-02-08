@@ -46,5 +46,12 @@ FogSift-*-screencapture-*.png
 # Timestamped snapshots (latest/previous/session-log are tracked)
 _tools/snapshots/snapshot-*.json
 
+# Runtime server artifacts
+_tools/logs/
+_tools/pids/
+
+# Auto-generated session reflections (ephemeral, regenerated each session)
+_AI_Journal/auto/
+
 # Claude Code local settings (user-specific permissions)
 .claude/settings.local.json

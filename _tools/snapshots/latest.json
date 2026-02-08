@@ -1,79 +1,27 @@
 {
-  "generated": "2026-02-08T10:34:08.447Z",
+  "generated": "2026-02-08T12:19:31.347Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "main",
     "status": [
-      "M .gitignore",
+      "M .claude/hooks/startup.sh",
+      " M .gitignore",
+      " M _AI_Journal/serve.js",
+      " M _pyrite/active/WE-260208-0vyf_dev_session/WE-260208-0vyf_index.md",
       " M _tools/snapshots/context-brief.md",
-      " M dist/api/articles.json",
-      " M dist/api/meta.json",
-      " M dist/api/wiki/index.json",
-      " M dist/api/wiki/sitemap.json",
-      " M dist/assets/icon-512.png",
-      " D dist/assets/logo-01.png",
-      " M dist/assets/logo-mono.png",
-      " M dist/assets/logo-patch.png",
-      " M dist/assets/logo.png",
-      " M dist/images/portfolio/TMGotcha-Banner-Image.jpg",
-      " M dist/images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
-      " M dist/images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
-      " M dist/images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
-      " M dist/images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
-      " M dist/images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
-      " M dist/images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
-      " M dist/images/portfolio/TMGotcha-Limited-Editions.jpeg",
-      " M dist/images/portfolio/TMGotcha-Main-Advert-Image.jpg",
-      " M dist/images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
-      " M dist/images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
-      " M dist/images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
-      " M dist/images/portfolio/TMGotya-Box-Concept.jpeg",
-      " M dist/images/portfolio/WAFT_Profile_Default.png",
-      " M dist/images/portfolio/fogsift-logo-transparent-rectangle.png",
-      " M dist/index.html",
-      " M dist/og-image.png",
-      " M dist/search-index.json",
-      " M package-lock.json",
-      " M package.json",
-      " M src/FS-Default-Image-Circle.png",
-      " M src/FS-Default-Image-Circle_500x500px.png",
-      " M src/assets/FogSift-Banner-Large.PNG",
-      " M src/assets/FogSift-Fancy-Logo_500x500px.png",
-      " M src/assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
-      " M src/assets/badge-orange-line.png",
-      " M src/assets/badge-owner.png",
-      " M src/assets/badge-profile.png",
-      " M src/assets/icon-512.png",
-      " M src/assets/logo-01.png",
-      " M src/assets/logo-color-transparent.png",
-      " M src/assets/logo-color.png",
-      " M src/assets/logo-mono.png",
-      " M src/assets/logo-patch.png",
-      " M src/images/portfolio/TMGotcha-Banner-Image.jpg",
-      " M src/images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
-      " M src/images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
-      " M src/images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
-      " M src/images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
-      " M src/images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
-      " M src/images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
-      " M src/images/portfolio/TMGotcha-Limited-Editions.jpeg",
-      " M src/images/portfolio/TMGotcha-Main-Advert-Image.jpg",
-      " M src/images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
-      " M src/images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
-      " M src/images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
-      " M src/images/portfolio/TMGotya-Box-Concept.jpeg",
-      " M src/images/portfolio/WAFT_Profile_Default.png",
-      " M src/images/portfolio/fogsift-logo-transparent-rectangle.png",
-      " M src/og-image.png",
-      " M tests/lighthouse-report.json",
-      " M tests/report.json",
-      " M tests/report.txt",
-      "?? .claude/",
-      "?? CLAUDE.md",
-      "?? scripts/compress-images.js"
+      " M _tools/snapshots/latest.json",
+      "?? _AI_Journal/005-the-lighthouse-wakes-itself.md",
+      "?? _AI_Journal/006-architecture-map.md",
+      "?? _AI_Journal/007-css-theme-system.md",
+      "?? _AI_Journal/008-javascript-module-map.md",
+      "?? _AI_Journal/009-wiki-search-reference.md",
+      "?? _AI_Journal/010-test-quality-reference.md",
+      "?? _AI_Journal/011-security-deployment.md",
+      "?? _tools/scripts/session-reflect.js"
     ],
-    "unpushed": 0,
+    "unpushed": 1,
     "recentCommits": [
+      "c78613d Compress images (-18.7MB) and add automated session startup",
       "b464b7e Fix test suite: pa11y and Lighthouse now use Node.js APIs",
       "1020ab1 Fix HTML validation and ESLint errors from v0.1.0 release",
       "0a568f9 release: v0.1.0 — The Lighthouse",
@@ -82,8 +30,7 @@
       "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
       "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
       "d004e2b Rebuild dist from latest source",
-      "6cafc66 Add development infrastructure: test viewer, component library, AI journal",
-      "ecf3bd9 Redesign Why This Works section, add shouse research page"
+      "6cafc66 Add development infrastructure: test viewer, component library, AI journal"
     ],
     "tags": [
       "v0.1.0",
@@ -93,7 +40,7 @@
       "v0.0.2"
     ],
     "lastTag": "v0.1.0",
-    "commitsSinceTag": 2,
+    "commitsSinceTag": 3,
     "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
   },
   "package": {
@@ -1217,6 +1164,14 @@
         "hasServer": true
       },
       {
+        "name": "logs",
+        "hasServer": false
+      },
+      {
+        "name": "pids",
+        "hasServer": false
+      },
+      {
         "name": "scripts",
         "hasServer": false
       },
@@ -1230,7 +1185,7 @@
       }
     ],
     "journalExists": true,
-    "journalEntries": 4,
+    "journalEntries": 11,
     "portMap": {
       "5001": "AI Journal (The Keeper's Log)",
       "5030": "Component Library (The Signal Workshop)",
@@ -1242,9 +1197,9 @@
   "summary": {
     "version": "0.1.0",
     "branch": "main",
-    "uncommittedFiles": 67,
-    "unpushedCommits": 0,
-    "commitsSinceRelease": 2,
+    "uncommittedFiles": 14,
+    "unpushedCommits": 1,
+    "commitsSinceRelease": 3,
     "srcCssFiles": 19,
     "srcJsFiles": 18,
     "srcHtmlFiles": 26,
@@ -1254,7 +1209,7 @@
     "testsPassed": 104,
     "testsFailed": 0,
     "testsWarned": 13,
-    "toolsCount": 4,
-    "journalEntries": 4
+    "toolsCount": 6,
+    "journalEntries": 11
   }
 }

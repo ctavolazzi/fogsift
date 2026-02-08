@@ -5,17 +5,38 @@ const { marked } = require(path.join(__dirname, '..', 'node_modules', 'marked'))
 
 const PORT = 5001;
 const JOURNAL_DIR = __dirname;
+const AUTO_DIR = path.join(JOURNAL_DIR, 'auto');
 
 function getEntries() {
-  return fs.readdirSync(JOURNAL_DIR)
+  // Manual journal entries (numbered: 001-*.md, 002-*.md, etc.)
+  const manual = fs.readdirSync(JOURNAL_DIR)
     .filter(f => f.endsWith('.md'))
     .sort()
     .map(f => {
       const content = fs.readFileSync(path.join(JOURNAL_DIR, f), 'utf8');
       const title = content.split('\n').find(l => l.startsWith('# '))?.replace('# ', '') || f;
-      const date = content.match(/\*\*Date:\*\*\s*(.+)/)?.[1] || 'Unknown';
-      return { file: f, title, date, content };
+      const date = content.match(/\*\*Date:\*\*\s*(.+)/)?.[1]
+        || content.match(/\*\*Generated:\*\*\s*(.+)/)?.[1]
+        || 'Unknown';
+      return { file: f, title, date, content, section: 'journal' };
     });
+
+  // Auto-generated reflections (_AI_Journal/auto/session-*.md)
+  let auto = [];
+  if (fs.existsSync(AUTO_DIR)) {
+    auto = fs.readdirSync(AUTO_DIR)
+      .filter(f => f.endsWith('.md'))
+      .sort()
+      .reverse() // newest first
+      .map(f => {
+        const content = fs.readFileSync(path.join(AUTO_DIR, f), 'utf8');
+        const title = content.split('\n').find(l => l.startsWith('# '))?.replace('# ', '') || f;
+        const date = content.match(/\*\*Generated:\*\*\s*(.+)/)?.[1] || 'Unknown';
+        return { file: `auto/${f}`, title, date, content, section: 'auto' };
+      });
+  }
+
+  return [...manual, ...auto];
 }
 
 function renderPage(entries, activeIdx) {
@@ -183,13 +204,29 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   <!-- === SIDEBAR (data-no-copy: navigation chrome) === -->
   <nav class="sidebar" data-no-copy>
     <div class="sidebar-label">Journal Entries</div>
-    ${entries.map((e, i) => `
+    ${entries.filter(e => e.section === 'journal').map((e, _, arr) => {
+      const i = entries.indexOf(e);
+      return `
       <a href="/?entry=${i}" class="entry-link ${i === activeIdx ? 'active' : ''}">
         <div class="entry-num">Entry ${e.file.match(/\\d+/)?.[0] || i}</div>
         <div class="entry-title">${e.title.replace(/^Journal Entry \\d+:\\s*/, '')}</div>
         <div class="entry-date">${e.date}</div>
-      </a>
-    `).join('')}
+      </a>`;
+    }).join('')}
+    ${entries.some(e => e.section === 'auto') ? `
+    <div class="sidebar-label" style="margin-top:16px">Auto Reflections</div>
+    ${entries.filter(e => e.section === 'auto').map(e => {
+      const i = entries.indexOf(e);
+      const dateMatch = e.file.match(/session-(\d{4}-\d{2}-\d{2})T(\d{2})-(\d{2})/);
+      const shortDate = dateMatch ? dateMatch[1] : '';
+      const shortTime = dateMatch ? dateMatch[2] + ':' + dateMatch[3] : '';
+      return `
+      <a href="/?entry=${i}" class="entry-link ${i === activeIdx ? 'active' : ''}">
+        <div class="entry-num">Session ${shortDate}</div>
+        <div class="entry-title">${e.title.replace(/^Session Reflection —\\s*/, '').substring(0, 30)}</div>
+        <div class="entry-date">${shortTime || e.date}</div>
+      </a>`;
+    }).join('')}` : ''}
   </nav>
 
   <!-- === MAIN CONTENT (data-copyable: this is what gets copied) === -->
