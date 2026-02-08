@@ -42,3 +42,9 @@ audit-history.json
 
 # Screenshots
 FogSift-*-screencapture-*.png
+
+# Timestamped snapshots (latest/previous/session-log are tracked)
+_tools/snapshots/snapshot-*.json
+
+# Claude Code local settings (user-specific permissions)
+.claude/settings.local.json

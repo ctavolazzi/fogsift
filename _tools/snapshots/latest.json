@@ -1,48 +1,104 @@
 {
-  "generated": "2026-02-08T03:52:34.122Z",
+  "generated": "2026-02-08T10:34:08.447Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "main",
     "status": [
-      "M _tools/snapshots/latest.json",
-      " M _tools/snapshots/previous.json",
-      " M _tools/snapshots/session-log.json",
+      "M .gitignore",
+      " M _tools/snapshots/context-brief.md",
       " M dist/api/articles.json",
       " M dist/api/meta.json",
       " M dist/api/wiki/index.json",
       " M dist/api/wiki/sitemap.json",
-      " M scripts/dev-start.js",
-      "?? _tools/snapshots/snapshot-2026-02-08T03-42-53.json",
-      "?? _tools/snapshots/snapshot-2026-02-08T03-43-09.json",
-      "?? _tools/snapshots/snapshot-2026-02-08T03-48-50.json"
+      " M dist/assets/icon-512.png",
+      " D dist/assets/logo-01.png",
+      " M dist/assets/logo-mono.png",
+      " M dist/assets/logo-patch.png",
+      " M dist/assets/logo.png",
+      " M dist/images/portfolio/TMGotcha-Banner-Image.jpg",
+      " M dist/images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
+      " M dist/images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
+      " M dist/images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
+      " M dist/images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
+      " M dist/images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
+      " M dist/images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
+      " M dist/images/portfolio/TMGotcha-Limited-Editions.jpeg",
+      " M dist/images/portfolio/TMGotcha-Main-Advert-Image.jpg",
+      " M dist/images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
+      " M dist/images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
+      " M dist/images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
+      " M dist/images/portfolio/TMGotya-Box-Concept.jpeg",
+      " M dist/images/portfolio/WAFT_Profile_Default.png",
+      " M dist/images/portfolio/fogsift-logo-transparent-rectangle.png",
+      " M dist/index.html",
+      " M dist/og-image.png",
+      " M dist/search-index.json",
+      " M package-lock.json",
+      " M package.json",
+      " M src/FS-Default-Image-Circle.png",
+      " M src/FS-Default-Image-Circle_500x500px.png",
+      " M src/assets/FogSift-Banner-Large.PNG",
+      " M src/assets/FogSift-Fancy-Logo_500x500px.png",
+      " M src/assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
+      " M src/assets/badge-orange-line.png",
+      " M src/assets/badge-owner.png",
+      " M src/assets/badge-profile.png",
+      " M src/assets/icon-512.png",
+      " M src/assets/logo-01.png",
+      " M src/assets/logo-color-transparent.png",
+      " M src/assets/logo-color.png",
+      " M src/assets/logo-mono.png",
+      " M src/assets/logo-patch.png",
+      " M src/images/portfolio/TMGotcha-Banner-Image.jpg",
+      " M src/images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
+      " M src/images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
+      " M src/images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
+      " M src/images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
+      " M src/images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
+      " M src/images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
+      " M src/images/portfolio/TMGotcha-Limited-Editions.jpeg",
+      " M src/images/portfolio/TMGotcha-Main-Advert-Image.jpg",
+      " M src/images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
+      " M src/images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
+      " M src/images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
+      " M src/images/portfolio/TMGotya-Box-Concept.jpeg",
+      " M src/images/portfolio/WAFT_Profile_Default.png",
+      " M src/images/portfolio/fogsift-logo-transparent-rectangle.png",
+      " M src/og-image.png",
+      " M tests/lighthouse-report.json",
+      " M tests/report.json",
+      " M tests/report.txt",
+      "?? .claude/",
+      "?? CLAUDE.md",
+      "?? scripts/compress-images.js"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "b464b7e Fix test suite: pa11y and Lighthouse now use Node.js APIs",
+      "1020ab1 Fix HTML validation and ESLint errors from v0.1.0 release",
+      "0a568f9 release: v0.1.0 — The Lighthouse",
       "f96cb34 Enhance dev startup with tests, snapshot diffing, and pyrite work efforts",
       "94d58e2 Add dev startup script with full Lighthouse suite",
       "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
       "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
       "d004e2b Rebuild dist from latest source",
       "6cafc66 Add development infrastructure: test viewer, component library, AI journal",
-      "ecf3bd9 Redesign Why This Works section, add shouse research page",
-      "764a6f7 Redesign wiki section into 3-card content grid with real excerpts",
-      "0a7da9b Add homepage wiki section with daily rotation, stats, and quotes",
-      "1a4804c Expand wiki from 29 to 44 pages, fix link integrity test"
+      "ecf3bd9 Redesign Why This Works section, add shouse research page"
     ],
     "tags": [
+      "v0.1.0",
       "v0.0.4",
       "v0.0.5",
       "v0.0.3",
-      "v0.0.2",
-      "v0.0.1"
+      "v0.0.2"
     ],
-    "lastTag": "v0.0.5",
-    "commitsSinceTag": 101,
+    "lastTag": "v0.1.0",
+    "commitsSinceTag": 2,
     "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
   },
   "package": {
     "name": "fogsift",
-    "version": "0.0.5",
+    "version": "0.1.0",
     "description": "Straight answers to complicated questions",
     "scripts": [
       "start",
@@ -85,7 +141,8 @@
       "html-validate",
       "lighthouse",
       "npm-run-all",
-      "pa11y"
+      "pa11y",
+      "sharp"
     ]
   },
   "source": {
@@ -116,9 +173,9 @@
       },
       {
         "path": "css/components.css",
-        "size": 59111,
-        "modified": "2026-02-07T17:08:49.104Z",
-        "lines": 2690
+        "size": 61170,
+        "modified": "2026-02-08T07:39:31.281Z",
+        "lines": 2783
       },
       {
         "path": "css/ferrofluid.css",
@@ -219,6 +276,12 @@
         "lines": 208
       },
       {
+        "path": "js/cookie-consent.js",
+        "size": 3307,
+        "modified": "2026-02-08T07:39:13.716Z",
+        "lines": 99
+      },
+      {
         "path": "js/copy-page-text.js",
         "size": 3051,
         "modified": "2026-02-06T04:01:56.981Z",
@@ -232,9 +295,9 @@
       },
       {
         "path": "js/main.js",
-        "size": 13180,
-        "modified": "2026-02-07T17:08:04.993Z",
-        "lines": 283
+        "size": 13274,
+        "modified": "2026-02-08T07:39:40.902Z",
+        "lines": 284
       },
       {
         "path": "js/matrix-rain.js",
@@ -476,9 +539,9 @@
       },
       {
         "path": "FS-Default-Image-Circle.png",
-        "size": 312313,
-        "modified": "2026-02-06T23:31:57.355Z",
-        "lines": 1137
+        "size": 139352,
+        "modified": "2026-02-08T10:27:31.230Z",
+        "lines": 526
       },
       {
         "path": "FS-Default-Image-Circle_250x250px.png",
@@ -488,9 +551,9 @@
       },
       {
         "path": "FS-Default-Image-Circle_500x500px.png",
-        "size": 312313,
-        "modified": "2026-02-06T23:31:57.362Z",
-        "lines": 1137
+        "size": 139352,
+        "modified": "2026-02-08T10:27:31.524Z",
+        "lines": 526
       },
       {
         "path": "_headers",
@@ -506,75 +569,75 @@
       },
       {
         "path": "assets/FogSift-Banner-Large.PNG",
-        "size": 6439878,
-        "modified": "2026-02-06T23:31:57.452Z",
-        "lines": 23256
+        "size": 361554,
+        "modified": "2026-02-08T10:27:21.364Z",
+        "lines": 1932
       },
       {
         "path": "assets/FogSift-Fancy-Logo_500x500px.png",
-        "size": 257608,
-        "modified": "2026-02-06T23:31:57.480Z",
-        "lines": 943
+        "size": 82901,
+        "modified": "2026-02-08T10:27:32.700Z",
+        "lines": 293
       },
       {
         "path": "assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
-        "size": 1686469,
-        "modified": "2026-02-06T23:31:57.510Z",
-        "lines": 3568
+        "size": 457298,
+        "modified": "2026-02-08T10:27:23.574Z",
+        "lines": 2101
       },
       {
         "path": "assets/badge-orange-line.png",
-        "size": 737012,
-        "modified": "2026-02-06T23:31:57.526Z",
-        "lines": 2820
+        "size": 406893,
+        "modified": "2026-02-08T10:27:28.468Z",
+        "lines": 1666
       },
       {
         "path": "assets/badge-owner.png",
-        "size": 728342,
-        "modified": "2026-02-06T23:31:57.540Z",
-        "lines": 2797
+        "size": 385489,
+        "modified": "2026-02-08T10:27:29.061Z",
+        "lines": 1468
       },
       {
         "path": "assets/badge-profile.png",
-        "size": 988931,
-        "modified": "2026-02-06T23:31:57.552Z",
-        "lines": 3458
+        "size": 389336,
+        "modified": "2026-02-08T10:27:25.942Z",
+        "lines": 1727
       },
       {
         "path": "assets/icon-512.png",
-        "size": 860740,
-        "modified": "2026-02-06T23:31:57.567Z",
-        "lines": 2700
+        "size": 316656,
+        "modified": "2026-02-08T10:27:27.277Z",
+        "lines": 1382
       },
       {
         "path": "assets/logo-01.png",
-        "size": 656670,
-        "modified": "2026-02-06T23:31:57.577Z",
-        "lines": 2442
+        "size": 321518,
+        "modified": "2026-02-08T10:27:29.690Z",
+        "lines": 1384
       },
       {
         "path": "assets/logo-color-transparent.png",
-        "size": 279554,
-        "modified": "2025-12-27T05:23:31.237Z",
-        "lines": 788
+        "size": 111390,
+        "modified": "2026-02-08T10:27:31.984Z",
+        "lines": 399
       },
       {
         "path": "assets/logo-color.png",
-        "size": 528779,
-        "modified": "2026-02-06T23:31:57.614Z",
-        "lines": 2010
+        "size": 300350,
+        "modified": "2026-02-08T10:27:30.427Z",
+        "lines": 1289
       },
       {
         "path": "assets/logo-mono.png",
-        "size": 566009,
-        "modified": "2026-02-06T23:31:57.619Z",
-        "lines": 2112
+        "size": 335567,
+        "modified": "2026-02-08T10:27:30.061Z",
+        "lines": 1389
       },
       {
         "path": "assets/logo-patch.png",
-        "size": 246355,
-        "modified": "2026-02-06T23:31:57.622Z",
-        "lines": 948
+        "size": 83106,
+        "modified": "2026-02-08T10:27:33.129Z",
+        "lines": 310
       },
       {
         "path": "content/articles.json",
@@ -644,57 +707,57 @@
       },
       {
         "path": "images/portfolio/TMGotcha-Banner-Image.jpg",
-        "size": 1293273,
-        "modified": "2026-02-06T23:31:57.648Z",
-        "lines": 3792
+        "size": 156802,
+        "modified": "2026-02-08T10:27:23.776Z",
+        "lines": 684
       },
       {
         "path": "images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
-        "size": 974075,
-        "modified": "2026-02-06T23:31:57.669Z",
-        "lines": 3207
+        "size": 119403,
+        "modified": "2026-02-08T10:27:26.159Z",
+        "lines": 489
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
-        "size": 1270381,
-        "modified": "2026-02-06T23:31:57.695Z",
-        "lines": 4099
+        "size": 233528,
+        "modified": "2026-02-08T10:27:24.070Z",
+        "lines": 865
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
-        "size": 284687,
-        "modified": "2026-02-06T23:31:57.709Z",
-        "lines": 752
+        "size": 83856,
+        "modified": "2026-02-08T10:27:31.752Z",
+        "lines": 416
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
-        "size": 244924,
-        "modified": "2026-02-06T23:31:57.713Z",
-        "lines": 760
+        "size": 88509,
+        "modified": "2026-02-08T10:27:33.225Z",
+        "lines": 324
       },
       {
         "path": "images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
-        "size": 1241602,
-        "modified": "2026-02-06T23:31:57.740Z",
-        "lines": 3841
+        "size": 146422,
+        "modified": "2026-02-08T10:27:24.327Z",
+        "lines": 688
       },
       {
         "path": "images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
-        "size": 249923,
-        "modified": "2026-02-06T23:31:57.748Z",
-        "lines": 810
+        "size": 62689,
+        "modified": "2026-02-08T10:27:32.791Z",
+        "lines": 219
       },
       {
         "path": "images/portfolio/TMGotcha-Limited-Editions.jpeg",
-        "size": 347019,
-        "modified": "2026-02-06T23:31:57.755Z",
-        "lines": 1052
+        "size": 119862,
+        "modified": "2026-02-08T10:27:30.933Z",
+        "lines": 429
       },
       {
         "path": "images/portfolio/TMGotcha-Main-Advert-Image.jpg",
-        "size": 1073990,
-        "modified": "2026-02-06T23:31:57.774Z",
-        "lines": 3466
+        "size": 205118,
+        "modified": "2026-02-08T10:27:25.087Z",
+        "lines": 811
       },
       {
         "path": "images/portfolio/TMGotcha-Premium-Limited-Edition-Concept-Art.jpeg",
@@ -704,27 +767,27 @@
       },
       {
         "path": "images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
-        "size": 307431,
-        "modified": "2026-02-06T23:31:57.785Z",
-        "lines": 857
+        "size": 103124,
+        "modified": "2026-02-08T10:27:31.645Z",
+        "lines": 367
       },
       {
         "path": "images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
-        "size": 1129753,
-        "modified": "2026-02-06T23:31:57.811Z",
-        "lines": 3563
+        "size": 191515,
+        "modified": "2026-02-08T10:27:24.847Z",
+        "lines": 816
       },
       {
         "path": "images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
-        "size": 1177098,
-        "modified": "2026-02-06T23:31:57.837Z",
-        "lines": 3951
+        "size": 195930,
+        "modified": "2026-02-08T10:27:24.592Z",
+        "lines": 881
       },
       {
         "path": "images/portfolio/TMGotya-Box-Concept.jpeg",
-        "size": 271861,
-        "modified": "2026-02-06T23:31:57.842Z",
-        "lines": 818
+        "size": 69137,
+        "modified": "2026-02-08T10:27:32.316Z",
+        "lines": 295
       },
       {
         "path": "images/portfolio/WAFT-PFP-DEFAULT_125x125px.png",
@@ -746,15 +809,15 @@
       },
       {
         "path": "images/portfolio/WAFT_Profile_Default.png",
-        "size": 466842,
-        "modified": "2026-02-06T23:31:57.854Z",
-        "lines": 1761
+        "size": 229143,
+        "modified": "2026-02-08T10:27:30.799Z",
+        "lines": 725
       },
       {
         "path": "images/portfolio/fogsift-logo-transparent-rectangle.png",
-        "size": 279554,
-        "modified": "2026-02-06T23:31:57.860Z",
-        "lines": 788
+        "size": 111390,
+        "modified": "2026-02-08T10:27:32.218Z",
+        "lines": 399
       },
       {
         "path": "images/portfolio/pixel-tiles.jpg",
@@ -776,9 +839,9 @@
       },
       {
         "path": "og-image.png",
-        "size": 743412,
-        "modified": "2025-12-27T05:23:54.247Z",
-        "lines": 2946
+        "size": 416493,
+        "modified": "2026-02-08T10:27:27.785Z",
+        "lines": 1705
       },
       {
         "path": "robots.txt",
@@ -1062,19 +1125,19 @@
     "exists": true,
     "htmlPageCount": 71,
     "keyFileSizes": {
-      "styles.css": 178058,
-      "app.js": 61664,
+      "styles.css": 179551,
+      "app.js": 63752,
       "theme-init.js": 659,
-      "search-index.json": 300384,
-      "index.html": 52802
+      "search-index.json": 300386,
+      "index.html": 52820
     },
-    "totalFiles": 118
+    "totalFiles": 117
   },
   "tests": {
-    "timestamp": "2026-02-07T21:15:55.543Z",
+    "timestamp": "2026-02-08T10:27:42.970Z",
     "summary": {
-      "total": 116,
-      "passed": 103,
+      "total": 117,
+      "passed": 104,
       "failed": 0,
       "warned": 13
     },
@@ -1087,7 +1150,7 @@
       },
       {
         "name": "HTML Validation",
-        "passed": 70,
+        "passed": 71,
         "failed": 0,
         "warned": 0
       },
@@ -1102,6 +1165,12 @@
         "passed": 0,
         "failed": 0,
         "warned": 7
+      },
+      {
+        "name": "Lighthouse",
+        "passed": 2,
+        "failed": 0,
+        "warned": 3
       },
       {
         "name": "Internal Link Integrity",
@@ -1126,12 +1195,6 @@
         "passed": 6,
         "failed": 0,
         "warned": 0
-      },
-      {
-        "name": "Lighthouse",
-        "passed": 2,
-        "failed": 0,
-        "warned": 3
       }
     ]
   },
@@ -1177,18 +1240,18 @@
     }
   },
   "summary": {
-    "version": "0.0.5",
+    "version": "0.1.0",
     "branch": "main",
-    "uncommittedFiles": 11,
+    "uncommittedFiles": 67,
     "unpushedCommits": 0,
-    "commitsSinceRelease": 101,
+    "commitsSinceRelease": 2,
     "srcCssFiles": 19,
-    "srcJsFiles": 17,
+    "srcJsFiles": 18,
     "srcHtmlFiles": 26,
-    "srcTotalLines": 25027,
+    "srcTotalLines": 25220,
     "builtPages": 71,
     "wikiPages": 43,
-    "testsPassed": 103,
+    "testsPassed": 104,
     "testsFailed": 0,
     "testsWarned": 13,
     "toolsCount": 4,

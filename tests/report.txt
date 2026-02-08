@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-08T10:06:14.841Z
+Generated: 2026-02-08T10:27:42.970Z
 ============================================================
 
 SUMMARY
@@ -111,11 +111,11 @@ SUMMARY
   [WARN] portfolio.html — 10 a11y issue(s)
 
 ── Lighthouse ──
-  [WARN] Performance: 58
+  [WARN] Performance: 62
   [WARN] Accessibility: 87
   [WARN] Best Practices: 81
   [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":58,"accessibility":87,"best-practices":81,"seo":100}
+  [PASS] Lighthouse report generated — {"performance":62,"accessibility":87,"best-practices":81,"seo":100}
 
 ── Internal Link Integrity ──
   [PASS] All 5858 internal links valid
@@ -129,8 +129,8 @@ SUMMARY
   [WARN] Index size: 291.8KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 16.99MB
-  [WARN] 11 file(s) over 500KB — assets/icon-512.png: 840.6KB; assets/logo-01.png: 821.7KB; assets/logo-mono.png: 552.7KB; images/portfolio/TMGotcha-Banner-Image.jpg: 1.23MB; images/portfolio/TMGotcha-Build-Cycle-Banner.jpg: 951.2KB; images/portfolio/TMGotcha-Cube-Concept-Art.jpg: 1.21MB; images/portfolio/TMGotcha-Hardware-Concept-Art.jpg: 1.18MB; images/portfolio/TMGotcha-Main-Advert-Image.jpg: 1.02MB; images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg: 1.08MB; images/portfolio/TMGotcha-Toy-Editions-Banner.jpg: 1.12MB; og-image.png: 726.0KB
+  [PASS] Total dist/ size: 7.52MB
+  [WARN] 1 file(s) over 500KB — assets/logo-01.png: 821.7KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
   [PASS] manifest.json present
