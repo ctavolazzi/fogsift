@@ -35,7 +35,7 @@ const Modal = {
             });
             return this.articles;
         } catch (error) {
-            console.warn('Failed to load articles:', error.message);
+            if (typeof Debug !== 'undefined') Debug.log('Modal', 'Failed to load articles:', error.message);
             if (typeof Toast !== 'undefined') {
                 Toast.error('Could not load articles. Check connection.');
             }

@@ -183,7 +183,7 @@ const SiteSearch = {
                 this.index = await resp.json();
             }
         } catch (e) {
-            console.warn('[SiteSearch] Could not load search index:', e);
+            if (typeof Debug !== 'undefined') Debug.log('SiteSearch', 'Could not load search index:', e.message);
         }
         this._loading = false;
     },

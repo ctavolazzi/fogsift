@@ -110,7 +110,7 @@ const Theme = {
 
         // Validate theme
         if (!this.THEMES.includes(theme)) {
-            console.warn(`Theme: Invalid theme "${theme}", falling back to light`);
+            if (typeof Debug !== 'undefined') Debug.log('Theme', `Invalid theme "${theme}", falling back to light`);
             theme = 'light';
         }
 
@@ -137,7 +137,7 @@ const Theme = {
             try {
                 localStorage.setItem(this.STORAGE_KEY, theme);
             } catch (e) {
-                console.warn('Theme: Could not persist preference:', e.message);
+                if (typeof Debug !== 'undefined') Debug.log('Theme', 'Could not persist preference:', e.message);
             }
         }
 
