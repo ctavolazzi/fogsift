@@ -245,7 +245,7 @@ const CSS_FILES = [
     'src/css/components.css',       // Sections, buttons, toast, modal
     'src/css/industrial-theme.css', // Industrial punchcard theme overrides
     'src/css/matrix-theme.css',     // Matrix digital rain theme overrides
-    'src/css/sky-theme.css',       // T-800 Terminator HUD theme
+    'src/css/sky-theme.css',       // Sky theme (replaced T-800)
     'src/css/synthwave-theme.css',  // Synthwave 80s neon theme
     'src/css/pipboy-theme.css',     // Pip-Boy Fallout CRT theme
     'src/css/rivendell-theme.css',  // Rivendell elvish elegance theme
