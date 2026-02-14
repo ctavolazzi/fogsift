@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-08T10:27:42.970Z",
+  "timestamp": "2026-02-14T04:14:33.814Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 71",
+          "test": "HTML pages built: 74",
           "status": "pass",
-          "detail": "Found 71 HTML files"
+          "detail": "Found 74 HTML files"
         },
         {
           "test": "styles.css size: 175.3KB",
@@ -70,7 +70,7 @@
           "detail": ""
         },
         {
-          "test": "app.js size: 62.3KB",
+          "test": "app.js size: 62.4KB",
           "status": "pass",
           "detail": ""
         }
@@ -134,6 +134,11 @@
         },
         {
           "test": "portfolio.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "pricing.html",
           "status": "pass",
           "detail": ""
         },
@@ -288,6 +293,16 @@
           "detail": ""
         },
         {
+          "test": "wiki/content-creation-pipeline.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/creative-pipeline.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/diagnostic-process.html",
           "status": "pass",
           "detail": ""
@@ -438,7 +453,7 @@
           "detail": ""
         }
       ],
-      "passed": 71,
+      "passed": 74,
       "failed": 0,
       "warned": 0
     },
@@ -448,7 +463,7 @@
         {
           "test": "ESLint warnings only",
           "status": "warn",
-          "detail": "20 warning(s)"
+          "detail": "19 warning(s)"
         }
       ],
       "passed": 0,
@@ -502,7 +517,7 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 62",
+          "test": "Performance: 61",
           "status": "warn",
           "detail": ""
         },
@@ -524,7 +539,7 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":62,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":61,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,
@@ -535,7 +550,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 5858 internal links valid",
+          "test": "All 6107 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -558,22 +573,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 56 entries",
+          "test": "Index has 58 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "56/56 entries have valid structure",
+          "test": "58/58 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "56/56 index URLs resolve to files",
+          "test": "58/58 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 291.8KB",
+          "test": "Index size: 303.4KB",
           "status": "warn",
           "detail": ""
         }
@@ -586,14 +601,14 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.52MB",
+          "test": "Total dist/ size: 6.81MB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "1 file(s) over 500KB",
-          "status": "warn",
-          "detail": "assets/logo-01.png: 821.7KB"
+          "test": "No oversized files",
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "assets/logo.png present",
@@ -616,9 +631,9 @@
           "detail": ""
         }
       ],
-      "passed": 5,
+      "passed": 6,
       "failed": 0,
-      "warned": 1
+      "warned": 0
     },
     {
       "name": "Security Headers",
@@ -660,9 +675,9 @@
     }
   ],
   "summary": {
-    "total": 117,
-    "passed": 104,
+    "total": 120,
+    "passed": 108,
     "failed": 0,
-    "warned": 13
+    "warned": 12
   }
 }
