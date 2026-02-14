@@ -53,22 +53,6 @@
         {
           "slug": "concepts/signal-vs-noise",
           "title": "Signal vs Noise"
-        },
-        {
-          "slug": "concepts/first-principles",
-          "title": "First Principles Thinking"
-        },
-        {
-          "slug": "concepts/opportunity-cost",
-          "title": "Opportunity Cost"
-        },
-        {
-          "slug": "concepts/compounding",
-          "title": "Compounding Effects"
-        },
-        {
-          "slug": "concepts/survivorship-bias",
-          "title": "Survivorship Bias"
         }
       ]
     },
@@ -92,18 +76,6 @@
         {
           "slug": "frameworks/feedback-loops",
           "title": "Feedback Loop Analysis"
-        },
-        {
-          "slug": "frameworks/swot-analysis",
-          "title": "SWOT Analysis"
-        },
-        {
-          "slug": "frameworks/risk-assessment",
-          "title": "Risk Assessment"
-        },
-        {
-          "slug": "frameworks/prioritization-matrix",
-          "title": "Prioritization Matrix"
         }
       ]
     },
@@ -139,18 +111,6 @@
         {
           "slug": "field-notes/007-documentation-debt",
           "title": "Documentation Debt"
-        },
-        {
-          "slug": "field-notes/008-sunk-cost-trap",
-          "title": "The Sunk Cost Trap"
-        },
-        {
-          "slug": "field-notes/009-scope-creep",
-          "title": "Scope Creep"
-        },
-        {
-          "slug": "field-notes/010-communication-overhead",
-          "title": "Communication Overhead"
         }
       ]
     },
@@ -170,14 +130,6 @@
         {
           "slug": "case-studies/the-invisible-process",
           "title": "The Invisible Process"
-        },
-        {
-          "slug": "case-studies/the-startup-pivot",
-          "title": "The Startup That Wouldn't Pivot"
-        },
-        {
-          "slug": "case-studies/the-data-migration",
-          "title": "The Data Migration Disaster"
         }
       ]
     },
@@ -201,22 +153,10 @@
         {
           "slug": "tools/process-mapping",
           "title": "Process Mapping"
-        },
-        {
-          "slug": "tools/time-boxing",
-          "title": "Time-Boxing"
-        },
-        {
-          "slug": "tools/assumption-mapping",
-          "title": "Assumption Mapping"
-        },
-        {
-          "slug": "tools/retrospective",
-          "title": "Retrospective"
         }
       ]
     }
   ],
-  "buildDate": "2026-02-13T23:34:20.135Z",
-  "buildTimestamp": 1771025660135
+  "buildDate": "2025-12-28T10:15:48.023Z",
+  "buildTimestamp": 1766916948023
 }

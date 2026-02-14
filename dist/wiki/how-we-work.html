@@ -22,168 +22,179 @@
 
     <link rel="icon" type="image/png" href="../favicon.png">
 
-    <script src="../theme-init.js"></script>
+    <!-- Theme detection - inline to prevent FOUC -->
+    <script>
+        (function() {
+            var t = localStorage.getItem('theme');
+            var valid = ['light', 'dark', 'industrial-punchcard', 'matrix'];
+            document.documentElement.setAttribute('data-theme', valid.includes(t) ? t : 'light');
+        })();
+    </script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../styles.css" id="main-styles">
+    <!-- External Stylesheet with error handling -->
+    <link rel="stylesheet" href="../styles.css" id="main-styles" onerror="window.__cssLoadError='styles.css'">
+
+    <!-- CSS Load Verification -->
+    <script>
+    (function() {
+        window.__cssErrors = [];
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.__cssLoadError) {
+                console.error('[FOGSIFT Wiki] CSS Load Error:', window.__cssLoadError);
+                window.__cssErrors.push(window.__cssLoadError);
+            }
+            var computed = getComputedStyle(document.documentElement);
+            if (!computed.getPropertyValue('--primary').trim()) {
+                console.warn('[FOGSIFT Wiki] CSS variables not detected');
+                window.__cssErrors.push('CSS variables missing');
+            }
+            if (window.__cssErrors.length === 0) {
+                console.log('%c[FOGSIFT Wiki] Styles loaded', 'color: #4CAF50');
+            } else {
+                document.body.style.fontFamily = 'Inter, system-ui, sans-serif';
+                document.body.style.backgroundColor = '#f5f0e6';
+                document.body.style.color = '#4a2c2a';
+            }
+        });
+    })();
+    </script>
 </head>
-<body class="wiki-body wiki-page">
+<body class="wiki-body">
 
     <div id="toast-container"></div>
+
+    <!-- Mobile Navigation Overlay (click to close) -->
     <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
 
-    <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
-        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+        <button class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
             <span aria-hidden="true">&times;</span>
         </button>
-        <a href="../index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
-        <a href="../about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
-        <a href="../offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
-        <a href="../queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
-        <a href="../wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
-        <a href="../portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
-        <a href="../faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
-        <a href="../contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
+        <a href="../index.html" class="mobile-link">HOME</a>
+        <a href="index.html" class="mobile-link">WIKI</a>
+        <a href="../index.html#process" class="mobile-link">PROCESS</a>
+        <a href="../index.html#about" class="mobile-link">ABOUT</a>
+        <a href="../index.html#pricing" class="mobile-link">PRICING</a>
+        <a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="mobile-link">CONTACT</a>
     </nav>
 
-    <!-- Main Navigation -->
-    <header class="nav-wrapper">
+    <div class="nav-wrapper">
         <div class="main-nav">
-            <a href="../index.html" class="brand" aria-label="Fogsift home">
+            <a href="../index.html" class="brand">
                 <img src="../assets/logo.png" alt="Fogsift" class="brand-logo">
             </a>
-            <nav class="menu-items" aria-label="Main navigation">
-                <div class="menu-item"><a href="../about.html" class="menu-link">ABOUT</a></div>
-                <div class="menu-item"><a href="../offers.html" class="menu-link">OFFERS</a></div>
-                <div class="menu-item"><a href="../queue.html" class="menu-link">QUEUE</a></div>
-                <div class="menu-item"><a href="../wiki/index.html" class="menu-link" aria-current="page">WIKI</a></div>
-                <div class="menu-item"><a href="../portfolio.html" class="menu-link">PORTFOLIO</a></div>
-                <div class="menu-item"><a href="../faq.html" class="menu-link">FAQ</a></div>
-                <div class="menu-item"><a href="../contact.html" class="menu-link">CONTACT</a></div>
-            </nav>
+
+            <div class="menu-items">
+                <div class="menu-item"><a href="index.html" class="menu-link direct wiki-nav-active">WIKI</a></div>
+                <div class="menu-item"><a href="../index.html#process" class="menu-link">PROCESS</a></div>
+                <div class="menu-item"><a href="../index.html#about" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="../index.html#pricing" class="menu-link">PRICING</a></div>
+                <div class="menu-item"><a href="mailto:christopher@fogsift.com?subject=Question%20for%20FogSift" class="menu-link cta-link">CONTACT</a></div>
+            </div>
+
             <div class="nav-controls">
-                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
-                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
-                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
-                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
-                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
-                </button>
                 <div class="theme-picker" role="listbox" aria-label="Select theme">
-                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                    <button class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
                         <span class="theme-picker-icon" aria-hidden="true">◐</span>
                         <span class="theme-picker-label">Theme</span>
+                        <span class="theme-picker-arrow" aria-hidden="true">▾</span>
                     </button>
                     <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
-                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                        <button class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
                             <span class="theme-option-icon">☀</span>
                             <span class="theme-option-label">Light</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                        <button class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
                             <span class="theme-option-icon">●</span>
                             <span class="theme-option-label">Dark</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                        <button class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
                             <span class="theme-option-icon">▣</span>
                             <span class="theme-option-label">Industrial</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                        <button class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
                             <span class="theme-option-icon">▓</span>
                             <span class="theme-option-label">Matrix</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
-                            <span class="theme-option-icon">☁️</span>
-                            <span class="theme-option-label">Sky</span>
+                        <button class="theme-picker-option" data-theme="t800" role="option" onclick="ThemePicker.select('t800')">
+                            <span class="theme-option-icon">🤖</span>
+                            <span class="theme-option-label">T-800</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                        <button class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
                             <span class="theme-option-icon">🌆</span>
                             <span class="theme-option-label">Synthwave</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                        <button class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
                             <span class="theme-option-icon">📟</span>
                             <span class="theme-option-label">Pip-Boy</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                        <button class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
                             <span class="theme-option-icon">🏔️</span>
                             <span class="theme-option-label">Rivendell</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                        <button class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
                             <span class="theme-option-icon">🦌</span>
                             <span class="theme-option-label">Camo</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                        <button class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
                             <span class="theme-option-icon">💖</span>
                             <span class="theme-option-label">Barbie</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                        <button class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
                             <span class="theme-option-icon">🌊</span>
                             <span class="theme-option-label">Ocean</span>
                             <span class="theme-option-check" aria-hidden="true">✓</span>
                         </button>
-                        <button type="button" class="theme-picker-option" data-theme="aurora" role="option" onclick="ThemePicker.select('aurora')">
-                            <span class="theme-option-icon">🌌</span>
-                            <span class="theme-option-label">Aurora</span>
-                            <span class="theme-option-check" aria-hidden="true">✓</span>
-                        </button>
-                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
-                            <span class="theme-option-icon">🎬</span>
-                            <span class="theme-option-label">Demo</span>
-                            <span class="theme-option-check" aria-hidden="true">▶</span>
-                        </button>
                     </div>
                 </div>
-                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
-                    <span class="copy-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-                        </svg>
-                    </span>
-                </button>
-                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                <button class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
                     <span class="menu-toggle-icon" aria-hidden="true">☰</span>
                 </button>
             </div>
         </div>
-    </header>
 
-    <div class="wiki-container">
-        <!-- Breadcrumb -->
-        <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
-            <ol class="wiki-breadcrumb__list">
-                <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">FOGSIFT</a></li>
-                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><a href="index.html" class="wiki-breadcrumb__link">WIKI</a></li>
-                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">HOW WE WORK</span></li>
+        <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+            <ol class="crumb-list">
+                <li class="crumb-item"><a href="../index.html" class="crumb-link">FOGSIFT</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><a href="index.html" class="crumb-link">WIKI</a></li>
+                <li class="crumb-item crumb-separator">/</li>
+                <li class="crumb-item"><span class="crumb-current">HOW WE WORK</span></li>
             </ol>
         </nav>
+    </div>
 
-        <!-- Sidebar -->
+    <div class="wiki-layout">
+        <!-- Mobile Sidebar Toggle -->
+        <button class="wiki-sidebar-toggle" aria-expanded="false" aria-controls="wiki-sidebar" onclick="WikiNav.toggle()">
+            <span class="toggle-text">Navigation</span>
+            <span class="toggle-icon" aria-hidden="true">+</span>
+        </button>
+
+        <!-- Sidebar Navigation -->
         <aside id="wiki-sidebar" class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
-            <button class="wiki-sidebar__toggle" aria-expanded="false" aria-controls="wiki-sidebar-nav" onclick="WikiNav.toggle()">
-                <span>Navigation</span>
-                <span class="wiki-sidebar__toggle-icon" aria-hidden="true">+</span>
-            </button>
-            <div id="wiki-sidebar-nav" class="wiki-sidebar__nav">
-                <a href="index.html" class="wiki-sidebar__home">
-                    <span aria-hidden="true">&larr;</span> Wiki Home
-                </a>
-                <div class="wiki-nav-category">
+            <div class="wiki-sidebar-inner">
+                <div class="wiki-sidebar-header">
+                    <a href="index.html" class="wiki-home-link">
+                        <span aria-hidden="true">←</span> Wiki Home
+                    </a>
+                </div>
+                <div class="wiki-sidebar-content">
+                    <div class="wiki-nav-category">
   <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg></span>Documentation</h4>
   <ul class="wiki-nav-list">
     <li><a href="getting-started.html">Getting Started</a></li>
@@ -201,10 +212,6 @@
     <li><a href="concepts/cognitive-biases.html">Cognitive Biases</a></li>
     <li><a href="concepts/second-order-effects.html">Second-Order Effects</a></li>
     <li><a href="concepts/signal-vs-noise.html">Signal vs Noise</a></li>
-    <li><a href="concepts/first-principles.html">First Principles Thinking</a></li>
-    <li><a href="concepts/opportunity-cost.html">Opportunity Cost</a></li>
-    <li><a href="concepts/compounding.html">Compounding Effects</a></li>
-    <li><a href="concepts/survivorship-bias.html">Survivorship Bias</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -214,9 +221,6 @@
     <li><a href="frameworks/decision-matrix.html">Decision Matrix</a></li>
     <li><a href="frameworks/constraint-mapping.html">Constraint Mapping</a></li>
     <li><a href="frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
-    <li><a href="frameworks/swot-analysis.html">SWOT Analysis</a></li>
-    <li><a href="frameworks/risk-assessment.html">Risk Assessment</a></li>
-    <li><a href="frameworks/prioritization-matrix.html">Prioritization Matrix</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -229,9 +233,6 @@
     <li><a href="field-notes/005-tribal-knowledge.html">Tribal Knowledge</a></li>
     <li><a href="field-notes/006-incentive-alignment.html">Incentive Alignment</a></li>
     <li><a href="field-notes/007-documentation-debt.html">Documentation Debt</a></li>
-    <li><a href="field-notes/008-sunk-cost-trap.html">The Sunk Cost Trap</a></li>
-    <li><a href="field-notes/009-scope-creep.html">Scope Creep</a></li>
-    <li><a href="field-notes/010-communication-overhead.html">Communication Overhead</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -240,8 +241,6 @@
     <li><a href="case-studies/manufacturing-throughput.html">Manufacturing Throughput Crisis</a></li>
     <li><a href="case-studies/communication-breakdown.html">The Communication Breakdown</a></li>
     <li><a href="case-studies/the-invisible-process.html">The Invisible Process</a></li>
-    <li><a href="case-studies/the-startup-pivot.html">The Startup That Wouldn't Pivot</a></li>
-    <li><a href="case-studies/the-data-migration.html">The Data Migration Disaster</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -251,18 +250,16 @@
     <li><a href="tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
     <li><a href="tools/pareto-analysis.html">Pareto Analysis</a></li>
     <li><a href="tools/process-mapping.html">Process Mapping</a></li>
-    <li><a href="tools/time-boxing.html">Time-Boxing</a></li>
-    <li><a href="tools/assumption-mapping.html">Assumption Mapping</a></li>
-    <li><a href="tools/retrospective.html">Retrospective</a></li>
   </ul>
 </div>
 
+                </div>
             </div>
         </aside>
 
         <!-- Main Content -->
         <main class="wiki-main" role="main">
-            <article class="wiki-article">
+            <article class="wiki-content">
                 <h1>How We Work</h1>
 <p>Fogsift operates differently from traditional consulting. We don&#39;t bring pre-packaged solutions. We bring diagnostic capability.</p>
 <h2>The Approach</h2>
@@ -297,17 +294,17 @@
 </ul>
 <h2>Ready to Start?</h2>
 <p>The first conversation is free. We&#39;ll talk about what&#39;s going on, and if it&#39;s something we can help with, we&#39;ll figure out the right format together.</p>
-<p><a href="mailto:info@fogsift.com?subject=Inquiry%20from%20Wiki">Get in touch</a></p>
+<p><a href="mailto:christopher@fogsift.com?subject=Inquiry%20from%20Wiki">Get in touch</a></p>
 
             </article>
 
-            <footer class="wiki-article-footer">
-                <div class="wiki-article-footer__meta">
-                    <span>Updated: 2026-02-13</span>
+            <footer class="wiki-footer">
+                <div class="wiki-meta">
+                    <span>Updated: 2025-12-28</span>
                 </div>
-                <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
+                <nav class="wiki-nav-footer" aria-label="Wiki navigation">
                     <a href="index.html">
-                        <span aria-hidden="true">&larr;</span> Back to Wiki
+                        <span aria-hidden="true">←</span> Back to Wiki
                     </a>
                 </nav>
             </footer>
@@ -391,30 +388,6 @@
             <span class="jd-page-title">Signal vs Noise</span>
           </a>
         </li>
-        <li>
-          <a href="concepts/first-principles.html" class="jd-page-link">
-            <span class="jd-number">20.07</span>
-            <span class="jd-page-title">First Principles Thinking</span>
-          </a>
-        </li>
-        <li>
-          <a href="concepts/opportunity-cost.html" class="jd-page-link">
-            <span class="jd-number">20.08</span>
-            <span class="jd-page-title">Opportunity Cost</span>
-          </a>
-        </li>
-        <li>
-          <a href="concepts/compounding.html" class="jd-page-link">
-            <span class="jd-number">20.09</span>
-            <span class="jd-page-title">Compounding Effects</span>
-          </a>
-        </li>
-        <li>
-          <a href="concepts/survivorship-bias.html" class="jd-page-link">
-            <span class="jd-number">20.10</span>
-            <span class="jd-page-title">Survivorship Bias</span>
-          </a>
-        </li>
       </ul>
     </div>
     <div class="jd-category">
@@ -445,24 +418,6 @@
           <a href="frameworks/feedback-loops.html" class="jd-page-link">
             <span class="jd-number">30.04</span>
             <span class="jd-page-title">Feedback Loop Analysis</span>
-          </a>
-        </li>
-        <li>
-          <a href="frameworks/swot-analysis.html" class="jd-page-link">
-            <span class="jd-number">30.05</span>
-            <span class="jd-page-title">SWOT Analysis</span>
-          </a>
-        </li>
-        <li>
-          <a href="frameworks/risk-assessment.html" class="jd-page-link">
-            <span class="jd-number">30.06</span>
-            <span class="jd-page-title">Risk Assessment</span>
-          </a>
-        </li>
-        <li>
-          <a href="frameworks/prioritization-matrix.html" class="jd-page-link">
-            <span class="jd-number">30.07</span>
-            <span class="jd-page-title">Prioritization Matrix</span>
           </a>
         </li>
       </ul>
@@ -515,24 +470,6 @@
             <span class="jd-page-title">Documentation Debt</span>
           </a>
         </li>
-        <li>
-          <a href="field-notes/008-sunk-cost-trap.html" class="jd-page-link">
-            <span class="jd-number">40.08</span>
-            <span class="jd-page-title">The Sunk Cost Trap</span>
-          </a>
-        </li>
-        <li>
-          <a href="field-notes/009-scope-creep.html" class="jd-page-link">
-            <span class="jd-number">40.09</span>
-            <span class="jd-page-title">Scope Creep</span>
-          </a>
-        </li>
-        <li>
-          <a href="field-notes/010-communication-overhead.html" class="jd-page-link">
-            <span class="jd-number">40.10</span>
-            <span class="jd-page-title">Communication Overhead</span>
-          </a>
-        </li>
       </ul>
     </div>
     <div class="jd-category">
@@ -557,18 +494,6 @@
           <a href="case-studies/the-invisible-process.html" class="jd-page-link">
             <span class="jd-number">50.03</span>
             <span class="jd-page-title">The Invisible Process</span>
-          </a>
-        </li>
-        <li>
-          <a href="case-studies/the-startup-pivot.html" class="jd-page-link">
-            <span class="jd-number">50.04</span>
-            <span class="jd-page-title">The Startup That Wouldn't Pivot</span>
-          </a>
-        </li>
-        <li>
-          <a href="case-studies/the-data-migration.html" class="jd-page-link">
-            <span class="jd-number">50.05</span>
-            <span class="jd-page-title">The Data Migration Disaster</span>
           </a>
         </li>
       </ul>
@@ -603,24 +528,6 @@
             <span class="jd-page-title">Process Mapping</span>
           </a>
         </li>
-        <li>
-          <a href="tools/time-boxing.html" class="jd-page-link">
-            <span class="jd-number">60.05</span>
-            <span class="jd-page-title">Time-Boxing</span>
-          </a>
-        </li>
-        <li>
-          <a href="tools/assumption-mapping.html" class="jd-page-link">
-            <span class="jd-number">60.06</span>
-            <span class="jd-page-title">Assumption Mapping</span>
-          </a>
-        </li>
-        <li>
-          <a href="tools/retrospective.html" class="jd-page-link">
-            <span class="jd-number">60.07</span>
-            <span class="jd-page-title">Retrospective</span>
-          </a>
-        </li>
       </ul>
     </div>
   </div>
@@ -632,20 +539,24 @@
         </main>
     </div>
 
+    <!-- Shared JS bundle (Theme, ThemePicker, Nav, Toast) -->
     <script src="../app.js" defer></script>
 
+    <!-- Wiki-specific JS -->
     <script>
+        // Wiki sidebar accordion toggle
         const WikiNav = {
             sidebar: null,
-            toggleBtn: null,
-            navPanel: null,
+            toggle: null,
 
             init() {
                 this.sidebar = document.getElementById('wiki-sidebar');
-                this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
-                this.navPanel = document.getElementById('wiki-sidebar-nav');
+                this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
+
+                // Mark active page in navigation
                 this.highlightActivePage();
 
+                // Auto-close sidebar when clicking nav links (mobile/tablet)
                 if (this.sidebar) {
                     this.sidebar.addEventListener('click', (e) => {
                         if (e.target.closest('.wiki-nav-list a')) {
@@ -656,31 +567,31 @@
             },
 
             toggle() {
-                if (!this.toggleBtn) {
-                    this.toggleBtn = document.querySelector('.wiki-sidebar__toggle');
-                    this.navPanel = document.getElementById('wiki-sidebar-nav');
+                if (!this.sidebar || !this.toggleBtn) {
+                    this.sidebar = document.getElementById('wiki-sidebar');
+                    this.toggleBtn = document.querySelector('.wiki-sidebar-toggle');
                 }
-                if (!this.sidebar) this.sidebar = document.getElementById('wiki-sidebar');
-                if (!this.toggleBtn) return;
+                if (!this.sidebar || !this.toggleBtn) return;
 
                 const expanded = this.toggleBtn.getAttribute('aria-expanded') === 'true';
-                this.toggleBtn.setAttribute('aria-expanded', String(!expanded));
-                this.sidebar.classList.toggle('wiki-sidebar--open');
+                this.toggleBtn.setAttribute('aria-expanded', !expanded);
+                this.sidebar.classList.toggle('open');
 
-                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
-                if (icon) icon.textContent = expanded ? '+' : '\u2212';
+                const icon = this.toggleBtn.querySelector('.toggle-icon');
+                if (icon) icon.textContent = expanded ? '+' : '−';
             },
 
             close() {
                 if (!this.sidebar || !this.toggleBtn) return;
                 this.toggleBtn.setAttribute('aria-expanded', 'false');
-                this.sidebar.classList.remove('wiki-sidebar--open');
-                const icon = this.toggleBtn.querySelector('.wiki-sidebar__toggle-icon');
+                this.sidebar.classList.remove('open');
+                const icon = this.toggleBtn.querySelector('.toggle-icon');
                 if (icon) icon.textContent = '+';
             },
 
             highlightActivePage() {
-                const currentPage = window.location.pathname.split('/').pop();
+                const currentPath = window.location.pathname;
+                const currentPage = currentPath.split('/').pop();
                 document.querySelectorAll('.wiki-nav-list a').forEach(link => {
                     const href = link.getAttribute('href');
                     if (href && (href === currentPage || href.endsWith(currentPage))) {
@@ -691,6 +602,7 @@
             }
         };
 
+        // Init WikiNav when DOM ready
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => WikiNav.init());
         } else {
@@ -699,3 +611,4 @@
     </script>
 </body>
 </html>
+
