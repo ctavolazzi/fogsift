@@ -32,14 +32,6 @@
         <priority>0.7</priority>
     </url>
     <url>
-<<<<<<< HEAD
-        <loc>https://fogsift.com/wiki/index.html</loc>
-        <lastmod>2025-01-20</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-</urlset>
-=======
         <loc>https://fogsift.com/queue.html</loc>
         <lastmod>2026-02-02</lastmod>
         <changefreq>weekly</changefreq>
@@ -75,7 +67,6 @@
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
->>>>>>> origin/claude/general-session-nWHw4
 
     <!-- Wiki Main -->
     <url>

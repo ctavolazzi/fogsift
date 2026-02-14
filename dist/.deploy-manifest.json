@@ -1,0 +1,21 @@
+{
+  "version": "0.0.5",
+  "deployedAt": "2026-02-06T03:38:11.896Z",
+  "gitCommit": "5301264",
+  "gitBranch": "claude/general-session-nWHw4",
+  "totalSize": 15519573,
+  "fileCount": 97,
+  "checksums": {
+    "index.html": "13b475e3",
+    "styles.css": "bb579240",
+    "app.js": "f04f0a2a",
+    "favicon.png": "871e8f15",
+    "manifest.json": "1c275c30",
+    "404.html": "0b7c0e8c"
+  },
+  "bundles": {
+    "css": 126836,
+    "js": 43464,
+    "html": 35858
+  }
+}

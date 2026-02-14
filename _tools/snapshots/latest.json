@@ -1,26 +1,33 @@
 {
-  "generated": "2026-02-08T12:19:31.347Z",
+  "generated": "2026-02-14T00:04:05.995Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "main",
     "status": [
-      "M .claude/hooks/startup.sh",
-      " M .gitignore",
-      " M _AI_Journal/serve.js",
-      " M _pyrite/active/WE-260208-0vyf_dev_session/WE-260208-0vyf_index.md",
-      " M _tools/snapshots/context-brief.md",
+      "M _tools/snapshots/context-brief.md",
       " M _tools/snapshots/latest.json",
-      "?? _AI_Journal/005-the-lighthouse-wakes-itself.md",
-      "?? _AI_Journal/006-architecture-map.md",
-      "?? _AI_Journal/007-css-theme-system.md",
-      "?? _AI_Journal/008-javascript-module-map.md",
-      "?? _AI_Journal/009-wiki-search-reference.md",
-      "?? _AI_Journal/010-test-quality-reference.md",
-      "?? _AI_Journal/011-security-deployment.md",
-      "?? _tools/scripts/session-reflect.js"
+      "?? _AI_Journal/012-the-friction-engine.md",
+      "?? _AI_Journal/012-waft-awakens.md",
+      "?? dist/queue/FSQ-001.html",
+      "?? dist/queue/FSQ-002.html",
+      "?? dist/queue/FSQ-003.html",
+      "?? dist/queue/FSQ-004.html",
+      "?? dist/queue/FSQ-005.html",
+      "?? dist/queue/FSQ-006.html",
+      "?? dist/queue/FSQ-007.html",
+      "?? dist/queue/FSQ-008.html",
+      "?? dist/queue/FSQ-009.html",
+      "?? dist/queue/FSQ-010.html",
+      "?? dist/wiki/content-creation-pipeline.html",
+      "?? dist/wiki/creative-pipeline.html",
+      "?? fogsift-ai-learning-lab/",
+      "?? fogsift-crash-course/",
+      "?? src/wiki/content-creation-pipeline.md",
+      "?? src/wiki/creative-pipeline.md"
     ],
-    "unpushed": 1,
+    "unpushed": 2,
     "recentCommits": [
+      "5b79352 feat: The Lighthouse Wakes — automated dev environment with self-reflecting journals",
       "c78613d Compress images (-18.7MB) and add automated session startup",
       "b464b7e Fix test suite: pa11y and Lighthouse now use Node.js APIs",
       "1020ab1 Fix HTML validation and ESLint errors from v0.1.0 release",
@@ -29,8 +36,7 @@
       "94d58e2 Add dev startup script with full Lighthouse suite",
       "b358055 Match search panel animation on mobile to desktop, add landscape phone overrides",
       "cbda29c Add secret Keeper's Log page, Ideas & Planning docs, and footer easter egg",
-      "d004e2b Rebuild dist from latest source",
-      "6cafc66 Add development infrastructure: test viewer, component library, AI journal"
+      "d004e2b Rebuild dist from latest source"
     ],
     "tags": [
       "v0.1.0",
@@ -40,7 +46,7 @@
       "v0.0.2"
     ],
     "lastTag": "v0.1.0",
-    "commitsSinceTag": 3,
+    "commitsSinceTag": 4,
     "remoteUrl": "https://github.com/ctavolazzi/fogsift.git"
   },
   "package": {
@@ -121,7 +127,7 @@
       {
         "path": "css/components.css",
         "size": 61170,
-        "modified": "2026-02-08T07:39:31.281Z",
+        "modified": "2026-02-13T23:50:26.356Z",
         "lines": 2783
       },
       {
@@ -199,7 +205,7 @@
       {
         "path": "css/tokens.css",
         "size": 22514,
-        "modified": "2026-02-07T10:33:59.437Z",
+        "modified": "2026-02-13T23:50:26.358Z",
         "lines": 721
       },
       {
@@ -377,7 +383,7 @@
       {
         "path": "index.html",
         "size": 37428,
-        "modified": "2026-02-07T17:09:20.491Z",
+        "modified": "2026-02-13T23:50:26.363Z",
         "lines": 675
       },
       {
@@ -529,55 +535,55 @@
       {
         "path": "assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
         "size": 457298,
-        "modified": "2026-02-08T10:27:23.574Z",
+        "modified": "2026-02-13T23:50:26.328Z",
         "lines": 2101
       },
       {
         "path": "assets/badge-orange-line.png",
         "size": 406893,
-        "modified": "2026-02-08T10:27:28.468Z",
+        "modified": "2026-02-13T23:50:26.332Z",
         "lines": 1666
       },
       {
         "path": "assets/badge-owner.png",
         "size": 385489,
-        "modified": "2026-02-08T10:27:29.061Z",
+        "modified": "2026-02-13T23:50:26.336Z",
         "lines": 1468
       },
       {
         "path": "assets/badge-profile.png",
         "size": 389336,
-        "modified": "2026-02-08T10:27:25.942Z",
+        "modified": "2026-02-13T23:50:26.341Z",
         "lines": 1727
       },
       {
         "path": "assets/icon-512.png",
         "size": 316656,
-        "modified": "2026-02-08T10:27:27.277Z",
+        "modified": "2026-02-13T23:50:26.345Z",
         "lines": 1382
       },
       {
         "path": "assets/logo-01.png",
         "size": 321518,
-        "modified": "2026-02-08T10:27:29.690Z",
+        "modified": "2026-02-13T23:50:26.349Z",
         "lines": 1384
       },
       {
         "path": "assets/logo-color-transparent.png",
         "size": 111390,
-        "modified": "2026-02-08T10:27:31.984Z",
+        "modified": "2026-02-13T23:50:26.350Z",
         "lines": 399
       },
       {
         "path": "assets/logo-color.png",
         "size": 300350,
-        "modified": "2026-02-08T10:27:30.427Z",
+        "modified": "2026-02-13T23:50:26.353Z",
         "lines": 1289
       },
       {
         "path": "assets/logo-mono.png",
         "size": 335567,
-        "modified": "2026-02-08T10:27:30.061Z",
+        "modified": "2026-02-13T23:50:26.354Z",
         "lines": 1389
       },
       {
@@ -613,7 +619,7 @@
       {
         "path": "content/queue.json",
         "size": 4432,
-        "modified": "2026-02-06T23:31:57.624Z",
+        "modified": "2026-02-13T23:50:26.356Z",
         "lines": 115
       },
       {
@@ -667,7 +673,7 @@
       {
         "path": "images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
         "size": 233528,
-        "modified": "2026-02-08T10:27:24.070Z",
+        "modified": "2026-02-13T23:50:26.360Z",
         "lines": 865
       },
       {
@@ -703,7 +709,7 @@
       {
         "path": "images/portfolio/TMGotcha-Main-Advert-Image.jpg",
         "size": 205118,
-        "modified": "2026-02-08T10:27:25.087Z",
+        "modified": "2026-02-13T23:50:26.361Z",
         "lines": 811
       },
       {
@@ -787,7 +793,7 @@
       {
         "path": "og-image.png",
         "size": 416493,
-        "modified": "2026-02-08T10:27:27.785Z",
+        "modified": "2026-02-13T23:50:26.364Z",
         "lines": 1705
       },
       {
@@ -891,6 +897,18 @@
         "size": 5358,
         "modified": "2025-12-27T07:31:17.843Z",
         "lines": 145
+      },
+      {
+        "path": "wiki/content-creation-pipeline.md",
+        "size": 4101,
+        "modified": "2026-02-09T03:17:33.422Z",
+        "lines": 77
+      },
+      {
+        "path": "wiki/creative-pipeline.md",
+        "size": 4194,
+        "modified": "2026-02-09T03:17:57.085Z",
+        "lines": 79
       },
       {
         "path": "wiki/diagnostic-process.md",
@@ -1070,7 +1088,7 @@
   },
   "build": {
     "exists": true,
-    "htmlPageCount": 71,
+    "htmlPageCount": 83,
     "keyFileSizes": {
       "styles.css": 179551,
       "app.js": 63752,
@@ -1078,7 +1096,7 @@
       "search-index.json": 300386,
       "index.html": 52820
     },
-    "totalFiles": 117
+    "totalFiles": 129
   },
   "tests": {
     "timestamp": "2026-02-08T10:27:42.970Z",
@@ -1147,11 +1165,11 @@
   },
   "wiki": {
     "exists": true,
-    "totalPages": 43,
+    "totalPages": 45,
     "categories": {
       "case-studies": 5,
       "concepts": 10,
-      "root": 4,
+      "root": 6,
       "field-notes": 10,
       "frameworks": 7,
       "tools": 7
@@ -1185,7 +1203,7 @@
       }
     ],
     "journalExists": true,
-    "journalEntries": 11,
+    "journalEntries": 13,
     "portMap": {
       "5001": "AI Journal (The Keeper's Log)",
       "5030": "Component Library (The Signal Workshop)",
@@ -1197,19 +1215,19 @@
   "summary": {
     "version": "0.1.0",
     "branch": "main",
-    "uncommittedFiles": 14,
-    "unpushedCommits": 1,
-    "commitsSinceRelease": 3,
+    "uncommittedFiles": 20,
+    "unpushedCommits": 2,
+    "commitsSinceRelease": 4,
     "srcCssFiles": 19,
     "srcJsFiles": 18,
     "srcHtmlFiles": 26,
     "srcTotalLines": 25220,
-    "builtPages": 71,
-    "wikiPages": 43,
+    "builtPages": 83,
+    "wikiPages": 45,
     "testsPassed": 104,
     "testsFailed": 0,
     "testsWarned": 13,
     "toolsCount": 6,
-    "journalEntries": 11
+    "journalEntries": 13
   }
 }
