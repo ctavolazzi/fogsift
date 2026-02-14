@@ -99,7 +99,7 @@ label.hp-field,
 /* === HERO SECTION === */
 .section-hero {
     text-align: center;
-    padding: var(--space-md) 0;
+    padding: var(--space-xl) 0 var(--space-md);
 }
 
 .hero-badge {
@@ -465,8 +465,8 @@ label.hp-field,
 
 .gold-star {
     position: absolute;
-    top: -18px;
-    right: -12px;
+    top: -24px;
+    right: 24px;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
