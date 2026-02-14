@@ -2696,8 +2696,9 @@ footer {
 #cookie-consent-banner {
     position: fixed;
     bottom: var(--space-md);
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    margin-inline: auto;
     z-index: 9000;
     width: min(480px, calc(100vw - 2rem));
     transition: opacity var(--ease-out), transform var(--ease-out);
