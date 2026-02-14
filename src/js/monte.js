@@ -368,9 +368,34 @@ var GoldStar = {
     hasMoved: false,
     spinCount: 0,
 
+    PHRASES: [
+        'Gold Star',
+        'Top Notch',
+        'A+ Work',
+        'Nailed It',
+        'Chef\'s Kiss',
+        'Certified',
+        'Five Stars',
+        'Well Done',
+        'Bravo',
+        'Sharp',
+        'On Point',
+        'First Rate',
+        'Solid Gold',
+        'No Notes',
+        'Spot On',
+        'Crushed It',
+    ],
+
     init: function() {
         this.el = document.querySelector('.gold-star');
         if (!this.el) return;
+
+        // Random phrase on each visit
+        var span = this.el.querySelector('span');
+        if (span) {
+            span.textContent = this.PHRASES[Math.floor(Math.random() * this.PHRASES.length)];
+        }
 
         StarParticles.init();
         var self = this;
