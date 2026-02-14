@@ -74,7 +74,7 @@ const CopyPageText = {
                 if (hasToast) {
                     Toast.error('No text content found to copy');
                 } else {
-                    console.warn('No text content found to copy');
+                    if (typeof Debug !== 'undefined') Debug.log('CopyPageText', 'No text content found');
                 }
                 return;
             }
@@ -84,7 +84,7 @@ const CopyPageText = {
                 Toast.show('Page text copied to clipboard');
             }
         } catch (err) {
-            console.error('Failed to copy text:', err);
+            if (typeof Debug !== 'undefined') Debug.error('CopyPageText', 'Failed to copy:', err.message);
             if (hasToast) {
                 Toast.error('Failed to copy text to clipboard');
             }

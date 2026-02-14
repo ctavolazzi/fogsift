@@ -237,7 +237,7 @@ const QueueUI = {
             var response = await fetch(this.apiUrl);
 
             if (!response.ok && this.apiUrl !== this.fallbackApiUrl) {
-                console.log('Local API unavailable, trying production...');
+                if (typeof Debug !== 'undefined') Debug.log('QueueUI', 'Local API unavailable, trying production...');
                 response = await fetch(this.fallbackApiUrl);
             }
 
@@ -248,19 +248,19 @@ const QueueUI = {
                     this.lastUpdated = new Date();
                     this.updateStats();
                     this.render();
-                    console.log('Queue loaded from API');
+                    if (typeof Debug !== 'undefined') Debug.log('QueueUI', 'Queue loaded from API');
                     return;
                 }
             }
         } catch (error) {
-            console.log('API unavailable, using sample data');
+            if (typeof Debug !== 'undefined') Debug.log('QueueUI', 'API unavailable, using sample data');
         }
 
         this.data = this.sampleData;
         this.lastUpdated = new Date();
         this.updateStats();
         this.render();
-        console.log('Queue loaded from sample data');
+        if (typeof Debug !== 'undefined') Debug.log('QueueUI', 'Queue loaded from sample data');
     },
 
     updateStats() {
