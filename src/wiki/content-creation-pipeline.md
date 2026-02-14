@@ -73,4 +73,4 @@ The goal is not to make great content. The goal is to make content, consistently
 
 ---
 
-*Part of the [Future Folk Guild](/wiki/future-folk-guild) methodology. For more about our approach, see [How We Work](/wiki/how-we-work).*
+*Part of the Future Folk Guild methodology. For more about our approach, see [How We Work](/wiki/how-we-work.html).*

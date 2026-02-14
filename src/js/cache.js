@@ -15,7 +15,6 @@
  * - Work Effort: WE-251227-x7k9
  */
 
-/* global Debug */
 
 (function() {
     'use strict';

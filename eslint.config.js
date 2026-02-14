@@ -9,16 +9,24 @@ export default [
         ...globals.browser,
         Toast: "readonly",
         Theme: "readonly",
+        ThemePicker: "readonly",
         Modal: "readonly",
         Nav: "readonly",
         SleepMode: "readonly",
-        CookieConsent: "readonly"
+        CookieConsent: "readonly",
+        Debug: "readonly",
+        SiteSearch: "readonly",
+        CopyPageText: "readonly",
+        MatrixRain: "readonly",
+        QueueUI: "readonly",
+        App: "readonly",
+        ExampleModal: "readonly"
       }
     },
     rules: {
       "no-unused-vars": ["warn", {
         "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^(Toast|Theme|Modal|Nav|App|SleepMode|CookieConsent)$"
+        "varsIgnorePattern": "^(Toast|Theme|ThemePicker|Modal|Nav|App|ExampleModal|SleepMode|CookieConsent|Debug|SiteSearch|CopyPageText|MatrixRain|QueueUI)$"
       }],
       "no-undef": "error",
       "no-empty": "warn",

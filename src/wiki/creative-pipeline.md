@@ -73,6 +73,6 @@ Same philosophy. Different domain.
 
 ## Future Folk Guild
 
-The [Future Folk Guild](/wiki/future-folk-guild) is a membership community built around this philosophy. Members get access to pipeline templates, feedback loops, and a community of people who are all building their own friction-reduction machines.
+The Future Folk Guild is a membership community built around this philosophy. Members get access to pipeline templates, feedback loops, and a community of people who are all building their own friction-reduction machines.
 
 *"The fog doesn't lift itself. But some people are born to build fog-lifting machines."*
