@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Installation Progress - AI Learning Lab</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #F5F0E8;
+            --orange: #D9744A;
+            --brown: #4A3728;
+            --green: #6B8E23;
+        }
+        
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--brown);
+            padding: 2rem;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #E8E0D5;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            color: #8B7355;
+            font-size: 1.1rem;
+        }
+        
+        .progress-box {
+            background: white;
+            padding: 2rem;
+            border: 3px solid var(--orange);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .progress-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .progress-label {
+            font-size: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checklist {
+            list-style: none;
+        }
+        
+        .checklist-item {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #D4C4B0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .checklist-item:hover {
+            background: #FDFCFA;
+        }
+        
+        .checklist-item.done {
+            border-left-color: var(--green);
+            opacity: 0.7;
+        }
+        
+        .checkbox {
+            width: 30px;
+            height: 30px;
+            border: 3px solid #D4C4B0;
+            border-radius: 4px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .checklist-item.done .checkbox {
+            background: var(--green);
+            border-color: var(--green);
+            color: white;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .item-description {
+            font-size: 0.95rem;
+            color: #8B7355;
+        }
+        
+        .success-message {
+            background: var(--green);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-message h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .reset-button {
+            display: block;
+            margin: 2rem auto 0;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .reset-button:hover {
+            background: var(--orange);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Installation Progress</h1>
+            <p class="subtitle">Check off each step as you complete it</p>
+        </header>
+
+        <div class="progress-box">
+            <div class="progress-number" id="progress">0/10</div>
+            <div class="progress-label">Steps Completed</div>
+        </div>
+
+        <ul class="checklist" id="checklist">
+            <li class="checklist-item" data-step="1">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Downloaded setup file</div>
+                    <div class="item-description">AI-Learning-Lab-Complete-Setup.command in Downloads</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="2">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Double-clicked to run</div>
+                    <div class="item-description">Installation wizard opened</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="3">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">System check passed</div>
+                    <div class="item-description">macOS version, RAM, and disk space verified</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="4">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Docker verified</div>
+                    <div class="item-description">Docker Desktop installed and running</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="5">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">AI model downloaded</div>
+                    <div class="item-description">Llama 3.2 model (2-3GB) successfully pulled</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="6">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Learning Lab ready</div>
+                    <div class="item-description">Web interface created and accessible</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="7">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Vibe Station ready</div>
+                    <div class="item-description">Code generator terminal created</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="8">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Tried Learning Lab</div>
+                    <div class="item-description">Had first AI conversation in browser</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="9">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Tried Vibe Station</div>
+                    <div class="item-description">Watched AI generate and run code live</div>
+                </div>
+            </li>
+
+            <li class="checklist-item" data-step="10">
+                <div class="checkbox"></div>
+                <div class="item-content">
+                    <div class="item-title">Built something cool</div>
+                    <div class="item-description">Generated a weather app, calculator, or game</div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="success-message" id="success">
+            <h2>🎉 You Did It!</h2>
+            <p>You've successfully set up AI Learning Lab and tried both modes.</p>
+            <p style="margin-top: 1rem;">You now have TWO powerful AI tools running locally:</p>
+            <p style="margin-top: 1rem;"><strong>🎓 Learning Lab</strong> - Safe AI chat for learning</p>
+            <p><strong>🚀 Vibe Station</strong> - Live code generation magic</p>
+            <p style="margin-top: 1rem;">Keep exploring. Keep building. Feel the power!</p>
+        </div>
+
+        <button class="reset-button" onclick="resetProgress()">Reset Progress</button>
+    </div>
+
+    <script>
+        // Load saved progress
+        function loadProgress() {
+            const saved = localStorage.getItem('ailab_progress');
+            if (saved) {
+                const completed = JSON.parse(saved);
+                completed.forEach(step => {
+                    const item = document.querySelector(`[data-step="${step}"]`);
+                    if (item) {
+                        item.classList.add('done');
+                        item.querySelector('.checkbox').textContent = '✓';
+                    }
+                });
+                updateProgress();
+            }
+        }
+
+        // Save progress
+        function saveProgress() {
+            const completed = Array.from(document.querySelectorAll('.checklist-item.done'))
+                .map(item => item.dataset.step);
+            localStorage.setItem('ailab_progress', JSON.stringify(completed));
+        }
+
+        // Update progress display
+        function updateProgress() {
+            const total = document.querySelectorAll('.checklist-item').length;
+            const completed = document.querySelectorAll('.checklist-item.done').length;
+            
+            document.getElementById('progress').textContent = `${completed}/${total}`;
+            
+            if (completed === total) {
+                document.getElementById('success').classList.add('show');
+            } else {
+                document.getElementById('success').classList.remove('show');
+            }
+        }
+
+        // Handle clicks
+        document.querySelectorAll('.checklist-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('done');
+                const checkbox = item.querySelector('.checkbox');
+                checkbox.textContent = item.classList.contains('done') ? '✓' : '';
+                saveProgress();
+                updateProgress();
+            });
+        });
+
+        // Reset progress
+        function resetProgress() {
+            if (confirm('Reset all progress? This cannot be undone.')) {
+                localStorage.removeItem('ailab_progress');
+                document.querySelectorAll('.checklist-item').forEach(item => {
+                    item.classList.remove('done');
+                    item.querySelector('.checkbox').textContent = '';
+                });
+                updateProgress();
+            }
+        }
+
+        // Initialize
+        loadProgress();
+    </script>
+</body>
+</html>

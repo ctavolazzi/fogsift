@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Learning Lab - Understand AI Safely</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --cream: #F5F0E8;
+            --orange: #D9744A;
+            --brown: #4A3728;
+            --light-brown: #8B7355;
+        }
+        
+        body {
+            font-family: 'Crimson Pro', serif;
+            background: var(--cream);
+            color: var(--brown);
+            line-height: 1.7;
+        }
+        
+        .header {
+            background: white;
+            padding: 2rem;
+            border-bottom: 2px solid #E8E0D5;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--brown);
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .tagline {
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--light-brown);
+        }
+        
+        .hero {
+            max-width: 800px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--light-brown);
+            margin-bottom: 3rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 1.2rem 3rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            background: #C15A32;
+            transform: translateY(-2px);
+        }
+        
+        .secondary-button {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+            margin-left: 1rem;
+        }
+        
+        .secondary-button:hover {
+            background: var(--orange);
+            color: white;
+        }
+        
+        .features {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 2px solid #E8E0D5;
+        }
+        
+        .feature h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--orange);
+        }
+        
+        .how-it-works {
+            max-width: 800px;
+            margin: 5rem auto;
+            padding: 3rem 2rem;
+            background: white;
+            border: 3px solid var(--orange);
+            border-radius: 12px;
+        }
+        
+        .how-it-works h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .steps {
+            counter-reset: step;
+        }
+        
+        .step {
+            margin-bottom: 2rem;
+            padding-left: 4rem;
+            position: relative;
+        }
+        
+        .step::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+        
+        .step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .safety-notice {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: #FFF9F0;
+            border-left: 4px solid var(--orange);
+            border-radius: 4px;
+        }
+        
+        .safety-notice h3 {
+            color: var(--orange);
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--light-brown);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            border-top: 2px solid #E8E0D5;
+            margin-top: 5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-button {
+                display: block;
+                margin: 1rem auto;
+            }
+            
+            .secondary-button {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">AI LEARNING LAB</div>
+        <div class="tagline">Understand AI. Learn Safely. Build Responsibly.</div>
+    </div>
+
+    <section class="hero">
+        <h1>Learn AI • Generate Code • Feel the Magic</h1>
+        <p class="subtitle">
+            Run powerful AI models on your own computer. 
+            Chat safely OR watch AI generate code live.
+            Two modes. One brain. Total privacy.
+        </p>
+        <a href="AI-Learning-Lab-Complete-Setup.command" download class="cta-button">Download Installer</a>
+        <a href="progress.html" class="cta-button secondary-button">Track Progress</a>
+    </section>
+
+    <section class="features">
+        <div class="feature">
+            <h3>🎓 Learning Lab</h3>
+            <p>Safe, educational AI chat. Ask questions, learn concepts, explore ideas. ChatGPT-like interface running 100% locally.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🚀 Vibe Station</h3>
+            <p>Watch AI generate code live. Type "build a weather app" and see it create, then execute Python scripts in real-time. Pure magic.</p>
+        </div>
+        
+        <div class="feature">
+            <h3>🔒 Total Privacy</h3>
+            <p>Everything runs on your computer. No data sent to the cloud. No accounts required. Your code stays yours.</p>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <h2>How It Works</h2>
+        
+        <div class="steps">
+            <div class="step">
+                <h4>Download the Installer</h4>
+                <p>One file, double-click to run. Installs both modes automatically.</p>
+            </div>
+            
+            <div class="step">
+                <h4>System Check</h4>
+                <p>We verify your Mac can run AI smoothly (8GB+ RAM recommended).</p>
+            </div>
+            
+            <div class="step">
+                <h4>Install Docker</h4>
+                <p>Required for safe, isolated AI serving. Free and widely used.</p>
+            </div>
+            
+            <div class="step">
+                <h4>Download AI Model</h4>
+                <p>Llama 3.2 (2-3GB). Takes a few minutes depending on internet.</p>
+            </div>
+            
+            <div class="step">
+                <h4>Choose Your Mode</h4>
+                <p>🎓 Learning Lab for safe chat OR 🚀 Vibe Station for live code generation!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="safety-notice">
+        <h3>⚠️ Important: This Is Educational Software</h3>
+        <p>
+            AI Learning Lab teaches you about AI development tools. We show you REAL capabilities
+            and REAL risks. You'll learn why some AI-generated commands are dangerous and how to
+            verify code before running it.
+        </p>
+        <p style="margin-top: 1rem;">
+            <strong>You are responsible for what you execute.</strong> This tool includes safety checks,
+            but the ultimate responsibility is yours. That's the point—learning to make informed decisions.
+        </p>
+    </section>
+
+    <footer>
+        <p><strong>System Requirements</strong></p>
+        <p>macOS 12+ • 8GB+ RAM • 10GB free space • Internet connection</p>
+        <p style="margin-top: 2rem;">
+            Built with educational intent • Inspired by FogSift's transparency mission
+        </p>
+        <p style="margin-top: 1rem;">
+            "The best AI tool is an educated human."
+        </p>
+    </footer>
+</body>
+</html>
