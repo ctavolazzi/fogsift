@@ -286,6 +286,7 @@ const STATIC_ASSETS = [
     // Page-specific scripts (not bundled with app.js)
     { src: 'src/js/theme-init.js', dest: 'theme-init.js' },
     { src: 'src/js/queue-ui.js', dest: 'queue-ui.js' },
+    { src: 'src/js/wiki-nav.js', dest: 'wiki-nav.js' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
     { src: 'src/manifest.json', dest: 'manifest.json' },
@@ -295,6 +296,7 @@ const STATIC_ASSETS = [
     { src: 'src/content/status.json', dest: 'content/status.json' },
     { src: 'src/content/queue.json', dest: 'content/queue.json' },
     { src: 'src/system-status.html', dest: 'system-status.html' },
+    { src: 'src/svg-components-demo.html', dest: 'svg-components-demo.html' },
     // Security files
     { src: 'src/_headers', dest: '_headers' },
     { src: 'src/.well-known/security.txt', dest: '.well-known/security.txt' },
@@ -990,6 +992,7 @@ function buildWiki() {
         const assetsPath = `${'../'.repeat(depth + 1)}assets/`;
         const stylesPath = `${'../'.repeat(depth + 1)}styles.css`;
         const appPath = `${'../'.repeat(depth + 1)}app.js`;
+        const wikiNavPath = `${'../'.repeat(depth + 1)}wiki-nav.js`;
         const manifestPath = `${'../'.repeat(depth + 1)}manifest.json`;
         const faviconPath = `${'../'.repeat(depth + 1)}favicon.png`;
 
@@ -1014,6 +1017,7 @@ function buildWiki() {
             .replace(/\{\{ASSETS_PATH\}\}/g, assetsPath)
             .replace(/\{\{STYLES_PATH\}\}/g, stylesPath)
             .replace(/\{\{APP_PATH\}\}/g, appPath)
+            .replace(/\{\{WIKI_NAV_PATH\}\}/g, wikiNavPath)
             .replace(/\{\{MANIFEST_PATH\}\}/g, manifestPath)
             .replace(/\{\{FAVICON_PATH\}\}/g, faviconPath)
             .replace(/\{\{CONTENT\}\}/g, htmlContent)
