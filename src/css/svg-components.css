@@ -92,6 +92,21 @@
     animation: svg-spin-cw 25s linear infinite;
 }
 
+/* Sweep arc — radar beam effect */
+.svg-reticle__sweep {
+    animation: svg-spin-cw 8s linear infinite;
+}
+
+/* Core dot — pulsing focus point */
+.svg-reticle__core {
+    animation: svg-core-pulse 3s ease-in-out infinite;
+}
+
+@keyframes svg-core-pulse {
+    0%, 100% { r: 4; opacity: 0.3; }
+    50%      { r: 8; opacity: 0.5; }
+}
+
 /* Positioning context for absolute SVG elements */
 .section-hero {
     position: relative;
@@ -602,6 +617,55 @@
 }
 
 
+/* ─── TESTIMONIALS EQUALIZER ───────────────────────────────────────────── */
+/* Subtle "listening" waveform behind the testimonial ticker                */
+
+.testimonials-eq {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    height: 40px;
+    margin: var(--space-sm) auto 0;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .testimonials-eq { display: none; }
+}
+
+/* ─── FAQ ACCORDION CHEVRON ───────────────────────────────────────────── */
+/* Smooth rotation on the <details> marker                                 */
+
+.concerns-accordion details summary {
+    cursor: pointer;
+    position: relative;
+    padding-right: 2rem;
+    list-style: none;
+}
+
+.concerns-accordion details summary::-webkit-details-marker,
+.concerns-accordion details summary::marker {
+    display: none;
+}
+
+.concerns-accordion details summary::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: 10px;
+    height: 10px;
+    border-right: 2px solid var(--muted);
+    border-bottom: 2px solid var(--muted);
+    transform: translateY(-70%) rotate(45deg);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.concerns-accordion details[open] summary::after {
+    transform: translateY(-30%) rotate(-135deg);
+}
+
+
 /* ─── SUPPLY CHAIN VISUALIZATION ────────────────────────────────────────── */
 
 #supply-chain-container {
@@ -708,14 +772,117 @@
 
 .viz-info-close:hover { color: var(--ink); }
 
-/* Reduced-motion: hide canvas, show fallback message */
+/* ─── INDUSTRY TABS ───────────────────────────────────────── */
+.viz-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto var(--space-sm);
+    padding: 0 var(--space-sm);
+}
+
+.viz-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: var(--space-xs) var(--space-sm);
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-badge);
+    background: var(--paper);
+    color: var(--muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.viz-tab:hover {
+    border-color: var(--burnt-orange);
+    color: var(--ink);
+}
+
+.viz-tab:focus-visible {
+    outline: var(--focus-ring-width, 3px) solid var(--focus-ring, var(--burnt-orange));
+    outline-offset: var(--focus-ring-offset, 2px);
+}
+
+.viz-tab--active,
+.viz-tab--active:hover {
+    background: var(--burnt-orange, #e07b3c);
+    color: var(--cream, #f5f0e6);
+    border-color: var(--burnt-orange, #e07b3c);
+    box-shadow: var(--shadow-hard, 4px 4px 0 #4a2c2a);
+}
+
+.viz-tab-icon {
+    font-size: 1rem;
+    line-height: 1;
+}
+
+.viz-tab-label {
+    white-space: nowrap;
+}
+
+/* Mobile: horizontal scroll strip — icon-only buttons */
+@media (max-width: 640px) {
+    .viz-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        padding-bottom: var(--space-xs);
+    }
+    .viz-tabs::-webkit-scrollbar { display: none; }
+    .viz-tab {
+        padding: var(--space-xs);
+        gap: 0;
+    }
+    .viz-tab-label { display: none; }
+    .viz-tab-icon { font-size: 1.25rem; }
+}
+
+/* ─── INFO PANEL CTA BUTTONS ─────────────────────────────── */
+.viz-info-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.viz-info-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+    margin-top: var(--space-xs);
+}
+
+.cta-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: var(--text-xs);
+    border-width: 2px;
+    box-shadow: 2px 2px 0 var(--chocolate);
+    text-decoration: none;
+}
+
+.cta-sm:hover {
+    transform: translateY(-1px);
+    box-shadow: 3px 3px 0 var(--burnt-orange);
+}
+
+/* ─── REDUCED MOTION FALLBACK ─────────────────────────────── */
+.viz-reduced-motion-fallback {
+    display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
     #supply-chain-canvas,
     .viz-loading {
         display: none !important;
     }
-    #supply-chain-container::before {
-        content: 'Source → Processing → Manufacturing → Distribution → Retail → Consumer → Data → Source';
+    .viz-reduced-motion-fallback {
         display: block;
         padding: var(--space-lg) var(--space-md);
         font-family: var(--font-mono);
