@@ -445,14 +445,18 @@
     // Shorthand alias
     global['🐰'] = WhiteRabbit;
 
-    // Friendly console hint (non-intrusive, only once per session)
+    // Console hint — visible once per session, tells developers where the rabbit is
     try {
         if (!sessionStorage.getItem('wr-hint-shown')) {
             sessionStorage.setItem('wr-hint-shown', '1');
             console.log(
-                `%c${R}`,
-                'font-size:10px;color:#7a6b5d;font-family:monospace',
-                // intentionally minimal — activate only when asked
+                `%c🐰 White Rabbit is watching.%c  Type %cWhiteRabbit.activate()%c or %c🐰.sniff()%c to follow the hole.`,
+                'color:#e07b3c;font-weight:bold;font-family:monospace;font-size:12px',
+                'color:#7a6b5d;font-family:monospace;font-size:11px',
+                'color:#0d9488;font-family:monospace;font-size:11px',
+                'color:#7a6b5d;font-family:monospace;font-size:11px',
+                'color:#0d9488;font-family:monospace;font-size:11px',
+                'color:#7a6b5d;font-family:monospace;font-size:11px'
             );
         }
     } catch { /* private browsing */ }

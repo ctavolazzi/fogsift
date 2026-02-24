@@ -20,13 +20,23 @@ const SvgComponents = {
     // elements when they enter the viewport. Triggers CSS transitions.
 
     initScrollAnimations() {
+        const elements = document.querySelectorAll('.svg-step, .svg-stat');
+
         if (!('IntersectionObserver' in window)) {
-            // Graceful degradation: show all elements immediately
-            document.querySelectorAll('.svg-step, .svg-stat').forEach(el => {
-                el.classList.add('is-visible');
-            });
+            // Graceful degradation: elements stay visible (default state)
             return;
         }
+
+        // Mark elements for animation SYNCHRONOUSLY before observing —
+        // this hides them so the draw-in effect is meaningful.
+        // CSS defaults to visible so no flash of invisible content.
+        elements.forEach(el => el.classList.add('svg-step--will-animate'));
+
+        // Safety fallback: after 2s, reveal any still-hidden elements.
+        // Guards against observers that never fire (e.g., some in-app browsers).
+        const fallbackTimer = setTimeout(() => {
+            elements.forEach(el => el.classList.add('is-visible'));
+        }, 2000);
 
         this._observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -36,13 +46,14 @@ const SvgComponents = {
                 }
             });
         }, {
-            threshold: 0.3,
-            rootMargin: '0px 0px -40px 0px'
+            threshold: 0.15,       // 15% visible — more reliable across viewport sizes
+            rootMargin: '0px'      // no margin offset — trigger as soon as in view
         });
 
-        document.querySelectorAll('.svg-step, .svg-stat').forEach(el => {
-            this._observer.observe(el);
-        });
+        elements.forEach(el => this._observer.observe(el));
+
+        // Clear the fallback if all elements animate in normally
+        this._fallbackTimer = fallbackTimer;
     },
 
     // ── STAT DONUTS ────────────────────────────────────────────────────────

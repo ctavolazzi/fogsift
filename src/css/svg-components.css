@@ -140,7 +140,9 @@
 
 /* ─── PROCESS STEP INDICATOR ─────────────────────────────────────────────── */
 /* Replaces plain .step-number divs with animated SVG circles.               */
-/* Animation triggered by IntersectionObserver adding .is-visible class.     */
+/* Progressive enhancement: content is VISIBLE by default.                   */
+/* JS adds .svg-step--will-animate BEFORE observation, hiding items for the  */
+/* draw-in effect. If JS fails or is slow, content always shows.             */
 
 .svg-step {
     width: 80px;
@@ -156,33 +158,51 @@
     stroke-width: 3;
 }
 
+/* Default: fully visible — no JS required to see the circle */
 .svg-step__circle {
     fill: none;
     stroke: var(--primary, #e07b3c);
     stroke-width: 3;
     stroke-linecap: round;
     stroke-dasharray: 220;
-    stroke-dashoffset: 220;
-    transition: stroke-dashoffset 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    stroke-dashoffset: 0;
 }
 
+/* Default: fully visible — no JS required to read the number */
 .svg-step__number {
     fill: var(--ink, #3a312b);
     font-family: var(--font-display, 'Outfit', sans-serif);
     font-weight: 800;
     font-size: 26px;
+    opacity: 1;
+}
+
+/* ── ANIMATION STATE (JS-controlled) ───────────────────────────────────── */
+/* JS adds .svg-step--will-animate synchronously before the observer runs.  */
+/* This hides the element so the draw-in transition is meaningful.          */
+
+.svg-step--will-animate .svg-step__circle {
+    stroke-dashoffset: 220; /* hidden until scrolled in */
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.svg-step--will-animate .svg-step__number {
     opacity: 0;
     transition: opacity 0.4s ease-out 0.7s; /* delayed until circle draws */
 }
 
-/* Triggered state — added by IntersectionObserver in svg-components.js */
-.svg-step.is-visible .svg-step__circle {
+/* Triggered state — added by IntersectionObserver */
+.svg-step--will-animate.is-visible .svg-step__circle {
     stroke-dashoffset: 0;
 }
 
-.svg-step.is-visible .svg-step__number {
+.svg-step--will-animate.is-visible .svg-step__number {
     opacity: 1;
 }
+
+/* Keep old .is-visible selector for backwards compatibility */
+.svg-step.is-visible .svg-step__circle { stroke-dashoffset: 0; }
+.svg-step.is-visible .svg-step__number { opacity: 1; }
 
 /* Positioning context required for ::after connector lines */
 .process-step {
@@ -196,15 +216,16 @@
     overflow-x: clip;
 }
 
-/* Connecting line between steps (desktop horizontal layout) */
+/* Connecting line between steps (desktop horizontal layout).
+   Uses border-top only — no background — to get a clean dashed line
+   without the double-drawing artifact from mixing background + border. */
 .process-step:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: 40px; /* vertically centered with the SVG circle */
+    top: 40px; /* vertically centered with the 80px SVG circle */
     right: -20px;
     width: 40px;
-    height: 2px;
-    background: var(--line, #d4c4a8);
+    height: 0;  /* height 0 + border-top = single clean line, no double fill */
     border-top: 2px dashed var(--line, #d4c4a8);
 }
 
