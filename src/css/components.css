@@ -469,6 +469,11 @@ label.hp-field,
     text-transform: uppercase;
     letter-spacing: var(--letter-wide);
     color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.35em;
     text-align: center;
     margin: var(--space-md) auto var(--space-md);
     padding: var(--space-xs) var(--space-lg);
