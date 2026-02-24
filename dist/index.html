@@ -450,6 +450,9 @@
             </p>
 
             <!-- Industry tabs -->
+            <div class="viz-tabs-wrap">
+            <button class="viz-tabs-caret viz-tabs-caret--left" aria-label="Scroll tabs left" hidden>&#x2039;</button>
+            <button class="viz-tabs-caret viz-tabs-caret--right" aria-label="Scroll tabs right">&#x203A;</button>
             <div class="viz-tabs" role="tablist" aria-label="Industry supply chain views">
                 <button type="button" class="viz-tab viz-tab--active" role="tab" aria-selected="true" aria-controls="supply-chain-container" data-industry="ops-logistics">
                     <span class="viz-tab-icon" aria-hidden="true">&#x1F4E6;</span>
@@ -484,6 +487,7 @@
                     <span class="viz-tab-label">Research</span>
                 </button>
             </div>
+            </div><!-- /.viz-tabs-wrap -->
 
             <div id="supply-chain-container">
                 <canvas id="supply-chain-canvas" role="img" aria-label="Interactive industry node graph"></canvas>

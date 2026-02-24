@@ -773,49 +773,92 @@
 .viz-info-close:hover { color: var(--ink); }
 
 /* ─── INDUSTRY TABS ───────────────────────────────────────── */
+.viz-tabs-wrap {
+    position: relative;
+    margin-bottom: var(--space-sm);
+}
+
+/* Scroll caret buttons */
+.viz-tabs-caret {
+    position: absolute;
+    top: 0;
+    bottom: 2px;  /* sit above border-bottom line */
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: var(--burnt-orange, #e07b3c);
+    font-size: 1.1rem;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    transition: color 0.15s;
+    padding: 0;
+}
+.viz-tabs-caret--left {
+    left: 0;
+    background: linear-gradient(to right, var(--cream, #f5f0e6) 40%, transparent);
+}
+.viz-tabs-caret--right {
+    right: 0;
+    background: linear-gradient(to left, var(--cream, #f5f0e6) 40%, transparent);
+}
+.viz-tabs-caret:hover { color: var(--rust, #c2410c); }
+.viz-tabs-caret[hidden] { display: none; }
+
+
 .viz-tabs {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-xs);
-    justify-content: center;
-    max-width: 900px;
-    margin: 0 auto var(--space-sm);
-    padding: 0 var(--space-sm);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 2px solid var(--line);
+    margin: 0;
+    padding: 0;
+    gap: 0;
 }
+.viz-tabs::-webkit-scrollbar { display: none; }
 
 .viz-tab {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    padding: var(--space-xs) var(--space-sm);
-    border: var(--border-width) solid var(--line);
-    border-radius: var(--radius-badge);
-    background: var(--paper);
+    gap: 0.4rem;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;          /* sit on top of container border */
+    border-radius: 0;
+    background: transparent;
     color: var(--muted);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     text-transform: uppercase;
     letter-spacing: var(--letter-wide);
+    white-space: nowrap;
     cursor: pointer;
-    transition: background 0.15s, color 0.15s, border-color 0.15s, box-shadow 0.15s;
+    transition: color 0.15s, border-color 0.15s;
+    flex-shrink: 0;
 }
 
 .viz-tab:hover {
-    border-color: var(--burnt-orange);
     color: var(--ink);
+    border-bottom-color: var(--line-dark);
 }
 
 .viz-tab:focus-visible {
     outline: var(--focus-ring-width, 3px) solid var(--focus-ring, var(--burnt-orange));
-    outline-offset: var(--focus-ring-offset, 2px);
+    outline-offset: -2px;
 }
 
 .viz-tab--active,
 .viz-tab--active:hover {
-    background: var(--burnt-orange, #e07b3c);
-    color: var(--cream, #f5f0e6);
-    border-color: var(--burnt-orange, #e07b3c);
-    box-shadow: var(--shadow-hard, 4px 4px 0 #4a2c2a);
+    color: var(--burnt-orange, #e07b3c);
+    border-bottom-color: var(--burnt-orange, #e07b3c);
+    background: transparent;
+    box-shadow: none;
 }
 
 .viz-tab-icon {
@@ -825,25 +868,6 @@
 
 .viz-tab-label {
     white-space: nowrap;
-}
-
-/* Mobile: horizontal scroll strip — icon-only buttons */
-@media (max-width: 640px) {
-    .viz-tabs {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        justify-content: flex-start;
-        padding-bottom: var(--space-xs);
-    }
-    .viz-tabs::-webkit-scrollbar { display: none; }
-    .viz-tab {
-        padding: var(--space-xs);
-        gap: 0;
-    }
-    .viz-tab-label { display: none; }
-    .viz-tab-icon { font-size: 1.25rem; }
 }
 
 /* ─── INFO PANEL CTA BUTTONS ─────────────────────────────── */

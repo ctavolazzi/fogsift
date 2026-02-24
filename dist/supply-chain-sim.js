@@ -44,22 +44,24 @@
         'food-security': {
             label: 'Food Security',
             icon: '\u{1F33E}',
-            layout: 'linear',
+            layout: 'iso-square',
             nodes: [
-                { id: 'farm',         label: 'Farm',           icon: '\u{1F33E}', desc: 'Production origin \u2014 crop fields, greenhouses, aquaculture. Where food begins its journey.',
+                { id: 'farm',         label: 'Farm',             icon: '\u{1F33E}', shape: 'square', desc: 'Crop fields, greenhouses, aquaculture. The origin of every calorie \u2014 soil health and yield stability set the ceiling for everything downstream.',
                   wikiLinks: [{ label: 'First Principles', href: '/wiki/concepts/first-principles' }] },
-                { id: 'harvest',      label: 'Harvest',        icon: '\u{1F33D}', desc: 'Collection and initial sorting. Timing is critical \u2014 ripeness, weather, labor availability.',
-                  wikiLinks: [{ label: 'Time-Boxing', href: '/wiki/tools/time-boxing' }] },
-                { id: 'cold-chain',   label: 'Cold Chain',     icon: '\u2744\uFE0F', desc: 'Temperature-controlled transport. A single break in the cold chain can spoil an entire shipment.',
+                { id: 'auto-harvest', label: 'Auto Harvest',     icon: '\u{1F916}', desc: 'Autonomous harvest robots operating 24/7. Precision picking reduces spoilage and removes the seasonal labor bottleneck.',
+                  wikiLinks: [{ label: 'Bottlenecks', href: '/wiki/field-notes/004-bottlenecks' }] },
+                { id: 'cold-storage', label: 'Cold Storage',     icon: '\u2744\uFE0F', desc: 'Temperature-controlled holding between farm and processing. A single break in the cold chain can spoil an entire shipment.',
                   wikiLinks: [{ label: 'Risk Assessment', href: '/wiki/frameworks/risk-assessment' }] },
-                { id: 'processing',   label: 'Processing',     icon: '\u{1F52A}', desc: 'Washing, cutting, packaging. Food safety protocols and shelf-life optimization happen here.',
-                  wikiLinks: [{ label: 'Process Mapping', href: '/wiki/tools/process-mapping' }] },
-                { id: 'distribution', label: 'Distribution',   icon: '\u{1F69A}', desc: 'Regional hubs and last-mile delivery. The most expensive and failure-prone segment.',
+                { id: 'csa-facility', label: 'CSA Facility',     icon: '\u{1F3D7}\uFE0F', desc: 'Local community-supported agriculture hub. Aggregates produce from multiple farms and routes it to members and local outlets.',
                   wikiLinks: [{ label: 'Constraint Mapping', href: '/wiki/frameworks/constraint-mapping' }] },
-                { id: 'access',       label: 'Access',         icon: '\u{1F37D}\uFE0F', desc: 'Grocery stores, food banks, community kitchens. Where availability meets affordability.',
-                  wikiLinks: [{ label: 'Opportunity Cost', href: '/wiki/concepts/opportunity-cost' }] },
+                { id: 'auto-prep',    label: 'Auto Prep',        icon: '\u{1F52A}', desc: 'Automated washing, cutting, and portioning at the CSA facility. Consistent quality, reduced labor cost, faster throughput.',
+                  wikiLinks: [{ label: 'Process Mapping', href: '/wiki/tools/process-mapping' }] },
+                { id: 'auto-deliver', label: 'Auto Delivery',    icon: '\u{1F69B}', desc: 'Autonomous last-mile delivery \u2014 refrigerated EVs and drones routing to homes, CSA pickup points, and grocery partners.',
+                  wikiLinks: [{ label: 'Second-Order Effects', href: '/wiki/concepts/second-order-effects' }] },
+                { id: 'consumer',     label: 'Consumer',         icon: '\u{1F6D2}', desc: 'End destination \u2014 household, grocery shelf, or food bank. Demand signals feed back to the farm to close the cycle.',
+                  wikiLinks: [{ label: 'Feedback Loops', href: '/wiki/frameworks/feedback-loops' }] },
             ],
-            edges: [[0,1],[1,2],[2,3],[3,4],[4,5]]
+            edges: [[0,1],[1,2],[2,3],[3,4],[4,5],[5,6],[6,0]]
         },
 
         'data-modeling': {
@@ -342,17 +344,53 @@
         return positions;
     }
 
+    // Isometric square: nodes around the perimeter of an isometric diamond
+    // (a square viewed at 30° elevation, 45° azimuth)
+    function computeIsoSquarePositions(w, h, n) {
+        var COS30 = 0.866, SIN30 = 0.5, YC = 0.55;
+        // After projection: max|ix| = 2*COS30*s, max|iy| = YC*SIN30*2*s
+        // Solve for s that keeps nodes (r=32) + labels (48px below) inside canvas
+        var PAD_X = 48;   // node radius + edge breathing room
+        var PAD_Y = 58;   // node radius + label height below lowest node
+        var s = Math.min(
+            (w * 0.5 - PAD_X) / (2 * COS30),
+            (h * 0.5 - PAD_Y) / (YC * SIN30 * 2)
+        );
+
+        var perimeter = [];
+        var sides = [
+            [[-s,  s], [ s,  s]],  // top    (TL → TR)
+            [[ s,  s], [ s, -s]],  // right  (TR → BR)
+            [[ s, -s], [-s, -s]],  // bottom (BR → BL)
+            [[-s, -s], [-s,  s]],  // left   (BL → TL)
+        ];
+        for (var si = 0; si < n; si++) {
+            var t    = si / n;
+            var seg  = t * 4;
+            var sidx = Math.floor(seg) % 4;
+            var frac = seg - Math.floor(seg);
+            var a    = sides[sidx][0], b = sides[sidx][1];
+            var wx   = a[0] + (b[0] - a[0]) * frac;
+            var wy   = a[1] + (b[1] - a[1]) * frac;
+            var ix   =  (wx - wy) * COS30;
+            var iy   =  (wx + wy) * SIN30 * YC;
+            perimeter.push(new THREE.Vector3(ix, iy, 0));
+        }
+        return perimeter;
+    }
+
     function computePositions(w, h) {
         var dataset = INDUSTRIES[activeIndustry];
         var n = dataset.nodes.length;
         var layoutType = dataset.layout;
 
         switch (layoutType) {
-            case 'linear':    return computeLinearPositions(w, h, n);
-            case 'hub-spoke': return computeHubSpokePositions(w, h, n);
-            case 'tree':      return computeTreePositions(w, h, n);
-            case 'diamond':   return computeDiamondPositions(w, h, n);
-            default:          return computeCircularPositions(w, h, n);
+            case 'linear':     return computeLinearPositions(w, h, n);
+            case 'hub-spoke':  return computeHubSpokePositions(w, h, n);
+            case 'tree':       return computeTreePositions(w, h, n);
+            case 'diamond':    return computeDiamondPositions(w, h, n);
+            case 'iso-square': return computeIsoSquarePositions(w, h, n);
+            default:           return computeCircularPositions(w, h, n);
         }
     }
 
@@ -401,7 +439,10 @@
         // Nodes
         nodeMeshes = [];
         nodes.forEach(function (node, i) {
-            var geo = new THREE.CircleGeometry(28, 32);
+            var isSquare = node.shape === 'square';
+            var geo = isSquare
+                ? new THREE.PlaneGeometry(54, 54)
+                : new THREE.CircleGeometry(28, 32);
             var mat = new THREE.MeshBasicMaterial({ color: colors.node });
             var mesh = new THREE.Mesh(geo, mat);
             mesh.position.copy(positions[i]);
@@ -409,14 +450,22 @@
             scene.add(mesh);
             nodeMeshes.push(mesh);
 
-            // Border ring
-            var ring = new THREE.RingGeometry(28, 31, 32);
-            var ringMat = new THREE.MeshBasicMaterial({
-                color: colors.edge, side: THREE.DoubleSide
-            });
-            var ringMesh = new THREE.Mesh(ring, ringMat);
-            ringMesh.position.copy(positions[i]);
-            scene.add(ringMesh);
+            // Border: EdgesGeometry square outline or ring
+            if (isSquare) {
+                var borderGeo = new THREE.EdgesGeometry(new THREE.PlaneGeometry(54, 54));
+                var borderMat = new THREE.LineBasicMaterial({ color: colors.edge, linewidth: 2 });
+                var borderMesh = new THREE.LineSegments(borderGeo, borderMat);
+                borderMesh.position.copy(positions[i]);
+                scene.add(borderMesh);
+            } else {
+                var ring = new THREE.RingGeometry(28, 31, 32);
+                var ringMat = new THREE.MeshBasicMaterial({
+                    color: colors.edge, side: THREE.DoubleSide
+                });
+                var ringMesh = new THREE.Mesh(ring, ringMat);
+                ringMesh.position.copy(positions[i]);
+                scene.add(ringMesh);
+            }
 
             // Label sprite positioned below node (closer to avoid clipping)
             var label = makeLabel(node.label, colors.text);
@@ -676,8 +725,9 @@
     // Pointer / touch events
     canvas.addEventListener('pointerdown', handlePointer);
 
-    // Tab click delegation
+    // Tab click delegation + scroll-fade indicators
     var tabContainer = document.querySelector('.viz-tabs');
+    var tabWrap = document.querySelector('.viz-tabs-wrap');
     if (tabContainer) {
         tabContainer.addEventListener('click', function (e) {
             var tab = e.target.closest('.viz-tab');
@@ -686,6 +736,24 @@
                 switchIndustry(industryId);
             }
         });
+    }
+    if (tabContainer && tabWrap) {
+        var caretLeft  = tabWrap.querySelector('.viz-tabs-caret--left');
+        var caretRight = tabWrap.querySelector('.viz-tabs-caret--right');
+        var SCROLL_AMOUNT = 160;
+
+        function updateCarets() {
+            var atStart = tabContainer.scrollLeft <= 4;
+            var atEnd   = tabContainer.scrollLeft + tabContainer.clientWidth >= tabContainer.scrollWidth - 4;
+            if (caretLeft)  caretLeft.hidden  = atStart;
+            if (caretRight) caretRight.hidden = atEnd;
+        }
+
+        if (caretLeft)  caretLeft.addEventListener('click',  function () { tabContainer.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' }); });
+        if (caretRight) caretRight.addEventListener('click', function () { tabContainer.scrollBy({ left:  SCROLL_AMOUNT, behavior: 'smooth' }); });
+
+        tabContainer.addEventListener('scroll', updateCarets, { passive: true });
+        updateCarets();
     }
 
 })();
