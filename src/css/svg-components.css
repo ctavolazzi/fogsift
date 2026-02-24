@@ -1,0 +1,574 @@
+/* ============================================
+   SVG COMPONENTS — FogSift Interactive SVG Library
+   All colors use CSS custom properties for theme compatibility.
+   Reduced-motion fallbacks via @media query.
+   ============================================ */
+
+/* ─── SHARED TRANSFORM BASE ─────────────────────────────────────────────── */
+/* Required for CSS transforms on SVG elements to work relative to each     */
+/* element's own bounding box rather than the SVG viewport origin.          */
+[class^="svg-"] circle,
+[class^="svg-"] path,
+[class^="svg-"] polygon,
+[class^="svg-"] line {
+    transform-box: fill-box;
+    transform-origin: center center;
+}
+
+
+/* ─── KEYFRAMES ──────────────────────────────────────────────────────────── */
+
+@keyframes svg-spin-cw {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes svg-spin-ccw {
+    to { transform: rotate(-360deg); }
+}
+
+@keyframes svg-stroke-draw {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes svg-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes svg-donut-fill {
+    from { stroke-dashoffset: var(--donut-circumference, 314); }
+    to   { stroke-dashoffset: var(--donut-target, 0); }
+}
+
+@keyframes svg-radar-sweep {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+@keyframes svg-typewriter-reveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes svg-typewriter-cursor {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0; }
+}
+
+/* Apply the typewriter reveal — class toggled by MutationObserver in svg-components.js */
+.rotating-highlight span.svg-typewriter-active {
+    display: inline-block;
+    animation: svg-typewriter-reveal 0.35s ease-out both;
+}
+
+@keyframes svg-pulse-ring {
+    0%   { transform: scale(1);   opacity: 0.6; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+
+/* ─── RETICLE SCANNER ────────────────────────────────────────────────────── */
+/* Concentric dashed rings. Outer/inner rotate CW, mid rotates CCW.         */
+/* Usage: <svg class="svg-reticle [svg-reticle--hero | svg-reticle--about]"> */
+
+.svg-reticle {
+    pointer-events: none;
+    overflow: visible;
+}
+
+.svg-reticle__ring {
+    fill: none;
+}
+
+.svg-reticle__ring--outer {
+    animation: svg-spin-cw 60s linear infinite;
+}
+
+.svg-reticle__ring--mid {
+    animation: svg-spin-ccw 40s linear infinite;
+}
+
+.svg-reticle__ring--inner {
+    animation: svg-spin-cw 25s linear infinite;
+}
+
+/* Positioning context for absolute SVG elements */
+.section-hero {
+    position: relative;
+}
+
+.about-card {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero placement — absolute, behind .hero-badge */
+.svg-reticle--hero {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 560px;
+    height: 560px;
+    max-width: 100%;
+    z-index: 0;
+}
+
+/* Ensure hero badge always renders above the reticle SVG */
+.section-hero .hero-badge {
+    position: relative;
+    z-index: 1;
+}
+
+/* About placement — absolute, behind card content */
+.svg-reticle--about {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 380px;
+    height: 380px;
+    opacity: 0.4;
+    transition: opacity var(--ease-out, 0.2s ease-out);
+    z-index: 0;
+}
+
+.about-card:hover .svg-reticle--about {
+    opacity: 0.65;
+}
+
+
+/* ─── PROCESS STEP INDICATOR ─────────────────────────────────────────────── */
+/* Replaces plain .step-number divs with animated SVG circles.               */
+/* Animation triggered by IntersectionObserver adding .is-visible class.     */
+
+.svg-step {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    display: block;
+    margin-bottom: var(--space-sm, 8px);
+}
+
+.svg-step__track {
+    fill: none;
+    stroke: var(--line, #d4c4a8);
+    stroke-width: 3;
+}
+
+.svg-step__circle {
+    fill: none;
+    stroke: var(--primary, #e07b3c);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 220;
+    stroke-dashoffset: 220;
+    transition: stroke-dashoffset 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.svg-step__number {
+    fill: var(--ink, #3a312b);
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: 26px;
+    opacity: 0;
+    transition: opacity 0.4s ease-out 0.7s; /* delayed until circle draws */
+}
+
+/* Triggered state — added by IntersectionObserver in svg-components.js */
+.svg-step.is-visible .svg-step__circle {
+    stroke-dashoffset: 0;
+}
+
+.svg-step.is-visible .svg-step__number {
+    opacity: 1;
+}
+
+/* Positioning context required for ::after connector lines */
+.process-step {
+    position: relative;
+}
+
+/* Connecting line between steps (desktop horizontal layout) */
+.process-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 40px; /* vertically centered with the SVG circle */
+    right: -20px;
+    width: 40px;
+    height: 2px;
+    background: var(--line, #d4c4a8);
+    border-top: 2px dashed var(--line, #d4c4a8);
+}
+
+
+/* ─── STAT DONUT CHART ───────────────────────────────────────────────────── */
+/* SVG donut ring wrapping the stat numbers in .testimonials-stats.          */
+/* Circumference of r=50: 2*PI*50 = 314.16                                  */
+
+.svg-stat {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.svg-donut {
+    display: block;
+    overflow: visible;
+}
+
+.svg-donut__bg {
+    fill: none;
+    stroke: var(--line, #d4c4a8);
+    stroke-width: 6;
+}
+
+.svg-donut__segment {
+    fill: none;
+    stroke: var(--primary, #e07b3c);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 314;
+    stroke-dashoffset: 314;
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Teal accent for the 100% satisfaction stat — class applied on same circle element */
+.svg-donut__segment.svg-donut--teal {
+    stroke: var(--teal, #0d9488);
+}
+
+/* Text centered inside the donut ring */
+.svg-donut__value {
+    fill: var(--ink, #3a312b);
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.svg-donut__value--teal {
+    fill: var(--teal, #0d9488);
+}
+
+.svg-donut__sublabel {
+    fill: var(--muted, #7a6b5d);
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+/* Hide the old stat-number/stat-label spans since text is now inside SVG */
+.svg-stat .stat-number,
+.svg-stat .stat-label {
+    display: none;
+}
+
+.svg-stat.is-visible .svg-donut__segment {
+    stroke-dashoffset: var(--donut-target, 0);
+}
+
+
+/* ─── ROTARY ENCODER ─────────────────────────────────────────────────────── */
+/* Interactive budget explorer. Pointer events handled in svg-components.js. */
+/* Circumference of r=80: 2*PI*80 = 502.65                                  */
+
+.svg-encoder-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md, 16px);
+    padding: var(--space-lg, 32px) 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.svg-encoder {
+    cursor: grab;
+    overflow: visible;
+    touch-action: none;
+}
+
+.svg-encoder:active {
+    cursor: grabbing;
+}
+
+.svg-encoder__track {
+    fill: none;
+    stroke: var(--line, #d4c4a8);
+    stroke-width: 6;
+    stroke-dasharray: 503 630; /* 270deg arc = 503/628*628 */
+    stroke-dashoffset: 0;
+    stroke-linecap: round;
+}
+
+.svg-encoder__arc {
+    fill: none;
+    stroke: var(--primary, #e07b3c);
+    stroke-width: 6;
+    stroke-linecap: round;
+    stroke-dasharray: 503;
+    stroke-dashoffset: 503;
+    transition: stroke-dashoffset 0.1s linear;
+}
+
+.svg-encoder__knob-bg {
+    fill: var(--paper, #faf8f3);
+    filter: drop-shadow(0 3px 8px rgba(0,0,0,0.12));
+}
+
+.svg-encoder__knob-dot {
+    fill: var(--primary, #e07b3c);
+}
+
+.svg-encoder__label {
+    text-align: center;
+}
+
+.svg-encoder__value {
+    display: block;
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-size: var(--text-2xl, 32px);
+    font-weight: 900;
+    color: var(--ink, #3a312b);
+    letter-spacing: var(--letter-tight, -0.02em);
+    line-height: 1;
+}
+
+.svg-encoder__desc {
+    display: block;
+    font-family: var(--font-sans, 'Inter', sans-serif);
+    font-size: var(--text-sm, 14px);
+    color: var(--muted, #7a6b5d);
+    margin-top: 4px;
+}
+
+.svg-encoder-section {
+    text-align: center;
+    padding: var(--space-xl, 64px) 0;
+    border-top: var(--border-width, 3px) solid var(--line, #d4c4a8);
+}
+
+.svg-encoder-section h2 {
+    margin-bottom: var(--space-sm, 8px);
+}
+
+.svg-encoder-section p {
+    color: var(--muted, #7a6b5d);
+    max-width: 38ch;
+    margin: 0 auto var(--space-lg, 32px);
+}
+
+
+/* ─── ABOUT SECTION — TWO-CARD GRID ─────────────────────────────────────── */
+
+.about-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg, 32px);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Mystery "?" placeholder card */
+.about-card--mystery {
+    border-style: dashed;
+    border-color: var(--primary, #e07b3c);
+    background: transparent;
+}
+
+.about-card--mystery:hover {
+    border-color: var(--primary, #e07b3c);
+    background: color-mix(in srgb, var(--primary) 4%, transparent);
+}
+
+/* Mystery avatar — large "?" character where a photo would go */
+.mystery-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px dashed var(--primary, #e07b3c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary, #e07b3c);
+    background: color-mix(in srgb, var(--primary) 6%, transparent);
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .about-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ─── SVG LAB PAGE ───────────────────────────────────────────────────────── */
+/* Styles specific to the svg-lab.html showcase page.                        */
+
+.lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-lg, 32px);
+    margin-top: var(--space-lg, 32px);
+}
+
+.lab-card {
+    background: var(--paper, #faf8f3);
+    border: var(--border-width, 3px) solid var(--line, #d4c4a8);
+    border-radius: var(--radius-lg, 16px);
+    padding: var(--space-md, 16px);
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow var(--ease-out, 0.2s ease-out),
+                transform var(--ease-out, 0.2s ease-out);
+}
+
+.lab-card:hover {
+    box-shadow: var(--shadow-card);
+    transform: translateY(-3px);
+}
+
+.lab-card__label {
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-weight: 900;
+    font-size: var(--text-sm, 14px);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide, 0.1em);
+    color: var(--muted, #7a6b5d);
+    margin: 0 0 var(--space-xs, 4px);
+}
+
+.lab-card__title {
+    font-family: var(--font-display, 'Outfit', sans-serif);
+    font-weight: 800;
+    font-size: var(--text-xl, 24px);
+    color: var(--ink, #3a312b);
+    margin: 0 0 var(--space-xs, 4px);
+}
+
+.lab-card__desc {
+    font-size: var(--text-sm, 14px);
+    color: var(--muted, #7a6b5d);
+    margin: 0 0 var(--space-md, 16px);
+    line-height: var(--leading-normal, 1.6);
+}
+
+.lab-demo {
+    background: var(--canvas, #e8e0d0);
+    border-radius: var(--radius, 8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 180px;
+    padding: var(--space-md, 16px);
+    box-sizing: border-box;
+}
+
+/* Liquid physics goo demo container */
+.lab-goo-filter {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+/* ─── THEME OVERRIDES ────────────────────────────────────────────────────── */
+
+/* Matrix: glow on stroke animations */
+[data-theme="matrix"] .svg-step__circle {
+    stroke: var(--primary, #00ff00);
+    filter: drop-shadow(0 0 4px var(--primary, #00ff00));
+}
+
+[data-theme="matrix"] .svg-donut__segment {
+    filter: drop-shadow(0 0 3px var(--primary, #00ff00));
+}
+
+[data-theme="matrix"] .svg-reticle__ring--outer {
+    filter: drop-shadow(0 0 2px var(--teal, #0d9488));
+}
+
+/* Synthwave: vibrant neon glow */
+[data-theme="synthwave"] .svg-step__circle,
+[data-theme="synthwave"] .svg-donut__segment {
+    filter: drop-shadow(0 0 5px var(--primary));
+}
+
+/* Dark mode: slightly brighter strokes */
+[data-theme="dark"] .svg-reticle__ring--outer,
+[data-theme="dark"] .svg-reticle__ring--mid,
+[data-theme="dark"] .svg-reticle__ring--inner {
+    opacity: 0.5;
+}
+
+
+/* ─── MOBILE ─────────────────────────────────────────────────────────────── */
+/* Note: mobile.css is the final override layer in the CSS bundle.           */
+/* These rules handle SVG-specific mobile behavior only.                     */
+
+@media (max-width: 480px) {
+    /* Hide reticle on small screens — too large to be tasteful */
+    .svg-reticle--hero {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Vertical connector lines for stacked process steps */
+    .process-step:not(:last-child)::after {
+        top: auto;
+        bottom: -20px;
+        right: auto;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 40px;
+        border-top: none;
+        border-left: 2px dashed var(--line, #d4c4a8);
+    }
+
+    .svg-encoder {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+
+/* ─── REDUCED MOTION ─────────────────────────────────────────────────────── */
+/* When users prefer reduced motion, show all elements in their final state.  */
+
+@media (prefers-reduced-motion: reduce) {
+    /* Stop all rotation */
+    .svg-reticle__ring--outer,
+    .svg-reticle__ring--mid,
+    .svg-reticle__ring--inner {
+        animation: none;
+    }
+
+    /* Show step circles fully drawn */
+    .svg-step__circle {
+        stroke-dashoffset: 0;
+        transition: none;
+    }
+
+    .svg-step__number {
+        opacity: 1;
+        transition: none;
+    }
+
+    /* Show donuts at their filled state immediately */
+    .svg-donut__segment {
+        stroke-dashoffset: var(--donut-target, 0);
+        transition: none;
+    }
+
+    /* Typewriter reveals immediately */
+    .rotating-highlight span.svg-typewriter-active {
+        animation: none;
+        clip-path: inset(0 0 0 0);
+    }
+}

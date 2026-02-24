@@ -27,6 +27,7 @@ const App = {
         this.logBoot();
         if (typeof SleepMode !== 'undefined' && SleepMode.init) SleepMode.init();
         if (typeof CookieConsent !== 'undefined' && CookieConsent.init) CookieConsent.init();
+        if (typeof SvgComponents !== 'undefined' && SvgComponents.init) SvgComponents.init();
     },
 
     initHoneypot() {

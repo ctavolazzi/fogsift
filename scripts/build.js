@@ -253,6 +253,7 @@ const CSS_FILES = [
     'src/css/barbie-theme.css',     // Barbie hot pink dream theme
     'src/css/ocean-theme.css',      // Ocean deep sea bioluminescence theme
     'src/css/aurora-theme.css',     // Aurora borealis northern lights theme
+    'src/css/svg-components.css',   // SVG component animations and interactions
     'src/css/sleep.css',            // Sleep mode animations (easter egg)
     'src/css/wiki.css',             // Wiki page styles
     'src/css/mobile.css',           // Mobile-first overrides - must be last
@@ -272,6 +273,7 @@ const JS_FILES = [
     'src/js/monte.js',    // Three card monte hero easter egg
     'src/js/search.js',   // Client-side search/filter
     'src/js/cookie-consent.js', // GDPR/CCPA cookie consent banner
+    'src/js/svg-components.js', // SVG animations, scroll triggers, rotary encoder
     // Future features (uncomment when implemented):
     // 'src/js/achievement.js', // Xbox-style achievement notifications
     // 'src/js/queue-widget.js', // Queue status floating widget
@@ -303,6 +305,8 @@ const STATIC_ASSETS = [
     { src: 'src/assets/logo-patch.png', dest: 'assets/logo-patch.png' },
     // Team images
     { src: 'src/images/team/christopher-badge.webp', dest: 'images/team/christopher-badge.webp' },
+    // Project screenshots
+    { src: 'src/assets/johnny_autoseed_site_screenshot.png', dest: 'assets/johnny_autoseed_site_screenshot.png' },
 ];
 
 // Dynamically get all portfolio images
@@ -1239,6 +1243,9 @@ async function build() {
     }
     if (processSimpleHtml('keepers-log.html')) {
         console.log('  ✓ dist/keepers-log.html (processed)');
+    }
+    if (processSimpleHtml('join.html')) {
+        console.log('  ✓ dist/join.html (processed)');
     }
 
     // Future pages (uncomment when implemented):

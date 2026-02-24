@@ -127,27 +127,43 @@
              Badge-style centered card with primary CTA
              ======================================== -->
         <section id="hero" class="section section-hero" aria-labelledby="hero-heading">
+            <!-- Reticle scanner — decorative concentric rings, purely visual -->
+            <svg class="svg-reticle svg-reticle--hero" aria-hidden="true" focusable="false"
+                 viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                <circle class="svg-reticle__ring svg-reticle__ring--outer"
+                    cx="200" cy="200" r="185"
+                    fill="none" stroke="var(--line)" stroke-width="1.5"
+                    stroke-dasharray="10 18" opacity="0.35"/>
+                <circle class="svg-reticle__ring svg-reticle__ring--mid"
+                    cx="200" cy="200" r="130"
+                    fill="none" stroke="var(--muted)" stroke-width="1"
+                    stroke-dasharray="5 12" opacity="0.22"/>
+                <circle class="svg-reticle__ring svg-reticle__ring--inner"
+                    cx="200" cy="200" r="70"
+                    fill="none" stroke="var(--primary)" stroke-width="0.8"
+                    stroke-dasharray="3 8" opacity="0.18"/>
+            </svg>
             <div class="hero-badge">
                 <button type="button" class="gold-star" aria-label="Spin the gold star" title="Give it a spin!"><span>Gold Star</span></button>
-                <h1 id="hero-heading" class="headline">Clear answers to good questions<span class="hero-emojis"><span class="hero-emoji-char">🏡</span><span class="hero-emoji-char">🌤</span><span class="hero-emoji-char">🔭</span></span></h1>
-                <p class="hero-prompt">Something eating up your <span class="rotating-highlight"><span data-words='["time?", "bandwidth?", "budget?", "capacity?", "energy?"]'>time?</span></span></p>
-                <p class="subhead">We work on everything from Real Estate to Dungeons & Dragons.</p>
-                <p class="subhead">$20. Report + video response.</p>
+                <h1 id="hero-heading" class="headline">We work on the weird ones.<span class="hero-emojis"><span class="hero-emoji-char">🌲</span><span class="hero-emoji-char">🔭</span><span class="hero-emoji-char">🎸</span></span></h1>
+                <p class="hero-prompt">Something eating up your <span class="rotating-highlight"><span data-words='["time?", "budget?", "margins?", "roadmap?", "data?", "supply chain?"]'>time?</span></span></p>
+                <p class="subhead">Supply chain engineering. Data collection, modeling, and strategy. Food security. If there's a pattern in your problem, we'll find it.</p>
+                <p class="subhead">Watch how we work. Then decide if you want in.</p>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
                     <input type="checkbox" name="website" tabindex="-1">
                     Leave unchecked if human
                 </label>
                 <div class="hero-ctas">
-                    <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">
-                        Join the Queue ($20)
+                    <a href="https://www.youtube.com/@FogSift" class="cta-button" target="_blank" rel="noopener">
+                        Watch an Example
                     </a>
-                    <a href="process.html" class="cta-button cta-secondary">
-                        How It Works
+                    <a href="https://ko-fi.com/fogsift" class="cta-button cta-secondary" target="_blank" rel="noopener">
+                        Work With Us
                     </a>
                 </div>
                 <p style="font-size: var(--text-sm); margin-top: var(--space-md); color: var(--muted); max-width: 45ch; margin-left: auto; margin-right: auto;">
-                    By submitting, you agree to our <a href="terms.html">Terms</a>. Submissions may be used for content.
+                    Starting at $20 for a video response. Scales with the work. <a href="terms.html">Terms apply.</a>
                 </p>
             </div>
         </section>
@@ -164,33 +180,63 @@
 
             <div class="process-steps">
                 <div class="process-step">
-                    <div class="step-number">01</div>
+                    <svg class="svg-step" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                        <circle class="svg-step__track" cx="40" cy="40" r="35"/>
+                        <circle class="svg-step__circle" cx="40" cy="40" r="35"
+                            stroke-dasharray="220" stroke-dashoffset="220"
+                            transform="rotate(-90 40 40)"/>
+                        <text class="svg-step__number" x="40" y="47" text-anchor="middle">01</text>
+                    </svg>
                     <h3>Submit</h3>
-                    <p>Describe your problem + pay $20 on Ko-fi.</p>
+                    <p>Describe your problem. We'll agree on scope and fee — starting at $20.</p>
                 </div>
 
                 <div class="process-step">
-                    <div class="step-number">02</div>
-                    <h3>Review</h3>
-                    <p>Each day, we review submissions and choose what to work on next.</p>
+                    <svg class="svg-step" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                        <circle class="svg-step__track" cx="40" cy="40" r="35"/>
+                        <circle class="svg-step__circle" cx="40" cy="40" r="35"
+                            stroke-dasharray="220" stroke-dashoffset="220"
+                            transform="rotate(-90 40 40)"/>
+                        <text class="svg-step__number" x="40" y="47" text-anchor="middle">02</text>
+                    </svg>
+                    <h3>We Scope It</h3>
+                    <p>Quick back-and-forth. What's the real problem? What format fits? What's fair?</p>
                 </div>
 
                 <div class="process-step">
-                    <div class="step-number">03</div>
-                    <h3>Work</h3>
-                    <p>Up to an hour of focused work on your submission.</p>
+                    <svg class="svg-step" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                        <circle class="svg-step__track" cx="40" cy="40" r="35"/>
+                        <circle class="svg-step__circle" cx="40" cy="40" r="35"
+                            stroke-dasharray="220" stroke-dashoffset="220"
+                            transform="rotate(-90 40 40)"/>
+                        <text class="svg-step__number" x="40" y="47" text-anchor="middle">03</text>
+                    </svg>
+                    <h3>We Dig In</h3>
+                    <p>Research, analysis, pattern recognition across domains. We work it until something clicks.</p>
                 </div>
 
                 <div class="process-step">
-                    <div class="step-number">04</div>
-                    <h3>Deliver</h3>
-                    <p>You receive a PDF write-up and a video response.</p>
+                    <svg class="svg-step" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                        <circle class="svg-step__track" cx="40" cy="40" r="35"/>
+                        <circle class="svg-step__circle" cx="40" cy="40" r="35"
+                            stroke-dasharray="220" stroke-dashoffset="220"
+                            transform="rotate(-90 40 40)"/>
+                        <text class="svg-step__number" x="40" y="47" text-anchor="middle">04</text>
+                    </svg>
+                    <h3>You Get the Video</h3>
+                    <p>An unlisted YouTube response — you on camera working through it. Yours to keep. May or may not publish.</p>
                 </div>
 
                 <div class="process-step">
-                    <div class="step-number">05</div>
-                    <h3>Next Steps</h3>
-                    <p>You'll get one of three outcomes. If it's a fit, I'll invite you to go deeper on my terms.</p>
+                    <svg class="svg-step" viewBox="0 0 80 80" aria-hidden="true" focusable="false">
+                        <circle class="svg-step__track" cx="40" cy="40" r="35"/>
+                        <circle class="svg-step__circle" cx="40" cy="40" r="35"
+                            stroke-dasharray="220" stroke-dashoffset="220"
+                            transform="rotate(-90 40 40)"/>
+                        <text class="svg-step__number" x="40" y="47" text-anchor="middle">05</text>
+                    </svg>
+                    <h3>We Go Deeper</h3>
+                    <p>If it's a fit, we'll propose next steps — from a follow-up session to a full contracted engagement.</p>
                 </div>
             </div>
         </section>
@@ -306,15 +352,55 @@
         <section id="about" class="section section-about" aria-labelledby="about-heading">
             <h2 id="about-heading" class="section-label">WHO IS FOGSIFT</h2>
 
-            <div class="about-card">
-                <div class="about-avatar">
-                    <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
+            <div class="about-cards-grid">
+
+                <!-- Mystery card — open position -->
+                <div class="about-card about-card--mystery">
+                    <svg class="svg-reticle svg-reticle--about" aria-hidden="true" focusable="false"
+                         viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="var(--primary)" stroke-width="0.8" opacity="0.3"/>
+                        <circle cx="100" cy="100" r="60" fill="none" stroke="var(--primary)" stroke-width="0.8" opacity="0.2"/>
+                        <circle cx="100" cy="100" r="30" fill="none" stroke="var(--primary)" stroke-width="0.8" opacity="0.15"/>
+                        <line x1="100" y1="10"  x2="100" y2="190" stroke="var(--primary)" stroke-width="0.5" opacity="0.15"/>
+                        <line x1="10"  y1="100" x2="190" y2="100" stroke="var(--primary)" stroke-width="0.5" opacity="0.15"/>
+                    </svg>
+                    <div class="about-avatar">
+                        <div class="mystery-avatar" aria-hidden="true">?</div>
+                    </div>
+                    <div class="about-info">
+                        <h3 class="about-name">Could be you.</h3>
+                        <span class="about-role">Open Position · Mission-Aligned</span>
+                        <p class="about-bio">We're looking for field researchers, data scientists, engineers, farmers, policy people, and anyone serious about food security and supply chain problems. If the mission resonates, we want to hear from you.</p>
+                        <div style="margin-top: var(--space-md);">
+                            <a href="join.html" class="cta-button cta-secondary">Get Involved →</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="about-info">
-                    <h3 class="about-name">Christopher Tavolazzi</h3>
-                    <span class="about-role">Expert Researcher</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it. If it's a fit, he'll invite you to go deeper on his terms.</p>
+
+                <!-- Christopher's card -->
+                <div class="about-card">
+                    <!-- Radar grid — decorative background, no interaction -->
+                    <svg class="svg-reticle svg-reticle--about" aria-hidden="true" focusable="false"
+                         viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="90" fill="none" stroke="var(--line)" stroke-width="0.8" opacity="0.5"/>
+                        <circle cx="100" cy="100" r="60" fill="none" stroke="var(--line)" stroke-width="0.8" opacity="0.4"/>
+                        <circle cx="100" cy="100" r="30" fill="none" stroke="var(--line)" stroke-width="0.8" opacity="0.3"/>
+                        <line x1="100" y1="10"  x2="100" y2="190" stroke="var(--line)" stroke-width="0.6" opacity="0.3"/>
+                        <line x1="10"  y1="100" x2="190" y2="100" stroke="var(--line)" stroke-width="0.6" opacity="0.3"/>
+                        <line x1="27"  y1="27"  x2="173" y2="173" stroke="var(--line)" stroke-width="0.4" opacity="0.2"/>
+                        <line x1="173" y1="27"  x2="27"  y2="173" stroke="var(--line)" stroke-width="0.4" opacity="0.2"/>
+                    </svg>
+                    <div class="about-avatar">
+                        <img src="images/team/christopher-badge.webp" alt="Christopher Tavolazzi" loading="lazy" width="120" height="120">
+                    </div>
+                    <div class="about-info">
+                        <h3 class="about-name">Christopher Tavolazzi</h3>
+                        <span class="about-role">Founder · Engineer · Researcher</span>
+                        <p class="about-bio">Self-taught software developer and engineering-adjacent problem solver, now AI-supported by frontier models and custom LLM systems built over years. Has worked supply chain and operations consulting at the C-Suite level for major tech companies you've heard of — and some you haven't.</p>
+                        <p class="about-bio" style="margin-top: var(--space-sm);">Former realtor, frontman singer (3 continents), brewery tour guide, journalist, author, Eagle Scout. Lived in a van across 30+ contiguous states. Now teaching faceless YouTube monetization and building toward a food security mission: making fresh, healthy, affordable food accessible to everyone — starting with the people who have the least access to it.</p>
+                    </div>
                 </div>
+
             </div>
         </section>
 
@@ -430,19 +516,40 @@
                 </div>
             </div>
 
-            <!-- Stats Row -->
+            <!-- Stats Row — donut rings animate on scroll, text centered inside SVG -->
             <div class="testimonials-stats" role="region" aria-label="Client statistics">
-                <div class="stat-item">
-                    <span class="stat-number">15+</span>
-                    <span class="stat-label">Engagements</span>
+                <div class="stat-item svg-stat" data-value="15" data-max="20">
+                    <svg class="svg-donut" viewBox="0 0 120 120" width="120" height="120"
+                         role="img" aria-label="15+ client engagements" focusable="false">
+                        <circle class="svg-donut__bg" cx="60" cy="60" r="50"/>
+                        <circle class="svg-donut__segment" cx="60" cy="60" r="50"
+                            stroke-dasharray="314" stroke-dashoffset="314"
+                            transform="rotate(-90 60 60)"/>
+                        <text class="svg-donut__value" x="60" y="56" text-anchor="middle">15+</text>
+                        <text class="svg-donut__sublabel" x="60" y="72" text-anchor="middle">Engagements</text>
+                    </svg>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Satisfaction</span>
+                <div class="stat-item svg-stat" data-value="100" data-max="100">
+                    <svg class="svg-donut" viewBox="0 0 120 120" width="120" height="120"
+                         role="img" aria-label="100% client satisfaction" focusable="false">
+                        <circle class="svg-donut__bg" cx="60" cy="60" r="50"/>
+                        <circle class="svg-donut__segment svg-donut--teal" cx="60" cy="60" r="50"
+                            stroke-dasharray="314" stroke-dashoffset="314"
+                            transform="rotate(-90 60 60)"/>
+                        <text class="svg-donut__value svg-donut__value--teal" x="60" y="56" text-anchor="middle">100%</text>
+                        <text class="svg-donut__sublabel" x="60" y="72" text-anchor="middle">Satisfaction</text>
+                    </svg>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">8+</span>
-                    <span class="stat-label">Industries</span>
+                <div class="stat-item svg-stat" data-value="8" data-max="12">
+                    <svg class="svg-donut" viewBox="0 0 120 120" width="120" height="120"
+                         role="img" aria-label="8+ industries served" focusable="false">
+                        <circle class="svg-donut__bg" cx="60" cy="60" r="50"/>
+                        <circle class="svg-donut__segment" cx="60" cy="60" r="50"
+                            stroke-dasharray="314" stroke-dashoffset="314"
+                            transform="rotate(-90 60 60)"/>
+                        <text class="svg-donut__value" x="60" y="56" text-anchor="middle">8+</text>
+                        <text class="svg-donut__sublabel" x="60" y="72" text-anchor="middle">Industries</text>
+                    </svg>
                 </div>
             </div>
         </section>
@@ -455,48 +562,43 @@
              Single $20 offer + three outcomes
              ======================================== -->
         <section id="pricing" class="section section-pricing" aria-labelledby="pricing-heading">
-            <h2 id="pricing-heading" class="section-label">THE DEAL</h2>
+            <h2 id="pricing-heading" class="section-label">HOW WE WORK</h2>
 
             <div class="pricing-cards pricing-cards-offer">
                 <!-- Entry: $5 PDF -->
                 <article class="pricing-card entry">
-                    <span class="featured-tag entry-tag">ENTRY</span>
+                    <span class="featured-tag entry-tag">RESOURCE</span>
                     <h4>Field Guide PDF</h4>
                     <span class="price">$5</span>
-                    <p>"How to Talk to AI": a practical guide to getting useful answers from AI tools.</p>
-                    <p class="pricing-note">PDF only. No session or queue access.</p>
+                    <p>"How to Talk to AI" — a practical guide to getting useful answers from AI tools.</p>
                     <p class="pricing-note">Instant download. Share freely.</p>
                     <a href="https://ko-fi.com/s/23e227d00b" class="pricing-cta" target="_blank" rel="noopener">Get the PDF</a>
                 </article>
 
-                <!-- Main: $20 offer -->
+                <!-- Main: Video Response -->
                 <article class="pricing-card featured">
-                    <span class="featured-tag">THE SWEET SPOT</span>
-                    <h4>Focus Session</h4>
-                    <span class="price">$20</span>
-                    <p>A full-on research squad (me + AI + friends + network) focused on your submission for up to an hour.</p>
+                    <span class="featured-tag">START HERE</span>
+                    <h4>Video Response</h4>
+                    <span class="price">from $20</span>
+                    <p>Submit your problem. We work through it on camera and send you an unlisted YouTube video response — yours to keep.</p>
                     <ul class="pricing-bullets">
-                        <li>Your $20 adds your problem to <a href="queue.html">the queue</a></li>
-                        <li>You receive a PDF write-up and a video response</li>
-                        <li>One-time fee per submission (not a subscription)</li>
-                        <li>If you're not picked right away, you stay in the queue</li>
-                        <li>Maybe we solve it. Maybe we don't. Either way, you walk away with something</li>
+                        <li>Negotiated per problem — $20 is the floor</li>
+                        <li>Research, analysis, pattern recognition included</li>
+                        <li>Video may stay unlisted or publish — your call</li>
+                        <li>One-time fee, not a subscription</li>
+                        <li>Either we crack it, or you leave with a sharper question</li>
                     </ul>
-                    <div class="capacity-notice">
-                        <span class="capacity-icon">⚡</span>
-                        <span>Limited to <strong>10 slots/week</strong></span>
-                    </div>
-                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Join the Queue</a>
+                    <a href="https://ko-fi.com/fogsift" class="pricing-cta" target="_blank" rel="noopener">Submit a Problem</a>
                 </article>
 
-                <!-- Premium: $500 -->
+                <!-- Big Work -->
                 <article class="pricing-card premium">
-                    <span class="featured-tag premium-tag">PREMIUM</span>
-                    <h4>Deep Dive</h4>
-                    <span class="price">$500</span>
-                    <p>Private, scheduled session. Full documentation. Follow‑up included.</p>
-                    <p class="pricing-note">100% confidential. Best for complex problems.</p>
-                    <a href="mailto:fogsift@gmail.com?subject=Deep%20Dive%20Inquiry" class="pricing-cta">Book a Deep Dive</a>
+                    <span class="featured-tag premium-tag">CONTRACTED</span>
+                    <h4>The Big Work</h4>
+                    <span class="price">Negotiable</span>
+                    <p>Supply chain engineering. Data collection, modeling, and interpretation. Food security strategy. Robotics and hardware prototyping (concept-stage). Long-horizon research and prediction. If it's complex and worth doing, let's talk.</p>
+                    <p class="pricing-note">Engineering-adjacent work. Self-taught + AI-supported. Limited by licensure on formal engineering sign-off, but we can do a lot — and we know people for the rest. Confidential. Custom deliverables.</p>
+                    <a href="mailto:fogsift@gmail.com?subject=Contracted%20Work%20Inquiry" class="pricing-cta">Start the Conversation</a>
                 </article>
             </div>
 
@@ -515,22 +617,27 @@
             <div class="concerns-accordion">
                 <details>
                     <summary>"What if you can't solve it?"</summary>
-                    <p>Then you still get the PDF write-up and video response, plus a narrower problem statement or referral.</p>
+                    <p>You still get the video and a sharper version of the problem — which is often more valuable than a rushed answer. Referrals and next steps included.</p>
                 </details>
 
                 <details>
-                    <summary>"Is my problem too big?"</summary>
-                    <p>One hour is for momentum. You'll leave with clarity and next steps, even if the full fix takes longer.</p>
+                    <summary>"My problem is really big. Is that okay?"</summary>
+                    <p>Honestly, those are the most interesting ones. Big problems get scoped into phases. We agree on what one session can meaningfully move before you pay anything.</p>
                 </details>
 
                 <details>
-                    <summary>"Why charge $20?"</summary>
-                    <p>It funds production, keeps submissions real, and keeps the price low enough for anyone to access.</p>
+                    <summary>"Why $20 as the starting price?"</summary>
+                    <p>It makes the format real — a video takes production time. Bigger scope costs more. The $20 is for a YouTube video response. Everything above that we agree on explicitly.</p>
                 </details>
 
                 <details>
-                    <summary>"Will my submission be public?"</summary>
-                    <p>We may or may not publish a video. Your submission may be used for other purposes, including marketing.</p>
+                    <summary>"Will my video be published?"</summary>
+                    <p>It defaults to unlisted — your video, your call. If it's good and you're okay with it, I may ask to publish it on the FogSift channel. No surprises.</p>
+                </details>
+
+                <details>
+                    <summary>"What kinds of problems do you actually take?"</summary>
+                    <p>Supply chain, operations, code, robotics, real estate, creative strategy, research, environmental data, career pivots. The list is genuinely long. If you're unsure, just ask.</p>
                 </details>
             </div>
         </section>
@@ -560,6 +667,44 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ========================================
+             SECTION 4.9: JOHNNY AUTOSEED
+             Separate project — wildlife, land, env data
+             ======================================== -->
+        <section id="johnny-autoseed" class="section" aria-labelledby="autoseed-heading">
+            <h2 id="autoseed-heading" class="section-label">A SIDE PROJECT</h2>
+
+            <div class="about-card" style="max-width: 680px; margin: 0 auto; text-align: left;">
+                <!-- Decorative SVG — reuses reticle pattern -->
+                <svg class="svg-reticle svg-reticle--about" aria-hidden="true" focusable="false"
+                     viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="90" fill="none" stroke="var(--teal)" stroke-width="0.8" opacity="0.3"/>
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="var(--teal)" stroke-width="0.8" opacity="0.2"/>
+                    <circle cx="100" cy="100" r="30" fill="none" stroke="var(--teal)" stroke-width="0.8" opacity="0.15"/>
+                    <line x1="100" y1="10"  x2="100" y2="190" stroke="var(--teal)" stroke-width="0.6" opacity="0.15"/>
+                    <line x1="10"  y1="100" x2="190" y2="100" stroke="var(--teal)" stroke-width="0.6" opacity="0.15"/>
+                </svg>
+                <div class="about-info">
+                    <h3 class="about-name">Johnny Autoseed</h3>
+                    <span class="about-role">Soil and Circuits · Next-Gen Food Security</span>
+                    <p class="about-bio">A long-term project investigating robotic food production, ecological data collection, and the question: <em>what if robots could grow food in your backyard?</em> Documented openly on YouTube.</p>
+                    <a href="assets/johnny_autoseed_site_screenshot.png" target="_blank" rel="noopener"
+                       style="display:block; margin: var(--space-md) 0; border-radius: var(--radius); overflow:hidden; border: var(--border-width) solid var(--line); transition: border-color 0.2s ease;">
+                        <img src="assets/johnny_autoseed_site_screenshot.png"
+                             alt="Johnny Autoseed — Soil and Circuits: Investigating next-gen food security. Mobile ALOHA and FarmBot research."
+                             loading="lazy"
+                             style="width:100%; display:block; border-radius: calc(var(--radius) - 3px);">
+                    </a>
+                    <div style="margin-top: var(--space-sm);">
+                        <a href="mailto:info@fogsift.com?subject=Johnny%20Autoseed%20Collaboration" class="cta-button cta-secondary">Get Involved →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
              SECTION 5: FOOTER + FINAL CTA
              Minimal, clean
              ======================================== -->
@@ -574,7 +719,7 @@
                 </div>
             </div>
             <p style="font-size: var(--text-sm); margin-top: var(--space-lg);">
-                Ready now? <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">Join the Queue ($20)</a> or <a href="https://ko-fi.com/s/23e227d00b" target="_blank" rel="noopener">grab the $5 Field Guide</a>.
+                Ready now? <a href="https://www.youtube.com/@FogSift" target="_blank" rel="noopener">Watch an example on YouTube</a> first, then <a href="https://ko-fi.com/fogsift" target="_blank" rel="noopener">submit your problem from $20</a>. Or <a href="join.html">get involved with the mission.</a>
             </p>
         </section>
 
