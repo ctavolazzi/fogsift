@@ -25,7 +25,7 @@
     'use strict';
 
     const R = '🐰';
-    const TRAIL = '🐾';
+    const TRAIL = '🐾'; // eslint-disable-line no-unused-vars -- reserved for trail breadcrumb feature
     const HOLE  = '🕳️';
     const BURROW = '🌿';
     const WARREN = '🐇';
@@ -44,7 +44,7 @@
     // ── Internal state ─────────────────────────────────────────────────────
     let _active = false;
     let _traceId = null;
-    let _traceLabel = null;
+    let _traceLabel = null; // eslint-disable-line no-unused-vars -- used by trace system
     let _traceStart = null;
     let _log = []; // all recorded events
 

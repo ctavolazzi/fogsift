@@ -4,7 +4,10 @@
  */
 module.exports = {
     server: {
-        baseDir: 'dist'
+        baseDir: 'dist',
+        serveStaticOptions: {
+            extensions: ['html']  // serve /wiki/foo as /wiki/foo.html (matches Cloudflare behavior)
+        }
     },
     port: 5050,
     open: false,
