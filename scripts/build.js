@@ -287,6 +287,7 @@ const STATIC_ASSETS = [
     { src: 'src/js/theme-init.js', dest: 'theme-init.js' },
     { src: 'src/js/queue-ui.js', dest: 'queue-ui.js' },
     { src: 'src/js/wiki-nav.js', dest: 'wiki-nav.js' },
+    { src: 'src/js/hero-panels.js', dest: 'hero-panels.js' },
     { src: 'src/robots.txt', dest: 'robots.txt' },
     { src: 'src/sitemap.xml', dest: 'sitemap.xml' },
     { src: 'src/manifest.json', dest: 'manifest.json' },

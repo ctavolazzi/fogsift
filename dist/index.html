@@ -289,8 +289,32 @@
                 <button type="button" class="gold-star" aria-label="Spin the gold star" title="Give it a spin!"><span>Gold Star</span></button>
                 <h1 id="hero-heading" class="headline">We work on the weird ones.<span class="hero-emojis"><span class="hero-emoji-char">🌲</span><span class="hero-emoji-char">🔭</span><span class="hero-emoji-char">🎸</span></span></h1>
                 <p class="hero-prompt">Something eating up your <span class="rotating-highlight"><span data-words='["time?", "budget?", "margins?", "roadmap?", "data?", "supply chain?"]'>time?</span></span></p>
-                <p class="subhead">Supply chain engineering. Data collection, modeling, and strategy. Food security. If there's a pattern in your problem, we'll find it.</p>
-                <p class="subhead">Watch how we work. Then decide if you want in.</p>
+                <div class="hero-grid" aria-label="What we work on" aria-live="polite">
+                    <div class="hero-panel" data-idx="0">
+                        <div class="hero-panel__inner">
+                            <span class="hero-panel__icon">⚙️</span>
+                            <span class="hero-panel__text">Supply Chain</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel" data-idx="1">
+                        <div class="hero-panel__inner">
+                            <span class="hero-panel__icon">📊</span>
+                            <span class="hero-panel__text">Data &amp; Strategy</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel" data-idx="2">
+                        <div class="hero-panel__inner">
+                            <span class="hero-panel__icon">🌾</span>
+                            <span class="hero-panel__text">Food Security</span>
+                        </div>
+                    </div>
+                    <div class="hero-panel" data-idx="3">
+                        <div class="hero-panel__inner">
+                            <span class="hero-panel__icon">🔍</span>
+                            <span class="hero-panel__text">Pattern Finding</span>
+                        </div>
+                    </div>
+                </div>
                 <!-- Honeypot: hidden from humans, bots will check it -->
                 <label class="hp-field" aria-hidden="true" style="display:none;position:absolute;left:-9999px;">
                     <input type="checkbox" name="website" tabindex="-1">
@@ -1097,6 +1121,7 @@
 
     <!-- External JavaScript -->
     <script src="app.js" defer></script>
+    <script src="hero-panels.js" defer></script>
     <script>
     /* Footprint teaser — populates the homepage widget */
     (function() {
