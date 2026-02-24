@@ -431,9 +431,9 @@
                 <div class="yd-card" style="margin-bottom: 0;">
                     <div class="yd-card-header">
                         <h3 class="yd-card-title" style="font-size: var(--text-base);">Bitcoin Price</h3>
-                        <span class="yd-risk-tag yd-risk-low">coindesk.com</span>
+                        <span class="yd-risk-tag yd-risk-low">coingecko.com</span>
                     </div>
-                    <p class="yd-card-desc">Live Bitcoin price index from CoinDesk's free API. Because it's 2026.</p>
+                    <p class="yd-card-desc">Live Bitcoin price from CoinGecko's free public API. No key required. Because it's 2026.</p>
                     <div id="yd-btc" style="font-family: var(--font-mono); font-size: var(--text-sm);">
                         <p style="color: var(--muted);">Loading price...</p>
                     </div>
@@ -784,6 +784,7 @@
         }
 
         // ---- Audio Fingerprint ----
+        // Uses AnalyserNode polling instead of the deprecated ScriptProcessorNode.
         function scanAudio() {
             try {
                 const AudioCtx = window.AudioContext || window.webkitAudioContext;
@@ -792,27 +793,30 @@
                 const oscillator = ctx.createOscillator();
                 const analyser = ctx.createAnalyser();
                 const gain = ctx.createGain();
-                const script = ctx.createScriptProcessor(4096, 1, 1);
 
-                gain.gain.value = 0; // Silent
+                gain.gain.value = 0; // Silent — no audible output
                 oscillator.type = 'triangle';
                 oscillator.frequency.value = 10000;
                 oscillator.connect(analyser);
-                analyser.connect(script);
-                script.connect(gain);
+                analyser.connect(gain);
                 gain.connect(ctx.destination);
 
                 oscillator.start(0);
-                script.onaudioprocess = function(e) {
-                    const data = new Float32Array(analyser.frequencyBinCount);
-                    analyser.getFloatFrequencyData(data);
-                    // Hash the first 20 frequency values
-                    const slice = Array.from(data.slice(0, 20)).map(function(v) { return v.toFixed(2); }).join(',');
-                    set('yd-audio-hash', hash(slice));
-                    oscillator.stop();
-                    script.disconnect();
-                    ctx.close();
-                };
+
+                // Poll the analyser after one render quantum (~22ms) instead of
+                // using the deprecated ScriptProcessorNode.
+                setTimeout(function() {
+                    try {
+                        const data = new Float32Array(analyser.frequencyBinCount);
+                        analyser.getFloatFrequencyData(data);
+                        const slice = Array.from(data.slice(0, 20)).map(function(v) { return v.toFixed(2); }).join(',');
+                        set('yd-audio-hash', hash(slice));
+                    } catch { set('yd-audio-hash', 'Blocked'); }
+                    finally {
+                        oscillator.stop();
+                        ctx.close();
+                    }
+                }, 100);
             } catch {
                 set('yd-audio-hash', 'Blocked');
             }
@@ -1056,18 +1060,23 @@
                 });
         }
 
-        // ---- Bitcoin Price (CoinDesk) ----
+        // ---- Bitcoin Price (CoinGecko public API — no key required) ----
         function fetchBitcoin() {
-            cachedFetch('https://api.coindesk.com/v1/bpi/currentprice.json', 5)
+            cachedFetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_last_updated_at=true', 5)
                 .then(function(r) { return r.json(); })
                 .then(function(d) {
-                    var usd = d.bpi.USD;
                     var el = document.getElementById('yd-btc');
-                    if (el) el.innerHTML =
-                        '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">' + usd.rate + '</div>' +
-                        '<div style="color: var(--muted);">' + usd.description + '</div>' +
-                        '<div style="font-size: var(--text-xs); color: var(--muted); margin-top: 4px;">Updated: ' + d.time.updated + '</div>' +
-                        '<div style="font-size: var(--text-xs); color: var(--muted);">Powered by <a href="https://www.coindesk.com/price/bitcoin" target="_blank" rel="noopener">CoinDesk</a></div>';
+                    if (!el) return;
+                    var price = d.bitcoin && d.bitcoin.usd;
+                    if (!price) { el.innerHTML = '<p style="color: var(--muted);">Price unavailable</p>'; return; }
+                    var updated = d.bitcoin.last_updated_at
+                        ? new Date(d.bitcoin.last_updated_at * 1000).toUTCString()
+                        : 'Recently';
+                    el.innerHTML =
+                        '<div style="font-size: var(--text-2xl); margin-bottom: var(--space-xs);">$' + price.toLocaleString() + '</div>' +
+                        '<div style="color: var(--muted);">Bitcoin / USD</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted); margin-top: 4px;">Updated: ' + updated + '</div>' +
+                        '<div style="font-size: var(--text-xs); color: var(--muted);">Powered by <a href="https://www.coingecko.com" target="_blank" rel="noopener">CoinGecko</a></div>';
                 })
                 .catch(function() {
                     var el = document.getElementById('yd-btc');
@@ -1099,5 +1108,8 @@
         });
     })();
     </script>
+
+    <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
+    <script src="white-rabbit.js" defer></script>
 </body>
 </html>

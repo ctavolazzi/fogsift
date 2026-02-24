@@ -4,6 +4,54 @@ All notable changes to FogSift will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.2.0] - 2026-02-23
+### Minor Release — "The White Rabbit"
+
+Platform stability, performance, and debugging infrastructure. Introduces the White Rabbit
+debugger, supply chain visualization, service worker caching, and a raft of bug fixes.
+
+#### New Features
+- **🐰 White Rabbit debugger** (`white-rabbit.js`) — Universal tracing utility loaded on every page
+  - Instruments all `fetch()` and `XMLHttpRequest` calls silently
+  - Detects browser surface: Chrome, Safari, Firefox, Facebook/Instagram/Threads/TikTok in-app browsers
+  - Console API: `WhiteRabbit.activate()`, `.warren()`, `.sniff()`, `.probe(url)`, `.follow()`, `.hop()`
+  - Activate via `?debug=rabbit` or `localStorage.setItem('white-rabbit', '1')`
+  - Shorthand alias: `🐰.sniff()` in DevTools
+- **Supply chain visualization** — Interactive Three.js r150 node graph on the homepage
+  - 7 nodes (Source → Processing → Manufacturing → Distribution → Retail → Consumer → Data → loop)
+  - Animated particle flow along edges, click/tap nodes for descriptions
+  - Lazy-loaded via IntersectionObserver (Three.js ~614KB only loads when section is visible)
+  - Mobile-first: adapts layout orientation based on viewport aspect ratio
+  - Theme-reactive: reads CSS custom properties, updates on `data-theme` changes
+  - `prefers-reduced-motion`: canvas hidden, text fallback shown
+- **Service worker cache** (`sw.js`) — Offline support and performance
+  - Cache-first for static assets (CSS, JS, images)
+  - Network-first for HTML and API routes
+  - Pre-caches core assets on install, evicts stale caches on activate
+  - Offline fallback page (`offline.html`)
+- **Offline page** — Clean branded fallback when network is unavailable
+
+#### Bug Fixes
+- **Step-card connector overflow** — Added `overflow-x: clip` to `.process-steps` to prevent
+  dashed connector lines from protruding past the last card in a flex-wrapped row
+- **`ScriptProcessorNode` deprecation** — Replaced with `AnalyserNode` + `setTimeout` polling
+  in `your-data.html` audio fingerprint. Eliminates console deprecation warning
+- **`AudioContext` cannot close closed** — Fixed by scoping `ctx.close()` to `finally` block
+  only after oscillator has been stopped cleanly
+- **Dead CoinDesk API** — Replaced `api.coindesk.com` (DNS failure) with CoinGecko free public
+  API (`api.coingecko.com/api/v3/simple/price`) — no API key required
+
+#### Infrastructure
+- **Security headers activated** (`_headers`) — CSP now live with full `connect-src` whitelist
+  covering all external APIs used by `your-data.html`
+- **`sw.js` cache headers** — Service worker set to `no-cache` so updates deploy immediately
+- **HTML cache headers** — All `.html` files set to `no-cache` for fresh navigation
+- **Twitter/X card meta tags** added to homepage (`twitter:card`, `twitter:site`, `twitter:image`)
+- **`og:site_name`** and **`og:locale`** added to homepage Open Graph block
+- **White Rabbit injected on all pages** — Including all 46 wiki pages (path-prefix aware)
+- **`three.min.js` + `supply-chain-sim.js`** added to `STATIC_ASSETS`
+- **Build: `injectWhiteRabbit()`** helper injects WR script on every processed page
+
 ## [0.1.0] - 2026-02-08
 ### Minor Release - "The Lighthouse"
 

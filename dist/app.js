@@ -85,4 +85,4 @@ const Toast={containerId:"toast-container",TIMING:{DEFAULT_DURATION:2500,ERROR_D
             <h3 style="font-size: var(--text-lg); margin-bottom: var(--space-sm);">The Solution</h3>
             <p style="margin-bottom: var(--space-md);">${t.solution}</p>
             <p style="font-family: var(--font-mono); font-size: var(--text-sm); color: var(--burnt-orange); margin-top: var(--space-lg);">Outcome: ${t.outcome}</p>
-        `,Modal.open())}};document.addEventListener("DOMContentLoaded",()=>{App.init()}),window.addEventListener("unload",()=>{App._intervals.forEach(e=>clearInterval(e))});
+        `,Modal.open())}};document.addEventListener("DOMContentLoaded",()=>{App.init()}),window.addEventListener("unload",()=>{App._intervals.forEach(e=>clearInterval(e))}),"serviceWorker"in navigator&&window.addEventListener("load",()=>{navigator.serviceWorker.register("/sw.js",{scope:"/"}).then(e=>{e.update()}).catch(e=>{typeof WhiteRabbit<"u"&&WhiteRabbit.hop("SW registration failed",e.message)})});

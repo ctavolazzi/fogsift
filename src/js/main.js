@@ -282,3 +282,20 @@ document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener('unload', () => {
     App._intervals.forEach(id => clearInterval(id));
 });
+
+// ── Service Worker Registration ────────────────────────────────────────────
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js', { scope: '/' })
+            .then(reg => {
+                // Check for updates on each page load
+                reg.update();
+            })
+            .catch(err => {
+                // Non-fatal — site works fine without SW
+                if (typeof WhiteRabbit !== 'undefined') {
+                    WhiteRabbit.hop('SW registration failed', err.message);
+                }
+            });
+    });
+}

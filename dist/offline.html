@@ -3,26 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Disclaimer | Fogsift</title>
-    <meta name="description" content="Fogsift legal disclaimer and terms of service.">
-    <meta name="robots" content="noindex">
-
+    <title>You're Offline | Fogsift</title>
     <link rel="icon" type="image/png" href="favicon.png">
-
-    <!-- Theme detection -->
-    <script src="theme-init.js"></script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="theme-init.js"></script>
+    <style>
+        .offline-container {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-xl) var(--space-md);
+            gap: var(--space-md);
+        }
+        .offline-icon {
+            font-size: 3rem;
+            line-height: 1;
+        }
+        .offline-title {
+            font-family: var(--font-display);
+            font-size: var(--text-2xl);
+            font-weight: 800;
+            color: var(--ink);
+            margin: 0;
+        }
+        .offline-body {
+            color: var(--muted);
+            max-width: 45ch;
+            font-size: var(--text-base);
+            line-height: var(--leading-normal);
+        }
+        .offline-retry {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-wide);
+            padding: var(--space-sm) var(--space-md);
+            border: var(--border-width) solid var(--chocolate);
+            border-radius: var(--radius);
+            background: var(--burnt-orange);
+            color: white;
+            cursor: pointer;
+            box-shadow: var(--shadow-hard);
+            transition: box-shadow 0.1s, transform 0.1s;
+        }
+        .offline-retry:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translate(-2px, -2px);
+        }
+    </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Mobile Navigation Overlay (click to close) -->
-    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
-
     <!-- Mobile Navigation Drawer -->
     <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
         <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
@@ -148,45 +181,23 @@
             </div>
         </div>
     </header>
-
     <main class="frame" id="main-content">
-        <section class="wiki-content" style="padding: var(--space-lg) 0;">
-            <h1>Disclaimer</h1>
-
-            <p><strong>Last Updated:</strong> December 2025</p>
-
-            <h2>General Disclaimer</h2>
-            <p>The information and services provided by Fogsift are offered in good faith and for general informational purposes. We make no warranties or representations of any kind, express or implied, regarding the completeness, accuracy, reliability, or suitability of any information or services.</p>
-
-            <h2>Professional Services</h2>
-            <p>Fogsift provides consulting and advisory services. Any recommendations, strategies, or guidance provided should not be construed as professional advice in any regulated field (legal, financial, medical, etc.) unless explicitly stated otherwise by a qualified professional.</p>
-
-            <h2>Compliance with Laws</h2>
-            <p>Fogsift operates in compliance with all applicable federal, state, and local laws and regulations. We are committed to conducting business ethically and lawfully.</p>
-
-            <h2>Right to Refuse Service</h2>
-            <p>Fogsift reserves the right to refuse service to any individual or entity, at any time, for any reason permitted by applicable law. This right is exercised at our sole discretion and in accordance with all applicable legal requirements.</p>
-
-            <h2>Reporting Obligations</h2>
-            <p>Fogsift will comply with all applicable legal reporting requirements. Where required by law, we will cooperate with appropriate authorities and disclose information as necessary to fulfill our legal obligations.</p>
-
-            <h2>Limitation of Liability</h2>
-            <p>To the fullest extent permitted by applicable law, Fogsift shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from or related to your use of our services or reliance on any information provided.</p>
-
-            <h2>Indemnification</h2>
-            <p>By using our services, you agree to indemnify and hold harmless Fogsift and its principals from any claims, damages, or expenses arising from your use of our services or violation of these terms.</p>
-
-            <h2>Changes</h2>
-            <p>We reserve the right to modify this disclaimer at any time. Continued use of our services following any changes constitutes acceptance of those changes.</p>
-
-            <h2>Governing Law</h2>
-            <p>This disclaimer and any disputes arising from it shall be governed by and construed in accordance with applicable laws.</p>
-
-            <h2>Contact</h2>
-            <p>For questions regarding this disclaimer, please contact us at <a href="mailto:info@fogsift.com">info@fogsift.com</a>.</p>
-
+        <section class="section">
+            <div class="offline-container">
+                <div class="offline-icon" aria-hidden="true">📡</div>
+                <h1 class="offline-title">You're Offline</h1>
+                <p class="offline-body">
+                    Fogsift can't reach the network right now.
+                    Check your connection and try again — cached pages will load instantly.
+                </p>
+                <button type="button" class="offline-retry" onclick="location.reload()">
+                    Try Again
+                </button>
+                <p style="font-size: var(--text-xs); color: var(--muted); margin-top: var(--space-sm);">
+                    Previously visited pages are available in your browser cache.
+                </p>
+            </div>
         </section>
-
         <footer role="contentinfo">
             <div class="footer-content">
                 <div class="footer-links">
@@ -219,10 +230,7 @@
         </footer>
     </main>
 
-    <script src="app.js" defer></script>
-
     <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
     <script src="white-rabbit.js" defer></script>
 </body>
 </html>
-

@@ -19,6 +19,13 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
+    <meta property="og:site_name" content="Fogsift">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@fogsift">
+    <meta name="twitter:title" content="Fogsift — Clear answers to complicated questions">
+    <meta name="twitter:description" content="Submit your problem to the FogSift queue. Up to an hour of focus plus a PDF write-up and video response.">
+    <meta name="twitter:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="favicon.png">
 
@@ -292,6 +299,29 @@
                     </div>
                 </li>
             </ul>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             SECTION 2.5: SUPPLY CHAIN VISUALIZATION
+             Interactive 3D node graph — lazy loaded
+             ======================================== -->
+        <section id="supply-chain-viz" class="section" aria-labelledby="viz-heading">
+            <h2 id="viz-heading" class="section-label">HOW SUPPLY CHAINS MOVE</h2>
+            <p style="max-width: 55ch; margin: -1rem auto var(--space-md); color: var(--muted); text-align: center;">
+                An interactive model of the systems FogSift maps and fixes. Tap any node.
+            </p>
+            <div id="supply-chain-container">
+                <canvas id="supply-chain-canvas" role="img" aria-label="Interactive supply chain node graph"></canvas>
+                <div id="supply-chain-info" class="viz-info-panel" role="region" aria-labelledby="viz-heading" aria-live="polite"></div>
+            </div>
+            <noscript>
+                <p style="text-align:center; color: var(--muted); font-size: var(--text-sm); margin-top: var(--space-sm);">
+                    Enable JavaScript to view the interactive supply chain visualization.
+                </p>
+            </noscript>
         </section>
 
         <!-- Section Divider -->
@@ -815,5 +845,9 @@
     })();
     </script>
     <!-- wiki cards are build-time rendered, no JS needed -->
+
+    <!-- Supply chain visualization — deferred, lazy-initialized via IntersectionObserver -->
+    <script src="three.min.js" defer></script>
+    <script src="supply-chain-sim.js" defer></script>
 </body>
 </html>

@@ -189,6 +189,13 @@
     position: relative;
 }
 
+/* Clip overflow connectors at row boundaries (flex-wrap can leave last-in-row
+   cards with connectors extending into empty space — clip fixes this without
+   creating a scroll container). */
+.process-steps {
+    overflow-x: clip;
+}
+
 /* Connecting line between steps (desktop horizontal layout) */
 .process-step:not(:last-child)::after {
     content: '';
@@ -570,5 +577,130 @@
     .rotating-highlight span.svg-typewriter-active {
         animation: none;
         clip-path: inset(0 0 0 0);
+    }
+}
+
+
+/* ─── SUPPLY CHAIN VISUALIZATION ────────────────────────────────────────── */
+
+#supply-chain-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: var(--space-md) auto 0;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: var(--border-width) solid var(--line);
+    background: var(--canvas);
+}
+
+#supply-chain-canvas {
+    display: block;
+    width: 100%;
+    height: clamp(300px, 50vh, 500px);
+    cursor: crosshair;
+    touch-action: manipulation;
+}
+
+.viz-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: clamp(300px, 50vh, 500px);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    letter-spacing: var(--letter-wide);
+    text-transform: uppercase;
+}
+
+.viz-fallback-msg {
+    text-align: center;
+    padding: var(--space-lg);
+    color: var(--muted);
+    font-size: var(--text-sm);
+}
+
+/* Info panel — slides up from bottom of canvas */
+.viz-info-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-top: var(--border-width) solid var(--line);
+    padding: var(--space-sm) var(--space-md);
+    transform: translateY(100%);
+    transition: transform 0.2s var(--ease-out, ease-out);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.viz-info-panel.viz-info-open {
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.viz-info-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-sm);
+}
+
+.viz-info-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.viz-info-title {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+}
+
+.viz-info-desc {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    margin: 0;
+    line-height: var(--leading-normal);
+}
+
+.viz-info-close {
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.25rem;
+    color: var(--muted);
+    line-height: 1;
+    padding: 0 0 0 var(--space-sm);
+    flex-shrink: 0;
+    align-self: flex-start;
+}
+
+.viz-info-close:hover { color: var(--ink); }
+
+/* Reduced-motion: hide canvas, show fallback message */
+@media (prefers-reduced-motion: reduce) {
+    #supply-chain-canvas,
+    .viz-loading {
+        display: none !important;
+    }
+    #supply-chain-container::before {
+        content: 'Source → Processing → Manufacturing → Distribution → Retail → Consumer → Data → Source';
+        display: block;
+        padding: var(--space-lg) var(--space-md);
+        font-family: var(--font-mono);
+        font-size: var(--text-sm);
+        color: var(--muted);
+        text-align: center;
+        line-height: var(--leading-relaxed);
     }
 }

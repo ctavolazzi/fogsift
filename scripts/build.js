@@ -298,6 +298,13 @@ const STATIC_ASSETS = [
     // Security files
     { src: 'src/_headers', dest: '_headers' },
     { src: 'src/.well-known/security.txt', dest: '.well-known/security.txt' },
+    // Supply chain visualization — served as static files, not bundled
+    { src: 'src/vendor/three.min.js',           dest: 'three.min.js' },
+    { src: 'src/js/supply-chain-sim.js',        dest: 'supply-chain-sim.js' },
+    // White Rabbit debugger — always loaded, silent unless activated
+    { src: 'src/js/white-rabbit.js',            dest: 'white-rabbit.js' },
+    // Service worker — must be at root scope
+    { src: 'src/sw.js',                         dest: 'sw.js' },
     // Brand assets
     { src: 'src/assets/icon-512.png', dest: 'assets/icon-512.png' },
     { src: 'src/assets/logo-color-transparent.png', dest: 'assets/logo.png' },
@@ -320,6 +327,13 @@ function getPortfolioImages() {
             src: `src/images/portfolio/${f}`,
             dest: `images/portfolio/${f}`
         }));
+}
+
+// Inject White Rabbit debugger script before </body>
+// pathPrefix: relative path to root (e.g. '' for root pages, '../' for wiki pages)
+function injectWhiteRabbit(html, pathPrefix = '') {
+    const tag = `\n    <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->\n    <script src="${pathPrefix}white-rabbit.js" defer></script>\n`;
+    return html.replace('</body>', tag + '</body>');
 }
 
 function concat(files) {
@@ -449,6 +463,8 @@ function processHtml() {
     const today = new Date().toISOString().split('T')[0];
     html = html.replace(/<lastmod>.*?<\/lastmod>/g, `<lastmod>${today}</lastmod>`);
 
+    html = injectWhiteRabbit(html);
+
     fs.writeFileSync(path.join(DIST, 'index.html'), html);
     return true;
 }
@@ -472,6 +488,8 @@ function process404Html() {
     // Inject footer (DRY: single source of truth for footer with social links)
     html = html.replace(/\{\{FOOTER\}\}/g, generateFooter());
 
+    html = injectWhiteRabbit(html);
+
     fs.writeFileSync(path.join(DIST, '404.html'), html);
     return true;
 }
@@ -494,6 +512,8 @@ function processSimpleHtml(filename) {
 
     // Inject footer (DRY: single source of truth for footer with social links)
     html = html.replace(/\{\{FOOTER\}\}/g, generateFooter());
+
+    html = injectWhiteRabbit(html);
 
     fs.writeFileSync(path.join(DIST, filename), html);
     return true;
@@ -1001,6 +1021,10 @@ function buildWiki() {
             .replace(/\{\{BUILD_DATE\}\}/g, today);
 
 
+        // Inject White Rabbit with correct path prefix for wiki depth
+        const wikiPrefix = '../'.repeat(depth + 1);
+        html = injectWhiteRabbit(html, wikiPrefix);
+
         // Ensure output directory exists
         const outputPath = path.join(WIKI_DIST, `${slug}.html`);
         ensureDir(path.dirname(outputPath));
@@ -1022,6 +1046,7 @@ function buildWiki() {
             .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemapIndex)
             .replace(/\{\{BUILD_DATE\}\}/g, today);
 
+        indexHtml = injectWhiteRabbit(indexHtml, '../');
         fs.writeFileSync(path.join(WIKI_DIST, 'index.html'), indexHtml);
         pagesBuilt++;
     }
@@ -1246,6 +1271,9 @@ async function build() {
     }
     if (processSimpleHtml('join.html')) {
         console.log('  ✓ dist/join.html (processed)');
+    }
+    if (processSimpleHtml('offline.html')) {
+        console.log('  ✓ dist/offline.html (processed)');
     }
 
     // Future pages (uncomment when implemented):
