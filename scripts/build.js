@@ -306,7 +306,7 @@ const STATIC_ASSETS = [
     // Team images
     { src: 'src/images/team/christopher-badge.webp', dest: 'images/team/christopher-badge.webp' },
     // Project screenshots
-    { src: 'src/assets/johnny_autoseed_site_screenshot.png', dest: 'assets/johnny_autoseed_site_screenshot.png' },
+    { src: 'src/assets/johnny_autoseed_site_screenshot.webp', dest: 'assets/johnny_autoseed_site_screenshot.webp' },
 ];
 
 // Dynamically get all portfolio images
