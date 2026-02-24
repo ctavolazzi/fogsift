@@ -56,7 +56,7 @@
                 if (this.enabled) {
                     console.log(`%c${PREFIX} Debug mode enabled`, STYLES.success);
                 }
-            } catch (e) {
+            } catch (_e) {
                 // localStorage not available
             }
         },
@@ -68,7 +68,7 @@
             this.enabled = true;
             try {
                 localStorage.setItem(STORAGE_KEY, 'true');
-            } catch (e) {}
+            } catch (_e) { /* storage unavailable */ }
             console.log(`%c${PREFIX} Debug mode enabled`, STYLES.success);
             console.log(`%c${PREFIX} Use Debug.disable() to turn off`, STYLES.default);
         },
@@ -80,7 +80,7 @@
             this.enabled = false;
             try {
                 localStorage.removeItem(STORAGE_KEY);
-            } catch (e) {}
+            } catch (_e) { /* storage unavailable */ }
             console.log(`%c${PREFIX} Debug mode disabled`, STYLES.default);
         },
 

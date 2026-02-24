@@ -126,6 +126,8 @@ const App = {
                 maxW = Math.max(maxW, el.scrollWidth);
             }
             el.style.minWidth = maxW + 'px';
+            el.style.textAlign = 'center';
+            el.style.display = 'inline-block';
             el.textContent = original;
 
             this._intervals.push(setInterval(() => {

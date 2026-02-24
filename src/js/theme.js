@@ -369,7 +369,7 @@ const Theme = {
                 path: window.location.pathname
             };
             sessionStorage.setItem(this.SCROLL_KEY, JSON.stringify(scrollData));
-        } catch (e) {
+        } catch (_e) {
             // Storage unavailable
         }
     },
@@ -391,7 +391,7 @@ const Theme = {
                     behavior: 'instant' // No smooth scroll - instant restore
                 });
             }
-        } catch (e) {
+        } catch (_e) {
             // Storage unavailable or invalid data
         }
     },

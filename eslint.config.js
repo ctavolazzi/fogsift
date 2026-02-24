@@ -20,13 +20,18 @@ export default [
         MatrixRain: "readonly",
         QueueUI: "readonly",
         App: "readonly",
-        ExampleModal: "readonly"
+        ExampleModal: "readonly",
+        THREE: "readonly",
+        SvgComponents: "readonly",
+        WhiteRabbit: "readonly",
+        Cache: "readonly"
       }
     },
     rules: {
       "no-unused-vars": ["warn", {
         "argsIgnorePattern": "^_",
-        "varsIgnorePattern": "^(Toast|Theme|ThemePicker|Modal|Nav|App|ExampleModal|SleepMode|CookieConsent|Debug|SiteSearch|CopyPageText|MatrixRain|QueueUI)$"
+        "caughtErrorsIgnorePattern": "^_",
+        "varsIgnorePattern": "^(Toast|Theme|ThemePicker|Modal|Nav|App|ExampleModal|SleepMode|CookieConsent|Debug|SiteSearch|CopyPageText|MatrixRain|QueueUI|Cache|WhiteRabbit|SvgComponents)$"
       }],
       "no-undef": "error",
       "no-empty": "warn",

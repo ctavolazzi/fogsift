@@ -13,7 +13,7 @@ const QueueWidget = {
   _safeSessionGet(key) {
     try {
       return sessionStorage.getItem(key);
-    } catch (e) {
+    } catch (_e) {
       return null;
     }
   },
@@ -21,7 +21,7 @@ const QueueWidget = {
   _safeSessionSet(key, value) {
     try {
       sessionStorage.setItem(key, value);
-    } catch (e) {}
+    } catch (_e) { /* storage unavailable */ }
   },
   
   async init() {
@@ -33,7 +33,7 @@ const QueueWidget = {
       this.queueData = await response.json();
       this.renderFloatingWidget();
       this.updateEstimates();
-    } catch (e) {
+    } catch (_e) {
       console.log('Queue widget: Could not load queue data');
     }
   },

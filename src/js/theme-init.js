@@ -9,7 +9,7 @@
 
     try {
         savedTheme = localStorage.getItem(THEME_KEY);
-    } catch (e) {
+    } catch (_e) {
         // localStorage not available
     }
 
@@ -20,7 +20,7 @@
     if (!savedTheme) {
         try {
             localStorage.setItem(THEME_KEY, theme);
-        } catch (e) {
+        } catch (_e) {
             // localStorage not available
         }
     }

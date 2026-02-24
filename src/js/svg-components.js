@@ -16,11 +16,11 @@ const SvgComponents = {
     },
 
     // ── SCROLL ANIMATIONS ──────────────────────────────────────────────────
-    // Uses IntersectionObserver to add .is-visible to .svg-step and .svg-stat
-    // elements when they enter the viewport. Triggers CSS transitions.
+    // Uses IntersectionObserver to add .is-visible to .svg-step elements
+    // when they enter the viewport. Triggers CSS transitions.
 
     initScrollAnimations() {
-        const elements = document.querySelectorAll('.svg-step, .svg-stat');
+        const elements = document.querySelectorAll('.svg-step');
 
         if (!('IntersectionObserver' in window)) {
             // Graceful degradation: elements stay visible (default state)
@@ -56,28 +56,29 @@ const SvgComponents = {
         this._fallbackTimer = fallbackTimer;
     },
 
-    // ── STAT DONUTS ────────────────────────────────────────────────────────
-    // Reads data-value and data-max from .svg-stat elements and calculates
-    // the correct stroke-dashoffset for each donut segment.
-    // Circumference of r=50: 2 * PI * 50 = 314.16
+    // ── STAT CARDS ─────────────────────────────────────────────────────────
+    // Observes .testimonials-stats container. When it enters the viewport,
+    // adds .is-visible to trigger the bar fill CSS transition.
 
     initStatDonuts() {
-        const CIRCUMFERENCE = 314;
+        const container = document.querySelector('.testimonials-stats');
+        if (!container) return;
 
-        document.querySelectorAll('.svg-stat').forEach(el => {
-            const value = parseFloat(el.dataset.value || 0);
-            const max   = parseFloat(el.dataset.max || 100);
-            const pct   = Math.min(value / max, 1);
-            const target = CIRCUMFERENCE * (1 - pct);
+        if (!('IntersectionObserver' in window)) {
+            container.classList.add('is-visible');
+            return;
+        }
 
-            const segment = el.querySelector('.svg-donut__segment');
-            if (segment) {
-                // Store the target as a CSS custom property for the transition
-                segment.style.setProperty('--donut-target', target);
-                // Start at full offset (hidden)
-                segment.style.strokeDashoffset = CIRCUMFERENCE;
-            }
-        });
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        observer.observe(container);
     },
 
     // ── ROTARY ENCODER ─────────────────────────────────────────────────────
@@ -104,7 +105,7 @@ const SvgComponents = {
 
         let active      = false;
         let currentTier = 1; // start at $20
-        let currentAngle = 0;
+        let currentAngle = 0; // eslint-disable-line no-unused-vars -- tracked for future dial feature
 
         const getAngle = (e) => {
             const rect  = encoder.getBoundingClientRect();

@@ -252,7 +252,7 @@ const QueueUI = {
                     return;
                 }
             }
-        } catch (error) {
+        } catch (_error) {
             if (typeof Debug !== 'undefined') Debug.log('QueueUI', 'API unavailable, using sample data');
         }
 

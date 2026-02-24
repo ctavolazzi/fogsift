@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-14T04:14:33.814Z
+Generated: 2026-02-24T05:42:39.631Z
 ============================================================
 
 SUMMARY
-  Total:    120
-  Passed:   108
-  Failed:   0
+  Total:    123
+  Passed:   110
+  Failed:   1
   Warnings: 12
-  Pass rate: 90.0%
+  Pass rate: 89.4%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,9 +21,9 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 74 — Found 74 HTML files
-  [PASS] styles.css size: 175.3KB
-  [PASS] app.js size: 62.4KB
+  [PASS] HTML pages built: 77 — Found 77 HTML files
+  [PASS] styles.css size: 188.6KB
+  [PASS] app.js size: 65.7KB
 
 ── HTML Validation ──
   [PASS] 404.html
@@ -34,8 +34,10 @@ SUMMARY
   [PASS] gallery.html
   [PASS] hi.html
   [PASS] index.html
+  [PASS] join.html
   [PASS] keepers-log.html
   [PASS] offers.html
+  [PASS] offline.html
   [PASS] portfolio.html
   [PASS] pricing.html
   [PASS] privacy.html
@@ -50,6 +52,7 @@ SUMMARY
   [PASS] queue/PST-102.html
   [PASS] queue/PST-103.html
   [PASS] queue.html
+  [PASS] svg-components-demo.html
   [PASS] system-status.html
   [PASS] terms.html
   [PASS] vision.html
@@ -102,10 +105,10 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [WARN] ESLint warnings only — 19 warning(s)
+  [WARN] ESLint warnings only — 1 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — 35 a11y issue(s)
+  [WARN] index.html — 33 a11y issue(s)
   [WARN] about.html — 5 a11y issue(s)
   [WARN] offers.html — 21 a11y issue(s)
   [WARN] faq.html — 10 a11y issue(s)
@@ -114,14 +117,14 @@ SUMMARY
   [WARN] portfolio.html — 10 a11y issue(s)
 
 ── Lighthouse ──
-  [WARN] Performance: 61
-  [WARN] Accessibility: 87
+  [FAIL] Performance: 49
+  [WARN] Accessibility: 88
   [WARN] Best Practices: 81
   [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":61,"accessibility":87,"best-practices":81,"seo":100}
+  [PASS] Lighthouse report generated — {"performance":49,"accessibility":88,"best-practices":81,"seo":100}
 
 ── Internal Link Integrity ──
-  [PASS] All 6107 internal links valid
+  [PASS] All 6241 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -129,11 +132,11 @@ SUMMARY
   [PASS] Index has 58 entries
   [PASS] 58/58 entries have valid structure
   [PASS] 58/58 index URLs resolve to files
-  [WARN] Index size: 303.4KB
+  [WARN] Index size: 305.6KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 6.81MB
-  [PASS] No oversized files
+  [PASS] Total dist/ size: 7.85MB
+  [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
   [PASS] manifest.json present
@@ -148,4 +151,4 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ============================================================
-VERDICT: READY TO DEPLOY
+VERDICT: NOT READY — 1 failure(s)

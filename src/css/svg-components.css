@@ -241,7 +241,8 @@
     right: -20px;
     width: 40px;
     height: 0;  /* height 0 + border-top = single clean line, no double fill */
-    border-top: 2px dashed var(--line, #d4c4a8);
+    border-top: 2px dashed var(--chocolate, #4a2c2a);
+    opacity: 0.45;
 }
 
 
@@ -566,12 +567,13 @@
         top: auto;
         bottom: -20px;
         right: auto;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 35px; /* center of 48px circle (24px) + card padding (16px) - 1px */
+        transform: none;
         width: 2px;
         height: 40px;
         border-top: none;
-        border-left: 2px dashed var(--line, #d4c4a8);
+        border-left: 2px dashed var(--chocolate, #4a2c2a);
+        opacity: 0.45;
     }
 
     .svg-encoder {

@@ -168,13 +168,43 @@ pre, code {
     /* === PROCESS === */
     .process-steps {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        max-width: 460px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .process-step {
-        padding: var(--space-md);
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+        gap: var(--space-sm);
+        padding: var(--space-sm) var(--space-md);
         max-width: 100%;
         width: 100%;
+    }
+
+    .process-step .svg-step {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+        margin-top: 2px;
+    }
+
+    .process-step .step-body {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .process-step h3 {
+        text-align: left;
+        font-size: var(--text-base);
+        margin-bottom: var(--space-xs);
+    }
+
+    .process-step p {
+        text-align: left;
     }
 
     /* === ABOUT === */
@@ -202,9 +232,14 @@ pre, code {
     }
 
     .testimonials-stats {
-        gap: var(--space-lg);
+        gap: var(--space-sm);
     }
 
+    .stat-card__number {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    /* Legacy */
     .stat-number {
         font-size: var(--text-xl);
     }

@@ -46,7 +46,7 @@
                 localStorage.setItem(test, test);
                 localStorage.removeItem(test);
                 return true;
-            } catch (e) {
+            } catch (_e) {
                 return false;
             }
         },
@@ -175,7 +175,7 @@
                     try {
                         const item = JSON.parse(localStorage.getItem(key));
                         entries.push({ key, timestamp: item.timestamp });
-                    } catch (e) {
+                    } catch (_e) {
                         // Invalid entry, remove it
                         localStorage.removeItem(key);
                     }

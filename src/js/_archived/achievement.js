@@ -161,7 +161,7 @@ const Achievement = {
             const audio = new Audio(this.soundUrl);
             audio.volume = 0.3;
             audio.play().catch(() => {}); // Ignore autoplay restrictions
-        } catch (e) {}
+        } catch (_e) { /* audio not available */ }
         
         // Auto-hide after 4 seconds
         setTimeout(() => {

@@ -75,7 +75,7 @@ const CookieConsent = {
         document.body.appendChild(banner);
 
         // Trigger reflow then animate in
-        banner.offsetHeight; // eslint-disable-line no-unused-expressions
+        void banner.offsetHeight; // force reflow for animation
         requestAnimationFrame(() => {
             banner.style.opacity = '1';
             banner.style.transform = 'translateY(0)';

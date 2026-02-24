@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-14T04:14:33.814Z",
+  "timestamp": "2026-02-24T05:42:39.631Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,17 +60,17 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 74",
+          "test": "HTML pages built: 77",
           "status": "pass",
-          "detail": "Found 74 HTML files"
+          "detail": "Found 77 HTML files"
         },
         {
-          "test": "styles.css size: 175.3KB",
+          "test": "styles.css size: 188.6KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 62.4KB",
+          "test": "app.js size: 65.7KB",
           "status": "pass",
           "detail": ""
         }
@@ -123,12 +123,22 @@
           "detail": ""
         },
         {
+          "test": "join.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "keepers-log.html",
           "status": "pass",
           "detail": ""
         },
         {
           "test": "offers.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "offline.html",
           "status": "pass",
           "detail": ""
         },
@@ -199,6 +209,11 @@
         },
         {
           "test": "queue.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "svg-components-demo.html",
           "status": "pass",
           "detail": ""
         },
@@ -453,7 +468,7 @@
           "detail": ""
         }
       ],
-      "passed": 74,
+      "passed": 77,
       "failed": 0,
       "warned": 0
     },
@@ -463,7 +478,7 @@
         {
           "test": "ESLint warnings only",
           "status": "warn",
-          "detail": "19 warning(s)"
+          "detail": "1 warning(s)"
         }
       ],
       "passed": 0,
@@ -476,7 +491,7 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "35 a11y issue(s)"
+          "detail": "33 a11y issue(s)"
         },
         {
           "test": "about.html",
@@ -517,12 +532,12 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 61",
-          "status": "warn",
+          "test": "Performance: 49",
+          "status": "fail",
           "detail": ""
         },
         {
-          "test": "Accessibility: 87",
+          "test": "Accessibility: 88",
           "status": "warn",
           "detail": ""
         },
@@ -539,18 +554,18 @@
         {
           "test": "Lighthouse report generated",
           "status": "pass",
-          "detail": "{\"performance\":61,\"accessibility\":87,\"best-practices\":81,\"seo\":100}"
+          "detail": "{\"performance\":49,\"accessibility\":88,\"best-practices\":81,\"seo\":100}"
         }
       ],
       "passed": 2,
-      "failed": 0,
-      "warned": 3
+      "failed": 1,
+      "warned": 2
     },
     {
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 6107 internal links valid",
+          "test": "All 6241 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -588,7 +603,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 303.4KB",
+          "test": "Index size: 305.6KB",
           "status": "warn",
           "detail": ""
         }
@@ -601,14 +616,14 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 6.81MB",
+          "test": "Total dist/ size: 7.85MB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "No oversized files",
-          "status": "pass",
-          "detail": ""
+          "test": "2 file(s) over 500KB",
+          "status": "warn",
+          "detail": "assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB"
         },
         {
           "test": "assets/logo.png present",
@@ -631,9 +646,9 @@
           "detail": ""
         }
       ],
-      "passed": 6,
+      "passed": 5,
       "failed": 0,
-      "warned": 0
+      "warned": 1
     },
     {
       "name": "Security Headers",
@@ -675,9 +690,9 @@
     }
   ],
   "summary": {
-    "total": 120,
-    "passed": 108,
-    "failed": 0,
+    "total": 123,
+    "passed": 110,
+    "failed": 1,
     "warned": 12
   }
 }
