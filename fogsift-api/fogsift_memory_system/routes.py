@@ -1,112 +1,81 @@
-from fastapi import APIRouter, HTTPException
-from typing import Optional
+"""
+Fogsift Memory System - API Routes
+HTTP Endpoints for FastAPI.
+"""
 
-from .schema import (
-    MemoryCreateRequest,
-    MemoryRememberResponse,
-    MemorySearchRequest,
-    MemorySearchResponse,
-    MemoryStatsResponse,
-    MemoryFragment as MemoryFragmentSchema,
+from fastapi import APIRouter, HTTPException, Depends
+from typing import Dict, Any
+import sqlite3
+
+from .models import (
+    FragmentCreate, FragmentResponse, RecallRequest, RecallResponse,
+    LinkCreate, LinkResponse, FragmentStats, ErrorResponse
 )
-from .service import MemoryService
 
-router = APIRouter(prefix="/api/memory", tags=["memory"])
+router = APIRouter(prefix="/api/memory", tags=["Memory"])
 
-# Injected at startup by main.py
-memory_service: Optional[MemoryService] = None
+# Note: The service instance is injected during application startup
+memory_service = None
 
 
-def _require_service() -> MemoryService:
-    if memory_service is None:
-        raise HTTPException(status_code=503, detail="Memory service not initialized")
+def get_service():
+    if not memory_service:
+        raise HTTPException(status_code=500, detail="Memory service not initialized")
     return memory_service
 
 
-def _to_schema(fragment) -> MemoryFragmentSchema:
-    return MemoryFragmentSchema(
-        id=fragment.id,
-        content=fragment.content,
-        topic=fragment.topic,
-        type=fragment.type,
-        importance=fragment.importance,
-        tags=fragment.tags,
-        created_at=fragment.created_at,
-        updated_at=fragment.updated_at,
-    )
+@router.post("/remember", response_model=FragmentResponse)
+async def remember(request: FragmentCreate, service=Depends(get_service)):
+    """Store a new memory fragment."""
+    try:
+        return service.remember(request)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/remember", response_model=MemoryRememberResponse)
-async def remember(request: MemoryCreateRequest):
-    svc = _require_service()
-    fragment = svc.remember(
-        content=request.content,
-        topic=request.topic,
-        type_=request.type,
-        importance=request.importance,
-        tags=request.tags,
-    )
-    return MemoryRememberResponse(
-        success=True,
-        fragment_id=fragment.id,
-        message=f"Stored in topic '{fragment.topic}'",
-    )
+@router.post("/recall", response_model=RecallResponse)
+async def recall(request: RecallRequest, service=Depends(get_service)):
+    """Search for relevant memory fragments."""
+    try:
+        return service.recall(request)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/recall", response_model=list[MemoryFragmentSchema])
-async def recall(
-    topic: Optional[str] = None,
-    memory_type: Optional[str] = None,
-    min_importance: float = 0.0,
-    limit: int = 10,
-    offset: int = 0,
-):
-    svc = _require_service()
-    fragments = svc.recall(
-        topic=topic,
-        type_=memory_type,
-        min_importance=min_importance,
-        limit=limit,
-        offset=offset,
-    )
-    return [_to_schema(f) for f in fragments]
+@router.delete("/forget/{fragment_id}")
+async def forget(fragment_id: str, service=Depends(get_service)):
+    """Delete a memory fragment."""
+    success = service.forget(fragment_id)
+    if not success:
+        raise HTTPException(status_code=404, detail="Fragment not found")
+    return {"success": True, "deleted_id": fragment_id}
 
 
-@router.post("/search", response_model=MemorySearchResponse)
-async def search(request: MemorySearchRequest):
-    svc = _require_service()
-    results = svc.search(
-        query=request.query,
-        topic=request.topic,
-        type_=request.type,
-        limit=request.limit,
-        min_importance=request.min_importance,
-    )
-    return MemorySearchResponse(
-        results=[_to_schema(f) for f in results],
-        count=len(results),
-        query=request.query,
-    )
+@router.post("/link", response_model=LinkResponse)
+async def link_fragments(request: LinkCreate, service=Depends(get_service)):
+    """Create a relationship graph link between two fragments."""
+    try:
+        return service.link(request)
+    except sqlite3.IntegrityError:
+        raise HTTPException(status_code=400, detail="One or both fragment IDs do not exist")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/stats", response_model=MemoryStatsResponse)
-async def stats():
-    svc = _require_service()
-    return MemoryStatsResponse(**svc.stats())
+@router.get("/stats", response_model=FragmentStats)
+async def get_stats(service=Depends(get_service)):
+    """Get system statistics and knowledge base shape."""
+    return service.get_stats()
 
 
-@router.get("/{fragment_id}", response_model=MemoryFragmentSchema)
-async def get_memory(fragment_id: str):
-    svc = _require_service()
-    fragment = svc.get(fragment_id)
-    if fragment is None:
-        raise HTTPException(status_code=404, detail="Memory not found")
-    return _to_schema(fragment)
+@router.get("/topic/{topic}", response_model=RecallResponse)
+async def get_by_topic(topic: str, service=Depends(get_service)):
+    """Get all memory fragments for a specific topic."""
+    req = RecallRequest(topic=topic, token_budget=5000)
+    return service.recall(req)
 
 
-@router.delete("/{fragment_id}")
-async def forget(fragment_id: str):
-    svc = _require_service()
-    if not svc.forget(fragment_id):
-        raise HTTPException(status_code=404, detail="Memory not found")
-    return {"success": True, "fragment_id": fragment_id}
+@router.get("/health")
+async def health_check():
+    """System health check."""
+    return {"status": "online", "system": "Fogsift Memory L1/L2"}
