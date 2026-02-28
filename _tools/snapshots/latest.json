@@ -1,23 +1,27 @@
 {
-  "generated": "2026-02-28T22:34:26.915Z",
+  "generated": "2026-02-28T23:17:18.989Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "claude/setup-fastapi-memory-nqvQa",
     "status": [
-      "M _tools/snapshots/context-brief.md"
+      "M _tools/snapshots/context-brief.md",
+      " M src/css/terminal.css",
+      " M src/js/terminal-demo.js",
+      " M src/wiki/architecture/memory-system.md",
+      " M src/wiki/index.json"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal",
+      "10e4771 feat: replace memory system with canonical L1/L2 implementation",
+      "41e6698 chore: update auto-generated session snapshots",
+      "8e861ca feat: add FastAPI memory system (fogsift-api)",
       "f4eb995 feat: process steps timeline, accordion redesign, stat cards, connectors",
       "1ce91c1 fix: center rotating highlight using flex wrap on hero-prompt",
       "4c80b79 fix: center rotating hero prompt on wrap + SVG icons in flip panels",
       "ef88621 feat: hero flip panels — 2×2 grid cycling phrases in + rotation order",
       "6421f0e fix: extract WikiNav inline script → external wiki-nav.js (CSP compliance)",
-      "8d0604b fix: iso-square layout bounds, caret gradient, food security cycle",
-      "ef0a3e9 fix: hide tab labels on mobile — icon-only buttons in scroll strip",
-      "367bbef fix: clean URL 404s locally, canonical URLs without .html extension",
-      "7165743 fix: step connector artifact, SVG animation, Three.js warn, rabbit hint",
-      "18b155f feat: v0.2.0 — The White Rabbit"
+      "8d0604b fix: iso-square layout bounds, caret gradient, food security cycle"
     ],
     "tags": [],
     "lastTag": "none",
@@ -190,6 +194,12 @@
         "lines": 292
       },
       {
+        "path": "css/terminal.css",
+        "size": 6988,
+        "modified": "2026-02-28T23:09:11.189Z",
+        "lines": 303
+      },
+      {
         "path": "css/tokens.css",
         "size": 22514,
         "modified": "2026-02-28T22:34:23.581Z",
@@ -304,6 +314,12 @@
         "size": 8217,
         "modified": "2026-02-28T22:34:23.611Z",
         "lines": 209
+      },
+      {
+        "path": "js/terminal-demo.js",
+        "size": 15206,
+        "modified": "2026-02-28T23:15:01.057Z",
+        "lines": 346
       },
       {
         "path": "js/theme-init.js",
@@ -868,6 +884,12 @@
         "lines": 257
       },
       {
+        "path": "wiki/architecture/memory-system.md",
+        "size": 7397,
+        "modified": "2026-02-28T23:10:40.018Z",
+        "lines": 179
+      },
+      {
         "path": "wiki/case-studies/communication-breakdown.md",
         "size": 5130,
         "modified": "2026-02-28T22:34:23.622Z",
@@ -1097,9 +1119,9 @@
       },
       {
         "path": "wiki/index.json",
-        "size": 4305,
-        "modified": "2026-02-28T22:34:23.738Z",
-        "lines": 92
+        "size": 4511,
+        "modified": "2026-02-28T23:07:30.390Z",
+        "lines": 100
       },
       {
         "path": "wiki/tools/assumption-mapping.md",
@@ -1147,15 +1169,15 @@
   },
   "build": {
     "exists": true,
-    "htmlPageCount": 77,
+    "htmlPageCount": 78,
     "keyFileSizes": {
-      "styles.css": 197096,
-      "app.js": 67342,
+      "styles.css": 201763,
+      "app.js": 76425,
       "theme-init.js": 661,
-      "search-index.json": 314563,
-      "index.html": 77905
+      "search-index.json": 326848,
+      "index.html": 77815
     },
-    "totalFiles": 132
+    "totalFiles": 133
   },
   "tests": {
     "timestamp": "2026-02-24T05:42:39.631Z",
@@ -1224,8 +1246,9 @@
   },
   "wiki": {
     "exists": true,
-    "totalPages": 45,
+    "totalPages": 46,
     "categories": {
+      "architecture": 1,
       "case-studies": 5,
       "concepts": 10,
       "root": 6,
@@ -1274,15 +1297,15 @@
   "summary": {
     "version": "0.2.0",
     "branch": "claude/setup-fastapi-memory-nqvQa",
-    "uncommittedFiles": 1,
+    "uncommittedFiles": 5,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
-    "srcCssFiles": 21,
-    "srcJsFiles": 25,
+    "srcCssFiles": 22,
+    "srcJsFiles": 26,
     "srcHtmlFiles": 29,
-    "srcTotalLines": 29709,
-    "builtPages": 77,
-    "wikiPages": 45,
+    "srcTotalLines": 30358,
+    "builtPages": 78,
+    "wikiPages": 46,
     "testsPassed": 110,
     "testsFailed": 1,
     "testsWarned": 12,

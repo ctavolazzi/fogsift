@@ -1,5 +1,5 @@
 # FogSift Context Brief
-Generated: 2026-02-28T22:34:26.847Z
+Generated: 2026-02-28T23:17:18.923Z
 
 ## Quick Status
 | Metric | Value |
@@ -8,22 +8,25 @@ Generated: 2026-02-28T22:34:26.847Z
 | Branch | claude/setup-fastapi-memory-nqvQa |
 | Last release | none |
 | Commits since release | 0 |
-| Uncommitted files | 0 |
+| Uncommitted files | 4 |
 | Unpushed commits | 0 |
-| Built pages | 77 |
-| Wiki pages | 45 |
-| Source: 21 CSS, 23 JS | dist: 192.5KB CSS, 65.8KB JS |
+| Built pages | 78 |
+| Wiki pages | 46 |
+| Source: 22 CSS, 24 JS | dist: 197.0KB CSS, 74.6KB JS |
 
 ## Test Results
 110 pass / 1 fail / 12 warn (89.4%)
 Lighthouse: Perf 49 | A11y 88 | BP 81 | SEO 100
 
+## Uncommitted Changes
+Modified: rc/css/terminal.css, src/js/terminal-demo.js, src/wiki/architecture/memory-system.md, src/wiki/index.json
+
 ## Recent Commits
+- aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal
+- 10e4771 feat: replace memory system with canonical L1/L2 implementation
+- 41e6698 chore: update auto-generated session snapshots
+- 8e861ca feat: add FastAPI memory system (fogsift-api)
 - f4eb995 feat: process steps timeline, accordion redesign, stat cards, connectors
-- 1ce91c1 fix: center rotating highlight using flex wrap on hero-prompt
-- 4c80b79 fix: center rotating hero prompt on wrap + SVG icons in flip panels
-- ef88621 feat: hero flip panels — 2×2 grid cycling phrases in + rotation order
-- 6421f0e fix: extract WikiNav inline script → external wiki-nav.js (CSP compliance)
 
 ## Development Infrastructure
 | Port | Tool | Status |
