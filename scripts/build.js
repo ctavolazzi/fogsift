@@ -279,7 +279,8 @@ const JS_FILES = [
     // Future features (uncomment when implemented):
     // 'src/js/achievement.js', // Xbox-style achievement notifications
     // 'src/js/queue-widget.js', // Queue status floating widget
-    'src/js/terminal-demo.js',  // CRT terminal exhibit player (wiki architecture page)
+    'src/js/terminal-demo.js',        // CRT terminal exhibit player (wiki architecture page)
+    'src/js/terminal-interactive.js', // CRT interactive sandbox (wiki terminal-component page)
     'src/js/main.js',
 ];
 

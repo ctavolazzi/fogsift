@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrospective | Fogsift Wiki</title>
-    <meta name="description" content="A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn't? What will we change? It's the simple">
+    <title>Terminal Component | Fogsift Wiki</title>
+    <meta name="description" content="The FogSift CRT terminal renders in two modes: **playback** (scripted exhibits that run automatically) and **interactive** (a sandboxed prompt you type into). T">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/tools/retrospective">
+    <link rel="canonical" href="https://fogsift.com/wiki/architecture/terminal-component">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Retrospective | Fogsift Wiki">
-    <meta property="og:description" content="A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn't? What will we change? It's the simple">
+    <meta property="og:title" content="Terminal Component | Fogsift Wiki">
+    <meta property="og:description" content="The FogSift CRT terminal renders in two modes: **playback** (scripted exhibits that run automatically) and **interactive** (a sandboxed prompt you type into). T">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/tools/retrospective">
+    <meta property="og:url" content="https://fogsift.com/wiki/architecture/terminal-component">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -169,7 +169,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">RETROSPECTIVE</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">TERMINAL COMPONENT</span></li>
             </ol>
         </nav>
 
@@ -248,7 +248,7 @@
   <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>Cognitive Architecture</h4>
   <ul class="wiki-nav-list">
     <li><a href="../architecture/memory-system.html">Memory System</a></li>
-    <li><a href="../architecture/terminal-component.html">Terminal Component</a></li>
+    <li><a href="../architecture/terminal-component.html" class="active">Terminal Component</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -260,7 +260,7 @@
     <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
     <li><a href="../tools/time-boxing.html">Time-Boxing</a></li>
     <li><a href="../tools/assumption-mapping.html">Assumption Mapping</a></li>
-    <li><a href="../tools/retrospective.html" class="active">Retrospective</a></li>
+    <li><a href="../tools/retrospective.html">Retrospective</a></li>
   </ul>
 </div>
 
@@ -270,118 +270,129 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Retrospective</h1>
-<p>A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn&#39;t? What will we change? It&#39;s the simplest tool for continuous improvement, and the most neglected.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;Insanity is doing the same thing over and over and expecting different results.&quot;</p>
-</blockquote>
-<p>If you don&#39;t stop to examine what happened, you&#39;ll repeat every mistake. A retrospective is the forcing function that turns experience into learning.</p>
-<h2>The Basic Format</h2>
-<h3>1. What Went Well?</h3>
-<p>Start positive. What worked? What should you keep doing? What surprised you in a good way?</p>
-<p>This isn&#39;t fluff. Recognizing what works is as important as fixing what doesn&#39;t. Teams that only focus on problems burn out. Teams that celebrate wins and understand <em>why</em> they won build momentum.</p>
-<h3>2. What Didn&#39;t Go Well?</h3>
-<p>What frustrated you? What took too long? Where did communication break down? What would you do differently?</p>
-<p><strong>Ground rules:</strong></p>
-<ul>
-<li>No blame. Focus on systems, not people.</li>
-<li>Be specific. &quot;Communication was bad&quot; isn&#39;t useful. &quot;We didn&#39;t know the API spec changed until production broke&quot; is.</li>
-<li>Include things that <em>almost</em> went wrong. Near-misses are free lessons.</li>
-</ul>
-<h3>3. What Will We Change?</h3>
-<p>This is where most retrospectives fail. Without concrete action items, the retro was just venting.</p>
-<p><strong>Good action items are:</strong></p>
-<ul>
-<li><strong>Specific:</strong> &quot;Add a staging environment check to the deploy process&quot; not &quot;improve testing&quot;</li>
-<li><strong>Owned:</strong> One person responsible, with a deadline</li>
-<li><strong>Measurable:</strong> You can tell if it was done</li>
-<li><strong>Small:</strong> One change is better than ten aspirations</li>
-</ul>
-<p><strong>Limit to 1-3 action items.</strong> If you try to change everything, you change nothing.</p>
-<h2>Retrospective Formats</h2>
-<h3>Start/Stop/Continue</h3>
-<ul>
-<li><strong>Start:</strong> What new things should we try?</li>
-<li><strong>Stop:</strong> What should we stop doing?</li>
-<li><strong>Continue:</strong> What&#39;s working that we should keep?</li>
-</ul>
-<p>Good for teams that need to shake up habits.</p>
-<h3>Mad/Sad/Glad</h3>
-<ul>
-<li><strong>Mad:</strong> What made you angry or frustrated?</li>
-<li><strong>Sad:</strong> What disappointed you?</li>
-<li><strong>Glad:</strong> What made you happy?</li>
-</ul>
-<p>Good for surfacing emotional responses that logic-focused retros miss.</p>
-<h3>4Ls</h3>
-<ul>
-<li><strong>Liked:</strong> What did you enjoy?</li>
-<li><strong>Learned:</strong> What did you discover?</li>
-<li><strong>Lacked:</strong> What was missing?</li>
-<li><strong>Longed for:</strong> What do you wish you had?</li>
-</ul>
-<p>Good for learning-focused teams.</p>
-<h3>Sailboat</h3>
-<p>Visual metaphor:</p>
-<ul>
-<li><strong>Wind (propelling):</strong> What&#39;s pushing us forward?</li>
-<li><strong>Anchor (dragging):</strong> What&#39;s holding us back?</li>
-<li><strong>Rocks (risks):</strong> What could sink us?</li>
-<li><strong>Island (goal):</strong> Where are we trying to get?</li>
-</ul>
-<p>Good for teams that think visually or need a fresh format.</p>
-<h3>Timeline</h3>
-<p>Map out the project chronologically. At each major event, capture:</p>
-<ul>
-<li>What happened?</li>
-<li>How did it feel at the time?</li>
-<li>What was the impact?</li>
-<li>What would you do differently?</li>
-</ul>
-<p>Good for longer projects where cause-and-effect matters.</p>
-<h2>Running an Effective Retro</h2>
-<h3>Before</h3>
-<ul>
-<li><strong>Schedule it.</strong> Don&#39;t skip it because you&#39;re &quot;too busy.&quot; That&#39;s when you need it most.</li>
-<li><strong>Set the stage.</strong> Remind everyone: this is about improvement, not blame.</li>
-<li><strong>Review last retro&#39;s action items.</strong> Did you do them? If not, why not?</li>
-</ul>
-<h3>During</h3>
-<ul>
-<li><strong>Time-box it.</strong> 60-90 minutes max. Use a timer for each section.</li>
-<li><strong>Equal voice.</strong> Introverts write silently first. Then discuss. Don&#39;t let the loudest voice dominate.</li>
-<li><strong>Facilitator rotates.</strong> Having the same person run every retro creates patterns. Rotate.</li>
-<li><strong>Vote on priorities.</strong> If 20 items surface, dot-vote to find the top 3.</li>
-</ul>
-<h3>After</h3>
-<ul>
-<li><strong>Write up action items.</strong> Assign owners and deadlines.</li>
-<li><strong>Share the notes.</strong> Even with people who weren&#39;t in the room.</li>
-<li><strong>Follow up.</strong> Check on action items before the next retro.</li>
-</ul>
-<h2>For Solo Practitioners</h2>
-<p>Retros aren&#39;t just for teams. A weekly personal retrospective is one of the highest-leverage habits you can build:</p>
-<ol>
-<li><strong>Friday, 15 minutes:</strong> What went well this week? What didn&#39;t? What&#39;s one thing I&#39;ll do differently next week?</li>
-<li><strong>Write it down.</strong> Your memory is unreliable. A written log compounds into real self-knowledge.</li>
-<li><strong>Review monthly.</strong> Patterns emerge that aren&#39;t visible week-to-week.</li>
-</ol>
-<h2>Common Pitfalls</h2>
-<h3>Blame Games</h3>
-<p>&quot;John didn&#39;t finish his work&quot; is not a retrospective insight. &quot;Our estimation process consistently underestimates front-end work&quot; is. Focus on systems, not individuals. If someone isn&#39;t performing, that&#39;s a separate conversation.</p>
-<h3>No Follow-Through</h3>
-<p>The fastest way to kill retrospectives: never act on the action items. If nothing changes after the retro, people stop engaging. Check on action items at the start of every retro.</p>
-<h3>Too Infrequent</h3>
-<p>Monthly retros are too late. By the time you discuss a problem from week 1, you&#39;ve already repeated it 3 more times. Run retros at the end of each sprint or work cycle.</p>
-<h3>Too Long</h3>
-<p>If a retro takes 3 hours, it&#39;s not a retro — it&#39;s a therapy session. Time-box ruthlessly. If issues are too complex for the retro, create a separate working session.</p>
-<h3>Recency Bias</h3>
-<p>Teams remember last week&#39;s crisis but forget the quiet success from three weeks ago. A timeline format or pre-retro survey helps counter this.</p>
-<h2>The Meta-Lesson</h2>
-<p>A retrospective is itself a <a href="/wiki/frameworks/feedback-loops.html">feedback loop</a>. You do work, observe results, reflect, and adjust. Teams that master this loop improve exponentially. Teams that skip it repeat the same year of experience ten times and call it &quot;ten years of experience.&quot;</p>
+                <h1>Terminal Component</h1>
+<p>The FogSift CRT terminal renders in two modes: <strong>playback</strong> (scripted exhibits that run automatically) and <strong>interactive</strong> (a sandboxed prompt you type into). This page is the interactive mode demo.</p>
+<p>One prompt. Three languages. One accepted command each. Anything else gets a response — sometimes a very specific one.</p>
 <hr>
-<p><em>See also: <a href="/wiki/frameworks/feedback-loops.html">Feedback Loops</a> | <a href="/wiki/tools/process-mapping.html">Process Mapping</a> | <a href="/wiki/concepts/compounding.html">Compounding Effects</a></em></p>
+<h2>The Sandbox</h2>
+<p>Select a language. Type the hello world statement for that language. Press Enter.</p>
+<p>That is the full spec. The terminal tells you what it accepts, and it tells you exactly why everything else fails.</p>
+<div class="terminal-crt terminal-crt--interactive" role="region" aria-label="Interactive hello world terminal sandbox">
+  <div class="terminal-header">
+    <span class="terminal-brand">FOGSIFT SYSTEMS&#8482;</span>
+    <span class="terminal-title">HELLO WORLD // INTERACTIVE SANDBOX v1.0</span>
+    <span class="terminal-status">ONLINE</span>
+  </div>
+  <div class="terminal-screen">
+    <div class="terminal-output" aria-live="polite" aria-label="Terminal output"></div>
+    <div class="terminal-input-area">
+      <nav class="terminal-lang-selector" aria-label="Language selection">
+        <button class="terminal-lang-btn terminal-lang-btn--active" data-lang="python" type="button">PYTHON</button>
+        <button class="terminal-lang-btn" data-lang="javascript" type="button">JAVASCRIPT</button>
+        <button class="terminal-lang-btn" data-lang="bash" type="button">BASH</button>
+      </nav>
+      <div class="terminal-prompt-row">
+        <span class="terminal-prompt-symbol" aria-hidden="true">&gt;&gt;&gt; </span>
+        <input
+          class="terminal-input"
+          type="text"
+          aria-label="Python command input"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+          maxlength="200"
+          placeholder='print("Hello, World!")'
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<p>The terminal accepts exactly one command per language. Anything else — wrong syntax, close-but-not-quite, or deliberate attack — gets a specific response explaining what happened and why.</p>
+<hr>
+<h2>What You Should Have Seen</h2>
+<p><strong>Happy path.</strong> You typed <code>print(&quot;Hello, World!&quot;)</code>, pressed Enter, and got <code>Hello, World!</code> back. The sandbox matched your input against the allow-list and emitted the simulated output. No interpreter ran. No process started.</p>
+<p><strong>Wrong input.</strong> You typed something close — extra space, wrong quotes, wrong capitalisation. The terminal echoed <code>[ERROR] Command not recognised</code> and showed you the exact accepted form.</p>
+<p><strong>Something creative.</strong> You tried to break it. You got a <code>[BLOCKED]</code> message with the category of attack detected and two lines explaining exactly why that technique has no effect here.</p>
+<p><strong>Nothing happened to your computer.</strong> Correct. That&#39;s the point.</p>
+<hr>
+<h2>How the Sandbox Works</h2>
+<p>There is no interpreter, no server call, no eval, no exec.</p>
+<p>When you press Enter, your input string goes through two checks:</p>
+<p><strong>Step 1 — Honey pot pattern matching.</strong>
+The sandbox tests your input against a table of regular expressions covering known attack categories: code execution (<code>eval</code>, <code>exec</code>, <code>__import__</code>), OS access, SQL injection, XSS, path traversal, shell chaining, network requests, browser storage, and null byte injection. A match produces a <code>[BLOCKED]</code> message that names the category and explains why the technique doesn&#39;t apply.</p>
+<p><strong>Step 2 — Allow-list comparison.</strong>
+Your input is compared, case-insensitively, against a small set of exact strings for the selected language. Match → simulated output. No match → <code>[ERROR]</code> with a hint.</p>
+<p>That&#39;s everything. Two steps. No runtime. No surface.</p>
+<h3>The attack categories and why they fail</h3>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Example attempt</th>
+<th>Why it fails here</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code execution</td>
+<td><code>eval(input())</code></td>
+<td>No interpreter. Input is compared, not executed.</td>
+</tr>
+<tr>
+<td>Module import</td>
+<td><code>import os; os.system(...)</code></td>
+<td>No module loader. No Python runtime.</td>
+</tr>
+<tr>
+<td>Shell injection</td>
+<td><code>echo hi &amp;&amp; rm -rf /</code></td>
+<td>No shell. Each input is one string comparison.</td>
+</tr>
+<tr>
+<td>SQL injection</td>
+<td><code>&#39;; DROP TABLE fragments;--</code></td>
+<td>No database connection from the browser prompt.</td>
+</tr>
+<tr>
+<td>XSS</td>
+<td><code>&lt;script&gt;alert(1)&lt;/script&gt;</code></td>
+<td>Input goes through <code>textContent</code>, never <code>innerHTML</code>.</td>
+</tr>
+<tr>
+<td>Event injection</td>
+<td><code>onerror=&quot;alert(1)&quot;</code></td>
+<td>No HTML parsing. No attribute evaluation.</td>
+</tr>
+<tr>
+<td>Path traversal</td>
+<td><code>../../etc/passwd</code></td>
+<td>No filesystem. No path resolution.</td>
+</tr>
+<tr>
+<td>Network request</td>
+<td><code>fetch(&quot;https://...&quot;)</code></td>
+<td>No execution means no fetch call.</td>
+</tr>
+<tr>
+<td>Browser storage</td>
+<td><code>localStorage.setItem(...)</code></td>
+<td>No access to browser globals from this prompt.</td>
+</tr>
+<tr>
+<td>Null bytes</td>
+<td><code>\x00</code>, <code>%00</code></td>
+<td>String comparison is immune to null byte tricks.</td>
+</tr>
+</tbody></table>
+<h3>Why this is safe even without the detection layer</h3>
+<p>The detection layer produces educational messages, but the sandbox is safe regardless.</p>
+<p>The terminal appends text via <code>textContent</code>, never <code>innerHTML</code>. It never calls <code>eval()</code>, <code>Function()</code>, or <code>new Function()</code>. It never writes to the DOM in ways a script tag could exploit. It makes no server requests based on input. It has no privileged surface.</p>
+<p>Even if a pattern slipped through the detection table, the worst outcome is an unstyled string in the output area. There is no escalation path.</p>
+<h3>The allow-list is intentionally strict</h3>
+<p><code>print(&quot;Hello, World!&quot;)</code> is accepted. <code>print( &quot;Hello, World!&quot; )</code> is not. The extra spaces are intentional friction. The sandbox is explicit about what it accepts rather than trying to be lenient. That strictness is the lesson: real input validation is specific and unforgiving. Leniency is where injection finds its foothold.</p>
+<hr>
+<p><em>See also: <a href="/wiki/architecture/memory-system">Memory System</a> — <a href="/wiki/diagnostic-process">The Diagnostic Process</a> — <a href="/wiki/concepts/systems-thinking">Systems Thinking</a></em></p>
 
             </article>
 

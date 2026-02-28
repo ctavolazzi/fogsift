@@ -183,12 +183,16 @@
     },
     {
       "id": "architecture",
-      "title": "Architecture",
+      "title": "Cognitive Architecture",
       "icon": "layers",
       "pages": [
         {
           "slug": "architecture/memory-system",
-          "title": "Fogsift Memory System"
+          "title": "Memory System"
+        },
+        {
+          "slug": "architecture/terminal-component",
+          "title": "Terminal Component"
         }
       ]
     },
@@ -228,6 +232,6 @@
       ]
     }
   ],
-  "buildDate": "2026-02-28T23:06:15.874Z",
-  "buildTimestamp": 1772319975874
+  "buildDate": "2026-02-28T23:22:18.017Z",
+  "buildTimestamp": 1772320938017
 }

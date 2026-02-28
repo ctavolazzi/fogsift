@@ -268,10 +268,136 @@
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
-  .terminal-screen { padding: 0.8rem 1rem 0.6rem; }
-  .terminal-output { font-size: 0.68rem; max-height: 280px; }
-  .terminal-header { padding: 0.45rem 0.8rem; gap: 0.6rem; }
+  .terminal-screen { padding: 0.8rem 0.9rem 0.6rem; }
+  .terminal-output { font-size: 0.68rem; max-height: 260px; line-height: 1.5; }
+  .terminal-header { padding: 0.4rem 0.8rem; gap: 0.5rem; flex-wrap: nowrap; }
   .terminal-title { display: none; }
+  .terminal-brand { font-size: 0.6rem; }
+  /* Ensure buttons are large enough for touch — 44px minimum */
+  .terminal-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.65rem;
+    min-height: 44px;
+    min-width: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .terminal-nav { gap: 0.5rem; }
+  .terminal-exhibit-label { font-size: 0.55rem; max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
+@media (max-width: 380px) {
+  .terminal-output { font-size: 0.62rem; max-height: 220px; }
+  .terminal-header { padding: 0.35rem 0.6rem; }
+}
+
+/* ── Interactive terminal mode ──────────────────────────────────────────
+   Used by terminal-interactive.js on .terminal-crt--interactive elements.
+   The .terminal-input-area sits below .terminal-output inside .terminal-screen. */
+
+.terminal-input-area {
+  border-top: 1px solid var(--t-border);
+  margin-top: 0.7rem;
+  padding-top: 0.6rem;
+  position: relative;
+  z-index: 21;
+}
+
+/* Language selector row */
+.terminal-lang-selector {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.terminal-lang-btn {
+  background: transparent;
+  border: 1px solid var(--t-border);
+  color: var(--t-phosphor-dim);
+  font-family: var(--t-font);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  padding: 0.25rem 0.65rem;
+  cursor: pointer;
+  border-radius: 2px;
+  text-transform: uppercase;
+  transition: color 0.15s, border-color 0.15s, text-shadow 0.15s;
+}
+
+.terminal-lang-btn:hover,
+.terminal-lang-btn:focus {
+  color: var(--t-phosphor);
+  border-color: var(--t-phosphor-dim);
+  text-shadow: var(--t-glow);
+  outline: none;
+}
+
+.terminal-lang-btn--active {
+  color: var(--t-phosphor);
+  border-color: var(--t-phosphor);
+  text-shadow: var(--t-glow);
+}
+
+/* Prompt row: symbol + text input */
+.terminal-prompt-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.terminal-prompt-symbol {
+  font-family: var(--t-font);
+  font-size: 0.75rem;
+  color: var(--t-phosphor);
+  text-shadow: var(--t-glow);
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.terminal-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--t-phosphor-bright);
+  font-family: var(--t-font);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  caret-color: var(--t-phosphor);
+  text-shadow: var(--t-glow-strong);
+  padding: 0;
+  min-width: 0;
+  /* prevent mobile zoom on focus (iOS requires font-size ≥ 16px for no-zoom, but
+     we keep it small and accept that trade-off for the CRT aesthetic) */
+}
+
+.terminal-input::placeholder {
+  color: var(--t-phosphor-dim);
+  opacity: 0.45;
+  text-shadow: none;
+}
+
+/* Responsive: interactive mode */
+@media (max-width: 600px) {
+  .terminal-lang-btn {
+    padding: 0.5rem 0.8rem;
+    min-height: 40px;
+    font-size: 0.6rem;
+  }
+  .terminal-input {
+    font-size: 16px; /* suppress iOS auto-zoom */
+  }
+  .terminal-prompt-symbol {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 380px) {
+  .terminal-lang-selector { gap: 0.3rem; }
+  .terminal-lang-btn { padding: 0.4rem 0.6rem; font-size: 0.55rem; }
 }
 
 /* ── Theme-aware neutral fallback ──

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fogsift Memory System | Fogsift Wiki</title>
-    <meta name="description" content="A SQLite-backed pattern storage engine for consulting work. It preserves what you've learned, surfaces it fast, and knows which memories matter most.">
+    <title>Memory System | Fogsift Wiki</title>
+    <meta name="description" content="A SQLite-backed store for professional knowledge. You put in what you learn. It gives back what's relevant when you ask for it.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
     <link rel="canonical" href="https://fogsift.com/wiki/architecture/memory-system">
@@ -14,8 +14,8 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Fogsift Memory System | Fogsift Wiki">
-    <meta property="og:description" content="A SQLite-backed pattern storage engine for consulting work. It preserves what you've learned, surfaces it fast, and knows which memories matter most.">
+    <meta property="og:title" content="Memory System | Fogsift Wiki">
+    <meta property="og:description" content="A SQLite-backed store for professional knowledge. You put in what you learn. It gives back what's relevant when you ask for it.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://fogsift.com/wiki/architecture/memory-system">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -245,9 +245,10 @@
   </ul>
 </div>
 <div class="wiki-nav-category">
-  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>Architecture</h4>
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>Cognitive Architecture</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../architecture/memory-system.html" class="active">Fogsift Memory System</a></li>
+    <li><a href="../architecture/memory-system.html" class="active">Memory System</a></li>
+    <li><a href="../architecture/terminal-component.html">Terminal Component</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -269,173 +270,212 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Fogsift Memory System</h1>
-<p>A SQLite-backed pattern storage engine for consulting work. It preserves what you&#39;ve learned, surfaces it fast, and knows which memories matter most.</p>
+                <h1>Memory System</h1>
+<p>A SQLite-backed store for professional knowledge. You put in what you learn. It gives back what&#39;s relevant when you ask for it.</p>
 <hr>
-<h2>Why This Exists</h2>
-<p>Consulting work produces repeating signals. The same database anti-patterns appear at client after client. The same communication bottlenecks. The same infrastructure mistakes dressed in different colors.</p>
-<p>Without a memory system, each engagement starts from scratch. Lessons learned on one project stay locked in a document nobody reads. The same root cause gets diagnosed six times across six clients.</p>
-<p>This architecture exists to close that loop: store what you observe, retrieve what&#39;s relevant, and let patterns surface automatically across engagements.</p>
-<blockquote>
-<p>Inspired by <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> — a production-grade MCP server (PostgreSQL + Redis + pgvector) that pioneered fragment-based memory for AI agents. This is a self-contained SQLite adaptation tuned for consulting fieldwork.</p>
-</blockquote>
+<h2>Before You Hit Play</h2>
+<p>The terminal below simulates the live API. Six exhibits run in sequence, each showing one operation. Use the buttons or arrow keys to navigate.</p>
+<table>
+<thead>
+<tr>
+<th>Exhibit</th>
+<th>What It Shows</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. Boot Sequence</td>
+<td>System startup and readiness checks</td>
+</tr>
+<tr>
+<td>2. Store a Memory</td>
+<td><code>POST /remember</code> — saves a fragment with keywords and type</td>
+</tr>
+<tr>
+<td>3. L1 Keyword Recall</td>
+<td><code>POST /recall</code> with keywords — hits the index directly</td>
+</tr>
+<tr>
+<td>4. L2 Metadata Fallback</td>
+<td><code>POST /recall</code> with topic/type — scans when no keywords given</td>
+</tr>
+<tr>
+<td>5. Link Fragments</td>
+<td><code>POST /link</code> — connects two fragments with a typed relationship</td>
+</tr>
+<tr>
+<td>6. System Stats</td>
+<td><code>GET /stats</code> — shows your knowledge base shape</td>
+</tr>
+</tbody></table>
+<div class="terminal-crt">
+  <div class="terminal-header">
+    <span class="terminal-brand">FOGSIFT SYSTEMS&#8482;</span>
+    <span class="terminal-title">COGNITIVE ARCHITECTURE // MEMORY TERMINAL v2.0</span>
+    <span class="terminal-status">ONLINE</span>
+  </div>
+  <div class="terminal-screen">
+    <div class="terminal-output" aria-live="polite" aria-label="Terminal output — use navigation buttons below to change exhibit"></div>
+    <nav class="terminal-nav" aria-label="Exhibit navigation">
+      <button class="terminal-btn" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
+      <span class="terminal-exhibit-info">
+        <span class="terminal-exhibit-label">EXHIBIT 1 OF 6</span>
+      </span>
+      <button class="terminal-btn" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
+    </nav>
+  </div>
+</div>
+
+<p>The terminal auto-advances after 12 seconds. Select any exhibit manually at any time.</p>
 <hr>
-<h2>The Fragment Model</h2>
-<p>A <strong>fragment</strong> is an atomic unit of professional knowledge. One observation. One decision. One mistake pattern. Not a session summary — a specific, retrievable fact.</p>
-<p>Every fragment carries:</p>
+<h2>The Fragment</h2>
+<p>A <strong>fragment</strong> is one atomic unit of knowledge. One observation. One mistake. One decision. Not a session summary — a specific, retrievable fact.</p>
+<h3>Fields</h3>
 <table>
 <thead>
 <tr>
 <th>Field</th>
+<th>Type</th>
+<th>Constraint</th>
 <th>Description</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>content</code></td>
-<td>1–3 sentences. The actual memory.</td>
+<td>string</td>
+<td>1–10,000 chars</td>
+<td>The actual memory. 1–3 sentences.</td>
 </tr>
 <tr>
 <td><code>topic</code></td>
-<td>Organizational category (e.g. <code>&quot;redis&quot;</code>, <code>&quot;auth&quot;</code>, <code>&quot;frontend&quot;</code>)</td>
+<td>string</td>
+<td>1–100 chars</td>
+<td>Category label, e.g. <code>redis</code>, <code>auth</code></td>
 </tr>
 <tr>
 <td><code>type</code></td>
-<td>Classification (see below)</td>
+<td>enum</td>
+<td>see below</td>
+<td>Classification</td>
 </tr>
 <tr>
 <td><code>importance</code></td>
-<td>0.0–1.0, defaults by type</td>
+<td>float</td>
+<td>0.0–1.0</td>
+<td>Defaults by type if not given</td>
 </tr>
 <tr>
 <td><code>ttl_tier</code></td>
-<td>Temperature: <code>hot</code>, <code>warm</code>, or <code>cold</code></td>
+<td>enum</td>
+<td>hot / warm / cold</td>
+<td>Temperature based on access</td>
 </tr>
 <tr>
 <td><code>keywords</code></td>
-<td>Index terms for L1 retrieval</td>
+<td>string[]</td>
+<td>max 20, 100 chars each</td>
+<td>Index terms for fast retrieval</td>
 </tr>
 <tr>
 <td><code>reference_count</code></td>
-<td>How often this fragment has been recalled</td>
+<td>int</td>
+<td>≥0</td>
+<td>How often this was recalled</td>
 </tr>
 <tr>
 <td><code>source</code></td>
-<td>Optional origin metadata (client, session, date)</td>
+<td>object</td>
+<td>optional</td>
+<td>Origin metadata (client, date, etc.)</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td>string</td>
+<td>permanent / session</td>
+<td>Whether it survives the session</td>
 </tr>
 </tbody></table>
-<h3>Fragment Types</h3>
-<p>The six types encode the nature of the knowledge:</p>
+<h3>Types and Default Importance</h3>
+<p>Each type carries a default importance score. You can override it explicitly.</p>
 <table>
 <thead>
 <tr>
 <th>Type</th>
-<th>Importance Default</th>
-<th>Use For</th>
+<th>Default</th>
+<th>Store this when...</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>preference</code></td>
-<td>0.95</td>
-<td>Your style rules, non-negotiables</td>
+<td><strong>0.95</strong></td>
+<td>You have a non-negotiable style or process rule</td>
 </tr>
 <tr>
 <td><code>error</code></td>
-<td>0.90</td>
-<td>Mistake patterns — never forget</td>
+<td><strong>0.90</strong></td>
+<td>You made a mistake that cost something — never forget</td>
 </tr>
 <tr>
 <td><code>solution_approach</code></td>
-<td>0.85</td>
-<td>How you solved something</td>
+<td><strong>0.85</strong></td>
+<td>You found something that worked</td>
 </tr>
 <tr>
 <td><code>decision</code></td>
-<td>0.70</td>
-<td>Why you chose A over B</td>
+<td><strong>0.70</strong></td>
+<td>You chose A over B and want to remember why</td>
 </tr>
 <tr>
 <td><code>procedure</code></td>
-<td>0.65</td>
-<td>Repeatable workflows</td>
+<td><strong>0.65</strong></td>
+<td>You have a repeatable workflow</td>
 </tr>
 <tr>
 <td><code>client_pattern</code></td>
-<td>0.60</td>
-<td>Recurring problem shapes across clients</td>
+<td><strong>0.60</strong></td>
+<td>You see the same problem shape across clients</td>
 </tr>
 </tbody></table>
-<h3>Memory Temperature (TTL Tiers)</h3>
-<p>Fragments are born <strong>hot</strong> and cool over time as they go unreferenced:</p>
-<pre><code>HOT   → Recently retrieved. Front of mind.
-WARM  → Occasionally recalled. Background knowledge.
-COLD  → Rarely accessed. Historical record.
-</code></pre>
-<p>Every recall automatically increments <code>reference_count</code> and updates <code>last_referenced</code>, keeping frequently-used knowledge at the surface.</p>
+<h3>Memory Temperature</h3>
+<p>New fragments start <strong>hot</strong>. Access frequency drives temperature:</p>
+<ul>
+<li><strong>HOT</strong> — recently retrieved. Surfaces first.</li>
+<li><strong>WARM</strong> — occasionally recalled. Background knowledge.</li>
+<li><strong>COLD</strong> — rarely accessed. Historical record.</li>
+</ul>
+<p>Every recall increments <code>reference_count</code> and updates <code>last_referenced</code>. The system tracks which memories are actually useful to you.</p>
 <hr>
-<h2>Search Architecture: L1 and L2</h2>
-<p>The system uses a two-tier retrieval strategy, mirroring how the full Memento MCP uses three tiers (L1 Redis → L2 PostgreSQL GIN → L3 pgvector).</p>
-<pre><code>Query arrives
-     │
-     ▼
-┌─────────────┐
-│  Keywords   │ ──── L1: Keyword index lookup
-│  provided?  │      SELECT DISTINCT f.* FROM fragments f
-└──────┬──────┘      JOIN keywords k ON f.id = k.fragment_id
-       │ YES         WHERE k.keyword IN (...)
-       ▼             Sub-millisecond. Exact match.
-   L1 Results ────────────────────────────────────────► Return
-       │ (empty)
-       ▼
-┌─────────────┐
-│ topic/type  │ ──── L2: Metadata filter
-│  provided?  │      SELECT * FROM fragments
-└──────┬──────┘      WHERE topic = ? AND type = ?
-       │ YES         ORDER BY importance DESC, last_referenced DESC
-       ▼             Fast. Covers recent high-importance fragments.
-   L2 Results ────────────────────────────────────────► Return
-</code></pre>
-<p><strong>Token budgeting</strong> caps responses: fragments are added to the result set in descending importance order until the token budget is exhausted (estimated at 1 char ≈ 0.25 tokens). This prevents context window bloat.</p>
+<h2>How Search Works</h2>
+<p>The system uses two retrieval tiers, chosen automatically based on your query:</p>
+<p><strong>L1 — Keyword Index (fast path)</strong>
+Used when you provide <code>keywords</code>. Queries the keyword index directly. This is the path to design for — it works regardless of database size, and the query plan is predictable.</p>
+<p><strong>L2 — Metadata Filter (fallback)</strong>
+Used when no keywords are given but <code>topic</code> or <code>type</code> is. Scans the <code>fragments</code> table filtered by your criteria, ordered by importance then recency. Covered by indexes on topic, type, importance, and last_referenced.</p>
+<p><strong>Token budget</strong>
+Results are assembled in descending importance order until the <code>token_budget</code> is reached. The budget uses a 4-characters-per-token estimate. This prevents a recall from flooding a language model context window.</p>
+<p><strong>Practical note:</strong> Put explicit keywords on every fragment you store. L1 retrieval is what you want. L2 is what happens when you didn&#39;t.</p>
 <hr>
-<h2>Database Schema</h2>
-<p>Four tables. Indexes designed around the query patterns.</p>
-<pre><code class="language-sql">-- Core storage
-fragments (
-    id TEXT PRIMARY KEY,
-    content TEXT NOT NULL,        -- max 10,000 chars via Pydantic
-    topic TEXT NOT NULL,          -- max 100 chars
-    type TEXT NOT NULL,           -- CHECK: valid FragmentType enum
-    importance REAL,              -- CHECK: 0.0–1.0
-    scope TEXT,                   -- CHECK: permanent | session
-    ttl_tier TEXT,                -- CHECK: hot | warm | cold
-    created_at TIMESTAMP,
-    last_referenced TIMESTAMP,
-    reference_count INTEGER,
-    source JSON                   -- arbitrary metadata
-)
-
--- L1 index (fast keyword retrieval)
-keywords (
-    fragment_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
-    keyword TEXT NOT NULL,
-    UNIQUE(fragment_id, keyword)  -- prevents index bloat
-)
-
--- Graph relationships
-links (
-    id TEXT PRIMARY KEY,
-    from_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
-    to_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
-    relation_type TEXT NOT NULL   -- CHECK: valid LinkRelationType
-)
-
--- System state
-metadata (key TEXT PRIMARY KEY, value TEXT)
+<h2>Database Structure</h2>
+<p>Four tables. Constraints are enforced at the database level, not only in application code.</p>
+<pre><code>fragments   — core storage
+keywords    — L1 keyword index (UNIQUE per fragment, prevents index bloat)
+links       — typed graph relationships between fragments
+metadata    — system state (initialization time, schema version)
 </code></pre>
-<p><strong>Indexes built:</strong> <code>keywords(keyword)</code>, <code>keywords(fragment_id)</code>, <code>links(from_id)</code>, <code>links(to_id)</code>, <code>fragments(topic)</code>, <code>fragments(type)</code>, <code>fragments(importance DESC, last_referenced DESC)</code>.</p>
-<p>Foreign keys enforce CASCADE DELETE: removing a fragment automatically cleans its keywords and links.</p>
+<p><strong>Database-level constraints:</strong></p>
+<ul>
+<li><code>type</code> must be one of the six valid fragment types</li>
+<li><code>scope</code> must be <code>permanent</code> or <code>session</code></li>
+<li><code>ttl_tier</code> must be <code>hot</code>, <code>warm</code>, or <code>cold</code></li>
+<li><code>relation_type</code> must be one of the six valid link types</li>
+<li><code>importance</code> must be between 0.0 and 1.0</li>
+<li><code>content</code> and <code>topic</code> must be non-empty</li>
+<li><code>UNIQUE(fragment_id, keyword)</code> — no duplicate keywords per fragment</li>
+<li>Foreign keys use <code>ON DELETE CASCADE</code> — removing a fragment removes its keywords and links</li>
+</ul>
+<p>WAL journal mode and a 5-second busy timeout are set at connection time.</p>
 <hr>
 <h2>Graph Relationships</h2>
-<p>Fragments connect to each other through typed links, building a knowledge graph:</p>
+<p>Link any two fragments with a typed relationship:</p>
 <table>
 <thead>
 <tr>
@@ -468,75 +508,26 @@ metadata (key TEXT PRIMARY KEY, value TEXT)
 <td>A provides context for B</td>
 </tr>
 </tbody></table>
-<p>A typical consulting pattern: an <code>error</code> fragment linked <code>resolved_by</code> to a <code>solution_approach</code> fragment. When you recall the error, you can traverse to the resolution.</p>
+<p>Example: an <code>error</code> fragment linked <code>resolved_by</code> to a <code>solution_approach</code> fragment. When you recall the error, you know where to look for the resolution.</p>
 <hr>
-<h2>Security Hardening</h2>
-<p>The v2.0 implementation addresses the common weaknesses in prototype memory systems:</p>
-<p><strong>Input validation (Pydantic layer)</strong></p>
-<ul>
-<li><code>content</code>: min 1, max 10,000 characters</li>
-<li><code>topic</code>: min 1, max 100 characters</li>
-<li><code>keywords</code>: max 20 items, max 100 chars each</li>
-<li><code>token_budget</code>: 100–50,000 tokens</li>
-<li><code>RecallRequest</code>: requires at least one search criterion (keywords, text, topic, or type)</li>
-</ul>
-<p><strong>Database layer</strong></p>
-<ul>
-<li>All SQL uses parameterized <code>?</code> placeholders — no SQL injection surface</li>
-<li><code>CHECK</code> constraints enforce enums at the DB level (type, scope, ttl_tier, relation_type)</li>
-<li><code>UNIQUE(fragment_id, keyword)</code> prevents index bloat from duplicate keywords</li>
-<li>WAL journal mode for better concurrent reads</li>
-<li>5,000ms busy timeout prevents immediate lock errors</li>
-</ul>
-<p><strong>Application layer</strong></p>
-<ul>
-<li>Error messages are sanitized before returning to clients — no stack traces exposed</li>
-<li>N+1 keyword queries eliminated: batch-loaded with a single JOIN per result set</li>
-<li>Transaction context managers (<code>with conn:</code>) ensure atomic writes with automatic rollback</li>
-</ul>
-<hr>
-<h2>Interactive Terminal</h2>
-<p>The exhibit below simulates the memory system API. Select an exhibit using the buttons or arrow keys.</p>
-<div class="terminal-crt">
-  <div class="terminal-header">
-    <span class="terminal-brand">FOGSIFT SYSTEMS&#8482;</span>
-    <span class="terminal-title">MEMORY ARCHITECTURE // DIAGNOSTIC TERMINAL v2.0</span>
-    <span class="terminal-status">ONLINE</span>
-  </div>
-  <div class="terminal-screen">
-    <div class="terminal-output" aria-live="polite" aria-label="Terminal output"></div>
-    <nav class="terminal-nav" aria-label="Exhibit navigation">
-      <button class="terminal-btn" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
-      <span class="terminal-exhibit-info">
-        <span class="terminal-exhibit-label">EXHIBIT 1 OF 6</span>
-      </span>
-      <button class="terminal-btn" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
-    </nav>
-  </div>
-</div>
-
-<hr>
-<h2>Design Decisions</h2>
-<p><strong>Why SQLite instead of PostgreSQL?</strong>
-Single-file deployment. No service to run, no connection pool to manage, no separate process. For a consulting memory system used by one person, SQLite with WAL mode is fast enough and dramatically simpler to operate. When you&#39;re ready for multi-user or semantic search, see <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> for the production-grade path.</p>
-<p><strong>Why keyword index instead of full-text search?</strong>
-L1 keyword retrieval is deterministic, predictable, and sub-millisecond. Full-text search (FTS5, pgvector) adds complexity and degrades gracefully but unpredictably. For consulting work where you control what gets stored, curated keywords outperform fuzzy matching. L3 semantic search is the planned next tier.</p>
-<p><strong>Why six fragment types?</strong>
-Consulting knowledge isn&#39;t monolithic. A mistake pattern (error) should surface differently than a preference. The importance defaults encode this hierarchy: errors and preferences are nearly always relevant; client patterns are contextual. The six types let the system rank results without you having to score everything manually.</p>
-<p><strong>Why token budgets?</strong>
-Every recall goes to an AI context window. Unbudgeted recall returns everything and floods the context. The budget forces the system to prioritize by importance — only the most relevant fragments make it through.</p>
-<hr>
-<h2>Running the System</h2>
-<pre><code class="language-bash"># From fogsift-api/
-python3 -m venv venv &amp;&amp; source venv/bin/activate
+<h2>Running It</h2>
+<p>From the <code>fogsift-api/</code> directory:</p>
+<pre><code class="language-bash">python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 uvicorn main:app --reload
-# Docs at http://localhost:8000/docs
 </code></pre>
-<p>Tests:</p>
+<p>Open <code>http://localhost:8000/docs</code> for the interactive API explorer.</p>
+<p><strong>Tests:</strong></p>
 <pre><code class="language-bash">pip install pytest
 pytest tests/ -v
 </code></pre>
+<p>Tests use an in-memory SQLite database. No setup, no external services, no cleanup needed.</p>
+<hr>
+<h2>What This Is and Isn&#39;t</h2>
+<p><strong>What it is:</strong> A structured SQLite store for one person&#39;s professional knowledge. Simple to run, simple to understand, simple to extend.</p>
+<p><strong>What it isn&#39;t:</strong> A production-grade multi-user system. For that, see <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> — the PostgreSQL + Redis + pgvector implementation that this is adapted from. Memento MCP adds semantic search (L3 via pgvector), automatic fragment linking, multi-tenancy, and a full MCP server interface.</p>
+<p><strong>The tradeoff:</strong> SQLite means no external services, no connection pool, no separate process. That is the right tradeoff for a single consultant. The moment you need multi-user access or vector search, this implementation will need to be replaced.</p>
 <hr>
 <p><em>See also: <a href="/wiki/diagnostic-process">The Diagnostic Process</a> — <a href="/wiki/concepts/systems-thinking">Systems Thinking</a> — <a href="/wiki/field-notes/007-documentation-debt">Documentation Debt</a></em></p>
 
@@ -817,13 +808,19 @@ pytest tests/ -v
     <div class="jd-category">
       <div class="jd-category-header">
         <span class="jd-range">90-99</span>
-        <h4 class="jd-category-name">Architecture</h4>
+        <h4 class="jd-category-name">Cognitive Architecture</h4>
       </div>
       <ul class="jd-pages">
         <li>
           <a href="../architecture/memory-system.html" class="jd-page-link">
             <span class="jd-number">90.01</span>
-            <span class="jd-page-title">Fogsift Memory System</span>
+            <span class="jd-page-title">Memory System</span>
+          </a>
+        </li>
+        <li>
+          <a href="../architecture/terminal-component.html" class="jd-page-link">
+            <span class="jd-number">90.02</span>
+            <span class="jd-page-title">Terminal Component</span>
           </a>
         </li>
       </ul>
