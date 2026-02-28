@@ -74,6 +74,14 @@
       ]
     },
     {
+      "id": "architecture",
+      "title": "Architecture",
+      "icon": "layers",
+      "pages": [
+        { "slug": "architecture/memory-system", "title": "Fogsift Memory System" }
+      ]
+    },
+    {
       "id": "tools",
       "title": "Tools & Techniques",
       "icon": "wrench",

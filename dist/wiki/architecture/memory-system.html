@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retrospective | Fogsift Wiki</title>
-    <meta name="description" content="A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn't? What will we change? It's the simple">
+    <title>Fogsift Memory System | Fogsift Wiki</title>
+    <meta name="description" content="A SQLite-backed pattern storage engine for consulting work. It preserves what you've learned, surfaces it fast, and knows which memories matter most.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/tools/retrospective">
+    <link rel="canonical" href="https://fogsift.com/wiki/architecture/memory-system">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Retrospective | Fogsift Wiki">
-    <meta property="og:description" content="A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn't? What will we change? It's the simple">
+    <meta property="og:title" content="Fogsift Memory System | Fogsift Wiki">
+    <meta property="og:description" content="A SQLite-backed pattern storage engine for consulting work. It preserves what you've learned, surfaces it fast, and knows which memories matter most.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/tools/retrospective">
+    <meta property="og:url" content="https://fogsift.com/wiki/architecture/memory-system">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -169,7 +169,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">RETROSPECTIVE</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">MEMORY SYSTEM</span></li>
             </ol>
         </nav>
 
@@ -247,7 +247,7 @@
 <div class="wiki-nav-category">
   <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>Architecture</h4>
   <ul class="wiki-nav-list">
-    <li><a href="../architecture/memory-system.html">Fogsift Memory System</a></li>
+    <li><a href="../architecture/memory-system.html" class="active">Fogsift Memory System</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -259,7 +259,7 @@
     <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
     <li><a href="../tools/time-boxing.html">Time-Boxing</a></li>
     <li><a href="../tools/assumption-mapping.html">Assumption Mapping</a></li>
-    <li><a href="../tools/retrospective.html" class="active">Retrospective</a></li>
+    <li><a href="../tools/retrospective.html">Retrospective</a></li>
   </ul>
 </div>
 
@@ -269,118 +269,276 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Retrospective</h1>
-<p>A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn&#39;t? What will we change? It&#39;s the simplest tool for continuous improvement, and the most neglected.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;Insanity is doing the same thing over and over and expecting different results.&quot;</p>
-</blockquote>
-<p>If you don&#39;t stop to examine what happened, you&#39;ll repeat every mistake. A retrospective is the forcing function that turns experience into learning.</p>
-<h2>The Basic Format</h2>
-<h3>1. What Went Well?</h3>
-<p>Start positive. What worked? What should you keep doing? What surprised you in a good way?</p>
-<p>This isn&#39;t fluff. Recognizing what works is as important as fixing what doesn&#39;t. Teams that only focus on problems burn out. Teams that celebrate wins and understand <em>why</em> they won build momentum.</p>
-<h3>2. What Didn&#39;t Go Well?</h3>
-<p>What frustrated you? What took too long? Where did communication break down? What would you do differently?</p>
-<p><strong>Ground rules:</strong></p>
-<ul>
-<li>No blame. Focus on systems, not people.</li>
-<li>Be specific. &quot;Communication was bad&quot; isn&#39;t useful. &quot;We didn&#39;t know the API spec changed until production broke&quot; is.</li>
-<li>Include things that <em>almost</em> went wrong. Near-misses are free lessons.</li>
-</ul>
-<h3>3. What Will We Change?</h3>
-<p>This is where most retrospectives fail. Without concrete action items, the retro was just venting.</p>
-<p><strong>Good action items are:</strong></p>
-<ul>
-<li><strong>Specific:</strong> &quot;Add a staging environment check to the deploy process&quot; not &quot;improve testing&quot;</li>
-<li><strong>Owned:</strong> One person responsible, with a deadline</li>
-<li><strong>Measurable:</strong> You can tell if it was done</li>
-<li><strong>Small:</strong> One change is better than ten aspirations</li>
-</ul>
-<p><strong>Limit to 1-3 action items.</strong> If you try to change everything, you change nothing.</p>
-<h2>Retrospective Formats</h2>
-<h3>Start/Stop/Continue</h3>
-<ul>
-<li><strong>Start:</strong> What new things should we try?</li>
-<li><strong>Stop:</strong> What should we stop doing?</li>
-<li><strong>Continue:</strong> What&#39;s working that we should keep?</li>
-</ul>
-<p>Good for teams that need to shake up habits.</p>
-<h3>Mad/Sad/Glad</h3>
-<ul>
-<li><strong>Mad:</strong> What made you angry or frustrated?</li>
-<li><strong>Sad:</strong> What disappointed you?</li>
-<li><strong>Glad:</strong> What made you happy?</li>
-</ul>
-<p>Good for surfacing emotional responses that logic-focused retros miss.</p>
-<h3>4Ls</h3>
-<ul>
-<li><strong>Liked:</strong> What did you enjoy?</li>
-<li><strong>Learned:</strong> What did you discover?</li>
-<li><strong>Lacked:</strong> What was missing?</li>
-<li><strong>Longed for:</strong> What do you wish you had?</li>
-</ul>
-<p>Good for learning-focused teams.</p>
-<h3>Sailboat</h3>
-<p>Visual metaphor:</p>
-<ul>
-<li><strong>Wind (propelling):</strong> What&#39;s pushing us forward?</li>
-<li><strong>Anchor (dragging):</strong> What&#39;s holding us back?</li>
-<li><strong>Rocks (risks):</strong> What could sink us?</li>
-<li><strong>Island (goal):</strong> Where are we trying to get?</li>
-</ul>
-<p>Good for teams that think visually or need a fresh format.</p>
-<h3>Timeline</h3>
-<p>Map out the project chronologically. At each major event, capture:</p>
-<ul>
-<li>What happened?</li>
-<li>How did it feel at the time?</li>
-<li>What was the impact?</li>
-<li>What would you do differently?</li>
-</ul>
-<p>Good for longer projects where cause-and-effect matters.</p>
-<h2>Running an Effective Retro</h2>
-<h3>Before</h3>
-<ul>
-<li><strong>Schedule it.</strong> Don&#39;t skip it because you&#39;re &quot;too busy.&quot; That&#39;s when you need it most.</li>
-<li><strong>Set the stage.</strong> Remind everyone: this is about improvement, not blame.</li>
-<li><strong>Review last retro&#39;s action items.</strong> Did you do them? If not, why not?</li>
-</ul>
-<h3>During</h3>
-<ul>
-<li><strong>Time-box it.</strong> 60-90 minutes max. Use a timer for each section.</li>
-<li><strong>Equal voice.</strong> Introverts write silently first. Then discuss. Don&#39;t let the loudest voice dominate.</li>
-<li><strong>Facilitator rotates.</strong> Having the same person run every retro creates patterns. Rotate.</li>
-<li><strong>Vote on priorities.</strong> If 20 items surface, dot-vote to find the top 3.</li>
-</ul>
-<h3>After</h3>
-<ul>
-<li><strong>Write up action items.</strong> Assign owners and deadlines.</li>
-<li><strong>Share the notes.</strong> Even with people who weren&#39;t in the room.</li>
-<li><strong>Follow up.</strong> Check on action items before the next retro.</li>
-</ul>
-<h2>For Solo Practitioners</h2>
-<p>Retros aren&#39;t just for teams. A weekly personal retrospective is one of the highest-leverage habits you can build:</p>
-<ol>
-<li><strong>Friday, 15 minutes:</strong> What went well this week? What didn&#39;t? What&#39;s one thing I&#39;ll do differently next week?</li>
-<li><strong>Write it down.</strong> Your memory is unreliable. A written log compounds into real self-knowledge.</li>
-<li><strong>Review monthly.</strong> Patterns emerge that aren&#39;t visible week-to-week.</li>
-</ol>
-<h2>Common Pitfalls</h2>
-<h3>Blame Games</h3>
-<p>&quot;John didn&#39;t finish his work&quot; is not a retrospective insight. &quot;Our estimation process consistently underestimates front-end work&quot; is. Focus on systems, not individuals. If someone isn&#39;t performing, that&#39;s a separate conversation.</p>
-<h3>No Follow-Through</h3>
-<p>The fastest way to kill retrospectives: never act on the action items. If nothing changes after the retro, people stop engaging. Check on action items at the start of every retro.</p>
-<h3>Too Infrequent</h3>
-<p>Monthly retros are too late. By the time you discuss a problem from week 1, you&#39;ve already repeated it 3 more times. Run retros at the end of each sprint or work cycle.</p>
-<h3>Too Long</h3>
-<p>If a retro takes 3 hours, it&#39;s not a retro — it&#39;s a therapy session. Time-box ruthlessly. If issues are too complex for the retro, create a separate working session.</p>
-<h3>Recency Bias</h3>
-<p>Teams remember last week&#39;s crisis but forget the quiet success from three weeks ago. A timeline format or pre-retro survey helps counter this.</p>
-<h2>The Meta-Lesson</h2>
-<p>A retrospective is itself a <a href="/wiki/frameworks/feedback-loops.html">feedback loop</a>. You do work, observe results, reflect, and adjust. Teams that master this loop improve exponentially. Teams that skip it repeat the same year of experience ten times and call it &quot;ten years of experience.&quot;</p>
+                <h1>Fogsift Memory System</h1>
+<p>A SQLite-backed pattern storage engine for consulting work. It preserves what you&#39;ve learned, surfaces it fast, and knows which memories matter most.</p>
 <hr>
-<p><em>See also: <a href="/wiki/frameworks/feedback-loops.html">Feedback Loops</a> | <a href="/wiki/tools/process-mapping.html">Process Mapping</a> | <a href="/wiki/concepts/compounding.html">Compounding Effects</a></em></p>
+<h2>Why This Exists</h2>
+<p>Consulting work produces repeating signals. The same database anti-patterns appear at client after client. The same communication bottlenecks. The same infrastructure mistakes dressed in different colors.</p>
+<p>Without a memory system, each engagement starts from scratch. Lessons learned on one project stay locked in a document nobody reads. The same root cause gets diagnosed six times across six clients.</p>
+<p>This architecture exists to close that loop: store what you observe, retrieve what&#39;s relevant, and let patterns surface automatically across engagements.</p>
+<blockquote>
+<p>Inspired by <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> — a production-grade MCP server (PostgreSQL + Redis + pgvector) that pioneered fragment-based memory for AI agents. This is a self-contained SQLite adaptation tuned for consulting fieldwork.</p>
+</blockquote>
+<hr>
+<h2>The Fragment Model</h2>
+<p>A <strong>fragment</strong> is an atomic unit of professional knowledge. One observation. One decision. One mistake pattern. Not a session summary — a specific, retrievable fact.</p>
+<p>Every fragment carries:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>content</code></td>
+<td>1–3 sentences. The actual memory.</td>
+</tr>
+<tr>
+<td><code>topic</code></td>
+<td>Organizational category (e.g. <code>&quot;redis&quot;</code>, <code>&quot;auth&quot;</code>, <code>&quot;frontend&quot;</code>)</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td>Classification (see below)</td>
+</tr>
+<tr>
+<td><code>importance</code></td>
+<td>0.0–1.0, defaults by type</td>
+</tr>
+<tr>
+<td><code>ttl_tier</code></td>
+<td>Temperature: <code>hot</code>, <code>warm</code>, or <code>cold</code></td>
+</tr>
+<tr>
+<td><code>keywords</code></td>
+<td>Index terms for L1 retrieval</td>
+</tr>
+<tr>
+<td><code>reference_count</code></td>
+<td>How often this fragment has been recalled</td>
+</tr>
+<tr>
+<td><code>source</code></td>
+<td>Optional origin metadata (client, session, date)</td>
+</tr>
+</tbody></table>
+<h3>Fragment Types</h3>
+<p>The six types encode the nature of the knowledge:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Importance Default</th>
+<th>Use For</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>preference</code></td>
+<td>0.95</td>
+<td>Your style rules, non-negotiables</td>
+</tr>
+<tr>
+<td><code>error</code></td>
+<td>0.90</td>
+<td>Mistake patterns — never forget</td>
+</tr>
+<tr>
+<td><code>solution_approach</code></td>
+<td>0.85</td>
+<td>How you solved something</td>
+</tr>
+<tr>
+<td><code>decision</code></td>
+<td>0.70</td>
+<td>Why you chose A over B</td>
+</tr>
+<tr>
+<td><code>procedure</code></td>
+<td>0.65</td>
+<td>Repeatable workflows</td>
+</tr>
+<tr>
+<td><code>client_pattern</code></td>
+<td>0.60</td>
+<td>Recurring problem shapes across clients</td>
+</tr>
+</tbody></table>
+<h3>Memory Temperature (TTL Tiers)</h3>
+<p>Fragments are born <strong>hot</strong> and cool over time as they go unreferenced:</p>
+<pre><code>HOT   → Recently retrieved. Front of mind.
+WARM  → Occasionally recalled. Background knowledge.
+COLD  → Rarely accessed. Historical record.
+</code></pre>
+<p>Every recall automatically increments <code>reference_count</code> and updates <code>last_referenced</code>, keeping frequently-used knowledge at the surface.</p>
+<hr>
+<h2>Search Architecture: L1 and L2</h2>
+<p>The system uses a two-tier retrieval strategy, mirroring how the full Memento MCP uses three tiers (L1 Redis → L2 PostgreSQL GIN → L3 pgvector).</p>
+<pre><code>Query arrives
+     │
+     ▼
+┌─────────────┐
+│  Keywords   │ ──── L1: Keyword index lookup
+│  provided?  │      SELECT DISTINCT f.* FROM fragments f
+└──────┬──────┘      JOIN keywords k ON f.id = k.fragment_id
+       │ YES         WHERE k.keyword IN (...)
+       ▼             Sub-millisecond. Exact match.
+   L1 Results ────────────────────────────────────────► Return
+       │ (empty)
+       ▼
+┌─────────────┐
+│ topic/type  │ ──── L2: Metadata filter
+│  provided?  │      SELECT * FROM fragments
+└──────┬──────┘      WHERE topic = ? AND type = ?
+       │ YES         ORDER BY importance DESC, last_referenced DESC
+       ▼             Fast. Covers recent high-importance fragments.
+   L2 Results ────────────────────────────────────────► Return
+</code></pre>
+<p><strong>Token budgeting</strong> caps responses: fragments are added to the result set in descending importance order until the token budget is exhausted (estimated at 1 char ≈ 0.25 tokens). This prevents context window bloat.</p>
+<hr>
+<h2>Database Schema</h2>
+<p>Four tables. Indexes designed around the query patterns.</p>
+<pre><code class="language-sql">-- Core storage
+fragments (
+    id TEXT PRIMARY KEY,
+    content TEXT NOT NULL,        -- max 10,000 chars via Pydantic
+    topic TEXT NOT NULL,          -- max 100 chars
+    type TEXT NOT NULL,           -- CHECK: valid FragmentType enum
+    importance REAL,              -- CHECK: 0.0–1.0
+    scope TEXT,                   -- CHECK: permanent | session
+    ttl_tier TEXT,                -- CHECK: hot | warm | cold
+    created_at TIMESTAMP,
+    last_referenced TIMESTAMP,
+    reference_count INTEGER,
+    source JSON                   -- arbitrary metadata
+)
+
+-- L1 index (fast keyword retrieval)
+keywords (
+    fragment_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
+    keyword TEXT NOT NULL,
+    UNIQUE(fragment_id, keyword)  -- prevents index bloat
+)
+
+-- Graph relationships
+links (
+    id TEXT PRIMARY KEY,
+    from_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
+    to_id TEXT REFERENCES fragments(id) ON DELETE CASCADE,
+    relation_type TEXT NOT NULL   -- CHECK: valid LinkRelationType
+)
+
+-- System state
+metadata (key TEXT PRIMARY KEY, value TEXT)
+</code></pre>
+<p><strong>Indexes built:</strong> <code>keywords(keyword)</code>, <code>keywords(fragment_id)</code>, <code>links(from_id)</code>, <code>links(to_id)</code>, <code>fragments(topic)</code>, <code>fragments(type)</code>, <code>fragments(importance DESC, last_referenced DESC)</code>.</p>
+<p>Foreign keys enforce CASCADE DELETE: removing a fragment automatically cleans its keywords and links.</p>
+<hr>
+<h2>Graph Relationships</h2>
+<p>Fragments connect to each other through typed links, building a knowledge graph:</p>
+<table>
+<thead>
+<tr>
+<th>Relation</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>related</code></td>
+<td>Contextually connected</td>
+</tr>
+<tr>
+<td><code>caused_by</code></td>
+<td>A happened because of B</td>
+</tr>
+<tr>
+<td><code>resolved_by</code></td>
+<td>A was fixed by applying B</td>
+</tr>
+<tr>
+<td><code>part_of</code></td>
+<td>A is a component of B</td>
+</tr>
+<tr>
+<td><code>contradicts</code></td>
+<td>A and B conflict</td>
+</tr>
+<tr>
+<td><code>informs</code></td>
+<td>A provides context for B</td>
+</tr>
+</tbody></table>
+<p>A typical consulting pattern: an <code>error</code> fragment linked <code>resolved_by</code> to a <code>solution_approach</code> fragment. When you recall the error, you can traverse to the resolution.</p>
+<hr>
+<h2>Security Hardening</h2>
+<p>The v2.0 implementation addresses the common weaknesses in prototype memory systems:</p>
+<p><strong>Input validation (Pydantic layer)</strong></p>
+<ul>
+<li><code>content</code>: min 1, max 10,000 characters</li>
+<li><code>topic</code>: min 1, max 100 characters</li>
+<li><code>keywords</code>: max 20 items, max 100 chars each</li>
+<li><code>token_budget</code>: 100–50,000 tokens</li>
+<li><code>RecallRequest</code>: requires at least one search criterion (keywords, text, topic, or type)</li>
+</ul>
+<p><strong>Database layer</strong></p>
+<ul>
+<li>All SQL uses parameterized <code>?</code> placeholders — no SQL injection surface</li>
+<li><code>CHECK</code> constraints enforce enums at the DB level (type, scope, ttl_tier, relation_type)</li>
+<li><code>UNIQUE(fragment_id, keyword)</code> prevents index bloat from duplicate keywords</li>
+<li>WAL journal mode for better concurrent reads</li>
+<li>5,000ms busy timeout prevents immediate lock errors</li>
+</ul>
+<p><strong>Application layer</strong></p>
+<ul>
+<li>Error messages are sanitized before returning to clients — no stack traces exposed</li>
+<li>N+1 keyword queries eliminated: batch-loaded with a single JOIN per result set</li>
+<li>Transaction context managers (<code>with conn:</code>) ensure atomic writes with automatic rollback</li>
+</ul>
+<hr>
+<h2>Interactive Terminal</h2>
+<p>The exhibit below simulates the memory system API. Select an exhibit using the buttons or arrow keys.</p>
+<div class="terminal-crt">
+  <div class="terminal-header">
+    <span class="terminal-brand">FOGSIFT SYSTEMS&#8482;</span>
+    <span class="terminal-title">MEMORY ARCHITECTURE // DIAGNOSTIC TERMINAL v2.0</span>
+    <span class="terminal-status">ONLINE</span>
+  </div>
+  <div class="terminal-screen">
+    <div class="terminal-output" aria-live="polite" aria-label="Terminal output"></div>
+    <nav class="terminal-nav" aria-label="Exhibit navigation">
+      <button class="terminal-btn" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
+      <span class="terminal-exhibit-info">
+        <span class="terminal-exhibit-label">EXHIBIT 1 OF 6</span>
+      </span>
+      <button class="terminal-btn" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
+    </nav>
+  </div>
+</div>
+
+<hr>
+<h2>Design Decisions</h2>
+<p><strong>Why SQLite instead of PostgreSQL?</strong>
+Single-file deployment. No service to run, no connection pool to manage, no separate process. For a consulting memory system used by one person, SQLite with WAL mode is fast enough and dramatically simpler to operate. When you&#39;re ready for multi-user or semantic search, see <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> for the production-grade path.</p>
+<p><strong>Why keyword index instead of full-text search?</strong>
+L1 keyword retrieval is deterministic, predictable, and sub-millisecond. Full-text search (FTS5, pgvector) adds complexity and degrades gracefully but unpredictably. For consulting work where you control what gets stored, curated keywords outperform fuzzy matching. L3 semantic search is the planned next tier.</p>
+<p><strong>Why six fragment types?</strong>
+Consulting knowledge isn&#39;t monolithic. A mistake pattern (error) should surface differently than a preference. The importance defaults encode this hierarchy: errors and preferences are nearly always relevant; client patterns are contextual. The six types let the system rank results without you having to score everything manually.</p>
+<p><strong>Why token budgets?</strong>
+Every recall goes to an AI context window. Unbudgeted recall returns everything and floods the context. The budget forces the system to prioritize by importance — only the most relevant fragments make it through.</p>
+<hr>
+<h2>Running the System</h2>
+<pre><code class="language-bash"># From fogsift-api/
+python3 -m venv venv &amp;&amp; source venv/bin/activate
+pip install -r requirements.txt
+uvicorn main:app --reload
+# Docs at http://localhost:8000/docs
+</code></pre>
+<p>Tests:</p>
+<pre><code class="language-bash">pip install pytest
+pytest tests/ -v
+</code></pre>
+<hr>
+<p><em>See also: <a href="/wiki/diagnostic-process">The Diagnostic Process</a> — <a href="/wiki/concepts/systems-thinking">Systems Thinking</a> — <a href="/wiki/field-notes/007-documentation-debt">Documentation Debt</a></em></p>
 
             </article>
 

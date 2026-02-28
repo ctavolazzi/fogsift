@@ -3,8 +3,8 @@ Fogsift Memory System - Data Models
 Pydantic schemas for fragments, links, and search operations
 """
 
-from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
+from pydantic import BaseModel, Field, field_validator, model_validator
+from typing import Optional, List, Dict, Any, Annotated
 from datetime import datetime
 from enum import Enum
 
@@ -38,13 +38,22 @@ class TTLTier(str, Enum):
 
 class FragmentCreate(BaseModel):
     """Input model for creating a fragment"""
-    content: str                                    # 1-3 sentences of the memory
-    topic: str                                      # Organizational category (e.g., "redis", "auth", "frontend")
-    type: FragmentType                              # Classification
-    keywords: Optional[List[str]] = None            # Auto-extracted if not provided
-    importance: Optional[float] = Field(None, ge=0.0, le=1.0)  # 0.0-1.0, defaults by type
-    scope: str = "permanent"                        # "permanent" or "session"
-    source: Optional[Dict[str, Any]] = None         # Metadata about origin (client_id, session_id, etc)
+    content: str = Field(..., min_length=1, max_length=10_000)
+    topic: str = Field(..., min_length=1, max_length=100)
+    type: FragmentType
+    keywords: Optional[List[str]] = Field(default=None, max_length=20)
+    importance: Optional[float] = Field(default=None, ge=0.0, le=1.0)
+    scope: str = Field(default="permanent", pattern=r"^(permanent|session)$")
+    source: Optional[Dict[str, Any]] = None
+
+    @field_validator("keywords")
+    @classmethod
+    def validate_keyword_lengths(cls, v):
+        if v is not None:
+            for kw in v:
+                if len(kw) > 100:
+                    raise ValueError("Each keyword must be 100 characters or fewer")
+        return v
 
 
 class FragmentResponse(BaseModel):
@@ -68,9 +77,9 @@ class FragmentResponse(BaseModel):
 
 class LinkCreate(BaseModel):
     """Input model for creating a relationship between fragments"""
-    from_id: str                        # Source fragment ID
-    to_id: str                          # Target fragment ID
-    relation_type: LinkRelationType     # Type of connection
+    from_id: str = Field(..., min_length=1, max_length=50)
+    to_id: str = Field(..., min_length=1, max_length=50)
+    relation_type: LinkRelationType
 
 
 class LinkResponse(BaseModel):
@@ -87,13 +96,25 @@ class LinkResponse(BaseModel):
 
 class RecallRequest(BaseModel):
     """Input model for searching memories"""
-    keywords: Optional[List[str]] = None       # Exact keyword match (L1)
-    text: Optional[str] = None                 # Natural language query
-    topic: Optional[str] = None                # Filter by topic
-    type: Optional[FragmentType] = None        # Filter by fragment type
-    token_budget: int = 1000                   # Max tokens to return
-    threshold: float = 0.5                     # Min similarity score (for future L3)
-    include_links: bool = False                # Return connected fragments
+    keywords: Optional[List[str]] = Field(default=None, max_length=20)
+    text: Optional[str] = Field(default=None, max_length=1_000)
+    topic: Optional[str] = Field(default=None, max_length=100)
+    type: Optional[FragmentType] = None
+    token_budget: int = Field(default=1000, ge=100, le=50_000)
+    threshold: float = Field(default=0.5, ge=0.0, le=1.0)
+    include_links: bool = False
+
+    @model_validator(mode="after")
+    def require_search_criterion(self) -> "RecallRequest":
+        has_keywords = bool(self.keywords)
+        has_text = bool(self.text and self.text.strip())
+        has_topic = bool(self.topic)
+        has_type = self.type is not None
+        if not any([has_keywords, has_text, has_topic, has_type]):
+            raise ValueError(
+                "At least one search criterion is required: keywords, text, topic, or type"
+            )
+        return self
 
 
 class RecallResponse(BaseModel):
@@ -101,7 +122,7 @@ class RecallResponse(BaseModel):
     success: bool
     fragments: List[FragmentResponse]
     total_tokens: int
-    search_path: List[str]  # ["L1:3", "L2:2"] to show which layers returned results
+    search_path: List[str]  # ["L1:3", "L2:2"] shows which layers fired
     query_time_ms: float
 
 
@@ -119,4 +140,4 @@ class ErrorResponse(BaseModel):
     """Standard error response"""
     success: bool = False
     error: str
-    details: Optional[Dict[str, Any]]
+    details: Optional[Dict[str, Any]] = None
