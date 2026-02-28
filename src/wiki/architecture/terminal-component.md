@@ -19,7 +19,7 @@ That is the full spec. The terminal tells you what it accepts, and it tells you 
     <span class="terminal-status">ONLINE</span>
   </div>
   <div class="terminal-screen">
-    <div class="terminal-output" aria-live="polite" aria-label="Terminal output"></div>
+    <div class="terminal-output" role="log" aria-live="polite" aria-label="Terminal output"></div>
     <div class="terminal-input-area">
       <nav class="terminal-lang-selector" aria-label="Language selection">
         <button class="terminal-lang-btn terminal-lang-btn--active" data-lang="python" type="button">PYTHON</button>
@@ -103,4 +103,4 @@ Even if a pattern slipped through the detection table, the worst outcome is an u
 
 ---
 
-*See also: [Memory System](/wiki/architecture/memory-system) — [The Diagnostic Process](/wiki/diagnostic-process) — [Systems Thinking](/wiki/concepts/systems-thinking)*
+*See also: [Memory System](/wiki/architecture/memory-system.html) — [The Diagnostic Process](/wiki/diagnostic-process.html) — [Systems Thinking](/wiki/concepts/systems-thinking.html)*

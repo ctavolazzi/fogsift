@@ -314,13 +314,13 @@
     <span class="terminal-status">ONLINE</span>
   </div>
   <div class="terminal-screen">
-    <div class="terminal-output" aria-live="polite" aria-label="Terminal output — use navigation buttons below to change exhibit"></div>
+    <div class="terminal-output" role="log" aria-live="polite" aria-label="Terminal output — use navigation buttons below to change exhibit"></div>
     <nav class="terminal-nav" aria-label="Exhibit navigation">
-      <button class="terminal-btn" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
+      <button class="terminal-btn" type="button" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
       <span class="terminal-exhibit-info">
         <span class="terminal-exhibit-label">EXHIBIT 1 OF 6</span>
       </span>
-      <button class="terminal-btn" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
+      <button class="terminal-btn" type="button" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
     </nav>
   </div>
 </div>
@@ -529,7 +529,7 @@ pytest tests/ -v
 <p><strong>What it isn&#39;t:</strong> A production-grade multi-user system. For that, see <a href="https://github.com/JinHo-von-Choi/memento-mcp">Memento MCP</a> — the PostgreSQL + Redis + pgvector implementation that this is adapted from. Memento MCP adds semantic search (L3 via pgvector), automatic fragment linking, multi-tenancy, and a full MCP server interface.</p>
 <p><strong>The tradeoff:</strong> SQLite means no external services, no connection pool, no separate process. That is the right tradeoff for a single consultant. The moment you need multi-user access or vector search, this implementation will need to be replaced.</p>
 <hr>
-<p><em>See also: <a href="/wiki/diagnostic-process">The Diagnostic Process</a> — <a href="/wiki/concepts/systems-thinking">Systems Thinking</a> — <a href="/wiki/field-notes/007-documentation-debt">Documentation Debt</a></em></p>
+<p><em>See also: <a href="/wiki/diagnostic-process.html">The Diagnostic Process</a> — <a href="/wiki/concepts/systems-thinking.html">Systems Thinking</a> — <a href="/wiki/field-notes/007-documentation-debt.html">Documentation Debt</a></em></p>
 
             </article>
 

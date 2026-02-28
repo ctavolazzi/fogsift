@@ -201,7 +201,7 @@
       ],
     },
     {
-      test: /\x00|\\u0000|\\x00/i,
+      test: /\\x00|%00|\\u0000/i,
       label: 'NULL BYTE',
       reply: [
         'Null byte injection has no effect on string comparison.',

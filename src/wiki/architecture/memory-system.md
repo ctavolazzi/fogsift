@@ -24,13 +24,13 @@ The terminal below simulates the live API. Six exhibits run in sequence, each sh
     <span class="terminal-status">ONLINE</span>
   </div>
   <div class="terminal-screen">
-    <div class="terminal-output" aria-live="polite" aria-label="Terminal output — use navigation buttons below to change exhibit"></div>
+    <div class="terminal-output" role="log" aria-live="polite" aria-label="Terminal output — use navigation buttons below to change exhibit"></div>
     <nav class="terminal-nav" aria-label="Exhibit navigation">
-      <button class="terminal-btn" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
+      <button class="terminal-btn" type="button" data-dir="prev" aria-label="Previous exhibit">[&#8592; PREV]</button>
       <span class="terminal-exhibit-info">
         <span class="terminal-exhibit-label">EXHIBIT 1 OF 6</span>
       </span>
-      <button class="terminal-btn" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
+      <button class="terminal-btn" type="button" data-dir="next" aria-label="Next exhibit">[NEXT &#8594;]</button>
     </nav>
   </div>
 </div>
@@ -175,4 +175,4 @@ Tests use an in-memory SQLite database. No setup, no external services, no clean
 
 ---
 
-*See also: [The Diagnostic Process](/wiki/diagnostic-process) — [Systems Thinking](/wiki/concepts/systems-thinking) — [Documentation Debt](/wiki/field-notes/007-documentation-debt)*
+*See also: [The Diagnostic Process](/wiki/diagnostic-process.html) — [Systems Thinking](/wiki/concepts/systems-thinking.html) — [Documentation Debt](/wiki/field-notes/007-documentation-debt.html)*
