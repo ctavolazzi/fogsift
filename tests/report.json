@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T13:05:28.507Z",
+  "timestamp": "2026-03-01T13:12:43.133Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 91",
+          "test": "HTML pages built: 96",
           "status": "pass",
-          "detail": "Found 91 HTML files"
+          "detail": "Found 96 HTML files"
         },
         {
           "test": "styles.css size: 199.9KB",
@@ -298,6 +298,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/concepts/dunning-kruger.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/concepts/first-principles.html",
           "status": "pass",
           "detail": ""
@@ -324,6 +329,11 @@
         },
         {
           "test": "wiki/concepts/planning-fallacy.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/regression-to-mean.html",
           "status": "pass",
           "detail": ""
         },
@@ -438,6 +448,16 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/014-reorg-trap.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/015-messenger-problem.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -469,6 +489,11 @@
         },
         {
           "test": "wiki/frameworks/risk-assessment.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/frameworks/stakeholder-mapping.html",
           "status": "pass",
           "detail": ""
         },
@@ -538,7 +563,7 @@
           "detail": ""
         }
       ],
-      "passed": 91,
+      "passed": 96,
       "failed": 0,
       "warned": 0
     },
@@ -615,7 +640,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 8611 internal links valid",
+          "test": "All 10749 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -638,22 +663,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 73 entries",
+          "test": "Index has 75 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "73/73 entries have valid structure",
+          "test": "75/75 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "73/73 index URLs resolve to files",
+          "test": "75/75 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 70.5KB",
+          "test": "Index size: 72.4KB",
           "status": "pass",
           "detail": ""
         }
@@ -666,7 +691,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.89MB",
+          "test": "Total dist/ size: 8.26MB",
           "status": "pass",
           "detail": ""
         },
@@ -740,8 +765,8 @@
     }
   ],
   "summary": {
-    "total": 133,
-    "passed": 124,
+    "total": 138,
+    "passed": 129,
     "failed": 0,
     "warned": 9
   }

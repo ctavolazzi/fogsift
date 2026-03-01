@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:13:42.481Z",
-  "buildTimestamp": 1772370822481,
+  "buildDate": "2026-03-01T13:16:15.413Z",
+  "buildTimestamp": 1772370975413,
   "categories": [
     {
       "id": "docs",
@@ -100,6 +100,48 @@
           "title": "Survivorship Bias",
           "jdNumber": "20.10",
           "href": "concepts/survivorship-bias.html"
+        },
+        {
+          "slug": "concepts/goodharts-law",
+          "title": "Goodhart's Law",
+          "jdNumber": "20.11",
+          "href": "concepts/goodharts-law.html"
+        },
+        {
+          "slug": "concepts/planning-fallacy",
+          "title": "Planning Fallacy",
+          "jdNumber": "20.12",
+          "href": "concepts/planning-fallacy.html"
+        },
+        {
+          "slug": "concepts/confirmation-bias",
+          "title": "Confirmation Bias",
+          "jdNumber": "20.13",
+          "href": "concepts/confirmation-bias.html"
+        },
+        {
+          "slug": "concepts/loss-aversion",
+          "title": "Loss Aversion",
+          "jdNumber": "20.14",
+          "href": "concepts/loss-aversion.html"
+        },
+        {
+          "slug": "concepts/regression-to-mean",
+          "title": "Regression to the Mean",
+          "jdNumber": "20.15",
+          "href": "concepts/regression-to-mean.html"
+        },
+        {
+          "slug": "concepts/dunning-kruger",
+          "title": "Dunning-Kruger Effect",
+          "jdNumber": "20.16",
+          "href": "concepts/dunning-kruger.html"
+        },
+        {
+          "slug": "concepts/anchoring-bias",
+          "title": "Anchoring Bias",
+          "jdNumber": "20.17",
+          "href": "concepts/anchoring-bias.html"
         }
       ]
     },
@@ -150,6 +192,24 @@
           "title": "Prioritization Matrix",
           "jdNumber": "30.07",
           "href": "frameworks/prioritization-matrix.html"
+        },
+        {
+          "slug": "frameworks/pre-mortem",
+          "title": "Pre-Mortem Analysis",
+          "jdNumber": "30.08",
+          "href": "frameworks/pre-mortem.html"
+        },
+        {
+          "slug": "frameworks/force-field-analysis",
+          "title": "Force Field Analysis",
+          "jdNumber": "30.09",
+          "href": "frameworks/force-field-analysis.html"
+        },
+        {
+          "slug": "frameworks/stakeholder-mapping",
+          "title": "Stakeholder Mapping",
+          "jdNumber": "30.10",
+          "href": "frameworks/stakeholder-mapping.html"
         }
       ]
     },
@@ -218,6 +278,36 @@
           "title": "Communication Overhead",
           "jdNumber": "40.10",
           "href": "field-notes/010-communication-overhead.html"
+        },
+        {
+          "slug": "field-notes/011-vanishing-context",
+          "title": "Vanishing Context",
+          "jdNumber": "40.11",
+          "href": "field-notes/011-vanishing-context.html"
+        },
+        {
+          "slug": "field-notes/012-analysis-paralysis",
+          "title": "Analysis Paralysis",
+          "jdNumber": "40.12",
+          "href": "field-notes/012-analysis-paralysis.html"
+        },
+        {
+          "slug": "field-notes/013-expertise-trap",
+          "title": "The Expertise Trap",
+          "jdNumber": "40.13",
+          "href": "field-notes/013-expertise-trap.html"
+        },
+        {
+          "slug": "field-notes/014-reorg-trap",
+          "title": "The Reorg Trap",
+          "jdNumber": "40.14",
+          "href": "field-notes/014-reorg-trap.html"
+        },
+        {
+          "slug": "field-notes/015-messenger-problem",
+          "title": "The Messenger Problem",
+          "jdNumber": "40.15",
+          "href": "field-notes/015-messenger-problem.html"
         }
       ]
     },

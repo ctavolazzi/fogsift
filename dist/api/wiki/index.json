@@ -69,6 +69,34 @@
         {
           "slug": "concepts/survivorship-bias",
           "title": "Survivorship Bias"
+        },
+        {
+          "slug": "concepts/goodharts-law",
+          "title": "Goodhart's Law"
+        },
+        {
+          "slug": "concepts/planning-fallacy",
+          "title": "Planning Fallacy"
+        },
+        {
+          "slug": "concepts/confirmation-bias",
+          "title": "Confirmation Bias"
+        },
+        {
+          "slug": "concepts/loss-aversion",
+          "title": "Loss Aversion"
+        },
+        {
+          "slug": "concepts/regression-to-mean",
+          "title": "Regression to the Mean"
+        },
+        {
+          "slug": "concepts/dunning-kruger",
+          "title": "Dunning-Kruger Effect"
+        },
+        {
+          "slug": "concepts/anchoring-bias",
+          "title": "Anchoring Bias"
         }
       ]
     },
@@ -104,6 +132,18 @@
         {
           "slug": "frameworks/prioritization-matrix",
           "title": "Prioritization Matrix"
+        },
+        {
+          "slug": "frameworks/pre-mortem",
+          "title": "Pre-Mortem Analysis"
+        },
+        {
+          "slug": "frameworks/force-field-analysis",
+          "title": "Force Field Analysis"
+        },
+        {
+          "slug": "frameworks/stakeholder-mapping",
+          "title": "Stakeholder Mapping"
         }
       ]
     },
@@ -151,6 +191,26 @@
         {
           "slug": "field-notes/010-communication-overhead",
           "title": "Communication Overhead"
+        },
+        {
+          "slug": "field-notes/011-vanishing-context",
+          "title": "Vanishing Context"
+        },
+        {
+          "slug": "field-notes/012-analysis-paralysis",
+          "title": "Analysis Paralysis"
+        },
+        {
+          "slug": "field-notes/013-expertise-trap",
+          "title": "The Expertise Trap"
+        },
+        {
+          "slug": "field-notes/014-reorg-trap",
+          "title": "The Reorg Trap"
+        },
+        {
+          "slug": "field-notes/015-messenger-problem",
+          "title": "The Messenger Problem"
         }
       ]
     },
@@ -232,6 +292,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:13:42.481Z",
-  "buildTimestamp": 1772370822481
+  "buildDate": "2026-03-01T13:16:15.413Z",
+  "buildTimestamp": 1772370975413
 }
