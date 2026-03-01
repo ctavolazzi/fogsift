@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T12:45:49.464Z
+Generated: 2026-03-01T12:52:59.116Z
 ============================================================
 
 SUMMARY
@@ -136,18 +136,18 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 7465 internal links valid
+  [PASS] All 7617 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 64 entries
-  [PASS] 64/64 entries have valid structure
-  [PASS] 64/64 index URLs resolve to files
-  [PASS] Index size: 61.4KB
+  [PASS] Index has 65 entries
+  [PASS] 65/65 entries have valid structure
+  [PASS] 65/65 index URLs resolve to files
+  [PASS] Index size: 62.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.50MB
+  [PASS] Total dist/ size: 7.56MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
