@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Force Field Analysis | Fogsift Wiki</title>
+    <meta name="description" content="Force field analysis is a decision-making framework for understanding the forces that support and oppose a proposed change. Developed by psychologist Kurt Lewin">
+    <meta name="author" content="Christopher Tavolazzi">
+    <meta name="theme-color" content="#f5f0e6">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/force-field-analysis">
+
+    <link rel="manifest" href="../../manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    <meta property="og:title" content="Force Field Analysis | Fogsift Wiki">
+    <meta property="og:description" content="Force field analysis is a decision-making framework for understanding the forces that support and oppose a proposed change. Developed by psychologist Kurt Lewin">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/force-field-analysis">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <link rel="icon" type="image/png" href="../../favicon.png">
+
+    <script src="../../theme-init.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../styles.css" id="main-styles">
+</head>
+<body class="wiki-body wiki-page">
+
+    <div id="toast-container"></div>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="../../index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="../../about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="../../offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="../../queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="../../wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="../../portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="../../faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
+        <a href="../../experimental.html" class="mobile-link" onclick="Nav.toggleMobile()">LAB</a>
+        <a href="../../contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper">
+        <div class="main-nav">
+            <a href="../../index.html" class="brand" aria-label="Fogsift home">
+                <img src="../../assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="../../about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="../../offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="../../queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="../../wiki/index.html" class="menu-link" aria-current="page">WIKI</a></div>
+                <div class="menu-item"><a href="../../portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="../../faq.html" class="menu-link">FAQ</a></div>
+                <div class="menu-item"><a href="../../experimental.html" class="menu-link">LAB</a></div>
+                <div class="menu-item"><a href="../../contact.html" class="menu-link">CONTACT</a></div>
+            </nav>
+            <div class="nav-controls">
+                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
+                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="aurora" role="option" onclick="ThemePicker.select('aurora')">
+                            <span class="theme-option-icon">🌌</span>
+                            <span class="theme-option-label">Aurora</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                    <span class="copy-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                </button>
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="wiki-container">
+        <!-- Breadcrumb -->
+        <nav class="wiki-breadcrumb" aria-label="Breadcrumb">
+            <ol class="wiki-breadcrumb__list">
+                <li class="wiki-breadcrumb__item"><a href="../../index.html" class="wiki-breadcrumb__link">FOGSIFT</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
+                <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">FORCE FIELD ANALYSIS</span></li>
+            </ol>
+        </nav>
+
+        <!-- Sidebar -->
+        <aside id="wiki-sidebar" class="wiki-sidebar" role="navigation" aria-label="Wiki navigation">
+            <button type="button" class="wiki-sidebar__toggle" aria-expanded="false" aria-controls="wiki-sidebar-nav" onclick="WikiNav.toggle()">
+                <span>Navigation</span>
+                <span class="wiki-sidebar__toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div id="wiki-sidebar-nav" class="wiki-sidebar__nav">
+                <a href="../index.html" class="wiki-sidebar__home">
+                    <span aria-hidden="true">&larr;</span> Wiki Home
+                </a>
+                <div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path><line x1="8" y1="6" x2="16" y2="6"></line><line x1="8" y1="10" x2="14" y2="10"></line></svg></span>Documentation</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../getting-started.html">Getting Started</a></li>
+    <li><a href="../how-we-work.html">How We Work</a></li>
+    <li><a href="../diagnostic-process.html">The Diagnostic Process</a></li>
+    <li><a href="../faq.html">Frequently Asked Questions</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2z"></path></svg></span>Concepts</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../concepts/root-cause.html">Root Cause Analysis</a></li>
+    <li><a href="../concepts/mental-models.html">Mental Models</a></li>
+    <li><a href="../concepts/systems-thinking.html">Systems Thinking</a></li>
+    <li><a href="../concepts/cognitive-biases.html">Cognitive Biases</a></li>
+    <li><a href="../concepts/second-order-effects.html">Second-Order Effects</a></li>
+    <li><a href="../concepts/signal-vs-noise.html">Signal vs Noise</a></li>
+    <li><a href="../concepts/first-principles.html">First Principles Thinking</a></li>
+    <li><a href="../concepts/opportunity-cost.html">Opportunity Cost</a></li>
+    <li><a href="../concepts/compounding.html">Compounding Effects</a></li>
+    <li><a href="../concepts/survivorship-bias.html">Survivorship Bias</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon></svg></span>Frameworks</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../frameworks/trace-protocol.html">The TRACE Protocol</a></li>
+    <li><a href="../frameworks/decision-matrix.html">Decision Matrix</a></li>
+    <li><a href="../frameworks/constraint-mapping.html">Constraint Mapping</a></li>
+    <li><a href="../frameworks/feedback-loops.html">Feedback Loop Analysis</a></li>
+    <li><a href="../frameworks/swot-analysis.html">SWOT Analysis</a></li>
+    <li><a href="../frameworks/risk-assessment.html">Risk Assessment</a></li>
+    <li><a href="../frameworks/prioritization-matrix.html">Prioritization Matrix</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></span>Field Notes</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../field-notes/001-map-territory.html">The Map Is Not The Territory</a></li>
+    <li><a href="../field-notes/002-precision-accuracy.html">Precision vs Accuracy</a></li>
+    <li><a href="../field-notes/003-entropy.html">Entropy</a></li>
+    <li><a href="../field-notes/004-bottlenecks.html">Finding the Bottleneck</a></li>
+    <li><a href="../field-notes/005-tribal-knowledge.html">Tribal Knowledge</a></li>
+    <li><a href="../field-notes/006-incentive-alignment.html">Incentive Alignment</a></li>
+    <li><a href="../field-notes/007-documentation-debt.html">Documentation Debt</a></li>
+    <li><a href="../field-notes/008-sunk-cost-trap.html">The Sunk Cost Trap</a></li>
+    <li><a href="../field-notes/009-scope-creep.html">Scope Creep</a></li>
+    <li><a href="../field-notes/010-communication-overhead.html">Communication Overhead</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg></span>Case Studies</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../case-studies/manufacturing-throughput.html">Manufacturing Throughput Crisis</a></li>
+    <li><a href="../case-studies/communication-breakdown.html">The Communication Breakdown</a></li>
+    <li><a href="../case-studies/the-invisible-process.html">The Invisible Process</a></li>
+    <li><a href="../case-studies/the-startup-pivot.html">The Startup That Wouldn't Pivot</a></li>
+    <li><a href="../case-studies/the-data-migration.html">The Data Migration Disaster</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg></span>Cognitive Architecture</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../architecture/memory-system.html">Memory System</a></li>
+    <li><a href="../architecture/terminal-component.html">Terminal Component</a></li>
+  </ul>
+</div>
+<div class="wiki-nav-category">
+  <h4 class="wiki-nav-title"><span class="wiki-nav-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg></span>Tools & Techniques</h4>
+  <ul class="wiki-nav-list">
+    <li><a href="../tools/five-whys.html">The Five Whys</a></li>
+    <li><a href="../tools/fishbone-diagram.html">Fishbone Diagrams</a></li>
+    <li><a href="../tools/pareto-analysis.html">Pareto Analysis</a></li>
+    <li><a href="../tools/process-mapping.html">Process Mapping</a></li>
+    <li><a href="../tools/time-boxing.html">Time-Boxing</a></li>
+    <li><a href="../tools/assumption-mapping.html">Assumption Mapping</a></li>
+    <li><a href="../tools/retrospective.html">Retrospective</a></li>
+  </ul>
+</div>
+
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="wiki-main" role="main">
+            <article class="wiki-article">
+                <h1>Force Field Analysis</h1>
+<p>Force field analysis is a decision-making framework for understanding the forces that support and oppose a proposed change. Developed by psychologist Kurt Lewin, it provides a structured way to see why change is resisting — and how to make it more likely to succeed.</p>
+<p>The core insight: any equilibrium (a current state) is maintained by a balance of driving forces (pushing toward change) and restraining forces (pushing against it). To shift the equilibrium, you either strengthen the drivers, weaken the restrainers, or both.</p>
+<hr>
+<h2>The Basic Model</h2>
+<pre><code>Current State ← Restraining Forces
+Current State → Driving Forces
+
+If Drivers &gt; Restrainers: change occurs
+If Restrainers &gt; Drivers: status quo holds
+If balanced: current state is stable
+</code></pre>
+<p>Most change initiatives fail not because they lack advocates, but because they focus exclusively on adding more driving force — more arguments, more mandates, more incentives — without addressing the restraining forces. This increases tension in the system without moving the equilibrium.</p>
+<hr>
+<h2>When To Use It</h2>
+<ul>
+<li>Before launching a major initiative or organizational change</li>
+<li>When a project is stalled and you need to diagnose why</li>
+<li>When resistance to a proposal is strong and poorly understood</li>
+<li>When multiple stakeholders have different views on whether to proceed</li>
+<li>When deciding between &quot;push harder&quot; vs. &quot;remove obstacles&quot; strategies</li>
+</ul>
+<hr>
+<h2>The Process</h2>
+<h3>Step 1: Define the Proposed Change</h3>
+<p>State the change clearly and specifically. Not &quot;improve our culture&quot; but &quot;implement a 30-minute weekly one-on-one meeting between managers and direct reports.&quot;</p>
+<p>Specificity matters. Vague changes produce vague force maps.</p>
+<hr>
+<h3>Step 2: Identify Driving Forces</h3>
+<p>Driving forces are the factors supporting the change. List them:</p>
+<ul>
+<li>What problem does this solve?</li>
+<li>Who benefits, and how?</li>
+<li>What external pressures push toward this change?</li>
+<li>What internal motivations support it?</li>
+<li>What precedents or trends favor it?</li>
+</ul>
+<p>For each force, assess strength: strong, moderate, or weak.</p>
+<hr>
+<h3>Step 3: Identify Restraining Forces</h3>
+<p>Restraining forces are the factors opposing the change. List them:</p>
+<ul>
+<li>What is at risk if this change happens?</li>
+<li>Who loses status, comfort, or resources?</li>
+<li>What habits or norms does this challenge?</li>
+<li>What are the legitimate concerns about this change?</li>
+<li>What would have to be given up for this to succeed?</li>
+</ul>
+<p>Include legitimate concerns alongside illegitimate ones — the distinction matters for strategy, but both are real forces.</p>
+<p>For each force, assess strength: strong, moderate, or weak.</p>
+<hr>
+<h3>Step 4: Draw the Analysis</h3>
+<p>Represent forces visually — arrows pointing toward a center line (the current state):</p>
+<pre><code>DRIVING FORCES              |              RESTRAINING FORCES
+                            |
+→→→→ Management mandate     |   Cost/budget risk ←←
+                            |
+→→ Customer demand          |   Staff uncertainty ←←←←
+                            |
+→ Process efficiency gain   |   Vendor dependency ←←←
+                            |
+</code></pre>
+<p>Arrow length represents strength. This makes the balance visible at a glance.</p>
+<hr>
+<h3>Step 5: Determine Strategy</h3>
+<p>The force map suggests four types of action:</p>
+<p><strong>Strengthen strong drivers</strong> — amplify forces already working in your favor.</p>
+<p><strong>Add new drivers</strong> — identify incentives, arguments, or evidence that could add weight.</p>
+<p><strong>Weaken strong restrainers</strong> — address the most significant sources of resistance directly. This is usually the highest-leverage action.</p>
+<p><strong>Remove restrainers</strong> — some restrainers can be eliminated entirely (a policy changed, a resource provided, a concern addressed by design modification).</p>
+<p><strong>Lewin&#39;s key finding:</strong> reducing restraining forces is often more effective than adding driving forces. Increased driving forces increase tension, which increases resistance. Removing restrainers allows movement with less overall conflict.</p>
+<hr>
+<h2>Example: Adopting a New Project Management Tool</h2>
+<p><strong>Driving forces:</strong></p>
+<ul>
+<li>Current tool missing key features (strong)</li>
+<li>Leadership mandate to improve visibility (moderate)</li>
+<li>Several team members have experience with the new tool (weak)</li>
+</ul>
+<p><strong>Restraining forces:</strong></p>
+<ul>
+<li>Learning curve during a busy period (strong)</li>
+<li>Data migration risk (moderate)</li>
+<li>Team skepticism about &quot;yet another new tool&quot; (strong)</li>
+<li>Licensing cost (weak)</li>
+</ul>
+<p><strong>Strategy implications:</strong>
+The strong restrainers (learning curve timing and skepticism) suggest:</p>
+<ul>
+<li>Don&#39;t increase mandate pressure — this will increase resistance</li>
+<li>Address the timing: delay rollout to a quieter period</li>
+<li>Address the skepticism: involve skeptics in tool selection and piloting</li>
+<li>Prepare a migration plan to address data risk before launch</li>
+</ul>
+<p>Applying more management pressure (adding a driving force) without addressing timing and skepticism would increase tension without moving the equilibrium.</p>
+<hr>
+<h2>Common Failure Modes</h2>
+<p><strong>Listing driving forces as restraining forces.</strong> &quot;Lack of training&quot; is not a restraining force — training is a driver that&#39;s absent. The restraining force is &quot;fear of competence loss&quot; or &quot;investment required for training.&quot; Get the framing right.</p>
+<p><strong>Ignoring legitimate concerns.</strong> Restraining forces include valid objections. If the change genuinely has flaws, those concerns aren&#39;t just &quot;resistance to manage&quot; — they&#39;re feedback to incorporate.</p>
+<p><strong>Skipping the strength assessment.</strong> All forces are not equal. A force map without strength indicators gives a misleading picture of the actual balance.</p>
+<p><strong>Planning to push through resistance.</strong> Force field analysis often reveals that the right move is a modified version of the change, implemented differently, not a harder push on an unchanged plan.</p>
+<hr>
+<h2>Relationship to Other Frameworks</h2>
+<p><strong>Pre-mortem</strong> adds prospective failure scenarios to the restraining force analysis — what specifically would cause this to fail?</p>
+<p><strong>Risk assessment</strong> complements the restraining force analysis with probability and impact estimates.</p>
+<p><strong>Stakeholder mapping</strong> provides the human dimension: which restraining forces are concentrated in which individuals or groups?</p>
+<hr>
+<p><em>Related: <a href="./risk-assessment.html">Risk Assessment</a>, <a href="./pre-mortem.html">Pre-Mortem Analysis</a>, <a href="./decision-matrix.html">Decision Matrix</a>, <a href="../concepts/second-order-effects.html">Second-Order Effects</a></em></p>
+
+            </article>
+
+            <footer class="wiki-article-footer">
+                <div class="wiki-article-footer__meta">
+                    <span>Updated: 2026-03-01</span>
+                    <span aria-hidden="true">&middot;</span>
+                    <span>4 min read</span>
+                </div>
+                <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
+                    <a href="../index.html">
+                        <span aria-hidden="true">&larr;</span> Back to Wiki
+                    </a>
+                </nav>
+            </footer>
+
+            <div class="jd-sitemap">
+  <div class="jd-sitemap-header">
+    <h3 class="jd-sitemap-title">Sitemap</h3>
+  </div>
+  <div class="jd-sitemap-grid">
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">10-19</span>
+        <h4 class="jd-category-name">Documentation</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../getting-started.html" class="jd-page-link">
+            <span class="jd-number">10.01</span>
+            <span class="jd-page-title">Getting Started</span>
+          </a>
+        </li>
+        <li>
+          <a href="../how-we-work.html" class="jd-page-link">
+            <span class="jd-number">10.02</span>
+            <span class="jd-page-title">How We Work</span>
+          </a>
+        </li>
+        <li>
+          <a href="../diagnostic-process.html" class="jd-page-link">
+            <span class="jd-number">10.03</span>
+            <span class="jd-page-title">The Diagnostic Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="../faq.html" class="jd-page-link">
+            <span class="jd-number">10.04</span>
+            <span class="jd-page-title">Frequently Asked Questions</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">20-29</span>
+        <h4 class="jd-category-name">Concepts</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../concepts/root-cause.html" class="jd-page-link">
+            <span class="jd-number">20.01</span>
+            <span class="jd-page-title">Root Cause Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/mental-models.html" class="jd-page-link">
+            <span class="jd-number">20.02</span>
+            <span class="jd-page-title">Mental Models</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/systems-thinking.html" class="jd-page-link">
+            <span class="jd-number">20.03</span>
+            <span class="jd-page-title">Systems Thinking</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/cognitive-biases.html" class="jd-page-link">
+            <span class="jd-number">20.04</span>
+            <span class="jd-page-title">Cognitive Biases</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/second-order-effects.html" class="jd-page-link">
+            <span class="jd-number">20.05</span>
+            <span class="jd-page-title">Second-Order Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/signal-vs-noise.html" class="jd-page-link">
+            <span class="jd-number">20.06</span>
+            <span class="jd-page-title">Signal vs Noise</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/first-principles.html" class="jd-page-link">
+            <span class="jd-number">20.07</span>
+            <span class="jd-page-title">First Principles Thinking</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/opportunity-cost.html" class="jd-page-link">
+            <span class="jd-number">20.08</span>
+            <span class="jd-page-title">Opportunity Cost</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/compounding.html" class="jd-page-link">
+            <span class="jd-number">20.09</span>
+            <span class="jd-page-title">Compounding Effects</span>
+          </a>
+        </li>
+        <li>
+          <a href="../concepts/survivorship-bias.html" class="jd-page-link">
+            <span class="jd-number">20.10</span>
+            <span class="jd-page-title">Survivorship Bias</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">30-39</span>
+        <h4 class="jd-category-name">Frameworks</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../frameworks/trace-protocol.html" class="jd-page-link">
+            <span class="jd-number">30.01</span>
+            <span class="jd-page-title">The TRACE Protocol</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/decision-matrix.html" class="jd-page-link">
+            <span class="jd-number">30.02</span>
+            <span class="jd-page-title">Decision Matrix</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/constraint-mapping.html" class="jd-page-link">
+            <span class="jd-number">30.03</span>
+            <span class="jd-page-title">Constraint Mapping</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/feedback-loops.html" class="jd-page-link">
+            <span class="jd-number">30.04</span>
+            <span class="jd-page-title">Feedback Loop Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/swot-analysis.html" class="jd-page-link">
+            <span class="jd-number">30.05</span>
+            <span class="jd-page-title">SWOT Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/risk-assessment.html" class="jd-page-link">
+            <span class="jd-number">30.06</span>
+            <span class="jd-page-title">Risk Assessment</span>
+          </a>
+        </li>
+        <li>
+          <a href="../frameworks/prioritization-matrix.html" class="jd-page-link">
+            <span class="jd-number">30.07</span>
+            <span class="jd-page-title">Prioritization Matrix</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">40-49</span>
+        <h4 class="jd-category-name">Field Notes</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../field-notes/001-map-territory.html" class="jd-page-link">
+            <span class="jd-number">40.01</span>
+            <span class="jd-page-title">The Map Is Not The Territory</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/002-precision-accuracy.html" class="jd-page-link">
+            <span class="jd-number">40.02</span>
+            <span class="jd-page-title">Precision vs Accuracy</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/003-entropy.html" class="jd-page-link">
+            <span class="jd-number">40.03</span>
+            <span class="jd-page-title">Entropy</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/004-bottlenecks.html" class="jd-page-link">
+            <span class="jd-number">40.04</span>
+            <span class="jd-page-title">Finding the Bottleneck</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/005-tribal-knowledge.html" class="jd-page-link">
+            <span class="jd-number">40.05</span>
+            <span class="jd-page-title">Tribal Knowledge</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/006-incentive-alignment.html" class="jd-page-link">
+            <span class="jd-number">40.06</span>
+            <span class="jd-page-title">Incentive Alignment</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/007-documentation-debt.html" class="jd-page-link">
+            <span class="jd-number">40.07</span>
+            <span class="jd-page-title">Documentation Debt</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/008-sunk-cost-trap.html" class="jd-page-link">
+            <span class="jd-number">40.08</span>
+            <span class="jd-page-title">The Sunk Cost Trap</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/009-scope-creep.html" class="jd-page-link">
+            <span class="jd-number">40.09</span>
+            <span class="jd-page-title">Scope Creep</span>
+          </a>
+        </li>
+        <li>
+          <a href="../field-notes/010-communication-overhead.html" class="jd-page-link">
+            <span class="jd-number">40.10</span>
+            <span class="jd-page-title">Communication Overhead</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">50-59</span>
+        <h4 class="jd-category-name">Case Studies</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../case-studies/manufacturing-throughput.html" class="jd-page-link">
+            <span class="jd-number">50.01</span>
+            <span class="jd-page-title">Manufacturing Throughput Crisis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/communication-breakdown.html" class="jd-page-link">
+            <span class="jd-number">50.02</span>
+            <span class="jd-page-title">The Communication Breakdown</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/the-invisible-process.html" class="jd-page-link">
+            <span class="jd-number">50.03</span>
+            <span class="jd-page-title">The Invisible Process</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/the-startup-pivot.html" class="jd-page-link">
+            <span class="jd-number">50.04</span>
+            <span class="jd-page-title">The Startup That Wouldn't Pivot</span>
+          </a>
+        </li>
+        <li>
+          <a href="../case-studies/the-data-migration.html" class="jd-page-link">
+            <span class="jd-number">50.05</span>
+            <span class="jd-page-title">The Data Migration Disaster</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">90-99</span>
+        <h4 class="jd-category-name">Cognitive Architecture</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../architecture/memory-system.html" class="jd-page-link">
+            <span class="jd-number">90.01</span>
+            <span class="jd-page-title">Memory System</span>
+          </a>
+        </li>
+        <li>
+          <a href="../architecture/terminal-component.html" class="jd-page-link">
+            <span class="jd-number">90.02</span>
+            <span class="jd-page-title">Terminal Component</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="jd-category">
+      <div class="jd-category-header">
+        <span class="jd-range">60-69</span>
+        <h4 class="jd-category-name">Tools & Techniques</h4>
+      </div>
+      <ul class="jd-pages">
+        <li>
+          <a href="../tools/five-whys.html" class="jd-page-link">
+            <span class="jd-number">60.01</span>
+            <span class="jd-page-title">The Five Whys</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/fishbone-diagram.html" class="jd-page-link">
+            <span class="jd-number">60.02</span>
+            <span class="jd-page-title">Fishbone Diagrams</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/pareto-analysis.html" class="jd-page-link">
+            <span class="jd-number">60.03</span>
+            <span class="jd-page-title">Pareto Analysis</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/process-mapping.html" class="jd-page-link">
+            <span class="jd-number">60.04</span>
+            <span class="jd-page-title">Process Mapping</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/time-boxing.html" class="jd-page-link">
+            <span class="jd-number">60.05</span>
+            <span class="jd-page-title">Time-Boxing</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/assumption-mapping.html" class="jd-page-link">
+            <span class="jd-number">60.06</span>
+            <span class="jd-page-title">Assumption Mapping</span>
+          </a>
+        </li>
+        <li>
+          <a href="../tools/retrospective.html" class="jd-page-link">
+            <span class="jd-number">60.07</span>
+            <span class="jd-page-title">Retrospective</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="jd-sitemap-footer">
+    <p class="jd-sitemap-note">Organized using the <a href="https://johnnydecimal.com/" target="_blank" rel="noopener">Johnny Decimal</a> system</p>
+  </div>
+</div>
+
+        </main>
+    </div>
+
+    <script src="../../app.js" defer></script>
+
+    <script src="../../wiki-nav.js" defer></script>
+
+    <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
+    <script src="../../white-rabbit.js" defer></script>
+</body>
+</html>

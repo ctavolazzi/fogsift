@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 12:58:25 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 12:59:30 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Force Field Analysis</title>
+      <link>https://fogsift.com/wiki/frameworks/force-field-analysis.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/force-field-analysis.html</guid>
+      <description>Force field analysis is a decision-making framework for understanding the forces that support and oppose a proposed change. Developed by psychologist Kurt Lewin</description>
+      <pubDate>Sun, 01 Mar 2026 12:59:22 GMT</pubDate>
+    </item>
     <item>
       <title>Confirmation Bias</title>
       <link>https://fogsift.com/wiki/concepts/confirmation-bias.html</link>
