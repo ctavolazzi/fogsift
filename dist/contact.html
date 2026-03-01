@@ -328,7 +328,7 @@
         <section class="section" aria-labelledby="form-heading">
             <h2 id="form-heading" class="section-label">SEND A MESSAGE</h2>
             <p style="text-align:center; color:var(--color-text-muted); font-size:0.9rem; margin-bottom:2rem; max-width:520px; margin-left:auto; margin-right:auto;">
-                Prefer to write it out? Fill in the form and it will open your email client, ready to send.
+                Prefer to write it out? Fill in the form and we'll get back to you directly.
             </p>
 
             <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
@@ -376,11 +376,9 @@
                 <div class="contact-form-actions">
                     <button type="submit" class="contact-form-submit" id="cf-submit">
                         <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                        Open in Email Client
+                        Send Message
                     </button>
-                    <p class="contact-form-note">
-                        This opens your email app with the message pre-filled. Your data never touches our servers.
-                    </p>
+                    <p class="contact-form-note" id="cf-status" role="status" aria-live="polite"></p>
                 </div>
             </form>
         </section>
@@ -559,13 +557,44 @@
             var ok = validateName() & validateEmail() & validateMsg();
             if (!ok) { form.querySelector('.invalid').focus(); return; }
 
-            var subject = encodeURIComponent(document.getElementById('cf-subject').value + ' — via fogsift.com');
-            var body    = encodeURIComponent(
-                'Name: ' + nameEl.value.trim() + '\n' +
-                'Email: ' + emailEl.value.trim() + '\n\n' +
-                msgEl.value.trim()
-            );
-            window.location.href = 'mailto:info@fogsift.com?subject=' + subject + '&body=' + body;
+            var submitBtn = document.getElementById('cf-submit');
+            var statusEl  = document.getElementById('cf-status');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+            if (statusEl) { statusEl.textContent = ''; statusEl.className = 'contact-form-note'; }
+
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name:    nameEl.value.trim(),
+                    email:   emailEl.value.trim(),
+                    subject: document.getElementById('cf-subject').value,
+                    message: msgEl.value.trim()
+                })
+            })
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    form.reset();
+                    if (countEl) countEl.textContent = '0 / 2000';
+                    submitBtn.textContent = 'Sent ✓';
+                    if (statusEl) {
+                        statusEl.textContent = 'Message received — we\'ll be in touch soon.';
+                        statusEl.style.color = 'var(--color-success, #16a34a)';
+                    }
+                } else {
+                    throw new Error(data.error || 'Submission failed');
+                }
+            })
+            .catch(function (err) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+                if (statusEl) {
+                    statusEl.textContent = (err && err.message) || 'Something went wrong. Please email info@fogsift.com directly.';
+                    statusEl.style.color = '#ef4444';
+                }
+            });
         });
     })();
 
