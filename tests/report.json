@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T05:13:11.136Z",
+  "timestamp": "2026-03-01T06:34:39.230Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,17 +60,17 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 79",
+          "test": "HTML pages built: 80",
           "status": "pass",
-          "detail": "Found 79 HTML files"
+          "detail": "Found 80 HTML files"
         },
         {
-          "test": "styles.css size: 206.0KB",
+          "test": "styles.css size: 199.2KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 82.6KB",
+          "test": "app.js size: 81.7KB",
           "status": "pass",
           "detail": ""
         }
@@ -473,12 +473,17 @@
           "detail": ""
         },
         {
+          "test": "workflow-engine.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "your-data.html",
           "status": "pass",
           "detail": ""
         }
       ],
-      "passed": 79,
+      "passed": 80,
       "failed": 0,
       "warned": 0
     },
@@ -555,7 +560,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 6713 internal links valid",
+          "test": "All 6718 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -593,7 +598,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 326.1KB",
+          "test": "Index size: 322.4KB",
           "status": "warn",
           "detail": ""
         }
@@ -606,7 +611,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.96MB",
+          "test": "Total dist/ size: 8.18MB",
           "status": "pass",
           "detail": ""
         },
@@ -680,8 +685,8 @@
     }
   ],
   "summary": {
-    "total": 121,
-    "passed": 111,
+    "total": 122,
+    "passed": 112,
     "failed": 0,
     "warned": 10
   }

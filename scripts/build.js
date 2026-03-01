@@ -9,6 +9,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { execSync } = require('child_process');
 const { marked } = require('marked');
 const esbuild = require('esbuild');
 
@@ -1225,6 +1226,29 @@ async function build() {
         console.log(`  ✓ dist/app.js ${formatSavings(js.length, minifiedJS.length)}`);
     }
 
+    // Build Workflow Engine (React + Tailwind bundle)
+    console.log('\n⚙️  Workflow Engine:');
+    try {
+        await esbuild.build({
+            entryPoints: [path.join(SRC, 'workflow-engine-app.jsx')],
+            bundle: true,
+            outfile: path.join(DIST, 'workflow-engine.js'),
+            format: 'iife',
+            minify: true,
+            define: { 'process.env.NODE_ENV': '"production"' },
+            jsx: 'automatic',
+        });
+        console.log('  ✓ dist/workflow-engine.js (React bundle)');
+
+        execSync(
+            `./node_modules/.bin/tailwindcss -i src/css/workflow-engine-tailwind.css -o dist/workflow-engine-styles.css --config tailwind.workflow-engine.config.js --minify`,
+            { cwd: ROOT, stdio: 'pipe' }
+        );
+        console.log('  ✓ dist/workflow-engine-styles.css (Tailwind CSS)');
+    } catch (err) {
+        console.error('  ✗ Workflow Engine build failed:', err.message);
+    }
+
     // Process HTML templates (with theme init injection - TD-010)
     console.log('\n📄 HTML:');
     if (processHtml()) {
@@ -1284,6 +1308,9 @@ async function build() {
     }
     if (processSimpleHtml('offline.html')) {
         console.log('  ✓ dist/offline.html (processed)');
+    }
+    if (processSimpleHtml('workflow-engine.html')) {
+        console.log('  ✓ dist/workflow-engine.html (processed)');
     }
 
     // Future pages (uncomment when implemented):

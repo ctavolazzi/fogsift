@@ -1,8 +1,8 @@
 {
-  "generated": "2026-03-01T04:51:32.249Z",
+  "generated": "2026-03-01T06:21:56.088Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
-    "branch": "claude/redesign-portfolio-projects-Usvi5",
+    "branch": "claude/workflow-visualization-engine-2qxSs",
     "status": [
       "M _tools/snapshots/context-brief.md"
     ],
@@ -22,7 +22,7 @@
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:50026/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:16023/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -138,7 +138,7 @@
       {
         "path": "css/navigation.css",
         "size": 22908,
-        "modified": "2026-03-01T04:51:29.659Z",
+        "modified": "2026-03-01T06:21:53.751Z",
         "lines": 965
       },
       {
@@ -192,7 +192,7 @@
       {
         "path": "css/terminal.css",
         "size": 9566,
-        "modified": "2026-03-01T04:51:29.659Z",
+        "modified": "2026-03-01T06:21:53.752Z",
         "lines": 411
       },
       {
@@ -278,7 +278,7 @@
       {
         "path": "js/nav.js",
         "size": 2056,
-        "modified": "2026-03-01T04:51:29.660Z",
+        "modified": "2026-03-01T06:21:53.753Z",
         "lines": 56
       },
       {
@@ -302,7 +302,7 @@
       {
         "path": "js/supply-chain-sim.js",
         "size": 39686,
-        "modified": "2026-03-01T04:51:29.661Z",
+        "modified": "2026-03-01T06:21:53.753Z",
         "lines": 755
       },
       {
@@ -314,13 +314,13 @@
       {
         "path": "js/terminal-demo.js",
         "size": 15206,
-        "modified": "2026-03-01T04:51:29.661Z",
+        "modified": "2026-03-01T06:21:53.753Z",
         "lines": 346
       },
       {
         "path": "js/terminal-interactive.js",
         "size": 11704,
-        "modified": "2026-03-01T04:51:29.661Z",
+        "modified": "2026-03-01T06:21:53.754Z",
         "lines": 348
       },
       {
@@ -430,7 +430,7 @@
       {
         "path": "index.html",
         "size": 62824,
-        "modified": "2026-03-01T04:51:29.660Z",
+        "modified": "2026-03-01T06:21:53.752Z",
         "lines": 993
       },
       {
@@ -888,13 +888,13 @@
       {
         "path": "wiki/architecture/memory-system.md",
         "size": 7451,
-        "modified": "2026-03-01T04:51:29.662Z",
+        "modified": "2026-03-01T06:21:53.754Z",
         "lines": 179
       },
       {
         "path": "wiki/architecture/terminal-component.md",
         "size": 5814,
-        "modified": "2026-03-01T04:51:29.662Z",
+        "modified": "2026-03-01T06:21:53.755Z",
         "lines": 107
       },
       {
@@ -1128,7 +1128,7 @@
       {
         "path": "wiki/index.json",
         "size": 4597,
-        "modified": "2026-03-01T04:51:29.663Z",
+        "modified": "2026-03-01T06:21:53.755Z",
         "lines": 101
       },
       {
@@ -1304,7 +1304,7 @@
   },
   "summary": {
     "version": "0.2.0",
-    "branch": "claude/redesign-portfolio-projects-Usvi5",
+    "branch": "claude/workflow-visualization-engine-2qxSs",
     "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,

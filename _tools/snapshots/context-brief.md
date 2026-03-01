@@ -1,11 +1,11 @@
 # FogSift Context Brief
-Generated: 2026-03-01T04:51:32.175Z
+Generated: 2026-03-01T06:21:56.025Z
 
 ## Quick Status
 | Metric | Value |
 |--------|-------|
 | Version | 0.2.0 |
-| Branch | claude/redesign-portfolio-projects-Usvi5 |
+| Branch | claude/workflow-visualization-engine-2qxSs |
 | Last release | none |
 | Commits since release | 0 |
 | Uncommitted files | 0 |
