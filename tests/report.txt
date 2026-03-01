@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T13:32:59.370Z
+Generated: 2026-03-01T15:49:06.368Z
 ============================================================
 
 SUMMARY
-  Total:    147
-  Passed:   138
+  Total:    151
+  Passed:   142
   Failed:   0
   Warnings: 9
-  Pass rate: 93.9%
+  Pass rate: 94.0%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,8 +21,8 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 105 — Found 105 HTML files
-  [PASS] styles.css size: 199.9KB
+  [PASS] HTML pages built: 109 — Found 109 HTML files
+  [PASS] styles.css size: 200.8KB
   [PASS] app.js size: 81.7KB
 
 ── HTML Validation ──
@@ -65,9 +65,11 @@ SUMMARY
   [PASS] wiki/case-studies/manufacturing-throughput.html
   [PASS] wiki/case-studies/the-data-migration.html
   [PASS] wiki/case-studies/the-invisible-process.html
+  [PASS] wiki/case-studies/the-metric-mirage.html
   [PASS] wiki/case-studies/the-startup-pivot.html
   [PASS] wiki/concepts/anchoring-bias.html
   [PASS] wiki/concepts/availability-bias.html
+  [PASS] wiki/concepts/base-rate-neglect.html
   [PASS] wiki/concepts/cognitive-biases.html
   [PASS] wiki/concepts/compounding.html
   [PASS] wiki/concepts/confirmation-bias.html
@@ -75,6 +77,7 @@ SUMMARY
   [PASS] wiki/concepts/first-principles.html
   [PASS] wiki/concepts/goodharts-law.html
   [PASS] wiki/concepts/halo-effect.html
+  [PASS] wiki/concepts/inversion.html
   [PASS] wiki/concepts/loss-aversion.html
   [PASS] wiki/concepts/mental-models.html
   [PASS] wiki/concepts/opportunity-cost.html
@@ -109,6 +112,7 @@ SUMMARY
   [PASS] wiki/field-notes/017-hero-dependency.html
   [PASS] wiki/field-notes/018-permission-debt.html
   [PASS] wiki/field-notes/019-the-proxy-trap.html
+  [PASS] wiki/field-notes/020-the-adjacent-problem.html
   [PASS] wiki/frameworks/constraint-mapping.html
   [PASS] wiki/frameworks/decision-matrix.html
   [PASS] wiki/frameworks/feedback-loops.html
@@ -155,7 +159,7 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 14402 internal links valid
+  [PASS] All 13806 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -163,10 +167,10 @@ SUMMARY
   [PASS] Index has 87 entries
   [PASS] 87/87 entries have valid structure
   [PASS] 87/87 index URLs resolve to files
-  [PASS] Index size: 84.4KB
+  [PASS] Index size: 84.2KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 9.08MB
+  [PASS] Total dist/ size: 9.20MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present

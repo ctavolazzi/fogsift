@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 15:39:11 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 15:54:05 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Second-Order Effects</title>
+      <link>https://fogsift.com/wiki/concepts/second-order-effects.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/second-order-effects.html</guid>
+      <description>*First-order effects are visible and immediate. Second-order effects are where strategy actually plays out.*</description>
+      <pubDate>Sun, 01 Mar 2026 15:53:58 GMT</pubDate>
+    </item>
     <item>
       <title>Inversion</title>
       <link>https://fogsift.com/wiki/concepts/inversion.html</link>
@@ -276,13 +283,6 @@
       <link>https://fogsift.com/wiki/concepts/root-cause.html</link>
       <guid isPermaLink="true">https://fogsift.com/wiki/concepts/root-cause.html</guid>
       <description>Root cause analysis is the systematic process of tracing a problem back to its origin. It&apos;s not about fixing symptoms. It&apos;s about finding the actual source.</description>
-      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
-    </item>
-    <item>
-      <title>Second-Order Effects</title>
-      <link>https://fogsift.com/wiki/concepts/second-order-effects.html</link>
-      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/second-order-effects.html</guid>
-      <description>First-order effects are the direct, immediate consequences of an action. Second-order effects are the consequences of those consequences. Most strategic mistake</description>
       <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
     </item>
     <item>

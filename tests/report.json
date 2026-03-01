@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T13:32:59.370Z",
+  "timestamp": "2026-03-01T15:49:06.368Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,12 +60,12 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 105",
+          "test": "HTML pages built: 109",
           "status": "pass",
-          "detail": "Found 105 HTML files"
+          "detail": "Found 109 HTML files"
         },
         {
-          "test": "styles.css size: 199.9KB",
+          "test": "styles.css size: 200.8KB",
           "status": "pass",
           "detail": ""
         },
@@ -278,6 +278,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/case-studies/the-metric-mirage.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/case-studies/the-startup-pivot.html",
           "status": "pass",
           "detail": ""
@@ -289,6 +294,11 @@
         },
         {
           "test": "wiki/concepts/availability-bias.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/base-rate-neglect.html",
           "status": "pass",
           "detail": ""
         },
@@ -324,6 +334,11 @@
         },
         {
           "test": "wiki/concepts/halo-effect.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/inversion.html",
           "status": "pass",
           "detail": ""
         },
@@ -498,6 +513,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/020-the-adjacent-problem.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -608,7 +628,7 @@
           "detail": ""
         }
       ],
-      "passed": 105,
+      "passed": 109,
       "failed": 0,
       "warned": 0
     },
@@ -685,7 +705,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 14402 internal links valid",
+          "test": "All 13806 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -723,7 +743,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 84.4KB",
+          "test": "Index size: 84.2KB",
           "status": "pass",
           "detail": ""
         }
@@ -736,7 +756,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 9.08MB",
+          "test": "Total dist/ size: 9.20MB",
           "status": "pass",
           "detail": ""
         },
@@ -810,8 +830,8 @@
     }
   ],
   "summary": {
-    "total": 147,
-    "passed": 138,
+    "total": 151,
+    "passed": 142,
     "failed": 0,
     "warned": 9
   }
