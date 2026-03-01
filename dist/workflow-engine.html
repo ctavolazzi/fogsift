@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Engine | Fogsift</title>
+    <meta name="description" content="Fogsift Workflow Engine — visualize and simulate AI agent workflows with live signal propagation, Bézier routing, and real-time node context inspection.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/workflow-engine">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Workflow Engine | Fogsift">
+    <meta property="og:description" content="Visualize and simulate AI agent workflows with live signal propagation.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/workflow-engine">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <!-- Theme detection (prevents FOUC) -->
+    <script src="theme-init.js"></script>
+
+    <!-- Workflow Engine Styles (Tailwind-generated) -->
+    <link rel="stylesheet" href="workflow-engine-styles.css">
+
+    <style>
+        /* Reset body for full-screen app */
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { margin: 0; padding: 0; overflow: hidden; background: #020617; }
+        #workflow-engine-root { display: contents; }
+    </style>
+</head>
+<body>
+    <div id="workflow-engine-root"></div>
+
+    <!-- Workflow Engine React Bundle -->
+    <script src="workflow-engine.js" defer></script>
+
+    <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
+    <script src="white-rabbit.js" defer></script>
+</body>
+</html>
