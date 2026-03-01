@@ -757,3 +757,47 @@
         text-align: center;
     }
 }
+
+/* ── Wiki Share Bar ─────────────────────────────────────────────────── */
+.wiki-share {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1.5rem 0 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-border, #e5e7eb);
+    border-bottom: 1px solid var(--color-border, #e5e7eb);
+}
+.wiki-share-label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted, #6b7280);
+    margin-right: 0.25rem;
+}
+.wiki-share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--color-border, #e5e7eb);
+    border-radius: 0.5rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-text, #111827);
+    text-decoration: none;
+    background: var(--color-surface, #fff);
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+.wiki-share-btn:hover {
+    background: var(--color-bg, #f9fafb);
+    border-color: var(--color-accent, #6366f1);
+    color: var(--color-accent, #6366f1);
+}
+.wiki-share-btn.copied {
+    color: #16a34a;
+    border-color: #16a34a;
+}

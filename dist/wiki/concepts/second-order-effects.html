@@ -419,6 +419,27 @@
                     <span aria-hidden="true">&middot;</span>
                     <span>4 min read</span>
                 </div>
+
+                <div class="wiki-share" aria-label="Share this article">
+                    <span class="wiki-share-label">Share</span>
+                    <a class="wiki-share-btn" id="wiki-share-copy" href="#" aria-label="Copy link to clipboard" title="Copy link">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        Copy link
+                    </a>
+                    <a class="wiki-share-btn"
+                       href="https://x.com/intent/tweet?text=Second-Order Effects&url=https://fogsift.com/wiki/concepts/second-order-effects"
+                       target="_blank" rel="noopener" aria-label="Share on X (Twitter)">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        Post
+                    </a>
+                    <a class="wiki-share-btn"
+                       href="https://www.linkedin.com/sharing/share-offsite/?url=https://fogsift.com/wiki/concepts/second-order-effects"
+                       target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+                        <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        LinkedIn
+                    </a>
+                </div>
+
                 <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">
                         <span aria-hidden="true">&larr;</span> Back to Wiki
@@ -899,6 +920,25 @@
     <script src="../../app.js" defer></script>
 
     <script src="../../wiki-nav.js" defer></script>
+
+    <script>
+    // Copy-link share button
+    (function () {
+        var btn = document.getElementById('wiki-share-copy');
+        if (!btn || !navigator.clipboard) return;
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            navigator.clipboard.writeText(window.location.href).then(function () {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(function () {
+                    btn.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy link';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        });
+    })();
+    </script>
 
     <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
     <script src="../../white-rabbit.js" defer></script>
