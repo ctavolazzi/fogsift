@@ -156,6 +156,10 @@
         {
           "slug": "frameworks/stakeholder-mapping",
           "title": "Stakeholder Mapping"
+        },
+        {
+          "slug": "frameworks/jobs-to-be-done",
+          "title": "Jobs To Be Done"
         }
       ]
     },
@@ -316,6 +320,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:30:14.081Z",
-  "buildTimestamp": 1772371814081
+  "buildDate": "2026-03-01T13:31:30.180Z",
+  "buildTimestamp": 1772371890180
 }

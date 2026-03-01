@@ -54,7 +54,8 @@
         { "slug": "frameworks/prioritization-matrix", "title": "Prioritization Matrix" },
         { "slug": "frameworks/pre-mortem", "title": "Pre-Mortem Analysis" },
         { "slug": "frameworks/force-field-analysis", "title": "Force Field Analysis" },
-        { "slug": "frameworks/stakeholder-mapping", "title": "Stakeholder Mapping" }
+        { "slug": "frameworks/stakeholder-mapping", "title": "Stakeholder Mapping" },
+        { "slug": "frameworks/jobs-to-be-done", "title": "Jobs To Be Done" }
       ]
     },
     {

@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:30:14 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:31:30 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Jobs To Be Done</title>
+      <link>https://fogsift.com/wiki/frameworks/jobs-to-be-done.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/jobs-to-be-done.html</guid>
+      <description>Jobs To Be Done (JTBD) is a framework for understanding what people are actually trying to accomplish when they use a product, service, or process — and why the</description>
+      <pubDate>Sun, 01 Mar 2026 13:31:08 GMT</pubDate>
+    </item>
     <item>
       <title>Permission Debt</title>
       <link>https://fogsift.com/wiki/field-notes/018-permission-debt.html</link>
