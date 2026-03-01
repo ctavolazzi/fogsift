@@ -498,6 +498,40 @@
     margin-right: auto;
 }
 
+.wiki-search-bar {
+    display: flex;
+    gap: 0;
+    max-width: 44ch;
+    margin: var(--space-md) auto 0;
+}
+.wiki-search-bar input {
+    flex: 1;
+    padding: var(--space-xs) var(--space-sm);
+    border: 2px solid var(--line);
+    border-right: none;
+    border-radius: var(--radius) 0 0 var(--radius);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    background: var(--canvas);
+    color: var(--ink);
+    outline: none;
+}
+.wiki-search-bar input:focus {
+    border-color: var(--burnt-orange);
+}
+.wiki-search-bar button {
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--burnt-orange);
+    color: #fff;
+    border: 2px solid var(--burnt-orange);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background 0.15s;
+}
+.wiki-search-bar button:hover { background: var(--chocolate); border-color: var(--chocolate); }
+
 /* Fallback for old class names */
 .wiki-index-title {
     font-family: var(--font-display);
