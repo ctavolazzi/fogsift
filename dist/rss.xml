@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:26:32 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:27:48 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>The Hero Dependency</title>
+      <link>https://fogsift.com/wiki/field-notes/017-hero-dependency.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/017-hero-dependency.html</guid>
+      <description>*Organizations that reward individual heroism are building fragility into their systems.*</description>
+      <pubDate>Sun, 01 Mar 2026 13:27:31 GMT</pubDate>
+    </item>
     <item>
       <title>Status Quo Bias</title>
       <link>https://fogsift.com/wiki/concepts/status-quo-bias.html</link>

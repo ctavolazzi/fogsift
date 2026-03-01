@@ -223,6 +223,10 @@
         {
           "slug": "field-notes/016-handoff-problem",
           "title": "The Handoff Problem"
+        },
+        {
+          "slug": "field-notes/017-hero-dependency",
+          "title": "The Hero Dependency"
         }
       ]
     },
@@ -304,6 +308,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:26:32.168Z",
-  "buildTimestamp": 1772371592168
+  "buildDate": "2026-03-01T13:27:48.662Z",
+  "buildTimestamp": 1772371668662
 }

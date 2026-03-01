@@ -343,6 +343,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://fogsift.com/wiki/field-notes/017-hero-dependency.html</loc>
+    <lastmod>2026-03-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://fogsift.com/wiki/frameworks/constraint-mapping.html</loc>
     <lastmod>2026-03-01</lastmod>
     <changefreq>monthly</changefreq>
