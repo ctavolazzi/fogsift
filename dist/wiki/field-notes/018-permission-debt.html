@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Survivorship Bias | Fogsift Wiki</title>
-    <meta name="description" content="Survivorship bias is the logical error of concentrating on the people or things that made it past a selection process and overlooking those that did not. It lea">
+    <title>Permission Debt | Fogsift Wiki</title>
+    <meta name="description" content="*Every approval required to get work done is either adding real value or incurring a tax on the organization's speed.*">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/survivorship-bias">
+    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/018-permission-debt">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Survivorship Bias | Fogsift Wiki">
-    <meta property="og:description" content="Survivorship bias is the logical error of concentrating on the people or things that made it past a selection process and overlooking those that did not. It lea">
+    <meta property="og:title" content="Permission Debt | Fogsift Wiki">
+    <meta property="og:description" content="*Every approval required to get work done is either adding real value or incurring a tax on the organization's speed.*">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/survivorship-bias">
+    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/018-permission-debt">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -171,7 +171,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">SURVIVORSHIP BIAS</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">PERMISSION DEBT</span></li>
             </ol>
         </nav>
 
@@ -206,7 +206,7 @@
     <li><a href="../concepts/first-principles.html">First Principles Thinking</a></li>
     <li><a href="../concepts/opportunity-cost.html">Opportunity Cost</a></li>
     <li><a href="../concepts/compounding.html">Compounding Effects</a></li>
-    <li><a href="../concepts/survivorship-bias.html" class="active">Survivorship Bias</a></li>
+    <li><a href="../concepts/survivorship-bias.html">Survivorship Bias</a></li>
     <li><a href="../concepts/goodharts-law.html">Goodhart's Law</a></li>
     <li><a href="../concepts/planning-fallacy.html">Planning Fallacy</a></li>
     <li><a href="../concepts/confirmation-bias.html">Confirmation Bias</a></li>
@@ -254,7 +254,7 @@
     <li><a href="../field-notes/015-messenger-problem.html">The Messenger Problem</a></li>
     <li><a href="../field-notes/016-handoff-problem.html">The Handoff Problem</a></li>
     <li><a href="../field-notes/017-hero-dependency.html">The Hero Dependency</a></li>
-    <li><a href="../field-notes/018-permission-debt.html">Permission Debt</a></li>
+    <li><a href="../field-notes/018-permission-debt.html" class="active">Permission Debt</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -293,52 +293,56 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Survivorship Bias</h1>
-<p>Survivorship bias is the logical error of concentrating on the people or things that made it past a selection process and overlooking those that did not. It leads to false conclusions because failures are invisible.</p>
-<h2>The Principle</h2>
-<blockquote>
-<p>&quot;The dead don&#39;t write books.&quot; — Nassim Nicholas Taleb</p>
-</blockquote>
-<p>You study successful startups to learn what makes startups succeed. Problem: you&#39;re only looking at the winners. The failures — which may have done many of the same things — aren&#39;t in the dataset. The &quot;winning formula&quot; you extracted might be noise.</p>
-<h2>The Classic Example</h2>
-<p>During World War II, the military studied returning bombers to decide where to add armor. The planes had bullet holes clustered on the wings and fuselage, so the obvious conclusion was to reinforce those areas.</p>
-<p>Statistician Abraham Wald pointed out the error: the planes that made it back were the ones that <em>survived</em> hits to those areas. The planes hit in the engines and cockpit never returned. The military needed to armor the places with <em>no</em> bullet holes — those were the fatal spots.</p>
-<h2>Where It Shows Up</h2>
-<h3>Business Strategy</h3>
-<p><strong>&quot;Successful companies do X, so we should do X.&quot;</strong></p>
-<p>For every company that succeeded by pivoting, there&#39;s a graveyard of companies that pivoted and died. For every founder who dropped out of college and built a billion-dollar company, there are thousands who dropped out and failed. You don&#39;t hear their stories.</p>
-<p><strong>The correction:</strong> Study failures as carefully as successes. Ask &quot;what did companies that failed do?&quot; not just &quot;what did companies that succeeded do?&quot;</p>
-<h3>Product Development</h3>
-<p><strong>&quot;Our users love this feature.&quot;</strong></p>
-<p>Your current users are survivors — people who stayed despite everything else. The people who left because of a missing feature aren&#39;t giving feedback anymore. User feedback is inherently biased toward survivors.</p>
-<p><strong>The correction:</strong> Study churn. Exit interviews. People who signed up but never activated. The silent quitters hold more insight than the vocal fans.</p>
-<h3>Hiring</h3>
-<p><strong>&quot;Our interview process works — look at how good our team is.&quot;</strong></p>
-<p>You&#39;re evaluating the people you hired, not the people you rejected. Some of those rejected candidates might have been great. You&#39;ll never know.</p>
-<p><strong>The correction:</strong> Track false negatives where possible. Did candidates you rejected go on to succeed elsewhere? If so, your process might be filtering out good people.</p>
-<h3>Investment</h3>
-<p><strong>&quot;This fund has a 15-year track record of beating the market.&quot;</strong></p>
-<p>Of the 1,000 funds that existed 15 years ago, most have been shut down or merged (because they underperformed). The ones still reporting are the survivors. The &quot;average&quot; fund looks better than it is because the failures disappear from the data.</p>
-<p><strong>The correction:</strong> Look at inception-cohort data. How did all funds started in Year X perform, including the ones that closed?</p>
-<h3>Personal Development</h3>
-<p><strong>&quot;These 10 habits made me successful.&quot;</strong></p>
-<p>Successful people attribute their success to their habits. But plenty of unsuccessful people have the same habits. The habits might be correlated with success without causing it — or they might be table stakes that are necessary but not sufficient.</p>
-<p><strong>The correction:</strong> Ask what unsuccessful people with the same habits are doing differently. The difference is likely the actual cause.</p>
-<h2>How to Correct for It</h2>
-<h3>1. Ask: &quot;What am I not seeing?&quot;</h3>
-<p>Every dataset has a selection filter. Identify it. What got filtered out? What happened to the filtered-out cases?</p>
-<h3>2. Seek Negative Evidence</h3>
-<p>Deliberately look for counterexamples. For every success story that supports your theory, look for a failure story that contradicts it.</p>
-<h3>3. Study Bases Rates</h3>
-<p>Before asking &quot;why did X succeed?&quot; ask &quot;what percentage of things like X succeed?&quot; If the base rate is 90%, the success isn&#39;t remarkable. If it&#39;s 1%, it is.</p>
-<h3>4. Include Failure Data</h3>
-<p>When making decisions, give equal weight to failure cases. Build a &quot;failure library&quot; alongside your success case studies.</p>
-<h3>5. Beware of Advice</h3>
-<p>Successful people&#39;s advice is survivorship-biased by definition. They did thing X and succeeded, but they don&#39;t know if X caused the success or if they would have succeeded anyway.</p>
-<h2>The Meta-Lesson</h2>
-<p>Survivorship bias is itself a lesson in <a href="/wiki/concepts/signal-vs-noise.html">signal vs. noise</a>. The visible data (survivors) is noise. The invisible data (non-survivors) is signal. The hardest part of analysis isn&#39;t processing data — it&#39;s knowing which data you&#39;re missing.</p>
+                <h1>Permission Debt</h1>
+<p><em>Every approval required to get work done is either adding real value or incurring a tax on the organization&#39;s speed.</em></p>
 <hr>
-<p><em>See also: <a href="/wiki/concepts/cognitive-biases.html">Cognitive Biases</a> | <a href="/wiki/concepts/signal-vs-noise.html">Signal vs. Noise</a> | <a href="/wiki/concepts/first-principles.html">First Principles Thinking</a></em></p>
+<h2>The Pattern</h2>
+<p>Every organization accumulates a stock of required permissions over time. Approvals to spend money. Sign-offs to communicate with clients. Authorization to push code. Committee review before launching anything. Multiple layers of management review before any decision reaches implementation.</p>
+<p>Each individual approval feels sensible when it&#39;s created. It was probably created in response to something that went wrong: an unauthorized expenditure, a rogue email, a deployment that broke things. The approval is the solution. The solution accretes. And over time, the organization finds itself encased in a structure of required permissions that slows everything down without preventing much.</p>
+<p>This is permission debt: the accumulated stock of approval requirements that were reasonable individually but are collectively costly, and that persist long after the conditions that justified them have changed.</p>
+<hr>
+<h2>How Approval Layers Form</h2>
+<p><strong>Incident response.</strong> Something goes wrong. Someone acted without authorization and caused a problem. The response is to require authorization for that type of action going forward. Sensible. But the incident passes, the context changes, the person who caused the problem leaves — and the approval requirement remains.</p>
+<p><strong>Risk aversion at the margin.</strong> Leaders who are uncomfortable with uncertainty require approval for decisions they&#39;re not sure about. Over time, &quot;things I&#39;m not sure about&quot; expands to mean &quot;things that could possibly go wrong&quot; — which is most things. The approval requirement grows.</p>
+<p><strong>Organizational mistrust.</strong> When management doesn&#39;t trust that people will make sound decisions, approval requirements are the mechanism for inserting management judgment into lower-level decisions. The approval layer is, in this reading, a vote of no-confidence in the people doing the work.</p>
+<p><strong>Compliance and audit requirements.</strong> External requirements genuinely mandate some approval layers. These legitimate requirements can expand over time as the compliance function interprets mandates conservatively, and as organizations adopt policies designed for large-enterprise contexts in small-team settings.</p>
+<p><strong>Organizational amnesia.</strong> The approval requirement was created by someone who understood why it was necessary. That person is gone. No one else knows why it exists. So it continues to exist, because removing things that exist requires action, and action is more visible than inaction.</p>
+<hr>
+<h2>What Permission Debt Costs</h2>
+<p><strong>Cycle time.</strong> Every required approval is a waiting period. In organizations with multiple layers of required approval, the time from &quot;decision made&quot; to &quot;action taken&quot; can be dominated by wait time rather than work time.</p>
+<p><strong>Context loss.</strong> Approvals require context transfer. The person seeking approval must reconstruct for the approver the situation that requires the decision. The approver must form a judgment based on a summary. Context is lost at each transfer. Bad decisions get approved; good decisions get slowed by confusion.</p>
+<p><strong>Motivation degradation.</strong> People who must seek approval for routine decisions experience their judgment as untrusted. This erodes motivation, particularly for high-agency individuals who are precisely the people most likely to have good judgment worth trusting.</p>
+<p><strong>Risk homogenization.</strong> When all decisions go through the same approval process, the approval layer applies a uniform risk filter. This filter may be too strict for some decisions and too loose for others. The result is not lower risk — it&#39;s homogenized risk, with the approval layer adding the illusion of risk management without the substance.</p>
+<p><strong>Blame diffusion.</strong> Approved decisions become collective decisions. When approved decisions go wrong, accountability diffuses across everyone in the approval chain. This makes it harder to learn from failures and easier for bad decision-making to persist.</p>
+<hr>
+<h2>Diagnostic Questions</h2>
+<p>To identify whether an approval requirement is adding value or just incurring cost:</p>
+<p><strong>What problem does this approval solve?</strong> If no one can articulate a specific failure mode that this approval prevents, it may be legacy structure rather than functional governance.</p>
+<p><strong>How often is this approval rejected or modified?</strong> If the answer is &quot;almost never,&quot; the approval isn&#39;t adding judgment — it&#39;s adding latency. A rubber stamp is not governance.</p>
+<p><strong>What would happen if this approval were removed?</strong> If the answer is &quot;probably nothing,&quot; the approval may already be inert. Test this hypothesis.</p>
+<p><strong>Who is the approver, and do they have relevant expertise?</strong> Approvals by people without domain knowledge add delay without improving decisions. The approver&#39;s value must come from somewhere.</p>
+<p><strong>How long does the approval take?</strong> Approval time is a direct productivity tax. Long wait times should be scrutinized even if the approval itself is otherwise justified.</p>
+<hr>
+<h2>Reducing Permission Debt</h2>
+<p><strong>Audit and expire.</strong> Create a regular process for reviewing approval requirements. For each one: state the original rationale, assess whether that rationale still applies, and sunset requirements that no longer have a clear justification.</p>
+<p><strong>Trust floors, not ceilings.</strong> Rather than requiring approval for every action above a threshold, define trust floors: the range of decisions any person in a role can make without approval. Expand the floor as trust is established.</p>
+<p><strong>Raise approval thresholds.</strong> Many approval thresholds were set when the organization was smaller or when the individuals making decisions were less experienced. Raise thresholds as conditions change.</p>
+<p><strong>Replace approvals with standards.</strong> If an approval exists to ensure quality or compliance, ask whether a clear standard would accomplish the same thing more efficiently. A standard allows people to self-certify against criteria; an approval requires a human to certify for them.</p>
+<p><strong>Separate pre-approval from post-audit.</strong> For lower-risk decisions, post-audit is often more efficient than pre-approval. Act and report, rather than request permission before acting. Post-audit still catches problems but doesn&#39;t create wait times.</p>
+<p><strong>Make the cost visible.</strong> Calculate the actual cost of major approval processes: the sum of time spent waiting, preparing materials, presenting, and revising across all approvals in a year. This cost is often invisible because it&#39;s distributed. Making it concrete often changes how organizations evaluate whether the approval is worth it.</p>
+<hr>
+<h2>The Exception</h2>
+<p>Some approvals are essential. The question is not whether to have approvals but whether each specific approval is earning its keep.</p>
+<p>High-value approvals share characteristics:</p>
+<ul>
+<li>The approver has genuine expertise relevant to the decision</li>
+<li>The approval substantially improves the quality or safety of the decision</li>
+<li>The failure mode the approval prevents is real and costly</li>
+<li>The cost of the approval (time, friction, motivation) is less than the expected benefit</li>
+</ul>
+<p>Most approval layers don&#39;t meet all four criteria. Many meet none of them.</p>
+<hr>
+<p><em>Related: <a href="./010-communication-overhead.html">Communication Overhead</a>, <a href="./006-incentive-alignment.html">Incentive Alignment</a>, <a href="./012-analysis-paralysis.html">Analysis Paralysis</a>, <a href="./014-reorg-trap.html">The Reorg Trap</a></em></p>
 
             </article>
 
@@ -346,7 +350,7 @@
                 <div class="wiki-article-footer__meta">
                     <span>Updated: 2026-03-01</span>
                     <span aria-hidden="true">&middot;</span>
-                    <span>4 min read</span>
+                    <span>5 min read</span>
                 </div>
                 <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">
