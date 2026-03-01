@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planning Fallacy | Fogsift Wiki</title>
-    <meta name="description" content="*We consistently underestimate how long things will take, how much they will cost, and how many things will go wrong — even when we know our past projects ran o">
+    <title>The Proxy Trap | Fogsift Wiki</title>
+    <meta name="description" content="*When measuring the thing that matters is hard, we measure something easier instead. Then we optimize the proxy so aggressively that the original goal is forgot">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/concepts/planning-fallacy">
+    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/019-the-proxy-trap">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Planning Fallacy | Fogsift Wiki">
-    <meta property="og:description" content="*We consistently underestimate how long things will take, how much they will cost, and how many things will go wrong — even when we know our past projects ran o">
+    <meta property="og:title" content="The Proxy Trap | Fogsift Wiki">
+    <meta property="og:description" content="*When measuring the thing that matters is hard, we measure something easier instead. Then we optimize the proxy so aggressively that the original goal is forgot">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/concepts/planning-fallacy">
+    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/019-the-proxy-trap">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -171,7 +171,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">PLANNING FALLACY</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">THE PROXY TRAP</span></li>
             </ol>
         </nav>
 
@@ -208,7 +208,7 @@
     <li><a href="../concepts/compounding.html">Compounding Effects</a></li>
     <li><a href="../concepts/survivorship-bias.html">Survivorship Bias</a></li>
     <li><a href="../concepts/goodharts-law.html">Goodhart's Law</a></li>
-    <li><a href="../concepts/planning-fallacy.html" class="active">Planning Fallacy</a></li>
+    <li><a href="../concepts/planning-fallacy.html">Planning Fallacy</a></li>
     <li><a href="../concepts/confirmation-bias.html">Confirmation Bias</a></li>
     <li><a href="../concepts/loss-aversion.html">Loss Aversion</a></li>
     <li><a href="../concepts/regression-to-mean.html">Regression to the Mean</a></li>
@@ -256,7 +256,7 @@
     <li><a href="../field-notes/016-handoff-problem.html">The Handoff Problem</a></li>
     <li><a href="../field-notes/017-hero-dependency.html">The Hero Dependency</a></li>
     <li><a href="../field-notes/018-permission-debt.html">Permission Debt</a></li>
-    <li><a href="../field-notes/019-the-proxy-trap.html">The Proxy Trap</a></li>
+    <li><a href="../field-notes/019-the-proxy-trap.html" class="active">The Proxy Trap</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -295,72 +295,58 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Planning Fallacy</h1>
-<p><em>We consistently underestimate how long things will take, how much they will cost, and how many things will go wrong — even when we know our past projects ran over.</em></p>
-<p>— Daniel Kahneman</p>
+                <h1>The Proxy Trap</h1>
+<p><em>When measuring the thing that matters is hard, we measure something easier instead. Then we optimize the proxy so aggressively that the original goal is forgotten.</em></p>
 <hr>
-<h2>The Principle</h2>
-<p>The planning fallacy, identified by Daniel Kahneman and Amos Tversky, describes the systematic bias toward optimistic estimates for time, cost, and outcomes on future plans.</p>
-<p>It&#39;s not ignorance. People know projects run late. They&#39;ve seen it happen before. They&#39;ve done it themselves. And they still estimate optimistically — because when planning a specific task, humans focus on the task itself rather than the broader class of similar tasks.</p>
-<p>The result: estimates are almost always too low. Schedules almost always slip. Costs almost always exceed budget. Not because the people involved are incompetent, but because this is how human cognition works under certainty about the local plan.</p>
+<h2>The Pattern</h2>
+<p>A hospital wants to reduce patient wait times. It starts tracking average wait time by department. Department heads, now evaluated on this metric, find ways to improve it: reclassifying some waits as &quot;active care&quot; time, routing patients who will inflate the average to other departments, focusing staff attention on fast-moving cases rather than complex ones. Average measured wait time falls. Patient experience may not have improved — or may have gotten worse.</p>
+<p>This is the proxy trap: a sequence in which (1) a meaningful goal is identified, (2) a proxy metric is adopted because the goal is hard to measure directly, (3) the proxy is optimized directly, and (4) the proxy diverges from the goal it was meant to represent.</p>
+<p>This is closely related to Goodhart&#39;s Law (&quot;When a measure becomes a target, it ceases to be a good measure&quot;), but the proxy trap is more specific: it describes the mechanism — the substitution of a measurable proxy for an intrinsically important goal — that underlies Goodhart failures.</p>
 <hr>
-<h2>The Mechanism</h2>
-<p>The core mechanism is the distinction Kahneman calls <strong>inside view</strong> vs. <strong>outside view</strong>.</p>
-<p><strong>Inside view</strong> — the natural planning posture:
-You focus on the specific project. You imagine the sequence of steps, identify the resources, and estimate based on your plan. Your plan, in your mind, is the reasonable scenario.</p>
-<p><strong>Outside view</strong> — the statistical posture:
-You look at similar projects in the past. What&#39;s the actual distribution of outcomes? What fraction came in on time and on budget? What did the overruns look like?</p>
-<p>The inside view is vivid and feels accurate. The outside view is statistical and feels irrelevant — &quot;those other projects had different problems than mine.&quot; This feeling is wrong, but it&#39;s persistent.</p>
+<h2>Why Proxies Are Necessary</h2>
+<p>Direct measurement of the thing that actually matters is often genuinely impossible or prohibitively costly:</p>
+<ul>
+<li>Customer happiness can&#39;t be directly observed; surveys, reviews, and retention rates are proxies</li>
+<li>Employee engagement can&#39;t be directly observed; survey scores, absenteeism, and turnover are proxies</li>
+<li>Learning can&#39;t be directly observed; test scores and grades are proxies</li>
+<li>Quality can&#39;t be fully observed; defect rates, support tickets, and return rates are proxies</li>
+<li>Value can&#39;t be directly observed; revenue, profit, and growth rate are proxies</li>
+</ul>
+<p>None of these proxies is identical to the thing it represents. Each is a partial, imperfect signal. This is fine — partial signals are better than no signals — as long as the organization maintains awareness that the proxy is a proxy.</p>
+<p>The trap is when the proxy is treated as if it were the goal itself.</p>
 <hr>
-<h2>Examples</h2>
-<p><strong>Construction and infrastructure.</strong> The Oxford study on megaprojects found that 90% of projects ran over budget, with average cost overruns of 28%. The projects that didn&#39;t run over were exceptions, not the rule.</p>
-<p><strong>Software development.</strong> The original Standish CHAOS report found that most software projects ran significantly over time and budget, with many abandoned before completion. Developers consistently underestimate complexity.</p>
-<p><strong>Home renovation.</strong> The phrase &quot;while we&#39;re at it&quot; drives cost overruns in virtually every home renovation project. Once work begins, additional problems are discovered, scope expands, and the original estimate becomes irrelevant.</p>
-<p><strong>Legal disputes.</strong> Parties to litigation routinely overestimate their probability of winning, leading to settlements that could have been reached earlier or trials that produce worse outcomes than settlement offers.</p>
-<p><strong>Product launches.</strong> &quot;We&#39;ll launch in Q3&quot; has become a trope because product development almost never proceeds as planned. Hidden dependencies, unexpected bugs, and changing requirements are the norm.</p>
+<h2>The Divergence Mechanism</h2>
+<p>When a proxy becomes a target, optimization pressure changes how people interact with it:</p>
+<p><strong>Gaming.</strong> People find ways to improve the metric that don&#39;t improve the underlying goal. Call center workers respond to &quot;calls answered&quot; metrics by hanging up on difficult calls. Schools respond to standardized test score targets by narrowing curriculum to tested subjects. Sales teams respond to volume targets by closing deals that will churn.</p>
+<p><strong>Selective measurement.</strong> Data collection is directed toward cases that improve the metric and away from cases that don&#39;t. Outcome metrics exclude populations that would drag averages down. Satisfaction surveys are sent only to happy customers.</p>
+<p><strong>Boundary redefinition.</strong> What counts as success gets redefined to align with what&#39;s actually achievable. The target narrows to what the metric tracks. Unmeasured aspects of the goal become invisible and eventually irrelevant.</p>
+<p><strong>Causal inversion.</strong> The proxy, originally a symptom of goal achievement, is pursued directly as if it were causal. Hiring for &quot;cultural fit&quot; scores rather than for cultural contribution. Publishing volume targets rather than impact targets.</p>
+<p>Over time, the proxy and the goal decouple. The metric improves. The underlying goal may not.</p>
 <hr>
-<h2>Why the Outside View Gets Ignored</h2>
-<ol>
-<li><p><strong>Uniqueness bias.</strong> People believe their project is meaningfully different from the reference class. Sometimes it is. Usually the ways it&#39;s &quot;different&quot; don&#39;t affect schedule and cost in the way imagined.</p>
-</li>
-<li><p><strong>Optimism bias.</strong> Humans overestimate the probability of positive outcomes and underestimate the probability of negative outcomes, especially for future events they can influence.</p>
-</li>
-<li><p><strong>Motivated reasoning.</strong> Commitments are made based on optimistic estimates. Once made, people have incentives to maintain the optimistic framing.</p>
-</li>
-<li><p><strong>Planning compression.</strong> Detailed planning of individual steps creates false precision. The plan looks complete. The gaps between steps — integration problems, review cycles, unexpected dependencies — are invisible.</p>
-</li>
-<li><p><strong>Unknown unknowns.</strong> By definition, the risks that cause overruns are ones you didn&#39;t anticipate. If you could anticipate them, you&#39;d have planned for them.</p>
-</li>
-</ol>
+<h2>Organizational Examples</h2>
+<p><strong>Revenue as a proxy for value.</strong> Revenue measures value captured, not value created. When optimized directly, it can produce rent-seeking, lock-in strategies, and customer exploitation — all of which increase revenue while destroying long-term value.</p>
+<p><strong>Employee satisfaction scores as a proxy for engagement.</strong> High satisfaction scores can reflect comfort and complacency as easily as they reflect genuine engagement. Organizations that optimize satisfaction scores may reduce the productive friction that actually drives performance.</p>
+<p><strong>Lines of code or story points as a proxy for development output.</strong> These metrics are immediately gameable: code can be bloated, stories can be split arbitrarily. Teams that optimize these metrics produce neither good software nor real productivity.</p>
+<p><strong>Net Promoter Score (NPS) as a proxy for customer health.</strong> NPS captures willingness to recommend, which correlates with customer health — but imperfectly. Organizations that optimize NPS can improve the score through aggressive survey timing and customer selection without improving actual customer outcomes.</p>
+<p><strong>School attendance as a proxy for learning.</strong> Attendance correlates with learning but isn&#39;t learning. Schools that optimize attendance (attendance bonuses, penalties for absence) may reduce absenteeism while achieving little educational improvement.</p>
+<p><strong>Body count metrics in armed conflict.</strong> Perhaps the most famous large-scale proxy trap: kill counts treated as a proxy for strategic progress, creating perverse incentives that distorted strategy and decision-making.</p>
 <hr>
-<h2>The Reference Class Forecast</h2>
-<p>The most robust mitigation is <strong>reference class forecasting</strong>, developed by Kahneman and later operationalized by Bent Flyvbjerg for infrastructure projects:</p>
-<ol>
-<li><p><strong>Identify the reference class.</strong> What&#39;s the relevant category of comparable projects? Be honest — &quot;our project is unique&quot; is usually an excuse, not an argument.</p>
-</li>
-<li><p><strong>Get the distribution.</strong> What does the actual historical data show? Not best-case outcomes — the full distribution, including tail events.</p>
-</li>
-<li><p><strong>Anchor your estimate to the base rate.</strong> Start from the distribution, not from your plan. Then adjust based on specific factors that genuinely make your project different.</p>
-</li>
-<li><p><strong>Don&#39;t let your inside view override the outside view.</strong> The inside view feels more accurate. It isn&#39;t.</p>
-</li>
-</ol>
+<h2>Detection</h2>
+<p>The proxy trap is often difficult to detect from inside because both the metric and the reporting around it are managed by the same people who are being evaluated on it.</p>
+<p>Signs that a proxy has decoupled from its goal:</p>
+<p><strong>The metric improves while informal signals deteriorate.</strong> Satisfaction scores go up but customer churn accelerates. Defect metrics improve but support volume increases. Engagement scores rise but the best people are leaving.</p>
+<p><strong>People spend significant energy managing the metric rather than the underlying reality.</strong> If a meaningful portion of effort goes toward ensuring good metric outcomes rather than good outcomes, the proxy is dominating.</p>
+<p><strong>The metric&#39;s definition changes frequently.</strong> When a metric stops telling a useful story, organizations often modify the definition rather than the behavior — smoothing discontinuities, excluding inconvenient cases, adjusting baselines.</p>
+<p><strong>There&#39;s no mechanism to surface what the metric misses.</strong> If dissatisfied customers, failing students, or churning employees have no voice, the metric is running unchecked.</p>
 <hr>
-<h2>The 90% Rule</h2>
-<p>A useful heuristic in software and project management: take your best estimate, then assume you&#39;re only 90% through when you think you&#39;re done.</p>
-<p>This accounts for the disproportionate amount of time spent on the &quot;last 10%&quot; — integration, testing, polishing, fixing the problems you didn&#39;t know existed. The first 90% of a project takes 90% of the time; the last 10% takes the other 90%.</p>
+<h2>Working With Proxies Without Falling Into the Trap</h2>
+<p><strong>Maintain proxy awareness.</strong> Explicitly name what the proxy misses. Make the gap between the proxy and the goal part of regular discussion. &quot;Our NPS is tracking well, but we know it doesn&#39;t capture X — what&#39;s our read on X separately?&quot;</p>
+<p><strong>Use multiple proxies.</strong> A single proxy will be optimized. Multiple proxies that partially measure the same underlying goal are harder to optimize simultaneously in ways that diverge from the goal. Include proxies that capture different failure modes.</p>
+<p><strong>Include leading and lagging indicators.</strong> Proxies that can be gamed in the short term often have lagging consequences. Pairing short-term metrics with longer-term outcomes (retention, lifetime value, renewal rates) creates accountability across time horizons.</p>
+<p><strong>Protect qualitative channels.</strong> Quantitative proxies systematically miss the things people don&#39;t say or can&#39;t say to a survey. Maintain mechanisms for qualitative signal: direct customer conversations, regular skip-level conversations with employees, observational research.</p>
+<p><strong>Audit the gap regularly.</strong> Periodically compare what the metric says to what people doing the work experience. Ask: where does the metric&#39;s story diverge from the ground-level story? That divergence is the proxy gap.</p>
 <hr>
-<h2>What To Do</h2>
-<p><strong>Use historical data.</strong> Track your own completion times. The most relevant reference class for your team is your team&#39;s own history. If your estimates are consistently 60% of actual time, apply a 1.7x multiplier as a baseline correction.</p>
-<p><strong>Add explicit contingency.</strong> Instead of hoping the plan is right, budget for it being wrong. A realistic contingency budget isn&#39;t pessimism — it&#39;s an accurate prior.</p>
-<p><strong>Stage commitments.</strong> Don&#39;t lock in a full schedule at the start of a project. Commit to the next milestone, learn from it, then commit to the next. Each stage provides calibration data.</p>
-<p><strong>Separate plan from schedule.</strong> Your plan is your intention. Your schedule is a probabilistic estimate. Treat them differently. The plan can be optimistic; the schedule should reflect the outside view.</p>
-<p><strong>Use pre-mortem analysis.</strong> Before finalizing an estimate, ask: &quot;Assume this project has run significantly over schedule. What happened?&quot; This activates outside-view thinking while the plan is still adjustable.</p>
-<hr>
-<h2>The Relationship to Goodhart&#39;s Law</h2>
-<p>When project schedules become performance targets, the planning fallacy compounds. Teams optimize for hitting the date rather than for the actual work, leading to estimates that are even more compressed — because the cost of being late is visible while the cost of cutting corners is deferred.</p>
-<hr>
-<p><em>Related: <a href="../frameworks/pre-mortem.html">Pre-Mortem Analysis</a>, <a href="./second-order-effects.html">Second-Order Effects</a>, <a href="./cognitive-biases.html">Cognitive Biases</a>, <a href="./goodharts-law.html">Goodhart&#39;s Law</a></em></p>
+<p><em>Related: <a href="../concepts/goodharts-law.html">Goodhart&#39;s Law</a>, <a href="./006-incentive-alignment.html">Incentive Alignment</a>, <a href="../concepts/signal-vs-noise.html">Signal vs Noise</a>, <a href="../concepts/survivorship-bias.html">Survivorship Bias</a></em></p>
 
             </article>
 
@@ -368,7 +354,7 @@ You look at similar projects in the past. What&#39;s the actual distribution of 
                 <div class="wiki-article-footer__meta">
                     <span>Updated: 2026-03-01</span>
                     <span aria-hidden="true">&middot;</span>
-                    <span>5 min read</span>
+                    <span>6 min read</span>
                 </div>
                 <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">

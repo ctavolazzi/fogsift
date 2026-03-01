@@ -239,6 +239,10 @@
         {
           "slug": "field-notes/018-permission-debt",
           "title": "Permission Debt"
+        },
+        {
+          "slug": "field-notes/019-the-proxy-trap",
+          "title": "The Proxy Trap"
         }
       ]
     },
@@ -320,6 +324,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:31:30.180Z",
-  "buildTimestamp": 1772371890180
+  "buildDate": "2026-03-01T13:32:43.703Z",
+  "buildTimestamp": 1772371963703
 }

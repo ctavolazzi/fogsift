@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:31:30.180Z",
-  "buildTimestamp": 1772371890180,
+  "buildDate": "2026-03-01T13:32:43.703Z",
+  "buildTimestamp": 1772371963703,
   "categories": [
     {
       "id": "docs",
@@ -350,6 +350,12 @@
           "title": "Permission Debt",
           "jdNumber": "40.18",
           "href": "field-notes/018-permission-debt.html"
+        },
+        {
+          "slug": "field-notes/019-the-proxy-trap",
+          "title": "The Proxy Trap",
+          "jdNumber": "40.19",
+          "href": "field-notes/019-the-proxy-trap.html"
         }
       ]
     },
