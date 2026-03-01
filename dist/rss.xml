@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:09:44 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:10:55 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Field Note 015: The Messenger Problem</title>
+      <link>https://fogsift.com/wiki/field-notes/015-messenger-problem.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/015-messenger-problem.html</guid>
+      <description>*The problem isn&apos;t that leaders don&apos;t want bad news. They say they do. The problem is that every signal in the system punishes the delivery of it.*</description>
+      <pubDate>Sun, 01 Mar 2026 13:10:47 GMT</pubDate>
+    </item>
     <item>
       <title>Stakeholder Mapping</title>
       <link>https://fogsift.com/wiki/frameworks/stakeholder-mapping.html</link>
