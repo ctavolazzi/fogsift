@@ -1,25 +1,15 @@
 {
-  "generated": "2026-03-01T08:11:24.428Z",
+  "generated": "2026-03-01T19:53:41.182Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
-    "branch": "claude/fogsift-engine-lkdbO",
+    "branch": "claude/integrate-credos-mcp-bh8yF",
     "status": [
-      "M _tools/snapshots/context-brief.md",
-      " M _tools/snapshots/latest.json",
-      " M dist/api/articles.json",
-      " M dist/api/meta.json",
-      " M dist/api/wiki/index.json",
-      " M dist/api/wiki/sitemap.json",
-      " M scripts/build.js",
-      " M tests/report.json",
-      " M tests/report.txt",
-      "?? dist/engine.html",
-      "?? dist/engine.js",
-      "?? src/engine.html",
-      "?? src/js/engine.js"
+      "M _tools/snapshots/context-brief.md"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "e14d9ab Merge pull request #22 from ctavolazzi/claude/fogsift-engine-lkdbO",
+      "c91ed56 feat: add FogSift Engine page and build integration",
       "d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa",
       "679dcaf fix: accessibility and keyboard interaction improvements",
       "055e547 fix: resolve HTML validation errors in index.html",
@@ -27,14 +17,12 @@
       "ee4c299 chore: update session snapshots and test reports",
       "97b120c feat: interactive sandbox terminal with honey pot detection",
       "aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal",
-      "10e4771 feat: replace memory system with canonical L1/L2 implementation",
-      "41e6698 chore: update auto-generated session snapshots",
-      "8e861ca feat: add FastAPI memory system (fogsift-api)"
+      "10e4771 feat: replace memory system with canonical L1/L2 implementation"
     ],
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:43679/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:50177/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -150,7 +138,7 @@
       {
         "path": "css/navigation.css",
         "size": 22908,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.049Z",
         "lines": 965
       },
       {
@@ -204,7 +192,7 @@
       {
         "path": "css/terminal.css",
         "size": 9566,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.049Z",
         "lines": 411
       },
       {
@@ -260,7 +248,7 @@
       {
         "path": "js/engine.js",
         "size": 43488,
-        "modified": "2026-03-01T06:41:59.000Z",
+        "modified": "2026-03-01T19:53:39.051Z",
         "lines": 1058
       },
       {
@@ -296,7 +284,7 @@
       {
         "path": "js/nav.js",
         "size": 2056,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.051Z",
         "lines": 56
       },
       {
@@ -320,7 +308,7 @@
       {
         "path": "js/supply-chain-sim.js",
         "size": 39686,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.051Z",
         "lines": 755
       },
       {
@@ -332,13 +320,13 @@
       {
         "path": "js/terminal-demo.js",
         "size": 15206,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.052Z",
         "lines": 346
       },
       {
         "path": "js/terminal-interactive.js",
         "size": 11704,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.052Z",
         "lines": 348
       },
       {
@@ -424,7 +412,7 @@
       {
         "path": "engine.html",
         "size": 33990,
-        "modified": "2026-03-01T06:52:52.000Z",
+        "modified": "2026-03-01T19:53:39.050Z",
         "lines": 727
       },
       {
@@ -454,7 +442,7 @@
       {
         "path": "index.html",
         "size": 62824,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.050Z",
         "lines": 993
       },
       {
@@ -912,13 +900,13 @@
       {
         "path": "wiki/architecture/memory-system.md",
         "size": 7451,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.053Z",
         "lines": 179
       },
       {
         "path": "wiki/architecture/terminal-component.md",
         "size": 5814,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.053Z",
         "lines": 107
       },
       {
@@ -1152,7 +1140,7 @@
       {
         "path": "wiki/index.json",
         "size": 4597,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-01T19:53:39.053Z",
         "lines": 101
       },
       {
@@ -1328,8 +1316,8 @@
   },
   "summary": {
     "version": "0.2.0",
-    "branch": "claude/fogsift-engine-lkdbO",
-    "uncommittedFiles": 13,
+    "branch": "claude/integrate-credos-mcp-bh8yF",
+    "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,

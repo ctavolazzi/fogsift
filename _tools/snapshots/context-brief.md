@@ -1,14 +1,14 @@
 # FogSift Context Brief
-Generated: 2026-03-01T08:11:24.336Z
+Generated: 2026-03-01T19:53:41.114Z
 
 ## Quick Status
 | Metric | Value |
 |--------|-------|
 | Version | 0.2.0 |
-| Branch | claude/fogsift-engine-lkdbO |
+| Branch | claude/integrate-credos-mcp-bh8yF |
 | Last release | none |
 | Commits since release | 0 |
-| Uncommitted files | 13 |
+| Uncommitted files | 0 |
 | Unpushed commits | 0 |
 | Built pages | 80 |
 | Wiki pages | 47 |
@@ -18,16 +18,12 @@ Generated: 2026-03-01T08:11:24.336Z
 110 pass / 1 fail / 11 warn (90.2%)
 Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
-## Uncommitted Changes
-Modified: tools/snapshots/context-brief.md, _tools/snapshots/latest.json, dist/api/articles.json, dist/api/meta.json, dist/api/wiki/index.json, dist/api/wiki/sitemap.json, scripts/build.js, tests/report.json, tests/report.txt
-Untracked: dist/engine.html, dist/engine.js, src/engine.html, src/js/engine.js
-
 ## Recent Commits
+- e14d9ab Merge pull request #22 from ctavolazzi/claude/fogsift-engine-lkdbO
+- c91ed56 feat: add FogSift Engine page and build integration
 - d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa
 - 679dcaf fix: accessibility and keyboard interaction improvements
 - 055e547 fix: resolve HTML validation errors in index.html
-- 38dcdda fix: resolve HTML validation, ESLint, and broken link failures
-- ee4c299 chore: update session snapshots and test reports
 
 ## Development Infrastructure
 | Port | Tool | Status |
