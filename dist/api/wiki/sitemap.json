@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:32:43.703Z",
-  "buildTimestamp": 1772371963703,
+  "buildDate": "2026-03-01T13:34:02.901Z",
+  "buildTimestamp": 1772372042901,
   "categories": [
     {
       "id": "docs",
@@ -160,6 +160,12 @@
           "title": "The Halo Effect",
           "jdNumber": "20.20",
           "href": "concepts/halo-effect.html"
+        },
+        {
+          "slug": "concepts/base-rate-neglect",
+          "title": "Base Rate Neglect",
+          "jdNumber": "20.21",
+          "href": "concepts/base-rate-neglect.html"
         }
       ]
     },

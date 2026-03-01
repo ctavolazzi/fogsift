@@ -109,6 +109,10 @@
         {
           "slug": "concepts/halo-effect",
           "title": "The Halo Effect"
+        },
+        {
+          "slug": "concepts/base-rate-neglect",
+          "title": "Base Rate Neglect"
         }
       ]
     },
@@ -324,6 +328,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:32:43.703Z",
-  "buildTimestamp": 1772371963703
+  "buildDate": "2026-03-01T13:34:02.901Z",
+  "buildTimestamp": 1772372042901
 }

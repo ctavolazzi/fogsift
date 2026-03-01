@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:32:43 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:34:02 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Base Rate Neglect</title>
+      <link>https://fogsift.com/wiki/concepts/base-rate-neglect.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/base-rate-neglect.html</guid>
+      <description>*When specific case information is available, people systematically underweight statistical background information — even when the background information is mor</description>
+      <pubDate>Sun, 01 Mar 2026 13:33:38 GMT</pubDate>
+    </item>
     <item>
       <title>The Proxy Trap</title>
       <link>https://fogsift.com/wiki/field-notes/019-the-proxy-trap.html</link>

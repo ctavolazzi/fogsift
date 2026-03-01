@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Hero Dependency | Fogsift Wiki</title>
-    <meta name="description" content="*Organizations that reward individual heroism are building fragility into their systems.*">
+    <title>Base Rate Neglect | Fogsift Wiki</title>
+    <meta name="description" content="*When specific case information is available, people systematically underweight statistical background information — even when the background information is mor">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/017-hero-dependency">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/base-rate-neglect">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="The Hero Dependency | Fogsift Wiki">
-    <meta property="og:description" content="*Organizations that reward individual heroism are building fragility into their systems.*">
+    <meta property="og:title" content="Base Rate Neglect | Fogsift Wiki">
+    <meta property="og:description" content="*When specific case information is available, people systematically underweight statistical background information — even when the background information is mor">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/017-hero-dependency">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/base-rate-neglect">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -171,7 +171,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">HERO DEPENDENCY</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">BASE RATE NEGLECT</span></li>
             </ol>
         </nav>
 
@@ -217,7 +217,7 @@
     <li><a href="../concepts/availability-bias.html">Availability Bias</a></li>
     <li><a href="../concepts/status-quo-bias.html">Status Quo Bias</a></li>
     <li><a href="../concepts/halo-effect.html">The Halo Effect</a></li>
-    <li><a href="../concepts/base-rate-neglect.html">Base Rate Neglect</a></li>
+    <li><a href="../concepts/base-rate-neglect.html" class="active">Base Rate Neglect</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -255,7 +255,7 @@
     <li><a href="../field-notes/014-reorg-trap.html">The Reorg Trap</a></li>
     <li><a href="../field-notes/015-messenger-problem.html">The Messenger Problem</a></li>
     <li><a href="../field-notes/016-handoff-problem.html">The Handoff Problem</a></li>
-    <li><a href="../field-notes/017-hero-dependency.html" class="active">The Hero Dependency</a></li>
+    <li><a href="../field-notes/017-hero-dependency.html">The Hero Dependency</a></li>
     <li><a href="../field-notes/018-permission-debt.html">Permission Debt</a></li>
     <li><a href="../field-notes/019-the-proxy-trap.html">The Proxy Trap</a></li>
   </ul>
@@ -296,68 +296,68 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>The Hero Dependency</h1>
-<p><em>Organizations that reward individual heroism are building fragility into their systems.</em></p>
+                <h1>Base Rate Neglect</h1>
+<p><em>When specific case information is available, people systematically underweight statistical background information — even when the background information is more relevant.</em></p>
 <hr>
-<h2>The Pattern</h2>
-<p>In every organization, there are people who keep things running through exceptional personal effort. The engineer who stays until midnight to push the release. The account manager who personally knows how to navigate every client relationship. The operations lead who alone understands the ancient database schema.</p>
-<p>These people are celebrated. They&#39;re promoted. They&#39;re held up as examples. And their presence makes the organization increasingly dependent on their continued willingness to perform heroic acts — which makes the organization systematically fragile.</p>
-<p>This is the hero dependency: an organizational pattern in which critical functions rely on the exceptional effort or irreplaceable knowledge of a small number of individuals, rather than on processes and systems that work reliably without individual heroism.</p>
+<h2>The Principle</h2>
+<p>Base rate neglect (also called base rate fallacy) is the tendency to ignore or underweight statistical information about how common something is — the base rate — when more vivid, specific information about the case at hand is available.</p>
+<p>Kahneman and Tversky demonstrated this with the famous &quot;Linda problem&quot;: people were given a description of Linda as a socially conscious, philosophy-studying young woman, then asked whether she was more likely to be (a) a bank teller or (b) a feminist bank teller. Most respondents chose (b) — even though (b) is logically impossible to be more probable than (a), since feminists are a subset of bank tellers. The specific description made (b) feel more representative, overwhelming the base rate logic.</p>
+<p>Base rate neglect is distinct from simply being wrong about probabilities. It&#39;s the systematic pattern of case-specific information driving out statistical background information.</p>
 <hr>
-<h2>How It Forms</h2>
-<p>Hero dependencies don&#39;t form through malice. They form through the interaction of three ordinary organizational tendencies:</p>
-<p><strong>Rewarding outcomes over process.</strong> When organizations reward results without examining how those results were achieved, they inadvertently reward heroism. The engineer who shipped despite chaos gets praised; the system that would have allowed smooth shipping without chaos doesn&#39;t get built.</p>
-<p><strong>Allowing individual variation.</strong> When people discover they can solve a problem faster through personal knowledge or extra effort than by following process, they do so. The shortcut works. Process improvement doesn&#39;t happen.</p>
-<p><strong>Not investing in documentation and succession.</strong> Documenting processes, building runbooks, training backups — these investments are invisible until the key person is unavailable. Until that happens, the investment looks optional.</p>
-<p>Over time, these patterns compound: individuals develop irreplaceable expertise, organizations become dependent on that expertise, the individuals are too valuable to spare for the knowledge-transfer work that would reduce their indispensability, and the dependency deepens.</p>
+<h2>Why Base Rates Are Ignored</h2>
+<p><strong>Representativeness.</strong> People estimate probability by asking &quot;how similar is this case to my mental model of the category?&quot; When a case seems highly representative of a category — Linda seems like a feminist — category membership feels likely regardless of base rates.</p>
+<p><strong>Vividness asymmetry.</strong> Statistical base rates are abstract and impersonal. Case-specific information is concrete and narrative. The vivid, specific case dominates the abstract statistic in attention and memory.</p>
+<p><strong>Inside view pull.</strong> The inside view of a situation — the specific details, the particular circumstances, the unique features — is always available. The outside view — what usually happens in situations like this — requires deliberate construction. The inside view wins by default.</p>
+<p><strong>Lack of causal story.</strong> People are more willing to use information when they can construct a causal mechanism that connects it to the outcome. Base rates often lack obvious causal connections to the specific case, making them feel irrelevant even when they&#39;re not.</p>
 <hr>
-<h2>Why Heroes Enable Dysfunction</h2>
-<p>The hero isn&#39;t just solving the immediate problem. The hero is also preventing the deeper problem from being addressed.</p>
-<p>When a hero is available to cover for broken processes, broken processes don&#39;t get fixed. When a hero knows where all the tribal knowledge lives, no one builds the systems to make that knowledge explicit. When a hero is willing to work nights and weekends to hit deadlines, the estimation and planning failures that caused the deadline crisis don&#39;t get corrected.</p>
-<p>Heroism is a form of technical and organizational debt. The hero&#39;s exceptional effort is borrowed against future reliability and sustainability. The debt comes due when:</p>
+<h2>Organizational Manifestations</h2>
+<p><strong>New product forecasting.</strong> When companies forecast revenue for new products, they focus on the specific features, the target market, and the competitive positioning — all inside-view information. Base rates for new product success in their industry are rarely consulted. The typical new product underperforms forecasts significantly; this pattern persists partly because base rates are ignored.</p>
+<p><strong>M&amp;A due diligence.</strong> Acquirers develop detailed models of the synergies and strategic fit of a particular deal. The base rate that most acquisitions fail to deliver expected value is treated as not applicable because this deal is different. This is a standard instance of base rate neglect: the specific case overrides the statistical background.</p>
+<p><strong>Startup survival.</strong> Founders building companies routinely project growth trajectories that the base rate for their category doesn&#39;t support. Each founder has good reasons to believe their case is different. The base rate persists anyway.</p>
+<p><strong>Project estimation.</strong> Teams estimating project timelines focus on the specific tasks, the team&#39;s capabilities, and the project&#39;s particulars. The base rate — that projects of this type and complexity routinely take 2x the initial estimate — is typically not applied. (This is part of the planning fallacy mechanism.)</p>
+<p><strong>Investment decisions.</strong> Investors evaluate specific companies based on management quality, market opportunity, and product differentiation. The base rate for investments in their stage, sector, and geography is rarely given the weight it deserves.</p>
+<p><strong>Hiring.</strong> Interviewers form impressions based on specific interactions — answers to questions, communication style, apparent enthusiasm — that override base rate information about which types of candidates succeed in similar roles.</p>
+<hr>
+<h2>The Outside View Correction</h2>
+<p>Kahneman, working with Daniel Lovallo, described the solution as &quot;taking the outside view&quot;: deliberately stepping back from the specific case to ask what typically happens in situations of this type.</p>
+<p>The outside view process:</p>
+<ol>
+<li>Identify the reference class: situations that are similar to the current case</li>
+<li>Find the base rate: what is the actual distribution of outcomes for this reference class?</li>
+<li>Apply the base rate as the starting point for the forecast</li>
+<li>Adjust from the base rate based on specific features of the case</li>
+</ol>
+<p>The critical insight is that adjustment from the base rate should require justification. The inside-view assessment of the case should modify the base rate only to the extent it provides genuinely new information not captured by the base rate.</p>
+<p>This is the reversal of normal practice, which starts from the inside view and adjusts toward the base rate — insufficiently.</p>
+<hr>
+<h2>Reference Class Forecasting</h2>
+<p>Philip Tetlock, Bent Flyvbjerg, and others have developed &quot;reference class forecasting&quot; as a formal discipline for applying base rates to forecasts.</p>
+<p>The key steps:</p>
 <ul>
-<li>The hero leaves</li>
-<li>The hero burns out</li>
-<li>The hero&#39;s accumulated knowledge becomes too large for them to maintain</li>
-<li>Multiple crises occur simultaneously and the hero can&#39;t be everywhere</li>
+<li><strong>Select the reference class</strong>: comparable past projects, decisions, or situations</li>
+<li><strong>Collect the base rate distribution</strong>: not just the average, but the full distribution of outcomes</li>
+<li><strong>Position the current case within the distribution</strong>: does the current case have features that make it more or less likely to be in the right tail?</li>
+<li><strong>Forecast from the distribution, adjusted for the current case</strong></li>
+</ul>
+<p>Reference class forecasting has been shown to significantly improve accuracy for project cost and schedule estimation, infrastructure investment, and strategic planning. The primary barrier to adoption is not analytical difficulty but psychological resistance: the inside view feels more relevant even when the outside view is more accurate.</p>
+<hr>
+<h2>Correct Application of Base Rates</h2>
+<p>Not every base rate is relevant to every case. Applying a base rate requires judgment:</p>
+<p><strong>Is the reference class appropriate?</strong> A base rate for &quot;software projects&quot; may be too broad to be useful. &quot;Mobile consumer apps built by first-time founders in the US&quot; is a more precise reference class.</p>
+<p><strong>Does the specific case have features that legitimately change the probability?</strong> A founder with domain expertise and prior exits may be in a different probability distribution than a first-time founder with no domain knowledge. The question is whether the specific features genuinely discriminate — not just feel like they should.</p>
+<p><strong>Is the base rate actually known?</strong> Some reference classes have good outcome data; others don&#39;t. A spurious specific base rate is worse than acknowledging uncertainty.</p>
+<p>The goal is not to replace inside-view reasoning with base-rate reasoning, but to start with the base rate and adjust — rather than starting from the inside view and adjusting insufficiently toward the base rate.</p>
+<hr>
+<h2>Diagnostic Questions</h2>
+<p>When making a forecast or estimate:</p>
+<ul>
+<li>What is the reference class for this situation?</li>
+<li>What is the actual historical distribution of outcomes for that reference class?</li>
+<li>Why would this case be different from the base rate — and is that reason specific enough to justify adjustment?</li>
+<li>Am I starting from the case and adjusting toward the base rate (inside-out), or starting from the base rate and adjusting for case specifics (outside-in)?</li>
 </ul>
 <hr>
-<h2>Organizational Signatures</h2>
-<p><strong>The human SPOF.</strong> Single Point of Failure in an organization: one person without whom a critical function breaks. The organization knows who they are. Everyone knows they shouldn&#39;t be irreplaceable. Nothing changes.</p>
-<p><strong>Celebration of firefighting over fire prevention.</strong> In meetings and reviews, the dramatic rescue gets recognition. The unexciting work of building systems so rescues aren&#39;t needed gets none.</p>
-<p><strong>Escalating to the hero.</strong> When problems get hard, they get escalated to the person who can fix them personally rather than to the process that should fix them systemically. Each escalation reinforces the hero&#39;s role and the process&#39;s inadequacy.</p>
-<p><strong>Succession anxiety.</strong> &quot;What if [person] left?&quot; is a question that produces anxiety rather than planning. Organizations with hero dependencies experience significant leadership resistance to acknowledging key person risk.</p>
-<p><strong>Hero burnout.</strong> Heroes who repeatedly step up for organizations tend to burn out at higher rates than the rest of the organization. If a role has unusually high turnover, investigate whether it&#39;s a hero role: high demand, poor process support, sustained exceptional effort required.</p>
-<hr>
-<h2>What the Hero Reveals</h2>
-<p>A hero dependency is diagnostic information about the organization. The existence of a hero tells you something about the system:</p>
-<ul>
-<li>There is work that consistently requires more capacity than the system can provide through normal means</li>
-<li>There is knowledge that the organization has not made explicit or distributable</li>
-<li>There are processes that do not reliably produce the required outcomes</li>
-<li>There are incentive structures that reward individual performance over systemic reliability</li>
-</ul>
-<p>The hero is a symptom. The underlying condition is the combination of understaffing, poor process design, inadequate documentation, and incentive misalignment that makes heroism necessary.</p>
-<hr>
-<h2>Breaking the Dependency</h2>
-<p><strong>Make the dependency visible.</strong> Map critical functions against the people responsible for them. Identify single points of failure. Present this as organizational risk — because it is.</p>
-<p><strong>Change what gets rewarded.</strong> Celebrate the person who built the runbook that made the midnight fire drill unnecessary. Celebrate the engineer who made the knowledge shareable, not just the one who applied it heroically.</p>
-<p><strong>Invest in succession before it&#39;s needed.</strong> Cross-training, documentation, and backup coverage are reliability investments. They pay off when the hero is unavailable — which will eventually happen.</p>
-<p><strong>Fix the underlying processes.</strong> A heroic response to a broken process is a workaround, not a solution. Track which situations require heroism and treat them as process failure signals.</p>
-<p><strong>Reward sustainable performance over exceptional performance.</strong> &quot;High performer&quot; should not mean &quot;person who routinely works unsustainable hours.&quot; Redefine performance standards around what&#39;s achievable within sustainable parameters.</p>
-<hr>
-<h2>The Hero&#39;s Perspective</h2>
-<p>From inside the hero role, the situation often feels like:</p>
-<ul>
-<li>No one else can or will do what I do</li>
-<li>If I stop, things break</li>
-<li>The organization would fail without me</li>
-<li>My value comes from my indispensability</li>
-</ul>
-<p>All of these may be true in the short term. The problem is that they&#39;re self-reinforcing. The more the hero accepts indispensability as a permanent condition, the more the organization builds around that indispensability — and the more difficult exit becomes for everyone.</p>
-<p>The hero is not the cause of the hero dependency. But accepting the role indefinitely without pushing for systemic change is a choice with consequences for both the organization and the hero.</p>
-<hr>
-<p><em>Related: <a href="./005-tribal-knowledge.html">Tribal Knowledge</a>, <a href="./007-documentation-debt.html">Documentation Debt</a>, <a href="./006-incentive-alignment.html">Incentive Alignment</a>, <a href="./016-handoff-problem.html">The Handoff Problem</a></em></p>
+<p><em>Related: <a href="./planning-fallacy.html">Planning Fallacy</a>, <a href="./survivorship-bias.html">Survivorship Bias</a>, <a href="./availability-bias.html">Availability Bias</a>, <a href="./confirmation-bias.html">Confirmation Bias</a>, <a href="./first-principles.html">First Principles Thinking</a></em></p>
 
             </article>
 
@@ -365,7 +365,7 @@
                 <div class="wiki-article-footer__meta">
                     <span>Updated: 2026-03-01</span>
                     <span aria-hidden="true">&middot;</span>
-                    <span>5 min read</span>
+                    <span>6 min read</span>
                 </div>
                 <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">
