@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T12:52:59.116Z
+Generated: 2026-03-01T12:59:53.110Z
 ============================================================
 
 SUMMARY
-  Total:    128
-  Passed:   119
+  Total:    131
+  Passed:   122
   Failed:   0
   Warnings: 9
-  Pass rate: 93.0%
+  Pass rate: 93.1%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 86 — Found 86 HTML files
+  [PASS] HTML pages built: 89 — Found 89 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -68,10 +68,12 @@ SUMMARY
   [PASS] wiki/case-studies/the-startup-pivot.html
   [PASS] wiki/concepts/cognitive-biases.html
   [PASS] wiki/concepts/compounding.html
+  [PASS] wiki/concepts/confirmation-bias.html
   [PASS] wiki/concepts/first-principles.html
   [PASS] wiki/concepts/goodharts-law.html
   [PASS] wiki/concepts/mental-models.html
   [PASS] wiki/concepts/opportunity-cost.html
+  [PASS] wiki/concepts/planning-fallacy.html
   [PASS] wiki/concepts/root-cause.html
   [PASS] wiki/concepts/second-order-effects.html
   [PASS] wiki/concepts/signal-vs-noise.html
@@ -96,6 +98,7 @@ SUMMARY
   [PASS] wiki/frameworks/constraint-mapping.html
   [PASS] wiki/frameworks/decision-matrix.html
   [PASS] wiki/frameworks/feedback-loops.html
+  [PASS] wiki/frameworks/force-field-analysis.html
   [PASS] wiki/frameworks/pre-mortem.html
   [PASS] wiki/frameworks/prioritization-matrix.html
   [PASS] wiki/frameworks/risk-assessment.html
@@ -136,18 +139,18 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 7617 internal links valid
+  [PASS] All 8113 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 65 entries
-  [PASS] 65/65 entries have valid structure
-  [PASS] 65/65 index URLs resolve to files
-  [PASS] Index size: 62.4KB
+  [PASS] Index has 69 entries
+  [PASS] 69/69 entries have valid structure
+  [PASS] 69/69 index URLs resolve to files
+  [PASS] Index size: 66.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.56MB
+  [PASS] Total dist/ size: 7.73MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
