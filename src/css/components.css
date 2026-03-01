@@ -3234,3 +3234,189 @@ footer {
     }
 }
 
+/* ═══════════════════════════════════════════
+   PROJECTS PAGE — SPECIFIC COMPONENTS
+   ═══════════════════════════════════════════ */
+
+/* Hero intro block */
+.projects-hero {
+    text-align: center;
+    padding: var(--space-lg) 0;
+}
+
+.projects-hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: var(--ink);
+    margin-bottom: var(--space-sm);
+    letter-spacing: 0.04em;
+}
+
+.projects-hero-sub {
+    font-size: var(--text-base);
+    color: var(--muted);
+    max-width: 52ch;
+    margin: 0 auto var(--space-lg);
+    line-height: 1.65;
+}
+
+/* Quick-jump pill nav */
+.section-quicknav {
+    display: flex;
+    gap: var(--space-xs);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: var(--space-md);
+}
+
+.quicknav-pill {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 999px;
+    border: 2px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    text-decoration: none;
+    transition: border-color var(--snap), color var(--snap), background var(--snap);
+    white-space: nowrap;
+}
+
+.quicknav-pill:hover {
+    border-color: var(--burnt-orange);
+    color: var(--burnt-orange);
+    background: color-mix(in srgb, var(--burnt-orange) 6%, transparent);
+    text-decoration: none;
+}
+
+/* Section intro text — standardize the repeated pattern */
+.section-intro {
+    max-width: 52ch;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0 0 var(--space-lg);
+}
+
+.section-intro.centered {
+    text-align: center;
+    margin: 0 auto var(--space-lg);
+}
+
+/* Project status badge */
+.project-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 8px;
+    border-radius: 999px;
+    align-self: flex-start;
+}
+
+.project-status::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.project-status.done {
+    background: color-mix(in srgb, #5a9e6f 12%, transparent);
+    color: #3d7a52;
+    border: 1px solid color-mix(in srgb, #5a9e6f 30%, transparent);
+}
+
+.project-status.done::before { background: #5a9e6f; }
+
+.project-status.active {
+    background: color-mix(in srgb, var(--burnt-orange) 12%, transparent);
+    color: var(--burnt-orange);
+    border: 1px solid color-mix(in srgb, var(--burnt-orange) 30%, transparent);
+}
+
+.project-status.active::before {
+    background: var(--burnt-orange);
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+.project-status.wip {
+    background: color-mix(in srgb, #b8860b 12%, transparent);
+    color: #8a6508;
+    border: 1px solid color-mix(in srgb, #b8860b 30%, transparent);
+}
+
+.project-status.wip::before { background: #b8860b; }
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+}
+
+/* "Now building" spotlight section */
+.now-building {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-md);
+}
+
+.now-card {
+    background: var(--paper);
+    border: var(--border-width) solid var(--line);
+    border-left: 4px solid var(--burnt-orange);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.now-card-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--burnt-orange);
+    font-weight: 700;
+}
+
+.now-card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    color: var(--ink);
+    margin: 0;
+}
+
+.now-card-desc {
+    font-size: var(--text-sm);
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .section-quicknav {
+        gap: 6px;
+    }
+
+    .quicknav-pill {
+        font-size: 10px;
+        padding: 5px 11px;
+    }
+
+    .projects-hero-title {
+        font-size: 2rem;
+    }
+
+    .now-building {
+        grid-template-columns: 1fr;
+    }
+}
+

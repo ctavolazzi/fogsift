@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | Fogsift</title>
-    <meta name="description" content="Projects by Christopher Tavolazzi — hardware experiments, software tools, AI builds. Sorted by scope: under an hour, weekend, and featured long-form work.">
+    <meta name="description" content="Projects by Christopher Tavolazzi — hardware, software, and AI builds documented from start to finish. Sorted by scope: under an hour, weekend, and featured long-form work.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/portfolio">
@@ -16,7 +16,7 @@
 
     <!-- Open Graph -->
     <meta property="og:title" content="Projects | Fogsift">
-    <meta property="og:description" content="Hardware, software, and AI projects built live on camera. Sorted by scope.">
+    <meta property="og:description" content="Hardware, software, and AI builds — documented from start to finish. Every mistake included.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com/portfolio">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -26,7 +26,7 @@
       "@context": "https://schema.org",
       "@type": "CollectionPage",
       "name": "Projects | Fogsift",
-      "description": "Hardware, software, and AI projects by Christopher Tavolazzi.",
+      "description": "Hardware, software, and AI projects by Christopher Tavolazzi. Documented from start to finish.",
       "url": "https://fogsift.com/portfolio",
       "author": {
         "@type": "Person",
@@ -177,52 +177,129 @@
     <main class="frame" id="main-content">
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Page Header                                      -->
+        <!-- Hero                                             -->
         <!-- ═══════════════════════════════════════════════ -->
-        <section class="section" style="text-align: center;">
-            <h1 class="section-label">PROJECTS</h1>
-            <p style="max-width: 55ch; margin: 0 auto var(--space-md);">
-                Hardware, software, and AI builds — sorted by how long they took.
-                Everything is documented. Most of it is public.
+        <section class="section projects-hero">
+            <h1 class="projects-hero-title">PROJECTS</h1>
+            <p class="projects-hero-sub">
+                Things I built, documented while building them. Every mistake included.
+                Sorted by scope so you can find what's actually useful to you.
             </p>
-            <nav class="section-quicknav" aria-label="Jump to section" style="display: flex; gap: var(--space-sm); justify-content: center; flex-wrap: wrap; margin-top: var(--space-md);">
-                <a href="#under-an-hour" class="cta-button cta-secondary" style="font-size: var(--text-sm);">Under an Hour</a>
-                <a href="#weekend-projects" class="cta-button cta-secondary" style="font-size: var(--text-sm);">Weekend Projects</a>
-                <a href="#featured-builds" class="cta-button cta-secondary" style="font-size: var(--text-sm);">Featured Builds</a>
-                <a href="#open-source" class="cta-button cta-secondary" style="font-size: var(--text-sm);">Open Source</a>
+            <nav class="section-quicknav" aria-label="Jump to section">
+                <a href="#now-building" class="quicknav-pill">Now Building</a>
+                <a href="#under-an-hour" class="quicknav-pill">Under an Hour</a>
+                <a href="#weekend-projects" class="quicknav-pill">Weekend Projects</a>
+                <a href="#featured-builds" class="quicknav-pill">Featured Builds</a>
+                <a href="#open-source" class="quicknav-pill">Open Source</a>
             </nav>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Section 1: Under an Hour                        -->
+        <!-- Now Building                                     -->
+        <!-- ═══════════════════════════════════════════════ -->
+        <section class="section" id="now-building" aria-labelledby="now-heading">
+            <h2 id="now-heading" class="section-label">NOW BUILDING</h2>
+            <p class="section-intro">Active. In progress. Not done but far enough along to talk about.</p>
+            <div class="now-building">
+                <div class="now-card">
+                    <span class="now-card-label">Hardware + Software</span>
+                    <h3 class="now-card-title">TMGotcha</h3>
+                    <p class="now-card-desc">Modular virtual pet in a hardware cube. Holographic Pepper's Ghost display, collectible editions, embedded AI. Currently: second physical prototype.</p>
+                    <span class="project-status active">Active</span>
+                </div>
+                <div class="now-card">
+                    <span class="now-card-label">AI Framework</span>
+                    <h3 class="now-card-title">WAFT</h3>
+                    <p class="now-card-desc">Evolutionary agent lab — agents that write their own code, mutate variants, and select survivors. Currently: genome telemetry and fitness API.</p>
+                    <span class="project-status active">Active</span>
+                </div>
+                <div class="now-card">
+                    <span class="now-card-label">Site</span>
+                    <h3 class="now-card-title">FogSift v0.2</h3>
+                    <p class="now-card-desc">This site. Currently cleaning up technical debt, refining the diagnostic consulting offer, and building toward the v0.1.0 public release.</p>
+                    <span class="project-status active">Active</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ═══════════════════════════════════════════════ -->
+        <!-- Under an Hour                                   -->
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" id="under-an-hour" aria-labelledby="hour-heading">
             <h2 id="hour-heading" class="section-label">UNDER AN HOUR</h2>
-            <p style="max-width: 52ch; margin: 0 0 var(--space-lg);">
-                Fast experiments. One sitting, one idea, one working result.
-                No planning docs. No polish. Just shipping.
-            </p>
+            <p class="section-intro">One sitting. One idea. One working result. No planning docs, no polish.</p>
 
             <div class="tab-group" data-tab-group>
-                <div class="tab-nav" role="tablist" aria-label="Filter Under an Hour by category">
+                <div class="tab-nav" role="tablist" aria-label="Filter by category">
                     <button class="tab-btn active" role="tab" aria-selected="true" tabindex="0"
-                        id="hour-tab-hardware" aria-controls="hour-panel-hardware">Hardware</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
                         id="hour-tab-software" aria-controls="hour-panel-software">Software</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
+                        id="hour-tab-hardware" aria-controls="hour-panel-hardware">Hardware</button>
                     <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
                         id="hour-tab-other" aria-controls="hour-panel-other">Other</button>
                 </div>
 
-                <!-- Hardware Panel -->
-                <div class="tab-panel active" id="hour-panel-hardware" role="tabpanel"
-                    aria-labelledby="hour-tab-hardware" tabindex="0">
+                <!-- Software Panel — default, most relevant to consulting audience -->
+                <div class="tab-panel active" id="hour-panel-software" role="tabpanel"
+                    aria-labelledby="hour-tab-software" tabindex="0">
                     <div class="project-grid">
                         <div class="project-card">
-                            <span class="project-tag">Hardware &middot; ~30 min</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; ~40 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">Theme Switcher</h3>
+                            <p class="project-desc">11 themes via CSS custom properties. Blocking theme init to kill flash-of-wrong-theme. Cross-tab sync via storage events. Ships with this site.</p>
+                            <div class="project-meta">
+                                <span>CSS</span>
+                                <span>localStorage</span>
+                                <span>Vanilla JS</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; ~35 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">Webhook Test Harness</h3>
+                            <p class="project-desc">Node.js endpoint: receives Ko-fi webhooks, logs the raw payload, returns 200. Written before wiring anything to a real queue — confirmed the contract first.</p>
+                            <div class="project-meta">
+                                <span>Node.js</span>
+                                <span>Ko-fi</span>
+                                <span>Webhooks</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; ~55 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">Build-Time Search Index</h3>
+                            <p class="project-desc">Node script: reads all HTML in dist/, strips tags, scores by heading density, writes search-index.json. Zero runtime deps. Client queries it as a flat file.</p>
+                            <div class="project-meta">
+                                <span>Node.js</span>
+                                <span>Build Tool</span>
+                                <span>Full-Text Search</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware Panel -->
+                <div class="tab-panel" id="hour-panel-hardware" role="tabpanel"
+                    aria-labelledby="hour-tab-hardware" tabindex="0" hidden>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; ~30 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">LED Ring Clock</h3>
-                            <p class="project-desc">NeoPixel ring wired to an ESP32, showing hours and minutes as arcs of color. Breadboard to blinking in under half an hour.</p>
+                            <p class="project-desc">NeoPixel ring + ESP32. Hours as a slow arc, minutes as a fast dot. Breadboard to blinking in 30 minutes. Firmware is 40 lines of C++.</p>
                             <div class="project-meta">
                                 <span>ESP32</span>
                                 <span>NeoPixel</span>
@@ -230,9 +307,12 @@
                             </div>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Hardware &middot; ~45 min</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; ~45 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">Door Alert Sensor</h3>
-                            <p class="project-desc">Raspberry Pi + reed switch + a few lines of Python. Door opens → push notification sent. Simple, reliable, actually useful.</p>
+                            <p class="project-desc">Pi + reed switch + ntfy.sh. Door opens → push notification in under a second. Python script runs as a systemd service. Has worked without restart for months.</p>
                             <div class="project-meta">
                                 <span>Raspberry Pi</span>
                                 <span>Python</span>
@@ -240,50 +320,16 @@
                             </div>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Hardware &middot; ~50 min</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; ~50 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">3D-Printed Phone Stand</h3>
-                            <p class="project-desc">Parameterized OpenSCAD model. Adjust angle and device width, export STL, print while doing something else. Useful the same day.</p>
+                            <p class="project-desc">Parameterized OpenSCAD model. Adjust angle and width, export STL, queue the print. Designed, sliced, and printing within the hour. Still on my desk.</p>
                             <div class="project-meta">
                                 <span>OpenSCAD</span>
                                 <span>3D Printing</span>
                                 <span>PLA</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Software Panel -->
-                <div class="tab-panel" id="hour-panel-software" role="tabpanel"
-                    aria-labelledby="hour-tab-software" tabindex="0" hidden>
-                    <div class="project-grid">
-                        <div class="project-card">
-                            <span class="project-tag">Software &middot; ~40 min</span>
-                            <h3 class="project-name">Theme Switcher</h3>
-                            <p class="project-desc">11 themes via CSS custom property overrides. Zero-JS-flicker theme init, cross-tab sync via localStorage events. Ships with this site.</p>
-                            <div class="project-meta">
-                                <span>CSS</span>
-                                <span>JavaScript</span>
-                                <span>localStorage</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <span class="project-tag">Software &middot; ~35 min</span>
-                            <h3 class="project-name">Webhook Test Harness</h3>
-                            <p class="project-desc">Node.js endpoint that receives Ko-fi webhooks, logs the payload, and returns a 200. Proof-of-concept before wiring to real queue logic.</p>
-                            <div class="project-meta">
-                                <span>Node.js</span>
-                                <span>Webhooks</span>
-                                <span>Ko-fi</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <span class="project-tag">Software &middot; ~55 min</span>
-                            <h3 class="project-name">Build-Time Search Index</h3>
-                            <p class="project-desc">Node script that reads all HTML in dist/, strips tags, and writes a full-text search-index.json. Zero runtime dependencies. Ships at build time.</p>
-                            <div class="project-meta">
-                                <span>Node.js</span>
-                                <span>Search</span>
-                                <span>Build Tool</span>
                             </div>
                         </div>
                     </div>
@@ -294,21 +340,28 @@
                     aria-labelledby="hour-tab-other" tabindex="0" hidden>
                     <div class="project-grid">
                         <div class="project-card">
-                            <span class="project-tag">Design &middot; ~45 min</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Design &middot; ~45 min</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">TMGotcha First Sketch</h3>
-                            <p class="project-desc">Napkin drawing that started it all. One session exploring the cube form factor, Pepper's Ghost angle, and what "modular virtual pet" could actually mean.</p>
+                            <p class="project-desc">Napkin drawing of the cube form factor. Worked out the Pepper's Ghost angle, screen size constraints, and what "modular" actually means in one sitting. Everything built since traces back here.</p>
                             <div class="project-meta">
                                 <span>Concept</span>
                                 <span>Industrial Design</span>
+                                <span>Optics</span>
                             </div>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Strategy &middot; ~1 hr</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Strategy &middot; ~1 hr</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">FogSift Brand Brief</h3>
-                            <p class="project-desc">Name, tagline, positioning, and visual direction — done in one session. Most brand decisions made here are still the ones on the live site.</p>
+                            <p class="project-desc">Name, tagline, visual direction, and positioning — one session. The tagline "Straight answers to complicated questions" came in the first ten minutes. Most of what's live now came from this doc.</p>
                             <div class="project-meta">
                                 <span>Branding</span>
-                                <span>Strategy</span>
+                                <span>Positioning</span>
                                 <span>Copywriting</span>
                             </div>
                         </div>
@@ -320,70 +373,33 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Section 2: Weekend Projects                     -->
+        <!-- Weekend Projects                                -->
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" id="weekend-projects" aria-labelledby="weekend-heading">
             <h2 id="weekend-heading" class="section-label">WEEKEND PROJECTS</h2>
-            <p style="max-width: 52ch; margin: 0 0 var(--space-lg);">
-                Two days. A real problem, a working solution, and something to show at the end.
-                Proof-of-concept to first prototype.
-            </p>
+            <p class="section-intro">Two days. Real problem, working solution, something to show at the end. Proof-of-concept to first prototype.</p>
 
             <div class="tab-group" data-tab-group>
-                <div class="tab-nav" role="tablist" aria-label="Filter Weekend Projects by category">
+                <div class="tab-nav" role="tablist" aria-label="Filter by category">
                     <button class="tab-btn active" role="tab" aria-selected="true" tabindex="0"
-                        id="weekend-tab-hardware" aria-controls="weekend-panel-hardware">Hardware</button>
-                    <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
                         id="weekend-tab-software" aria-controls="weekend-panel-software">Software</button>
+                    <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
+                        id="weekend-tab-hardware" aria-controls="weekend-panel-hardware">Hardware</button>
                     <button class="tab-btn" role="tab" aria-selected="false" tabindex="-1"
                         id="weekend-tab-other" aria-controls="weekend-panel-other">Other</button>
                 </div>
 
-                <!-- Hardware Panel -->
-                <div class="tab-panel active" id="weekend-panel-hardware" role="tabpanel"
-                    aria-labelledby="weekend-tab-hardware" tabindex="0">
+                <!-- Software Panel — default -->
+                <div class="tab-panel active" id="weekend-panel-software" role="tabpanel"
+                    aria-labelledby="weekend-tab-software" tabindex="0">
                     <div class="project-grid">
                         <div class="project-card">
-                            <span class="project-tag">Hardware &middot; 2 days</span>
-                            <h3 class="project-name">TMGotcha Prototype v0.1</h3>
-                            <p class="project-desc">First physical unit — foam-core frame, wired display, running a basic pet idle animation. Proved the form factor was viable before any CAD work.</p>
-                            <div class="project-meta">
-                                <span>Prototype</span>
-                                <span>Display</span>
-                                <span>Embedded</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; 2 days</span>
+                                <span class="project-status active">Active</span>
                             </div>
-                        </div>
-                        <div class="project-card">
-                            <span class="project-tag">Hardware &middot; 2 days</span>
-                            <h3 class="project-name">Pepper's Ghost Rig</h3>
-                            <p class="project-desc">Laser-cut acrylic frame with precise angle brackets for the holographic Pepper's Ghost illusion. Tested reflection ratios across three screen brightness levels.</p>
-                            <div class="project-meta">
-                                <span>Laser Cutting</span>
-                                <span>Acrylic</span>
-                                <span>Optics</span>
-                            </div>
-                        </div>
-                        <div class="project-card">
-                            <span class="project-tag">Hardware &middot; ~weekend</span>
-                            <h3 class="project-name">ESP32 Sensor Array</h3>
-                            <p class="project-desc">Multi-sensor breakout board for temperature, humidity, and light. Streams readings over MQTT to a local broker. Used as a base for several later builds.</p>
-                            <div class="project-meta">
-                                <span>ESP32</span>
-                                <span>MQTT</span>
-                                <span>PCB Design</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Software Panel -->
-                <div class="tab-panel" id="weekend-panel-software" role="tabpanel"
-                    aria-labelledby="weekend-tab-software" tabindex="0" hidden>
-                    <div class="project-grid">
-                        <div class="project-card">
-                            <span class="project-tag">Software &middot; 2 days</span>
                             <h3 class="project-name">WAFT — First Working Build</h3>
-                            <p class="project-desc">Self-modifying AI agent proof-of-concept. One weekend to get an agent writing its own variants, running fitness tests, and selecting survivors. It worked.</p>
+                            <p class="project-desc">Self-modifying AI agent proof-of-concept. One weekend to get an agent writing its own variants, running fitness tests, and selecting survivors. It worked. Now it's growing.</p>
                             <div class="project-meta">
                                 <span>Python</span>
                                 <span>AI Agents</span>
@@ -392,23 +408,75 @@
                             <a href="https://github.com/ctavolazzi/waft" class="project-card-link" target="_blank" rel="noopener">View on GitHub →</a>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Software &middot; 2 days</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; 2 days</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">Wiki Build Pipeline</h3>
-                            <p class="project-desc">Markdown → HTML compiler with automatic navigation, full-text search index, and cross-linking. 44 wiki pages built at compile time. Zero client-side framework.</p>
+                            <p class="project-desc">Markdown → HTML compiler with generated navigation, cross-links, and a search index built at compile time. 48 pages. No client-side framework. Built in a weekend, still running.</p>
                             <div class="project-meta">
                                 <span>Node.js</span>
-                                <span>Markdown</span>
+                                <span>marked</span>
                                 <span>Build Tool</span>
                             </div>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Software &middot; ~weekend</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Software &middot; ~weekend</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">FogSift Queue System</h3>
-                            <p class="project-desc">Ko-fi webhook → Cloudflare KV → live queue display. Payments arrive, queue updates in real time, no database needed. Still the system running today.</p>
+                            <p class="project-desc">Ko-fi webhook → Cloudflare Worker → KV store → live queue display. Payment arrives, queue updates instantly. No database. No polling. This is the live system.</p>
                             <div class="project-meta">
-                                <span>Cloudflare</span>
+                                <span>Cloudflare Workers</span>
                                 <span>KV</span>
                                 <span>Ko-fi</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware Panel -->
+                <div class="tab-panel" id="weekend-panel-hardware" role="tabpanel"
+                    aria-labelledby="weekend-tab-hardware" tabindex="0" hidden>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; 2 days</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">TMGotcha Prototype v0.1</h3>
+                            <p class="project-desc">First physical unit — foam-core frame, wired display, a pet idle animation running on bare metal. Built to prove the form factor was viable before spending any time on CAD.</p>
+                            <div class="project-meta">
+                                <span>Foam Core</span>
+                                <span>Display</span>
+                                <span>Embedded</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; 2 days</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">Pepper's Ghost Rig</h3>
+                            <p class="project-desc">Laser-cut acrylic frame with precise angle brackets for the holographic reflection. Tested three screen brightness levels and two acrylic thicknesses to find the right reflection ratio.</p>
+                            <div class="project-meta">
+                                <span>Laser Cutting</span>
+                                <span>Acrylic</span>
+                                <span>Optics</span>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Hardware &middot; ~weekend</span>
+                                <span class="project-status done">Done</span>
+                            </div>
+                            <h3 class="project-name">ESP32 Sensor Array</h3>
+                            <p class="project-desc">Multi-sensor breakout for temp, humidity, and light. Streams readings over MQTT to a local broker. Became the base platform for three subsequent builds without modification.</p>
+                            <div class="project-meta">
+                                <span>ESP32</span>
+                                <span>MQTT</span>
+                                <span>PCB Design</span>
                             </div>
                         </div>
                     </div>
@@ -419,23 +487,29 @@
                     aria-labelledby="weekend-tab-other" tabindex="0" hidden>
                     <div class="project-grid">
                         <div class="project-card">
-                            <span class="project-tag">Design &middot; 2 days</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Design &middot; 2 days</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">FogSift Design System</h3>
-                            <p class="project-desc">Full design language in a weekend: CSS token system, 11 themes, typographic scale, color ramp, and component patterns. Used on every page of this site.</p>
+                            <p class="project-desc">Full design language in a weekend: CSS token architecture, 11 themes, typographic scale, color system, and all the component patterns. Used on every page of this site without exception.</p>
                             <div class="project-meta">
-                                <span>CSS</span>
-                                <span>Design Tokens</span>
+                                <span>CSS Tokens</span>
                                 <span>Typography</span>
+                                <span>Theming</span>
                             </div>
                         </div>
                         <div class="project-card">
-                            <span class="project-tag">Strategy &middot; 2 days</span>
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:4px;">
+                                <span class="project-tag">Strategy &middot; 2 days</span>
+                                <span class="project-status done">Done</span>
+                            </div>
                             <h3 class="project-name">Offers Architecture</h3>
-                            <p class="project-desc">Pricing model, queue mechanics, consulting workflow — designed in one weekend. Flat-rate structure, tiered engagement, Ko-fi as payment layer. Still live.</p>
+                            <p class="project-desc">Pricing model, queue mechanics, and consulting workflow — one weekend. Flat-rate structure, Ko-fi as payment layer, tiered engagement levels. Still the live structure.</p>
                             <div class="project-meta">
                                 <span>Pricing</span>
+                                <span>Systems Design</span>
                                 <span>Workflow</span>
-                                <span>Systems</span>
                             </div>
                         </div>
                     </div>
@@ -446,44 +520,39 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Section 3: Featured Builds                      -->
+        <!-- Featured Builds — heading and content unified   -->
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" id="featured-builds" aria-labelledby="featured-heading">
             <h2 id="featured-heading" class="section-label">FEATURED BUILDS</h2>
-            <p style="max-width: 52ch; margin: 0 0 var(--space-lg);">
-                Longer-form projects. These took more than a weekend and aren't done yet.
-            </p>
-        </section>
+            <p class="section-intro">Longer-form projects. These took more than a weekend and aren't done yet.</p>
 
-        <section class="portfolio-grid">
-            <article class="portfolio-card portfolio-featured portfolio-stacked">
-                <div class="portfolio-image portfolio-image-wide">
-                    <img src="images/portfolio/TMGotcha-Banner-Image.jpg" alt="TMGotcha - A modern virtual pet platform with modular hardware cubes" loading="lazy">
-                </div>
-                <div class="portfolio-content">
-                    <span class="portfolio-tag">Featured &middot; Hardware + Software</span>
-                    <h3 class="portfolio-title">TMGotcha</h3>
-                    <p class="portfolio-desc">
-                        A modern reimagining of the virtual pet. Modular hardware cubes,
-                        collectible editions, desk-friendly displays, and a holographic Pepper's Ghost effect.
-                        Tamagotchi meets maker culture.
-                    </p>
-                    <div class="portfolio-meta">
-                        <span>Custom Hardware</span>
-                        <span>Embedded Software</span>
-                        <span>Product Design</span>
-                        <span>3D Printing</span>
+            <section class="portfolio-grid">
+                <article class="portfolio-card portfolio-featured portfolio-stacked">
+                    <div class="portfolio-image portfolio-image-wide">
+                        <img src="images/portfolio/TMGotcha-Banner-Image.jpg" alt="TMGotcha - A modern virtual pet platform with modular hardware cubes" loading="lazy">
                     </div>
-                    <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
-                        Watch the Build
-                    </a>
-                </div>
-            </article>
-        </section>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Featured &middot; Hardware + Software</span>
+                        <h3 class="portfolio-title">TMGotcha</h3>
+                        <p class="portfolio-desc">
+                            A modern reimagining of the virtual pet. Modular hardware cubes,
+                            collectible editions, desk-friendly displays, and a holographic Pepper's Ghost effect.
+                            Tamagotchi meets maker culture.
+                        </p>
+                        <div class="portfolio-meta">
+                            <span>Custom Hardware</span>
+                            <span>Embedded Software</span>
+                            <span>Product Design</span>
+                            <span>3D Printing</span>
+                        </div>
+                        <a href="https://youtube.com/@fogsift" class="portfolio-cta" target="_blank" rel="noopener">
+                            Watch the Build
+                        </a>
+                    </div>
+                </article>
+            </section>
 
-        <!-- TMGotcha Concept Gallery -->
-        <section class="section">
-            <h3 class="section-label" style="font-size: var(--text-lg);">CONCEPT ART &amp; DESIGNS</h3>
+            <h3 class="section-label" style="font-size: var(--text-lg); margin-top: var(--space-lg);">CONCEPT ART &amp; DESIGNS</h3>
             <div class="portfolio-gallery">
                 <figure class="gallery-item">
                     <img src="images/portfolio/TMGotcha-Hardware-Concept-Art.jpg" alt="TMGotcha hardware internals concept" loading="lazy">
@@ -523,42 +592,40 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Section 4: Open Source                          -->
+        <!-- Open Source — heading and content unified       -->
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" id="open-source" aria-labelledby="oss-heading">
             <h2 id="oss-heading" class="section-label">OPEN SOURCE</h2>
-            <p style="max-width: 52ch; margin: 0 0 var(--space-lg);">
-                Work that's public. Read the code, fork it, file an issue.
-            </p>
-        </section>
+            <p class="section-intro">Work that's public. Read the code, fork it, file an issue.</p>
 
-        <section class="portfolio-grid">
-            <article class="portfolio-card portfolio-featured">
-                <div class="portfolio-image">
-                    <img src="images/portfolio/WAFT_Profile_Default.png" alt="WAFT - The Evolutionary Code Laboratory" loading="lazy">
-                </div>
-                <div class="portfolio-content">
-                    <span class="portfolio-tag">Open Source &middot; AI Framework</span>
-                    <h3 class="portfolio-title">WAFT</h3>
-                    <p class="portfolio-desc">
-                        An evolutionary code laboratory for self-modifying AI agents.
-                        Agents write their own code, spawn variants with mutations, and evolve through
-                        directed selection. Genome tracking, fitness evaluation, and complete lineage telemetry.
-                    </p>
-                    <p class="portfolio-desc" style="flex-grow: 0;">
-                        Don't just build agents. Breed them.
-                    </p>
-                    <div class="portfolio-meta">
-                        <span>Python</span>
-                        <span>AI Agents</span>
-                        <span>Evolutionary Design</span>
-                        <span>Open Source</span>
+            <section class="portfolio-grid">
+                <article class="portfolio-card portfolio-featured">
+                    <div class="portfolio-image">
+                        <img src="images/portfolio/WAFT_Profile_Default.png" alt="WAFT - The Evolutionary Code Laboratory" loading="lazy">
                     </div>
-                    <a href="https://github.com/ctavolazzi/waft" class="portfolio-cta" target="_blank" rel="noopener">
-                        View on GitHub
-                    </a>
-                </div>
-            </article>
+                    <div class="portfolio-content">
+                        <span class="portfolio-tag">Open Source &middot; AI Framework</span>
+                        <h3 class="portfolio-title">WAFT</h3>
+                        <p class="portfolio-desc">
+                            An evolutionary code laboratory for self-modifying AI agents.
+                            Agents write their own code, spawn variants with mutations, and evolve through
+                            directed selection. Genome tracking, fitness evaluation, and complete lineage telemetry.
+                        </p>
+                        <p class="portfolio-desc" style="flex-grow: 0;">
+                            Don't just build agents. Breed them.
+                        </p>
+                        <div class="portfolio-meta">
+                            <span>Python</span>
+                            <span>AI Agents</span>
+                            <span>Evolutionary Design</span>
+                            <span>Open Source</span>
+                        </div>
+                        <a href="https://github.com/ctavolazzi/waft" class="portfolio-cta" target="_blank" rel="noopener">
+                            View on GitHub
+                        </a>
+                    </div>
+                </article>
+            </section>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
@@ -568,9 +635,9 @@
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" style="text-align: center;" aria-labelledby="youtube-heading">
             <h2 id="youtube-heading" class="section-label">WATCH THE BUILDS</h2>
-            <p style="max-width: 50ch; margin: 0 auto var(--space-lg);">
-                Every project is documented start to finish. The mistakes, the breakthroughs,
-                and the thinking behind each decision.
+            <p class="section-intro centered">
+                Every project documented start to finish. The wrong turns, the restarts, and the decisions
+                that actually mattered.
             </p>
 
             <div class="youtube-showcase">
@@ -589,7 +656,7 @@
                 </div>
             </div>
 
-            <p style="text-align: center; margin-top: var(--space-lg);">
+            <p style="margin-top: var(--space-lg);">
                 <a href="https://youtube.com/@fogsift?sub_confirmation=1" class="cta-button" target="_blank" rel="noopener">
                     Subscribe for New Builds
                 </a>
@@ -599,41 +666,11 @@
         <div class="section-divider" aria-hidden="true"></div>
 
         <!-- ═══════════════════════════════════════════════ -->
-        <!-- Behind the Build                               -->
-        <!-- ═══════════════════════════════════════════════ -->
-        <section class="section" style="text-align: center;" aria-labelledby="planning-heading">
-            <h2 id="planning-heading" class="section-label">BEHIND THE BUILD</h2>
-            <p style="max-width: 55ch; margin: 0 auto var(--space-lg);">
-                Planning docs, feature audits, and the thinking behind each decision&mdash;all public.
-            </p>
-            <div class="vibe-grid" style="max-width: 600px; margin: 0 auto;">
-                <a href="https://github.com/ctavolazzi/fogsift/blob/main/V0.1.0-RELEASE-PLAN.md" class="vibe-card" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-                    <h3 class="vibe-name">Release Plan</h3>
-                    <p class="vibe-desc">v0.1.0 roadmap. What's shipping next and why.</p>
-                </a>
-                <a href="https://github.com/ctavolazzi/fogsift/blob/main/FEATURE_VOID_AUDIT.md" class="vibe-card" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-                    <h3 class="vibe-name">Feature Audit</h3>
-                    <p class="vibe-desc">42 identified gaps. Prioritized and tracked.</p>
-                </a>
-                <a href="https://github.com/ctavolazzi/fogsift/blob/main/TECH_DEBT.md" class="vibe-card" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-                    <h3 class="vibe-name">Tech Debt</h3>
-                    <p class="vibe-desc">Known issues, priorities, and what's being paid down.</p>
-                </a>
-                <a href="https://github.com/ctavolazzi/fogsift/tree/main/_AI_Journal" class="vibe-card" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
-                    <h3 class="vibe-name">Dev Journal</h3>
-                    <p class="vibe-desc">AI development notes, reflections, and lore.</p>
-                </a>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <!-- ═══════════════════════════════════════════════ -->
         <!-- CTA                                             -->
         <!-- ═══════════════════════════════════════════════ -->
         <section class="section" style="text-align: center;">
             <h2 style="font-family: var(--font-display); font-size: var(--text-xl); color: var(--ink); margin-bottom: var(--space-sm);">Got something you want built?</h2>
-            <p style="max-width: 45ch; margin: 0 auto var(--space-lg); color: var(--muted);">Submit it to the queue or just say hello.</p>
+            <p class="section-intro centered">Submit it to the queue or just say hello.</p>
             <div class="hero-ctas" style="justify-content: center;">
                 <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener">Join the Queue ($20)</a>
                 <a href="contact.html" class="cta-button cta-secondary">Get in Touch</a>
@@ -648,19 +685,11 @@
         <section class="section" aria-labelledby="newsletter-heading">
             <div class="newsletter-box">
                 <h2 id="newsletter-heading">Stay in the loop</h2>
-                <p>New builds, process notes, and occasional deep dives. No spam. Unsubscribe any time.</p>
-                <form class="newsletter-form" action="https://ko-fi.com/fogsift" method="get" target="_blank" rel="noopener">
-                    <input
-                        type="email"
-                        name="email"
-                        class="newsletter-input"
-                        placeholder="your@email.com"
-                        aria-label="Email address"
-                        autocomplete="email"
-                    >
-                    <button type="submit" class="cta-button" style="white-space: nowrap;">Subscribe</button>
-                </form>
-                <p class="newsletter-note">Updates via Ko-fi. You'll get notified of new builds and queue openings.</p>
+                <p>New builds, process notes, and when the queue opens. Updates go out via Ko-fi.</p>
+                <a href="https://ko-fi.com/fogsift" class="cta-button" target="_blank" rel="noopener" style="display: inline-block; margin-top: var(--space-sm);">
+                    Follow on Ko-fi
+                </a>
+                <p class="newsletter-note">No email list yet. Ko-fi followers get notified when new posts drop.</p>
             </div>
         </section>
 
