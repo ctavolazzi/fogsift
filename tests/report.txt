@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T12:09:39.899Z
+Generated: 2026-03-01T12:18:17.100Z
 ============================================================
 
 SUMMARY
-  Total:    123
+  Total:    124
   Passed:   114
-  Failed:   0
+  Failed:   1
   Warnings: 9
-  Pass rate: 92.7%
+  Pass rate: 91.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 81 — Found 81 HTML files
+  [PASS] HTML pages built: 82 — Found 82 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -89,6 +89,7 @@ SUMMARY
   [PASS] wiki/field-notes/008-sunk-cost-trap.html
   [PASS] wiki/field-notes/009-scope-creep.html
   [PASS] wiki/field-notes/010-communication-overhead.html
+  [PASS] wiki/field-notes/011-vanishing-context.html
   [PASS] wiki/frameworks/constraint-mapping.html
   [PASS] wiki/frameworks/decision-matrix.html
   [PASS] wiki/frameworks/feedback-loops.html
@@ -131,18 +132,18 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 6934 internal links valid
+  [FAIL] 3 broken links out of 7057 — wiki/field-notes/011-vanishing-context.html → ../field-notes/007-documentation-debt; wiki/field-notes/011-vanishing-context.html → ../concepts/root-cause; wiki/field-notes/011-vanishing-context.html → ../concepts/systems-thinking
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 60 entries
-  [PASS] 60/60 entries have valid structure
-  [PASS] 60/60 index URLs resolve to files
-  [PASS] Index size: 57.4KB
+  [PASS] Index has 61 entries
+  [PASS] 61/61 entries have valid structure
+  [PASS] 61/61 index URLs resolve to files
+  [PASS] Index size: 58.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.29MB
+  [PASS] Total dist/ size: 7.33MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
@@ -158,4 +159,4 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ============================================================
-VERDICT: READY TO DEPLOY
+VERDICT: NOT READY — 1 failure(s)

@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Field Note 011: Vanishing Context | Fogsift Wiki</title>
-    <meta name="description" content="*The most expensive thing that leaves when someone quits isn't their skills. It's what they knew that nobody wrote down.*">
+    <title>Pre-Mortem Analysis | Fogsift Wiki</title>
+    <meta name="description" content="A pre-mortem is a prospective failure analysis: before a project launches, you imagine it has already failed — then work backward to figure out why.">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/011-vanishing-context">
+    <link rel="canonical" href="https://fogsift.com/wiki/frameworks/pre-mortem">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Field Note 011: Vanishing Context | Fogsift Wiki">
-    <meta property="og:description" content="*The most expensive thing that leaves when someone quits isn't their skills. It's what they knew that nobody wrote down.*">
+    <meta property="og:title" content="Pre-Mortem Analysis | Fogsift Wiki">
+    <meta property="og:description" content="A pre-mortem is a prospective failure analysis: before a project launches, you imagine it has already failed — then work backward to figure out why.">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/011-vanishing-context">
+    <meta property="og:url" content="https://fogsift.com/wiki/frameworks/pre-mortem">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -171,7 +171,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">VANISHING CONTEXT</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">PRE MORTEM</span></li>
             </ol>
         </nav>
 
@@ -272,52 +272,85 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Field Note 011: Vanishing Context</h1>
-<p><em>The most expensive thing that leaves when someone quits isn&#39;t their skills. It&#39;s what they knew that nobody wrote down.</em></p>
+                <h1>Pre-Mortem Analysis</h1>
+<p>A pre-mortem is a prospective failure analysis: before a project launches, you imagine it has already failed — then work backward to figure out why.</p>
+<p>It&#39;s one of the most underused tools in decision-making. It takes 30 minutes and regularly surfaces risks that months of planning missed.</p>
 <hr>
-<h2>The Pattern</h2>
-<p>Someone resigns. You schedule the exit interview. You get their login credentials, their project files, their contact list.</p>
-<p>What you don&#39;t get is the thing that made them effective: the accumulated context. The reason the integration with Vendor X is configured that specific way. The history behind the policy nobody questions. Why the client in sector three gets different pricing. What &quot;just handle it like last time&quot; actually means.</p>
-<p>This context didn&#39;t live in any system. It lived in a person&#39;s head — and now it&#39;s walking out the door.</p>
-<p>This is <strong>vanishing context</strong>: institutional knowledge that exists nowhere except in the memory of the person who built it.</p>
+<h2>The Core Idea</h2>
+<p>Traditional risk analysis asks: <em>What could go wrong?</em> This tends to produce short, optimistic lists. The social dynamics of planning favor confidence over candor.</p>
+<p>The pre-mortem reframes the question: <em>It&#39;s a year from now. This project failed badly. What happened?</em></p>
+<p>This works because:</p>
+<ol>
+<li><strong>Future-perfect framing reduces defensiveness.</strong> You&#39;re not predicting failure — you&#39;re explaining a failure that has already (hypothetically) occurred. The emotional stakes drop.</li>
+<li><strong>&quot;Prospective hindsight&quot; surfaces concrete failures.</strong> Research by psychologist Gary Klein, who developed the technique, shows that imagining a specific outcome as having already happened increases the ability to identify reasons by 30%.</li>
+<li><strong>It creates psychological safety for skeptics.</strong> People who see risks but feel pressure to stay positive now have formal permission — even an obligation — to surface concerns.</li>
+</ol>
 <hr>
-<h2>Why It&#39;s Worse Than It Looks</h2>
-<p>The immediate cost is obvious: onboarding time, mistakes, re-learning. But the second-order damage is subtler.</p>
-<p><strong>Silent process drift.</strong> New people, lacking context, make reasonable-sounding decisions that slowly diverge from the original intent. No individual change looks wrong. The drift only becomes visible months later — by which point multiple people have built on the wrong foundation.</p>
-<p><strong>Decision debt.</strong> Every undocumented decision that holds becomes a trap for whoever inherits it. &quot;We don&#39;t do it that way&quot; is uttered with conviction by someone who has no idea why.</p>
-<p><strong>Fragile single points.</strong> When context is concentrated in one person, that person becomes a bottleneck — not because they&#39;re doing it deliberately, but because the organization has quietly made them the only safe path through certain decisions.</p>
-<hr>
-<h2>Common Sources</h2>
+<h2>When to Use It</h2>
 <ul>
-<li><strong>Workarounds nobody documented</strong> — hacks that became standard practice</li>
-<li><strong>Vendor relationship history</strong> — what went wrong, who to actually call</li>
-<li><strong>Client-specific accommodations</strong> — informal agreements, sensitivities, past friction</li>
-<li><strong>Technical debt rationale</strong> — why the &quot;wrong&quot; approach was chosen and why it&#39;s actually correct given the constraints</li>
-<li><strong>Failure history</strong> — what was tried before and why it didn&#39;t work</li>
-<li><strong>Informal power maps</strong> — who actually makes decisions vs. who&#39;s nominally responsible</li>
+<li>Before launching a major initiative or project</li>
+<li>Before making a significant hire</li>
+<li>Before signing a key contract or partnership</li>
+<li>Before a product launch or public commitment</li>
+<li>Any time you&#39;re about to cross a point of no return</li>
 </ul>
 <hr>
-<h2>The Diagnostic Question</h2>
-<p>Ask yourself: <em>If the three people with the longest tenure all left this month, what would we not know how to do?</em></p>
-<p>Not skills. Not processes that are documented. The things where institutional knowledge is the only thing making them work.</p>
-<p>If the answer comes back as a long list — or if you find yourself saying &quot;we&#39;d figure it out&quot; without conviction — you have a vanishing context problem.</p>
+<h2>The Process</h2>
+<h3>Step 1: Set the Scene (2 minutes)</h3>
+<p>Gather the project team. State clearly:</p>
+<p><em>&quot;Assume it is [date 6-12 months from now]. This project has failed — significantly, embarrassingly, in a way that&#39;s hard to recover from. We&#39;re going to figure out why.&quot;</em></p>
+<p>The specific, named failure matters. &quot;Things didn&#39;t work out&quot; is too abstract. You want people imagining real consequences: missed revenue, public embarrassment, team departures, product recalls.</p>
 <hr>
-<h2>Mitigation Approaches</h2>
-<p><strong>Context interviews, not just exit interviews.</strong> The standard exit interview asks where someone&#39;s going and what would have kept them. A context interview asks: <em>What do you know that&#39;s not written anywhere? What would surprise your replacement?</em></p>
-<p><strong>Decision logs.</strong> Not meeting notes, not action items — logs of <em>why</em>. &quot;We chose Option B because Option A failed in 2022 due to...&quot; This is what doesn&#39;t get documented by default.</p>
-<p><strong>Named context owners.</strong> For any process or relationship where institutional knowledge is the primary risk, name the owner and a backup. Make the context visible, even if it&#39;s not fully documented.</p>
-<p><strong>Overlap hiring.</strong> When possible, hire the replacement before the departure. Not just for handoff meetings — for the kind of informal &quot;hey, how do you usually handle this?&quot; conversations that transfer knowledge no document would capture.</p>
+<h3>Step 2: Individual Silent Writing (5-10 minutes)</h3>
+<p>Each person writes down every reason they can think of for the failure. Alone. Silently.</p>
+<p>This step is non-negotiable. Without it, the first few voices anchor the group&#39;s thinking and suppress minority views. The goal is to generate the full range of concerns, not just the loudest ones.</p>
+<p>Prompt: <em>&quot;In the space below, write every reason you can think of why this project failed. Nothing is too small, too political, or too obvious.&quot;</em></p>
 <hr>
-<h2>What Not To Do</h2>
-<p><strong>Don&#39;t try to document everything.</strong> You can&#39;t. The attempt creates busywork without capturing the nuance. Focus on the highest-risk context — the knowledge whose absence would cause the worst silent failures.</p>
-<p><strong>Don&#39;t treat knowledge bases as the answer.</strong> A knowledge base that nobody updates is noise. A knowledge base that&#39;s one person&#39;s project becomes yet another knowledge dependency.</p>
-<p><strong>Don&#39;t assume the knowledge transfer happened.</strong> &quot;We did an overlap period&quot; doesn&#39;t mean the context transferred. Ask the new person what surprised them. That&#39;s where the gaps are.</p>
+<h3>Step 3: Round-Robin Sharing (10-15 minutes)</h3>
+<p>Go around the room. Each person shares <strong>one item</strong> from their list. No discussion yet — just collection.</p>
+<p>Continue rotating until the list is exhausted. Record everything publicly (whiteboard, shared doc).</p>
+<p>Rules:</p>
+<ul>
+<li>No dismissing items (&quot;that won&#39;t happen&quot;)</li>
+<li>No defending the plan (&quot;but we&#39;ve already thought of that&quot;)</li>
+<li>Duplicates are fine — they reveal which risks feel most salient</li>
+</ul>
 <hr>
-<h2>The Underlying Dynamic</h2>
-<p>Vanishing context is a structural problem, not a personnel problem. Organizations don&#39;t lose context because people are careless — they lose it because the incentives all point toward getting work done, not toward documenting why.</p>
-<p>Fixing it requires treating context documentation as a first-class work product, not an administrative afterthought.</p>
+<h3>Step 4: Cluster and Prioritize (10 minutes)</h3>
+<p>Group the items by theme. Look for:</p>
+<ul>
+<li>Items that appeared on multiple lists (high salience)</li>
+<li>Items that represent irreversible failures vs. recoverable setbacks</li>
+<li>Items that no one on the team is currently responsible for preventing</li>
+</ul>
+<p>Don&#39;t try to solve everything. Focus on the <strong>top 3-5 risks</strong> that would be both likely and catastrophic.</p>
 <hr>
-<p><em>Related: <a href="../field-notes/007-documentation-debt.html">Tribal Knowledge and the Documentation Debt</a>, <a href="../concepts/root-cause.html">Root Cause Analysis</a>, <a href="../concepts/systems-thinking.html">Systems Thinking</a></em></p>
+<h3>Step 5: Assign Ownership</h3>
+<p>For each high-priority risk:</p>
+<ul>
+<li>Who is responsible for monitoring this?</li>
+<li>What would we see if this was starting to happen?</li>
+<li>What pre-emptive action reduces the probability?</li>
+</ul>
+<p>The pre-mortem is only useful if it changes behavior before the failure. Without assigned owners, it becomes a ritual rather than a tool.</p>
+<hr>
+<h2>Variations</h2>
+<p><strong>The &quot;pre-parade&quot;:</strong> After the pre-mortem, do a brief pre-parade — imagine the project succeeded beyond all expectations. What made it work? This surfaces hidden opportunities alongside hidden risks.</p>
+<p><strong>Asynchronous version:</strong> Send the prompt in writing 24 hours before the meeting. People submit their lists beforehand. The meeting becomes a synthesis session rather than a generation session.</p>
+<p><strong>Solo pre-mortem:</strong> For individual decisions (job change, major purchase, partnership), sit alone and write for 10 minutes as if the decision went badly. What would you wish you&#39;d thought of?</p>
+<hr>
+<h2>Common Failure Modes</h2>
+<p><strong>Going through the motions.</strong> The pre-mortem generates a list, the list gets filed, nothing changes. The tool requires follow-through.</p>
+<p><strong>Stopping at obvious risks.</strong> &quot;Scope creep&quot; and &quot;communication breakdown&quot; are real but they&#39;re also safe answers. Dig past them: <em>What specifically would cause scope creep? Who would allow it? Why?</em></p>
+<p><strong>Treating it as pessimism.</strong> The pre-mortem isn&#39;t about expecting failure — it&#39;s about taking the plan seriously enough to stress-test it. The strongest teams run the hardest pre-mortems.</p>
+<p><strong>Skipping the silent writing step.</strong> Group dynamics will dominate if you go straight to discussion. The individual writing step is the mechanism that makes the technique work.</p>
+<hr>
+<h2>The Underlying Logic</h2>
+<p>The pre-mortem isn&#39;t magic — it&#39;s a structured way of overcoming optimism bias and social conformity pressure in group planning.</p>
+<p>Most plans fail in predictable ways: overestimated resources, underestimated complexity, unexamined dependencies, unaddressed interpersonal friction. The pre-mortem doesn&#39;t prevent these failures — it surfaces the ones that are visible to the room but unsaid, and creates accountability for addressing them.</p>
+<p>The failures you couldn&#39;t have anticipated are, by definition, unavoidable. The failures you could have anticipated but didn&#39;t say out loud — those are the ones the pre-mortem catches.</p>
+<hr>
+<p><em>Related: <a href="../frameworks/risk-assessment.html">Risk Assessment</a>, <a href="../frameworks/decision-matrix.html">Decision Matrix</a>, <a href="../tools/assumption-mapping.html">Assumption Mapping</a>, <a href="../concepts/cognitive-biases.html">Cognitive Biases</a></em></p>
 
             </article>
 

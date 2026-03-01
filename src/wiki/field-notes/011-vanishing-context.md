@@ -79,4 +79,4 @@ Fixing it requires treating context documentation as a first-class work product,
 
 ---
 
-*Related: [Tribal Knowledge and the Documentation Debt](../field-notes/007-documentation-debt), [Root Cause Analysis](../concepts/root-cause), [Systems Thinking](../concepts/systems-thinking)*
+*Related: [Tribal Knowledge and the Documentation Debt](../field-notes/007-documentation-debt.html), [Root Cause Analysis](../concepts/root-cause.html), [Systems Thinking](../concepts/systems-thinking.html)*
