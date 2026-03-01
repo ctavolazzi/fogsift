@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T12:34:17.967Z",
+  "timestamp": "2026-03-01T12:45:49.464Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 84",
+          "test": "HTML pages built: 86",
           "status": "pass",
-          "detail": "Found 84 HTML files"
+          "detail": "Found 86 HTML files"
         },
         {
           "test": "styles.css size: 199.2KB",
@@ -219,6 +219,11 @@
         },
         {
           "test": "queue.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "search.html",
           "status": "pass",
           "detail": ""
         },
@@ -408,6 +413,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/012-analysis-paralysis.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -503,7 +513,7 @@
           "detail": ""
         }
       ],
-      "passed": 84,
+      "passed": 86,
       "failed": 0,
       "warned": 0
     },
@@ -580,7 +590,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 7305 internal links valid",
+          "test": "All 7465 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -603,22 +613,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 63 entries",
+          "test": "Index has 64 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "63/63 entries have valid structure",
+          "test": "64/64 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "63/63 index URLs resolve to files",
+          "test": "64/64 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 60.4KB",
+          "test": "Index size: 61.4KB",
           "status": "pass",
           "detail": ""
         }
@@ -631,7 +641,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.41MB",
+          "test": "Total dist/ size: 7.50MB",
           "status": "pass",
           "detail": ""
         },
@@ -705,8 +715,8 @@
     }
   ],
   "summary": {
-    "total": 126,
-    "passed": 117,
+    "total": 128,
+    "passed": 119,
     "failed": 0,
     "warned": 9
   }

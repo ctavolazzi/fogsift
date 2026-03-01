@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T12:34:17.967Z
+Generated: 2026-03-01T12:45:49.464Z
 ============================================================
 
 SUMMARY
-  Total:    126
-  Passed:   117
+  Total:    128
+  Passed:   119
   Failed:   0
   Warnings: 9
-  Pass rate: 92.9%
+  Pass rate: 93.0%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 84 — Found 84 HTML files
+  [PASS] HTML pages built: 86 — Found 86 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -54,6 +54,7 @@ SUMMARY
   [PASS] queue/PST-102.html
   [PASS] queue/PST-103.html
   [PASS] queue.html
+  [PASS] search.html
   [PASS] svg-components-demo.html
   [PASS] system-status.html
   [PASS] terms.html
@@ -91,6 +92,7 @@ SUMMARY
   [PASS] wiki/field-notes/009-scope-creep.html
   [PASS] wiki/field-notes/010-communication-overhead.html
   [PASS] wiki/field-notes/011-vanishing-context.html
+  [PASS] wiki/field-notes/012-analysis-paralysis.html
   [PASS] wiki/frameworks/constraint-mapping.html
   [PASS] wiki/frameworks/decision-matrix.html
   [PASS] wiki/frameworks/feedback-loops.html
@@ -134,18 +136,18 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 7305 internal links valid
+  [PASS] All 7465 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 63 entries
-  [PASS] 63/63 entries have valid structure
-  [PASS] 63/63 index URLs resolve to files
-  [PASS] Index size: 60.4KB
+  [PASS] Index has 64 entries
+  [PASS] 64/64 entries have valid structure
+  [PASS] 64/64 index URLs resolve to files
+  [PASS] Index size: 61.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.41MB
+  [PASS] Total dist/ size: 7.50MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present

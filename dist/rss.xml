@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FogSift — Knowledge Base</title>
+    <link>https://fogsift.com/wiki/index.html</link>
+    <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Mar 2026 12:51:54 GMT</lastBuildDate>
+    <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>https://fogsift.com/assets/logo.png</url>
+      <title>FogSift — Knowledge Base</title>
+      <link>https://fogsift.com/wiki/index.html</link>
+    </image>
+    <item>
+      <title>Field Note 012: Analysis Paralysis</title>
+      <link>https://fogsift.com/wiki/field-notes/012-analysis-paralysis.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/012-analysis-paralysis.html</guid>
+      <description>*The danger isn&apos;t making a bad decision. The danger is making no decision until the moment forces one anyway — usually under worse conditions than if you&apos;d deci</description>
+      <pubDate>Sun, 01 Mar 2026 12:43:49 GMT</pubDate>
+    </item>
+    <item>
+      <title>Goodhart&apos;s Law</title>
+      <link>https://fogsift.com/wiki/concepts/goodharts-law.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/goodharts-law.html</guid>
+      <description>*When a measure becomes a target, it ceases to be a good measure.*</description>
+      <pubDate>Sun, 01 Mar 2026 12:32:09 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pre-Mortem Analysis</title>
+      <link>https://fogsift.com/wiki/frameworks/pre-mortem.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/pre-mortem.html</guid>
+      <description>A pre-mortem is a prospective failure analysis: before a project launches, you imagine it has already failed — then work backward to figure out why.</description>
+      <pubDate>Sun, 01 Mar 2026 12:23:55 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note 011: Vanishing Context</title>
+      <link>https://fogsift.com/wiki/field-notes/011-vanishing-context.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/011-vanishing-context.html</guid>
+      <description>*The most expensive thing that leaves when someone quits isn&apos;t their skills. It&apos;s what they knew that nobody wrote down.*</description>
+      <pubDate>Sun, 01 Mar 2026 12:23:49 GMT</pubDate>
+    </item>
+    <item>
+      <title>Case Study: The Communication Breakdown</title>
+      <link>https://fogsift.com/wiki/case-studies/communication-breakdown.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/case-studies/communication-breakdown.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Case Study: Manufacturing Throughput Crisis</title>
+      <link>https://fogsift.com/wiki/case-studies/manufacturing-throughput.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/case-studies/manufacturing-throughput.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Case Study: The Data Migration Disaster</title>
+      <link>https://fogsift.com/wiki/case-studies/the-data-migration.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/case-studies/the-data-migration.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Case Study: The Invisible Process</title>
+      <link>https://fogsift.com/wiki/case-studies/the-invisible-process.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/case-studies/the-invisible-process.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Case Study: The Startup That Wouldn&apos;t Pivot</title>
+      <link>https://fogsift.com/wiki/case-studies/the-startup-pivot.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/case-studies/the-startup-pivot.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Cognitive Biases</title>
+      <link>https://fogsift.com/wiki/concepts/cognitive-biases.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/cognitive-biases.html</guid>
+      <description>Cognitive biases are systematic patterns of deviation from rational judgment. They&apos;re mental shortcuts that usually help but sometimes mislead. Understanding th</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Compounding Effects</title>
+      <link>https://fogsift.com/wiki/concepts/compounding.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/compounding.html</guid>
+      <description>Compounding is the process where small, consistent inputs produce disproportionately large outputs over time. It&apos;s the most powerful force in business, learning</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>First Principles Thinking</title>
+      <link>https://fogsift.com/wiki/concepts/first-principles.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/first-principles.html</guid>
+      <description>First principles thinking is the practice of breaking a problem down to its most fundamental truths and reasoning up from there, rather than reasoning by analog</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Mental Models</title>
+      <link>https://fogsift.com/wiki/concepts/mental-models.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/mental-models.html</guid>
+      <description>Mental models are frameworks for understanding how things work. They simplify complex reality into patterns we can reason about. The quality of your thinking de</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Opportunity Cost</title>
+      <link>https://fogsift.com/wiki/concepts/opportunity-cost.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/opportunity-cost.html</guid>
+      <description>Opportunity cost is the value of the next best alternative you give up when making a choice. Every &amp;quot;yes&amp;quot; is an implicit &amp;quot;no&amp;quot; to something else.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Root Cause Analysis</title>
+      <link>https://fogsift.com/wiki/concepts/root-cause.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/root-cause.html</guid>
+      <description>Root cause analysis is the systematic process of tracing a problem back to its origin. It&apos;s not about fixing symptoms. It&apos;s about finding the actual source.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Second-Order Effects</title>
+      <link>https://fogsift.com/wiki/concepts/second-order-effects.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/second-order-effects.html</guid>
+      <description>First-order effects are the direct, immediate consequences of an action. Second-order effects are the consequences of those consequences. Most strategic mistake</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Signal vs Noise</title>
+      <link>https://fogsift.com/wiki/concepts/signal-vs-noise.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/signal-vs-noise.html</guid>
+      <description>Not all information is equal. Signal is information that tells you something true about reality. Noise is information that doesn&apos;t. The ability to distinguish b</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Survivorship Bias</title>
+      <link>https://fogsift.com/wiki/concepts/survivorship-bias.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/survivorship-bias.html</guid>
+      <description>Survivorship bias is the logical error of concentrating on the people or things that made it past a selection process and overlooking those that did not. It lea</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Systems Thinking</title>
+      <link>https://fogsift.com/wiki/concepts/systems-thinking.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/systems-thinking.html</guid>
+      <description>Systems thinking is a way of seeing the world as interconnected patterns rather than isolated events. It focuses on relationships, feedback, and emergence rathe</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Content Creation Pipeline</title>
+      <link>https://fogsift.com/wiki/content-creation-pipeline.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/content-creation-pipeline.html</guid>
+      <description>You have an idea. You want it to exist in the world. The distance between those two things is where most ideas go to die.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Diagnostic Process</title>
+      <link>https://fogsift.com/wiki/diagnostic-process.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/diagnostic-process.html</guid>
+      <description>Every Fogsift engagement follows a consistent diagnostic process. The specific tools vary, but the structure remains the same.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Frequently Asked Questions</title>
+      <link>https://fogsift.com/wiki/faq.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/faq.html</guid>
+      <description>Fogsift is an independent consulting practice specializing in diagnostic problem-solving. We help organizations find the root causes of complex, ambiguous probl</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: The Map Is Not The Territory</title>
+      <link>https://fogsift.com/wiki/field-notes/001-map-territory.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/001-map-territory.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Precision vs Accuracy</title>
+      <link>https://fogsift.com/wiki/field-notes/002-precision-accuracy.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/002-precision-accuracy.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Entropy</title>
+      <link>https://fogsift.com/wiki/field-notes/003-entropy.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/003-entropy.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Finding the Bottleneck</title>
+      <link>https://fogsift.com/wiki/field-notes/004-bottlenecks.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/004-bottlenecks.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Tribal Knowledge</title>
+      <link>https://fogsift.com/wiki/field-notes/005-tribal-knowledge.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/005-tribal-knowledge.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Incentive Alignment</title>
+      <link>https://fogsift.com/wiki/field-notes/006-incentive-alignment.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/006-incentive-alignment.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Documentation Debt</title>
+      <link>https://fogsift.com/wiki/field-notes/007-documentation-debt.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/007-documentation-debt.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: The Sunk Cost Trap</title>
+      <link>https://fogsift.com/wiki/field-notes/008-sunk-cost-trap.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/008-sunk-cost-trap.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Scope Creep</title>
+      <link>https://fogsift.com/wiki/field-notes/009-scope-creep.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/009-scope-creep.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Field Note: Communication Overhead</title>
+      <link>https://fogsift.com/wiki/field-notes/010-communication-overhead.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/010-communication-overhead.html</guid>
+      <description>---</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Constraint Mapping</title>
+      <link>https://fogsift.com/wiki/frameworks/constraint-mapping.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/constraint-mapping.html</guid>
+      <description>Constraint mapping identifies and visualizes the boundaries within which a solution must operate. It prevents wasted effort on solutions that can&apos;t be implement</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Decision Matrix</title>
+      <link>https://fogsift.com/wiki/frameworks/decision-matrix.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/decision-matrix.html</guid>
+      <description>A decision matrix is a structured approach to evaluating options against weighted criteria. It turns complex decisions into transparent, defensible choices.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Feedback Loop Analysis</title>
+      <link>https://fogsift.com/wiki/frameworks/feedback-loops.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/feedback-loops.html</guid>
+      <description>Feedback loops are circular chains of cause and effect where the output of a system influences its own input. Understanding them is essential for diagnosing per</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Prioritization Matrix</title>
+      <link>https://fogsift.com/wiki/frameworks/prioritization-matrix.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/prioritization-matrix.html</guid>
+      <description>A prioritization matrix helps you decide what to do first, what to do later, and what to not do at all. When everything feels urgent, the matrix reveals what ac</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Risk Assessment</title>
+      <link>https://fogsift.com/wiki/frameworks/risk-assessment.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/risk-assessment.html</guid>
+      <description>Risk assessment is the structured process of identifying what could go wrong, estimating how bad it would be, and deciding what to do about it. It&apos;s not about e</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>SWOT Analysis</title>
+      <link>https://fogsift.com/wiki/frameworks/swot-analysis.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/swot-analysis.html</guid>
+      <description>SWOT is a strategic planning framework that evaluates a situation through four lenses: Strengths, Weaknesses, Opportunities, and Threats. Simple enough for a na</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>The TRACE Protocol</title>
+      <link>https://fogsift.com/wiki/frameworks/trace-protocol.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/frameworks/trace-protocol.html</guid>
+      <description>TRACE is our systematic approach to diagnostic investigation. It provides structure without being prescriptive, ensuring thorough investigation while remaining </description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Getting Started with Fogsift</title>
+      <link>https://fogsift.com/wiki/getting-started.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/getting-started.html</guid>
+      <description>Welcome to the Fogsift knowledge base. This wiki contains documentation, concepts, frameworks, and field notes from our consulting work.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>How We Work</title>
+      <link>https://fogsift.com/wiki/how-we-work.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/how-we-work.html</guid>
+      <description>Fogsift operates differently from traditional consulting. We don&apos;t bring pre-packaged solutions. We bring diagnostic capability.</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Assumption Mapping</title>
+      <link>https://fogsift.com/wiki/tools/assumption-mapping.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/assumption-mapping.html</guid>
+      <description>Assumption mapping is the practice of making your implicit beliefs explicit, then testing the ones that matter most. Every plan is built on assumptions. Most of</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Fishbone Diagrams</title>
+      <link>https://fogsift.com/wiki/tools/fishbone-diagram.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/fishbone-diagram.html</guid>
+      <description>A fishbone diagram (also called Ishikawa or cause-and-effect diagram) visually maps the potential causes of a problem. It&apos;s particularly useful when multiple fa</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Five Whys</title>
+      <link>https://fogsift.com/wiki/tools/five-whys.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/five-whys.html</guid>
+      <description>The Five Whys is a simple but powerful technique for drilling past symptoms to find root causes. Ask &amp;quot;why?&amp;quot; repeatedly until you reach a cause you can actually </description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Pareto Analysis</title>
+      <link>https://fogsift.com/wiki/tools/pareto-analysis.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/pareto-analysis.html</guid>
+      <description>Pareto Analysis applies the 80/20 rule to problem-solving: roughly 80% of effects come from 20% of causes. By identifying and focusing on the vital few, you get</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Process Mapping</title>
+      <link>https://fogsift.com/wiki/tools/process-mapping.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/process-mapping.html</guid>
+      <description>Process mapping creates a visual representation of how work flows through a system. It reveals gaps, redundancies, bottlenecks, and opportunities for improvemen</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Retrospective</title>
+      <link>https://fogsift.com/wiki/tools/retrospective.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/retrospective.html</guid>
+      <description>A retrospective is a structured review of a completed period of work. It asks three questions: What went well? What didn&apos;t? What will we change? It&apos;s the simple</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+    <item>
+      <title>Time-Boxing</title>
+      <link>https://fogsift.com/wiki/tools/time-boxing.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/tools/time-boxing.html</guid>
+      <description>Time-boxing is the practice of allocating a fixed amount of time to an activity and stopping when the time is up, regardless of whether you&apos;re &amp;quot;done.&amp;quot; It&apos;s a co</description>
+      <pubDate>Sat, 28 Feb 2026 22:34:25 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

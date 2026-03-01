@@ -165,12 +165,14 @@ const FOOTER_LINKS = [
 const SOCIAL_LINKS = [
     { href: 'https://youtube.com/@fogsift', label: 'YouTube', icon: 'youtube' },
     { href: 'https://threads.net/@fogsift', label: 'Threads', icon: 'threads' },
+    { href: 'rss.xml', label: 'RSS Feed', icon: 'rss', pathRelative: true },
 ];
 
 // Social icons SVG
 const SOCIAL_ICONS = {
     youtube: `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>`,
     threads: `<svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.858-.712 2.037-1.122 3.412-1.187.953-.046 1.863.03 2.723.228-.054-.89-.312-1.568-.77-2.016-.548-.535-1.405-.808-2.549-.808l-.025.001c-1.311.015-2.326.426-3.015 1.222l-1.504-1.38c1.06-1.223 2.553-1.85 4.494-1.876h.04c1.682 0 3.008.472 3.942 1.402.857.853 1.327 2.063 1.399 3.6l.015.386c1.17.553 2.103 1.38 2.707 2.418.858 1.476.997 3.628-.614 5.748-1.857 2.442-4.542 3.282-7.97 3.313zm-.159-7.18c-.927.044-1.652.27-2.095.654-.384.333-.526.713-.5 1.065.043.615.593 1.342 1.912 1.342.057 0 .116-.002.176-.006 1.034-.056 1.807-.46 2.298-1.2.364-.548.608-1.295.728-2.229-.556-.107-1.134-.166-1.73-.166-.263 0-.528.012-.79.04z"/></svg>`,
+    rss: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>`,
 };
 
 // Generate footer HTML - single source of truth
@@ -182,9 +184,12 @@ function generateFooter(pathPrefix = '', options = {}) {
         `<a href="${pathPrefix}${l.href}">${l.label}</a>`
     ).join('\n                    ');
 
-    const socialLinks = SOCIAL_LINKS.map(l =>
-        `<a href="${l.href}" class="footer-social-link" target="_blank" rel="noopener" aria-label="${l.label}">${SOCIAL_ICONS[l.icon]}</a>`
-    ).join('\n                    ');
+    const socialLinks = SOCIAL_LINKS.map(l => {
+        const href = l.pathRelative ? pathPrefix + l.href : l.href;
+        const external = !l.pathRelative;
+        const attrs = external ? ` target="_blank" rel="noopener"` : ` type="application/rss+xml"`;
+        return `<a href="${href}" class="footer-social-link"${attrs} aria-label="${l.label}">${SOCIAL_ICONS[l.icon]}</a>`;
+    }).join('\n                    ');
 
     // Build footer bottom content
     let footerBottom = `<span>&copy; ${new Date().getFullYear()} FOGSIFT`;
@@ -1183,6 +1188,85 @@ function buildSearchIndex() {
     return index.length;
 }
 
+function buildRSSFeed() {
+    const BASE_URL = 'https://fogsift.com';
+    const FEED_TITLE = 'FogSift — Knowledge Base';
+    const FEED_DESC = 'Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.';
+    const FEED_LINK = BASE_URL + '/wiki/index.html';
+    const BUILD_DATE = new Date().toUTCString();
+
+    // Collect all wiki markdown files
+    const mdFiles = getMarkdownFiles(WIKI_SRC);
+    const items = [];
+
+    for (const { fullPath, slug } of mdFiles) {
+        // Skip index files and architecture/internal pages
+        if (slug === 'index' || slug.includes('architecture') || slug.includes('creative-pipeline')) continue;
+
+        const markdown = fs.readFileSync(fullPath, 'utf8');
+        const title = extractTitle(markdown);
+        const description = extractDescription(markdown);
+        const url = `${BASE_URL}/wiki/${slug}.html`;
+
+        // Use file mtime as pub date (approximation)
+        const stat = fs.statSync(fullPath);
+        const pubDate = stat.mtime.toUTCString();
+
+        // Get first 500 chars of content as summary
+        const summary = description || markdown
+            .replace(/^#[^\n]*/m, '')     // strip h1
+            .replace(/---/g, '')          // strip hr
+            .replace(/\*\*([^*]+)\*\*/g, '$1')   // strip bold
+            .replace(/\*([^*]+)\*/g, '$1')         // strip italic
+            .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')  // strip links
+            .trim()
+            .slice(0, 500);
+
+        items.push({ title, url, description: description || summary, pubDate, slug });
+    }
+
+    // Sort by pubDate descending (newest first)
+    items.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+    function xmlEscape(str) {
+        return (str || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&apos;');
+    }
+
+    const itemsXml = items.map(item => `
+    <item>
+      <title>${xmlEscape(item.title)}</title>
+      <link>${xmlEscape(item.url)}</link>
+      <guid isPermaLink="true">${xmlEscape(item.url)}</guid>
+      <description>${xmlEscape(item.description)}</description>
+      <pubDate>${item.pubDate}</pubDate>
+    </item>`).join('');
+
+    const rss = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>${xmlEscape(FEED_TITLE)}</title>
+    <link>${xmlEscape(FEED_LINK)}</link>
+    <description>${xmlEscape(FEED_DESC)}</description>
+    <language>en-us</language>
+    <lastBuildDate>${BUILD_DATE}</lastBuildDate>
+    <atom:link href="${BASE_URL}/rss.xml" rel="self" type="application/rss+xml"/>
+    <image>
+      <url>${BASE_URL}/assets/logo.png</url>
+      <title>${xmlEscape(FEED_TITLE)}</title>
+      <link>${xmlEscape(FEED_LINK)}</link>
+    </image>${itemsXml}
+  </channel>
+</rss>`;
+
+    fs.writeFileSync(path.join(DIST, 'rss.xml'), rss);
+    return items.length;
+}
+
 async function minifyCSS(css) {
     const result = await esbuild.transform(css, {
         loader: 'css',
@@ -1348,6 +1432,11 @@ async function build() {
     console.log('\n🔍 Search Index:');
     const searchEntries = buildSearchIndex();
     console.log(`  ✓ Indexed ${searchEntries} pages → dist/search-index.json`);
+
+    // Build RSS feed
+    console.log('\n📡 RSS Feed:');
+    const rssItems = buildRSSFeed();
+    console.log(`  ✓ ${rssItems} items → dist/rss.xml`);
 
     console.log(`\n✨ Build complete! v${VERSION}`);
     console.log('   Run: npm run dev\n');
