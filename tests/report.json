@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T12:59:53.110Z",
+  "timestamp": "2026-03-01T13:02:30.300Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,12 +60,12 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 89",
+          "test": "HTML pages built: 90",
           "status": "pass",
-          "detail": "Found 89 HTML files"
+          "detail": "Found 90 HTML files"
         },
         {
-          "test": "styles.css size: 199.2KB",
+          "test": "styles.css size: 199.9KB",
           "status": "pass",
           "detail": ""
         },
@@ -428,6 +428,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/013-expertise-trap.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -528,7 +533,7 @@
           "detail": ""
         }
       ],
-      "passed": 89,
+      "passed": 90,
       "failed": 0,
       "warned": 0
     },
@@ -605,7 +610,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 8113 internal links valid",
+          "test": "All 8363 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -628,22 +633,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 69 entries",
+          "test": "Index has 71 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "69/69 entries have valid structure",
+          "test": "71/71 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "69/69 index URLs resolve to files",
+          "test": "71/71 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 66.4KB",
+          "test": "Index size: 68.3KB",
           "status": "pass",
           "detail": ""
         }
@@ -656,7 +661,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.73MB",
+          "test": "Total dist/ size: 7.81MB",
           "status": "pass",
           "detail": ""
         },
@@ -730,8 +735,8 @@
     }
   ],
   "summary": {
-    "total": 131,
-    "passed": 122,
+    "total": 132,
+    "passed": 123,
     "failed": 0,
     "warned": 9
   }
