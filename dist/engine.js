@@ -655,7 +655,7 @@ function stringifyNodeConfig(fm, body) {
   return yaml + '---\n\n' + body;
 }
 
-function showBottomSheet(nodeId) {
+function showBottomSheet(_nodeId) {
   const sheet = document.getElementById('bottom-sheet');
   if (!sheet) return;
   sheet.style.transform = 'translateY(0)';

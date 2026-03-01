@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T08:35:30.424Z",
+  "timestamp": "2026-03-01T08:38:54.240Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -496,14 +496,14 @@
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "ESLint warnings only",
-          "status": "warn",
-          "detail": "1 warning(s)"
+          "test": "All JS files pass ESLint",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
+      "passed": 1,
       "failed": 0,
-      "warned": 1
+      "warned": 0
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
@@ -691,8 +691,8 @@
   ],
   "summary": {
     "total": 123,
-    "passed": 112,
+    "passed": 113,
     "failed": 0,
-    "warned": 11
+    "warned": 10
   }
 }

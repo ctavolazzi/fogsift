@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T08:35:30.424Z
+Generated: 2026-03-01T08:38:54.240Z
 ============================================================
 
 SUMMARY
   Total:    123
-  Passed:   112
+  Passed:   113
   Failed:   0
-  Warnings: 11
-  Pass rate: 91.1%
+  Warnings: 10
+  Pass rate: 91.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -109,7 +109,7 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [WARN] ESLint warnings only — 1 warning(s)
+  [PASS] All JS files pass ESLint
 
 ── Accessibility (pa11y WCAG2AA) ──
   [WARN] index.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either

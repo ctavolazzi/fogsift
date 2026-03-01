@@ -43,6 +43,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Contact Form ── */
+        .contact-form {
+            max-width: 620px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.25rem;
+        }
+        @media (max-width: 600px) { .contact-form-row { grid-template-columns: 1fr; } }
+
+        .contact-form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+        .contact-form-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: 0.02em;
+        }
+        .contact-form-req { color: var(--color-accent, #e11d48); }
+
+        .contact-form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem;
+            font-size: 0.9rem;
+            color: var(--color-text);
+            background: var(--color-surface);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+        .contact-form-input:focus {
+            border-color: var(--color-accent, #6366f1);
+            box-shadow: 0 0 0 3px rgba(99,102,241,0.1);
+        }
+        .contact-form-input.invalid {
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239,68,68,0.1);
+        }
+        .contact-form-input::placeholder { color: var(--color-text-muted); opacity: 0.7; }
+
+        .contact-form-select { cursor: pointer; }
+        .contact-form-textarea { resize: vertical; min-height: 9rem; }
+
+        .contact-form-error {
+            font-size: 0.72rem;
+            color: #ef4444;
+            min-height: 1em;
+        }
+        .contact-form-count {
+            font-size: 0.7rem;
+            color: var(--color-text-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .contact-form-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .contact-form-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.85rem 1.75rem;
+            background: var(--color-accent, #6366f1);
+            color: #fff;
+            border: none;
+            border-radius: 0.875rem;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+        }
+        .contact-form-submit:hover { opacity: 0.9; transform: translateY(-1px); }
+        .contact-form-submit:active { transform: translateY(0); }
+
+        .contact-form-note {
+            font-size: 0.72rem;
+            color: var(--color-text-muted);
+            margin: 0;
+            line-height: 1.5;
+        }
+    </style>
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -98,6 +194,69 @@
                     <span class="contact-card-note">$20 &middot; <a href="queue.html">See the queue</a></span>
                 </article>
             </div>
+        </section>
+
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- Contact Form -->
+        <section class="section" aria-labelledby="form-heading">
+            <h2 id="form-heading" class="section-label">SEND A MESSAGE</h2>
+            <p style="text-align:center; color:var(--color-text-muted); font-size:0.9rem; margin-bottom:2rem; max-width:520px; margin-left:auto; margin-right:auto;">
+                Prefer to write it out? Fill in the form and it will open your email client, ready to send.
+            </p>
+
+            <form id="contact-form" class="contact-form" novalidate aria-label="Contact form">
+                <div class="contact-form-row">
+                    <div class="contact-form-field">
+                        <label class="contact-form-label" for="cf-name">Your Name <span aria-hidden="true" class="contact-form-req">*</span></label>
+                        <input type="text" id="cf-name" name="name" class="contact-form-input"
+                               placeholder="Jane Smith" autocomplete="name" required maxlength="80"
+                               aria-required="true" aria-describedby="cf-name-err">
+                        <span id="cf-name-err" class="contact-form-error" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="contact-form-field">
+                        <label class="contact-form-label" for="cf-email">Email Address <span aria-hidden="true" class="contact-form-req">*</span></label>
+                        <input type="email" id="cf-email" name="email" class="contact-form-input"
+                               placeholder="jane@company.com" autocomplete="email" required maxlength="120"
+                               aria-required="true" aria-describedby="cf-email-err">
+                        <span id="cf-email-err" class="contact-form-error" role="alert" aria-live="polite"></span>
+                    </div>
+                </div>
+
+                <div class="contact-form-field">
+                    <label class="contact-form-label" for="cf-subject">What is this about?</label>
+                    <select id="cf-subject" name="subject" class="contact-form-input contact-form-select">
+                        <option value="General question">General question</option>
+                        <option value="Book a call">Book a call</option>
+                        <option value="Submit a problem">Submit a problem ($20 queue)</option>
+                        <option value="Partnership or collaboration">Partnership or collaboration</option>
+                        <option value="Press or media">Press or media</option>
+                        <option value="Something else">Something else</option>
+                    </select>
+                </div>
+
+                <div class="contact-form-field">
+                    <label class="contact-form-label" for="cf-message">Your Message <span aria-hidden="true" class="contact-form-req">*</span></label>
+                    <textarea id="cf-message" name="message" class="contact-form-input contact-form-textarea"
+                              placeholder="Describe what you're working on, what you've tried, and what you're hoping for…"
+                              required maxlength="2000" rows="6"
+                              aria-required="true" aria-describedby="cf-message-err cf-message-count"></textarea>
+                    <div style="display:flex; justify-content:space-between; margin-top:0.25rem;">
+                        <span id="cf-message-err" class="contact-form-error" role="alert" aria-live="polite"></span>
+                        <span id="cf-message-count" class="contact-form-count" aria-live="polite">0 / 2000</span>
+                    </div>
+                </div>
+
+                <div class="contact-form-actions">
+                    <button type="submit" class="contact-form-submit" id="cf-submit">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        Open in Email Client
+                    </button>
+                    <p class="contact-form-note">
+                        This opens your email app with the message pre-filled. Your data never touches our servers.
+                    </p>
+                </div>
+            </form>
         </section>
 
         <div class="section-divider" aria-hidden="true"></div>
@@ -207,6 +366,53 @@
 
     <script src="app.js" defer></script>
     <script>
+    // Contact form — client-side validation + mailto composition
+    (function () {
+        var form    = document.getElementById('contact-form');
+        var nameEl  = document.getElementById('cf-name');
+        var emailEl = document.getElementById('cf-email');
+        var msgEl   = document.getElementById('cf-message');
+        var countEl = document.getElementById('cf-message-count');
+        if (!form) return;
+
+        function setError(input, errId, msg) {
+            var err = document.getElementById(errId);
+            if (err) err.textContent = msg;
+            if (msg) { input.classList.add('invalid'); input.setAttribute('aria-invalid', 'true'); }
+            else      { input.classList.remove('invalid'); input.removeAttribute('aria-invalid'); }
+        }
+
+        function validateName()  { setError(nameEl,  'cf-name-err',  nameEl.value.trim()  ? '' : 'Please enter your name.'); return !!nameEl.value.trim(); }
+        function validateEmail() {
+            var v = emailEl.value.trim();
+            var ok = v && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+            setError(emailEl, 'cf-email-err', ok ? '' : (v ? 'Please enter a valid email address.' : 'Please enter your email address.'));
+            return ok;
+        }
+        function validateMsg()   { setError(msgEl, 'cf-message-err', msgEl.value.trim() ? '' : 'Please write a message.'); return !!msgEl.value.trim(); }
+
+        nameEl.addEventListener('blur', validateName);
+        emailEl.addEventListener('blur', validateEmail);
+        msgEl.addEventListener('blur', validateMsg);
+        msgEl.addEventListener('input', function () {
+            if (countEl) countEl.textContent = msgEl.value.length + ' / 2000';
+        });
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var ok = validateName() & validateEmail() & validateMsg();
+            if (!ok) { form.querySelector('.invalid').focus(); return; }
+
+            var subject = encodeURIComponent(document.getElementById('cf-subject').value + ' — via fogsift.com');
+            var body    = encodeURIComponent(
+                'Name: ' + nameEl.value.trim() + '\n' +
+                'Email: ' + emailEl.value.trim() + '\n\n' +
+                msgEl.value.trim()
+            );
+            window.location.href = 'mailto:info@fogsift.com?subject=' + subject + '&body=' + body;
+        });
+    })();
+
     // Easter egg: click location to cycle through places Christopher has been
     (function() {
         var places = [

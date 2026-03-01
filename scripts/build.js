@@ -40,6 +40,7 @@ const NAV_LINKS = [
     { href: 'wiki/index.html', label: 'WIKI' },
     { href: 'portfolio.html', label: 'PORTFOLIO' },
     { href: 'faq.html', label: 'FAQ' },
+    { href: 'experimental.html', label: 'LAB' },
     { href: 'contact.html', label: 'CONTACT' },
 ];
 
