@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Clearing | FogSift</title>
+    <meta name="description" content="An interactive fog experience. Sift through the mist to discover what's hidden.">
+    <meta name="robots" content="noindex">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/clearing">
+
+    <meta property="og:title" content="The Clearing | FogSift">
+    <meta property="og:description" content="Sift through the fog. Find the clearing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/clearing">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* === IMMERSIVE OVERRIDES === */
+        body {
+            overflow: hidden;
+            height: 100dvh;
+            padding-bottom: 0;
+            margin: 0;
+            background: #080812;
+            display: flex;
+            flex-direction: column;
+        }
+        body > footer { display: none; }
+
+        .nav-wrapper {
+            background: rgba(8, 8, 18, 0.75) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(232, 213, 176, 0.08) !important;
+        }
+
+        #main-content {
+            flex: 1;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            position: relative;
+        }
+
+        /* === THE CLEARING === */
+        #clearing-root {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            cursor: none;
+        }
+
+        .clearing-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 25% 35%, #0d1025 0%, transparent 55%),
+                radial-gradient(ellipse at 75% 65%, #110d1a 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 90%, #0a0818 0%, transparent 50%),
+                #080812;
+        }
+
+        /* === STARS === */
+        .clearing-stars { position: absolute; inset: 0; overflow: hidden; }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle var(--dur, 3s) ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--min-op, 0.15); }
+            50% { opacity: var(--max-op, 0.7); }
+        }
+
+        /* === DISCOVERIES === */
+        .discovery {
+            position: absolute;
+            opacity: 0;
+            transform: scale(0.92);
+            transition: opacity 1s ease, transform 0.8s ease;
+            pointer-events: none;
+            z-index: 5;
+            text-align: center;
+            max-width: 280px;
+        }
+        .discovery.found {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .discovery-text {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+            color: #e8d5b0;
+            line-height: 1.7;
+            text-shadow:
+                0 0 20px rgba(224, 123, 60, 0.35),
+                0 0 40px rgba(224, 123, 60, 0.15);
+        }
+        .discovery-glow {
+            position: absolute;
+            inset: -40px;
+            background: radial-gradient(ellipse, rgba(224, 123, 60, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .discovery.found .discovery-glow { opacity: 1; }
+        .discovery-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            color: #e07b3c;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 0.5rem;
+            opacity: 0.6;
+        }
+
+        /* Compass rose (discovery IV) */
+        .discovery-compass svg {
+            width: 110px;
+            height: 110px;
+            filter: drop-shadow(0 0 20px rgba(224, 123, 60, 0.4));
+        }
+        .discovery-compass-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.55rem;
+            color: #e07b3c;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-top: 0.75rem;
+            display: block;
+            opacity: 0.6;
+        }
+
+        /* === FOG CANVAS === */
+        #fog-canvas {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* === CUSTOM CURSOR === */
+        .clearing-cursor {
+            position: fixed;
+            width: 90px;
+            height: 90px;
+            border: 1px solid rgba(232, 213, 176, 0.25);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 100;
+            transition: width 0.25s ease, height 0.25s ease, border-color 0.3s ease;
+            mix-blend-mode: screen;
+        }
+        .clearing-cursor::after {
+            content: '';
+            position: absolute;
+            inset: 20%;
+            border: 1px solid rgba(232, 213, 176, 0.12);
+            border-radius: 50%;
+        }
+        .clearing-cursor::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 4px;
+            height: 4px;
+            background: rgba(224, 123, 60, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .clearing-cursor.pulse {
+            width: 150px;
+            height: 150px;
+            border-color: rgba(224, 123, 60, 0.5);
+        }
+
+        /* === VIGNETTE === */
+        .clearing-vignette {
+            position: absolute;
+            inset: 0;
+            z-index: 15;
+            pointer-events: none;
+            background: radial-gradient(ellipse at center, transparent 35%, rgba(8, 8, 18, 0.65) 100%);
+        }
+
+        /* === UI OVERLAY === */
+        .clearing-ui {
+            position: absolute;
+            inset: 0;
+            z-index: 50;
+            pointer-events: none;
+        }
+        .clearing-title {
+            position: absolute;
+            top: 80px;
+            left: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: rgba(232, 213, 176, 0.35);
+        }
+        .clearing-counter {
+            position: absolute;
+            top: 80px;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.15em;
+            color: rgba(224, 123, 60, 0.55);
+            text-align: right;
+        }
+        .clearing-counter-bar {
+            width: 100px;
+            height: 2px;
+            background: rgba(232, 213, 176, 0.08);
+            margin-top: 0.5rem;
+            border-radius: 1px;
+            overflow: hidden;
+        }
+        .clearing-counter-fill {
+            height: 100%;
+            background: #e07b3c;
+            width: 0%;
+            transition: width 0.6s ease;
+            border-radius: 1px;
+        }
+        .clearing-hint {
+            position: absolute;
+            bottom: 2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            color: rgba(232, 213, 176, 0.25);
+            transition: opacity 1.5s ease;
+            white-space: nowrap;
+        }
+        .clearing-hint.hidden { opacity: 0; }
+
+        .clearing-reveal-btn {
+            position: absolute;
+            bottom: 2rem;
+            right: 2rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.1em;
+            color: rgba(232, 213, 176, 0.25);
+            background: rgba(232, 213, 176, 0.04);
+            border: 1px solid rgba(232, 213, 176, 0.08);
+            padding: 0.4rem 0.8rem;
+            border-radius: 3px;
+            cursor: pointer;
+            pointer-events: all;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            z-index: 60;
+        }
+        .clearing-reveal-btn:hover,
+        .clearing-reveal-btn:focus {
+            color: rgba(232, 213, 176, 0.6);
+            border-color: rgba(232, 213, 176, 0.2);
+            background: rgba(232, 213, 176, 0.08);
+            outline: none;
+        }
+
+        /* === PARTICLES === */
+        .particle {
+            position: absolute;
+            background: rgba(224, 123, 60, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        /* === CELEBRATION === */
+        .clearing-celebration {
+            position: absolute;
+            inset: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 2.5s ease;
+        }
+        .clearing-celebration.active { opacity: 1; }
+        .celebration-text {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+            color: #e8d5b0;
+            text-align: center;
+            text-shadow:
+                0 0 40px rgba(224, 123, 60, 0.4),
+                0 0 80px rgba(224, 123, 60, 0.15);
+            line-height: 1.8;
+        }
+        .celebration-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.6rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #e07b3c;
+            display: block;
+            margin-top: 1.5rem;
+            opacity: 0.7;
+        }
+
+        /* === MOBILE === */
+        @media (max-width: 768px) {
+            .clearing-title { top: 65px; left: 1rem; font-size: 0.55rem; }
+            .clearing-counter { top: 65px; right: 1rem; font-size: 0.55rem; }
+            .clearing-hint { font-size: 0.55rem; bottom: 2rem; }
+            .clearing-reveal-btn { bottom: 1rem; right: 1rem; font-size: 0.55rem; }
+            .clearing-cursor { display: none; }
+            #clearing-root { cursor: default; }
+            .discovery { max-width: 180px; }
+            .discovery-text { font-size: clamp(0.7rem, 3vw, 0.9rem); }
+            .discovery-compass svg { width: 80px; height: 80px; }
+        }
+
+        /* === REDUCED MOTION === */
+        @media (prefers-reduced-motion: reduce) {
+            .star { animation: none !important; opacity: 0.4; }
+            .discovery { transition-duration: 0.1s !important; }
+            .clearing-cursor { transition-duration: 0s !important; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <main id="main-content">
+        <div id="clearing-root" role="application"
+             aria-label="Interactive fog experience. Move your mouse or finger across the screen to clear the fog and discover hidden messages. Press R to reveal all.">
+
+            <div class="clearing-bg" aria-hidden="true"></div>
+            <div class="clearing-stars" aria-hidden="true" id="stars-container"></div>
+
+            <!-- Discovery I -->
+            <div class="discovery" id="d1" style="top: 20%; left: 12%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">I</span>
+                <p class="discovery-text">We work on the weird ones.</p>
+            </div>
+
+            <!-- Discovery II -->
+            <div class="discovery" id="d2" style="top: 22%; right: 12%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">II</span>
+                <p class="discovery-text">Straight answers to complicated questions.</p>
+            </div>
+
+            <!-- Discovery III -->
+            <div class="discovery" id="d3" style="top: 48%; left: 6%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">III</span>
+                <p class="discovery-text">The fog doesn't clear on its own.<br>Someone has to do the sifting.</p>
+            </div>
+
+            <!-- Discovery IV: Compass Rose -->
+            <div class="discovery" id="d4" style="top: 45%; left: 50%; transform: translateX(-50%);" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <div class="discovery-compass">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+                        <circle cx="50" cy="50" r="46" fill="none" stroke="#e07b3c" stroke-width="0.4" opacity="0.4"
+                                stroke-dasharray="2 4"/>
+                        <circle cx="50" cy="50" r="36" fill="none" stroke="#e8d5b0" stroke-width="0.3" opacity="0.25"
+                                stroke-dasharray="1.5 3"/>
+                        <!-- N -->
+                        <polygon points="50,6 45,32 50,26 55,32" fill="#e07b3c" opacity="0.85"/>
+                        <!-- S -->
+                        <polygon points="50,94 45,68 50,74 55,68" fill="#e8d5b0" opacity="0.4"/>
+                        <!-- E -->
+                        <polygon points="94,50 68,45 74,50 68,55" fill="#e8d5b0" opacity="0.4"/>
+                        <!-- W -->
+                        <polygon points="6,50 32,45 26,50 32,55" fill="#e8d5b0" opacity="0.4"/>
+                        <!-- NE -->
+                        <line x1="68" y1="32" x2="58" y2="42" stroke="#e8d5b0" stroke-width="0.3" opacity="0.2"/>
+                        <!-- NW -->
+                        <line x1="32" y1="32" x2="42" y2="42" stroke="#e8d5b0" stroke-width="0.3" opacity="0.2"/>
+                        <!-- SE -->
+                        <line x1="68" y1="68" x2="58" y2="58" stroke="#e8d5b0" stroke-width="0.3" opacity="0.2"/>
+                        <!-- SW -->
+                        <line x1="32" y1="68" x2="42" y2="58" stroke="#e8d5b0" stroke-width="0.3" opacity="0.2"/>
+                        <!-- Center dot -->
+                        <circle cx="50" cy="50" r="2.5" fill="#e07b3c" opacity="0.65"/>
+                        <circle cx="50" cy="50" r="1" fill="#e8d5b0" opacity="0.9"/>
+                    </svg>
+                    <span class="discovery-compass-label">FogSift</span>
+                </div>
+            </div>
+
+            <!-- Discovery V -->
+            <div class="discovery" id="d5" style="top: 42%; right: 8%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">V</span>
+                <p class="discovery-text">Every question has a shape.<br>Every problem has a seam.</p>
+            </div>
+
+            <!-- Discovery VI -->
+            <div class="discovery" id="d6" style="bottom: 28%; left: 15%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">VI</span>
+                <p class="discovery-text">Clarity is not the absence of complexity &mdash; it's the ability to navigate it.</p>
+            </div>
+
+            <!-- Discovery VII -->
+            <div class="discovery" id="d7" style="bottom: 26%; right: 14%;" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">VII</span>
+                <p class="discovery-text">What you can't see clearly, you can't fix.</p>
+            </div>
+
+            <!-- Discovery VIII -->
+            <div class="discovery" id="d8" style="bottom: 12%; left: 50%; transform: translateX(-50%);" aria-live="polite">
+                <div class="discovery-glow"></div>
+                <span class="discovery-number">VIII</span>
+                <p class="discovery-text">You found the clearing.<br>Welcome.</p>
+            </div>
+
+            <!-- Fog canvas -->
+            <canvas id="fog-canvas" aria-hidden="true"></canvas>
+
+            <!-- Vignette -->
+            <div class="clearing-vignette" aria-hidden="true"></div>
+
+            <!-- Custom cursor -->
+            <div class="clearing-cursor" id="clearing-cursor" aria-hidden="true"></div>
+
+            <!-- UI Overlay -->
+            <div class="clearing-ui">
+                <div class="clearing-title">The Clearing</div>
+                <div class="clearing-counter">
+                    <span id="counter-text">0 / 8</span>
+                    <div class="clearing-counter-bar">
+                        <div class="clearing-counter-fill" id="counter-fill"></div>
+                    </div>
+                </div>
+                <div class="clearing-hint" id="clearing-hint">Move through the fog</div>
+                <button type="button" class="clearing-reveal-btn" id="reveal-btn"
+                        aria-label="Reveal all discoveries (press R as keyboard shortcut)">Reveal all</button>
+            </div>
+
+            <!-- Celebration -->
+            <div class="clearing-celebration" id="celebration" aria-live="assertive">
+                <div>
+                    <p class="celebration-text">The fog has cleared.</p>
+                    <span class="celebration-sub">All signals found</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    {{FOOTER}}
+    <script src="app.js"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // === CONFIG ===
+        var TOTAL = 8;
+        var BRUSH = 65;
+        var BRUSH_MOBILE = 50;
+        var FOG_REGEN = 0.0015;
+        var FOG_RGB = [175, 160, 138];
+        var FOG_ALPHA = 0.93;
+        var STAR_COUNT = 120;
+        var THRESHOLD = 0.38;
+        var CHECK_MS = 180;
+
+        // === STATE ===
+        var found = {};
+        var foundCount = 0;
+        var mx = -300, my = -300;
+        var touching = false;
+        var lastCheck = 0;
+        var done = false;
+        var moved = false;
+
+        // === DOM ===
+        var canvas = document.getElementById('fog-canvas');
+        var ctx = canvas.getContext('2d', { willReadFrequently: true });
+        var cursorEl = document.getElementById('clearing-cursor');
+        var counterText = document.getElementById('counter-text');
+        var counterFill = document.getElementById('counter-fill');
+        var hintEl = document.getElementById('clearing-hint');
+        var celebrationEl = document.getElementById('celebration');
+        var revealBtn = document.getElementById('reveal-btn');
+        var starsBox = document.getElementById('stars-container');
+
+        var discos = [];
+        for (var i = 1; i <= TOTAL; i++) discos.push(document.getElementById('d' + i));
+
+        // === INIT ===
+        function boot() {
+            sizeCanvas();
+            makeStars();
+            paintFog();
+            listen();
+            requestAnimationFrame(tick);
+        }
+
+        function sizeCanvas() {
+            var s = 0.5;
+            canvas.width  = window.innerWidth  * s;
+            canvas.height = window.innerHeight * s;
+        }
+
+        function paintFog() {
+            var r = FOG_RGB[0], g = FOG_RGB[1], b = FOG_RGB[2];
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + FOG_ALPHA + ')';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            // Cloud texture
+            for (var i = 0; i < 25; i++) {
+                var cx = Math.random() * canvas.width;
+                var cy = Math.random() * canvas.height;
+                var rad = Math.random() * canvas.width * 0.25 + 40;
+                var grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, rad);
+                var v = Math.floor(Math.random() * 25 - 12);
+                grad.addColorStop(0, 'rgba(' + (r+v) + ',' + (g+v) + ',' + (b+v) + ',0.12)');
+                grad.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = grad;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            }
+        }
+
+        function makeStars() {
+            for (var i = 0; i < STAR_COUNT; i++) {
+                var s = document.createElement('div');
+                s.className = 'star';
+                s.style.left = Math.random() * 100 + '%';
+                s.style.top  = Math.random() * 100 + '%';
+                var sz = Math.random() * 2 + 0.5;
+                s.style.width  = sz + 'px';
+                s.style.height = sz + 'px';
+                s.style.setProperty('--dur',    (Math.random() * 4 + 2) + 's');
+                s.style.setProperty('--delay',  (Math.random() * 6) + 's');
+                s.style.setProperty('--min-op', (Math.random() * 0.2).toFixed(2));
+                s.style.setProperty('--max-op', (Math.random() * 0.4 + 0.25).toFixed(2));
+                starsBox.appendChild(s);
+            }
+        }
+
+        // === EVENTS ===
+        function listen() {
+            var root = document.getElementById('clearing-root');
+
+            root.addEventListener('mousemove', function(e) {
+                if (touching) return;
+                mx = e.clientX; my = e.clientY;
+                clearAt(mx, my);
+                cursorEl.style.left = mx + 'px';
+                cursorEl.style.top  = my + 'px';
+                firstMove();
+            });
+
+            root.addEventListener('click', function(e) {
+                if (touching) return;
+                pulse(e.clientX, e.clientY);
+            });
+
+            root.addEventListener('touchstart', function() {
+                touching = true;
+                cursorEl.style.display = 'none';
+            }, { passive: true });
+
+            root.addEventListener('touchmove', function(e) {
+                var t = e.touches[0];
+                mx = t.clientX; my = t.clientY;
+                clearAt(mx, my);
+                firstMove();
+            }, { passive: true });
+
+            root.addEventListener('touchend', function() {
+                mx = -300; my = -300;
+            });
+
+            window.addEventListener('resize', debounce(function() {
+                sizeCanvas();
+                paintFog();
+                // Re-reveal already found items
+                for (var k in found) {
+                    if (found[k]) discos[k].classList.add('found');
+                }
+            }, 300));
+
+            revealBtn.addEventListener('click', revealAll);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'r' || e.key === 'R') revealAll();
+            });
+        }
+
+        function firstMove() {
+            if (!moved) {
+                moved = true;
+                hintEl.classList.add('hidden');
+            }
+        }
+
+        // === FOG CLEARING ===
+        function clearAt(sx, sy) {
+            var scx = canvas.width  / window.innerWidth;
+            var scy = canvas.height / window.innerHeight;
+            var x = sx * scx;
+            var y = sy * scy;
+            var r = (touching ? BRUSH_MOBILE : BRUSH) * scx;
+
+            ctx.globalCompositeOperation = 'destination-out';
+            var grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+            grad.addColorStop(0,   'rgba(0,0,0,0.55)');
+            grad.addColorStop(0.4, 'rgba(0,0,0,0.25)');
+            grad.addColorStop(0.7, 'rgba(0,0,0,0.08)');
+            grad.addColorStop(1,   'rgba(0,0,0,0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+        }
+
+        function pulse(sx, sy) {
+            var scx = canvas.width  / window.innerWidth;
+            var scy = canvas.height / window.innerHeight;
+            var x = sx * scx;
+            var y = sy * scy;
+            var r = BRUSH * 2.5 * scx;
+
+            ctx.globalCompositeOperation = 'destination-out';
+            var grad = ctx.createRadialGradient(x, y, 0, x, y, r);
+            grad.addColorStop(0,   'rgba(0,0,0,0.4)');
+            grad.addColorStop(0.3, 'rgba(0,0,0,0.2)');
+            grad.addColorStop(0.6, 'rgba(0,0,0,0.06)');
+            grad.addColorStop(1,   'rgba(0,0,0,0)');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, Math.PI * 2);
+            ctx.fill();
+
+            cursorEl.classList.add('pulse');
+            setTimeout(function() { cursorEl.classList.remove('pulse'); }, 280);
+        }
+
+        function regen() {
+            if (done) return;
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.fillStyle = 'rgba(' + FOG_RGB[0] + ',' + FOG_RGB[1] + ',' + FOG_RGB[2] + ',' + FOG_REGEN + ')';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+        }
+
+        // === DISCOVERY DETECTION ===
+        function detect(now) {
+            if (now - lastCheck < CHECK_MS) return;
+            lastCheck = now;
+
+            var scx = canvas.width  / window.innerWidth;
+            var scy = canvas.height / window.innerHeight;
+            var sample = 8;
+
+            for (var i = 0; i < TOTAL; i++) {
+                if (found[i]) continue;
+                var rect = discos[i].getBoundingClientRect();
+                var cx = (rect.left + rect.width  / 2) * scx;
+                var cy = (rect.top  + rect.height / 2) * scy;
+                var sx = Math.max(0, Math.min(Math.floor(cx - sample / 2), canvas.width  - sample));
+                var sy = Math.max(0, Math.min(Math.floor(cy - sample / 2), canvas.height - sample));
+
+                try {
+                    var data = ctx.getImageData(sx, sy, sample, sample).data;
+                    var total = 0;
+                    for (var p = 3; p < data.length; p += 4) total += data[p] / 255;
+                    var avg = total / (sample * sample);
+                    if (avg < THRESHOLD) discover(i);
+                } catch (e) { /* cross-origin safety */ }
+            }
+        }
+
+        function discover(idx) {
+            if (found[idx]) return;
+            found[idx] = true;
+            foundCount++;
+
+            discos[idx].classList.add('found');
+            counterText.textContent = foundCount + ' / ' + TOTAL;
+            counterFill.style.width = (foundCount / TOTAL * 100) + '%';
+
+            // Particle burst
+            var rect = discos[idx].getBoundingClientRect();
+            burst(rect.left + rect.width / 2, rect.top + rect.height / 2, 10);
+
+            if (foundCount === TOTAL && !done) {
+                done = true;
+                setTimeout(celebrate, 1200);
+            }
+        }
+
+        // === PARTICLES ===
+        var parts = [];
+
+        function burst(px, py, n) {
+            for (var i = 0; i < n; i++) {
+                var el = document.createElement('div');
+                el.className = 'particle';
+                var sz = Math.random() * 3 + 1;
+                el.style.width  = sz + 'px';
+                el.style.height = sz + 'px';
+                document.getElementById('clearing-root').appendChild(el);
+                parts.push({
+                    el: el, x: px, y: py,
+                    vx: (Math.random() - 0.5) * 3,
+                    vy: (Math.random() - 0.5) * 3 - 0.8,
+                    life: 1,
+                    decay: Math.random() * 0.015 + 0.008
+                });
+            }
+        }
+
+        function tickParts() {
+            for (var i = parts.length - 1; i >= 0; i--) {
+                var p = parts[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vy -= 0.015;
+                p.life -= p.decay;
+                if (p.life <= 0) {
+                    if (p.el.parentNode) p.el.parentNode.removeChild(p.el);
+                    parts.splice(i, 1);
+                } else {
+                    p.el.style.left    = p.x + 'px';
+                    p.el.style.top     = p.y + 'px';
+                    p.el.style.opacity = p.life;
+                }
+            }
+        }
+
+        // === CELEBRATE ===
+        function celebrate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            celebrationEl.classList.add('active');
+            burst(window.innerWidth / 2, window.innerHeight / 2, 30);
+        }
+
+        // === REVEAL ALL ===
+        function revealAll() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (var i = 0; i < TOTAL; i++) discover(i);
+        }
+
+        // === MAIN LOOP ===
+        function tick(now) {
+            regen();
+            detect(now);
+            tickParts();
+            requestAnimationFrame(tick);
+        }
+
+        // === UTILS ===
+        function debounce(fn, ms) {
+            var t;
+            return function() {
+                clearTimeout(t);
+                t = setTimeout(fn, ms);
+            };
+        }
+
+        // === GO ===
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', boot);
+        } else {
+            boot();
+        }
+    })();
+    </script>
+</body>
+</html>

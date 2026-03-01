@@ -1289,6 +1289,9 @@ async function build() {
     if (processSimpleHtml('engine.html')) {
         console.log('  ✓ dist/engine.html (processed)');
     }
+    if (processSimpleHtml('clearing.html')) {
+        console.log('  ✓ dist/clearing.html (processed)');
+    }
 
     // Future pages (uncomment when implemented):
     // if (copyFile('src/gallery.html', 'gallery.html')) {
