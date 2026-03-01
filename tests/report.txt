@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T12:29:31.966Z
+Generated: 2026-03-01T12:34:17.967Z
 ============================================================
 
 SUMMARY
-  Total:    125
-  Passed:   116
+  Total:    126
+  Passed:   117
   Failed:   0
   Warnings: 9
-  Pass rate: 92.8%
+  Pass rate: 92.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 83 — Found 83 HTML files
+  [PASS] HTML pages built: 84 — Found 84 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -68,6 +68,7 @@ SUMMARY
   [PASS] wiki/concepts/cognitive-biases.html
   [PASS] wiki/concepts/compounding.html
   [PASS] wiki/concepts/first-principles.html
+  [PASS] wiki/concepts/goodharts-law.html
   [PASS] wiki/concepts/mental-models.html
   [PASS] wiki/concepts/opportunity-cost.html
   [PASS] wiki/concepts/root-cause.html

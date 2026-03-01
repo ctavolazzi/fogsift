@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T12:29:31.966Z",
+  "timestamp": "2026-03-01T12:34:17.967Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 83",
+          "test": "HTML pages built: 84",
           "status": "pass",
-          "detail": "Found 83 HTML files"
+          "detail": "Found 84 HTML files"
         },
         {
           "test": "styles.css size: 199.2KB",
@@ -293,6 +293,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/concepts/goodharts-law.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/concepts/mental-models.html",
           "status": "pass",
           "detail": ""
@@ -498,7 +503,7 @@
           "detail": ""
         }
       ],
-      "passed": 83,
+      "passed": 84,
       "failed": 0,
       "warned": 0
     },
@@ -700,8 +705,8 @@
     }
   ],
   "summary": {
-    "total": 125,
-    "passed": 116,
+    "total": 126,
+    "passed": 117,
     "failed": 0,
     "warned": 9
   }

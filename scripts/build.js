@@ -313,6 +313,8 @@ const STATIC_ASSETS = [
     { src: 'src/js/engine.js',                  dest: 'engine.js' },
     // Lab / Experimental — interactive diagnostic tools (standalone)
     { src: 'src/js/experimental.js',            dest: 'experimental.js' },
+    // Search page — standalone page-level search (not the nav overlay)
+    { src: 'src/js/search-page.js',             dest: 'search-page.js' },
     // White Rabbit debugger — always loaded, silent unless activated
     { src: 'src/js/white-rabbit.js',            dest: 'white-rabbit.js' },
     // Service worker — must be at root scope
@@ -1297,6 +1299,9 @@ async function build() {
     }
     if (processSimpleHtml('experimental.html')) {
         console.log('  ✓ dist/experimental.html (processed)');
+    }
+    if (processSimpleHtml('search.html')) {
+        console.log('  ✓ dist/search.html (processed)');
     }
 
     // Future pages (uncomment when implemented):
