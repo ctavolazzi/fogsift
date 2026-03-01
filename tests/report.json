@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T04:44:13.093Z",
+  "timestamp": "2026-03-01T06:49:18.040Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 79",
+          "test": "HTML pages built: 80",
           "status": "pass",
-          "detail": "Found 79 HTML files"
+          "detail": "Found 80 HTML files"
         },
         {
           "test": "styles.css size: 199.2KB",
@@ -101,6 +101,11 @@
           "test": "disclaimer.html",
           "status": "pass",
           "detail": ""
+        },
+        {
+          "test": "engine.html",
+          "status": "fail",
+          "detail": "3 error(s), 15 warning(s)"
         },
         {
           "test": "faq.html",
@@ -479,21 +484,21 @@
         }
       ],
       "passed": 79,
-      "failed": 0,
+      "failed": 1,
       "warned": 0
     },
     {
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "All JS files pass ESLint",
-          "status": "pass",
-          "detail": ""
+          "test": "ESLint warnings only",
+          "status": "warn",
+          "detail": "1 warning(s)"
         }
       ],
-      "passed": 1,
+      "passed": 0,
       "failed": 0,
-      "warned": 0
+      "warned": 1
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
@@ -555,7 +560,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 6713 internal links valid",
+          "test": "All 6747 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -606,7 +611,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.94MB",
+          "test": "Total dist/ size: 8.02MB",
           "status": "pass",
           "detail": ""
         },
@@ -680,9 +685,9 @@
     }
   ],
   "summary": {
-    "total": 121,
-    "passed": 111,
-    "failed": 0,
-    "warned": 10
+    "total": 122,
+    "passed": 110,
+    "failed": 1,
+    "warned": 11
   }
 }

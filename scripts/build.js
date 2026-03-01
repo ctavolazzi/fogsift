@@ -308,6 +308,8 @@ const STATIC_ASSETS = [
     // Supply chain visualization — served as static files, not bundled
     { src: 'src/vendor/three.min.js',           dest: 'three.min.js' },
     { src: 'src/js/supply-chain-sim.js',        dest: 'supply-chain-sim.js' },
+    // Fogsift Engine — interactive agent orchestration visualizer (standalone)
+    { src: 'src/js/engine.js',                  dest: 'engine.js' },
     // White Rabbit debugger — always loaded, silent unless activated
     { src: 'src/js/white-rabbit.js',            dest: 'white-rabbit.js' },
     // Service worker — must be at root scope
@@ -1283,6 +1285,9 @@ async function build() {
     }
     if (processSimpleHtml('offline.html')) {
         console.log('  ✓ dist/offline.html (processed)');
+    }
+    if (processSimpleHtml('engine.html')) {
+        console.log('  ✓ dist/engine.html (processed)');
     }
 
     // Future pages (uncomment when implemented):
