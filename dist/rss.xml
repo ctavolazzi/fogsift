@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 12:54:27 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 12:56:40 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Planning Fallacy</title>
+      <link>https://fogsift.com/wiki/concepts/planning-fallacy.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/planning-fallacy.html</guid>
+      <description>*We consistently underestimate how long things will take, how much they will cost, and how many things will go wrong — even when we know our past projects ran o</description>
+      <pubDate>Sun, 01 Mar 2026 12:56:32 GMT</pubDate>
+    </item>
     <item>
       <title>Field Note 012: Analysis Paralysis</title>
       <link>https://fogsift.com/wiki/field-notes/012-analysis-paralysis.html</link>
