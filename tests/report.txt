@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T04:44:13.093Z
+Generated: 2026-03-01T06:34:39.230Z
 ============================================================
 
 SUMMARY
-  Total:    121
-  Passed:   111
+  Total:    122
+  Passed:   112
   Failed:   0
   Warnings: 10
-  Pass rate: 91.7%
+  Pass rate: 91.8%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 79 — Found 79 HTML files
+  [PASS] HTML pages built: 80 — Found 80 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -104,6 +104,7 @@ SUMMARY
   [PASS] wiki/tools/process-mapping.html
   [PASS] wiki/tools/retrospective.html
   [PASS] wiki/tools/time-boxing.html
+  [PASS] workflow-engine.html
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
@@ -129,7 +130,7 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 6713 internal links valid
+  [PASS] All 6718 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -140,7 +141,7 @@ SUMMARY
   [WARN] Index size: 322.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.94MB
+  [PASS] Total dist/ size: 8.18MB
   [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present

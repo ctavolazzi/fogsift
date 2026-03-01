@@ -1,29 +1,29 @@
 # FogSift Context Brief
-Generated: 2026-03-01T04:30:14.941Z
+Generated: 2026-03-01T06:21:56.025Z
 
 ## Quick Status
 | Metric | Value |
 |--------|-------|
 | Version | 0.2.0 |
-| Branch | claude/setup-fastapi-memory-nqvQa |
+| Branch | claude/workflow-visualization-engine-2qxSs |
 | Last release | none |
 | Commits since release | 0 |
 | Uncommitted files | 0 |
 | Unpushed commits | 0 |
 | Built pages | 79 |
 | Wiki pages | 47 |
-| Source: 22 CSS, 25 JS | dist: 199.0KB CSS, 81.4KB JS |
+| Source: 22 CSS, 25 JS | dist: 199.2KB CSS, 81.7KB JS |
 
 ## Test Results
-110 pass / 0 fail / 11 warn (90.9%)
+111 pass / 0 fail / 10 warn (91.7%)
 Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
 ## Recent Commits
+- d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa
+- 679dcaf fix: accessibility and keyboard interaction improvements
 - 055e547 fix: resolve HTML validation errors in index.html
 - 38dcdda fix: resolve HTML validation, ESLint, and broken link failures
 - ee4c299 chore: update session snapshots and test reports
-- 97b120c feat: interactive sandbox terminal with honey pot detection
-- aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal
 
 ## Development Infrastructure
 | Port | Tool | Status |
