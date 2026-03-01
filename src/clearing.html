@@ -27,6 +27,7 @@
         /* === IMMERSIVE OVERRIDES === */
         body {
             overflow: hidden;
+            height: 100vh;
             height: 100dvh;
             padding-bottom: 0;
             margin: 0;
@@ -90,8 +91,7 @@
         .discovery {
             position: absolute;
             opacity: 0;
-            transform: scale(0.92);
-            transition: opacity 1s ease, transform 0.8s ease;
+            transition: opacity 1s ease;
             pointer-events: none;
             z-index: 5;
             text-align: center;
@@ -99,7 +99,6 @@
         }
         .discovery.found {
             opacity: 1;
-            transform: scale(1);
         }
         .discovery-text {
             font-family: 'Cinzel', serif;
@@ -277,11 +276,14 @@
             z-index: 60;
         }
         .clearing-reveal-btn:hover,
-        .clearing-reveal-btn:focus {
+        .clearing-reveal-btn:focus-visible {
             color: rgba(232, 213, 176, 0.6);
             border-color: rgba(232, 213, 176, 0.2);
             background: rgba(232, 213, 176, 0.08);
-            outline: none;
+        }
+        .clearing-reveal-btn:focus-visible {
+            outline: 2px solid rgba(224, 123, 60, 0.6);
+            outline-offset: 2px;
         }
 
         /* === PARTICLES === */
@@ -339,13 +341,16 @@
             .discovery { max-width: 180px; }
             .discovery-text { font-size: clamp(0.7rem, 3vw, 0.9rem); }
             .discovery-compass svg { width: 80px; height: 80px; }
+            /* Push edge discoveries inward to prevent text clipping */
+            #d3 { left: 10% !important; }
+            #d5 { right: 10% !important; }
         }
 
         /* === REDUCED MOTION === */
         @media (prefers-reduced-motion: reduce) {
             .star { animation: none !important; opacity: 0.4; }
-            .discovery { transition-duration: 0.1s !important; }
-            .clearing-cursor { transition-duration: 0s !important; }
+            .discovery { transition: none !important; }
+            .clearing-cursor { transition: none !important; }
         }
     </style>
 </head>
@@ -515,6 +520,7 @@
         var revealBtn = document.getElementById('reveal-btn');
         var starsBox = document.getElementById('stars-container');
 
+        var rootEl = document.getElementById('clearing-root');
         var discos = [];
         for (var i = 1; i <= TOTAL; i++) discos.push(document.getElementById('d' + i));
 
@@ -606,16 +612,31 @@
 
             window.addEventListener('resize', debounce(function() {
                 sizeCanvas();
+                if (done) {
+                    // All found — keep canvas clear
+                    return;
+                }
                 paintFog();
-                // Re-reveal already found items
+                // Clear fog over already-found discoveries so they stay visible
                 for (var k in found) {
-                    if (found[k]) discos[k].classList.add('found');
+                    if (!found[k]) continue;
+                    var rect = discos[k].getBoundingClientRect();
+                    var cx = (rect.left + rect.width / 2);
+                    var cy = (rect.top + rect.height / 2);
+                    // Use a large clear to ensure the discovery is fully visible
+                    clearAt(cx, cy);
+                    clearAt(cx, cy);
+                    clearAt(cx, cy);
                 }
             }, 300));
 
             revealBtn.addEventListener('click', revealAll);
 
             document.addEventListener('keydown', function(e) {
+                // Guard: don't fire shortcut when typing in an input
+                var tag = e.target.tagName;
+                if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+                if (e.target.isContentEditable) return;
                 if (e.key === 'r' || e.key === 'R') revealAll();
             });
         }
@@ -726,13 +747,16 @@
         var parts = [];
 
         function burst(px, py, n) {
+            // Cap total particles to prevent DOM bloat
+            var maxParts = 80;
+            if (parts.length + n > maxParts) n = Math.max(0, maxParts - parts.length);
             for (var i = 0; i < n; i++) {
                 var el = document.createElement('div');
                 el.className = 'particle';
                 var sz = Math.random() * 3 + 1;
                 el.style.width  = sz + 'px';
                 el.style.height = sz + 'px';
-                document.getElementById('clearing-root').appendChild(el);
+                rootEl.appendChild(el);
                 parts.push({
                     el: el, x: px, y: py,
                     vx: (Math.random() - 0.5) * 3,
@@ -775,12 +799,25 @@
         }
 
         // === MAIN LOOP ===
+        var paused = false;
+
         function tick(now) {
+            if (paused) return;
             regen();
             detect(now);
             tickParts();
             requestAnimationFrame(tick);
         }
+
+        // Pause when tab is hidden to save resources
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                paused = true;
+            } else {
+                paused = false;
+                requestAnimationFrame(tick);
+            }
+        });
 
         // === UTILS ===
         function debounce(fn, ms) {
