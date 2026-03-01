@@ -1,23 +1,25 @@
 {
-  "generated": "2026-03-01T15:22:53.823Z",
+  "generated": "2026-03-01T15:43:54.584Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "claude/fogsift-engine-lkdbO",
     "status": [
-      "M _tools/snapshots/context-brief.md"
+      "M _tools/snapshots/context-brief.md",
+      " M tests/report.json",
+      " M tests/report.txt"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "d131636 feat: social sharing buttons on all wiki article pages",
+      "ed5bff4 feat: add LinkedIn to site-wide footer social links",
+      "68202f4 feat: real contact form with server-side submission via Cloudflare Function",
+      "7bd0d3f refactor: auto-generate wiki nav from filesystem, drop manual index.json",
       "a35096e chore: update test reports after wiki expansion",
       "1a840af feat: wiki concept — Inversion",
       "bce13a9 feat: wiki field note 020 — The Adjacent Problem",
       "e61a340 feat: wiki case study — The Metric Mirage",
       "93c6089 feat: wiki concept — Base Rate Neglect",
-      "d0cba8e feat: wiki field note 019 — The Proxy Trap",
-      "787a8fa feat: wiki framework — Jobs To Be Done",
-      "3cc9932 feat: wiki field note 018 — Permission Debt",
-      "650e2c7 feat: wiki concept — The Halo Effect",
-      "bd01102 feat: wiki field note 017 — The Hero Dependency"
+      "d0cba8e feat: wiki field note 019 — The Proxy Trap"
     ],
     "tags": [],
     "lastTag": "none",
@@ -203,9 +205,9 @@
       },
       {
         "path": "css/wiki.css",
-        "size": 16821,
-        "modified": "2026-03-01T13:01:53.000Z",
-        "lines": 760
+        "size": 18127,
+        "modified": "2026-03-01T15:38:50.973Z",
+        "lines": 804
       }
     ],
     "js": [
@@ -405,9 +407,9 @@
       },
       {
         "path": "contact.html",
-        "size": 23972,
-        "modified": "2026-03-01T08:43:48.000Z",
-        "lines": 446
+        "size": 25221,
+        "modified": "2026-03-01T15:30:30.841Z",
+        "lines": 475
       },
       {
         "path": "content/handout_branded.html",
@@ -573,9 +575,9 @@
       },
       {
         "path": "wiki-template.html",
-        "size": 4165,
-        "modified": "2026-03-01T12:54:04.000Z",
-        "lines": 94
+        "size": 6967,
+        "modified": "2026-03-01T15:39:04.280Z",
+        "lines": 134
       },
       {
         "path": "your-data.html",
@@ -1324,12 +1326,6 @@
         "lines": 58
       },
       {
-        "path": "wiki/index.json",
-        "size": 6786,
-        "modified": "2026-03-01T13:38:10.000Z",
-        "lines": 128
-      },
-      {
         "path": "wiki/tools/assumption-mapping.md",
         "size": 5771,
         "modified": "2026-02-28T22:34:25.000Z",
@@ -1377,19 +1373,19 @@
     "exists": true,
     "htmlPageCount": 109,
     "keyFileSizes": {
-      "styles.css": 204703,
+      "styles.css": 205602,
       "app.js": 83639,
       "theme-init.js": 661,
-      "search-index.json": 86831,
-      "index.html": 87327
+      "search-index.json": 86775,
+      "index.html": 87742
     },
     "totalFiles": 167
   },
   "tests": {
-    "timestamp": "2026-03-01T13:32:59.370Z",
+    "timestamp": "2026-03-01T15:31:05.020Z",
     "summary": {
-      "total": 147,
-      "passed": 138,
+      "total": 151,
+      "passed": 142,
       "failed": 0,
       "warned": 9
     },
@@ -1402,7 +1398,7 @@
       },
       {
         "name": "HTML Validation",
-        "passed": 105,
+        "passed": 109,
         "failed": 0,
         "warned": 0
       },
@@ -1503,16 +1499,16 @@
   "summary": {
     "version": "0.2.0",
     "branch": "claude/fogsift-engine-lkdbO",
-    "uncommittedFiles": 1,
+    "uncommittedFiles": 3,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,
     "srcJsFiles": 30,
     "srcHtmlFiles": 32,
-    "srcTotalLines": 34906,
+    "srcTotalLines": 35019,
     "builtPages": 109,
     "wikiPages": 74,
-    "testsPassed": 138,
+    "testsPassed": 142,
     "testsFailed": 0,
     "testsWarned": 9,
     "toolsCount": 6,

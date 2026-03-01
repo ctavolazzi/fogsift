@@ -1,5 +1,5 @@
 # FogSift Context Brief
-Generated: 2026-03-01T15:22:53.759Z
+Generated: 2026-03-01T15:43:54.501Z
 
 ## Quick Status
 | Metric | Value |
@@ -8,22 +8,25 @@ Generated: 2026-03-01T15:22:53.759Z
 | Branch | claude/fogsift-engine-lkdbO |
 | Last release | none |
 | Commits since release | 0 |
-| Uncommitted files | 0 |
+| Uncommitted files | 2 |
 | Unpushed commits | 0 |
 | Built pages | 109 |
 | Wiki pages | 74 |
-| Source: 22 CSS, 28 JS | dist: 199.9KB CSS, 81.7KB JS |
+| Source: 22 CSS, 28 JS | dist: 200.8KB CSS, 81.7KB JS |
 
 ## Test Results
-138 pass / 0 fail / 9 warn (93.9%)
+142 pass / 0 fail / 9 warn (94.0%)
 Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
+## Uncommitted Changes
+Modified: ests/report.json, tests/report.txt
+
 ## Recent Commits
+- d131636 feat: social sharing buttons on all wiki article pages
+- ed5bff4 feat: add LinkedIn to site-wide footer social links
+- 68202f4 feat: real contact form with server-side submission via Cloudflare Function
+- 7bd0d3f refactor: auto-generate wiki nav from filesystem, drop manual index.json
 - a35096e chore: update test reports after wiki expansion
-- 1a840af feat: wiki concept — Inversion
-- bce13a9 feat: wiki field note 020 — The Adjacent Problem
-- e61a340 feat: wiki case study — The Metric Mirage
-- 93c6089 feat: wiki concept — Base Rate Neglect
 
 ## Development Infrastructure
 | Port | Tool | Status |
@@ -46,7 +49,7 @@ Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 - `TECH_DEBT.md` — Known issues and priorities
 - `_AI_Journal/` — AI development notes and reflections
 - `tests/report.json` — Latest test results
-- `scripts/build.js` — Build system (64KB)
+- `scripts/build.js` — Build system (66KB)
 
 ## Architecture Cheat Sheet
 - Build: `node scripts/build.js` → template replacement, CSS concat, JS minify via esbuild
