@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T04:44:13.093Z
+Generated: 2026-03-01T06:49:18.040Z
 ============================================================
 
 SUMMARY
-  Total:    121
-  Passed:   111
-  Failed:   0
-  Warnings: 10
-  Pass rate: 91.7%
+  Total:    122
+  Passed:   110
+  Failed:   1
+  Warnings: 11
+  Pass rate: 90.2%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 79 — Found 79 HTML files
+  [PASS] HTML pages built: 80 — Found 80 HTML files
   [PASS] styles.css size: 199.2KB
   [PASS] app.js size: 81.7KB
 
@@ -30,6 +30,7 @@ SUMMARY
   [PASS] about.html
   [PASS] contact.html
   [PASS] disclaimer.html
+  [FAIL] engine.html — 3 error(s), 15 warning(s)
   [PASS] faq.html
   [PASS] gallery.html
   [PASS] hi.html
@@ -107,7 +108,7 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [PASS] All JS files pass ESLint
+  [WARN] ESLint warnings only — 1 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
   [WARN] index.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
@@ -129,7 +130,7 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 6713 internal links valid
+  [PASS] All 6747 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -140,7 +141,7 @@ SUMMARY
   [WARN] Index size: 322.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.94MB
+  [PASS] Total dist/ size: 8.02MB
   [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
@@ -156,4 +157,4 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ============================================================
-VERDICT: READY TO DEPLOY
+VERDICT: NOT READY — 1 failure(s)

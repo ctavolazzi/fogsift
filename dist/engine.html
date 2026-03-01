@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fogsift Engine | Fogsift</title>
+    <meta name="description" content="Interactive agent orchestration engine. Watch data signals propagate through a live AI workflow graph in real time.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/engine">
+
+    <meta property="og:title" content="Fogsift Engine">
+    <meta property="og:description" content="Interactive agent orchestration engine. Watch data signals propagate through a live AI workflow graph in real time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/engine">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <!-- Theme detection -->
+    <script src="theme-init.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* ====================================================================
+           ENGINE PAGE LAYOUT — overrides base.css for full-bleed canvas
+           ==================================================================== */
+        body {
+            overflow: hidden;
+            height: 100dvh;
+            padding-top: 0;    /* override base.css padding-top: var(--nav-height) */
+            padding-bottom: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        body > footer { display: none; }
+        .skip-link { display: none; }
+        #mobile-overlay { z-index: 300; } /* ensure overlay is above engine */
+
+        #main-content {
+            flex: 1;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* ====================================================================
+           ENGINE ROOT — dark canvas environment
+           ==================================================================== */
+        #engine-root {
+            width: 100%;
+            height: 100%;
+            background: #020617;
+            color: #f8fafc;
+            font-family: 'Inter', system-ui, sans-serif;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            user-select: none;
+        }
+
+        /* ====================================================================
+           INTERNAL TOP BAR
+           ==================================================================== */
+        #engine-topbar {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 56px;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            z-index: 20;
+        }
+        .eng-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+        .eng-brand-icon {
+            padding: 0.4rem;
+            border-radius: 0.5rem;
+            background: rgba(6,182,212,0.1);
+            border: 1px solid rgba(6,182,212,0.3);
+            display: flex;
+        }
+        .eng-brand-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            line-height: 1;
+        }
+        .eng-brand-sub {
+            font-size: 0.55rem;
+            color: rgba(6,182,212,0.7);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-top: 0.2rem;
+        }
+
+        .eng-run-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.45rem 1rem;
+            border-radius: 9999px;
+            font-weight: 700;
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            border: 1px solid;
+            cursor: pointer;
+            transition: all 0.25s;
+            background: #0891b2;
+            color: white;
+            border-color: #06b6d4;
+            box-shadow: 0 0 16px rgba(6,182,212,0.35);
+        }
+        .eng-run-btn:hover { background: #0e7490; }
+        .eng-run-btn.running {
+            background: rgba(239,68,68,0.15);
+            color: #f87171;
+            border-color: rgba(239,68,68,0.45);
+            box-shadow: 0 0 16px rgba(239,68,68,0.25);
+        }
+        .eng-run-btn.tutorial-pulse {
+            background: #10b981;
+            border-color: #34d399;
+            box-shadow: 0 0 20px rgba(16,185,129,0.7);
+            animation: eng-btn-pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes eng-btn-pulse {
+            0%, 100% { box-shadow: 0 0 20px rgba(16,185,129,0.7); }
+            50%       { box-shadow: 0 0 32px rgba(16,185,129,0.95), 0 0 60px rgba(16,185,129,0.4); }
+        }
+
+        /* ====================================================================
+           CANVAS CONTAINER
+           ==================================================================== */
+        #canvas-container {
+            position: absolute;
+            inset: 56px 0 0 0;   /* below internal top bar */
+            overflow: hidden;
+            touch-action: none;
+            cursor: grab;
+            background-image:
+                linear-gradient(to right, #1e293b 1px, transparent 1px),
+                linear-gradient(to bottom, #1e293b 1px, transparent 1px),
+                linear-gradient(to right, #0f172a 1px, transparent 1px),
+                linear-gradient(to bottom, #0f172a 1px, transparent 1px);
+            background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+        }
+        #canvas-container:active { cursor: grabbing; }
+
+        #engine-svg {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            overflow: visible;
+        }
+
+        /* Center button */
+        #center-btn {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1rem;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background: rgba(15,23,42,0.9);
+            backdrop-filter: blur(8px);
+            border: 1px solid #334155;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            transition: all 0.25s;
+            z-index: 10;
+        }
+        #center-btn:hover { background: #1e293b; color: #e2e8f0; }
+
+        /* ====================================================================
+           MISSION HUD
+           ==================================================================== */
+        #mission-hud-area {
+            position: absolute;
+            top: 72px; left: 1rem; right: 1rem;
+            z-index: 30;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        #mission-hud-area > * { pointer-events: auto; }
+
+        .eng-hud-card {
+            background: rgba(30,27,75,0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(99,102,241,0.45);
+            border-radius: 1rem;
+            padding: 1.1rem 1.25rem;
+            box-shadow: 0 10px 40px rgba(79,70,229,0.35);
+        }
+        .eng-hud-inner { display: flex; align-items: flex-start; gap: 1rem; }
+        .eng-hud-icon {
+            padding: 0.7rem;
+            background: rgba(99,102,241,0.15);
+            border-radius: 0.75rem;
+            flex-shrink: 0;
+        }
+        .eng-hud-title { font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+        .eng-hud-desc  { font-size: 0.72rem; color: #c7d2fe; line-height: 1.5; margin-bottom: 1rem; }
+        .eng-hud-btn {
+            width: 100%; padding: 0.75rem;
+            background: #6366f1; color: #fff;
+            border: none; border-radius: 0.75rem;
+            font-size: 0.8rem; font-weight: 700; cursor: pointer;
+            transition: background 0.2s;
+        }
+        .eng-hud-btn:hover { background: #818cf8; }
+
+        /* Tutorial HUD */
+        .eng-hud-tutorial {
+            background: rgba(8,47,73,0.9);
+            backdrop-filter: blur(16px);
+            border: 1px solid #06b6d4;
+            border-radius: 1rem;
+            padding: 0.85rem 1rem;
+            box-shadow: 0 10px 40px rgba(6,182,212,0.35);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .eng-tut-icon {
+            padding: 0.4rem; background: rgba(6,182,212,0.15);
+            border-radius: 50%; flex-shrink: 0; animation: eng-pulse 2s ease-in-out infinite;
+        }
+        .eng-tut-label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; color: #67e8f9; }
+        .eng-tut-msg   { font-size: 0.82rem; font-weight: 700; color: #fff; margin-top: 0.1rem; }
+
+        /* Sandbox HUD */
+        .eng-hud-sandbox {
+            background: rgba(6,52,31,0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(16,185,129,0.4);
+            border-radius: 1rem;
+            padding: 0.85rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            animation: eng-fadein 0.5s ease;
+        }
+        .eng-sandbox-icon { padding: 0.4rem; background: rgba(16,185,129,0.15); border-radius: 50%; flex-shrink: 0; }
+        .eng-sandbox-title { font-size: 0.82rem; font-weight: 700; color: #fff; }
+        .eng-sandbox-sub   { font-size: 0.65rem; color: #a7f3d0; }
+        .eng-sandbox-close {
+            margin-left: auto; padding: 0.35rem; color: #34d399;
+            background: none; border: none; cursor: pointer; border-radius: 50%;
+        }
+
+        /* ====================================================================
+           ADD NODE FAB
+           ==================================================================== */
+        #fab-container {
+            position: absolute;
+            bottom: 1.5rem; right: 1rem;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 0.75rem;
+        }
+        #add-node-menu {
+            background: rgba(15,23,42,0.97);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(71,85,105,0.45);
+            border-radius: 1rem;
+            padding: 0.6rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+            width: 11rem;
+        }
+        .eng-menu-label {
+            font-size: 0.55rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.12em; color: #64748b;
+            padding: 0.2rem 0.5rem 0.6rem;
+            border-bottom: 1px solid #1e293b;
+            margin-bottom: 0.3rem;
+        }
+        .eng-add-node-btn {
+            display: flex; align-items: center; gap: 0.6rem;
+            width: 100%; padding: 0.45rem 0.6rem;
+            background: none; border: none; border-radius: 0.6rem;
+            color: #cbd5e1; cursor: pointer; font-size: 0.68rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            transition: background 0.15s, color 0.15s;
+            text-align: left;
+        }
+        .eng-add-node-btn:hover { background: #1e293b; color: #fff; }
+        .eng-add-node-btn .eng-node-type-dot {
+            width: 1.4rem; height: 1.4rem; border-radius: 0.3rem;
+            background: #020617; border: 1px solid #334155;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+
+        #fab-btn {
+            width: 3.5rem; height: 3.5rem; border-radius: 50%;
+            background: #4f46e5; color: #fff; border: none;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.5rem; font-weight: 300;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            transition: transform 0.3s, background 0.3s;
+        }
+        #fab-btn:hover { background: #6366f1; }
+
+        /* ====================================================================
+           BOTTOM SHEET — node inspector
+           ==================================================================== */
+        #bottom-sheet {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 55dvh;
+            background: rgba(15,23,42,0.97);
+            backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(71,85,105,0.4);
+            border-radius: 1.5rem 1.5rem 0 0;
+            box-shadow: 0 -20px 50px rgba(0,0,0,0.7);
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+            z-index: 40;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        /* drag handle */
+        .eng-sheet-handle-area {
+            display: flex; flex-direction: column; align-items: center;
+            padding: 0.75rem 0 0;
+        }
+        .eng-sheet-handle {
+            width: 3rem; height: 0.3rem; background: #475569;
+            border-radius: 9999px; opacity: 0.5; margin-bottom: 1rem;
+        }
+
+        /* Sheet header row */
+        #sheet-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 1.25rem 0.5rem;
+            flex-shrink: 0;
+        }
+        .eng-sheet-nodeinfo { display: flex; align-items: center; gap: 1rem; }
+        .eng-sheet-nodeicon {
+            padding: 0.7rem; border-radius: 0.75rem;
+            border: 1px solid; background: #020617;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .eng-sheet-title { font-size: 1.1rem; font-weight: 700; color: #fff; line-height: 1.2; }
+        .eng-sheet-type  { display: flex; align-items: center; gap: 0.4rem; margin-top: 0.25rem; }
+        .eng-type-dot    { width: 0.5rem; height: 0.5rem; border-radius: 50%; flex-shrink: 0; }
+        .eng-sheet-type span:last-child { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; color: #64748b; }
+        .eng-sheet-close {
+            width: 2rem; height: 2rem; border-radius: 50%;
+            background: #1e293b; border: none;
+            display: flex; align-items: center; justify-content: center;
+            color: #64748b; cursor: pointer; flex-shrink: 0;
+            transition: background 0.2s;
+        }
+        .eng-sheet-close:hover { background: #334155; color: #e2e8f0; }
+
+        /* Tab bar */
+        #sheet-tabs {
+            display: flex; gap: 1.5rem;
+            padding: 0 1.25rem; border-bottom: 1px solid #1e293b;
+            flex-shrink: 0; position: relative;
+        }
+        .eng-tab {
+            padding-bottom: 0.7rem; font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #475569; background: none; border: none; cursor: pointer;
+            transition: color 0.2s; position: relative;
+        }
+        .eng-tab:hover { color: #94a3b8; }
+        .eng-tab.active {
+            color: #06b6d4;
+        }
+        .eng-tab.active::after {
+            content: '';
+            position: absolute; bottom: -1px; left: 0; right: 0; height: 2px;
+            background: #06b6d4;
+            border-radius: 2px 2px 0 0;
+            box-shadow: 0 0 8px rgba(6,182,212,0.7);
+        }
+
+        /* Sheet content area */
+        #sheet-content {
+            flex: 1; overflow-y: auto; padding: 1rem 1.25rem 2rem;
+        }
+        #sheet-content::-webkit-scrollbar { width: 4px; }
+        #sheet-content::-webkit-scrollbar-track { background: transparent; }
+        #sheet-content::-webkit-scrollbar-thumb { background: #334155; border-radius: 8px; }
+
+        /* Context tab */
+        .eng-ctx-input-row {
+            display: flex; align-items: center; gap: 0;
+            background: #020617; border: 1px solid #334155;
+            border-radius: 1rem; padding: 0.25rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.2s;
+        }
+        .eng-ctx-input-row:focus-within { border-color: rgba(6,182,212,0.45); }
+        .eng-ctx-input {
+            flex: 1; background: none; border: none;
+            padding: 0.6rem 0.75rem; font-size: 0.85rem; color: #e2e8f0;
+            outline: none;
+        }
+        .eng-ctx-input::placeholder { color: #475569; }
+        .eng-inject-btn {
+            padding: 0.6rem 0.75rem;
+            background: rgba(6,182,212,0.1); color: #06b6d4;
+            border: none; border-radius: 0.7rem; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .eng-inject-btn:hover { background: rgba(6,182,212,0.2); }
+
+        .eng-ctx-list { display: flex; flex-direction: column; gap: 0.5rem; }
+        .eng-ctx-item {
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.875rem; background: rgba(30,41,59,0.5);
+            border: 1px solid #1e293b; border-radius: 1rem;
+        }
+        .eng-ctx-icon {
+            padding: 0.6rem; background: #020617; border-radius: 0.7rem;
+            border: 1px solid; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .eng-ctx-icon.system { color: #818cf8; border-color: rgba(129,140,248,0.25); }
+        .eng-ctx-icon.user   { color: #06b6d4; border-color: rgba(6,182,212,0.25); }
+        .eng-ctx-body  { flex: 1; }
+        .eng-ctx-type  { font-size: 0.55rem; font-family: monospace; color: #475569; text-transform: uppercase; letter-spacing: 0.05em; }
+        .eng-ctx-content { font-size: 0.82rem; color: #e2e8f0; line-height: 1.4; margin-top: 0.2rem; font-family: 'JetBrains Mono', monospace; }
+        .eng-ctx-del {
+            padding: 0.3rem; color: #475569; background: none; border: none;
+            cursor: pointer; flex-shrink: 0; border-radius: 50%; transition: color 0.2s;
+        }
+        .eng-ctx-del:hover { color: #f87171; }
+        .eng-ctx-empty {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 0.75rem; padding: 2rem;
+            border: 2px dashed #1e293b; border-radius: 1rem;
+            color: #334155;
+            font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; text-align: center;
+        }
+
+        /* Config tab */
+        .eng-cfg-modes {
+            display: flex; gap: 0.5rem; margin-bottom: 1rem; justify-content: flex-end;
+        }
+        .eng-cfg-mode-btn {
+            display: flex; align-items: center; gap: 0.3rem;
+            padding: 0.4rem 0.75rem; border-radius: 0.5rem;
+            font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; cursor: pointer; transition: all 0.2s;
+            background: #020617; color: #64748b; border: 1px solid #1e293b;
+        }
+        .eng-cfg-mode-btn:hover { color: #94a3b8; }
+        .eng-cfg-mode-btn.active {
+            background: rgba(99,102,241,0.15); color: #818cf8;
+            border-color: rgba(99,102,241,0.4);
+        }
+        .eng-cfg-section-label {
+            font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.1em; color: #475569; padding: 0 0.25rem 0.5rem;
+        }
+        .eng-cfg-props { background: #020617; border-radius: 0.75rem; padding: 0.75rem; border: 1px solid #1e293b; }
+        .eng-cfg-prop-row {
+            display: flex; align-items: center; gap: 0.75rem; padding: 0.3rem 0;
+        }
+        .eng-cfg-prop-key { font-size: 0.75rem; font-family: monospace; color: #64748b; min-width: 5rem; }
+        .eng-cfg-prop-val {
+            flex: 1; background: #0f172a; border: 1px solid #334155;
+            border-radius: 0.4rem; padding: 0.35rem 0.6rem;
+            font-size: 0.75rem; color: #fff; font-family: monospace;
+            outline: none; transition: border-color 0.2s;
+        }
+        .eng-cfg-prop-val:focus { border-color: #4f46e5; }
+        .eng-cfg-textarea {
+            width: 100%; min-height: 10rem;
+            background: #020617; border: 1px solid #334155;
+            border-radius: 0.75rem; padding: 0.875rem;
+            font-size: 0.78rem; font-family: 'JetBrains Mono', monospace;
+            color: #67e8f9; line-height: 1.6; resize: vertical;
+            outline: none; transition: border-color 0.2s;
+        }
+        .eng-cfg-textarea:focus { border-color: #4f46e5; }
+
+        /* ====================================================================
+           SVG ANIMATIONS
+           ==================================================================== */
+        @keyframes eng-edge-dash {
+            to { stroke-dashoffset: -30; }
+        }
+        .edge-dash-anim {
+            animation: eng-edge-dash 1s linear infinite;
+        }
+        @keyframes eng-node-spin {
+            to { transform: rotate(360deg); }
+        }
+        .node-spin-anim {
+            transform-origin: 0 0;
+            animation: eng-node-spin 4s linear infinite;
+        }
+        @keyframes eng-node-ping {
+            0%   { transform: scale(1);   opacity: 0.8; }
+            100% { transform: scale(1.6); opacity: 0; }
+        }
+        .node-ping-anim {
+            transform-origin: 0 0;
+            animation: eng-node-ping 0.5s cubic-bezier(0,0,0.2,1) forwards;
+        }
+        @keyframes eng-pulse  { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
+        @keyframes eng-fadein { from { opacity:0; transform:scale(0.96); } to { opacity:1; transform:scale(1); } }
+
+        /* ====================================================================
+           RESPONSIVE — wider screens get slightly different layout
+           ==================================================================== */
+        @media (min-width: 768px) {
+            #bottom-sheet { height: 50dvh; max-width: 520px; right: auto; left: 1rem; border-radius: 1.5rem; border: 1px solid rgba(71,85,105,0.4); }
+            #mission-hud-area { max-width: 400px; }
+            #fab-container { bottom: 2rem; right: 2rem; }
+            #center-btn   { bottom: 2rem; right: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav id="mobile-drawer" class="mobile-drawer" aria-label="Mobile navigation">
+        <button type="button" class="mobile-close" onclick="Nav.toggleMobile()" aria-label="Close menu">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <a href="index.html" class="mobile-link" onclick="Nav.toggleMobile()">HOME</a>
+        <a href="about.html" class="mobile-link" onclick="Nav.toggleMobile()">ABOUT</a>
+        <a href="offers.html" class="mobile-link" onclick="Nav.toggleMobile()">OFFERS</a>
+        <a href="queue.html" class="mobile-link" onclick="Nav.toggleMobile()">QUEUE</a>
+        <a href="wiki/index.html" class="mobile-link" onclick="Nav.toggleMobile()">WIKI</a>
+        <a href="portfolio.html" class="mobile-link" onclick="Nav.toggleMobile()">PORTFOLIO</a>
+        <a href="faq.html" class="mobile-link" onclick="Nav.toggleMobile()">FAQ</a>
+        <a href="contact.html" class="mobile-link" onclick="Nav.toggleMobile()">CONTACT</a>
+    </nav>
+
+    <!-- Main Navigation -->
+    <header class="nav-wrapper">
+        <div class="main-nav">
+            <a href="index.html" class="brand" aria-label="Fogsift home">
+                <img src="assets/logo.png" alt="Fogsift" class="brand-logo">
+            </a>
+            <nav class="menu-items" aria-label="Main navigation">
+                <div class="menu-item"><a href="about.html" class="menu-link">ABOUT</a></div>
+                <div class="menu-item"><a href="offers.html" class="menu-link">OFFERS</a></div>
+                <div class="menu-item"><a href="queue.html" class="menu-link">QUEUE</a></div>
+                <div class="menu-item"><a href="wiki/index.html" class="menu-link">WIKI</a></div>
+                <div class="menu-item"><a href="portfolio.html" class="menu-link">PORTFOLIO</a></div>
+                <div class="menu-item"><a href="faq.html" class="menu-link">FAQ</a></div>
+                <div class="menu-item"><a href="contact.html" class="menu-link">CONTACT</a></div>
+            </nav>
+            <div class="nav-controls">
+                <button type="button" class="site-search-btn" onclick="SiteSearch.toggle()" aria-label="Search site" title="Search site (/)">
+                    <svg class="search-icon-logo" viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                        <circle cx="10" cy="10" r="7" fill="var(--burnt-orange, #e07b3c)" opacity="0.85"/>
+                        <circle cx="10" cy="10" r="7" fill="none" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.2"/>
+                        <line x1="15.5" y1="15.5" x2="21" y2="21" stroke="var(--chocolate, #4a2c2a)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="theme-picker" role="listbox" aria-label="Select theme">
+                    <button type="button" class="theme-picker-toggle" onclick="ThemePicker.toggle()" aria-haspopup="listbox" aria-expanded="false">
+                        <span class="theme-picker-icon" aria-hidden="true">◐</span>
+                        <span class="theme-picker-label">Theme</span>
+                    </button>
+                    <div class="theme-picker-menu" role="listbox" aria-label="Theme options">
+                        <button type="button" class="theme-picker-option" data-theme="light" role="option" onclick="ThemePicker.select('light')">
+                            <span class="theme-option-icon">☀</span>
+                            <span class="theme-option-label">Light</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="dark" role="option" onclick="ThemePicker.select('dark')">
+                            <span class="theme-option-icon">●</span>
+                            <span class="theme-option-label">Dark</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="industrial-punchcard" role="option" onclick="ThemePicker.select('industrial-punchcard')">
+                            <span class="theme-option-icon">▣</span>
+                            <span class="theme-option-label">Industrial</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="matrix" role="option" onclick="ThemePicker.select('matrix')">
+                            <span class="theme-option-icon">▓</span>
+                            <span class="theme-option-label">Matrix</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="sky" role="option" onclick="ThemePicker.select('sky')">
+                            <span class="theme-option-icon">☁️</span>
+                            <span class="theme-option-label">Sky</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="synthwave" role="option" onclick="ThemePicker.select('synthwave')">
+                            <span class="theme-option-icon">🌆</span>
+                            <span class="theme-option-label">Synthwave</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="pipboy" role="option" onclick="ThemePicker.select('pipboy')">
+                            <span class="theme-option-icon">📟</span>
+                            <span class="theme-option-label">Pip-Boy</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="rivendell" role="option" onclick="ThemePicker.select('rivendell')">
+                            <span class="theme-option-icon">🏔️</span>
+                            <span class="theme-option-label">Rivendell</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="camo" role="option" onclick="ThemePicker.select('camo')">
+                            <span class="theme-option-icon">🦌</span>
+                            <span class="theme-option-label">Camo</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="barbie" role="option" onclick="ThemePicker.select('barbie')">
+                            <span class="theme-option-icon">💖</span>
+                            <span class="theme-option-label">Barbie</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="ocean" role="option" onclick="ThemePicker.select('ocean')">
+                            <span class="theme-option-icon">🌊</span>
+                            <span class="theme-option-label">Ocean</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="aurora" role="option" onclick="ThemePicker.select('aurora')">
+                            <span class="theme-option-icon">🌌</span>
+                            <span class="theme-option-label">Aurora</span>
+                            <span class="theme-option-check" aria-hidden="true">✓</span>
+                        </button>
+                        <button type="button" class="theme-picker-option" data-theme="demo" role="option" onclick="Theme.startDemo()">
+                            <span class="theme-option-icon">🎬</span>
+                            <span class="theme-option-label">Demo</span>
+                            <span class="theme-option-check" aria-hidden="true">▶</span>
+                        </button>
+                    </div>
+                </div>
+                <button type="button" class="copy-page-text-btn" onclick="CopyPageText.copy()" aria-label="Copy all page text to clipboard" title="Copy all page text (excluding navigation and footer)">
+                    <span class="copy-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                            <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                        </svg>
+                    </span>
+                </button>
+                <button type="button" class="menu-toggle" onclick="Nav.toggleMobile()" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-drawer">
+                    <span class="menu-toggle-icon" aria-hidden="true">☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="frame" id="main-content">
+        <div id="engine-root" aria-label="Fogsift Engine: interactive agent orchestration visualizer">
+
+            <!-- Internal top bar -->
+            <div id="engine-topbar" class="eng-hud">
+                <div class="eng-brand">
+                    <div class="eng-brand-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M6.3 20.3a2.49 2.49 0 0 0 3.4 0L12 18l2.3 2.3a2.49 2.49 0 0 0 3.4 0l.4-.4a2.49 2.49 0 0 0 0-3.4L16 14l2.1-2.1A2.5 2.5 0 0 0 18 8.4V8a2 2 0 0 0-2-2h-.4a2.5 2.5 0 0 0-3.6.1L12 6l-.1-.1a2.5 2.5 0 0 0-3.6-.1H8a2 2 0 0 0-2 2v.4a2.5 2.5 0 0 0 .1 3.5L8 14l-2.1 2.2a2.49 2.49 0 0 0 0 3.4z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="eng-brand-title">Fogsift Engine</div>
+                        <div class="eng-brand-sub">Live Execution State</div>
+                    </div>
+                </div>
+                <button id="run-btn" class="eng-run-btn" aria-label="Toggle simulation">
+                    <!-- Populated by JS -->
+                    Run Swarm
+                </button>
+            </div>
+
+            <!-- Mission HUD banners -->
+            <div id="mission-hud-area">
+                <!-- Demo HUD -->
+                <div id="hud-demo" class="eng-hud-card eng-hud">
+                    <div class="eng-hud-inner">
+                        <div class="eng-hud-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#818cf8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="6" height="6" rx="1"/>
+                                <rect x="15" y="15" width="6" height="6" rx="1"/>
+                                <path d="M6 9v3a3 3 0 0 0 3 3h6"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="eng-hud-title">Production Factory V2</div>
+                            <div class="eng-hud-desc">Powered by the Fogsift Engine — rAF delta-time dynamics and continuous O(1) Bézier path interpolation.</div>
+                            <button id="hud-demo-btn" class="eng-hud-btn">Build Your Own</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tutorial HUD -->
+                <div id="hud-tutorial" class="eng-hud-tutorial eng-hud" style="display:none">
+                    <div class="eng-tut-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="eng-tut-label">Mission Directive</div>
+                        <div id="hud-tutorial-msg" class="eng-tut-msg">Tap the '+' button and add a 'Trigger'.</div>
+                    </div>
+                </div>
+
+                <!-- Sandbox HUD -->
+                <div id="hud-sandbox" class="eng-hud-sandbox eng-hud" style="display:none">
+                    <div class="eng-sandbox-icon">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="eng-sandbox-title">Simulation Engine Online</div>
+                        <div class="eng-sandbox-sub">Packets update node context in real-time.</div>
+                    </div>
+                    <button id="hud-sandbox-close" class="eng-sandbox-close" aria-label="Dismiss">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"/>
+                            <line x1="6" y1="6" x2="18" y2="18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- SVG Canvas -->
+            <div id="canvas-container">
+                <svg id="engine-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <defs>
+                        <filter id="packetGlow" x="-100%" y="-100%" width="300%" height="300%">
+                            <feGaussianBlur stdDeviation="6" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <g id="graph-group" transform="translate(0,0) scale(1)">
+                        <g id="edges-layer"></g>
+                        <g id="signals-layer"></g>
+                        <g id="nodes-layer"></g>
+                    </g>
+                </svg>
+
+                <!-- Center / recenter button -->
+                <button id="center-btn" aria-label="Re-center graph">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <circle cx="12" cy="12" r="6"/>
+                        <circle cx="12" cy="12" r="2"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- FAB: Add node -->
+            <div id="fab-container" class="eng-hud">
+                <div id="add-node-menu" style="display:none">
+                    <div class="eng-menu-label">Deploy Unit</div>
+                    <button class="eng-add-node-btn" data-type="trigger">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#06b6d4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                        </span>Trigger
+                    </button>
+                    <button class="eng-add-node-btn" data-type="router">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.7 10.3a2.41 2.41 0 0 0 0 3.41l7.59 7.59a2.41 2.41 0 0 0 3.41 0l7.59-7.59a2.41 2.41 0 0 0 0-3.41L13.7 2.71a2.41 2.41 0 0 0-3.41 0z"/></svg>
+                        </span>Router
+                    </button>
+                    <button class="eng-add-node-btn" data-type="agent">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ec4899" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/></svg>
+                        </span>Agent
+                    </button>
+                    <button class="eng-add-node-btn" data-type="tool">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                        </span>Tool
+                    </button>
+                    <button class="eng-add-node-btn" data-type="memory">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </span>Memory
+                    </button>
+                    <button class="eng-add-node-btn" data-type="aggregator">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="3"/><polyline points="7 12 12 17 17 12"/><line x1="19" y1="21" x2="5" y2="21"/></svg>
+                        </span>Merge
+                    </button>
+                    <button class="eng-add-node-btn" data-type="checkpoint">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+                        </span>Checkpoint
+                    </button>
+                    <button class="eng-add-node-btn" data-type="output">
+                        <span class="eng-node-type-dot">
+                            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </span>Output
+                    </button>
+                </div>
+                <button id="fab-btn" aria-label="Add node" aria-expanded="false">+</button>
+            </div>
+
+            <!-- Bottom sheet: node inspector -->
+            <div id="bottom-sheet" role="dialog" aria-label="Node inspector" aria-hidden="true">
+                <div class="eng-sheet-handle-area">
+                    <div class="eng-sheet-handle"></div>
+                </div>
+                <div id="sheet-header"><!-- populated by JS --></div>
+                <div id="sheet-tabs">
+                    <button id="tab-context" class="eng-tab active">Live Context</button>
+                    <button id="tab-config"  class="eng-tab">DNA Config</button>
+                </div>
+                <div id="sheet-content"><!-- populated by JS --></div>
+            </div>
+
+        </div><!-- #engine-root -->
+    </main>
+
+    <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="offers.html">Offers</a>
+                    <a href="queue.html">Queue</a>
+                    <a href="faq.html">FAQ</a>
+                    <a href="portfolio.html">Portfolio</a>
+                    <a href="wiki/index.html">Wiki</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="disclaimer.html">Disclaimer</a>
+                    <a href="your-data.html">Your Data</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://youtube.com/@fogsift" class="footer-social-link" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                    <a href="https://threads.net/@fogsift" class="footer-social-link" target="_blank" rel="noopener" aria-label="Threads"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.858-.712 2.037-1.122 3.412-1.187.953-.046 1.863.03 2.723.228-.054-.89-.312-1.568-.77-2.016-.548-.535-1.405-.808-2.549-.808l-.025.001c-1.311.015-2.326.426-3.015 1.222l-1.504-1.38c1.06-1.223 2.553-1.85 4.494-1.876h.04c1.682 0 3.008.472 3.942 1.402.857.853 1.327 2.063 1.399 3.6l.015.386c1.17.553 2.103 1.38 2.707 2.418.858 1.476.997 3.628-.614 5.748-1.857 2.442-4.542 3.282-7.97 3.313zm-.159-7.18c-.927.044-1.652.27-2.095.654-.384.333-.526.713-.5 1.065.043.615.593 1.342 1.912 1.342.057 0 .116-.002.176-.006 1.034-.056 1.807-.46 2.298-1.2.364-.548.608-1.295.728-2.229-.556-.107-1.134-.166-1.73-.166-.263 0-.528.012-.79.04z"/></svg></a>
+                </div>
+                <div class="footer-bottom">
+                    <span>&copy; 2026 FOGSIFT</span>
+                </div>
+                <div class="footer-ai-disclaimer">
+                    <small>This site was built almost entirely with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>.</small>
+                </div>
+                <div class="footer-signal" style="margin-top:0.5rem;"><a href="keepers-log.html" style="color:inherit;opacity:0.15;font-family:monospace;font-size:0.6rem;text-decoration:none;letter-spacing:0.2em;" aria-hidden="true" tabindex="-1">5001</a></div>
+                <div class="footer-dev-notice">
+                    <small>Site under active development. Follow along on <a href="https://youtube.com/@fogsift" target="_blank" rel="noopener">YouTube</a> &amp; <a href="https://threads.net/@fogsift" target="_blank" rel="noopener">Threads</a>.</small>
+                </div>
+            </div>
+        </footer>
+
+    <script src="app.js" defer></script>
+    <script src="engine.js" defer></script>
+
+    <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
+    <script src="white-rabbit.js" defer></script>
+</body>
+</html>
