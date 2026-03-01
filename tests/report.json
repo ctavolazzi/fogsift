@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T13:12:43.133Z",
+  "timestamp": "2026-03-01T13:32:59.370Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 96",
+          "test": "HTML pages built: 105",
           "status": "pass",
-          "detail": "Found 96 HTML files"
+          "detail": "Found 105 HTML files"
         },
         {
           "test": "styles.css size: 199.9KB",
@@ -283,6 +283,16 @@
           "detail": ""
         },
         {
+          "test": "wiki/concepts/anchoring-bias.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/availability-bias.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/concepts/cognitive-biases.html",
           "status": "pass",
           "detail": ""
@@ -309,6 +319,11 @@
         },
         {
           "test": "wiki/concepts/goodharts-law.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/halo-effect.html",
           "status": "pass",
           "detail": ""
         },
@@ -349,6 +364,11 @@
         },
         {
           "test": "wiki/concepts/signal-vs-noise.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/concepts/status-quo-bias.html",
           "status": "pass",
           "detail": ""
         },
@@ -458,6 +478,26 @@
           "detail": ""
         },
         {
+          "test": "wiki/field-notes/016-handoff-problem.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/017-hero-dependency.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/018-permission-debt.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/field-notes/019-the-proxy-trap.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/constraint-mapping.html",
           "status": "pass",
           "detail": ""
@@ -474,6 +514,11 @@
         },
         {
           "test": "wiki/frameworks/force-field-analysis.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/frameworks/jobs-to-be-done.html",
           "status": "pass",
           "detail": ""
         },
@@ -563,7 +608,7 @@
           "detail": ""
         }
       ],
-      "passed": 96,
+      "passed": 105,
       "failed": 0,
       "warned": 0
     },
@@ -640,7 +685,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 10749 internal links valid",
+          "test": "All 14402 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -663,22 +708,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 75 entries",
+          "test": "Index has 87 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "75/75 entries have valid structure",
+          "test": "87/87 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "75/75 index URLs resolve to files",
+          "test": "87/87 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 72.4KB",
+          "test": "Index size: 84.4KB",
           "status": "pass",
           "detail": ""
         }
@@ -691,7 +736,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 8.26MB",
+          "test": "Total dist/ size: 9.08MB",
           "status": "pass",
           "detail": ""
         },
@@ -765,8 +810,8 @@
     }
   ],
   "summary": {
-    "total": 138,
-    "passed": 129,
+    "total": 147,
+    "passed": 138,
     "failed": 0,
     "warned": 9
   }

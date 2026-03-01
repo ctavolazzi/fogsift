@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T13:12:43.133Z
+Generated: 2026-03-01T13:32:59.370Z
 ============================================================
 
 SUMMARY
-  Total:    138
-  Passed:   129
+  Total:    147
+  Passed:   138
   Failed:   0
   Warnings: 9
-  Pass rate: 93.5%
+  Pass rate: 93.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,7 +21,7 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 96 — Found 96 HTML files
+  [PASS] HTML pages built: 105 — Found 105 HTML files
   [PASS] styles.css size: 199.9KB
   [PASS] app.js size: 81.7KB
 
@@ -66,12 +66,15 @@ SUMMARY
   [PASS] wiki/case-studies/the-data-migration.html
   [PASS] wiki/case-studies/the-invisible-process.html
   [PASS] wiki/case-studies/the-startup-pivot.html
+  [PASS] wiki/concepts/anchoring-bias.html
+  [PASS] wiki/concepts/availability-bias.html
   [PASS] wiki/concepts/cognitive-biases.html
   [PASS] wiki/concepts/compounding.html
   [PASS] wiki/concepts/confirmation-bias.html
   [PASS] wiki/concepts/dunning-kruger.html
   [PASS] wiki/concepts/first-principles.html
   [PASS] wiki/concepts/goodharts-law.html
+  [PASS] wiki/concepts/halo-effect.html
   [PASS] wiki/concepts/loss-aversion.html
   [PASS] wiki/concepts/mental-models.html
   [PASS] wiki/concepts/opportunity-cost.html
@@ -80,6 +83,7 @@ SUMMARY
   [PASS] wiki/concepts/root-cause.html
   [PASS] wiki/concepts/second-order-effects.html
   [PASS] wiki/concepts/signal-vs-noise.html
+  [PASS] wiki/concepts/status-quo-bias.html
   [PASS] wiki/concepts/survivorship-bias.html
   [PASS] wiki/concepts/systems-thinking.html
   [PASS] wiki/content-creation-pipeline.html
@@ -101,10 +105,15 @@ SUMMARY
   [PASS] wiki/field-notes/013-expertise-trap.html
   [PASS] wiki/field-notes/014-reorg-trap.html
   [PASS] wiki/field-notes/015-messenger-problem.html
+  [PASS] wiki/field-notes/016-handoff-problem.html
+  [PASS] wiki/field-notes/017-hero-dependency.html
+  [PASS] wiki/field-notes/018-permission-debt.html
+  [PASS] wiki/field-notes/019-the-proxy-trap.html
   [PASS] wiki/frameworks/constraint-mapping.html
   [PASS] wiki/frameworks/decision-matrix.html
   [PASS] wiki/frameworks/feedback-loops.html
   [PASS] wiki/frameworks/force-field-analysis.html
+  [PASS] wiki/frameworks/jobs-to-be-done.html
   [PASS] wiki/frameworks/pre-mortem.html
   [PASS] wiki/frameworks/prioritization-matrix.html
   [PASS] wiki/frameworks/risk-assessment.html
@@ -146,18 +155,18 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 10749 internal links valid
+  [PASS] All 14402 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 75 entries
-  [PASS] 75/75 entries have valid structure
-  [PASS] 75/75 index URLs resolve to files
-  [PASS] Index size: 72.4KB
+  [PASS] Index has 87 entries
+  [PASS] 87/87 entries have valid structure
+  [PASS] 87/87 index URLs resolve to files
+  [PASS] Index size: 84.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 8.26MB
+  [PASS] Total dist/ size: 9.08MB
   [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
