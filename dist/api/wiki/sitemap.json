@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:25:21.671Z",
-  "buildTimestamp": 1772371521671,
+  "buildDate": "2026-03-01T13:26:32.168Z",
+  "buildTimestamp": 1772371592168,
   "categories": [
     {
       "id": "docs",
@@ -148,6 +148,12 @@
           "title": "Availability Bias",
           "jdNumber": "20.18",
           "href": "concepts/availability-bias.html"
+        },
+        {
+          "slug": "concepts/status-quo-bias",
+          "title": "Status Quo Bias",
+          "jdNumber": "20.19",
+          "href": "concepts/status-quo-bias.html"
         }
       ]
     },

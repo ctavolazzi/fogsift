@@ -101,6 +101,10 @@
         {
           "slug": "concepts/availability-bias",
           "title": "Availability Bias"
+        },
+        {
+          "slug": "concepts/status-quo-bias",
+          "title": "Status Quo Bias"
         }
       ]
     },
@@ -300,6 +304,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:25:21.671Z",
-  "buildTimestamp": 1772371521671
+  "buildDate": "2026-03-01T13:26:32.168Z",
+  "buildTimestamp": 1772371592168
 }

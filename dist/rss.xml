@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:25:21 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:26:32 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Status Quo Bias</title>
+      <link>https://fogsift.com/wiki/concepts/status-quo-bias.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/concepts/status-quo-bias.html</guid>
+      <description>*The current state of affairs feels like the reference point against which all alternatives are measured — and alternatives are held to a higher standard than t</description>
+      <pubDate>Sun, 01 Mar 2026 13:26:19 GMT</pubDate>
+    </item>
     <item>
       <title>Availability Bias</title>
       <link>https://fogsift.com/wiki/concepts/availability-bias.html</link>
