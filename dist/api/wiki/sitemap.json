@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:34:02.901Z",
-  "buildTimestamp": 1772372042901,
+  "buildDate": "2026-03-01T13:35:31.162Z",
+  "buildTimestamp": 1772372131162,
   "categories": [
     {
       "id": "docs",
@@ -400,6 +400,12 @@
           "title": "The Data Migration Disaster",
           "jdNumber": "50.05",
           "href": "case-studies/the-data-migration.html"
+        },
+        {
+          "slug": "case-studies/the-metric-mirage",
+          "title": "The Metric Mirage",
+          "jdNumber": "50.06",
+          "href": "case-studies/the-metric-mirage.html"
         }
       ]
     },
