@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T03:35:40.670Z",
+  "timestamp": "2026-03-01T04:44:13.093Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -65,12 +65,12 @@
           "detail": "Found 79 HTML files"
         },
         {
-          "test": "styles.css size: 199.0KB",
+          "test": "styles.css size: 199.2KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 81.4KB",
+          "test": "app.js size: 81.7KB",
           "status": "pass",
           "detail": ""
         }
@@ -486,14 +486,14 @@
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "ESLint warnings only",
-          "status": "warn",
-          "detail": "1 warning(s)"
+          "test": "All JS files pass ESLint",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
+      "passed": 1,
       "failed": 0,
-      "warned": 1
+      "warned": 0
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
@@ -681,8 +681,8 @@
   ],
   "summary": {
     "total": 121,
-    "passed": 110,
+    "passed": 111,
     "failed": 0,
-    "warned": 11
+    "warned": 10
   }
 }

@@ -189,11 +189,6 @@
         }
     };
 
-    const INDUSTRY_ORDER = [
-        'ops-logistics', 'food-security', 'data-modeling', 'strategy',
-        'technology', 'growth', 'hardware-iot', 'research'
-    ];
-
     // ── Color mapping from CSS custom properties ─────────────────────────────
     function cssVar(name, fallback) {
         const val = getComputedStyle(document.documentElement)

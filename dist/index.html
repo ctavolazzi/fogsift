@@ -550,7 +550,7 @@
             </p>
 
             <div class="pricing-cards">
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')" role="button" tabindex="0" aria-label="Read more about Inventory Count Mismatch">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('inventory')}" role="button" tabindex="0" aria-label="Read more about Inventory Count Mismatch">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
                     <h4>"Our inventory counts never match."</h4>
                     <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
@@ -558,7 +558,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')" role="button" tabindex="0" aria-label="Read more about Tuesday Crashes">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('tuesday')}" role="button" tabindex="0" aria-label="Read more about Tuesday Crashes">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
                     <h4>"Our app crashes every Tuesday."</h4>
                     <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
@@ -566,7 +566,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')" role="button" tabindex="0" aria-label="Read more about Build vs. Buy Decision">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('buildbuy')}" role="button" tabindex="0" aria-label="Read more about Build vs. Buy Decision">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
                     <h4>"Build it or buy it?"</h4>
                     <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
@@ -574,7 +574,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')" role="button" tabindex="0" aria-label="Read more about Stalled Signups">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('signups')}" role="button" tabindex="0" aria-label="Read more about Stalled Signups">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
                     <h4>"Signups stalled."</h4>
                     <p>Walked the funnel live. Fixed the top three friction points during the session.</p>

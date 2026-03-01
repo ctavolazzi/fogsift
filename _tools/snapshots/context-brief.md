@@ -1,5 +1,5 @@
 # FogSift Context Brief
-Generated: 2026-03-01T03:33:26.306Z
+Generated: 2026-03-01T04:30:14.941Z
 
 ## Quick Status
 | Metric | Value |
@@ -8,25 +8,22 @@ Generated: 2026-03-01T03:33:26.306Z
 | Branch | claude/setup-fastapi-memory-nqvQa |
 | Last release | none |
 | Commits since release | 0 |
-| Uncommitted files | 4 |
+| Uncommitted files | 0 |
 | Unpushed commits | 0 |
 | Built pages | 79 |
 | Wiki pages | 47 |
 | Source: 22 CSS, 25 JS | dist: 199.0KB CSS, 81.4KB JS |
 
 ## Test Results
-109 pass / 1 fail / 11 warn (90.1%)
+110 pass / 0 fail / 11 warn (90.9%)
 Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
-## Uncommitted Changes
-Modified: tools/snapshots/context-brief.md, _tools/snapshots/latest.json, tests/report.json, tests/report.txt
-
 ## Recent Commits
+- 055e547 fix: resolve HTML validation errors in index.html
 - 38dcdda fix: resolve HTML validation, ESLint, and broken link failures
 - ee4c299 chore: update session snapshots and test reports
 - 97b120c feat: interactive sandbox terminal with honey pot detection
 - aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal
-- 10e4771 feat: replace memory system with canonical L1/L2 implementation
 
 ## Development Infrastructure
 | Port | Tool | Status |

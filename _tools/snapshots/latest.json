@@ -1,16 +1,14 @@
 {
-  "generated": "2026-03-01T03:33:26.371Z",
+  "generated": "2026-03-01T04:30:15.026Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "claude/setup-fastapi-memory-nqvQa",
     "status": [
-      "M _tools/snapshots/context-brief.md",
-      " M _tools/snapshots/latest.json",
-      " M tests/report.json",
-      " M tests/report.txt"
+      "M _tools/snapshots/context-brief.md"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "055e547 fix: resolve HTML validation errors in index.html",
       "38dcdda fix: resolve HTML validation, ESLint, and broken link failures",
       "ee4c299 chore: update session snapshots and test reports",
       "97b120c feat: interactive sandbox terminal with honey pot detection",
@@ -19,13 +17,12 @@
       "41e6698 chore: update auto-generated session snapshots",
       "8e861ca feat: add FastAPI memory system (fogsift-api)",
       "f4eb995 feat: process steps timeline, accordion redesign, stat cards, connectors",
-      "1ce91c1 fix: center rotating highlight using flex wrap on hero-prompt",
-      "4c80b79 fix: center rotating hero prompt on wrap + SVG icons in flip panels"
+      "1ce91c1 fix: center rotating highlight using flex wrap on hero-prompt"
     ],
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:48321/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:41125/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -432,8 +429,8 @@
       },
       {
         "path": "index.html",
-        "size": 62355,
-        "modified": "2026-02-28T22:34:23.000Z",
+        "size": 62397,
+        "modified": "2026-03-01T03:35:23.000Z",
         "lines": 993
       },
       {
@@ -1185,17 +1182,17 @@
       "styles.css": 203807,
       "app.js": 83308,
       "theme-init.js": 661,
-      "search-index.json": 331858,
-      "index.html": 77815
+      "search-index.json": 331887,
+      "index.html": 77886
     },
     "totalFiles": 134
   },
   "tests": {
-    "timestamp": "2026-03-01T02:39:21.652Z",
+    "timestamp": "2026-03-01T03:35:40.670Z",
     "summary": {
       "total": 121,
-      "passed": 109,
-      "failed": 1,
+      "passed": 110,
+      "failed": 0,
       "warned": 11
     },
     "suiteNames": [
@@ -1207,8 +1204,8 @@
       },
       {
         "name": "HTML Validation",
-        "passed": 78,
-        "failed": 1,
+        "passed": 79,
+        "failed": 0,
         "warned": 0
       },
       {
@@ -1308,7 +1305,7 @@
   "summary": {
     "version": "0.2.0",
     "branch": "claude/setup-fastapi-memory-nqvQa",
-    "uncommittedFiles": 4,
+    "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,
@@ -1317,8 +1314,8 @@
     "srcTotalLines": 30814,
     "builtPages": 79,
     "wikiPages": 47,
-    "testsPassed": 109,
-    "testsFailed": 1,
+    "testsPassed": 110,
+    "testsFailed": 0,
     "testsWarned": 11,
     "toolsCount": 6,
     "journalEntries": 13
