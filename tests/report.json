@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T13:02:30.300Z",
+  "timestamp": "2026-03-01T13:05:28.507Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 90",
+          "test": "HTML pages built: 91",
           "status": "pass",
-          "detail": "Found 90 HTML files"
+          "detail": "Found 91 HTML files"
         },
         {
           "test": "styles.css size: 199.9KB",
@@ -308,6 +308,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/concepts/loss-aversion.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/concepts/mental-models.html",
           "status": "pass",
           "detail": ""
@@ -533,7 +538,7 @@
           "detail": ""
         }
       ],
-      "passed": 90,
+      "passed": 91,
       "failed": 0,
       "warned": 0
     },
@@ -610,7 +615,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 8363 internal links valid",
+          "test": "All 8611 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -633,22 +638,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 71 entries",
+          "test": "Index has 73 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "71/71 entries have valid structure",
+          "test": "73/73 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "71/71 index URLs resolve to files",
+          "test": "73/73 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 68.3KB",
+          "test": "Index size: 70.5KB",
           "status": "pass",
           "detail": ""
         }
@@ -661,7 +666,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.81MB",
+          "test": "Total dist/ size: 7.89MB",
           "status": "pass",
           "detail": ""
         },
@@ -735,8 +740,8 @@
     }
   ],
   "summary": {
-    "total": 132,
-    "passed": 123,
+    "total": 133,
+    "passed": 124,
     "failed": 0,
     "warned": 9
   }
