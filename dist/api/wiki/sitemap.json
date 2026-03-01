@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:27:48.662Z",
-  "buildTimestamp": 1772371668662,
+  "buildDate": "2026-03-01T13:28:59.700Z",
+  "buildTimestamp": 1772371739700,
   "categories": [
     {
       "id": "docs",
@@ -154,6 +154,12 @@
           "title": "Status Quo Bias",
           "jdNumber": "20.19",
           "href": "concepts/status-quo-bias.html"
+        },
+        {
+          "slug": "concepts/halo-effect",
+          "title": "The Halo Effect",
+          "jdNumber": "20.20",
+          "href": "concepts/halo-effect.html"
         }
       ]
     },
