@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-28T23:23:42.364Z",
+  "timestamp": "2026-03-01T03:35:40.670Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -119,8 +119,8 @@
         },
         {
           "test": "index.html",
-          "status": "fail",
-          "detail": "1 error(s), 2 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "join.html",
@@ -234,13 +234,13 @@
         },
         {
           "test": "wiki/architecture/memory-system.html",
-          "status": "fail",
-          "detail": "1 error(s), 2 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/architecture/terminal-component.html",
-          "status": "fail",
-          "detail": "1 error(s), 0 warning(s)"
+          "status": "pass",
+          "detail": ""
         },
         {
           "test": "wiki/case-studies/communication-breakdown.html",
@@ -478,22 +478,22 @@
           "detail": ""
         }
       ],
-      "passed": 76,
-      "failed": 3,
+      "passed": 79,
+      "failed": 0,
       "warned": 0
     },
     {
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "ESLint: 1 error(s), 1 warning(s)",
-          "status": "fail",
-          "detail": "terminal-interactive.js:204 Unexpected control character(s) in regular expression: \\x00."
+          "test": "ESLint warnings only",
+          "status": "warn",
+          "detail": "1 warning(s)"
         }
       ],
       "passed": 0,
-      "failed": 1,
-      "warned": 0
+      "failed": 0,
+      "warned": 1
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
@@ -555,13 +555,13 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "6 broken links out of 6713",
-          "status": "fail",
-          "detail": "wiki/architecture/memory-system.html → /wiki/diagnostic-process; wiki/architecture/memory-system.html → /wiki/concepts/systems-thinking; wiki/architecture/memory-system.html → /wiki/field-notes/007-documentation-debt; wiki/architecture/terminal-component.html → /wiki/architecture/memory-system; wiki/architecture/terminal-component.html → /wiki/diagnostic-process; wiki/architecture/terminal-component.html → /wiki/concepts/systems-thinking"
+          "test": "All 6713 internal links valid",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
-      "failed": 1,
+      "passed": 1,
+      "failed": 0,
       "warned": 0
     },
     {
@@ -606,7 +606,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.93MB",
+          "test": "Total dist/ size: 7.94MB",
           "status": "pass",
           "detail": ""
         },
@@ -681,8 +681,8 @@
   ],
   "summary": {
     "total": 121,
-    "passed": 106,
-    "failed": 5,
-    "warned": 10
+    "passed": 110,
+    "failed": 0,
+    "warned": 11
   }
 }

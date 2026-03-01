@@ -1,5 +1,5 @@
 # FogSift Context Brief
-Generated: 2026-02-28T23:17:18.923Z
+Generated: 2026-03-01T03:33:26.306Z
 
 ## Quick Status
 | Metric | Value |
@@ -10,23 +10,23 @@ Generated: 2026-02-28T23:17:18.923Z
 | Commits since release | 0 |
 | Uncommitted files | 4 |
 | Unpushed commits | 0 |
-| Built pages | 78 |
-| Wiki pages | 46 |
-| Source: 22 CSS, 24 JS | dist: 197.0KB CSS, 74.6KB JS |
+| Built pages | 79 |
+| Wiki pages | 47 |
+| Source: 22 CSS, 25 JS | dist: 199.0KB CSS, 81.4KB JS |
 
 ## Test Results
-110 pass / 1 fail / 12 warn (89.4%)
-Lighthouse: Perf 49 | A11y 88 | BP 81 | SEO 100
+109 pass / 1 fail / 11 warn (90.1%)
+Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
 ## Uncommitted Changes
-Modified: rc/css/terminal.css, src/js/terminal-demo.js, src/wiki/architecture/memory-system.md, src/wiki/index.json
+Modified: tools/snapshots/context-brief.md, _tools/snapshots/latest.json, tests/report.json, tests/report.txt
 
 ## Recent Commits
+- 38dcdda fix: resolve HTML validation, ESLint, and broken link failures
+- ee4c299 chore: update session snapshots and test reports
+- 97b120c feat: interactive sandbox terminal with honey pot detection
 - aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal
 - 10e4771 feat: replace memory system with canonical L1/L2 implementation
-- 41e6698 chore: update auto-generated session snapshots
-- 8e861ca feat: add FastAPI memory system (fogsift-api)
-- f4eb995 feat: process steps timeline, accordion redesign, stat cards, connectors
 
 ## Development Infrastructure
 | Port | Tool | Status |

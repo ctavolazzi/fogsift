@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-28T23:23:42.364Z
+Generated: 2026-03-01T03:35:40.670Z
 ============================================================
 
 SUMMARY
   Total:    121
-  Passed:   106
-  Failed:   5
-  Warnings: 10
-  Pass rate: 87.6%
+  Passed:   110
+  Failed:   0
+  Warnings: 11
+  Pass rate: 90.9%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -33,7 +33,7 @@ SUMMARY
   [PASS] faq.html
   [PASS] gallery.html
   [PASS] hi.html
-  [FAIL] index.html — 1 error(s), 2 warning(s)
+  [PASS] index.html
   [PASS] join.html
   [PASS] keepers-log.html
   [PASS] offers.html
@@ -56,8 +56,8 @@ SUMMARY
   [PASS] system-status.html
   [PASS] terms.html
   [PASS] vision.html
-  [FAIL] wiki/architecture/memory-system.html — 1 error(s), 2 warning(s)
-  [FAIL] wiki/architecture/terminal-component.html — 1 error(s), 0 warning(s)
+  [PASS] wiki/architecture/memory-system.html
+  [PASS] wiki/architecture/terminal-component.html
   [PASS] wiki/case-studies/communication-breakdown.html
   [PASS] wiki/case-studies/manufacturing-throughput.html
   [PASS] wiki/case-studies/the-data-migration.html
@@ -107,7 +107,7 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [FAIL] ESLint: 1 error(s), 1 warning(s) — terminal-interactive.js:204 Unexpected control character(s) in regular expression: \x00.
+  [WARN] ESLint warnings only — 1 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
   [WARN] index.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
@@ -129,7 +129,7 @@ SUMMARY
   [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [FAIL] 6 broken links out of 6713 — wiki/architecture/memory-system.html → /wiki/diagnostic-process; wiki/architecture/memory-system.html → /wiki/concepts/systems-thinking; wiki/architecture/memory-system.html → /wiki/field-notes/007-documentation-debt; wiki/architecture/terminal-component.html → /wiki/architecture/memory-system; wiki/architecture/terminal-component.html → /wiki/diagnostic-process; wiki/architecture/terminal-component.html → /wiki/concepts/systems-thinking
+  [PASS] All 6713 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
@@ -140,7 +140,7 @@ SUMMARY
   [WARN] Index size: 322.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.93MB
+  [PASS] Total dist/ size: 7.94MB
   [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
@@ -156,4 +156,4 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ============================================================
-VERDICT: NOT READY — 5 failure(s)
+VERDICT: READY TO DEPLOY
