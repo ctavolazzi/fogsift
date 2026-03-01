@@ -1,50 +1,77 @@
 {
-  "title": "Fogsift Wiki",
-  "description": "Knowledge base, documentation, and field notes from the fog",
   "categories": [
-    {
-      "id": "docs",
-      "title": "Documentation",
-      "icon": "book",
-      "pages": [
-        {
-          "slug": "getting-started",
-          "title": "Getting Started"
-        },
-        {
-          "slug": "how-we-work",
-          "title": "How We Work"
-        },
-        {
-          "slug": "diagnostic-process",
-          "title": "The Diagnostic Process"
-        },
-        {
-          "slug": "faq",
-          "title": "Frequently Asked Questions"
-        }
-      ]
-    },
     {
       "id": "concepts",
       "title": "Concepts",
       "icon": "lightbulb",
       "pages": [
         {
-          "slug": "concepts/root-cause",
-          "title": "Root Cause Analysis"
+          "slug": "concepts/anchoring-bias",
+          "title": "Anchoring Bias"
+        },
+        {
+          "slug": "concepts/availability-bias",
+          "title": "Availability Bias"
+        },
+        {
+          "slug": "concepts/base-rate-neglect",
+          "title": "Base Rate Neglect"
+        },
+        {
+          "slug": "concepts/cognitive-biases",
+          "title": "Cognitive Biases"
+        },
+        {
+          "slug": "concepts/compounding",
+          "title": "Compounding Effects"
+        },
+        {
+          "slug": "concepts/confirmation-bias",
+          "title": "Confirmation Bias"
+        },
+        {
+          "slug": "concepts/dunning-kruger",
+          "title": "Dunning-Kruger Effect"
+        },
+        {
+          "slug": "concepts/first-principles",
+          "title": "First Principles Thinking"
+        },
+        {
+          "slug": "concepts/goodharts-law",
+          "title": "Goodhart's Law"
+        },
+        {
+          "slug": "concepts/halo-effect",
+          "title": "The Halo Effect"
+        },
+        {
+          "slug": "concepts/inversion",
+          "title": "Inversion"
+        },
+        {
+          "slug": "concepts/loss-aversion",
+          "title": "Loss Aversion"
         },
         {
           "slug": "concepts/mental-models",
           "title": "Mental Models"
         },
         {
-          "slug": "concepts/systems-thinking",
-          "title": "Systems Thinking"
+          "slug": "concepts/opportunity-cost",
+          "title": "Opportunity Cost"
         },
         {
-          "slug": "concepts/cognitive-biases",
-          "title": "Cognitive Biases"
+          "slug": "concepts/planning-fallacy",
+          "title": "Planning Fallacy"
+        },
+        {
+          "slug": "concepts/regression-to-mean",
+          "title": "Regression to the Mean"
+        },
+        {
+          "slug": "concepts/root-cause",
+          "title": "Root Cause Analysis"
         },
         {
           "slug": "concepts/second-order-effects",
@@ -55,68 +82,16 @@
           "title": "Signal vs Noise"
         },
         {
-          "slug": "concepts/first-principles",
-          "title": "First Principles Thinking"
-        },
-        {
-          "slug": "concepts/opportunity-cost",
-          "title": "Opportunity Cost"
-        },
-        {
-          "slug": "concepts/compounding",
-          "title": "Compounding Effects"
+          "slug": "concepts/status-quo-bias",
+          "title": "Status Quo Bias"
         },
         {
           "slug": "concepts/survivorship-bias",
           "title": "Survivorship Bias"
         },
         {
-          "slug": "concepts/goodharts-law",
-          "title": "Goodhart's Law"
-        },
-        {
-          "slug": "concepts/planning-fallacy",
-          "title": "Planning Fallacy"
-        },
-        {
-          "slug": "concepts/confirmation-bias",
-          "title": "Confirmation Bias"
-        },
-        {
-          "slug": "concepts/loss-aversion",
-          "title": "Loss Aversion"
-        },
-        {
-          "slug": "concepts/regression-to-mean",
-          "title": "Regression to the Mean"
-        },
-        {
-          "slug": "concepts/dunning-kruger",
-          "title": "Dunning-Kruger Effect"
-        },
-        {
-          "slug": "concepts/anchoring-bias",
-          "title": "Anchoring Bias"
-        },
-        {
-          "slug": "concepts/availability-bias",
-          "title": "Availability Bias"
-        },
-        {
-          "slug": "concepts/status-quo-bias",
-          "title": "Status Quo Bias"
-        },
-        {
-          "slug": "concepts/halo-effect",
-          "title": "The Halo Effect"
-        },
-        {
-          "slug": "concepts/base-rate-neglect",
-          "title": "Base Rate Neglect"
-        },
-        {
-          "slug": "concepts/inversion",
-          "title": "Inversion"
+          "slug": "concepts/systems-thinking",
+          "title": "Systems Thinking"
         }
       ]
     },
@@ -126,48 +101,48 @@
       "icon": "compass",
       "pages": [
         {
-          "slug": "frameworks/trace-protocol",
-          "title": "The TRACE Protocol"
+          "slug": "frameworks/constraint-mapping",
+          "title": "Constraint Mapping"
         },
         {
           "slug": "frameworks/decision-matrix",
           "title": "Decision Matrix"
         },
         {
-          "slug": "frameworks/constraint-mapping",
-          "title": "Constraint Mapping"
-        },
-        {
           "slug": "frameworks/feedback-loops",
           "title": "Feedback Loop Analysis"
-        },
-        {
-          "slug": "frameworks/swot-analysis",
-          "title": "SWOT Analysis"
-        },
-        {
-          "slug": "frameworks/risk-assessment",
-          "title": "Risk Assessment"
-        },
-        {
-          "slug": "frameworks/prioritization-matrix",
-          "title": "Prioritization Matrix"
-        },
-        {
-          "slug": "frameworks/pre-mortem",
-          "title": "Pre-Mortem Analysis"
         },
         {
           "slug": "frameworks/force-field-analysis",
           "title": "Force Field Analysis"
         },
         {
+          "slug": "frameworks/jobs-to-be-done",
+          "title": "Jobs To Be Done"
+        },
+        {
+          "slug": "frameworks/pre-mortem",
+          "title": "Pre-Mortem Analysis"
+        },
+        {
+          "slug": "frameworks/prioritization-matrix",
+          "title": "Prioritization Matrix"
+        },
+        {
+          "slug": "frameworks/risk-assessment",
+          "title": "Risk Assessment"
+        },
+        {
           "slug": "frameworks/stakeholder-mapping",
           "title": "Stakeholder Mapping"
         },
         {
-          "slug": "frameworks/jobs-to-be-done",
-          "title": "Jobs To Be Done"
+          "slug": "frameworks/swot-analysis",
+          "title": "SWOT Analysis"
+        },
+        {
+          "slug": "frameworks/trace-protocol",
+          "title": "The TRACE Protocol"
         }
       ]
     },
@@ -178,63 +153,63 @@
       "pages": [
         {
           "slug": "field-notes/001-map-territory",
-          "title": "The Map Is Not The Territory"
+          "title": "Field Note: The Map Is Not The Territory"
         },
         {
           "slug": "field-notes/002-precision-accuracy",
-          "title": "Precision vs Accuracy"
+          "title": "Field Note: Precision vs Accuracy"
         },
         {
           "slug": "field-notes/003-entropy",
-          "title": "Entropy"
+          "title": "Field Note: Entropy"
         },
         {
           "slug": "field-notes/004-bottlenecks",
-          "title": "Finding the Bottleneck"
+          "title": "Field Note: Finding the Bottleneck"
         },
         {
           "slug": "field-notes/005-tribal-knowledge",
-          "title": "Tribal Knowledge"
+          "title": "Field Note: Tribal Knowledge"
         },
         {
           "slug": "field-notes/006-incentive-alignment",
-          "title": "Incentive Alignment"
+          "title": "Field Note: Incentive Alignment"
         },
         {
           "slug": "field-notes/007-documentation-debt",
-          "title": "Documentation Debt"
+          "title": "Field Note: Documentation Debt"
         },
         {
           "slug": "field-notes/008-sunk-cost-trap",
-          "title": "The Sunk Cost Trap"
+          "title": "Field Note: The Sunk Cost Trap"
         },
         {
           "slug": "field-notes/009-scope-creep",
-          "title": "Scope Creep"
+          "title": "Field Note: Scope Creep"
         },
         {
           "slug": "field-notes/010-communication-overhead",
-          "title": "Communication Overhead"
+          "title": "Field Note: Communication Overhead"
         },
         {
           "slug": "field-notes/011-vanishing-context",
-          "title": "Vanishing Context"
+          "title": "Field Note 011: Vanishing Context"
         },
         {
           "slug": "field-notes/012-analysis-paralysis",
-          "title": "Analysis Paralysis"
+          "title": "Field Note 012: Analysis Paralysis"
         },
         {
           "slug": "field-notes/013-expertise-trap",
-          "title": "The Expertise Trap"
+          "title": "Field Note 013: The Expertise Trap"
         },
         {
           "slug": "field-notes/014-reorg-trap",
-          "title": "The Reorg Trap"
+          "title": "Field Note 014: The Reorg Trap"
         },
         {
           "slug": "field-notes/015-messenger-problem",
-          "title": "The Messenger Problem"
+          "title": "Field Note 015: The Messenger Problem"
         },
         {
           "slug": "field-notes/016-handoff-problem",
@@ -264,43 +239,28 @@
       "icon": "chart",
       "pages": [
         {
-          "slug": "case-studies/manufacturing-throughput",
-          "title": "Manufacturing Throughput Crisis"
-        },
-        {
           "slug": "case-studies/communication-breakdown",
-          "title": "The Communication Breakdown"
+          "title": "Case Study: The Communication Breakdown"
         },
         {
-          "slug": "case-studies/the-invisible-process",
-          "title": "The Invisible Process"
-        },
-        {
-          "slug": "case-studies/the-startup-pivot",
-          "title": "The Startup That Wouldn't Pivot"
+          "slug": "case-studies/manufacturing-throughput",
+          "title": "Case Study: Manufacturing Throughput Crisis"
         },
         {
           "slug": "case-studies/the-data-migration",
-          "title": "The Data Migration Disaster"
+          "title": "Case Study: The Data Migration Disaster"
+        },
+        {
+          "slug": "case-studies/the-invisible-process",
+          "title": "Case Study: The Invisible Process"
         },
         {
           "slug": "case-studies/the-metric-mirage",
           "title": "The Metric Mirage"
-        }
-      ]
-    },
-    {
-      "id": "architecture",
-      "title": "Cognitive Architecture",
-      "icon": "layers",
-      "pages": [
-        {
-          "slug": "architecture/memory-system",
-          "title": "Memory System"
         },
         {
-          "slug": "architecture/terminal-component",
-          "title": "Terminal Component"
+          "slug": "case-studies/the-startup-pivot",
+          "title": "Case Study: The Startup That Wouldn't Pivot"
         }
       ]
     },
@@ -310,12 +270,16 @@
       "icon": "wrench",
       "pages": [
         {
-          "slug": "tools/five-whys",
-          "title": "The Five Whys"
+          "slug": "tools/assumption-mapping",
+          "title": "Assumption Mapping"
         },
         {
           "slug": "tools/fishbone-diagram",
           "title": "Fishbone Diagrams"
+        },
+        {
+          "slug": "tools/five-whys",
+          "title": "The Five Whys"
         },
         {
           "slug": "tools/pareto-analysis",
@@ -326,20 +290,31 @@
           "title": "Process Mapping"
         },
         {
-          "slug": "tools/time-boxing",
-          "title": "Time-Boxing"
-        },
-        {
-          "slug": "tools/assumption-mapping",
-          "title": "Assumption Mapping"
-        },
-        {
           "slug": "tools/retrospective",
           "title": "Retrospective"
+        },
+        {
+          "slug": "tools/time-boxing",
+          "title": "Time-Boxing"
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Cognitive Architecture",
+      "icon": "brain",
+      "pages": [
+        {
+          "slug": "architecture/memory-system",
+          "title": "Memory System"
+        },
+        {
+          "slug": "architecture/terminal-component",
+          "title": "Terminal Component"
         }
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:38:26.214Z",
-  "buildTimestamp": 1772372306214
+  "buildDate": "2026-03-01T15:27:17.400Z",
+  "buildTimestamp": 1772378837400
 }

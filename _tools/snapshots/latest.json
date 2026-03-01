@@ -1,101 +1,28 @@
 {
-  "generated": "2026-03-01T13:19:15.025Z",
+  "generated": "2026-03-01T15:22:53.823Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "claude/fogsift-engine-lkdbO",
     "status": [
-      "M _tools/snapshots/context-brief.md",
-      " M _tools/snapshots/latest.json",
-      " M dist/api/articles.json",
-      " M dist/api/meta.json",
-      " M dist/api/wiki/index.json",
-      " M dist/api/wiki/sitemap.json",
-      " M dist/index.html",
-      " M dist/rss.xml",
-      " M dist/wiki/architecture/memory-system.html",
-      " M dist/wiki/architecture/terminal-component.html",
-      " M dist/wiki/case-studies/communication-breakdown.html",
-      " M dist/wiki/case-studies/manufacturing-throughput.html",
-      " M dist/wiki/case-studies/the-data-migration.html",
-      " M dist/wiki/case-studies/the-invisible-process.html",
-      " M dist/wiki/case-studies/the-startup-pivot.html",
-      " M dist/wiki/concepts/anchoring-bias.html",
-      " M dist/wiki/concepts/cognitive-biases.html",
-      " M dist/wiki/concepts/compounding.html",
-      " M dist/wiki/concepts/confirmation-bias.html",
-      " M dist/wiki/concepts/dunning-kruger.html",
-      " M dist/wiki/concepts/first-principles.html",
-      " M dist/wiki/concepts/goodharts-law.html",
-      " M dist/wiki/concepts/loss-aversion.html",
-      " M dist/wiki/concepts/mental-models.html",
-      " M dist/wiki/concepts/opportunity-cost.html",
-      " M dist/wiki/concepts/planning-fallacy.html",
-      " M dist/wiki/concepts/regression-to-mean.html",
-      " M dist/wiki/concepts/root-cause.html",
-      " M dist/wiki/concepts/second-order-effects.html",
-      " M dist/wiki/concepts/signal-vs-noise.html",
-      " M dist/wiki/concepts/survivorship-bias.html",
-      " M dist/wiki/concepts/systems-thinking.html",
-      " M dist/wiki/content-creation-pipeline.html",
-      " M dist/wiki/creative-pipeline.html",
-      " M dist/wiki/diagnostic-process.html",
-      " M dist/wiki/faq.html",
-      " M dist/wiki/field-notes/001-map-territory.html",
-      " M dist/wiki/field-notes/002-precision-accuracy.html",
-      " M dist/wiki/field-notes/003-entropy.html",
-      " M dist/wiki/field-notes/004-bottlenecks.html",
-      " M dist/wiki/field-notes/005-tribal-knowledge.html",
-      " M dist/wiki/field-notes/006-incentive-alignment.html",
-      " M dist/wiki/field-notes/007-documentation-debt.html",
-      " M dist/wiki/field-notes/008-sunk-cost-trap.html",
-      " M dist/wiki/field-notes/009-scope-creep.html",
-      " M dist/wiki/field-notes/010-communication-overhead.html",
-      " M dist/wiki/field-notes/011-vanishing-context.html",
-      " M dist/wiki/field-notes/012-analysis-paralysis.html",
-      " M dist/wiki/field-notes/013-expertise-trap.html",
-      " M dist/wiki/field-notes/014-reorg-trap.html",
-      " M dist/wiki/field-notes/015-messenger-problem.html",
-      " M dist/wiki/frameworks/constraint-mapping.html",
-      " M dist/wiki/frameworks/decision-matrix.html",
-      " M dist/wiki/frameworks/feedback-loops.html",
-      " M dist/wiki/frameworks/force-field-analysis.html",
-      " M dist/wiki/frameworks/pre-mortem.html",
-      " M dist/wiki/frameworks/prioritization-matrix.html",
-      " M dist/wiki/frameworks/risk-assessment.html",
-      " M dist/wiki/frameworks/stakeholder-mapping.html",
-      " M dist/wiki/frameworks/swot-analysis.html",
-      " M dist/wiki/frameworks/trace-protocol.html",
-      " M dist/wiki/getting-started.html",
-      " M dist/wiki/how-we-work.html",
-      " M dist/wiki/index.html",
-      " M dist/wiki/tools/assumption-mapping.html",
-      " M dist/wiki/tools/fishbone-diagram.html",
-      " M dist/wiki/tools/five-whys.html",
-      " M dist/wiki/tools/pareto-analysis.html",
-      " M dist/wiki/tools/process-mapping.html",
-      " M dist/wiki/tools/retrospective.html",
-      " M dist/wiki/tools/time-boxing.html",
-      " M src/wiki/index.json",
-      " M tests/report.json",
-      " M tests/report.txt"
+      "M _tools/snapshots/context-brief.md"
     ],
     "unpushed": 0,
     "recentCommits": [
-      "6ac70b0 feat: wiki concept — Anchoring Bias",
-      "82bca4d feat: wiki concept — Dunning-Kruger Effect",
-      "f73889d feat: wiki field note 015 — The Messenger Problem",
-      "6c33cf2 feat: wiki framework — Stakeholder Mapping",
-      "f1db4e4 feat: wiki field note 014 — The Reorg Trap",
-      "4106405 feat: 404 search links + wiki concept Regression to the Mean",
-      "ff164a0 feat: auto-generated sitemap.xml + wiki concept Loss Aversion",
-      "66f35aa feat: wiki concept — Loss Aversion",
-      "996ea83 feat: search bar on wiki index + field note 013",
-      "9bc4982 feat: wiki field note 013 — The Expertise Trap"
+      "a35096e chore: update test reports after wiki expansion",
+      "1a840af feat: wiki concept — Inversion",
+      "bce13a9 feat: wiki field note 020 — The Adjacent Problem",
+      "e61a340 feat: wiki case study — The Metric Mirage",
+      "93c6089 feat: wiki concept — Base Rate Neglect",
+      "d0cba8e feat: wiki field note 019 — The Proxy Trap",
+      "787a8fa feat: wiki framework — Jobs To Be Done",
+      "3cc9932 feat: wiki field note 018 — Permission Debt",
+      "650e2c7 feat: wiki concept — The Halo Effect",
+      "bd01102 feat: wiki field note 017 — The Hero Dependency"
     ],
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:45254/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:22478/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -277,7 +204,7 @@
       {
         "path": "css/wiki.css",
         "size": 16821,
-        "modified": "2026-03-01T13:01:53.391Z",
+        "modified": "2026-03-01T13:01:53.000Z",
         "lines": 760
       }
     ],
@@ -375,7 +302,7 @@
       {
         "path": "js/search-page.js",
         "size": 8651,
-        "modified": "2026-03-01T12:44:35.042Z",
+        "modified": "2026-03-01T12:44:35.000Z",
         "lines": 264
       },
       {
@@ -393,7 +320,7 @@
       {
         "path": "js/supply-chain-sim.js",
         "size": 40051,
-        "modified": "2026-03-01T11:54:45.380Z",
+        "modified": "2026-03-01T11:54:45.000Z",
         "lines": 767
       },
       {
@@ -467,7 +394,7 @@
       {
         "path": "404.html",
         "size": 2844,
-        "modified": "2026-03-01T13:06:09.156Z",
+        "modified": "2026-03-01T13:06:09.000Z",
         "lines": 67
       },
       {
@@ -533,7 +460,7 @@
       {
         "path": "index.html",
         "size": 71253,
-        "modified": "2026-03-01T12:16:57.551Z",
+        "modified": "2026-03-01T12:16:57.000Z",
         "lines": 1174
       },
       {
@@ -605,7 +532,7 @@
       {
         "path": "search.html",
         "size": 8277,
-        "modified": "2026-03-01T12:42:53.235Z",
+        "modified": "2026-03-01T12:42:53.000Z",
         "lines": 220
       },
       {
@@ -641,13 +568,13 @@
       {
         "path": "wiki-index-template.html",
         "size": 3904,
-        "modified": "2026-03-01T13:01:37.246Z",
+        "modified": "2026-03-01T13:01:37.000Z",
         "lines": 80
       },
       {
         "path": "wiki-template.html",
         "size": 4165,
-        "modified": "2026-03-01T12:54:04.824Z",
+        "modified": "2026-03-01T12:54:04.000Z",
         "lines": 94
       },
       {
@@ -1031,6 +958,12 @@
         "lines": 174
       },
       {
+        "path": "wiki/case-studies/the-metric-mirage.md",
+        "size": 7862,
+        "modified": "2026-03-01T13:35:11.000Z",
+        "lines": 100
+      },
+      {
         "path": "wiki/case-studies/the-startup-pivot.md",
         "size": 5435,
         "modified": "2026-02-28T22:34:25.000Z",
@@ -1039,8 +972,20 @@
       {
         "path": "wiki/concepts/anchoring-bias.md",
         "size": 6236,
-        "modified": "2026-03-01T13:13:34.577Z",
+        "modified": "2026-03-01T13:13:34.000Z",
         "lines": 101
+      },
+      {
+        "path": "wiki/concepts/availability-bias.md",
+        "size": 6928,
+        "modified": "2026-03-01T13:25:08.000Z",
+        "lines": 89
+      },
+      {
+        "path": "wiki/concepts/base-rate-neglect.md",
+        "size": 7761,
+        "modified": "2026-03-01T13:33:38.000Z",
+        "lines": 100
       },
       {
         "path": "wiki/concepts/cognitive-biases.md",
@@ -1057,13 +1002,13 @@
       {
         "path": "wiki/concepts/confirmation-bias.md",
         "size": 6916,
-        "modified": "2026-03-01T12:58:17.084Z",
+        "modified": "2026-03-01T12:58:17.000Z",
         "lines": 98
       },
       {
         "path": "wiki/concepts/dunning-kruger.md",
         "size": 6129,
-        "modified": "2026-03-01T13:12:09.408Z",
+        "modified": "2026-03-01T13:12:09.000Z",
         "lines": 102
       },
       {
@@ -1075,13 +1020,25 @@
       {
         "path": "wiki/concepts/goodharts-law.md",
         "size": 5341,
-        "modified": "2026-03-01T12:32:09.876Z",
+        "modified": "2026-03-01T12:32:09.000Z",
         "lines": 92
+      },
+      {
+        "path": "wiki/concepts/halo-effect.md",
+        "size": 7115,
+        "modified": "2026-03-01T13:28:42.000Z",
+        "lines": 84
+      },
+      {
+        "path": "wiki/concepts/inversion.md",
+        "size": 6641,
+        "modified": "2026-03-01T13:38:01.000Z",
+        "lines": 99
       },
       {
         "path": "wiki/concepts/loss-aversion.md",
         "size": 6271,
-        "modified": "2026-03-01T13:03:01.885Z",
+        "modified": "2026-03-01T13:03:01.000Z",
         "lines": 84
       },
       {
@@ -1099,13 +1056,13 @@
       {
         "path": "wiki/concepts/planning-fallacy.md",
         "size": 6571,
-        "modified": "2026-03-01T12:56:32.902Z",
+        "modified": "2026-03-01T12:56:32.000Z",
         "lines": 104
       },
       {
         "path": "wiki/concepts/regression-to-mean.md",
         "size": 5950,
-        "modified": "2026-03-01T13:06:54.950Z",
+        "modified": "2026-03-01T13:06:54.000Z",
         "lines": 99
       },
       {
@@ -1125,6 +1082,12 @@
         "size": 4912,
         "modified": "2026-02-28T22:34:25.000Z",
         "lines": 157
+      },
+      {
+        "path": "wiki/concepts/status-quo-bias.md",
+        "size": 7030,
+        "modified": "2026-03-01T13:26:19.000Z",
+        "lines": 94
       },
       {
         "path": "wiki/concepts/survivorship-bias.md",
@@ -1225,32 +1188,62 @@
       {
         "path": "wiki/field-notes/011-vanishing-context.md",
         "size": 4814,
-        "modified": "2026-03-01T12:23:49.493Z",
+        "modified": "2026-03-01T12:23:49.000Z",
         "lines": 83
       },
       {
         "path": "wiki/field-notes/012-analysis-paralysis.md",
         "size": 5695,
-        "modified": "2026-03-01T12:43:49.310Z",
+        "modified": "2026-03-01T12:43:49.000Z",
         "lines": 88
       },
       {
         "path": "wiki/field-notes/013-expertise-trap.md",
         "size": 6166,
-        "modified": "2026-03-01T13:00:27.477Z",
+        "modified": "2026-03-01T13:00:27.000Z",
         "lines": 91
       },
       {
         "path": "wiki/field-notes/014-reorg-trap.md",
         "size": 6096,
-        "modified": "2026-03-01T13:08:11.862Z",
+        "modified": "2026-03-01T13:08:11.000Z",
         "lines": 111
       },
       {
         "path": "wiki/field-notes/015-messenger-problem.md",
         "size": 6617,
-        "modified": "2026-03-01T13:10:47.674Z",
+        "modified": "2026-03-01T13:10:47.000Z",
         "lines": 87
+      },
+      {
+        "path": "wiki/field-notes/016-handoff-problem.md",
+        "size": 7152,
+        "modified": "2026-03-01T13:22:22.000Z",
+        "lines": 111
+      },
+      {
+        "path": "wiki/field-notes/017-hero-dependency.md",
+        "size": 6942,
+        "modified": "2026-03-01T13:27:31.000Z",
+        "lines": 101
+      },
+      {
+        "path": "wiki/field-notes/018-permission-debt.md",
+        "size": 7424,
+        "modified": "2026-03-01T13:29:50.000Z",
+        "lines": 92
+      },
+      {
+        "path": "wiki/field-notes/019-the-proxy-trap.md",
+        "size": 7687,
+        "modified": "2026-03-01T13:32:22.000Z",
+        "lines": 96
+      },
+      {
+        "path": "wiki/field-notes/020-the-adjacent-problem.md",
+        "size": 6800,
+        "modified": "2026-03-01T13:36:41.000Z",
+        "lines": 102
       },
       {
         "path": "wiki/frameworks/constraint-mapping.md",
@@ -1273,13 +1266,19 @@
       {
         "path": "wiki/frameworks/force-field-analysis.md",
         "size": 6379,
-        "modified": "2026-03-01T12:59:22.224Z",
+        "modified": "2026-03-01T12:59:22.000Z",
         "lines": 156
+      },
+      {
+        "path": "wiki/frameworks/jobs-to-be-done.md",
+        "size": 8147,
+        "modified": "2026-03-01T13:31:08.000Z",
+        "lines": 141
       },
       {
         "path": "wiki/frameworks/pre-mortem.md",
         "size": 5905,
-        "modified": "2026-03-01T12:23:55.482Z",
+        "modified": "2026-03-01T12:23:55.000Z",
         "lines": 123
       },
       {
@@ -1297,7 +1296,7 @@
       {
         "path": "wiki/frameworks/stakeholder-mapping.md",
         "size": 6510,
-        "modified": "2026-03-01T13:09:37.259Z",
+        "modified": "2026-03-01T13:09:37.000Z",
         "lines": 127
       },
       {
@@ -1326,9 +1325,9 @@
       },
       {
         "path": "wiki/index.json",
-        "size": 5821,
-        "modified": "2026-03-01T13:16:06.322Z",
-        "lines": 116
+        "size": 6786,
+        "modified": "2026-03-01T13:38:10.000Z",
+        "lines": 128
       },
       {
         "path": "wiki/tools/assumption-mapping.md",
@@ -1376,21 +1375,21 @@
   },
   "build": {
     "exists": true,
-    "htmlPageCount": 97,
+    "htmlPageCount": 109,
     "keyFileSizes": {
       "styles.css": 204703,
       "app.js": 83639,
       "theme-init.js": 661,
-      "search-index.json": 74596,
-      "index.html": 87307
+      "search-index.json": 86831,
+      "index.html": 87327
     },
-    "totalFiles": 155
+    "totalFiles": 167
   },
   "tests": {
-    "timestamp": "2026-03-01T13:12:43.133Z",
+    "timestamp": "2026-03-01T13:32:59.370Z",
     "summary": {
-      "total": 138,
-      "passed": 129,
+      "total": 147,
+      "passed": 138,
       "failed": 0,
       "warned": 9
     },
@@ -1403,7 +1402,7 @@
       },
       {
         "name": "HTML Validation",
-        "passed": 96,
+        "passed": 105,
         "failed": 0,
         "warned": 0
       },
@@ -1453,14 +1452,14 @@
   },
   "wiki": {
     "exists": true,
-    "totalPages": 62,
+    "totalPages": 74,
     "categories": {
       "architecture": 2,
-      "case-studies": 5,
-      "concepts": 17,
+      "case-studies": 6,
+      "concepts": 22,
       "root": 6,
-      "field-notes": 15,
-      "frameworks": 10,
+      "field-notes": 20,
+      "frameworks": 11,
       "tools": 7
     }
   },
@@ -1504,16 +1503,16 @@
   "summary": {
     "version": "0.2.0",
     "branch": "claude/fogsift-engine-lkdbO",
-    "uncommittedFiles": 74,
+    "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,
     "srcJsFiles": 30,
     "srcHtmlFiles": 32,
     "srcTotalLines": 34906,
-    "builtPages": 97,
-    "wikiPages": 62,
-    "testsPassed": 129,
+    "builtPages": 109,
+    "wikiPages": 74,
+    "testsPassed": 138,
     "testsFailed": 0,
     "testsWarned": 9,
     "toolsCount": 6,

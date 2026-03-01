@@ -1,40 +1,8 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:38:26.214Z",
-  "buildTimestamp": 1772372306214,
+  "buildDate": "2026-03-01T15:27:17.400Z",
+  "buildTimestamp": 1772378837400,
   "categories": [
-    {
-      "id": "docs",
-      "title": "Documentation",
-      "range": "10-19",
-      "rangeStart": 10,
-      "pages": [
-        {
-          "slug": "getting-started",
-          "title": "Getting Started",
-          "jdNumber": "10.01",
-          "href": "getting-started.html"
-        },
-        {
-          "slug": "how-we-work",
-          "title": "How We Work",
-          "jdNumber": "10.02",
-          "href": "how-we-work.html"
-        },
-        {
-          "slug": "diagnostic-process",
-          "title": "The Diagnostic Process",
-          "jdNumber": "10.03",
-          "href": "diagnostic-process.html"
-        },
-        {
-          "slug": "faq",
-          "title": "Frequently Asked Questions",
-          "jdNumber": "10.04",
-          "href": "faq.html"
-        }
-      ]
-    },
     {
       "id": "concepts",
       "title": "Concepts",
@@ -42,22 +10,22 @@
       "rangeStart": 20,
       "pages": [
         {
-          "slug": "concepts/root-cause",
-          "title": "Root Cause Analysis",
+          "slug": "concepts/anchoring-bias",
+          "title": "Anchoring Bias",
           "jdNumber": "20.01",
-          "href": "concepts/root-cause.html"
+          "href": "concepts/anchoring-bias.html"
         },
         {
-          "slug": "concepts/mental-models",
-          "title": "Mental Models",
+          "slug": "concepts/availability-bias",
+          "title": "Availability Bias",
           "jdNumber": "20.02",
-          "href": "concepts/mental-models.html"
+          "href": "concepts/availability-bias.html"
         },
         {
-          "slug": "concepts/systems-thinking",
-          "title": "Systems Thinking",
+          "slug": "concepts/base-rate-neglect",
+          "title": "Base Rate Neglect",
           "jdNumber": "20.03",
-          "href": "concepts/systems-thinking.html"
+          "href": "concepts/base-rate-neglect.html"
         },
         {
           "slug": "concepts/cognitive-biases",
@@ -66,112 +34,112 @@
           "href": "concepts/cognitive-biases.html"
         },
         {
+          "slug": "concepts/compounding",
+          "title": "Compounding Effects",
+          "jdNumber": "20.05",
+          "href": "concepts/compounding.html"
+        },
+        {
+          "slug": "concepts/confirmation-bias",
+          "title": "Confirmation Bias",
+          "jdNumber": "20.06",
+          "href": "concepts/confirmation-bias.html"
+        },
+        {
+          "slug": "concepts/dunning-kruger",
+          "title": "Dunning-Kruger Effect",
+          "jdNumber": "20.07",
+          "href": "concepts/dunning-kruger.html"
+        },
+        {
+          "slug": "concepts/first-principles",
+          "title": "First Principles Thinking",
+          "jdNumber": "20.08",
+          "href": "concepts/first-principles.html"
+        },
+        {
+          "slug": "concepts/goodharts-law",
+          "title": "Goodhart's Law",
+          "jdNumber": "20.09",
+          "href": "concepts/goodharts-law.html"
+        },
+        {
+          "slug": "concepts/halo-effect",
+          "title": "The Halo Effect",
+          "jdNumber": "20.10",
+          "href": "concepts/halo-effect.html"
+        },
+        {
+          "slug": "concepts/inversion",
+          "title": "Inversion",
+          "jdNumber": "20.11",
+          "href": "concepts/inversion.html"
+        },
+        {
+          "slug": "concepts/loss-aversion",
+          "title": "Loss Aversion",
+          "jdNumber": "20.12",
+          "href": "concepts/loss-aversion.html"
+        },
+        {
+          "slug": "concepts/mental-models",
+          "title": "Mental Models",
+          "jdNumber": "20.13",
+          "href": "concepts/mental-models.html"
+        },
+        {
+          "slug": "concepts/opportunity-cost",
+          "title": "Opportunity Cost",
+          "jdNumber": "20.14",
+          "href": "concepts/opportunity-cost.html"
+        },
+        {
+          "slug": "concepts/planning-fallacy",
+          "title": "Planning Fallacy",
+          "jdNumber": "20.15",
+          "href": "concepts/planning-fallacy.html"
+        },
+        {
+          "slug": "concepts/regression-to-mean",
+          "title": "Regression to the Mean",
+          "jdNumber": "20.16",
+          "href": "concepts/regression-to-mean.html"
+        },
+        {
+          "slug": "concepts/root-cause",
+          "title": "Root Cause Analysis",
+          "jdNumber": "20.17",
+          "href": "concepts/root-cause.html"
+        },
+        {
           "slug": "concepts/second-order-effects",
           "title": "Second-Order Effects",
-          "jdNumber": "20.05",
+          "jdNumber": "20.18",
           "href": "concepts/second-order-effects.html"
         },
         {
           "slug": "concepts/signal-vs-noise",
           "title": "Signal vs Noise",
-          "jdNumber": "20.06",
+          "jdNumber": "20.19",
           "href": "concepts/signal-vs-noise.html"
-        },
-        {
-          "slug": "concepts/first-principles",
-          "title": "First Principles Thinking",
-          "jdNumber": "20.07",
-          "href": "concepts/first-principles.html"
-        },
-        {
-          "slug": "concepts/opportunity-cost",
-          "title": "Opportunity Cost",
-          "jdNumber": "20.08",
-          "href": "concepts/opportunity-cost.html"
-        },
-        {
-          "slug": "concepts/compounding",
-          "title": "Compounding Effects",
-          "jdNumber": "20.09",
-          "href": "concepts/compounding.html"
-        },
-        {
-          "slug": "concepts/survivorship-bias",
-          "title": "Survivorship Bias",
-          "jdNumber": "20.10",
-          "href": "concepts/survivorship-bias.html"
-        },
-        {
-          "slug": "concepts/goodharts-law",
-          "title": "Goodhart's Law",
-          "jdNumber": "20.11",
-          "href": "concepts/goodharts-law.html"
-        },
-        {
-          "slug": "concepts/planning-fallacy",
-          "title": "Planning Fallacy",
-          "jdNumber": "20.12",
-          "href": "concepts/planning-fallacy.html"
-        },
-        {
-          "slug": "concepts/confirmation-bias",
-          "title": "Confirmation Bias",
-          "jdNumber": "20.13",
-          "href": "concepts/confirmation-bias.html"
-        },
-        {
-          "slug": "concepts/loss-aversion",
-          "title": "Loss Aversion",
-          "jdNumber": "20.14",
-          "href": "concepts/loss-aversion.html"
-        },
-        {
-          "slug": "concepts/regression-to-mean",
-          "title": "Regression to the Mean",
-          "jdNumber": "20.15",
-          "href": "concepts/regression-to-mean.html"
-        },
-        {
-          "slug": "concepts/dunning-kruger",
-          "title": "Dunning-Kruger Effect",
-          "jdNumber": "20.16",
-          "href": "concepts/dunning-kruger.html"
-        },
-        {
-          "slug": "concepts/anchoring-bias",
-          "title": "Anchoring Bias",
-          "jdNumber": "20.17",
-          "href": "concepts/anchoring-bias.html"
-        },
-        {
-          "slug": "concepts/availability-bias",
-          "title": "Availability Bias",
-          "jdNumber": "20.18",
-          "href": "concepts/availability-bias.html"
         },
         {
           "slug": "concepts/status-quo-bias",
           "title": "Status Quo Bias",
-          "jdNumber": "20.19",
+          "jdNumber": "20.20",
           "href": "concepts/status-quo-bias.html"
         },
         {
-          "slug": "concepts/halo-effect",
-          "title": "The Halo Effect",
-          "jdNumber": "20.20",
-          "href": "concepts/halo-effect.html"
-        },
-        {
-          "slug": "concepts/base-rate-neglect",
-          "title": "Base Rate Neglect",
+          "slug": "concepts/survivorship-bias",
+          "title": "Survivorship Bias",
           "jdNumber": "20.21",
-          "href": "concepts/base-rate-neglect.html"
+          "href": "concepts/survivorship-bias.html"
         },
         {
-          "slug": "concepts/inversion",
-          "title": "Inversion",
+          "slug": "concepts/systems-thinking",
+          "title": "Systems Thinking",
           "jdNumber": "20.22",
-          "href": "concepts/inversion.html"
+          "href": "concepts/systems-thinking.html"
         }
       ]
     },
@@ -182,10 +150,10 @@
       "rangeStart": 30,
       "pages": [
         {
-          "slug": "frameworks/trace-protocol",
-          "title": "The TRACE Protocol",
+          "slug": "frameworks/constraint-mapping",
+          "title": "Constraint Mapping",
           "jdNumber": "30.01",
-          "href": "frameworks/trace-protocol.html"
+          "href": "frameworks/constraint-mapping.html"
         },
         {
           "slug": "frameworks/decision-matrix",
@@ -194,28 +162,28 @@
           "href": "frameworks/decision-matrix.html"
         },
         {
-          "slug": "frameworks/constraint-mapping",
-          "title": "Constraint Mapping",
-          "jdNumber": "30.03",
-          "href": "frameworks/constraint-mapping.html"
-        },
-        {
           "slug": "frameworks/feedback-loops",
           "title": "Feedback Loop Analysis",
-          "jdNumber": "30.04",
+          "jdNumber": "30.03",
           "href": "frameworks/feedback-loops.html"
         },
         {
-          "slug": "frameworks/swot-analysis",
-          "title": "SWOT Analysis",
-          "jdNumber": "30.05",
-          "href": "frameworks/swot-analysis.html"
+          "slug": "frameworks/force-field-analysis",
+          "title": "Force Field Analysis",
+          "jdNumber": "30.04",
+          "href": "frameworks/force-field-analysis.html"
         },
         {
-          "slug": "frameworks/risk-assessment",
-          "title": "Risk Assessment",
+          "slug": "frameworks/jobs-to-be-done",
+          "title": "Jobs To Be Done",
+          "jdNumber": "30.05",
+          "href": "frameworks/jobs-to-be-done.html"
+        },
+        {
+          "slug": "frameworks/pre-mortem",
+          "title": "Pre-Mortem Analysis",
           "jdNumber": "30.06",
-          "href": "frameworks/risk-assessment.html"
+          "href": "frameworks/pre-mortem.html"
         },
         {
           "slug": "frameworks/prioritization-matrix",
@@ -224,28 +192,28 @@
           "href": "frameworks/prioritization-matrix.html"
         },
         {
-          "slug": "frameworks/pre-mortem",
-          "title": "Pre-Mortem Analysis",
+          "slug": "frameworks/risk-assessment",
+          "title": "Risk Assessment",
           "jdNumber": "30.08",
-          "href": "frameworks/pre-mortem.html"
-        },
-        {
-          "slug": "frameworks/force-field-analysis",
-          "title": "Force Field Analysis",
-          "jdNumber": "30.09",
-          "href": "frameworks/force-field-analysis.html"
+          "href": "frameworks/risk-assessment.html"
         },
         {
           "slug": "frameworks/stakeholder-mapping",
           "title": "Stakeholder Mapping",
-          "jdNumber": "30.10",
+          "jdNumber": "30.09",
           "href": "frameworks/stakeholder-mapping.html"
         },
         {
-          "slug": "frameworks/jobs-to-be-done",
-          "title": "Jobs To Be Done",
+          "slug": "frameworks/swot-analysis",
+          "title": "SWOT Analysis",
+          "jdNumber": "30.10",
+          "href": "frameworks/swot-analysis.html"
+        },
+        {
+          "slug": "frameworks/trace-protocol",
+          "title": "The TRACE Protocol",
           "jdNumber": "30.11",
-          "href": "frameworks/jobs-to-be-done.html"
+          "href": "frameworks/trace-protocol.html"
         }
       ]
     },
@@ -257,91 +225,91 @@
       "pages": [
         {
           "slug": "field-notes/001-map-territory",
-          "title": "The Map Is Not The Territory",
+          "title": "Field Note: The Map Is Not The Territory",
           "jdNumber": "40.01",
           "href": "field-notes/001-map-territory.html"
         },
         {
           "slug": "field-notes/002-precision-accuracy",
-          "title": "Precision vs Accuracy",
+          "title": "Field Note: Precision vs Accuracy",
           "jdNumber": "40.02",
           "href": "field-notes/002-precision-accuracy.html"
         },
         {
           "slug": "field-notes/003-entropy",
-          "title": "Entropy",
+          "title": "Field Note: Entropy",
           "jdNumber": "40.03",
           "href": "field-notes/003-entropy.html"
         },
         {
           "slug": "field-notes/004-bottlenecks",
-          "title": "Finding the Bottleneck",
+          "title": "Field Note: Finding the Bottleneck",
           "jdNumber": "40.04",
           "href": "field-notes/004-bottlenecks.html"
         },
         {
           "slug": "field-notes/005-tribal-knowledge",
-          "title": "Tribal Knowledge",
+          "title": "Field Note: Tribal Knowledge",
           "jdNumber": "40.05",
           "href": "field-notes/005-tribal-knowledge.html"
         },
         {
           "slug": "field-notes/006-incentive-alignment",
-          "title": "Incentive Alignment",
+          "title": "Field Note: Incentive Alignment",
           "jdNumber": "40.06",
           "href": "field-notes/006-incentive-alignment.html"
         },
         {
           "slug": "field-notes/007-documentation-debt",
-          "title": "Documentation Debt",
+          "title": "Field Note: Documentation Debt",
           "jdNumber": "40.07",
           "href": "field-notes/007-documentation-debt.html"
         },
         {
           "slug": "field-notes/008-sunk-cost-trap",
-          "title": "The Sunk Cost Trap",
+          "title": "Field Note: The Sunk Cost Trap",
           "jdNumber": "40.08",
           "href": "field-notes/008-sunk-cost-trap.html"
         },
         {
           "slug": "field-notes/009-scope-creep",
-          "title": "Scope Creep",
+          "title": "Field Note: Scope Creep",
           "jdNumber": "40.09",
           "href": "field-notes/009-scope-creep.html"
         },
         {
           "slug": "field-notes/010-communication-overhead",
-          "title": "Communication Overhead",
+          "title": "Field Note: Communication Overhead",
           "jdNumber": "40.10",
           "href": "field-notes/010-communication-overhead.html"
         },
         {
           "slug": "field-notes/011-vanishing-context",
-          "title": "Vanishing Context",
+          "title": "Field Note 011: Vanishing Context",
           "jdNumber": "40.11",
           "href": "field-notes/011-vanishing-context.html"
         },
         {
           "slug": "field-notes/012-analysis-paralysis",
-          "title": "Analysis Paralysis",
+          "title": "Field Note 012: Analysis Paralysis",
           "jdNumber": "40.12",
           "href": "field-notes/012-analysis-paralysis.html"
         },
         {
           "slug": "field-notes/013-expertise-trap",
-          "title": "The Expertise Trap",
+          "title": "Field Note 013: The Expertise Trap",
           "jdNumber": "40.13",
           "href": "field-notes/013-expertise-trap.html"
         },
         {
           "slug": "field-notes/014-reorg-trap",
-          "title": "The Reorg Trap",
+          "title": "Field Note 014: The Reorg Trap",
           "jdNumber": "40.14",
           "href": "field-notes/014-reorg-trap.html"
         },
         {
           "slug": "field-notes/015-messenger-problem",
-          "title": "The Messenger Problem",
+          "title": "Field Note 015: The Messenger Problem",
           "jdNumber": "40.15",
           "href": "field-notes/015-messenger-problem.html"
         },
@@ -384,40 +352,90 @@
       "rangeStart": 50,
       "pages": [
         {
-          "slug": "case-studies/manufacturing-throughput",
-          "title": "Manufacturing Throughput Crisis",
-          "jdNumber": "50.01",
-          "href": "case-studies/manufacturing-throughput.html"
-        },
-        {
           "slug": "case-studies/communication-breakdown",
-          "title": "The Communication Breakdown",
-          "jdNumber": "50.02",
+          "title": "Case Study: The Communication Breakdown",
+          "jdNumber": "50.01",
           "href": "case-studies/communication-breakdown.html"
         },
         {
-          "slug": "case-studies/the-invisible-process",
-          "title": "The Invisible Process",
-          "jdNumber": "50.03",
-          "href": "case-studies/the-invisible-process.html"
-        },
-        {
-          "slug": "case-studies/the-startup-pivot",
-          "title": "The Startup That Wouldn't Pivot",
-          "jdNumber": "50.04",
-          "href": "case-studies/the-startup-pivot.html"
+          "slug": "case-studies/manufacturing-throughput",
+          "title": "Case Study: Manufacturing Throughput Crisis",
+          "jdNumber": "50.02",
+          "href": "case-studies/manufacturing-throughput.html"
         },
         {
           "slug": "case-studies/the-data-migration",
-          "title": "The Data Migration Disaster",
-          "jdNumber": "50.05",
+          "title": "Case Study: The Data Migration Disaster",
+          "jdNumber": "50.03",
           "href": "case-studies/the-data-migration.html"
+        },
+        {
+          "slug": "case-studies/the-invisible-process",
+          "title": "Case Study: The Invisible Process",
+          "jdNumber": "50.04",
+          "href": "case-studies/the-invisible-process.html"
         },
         {
           "slug": "case-studies/the-metric-mirage",
           "title": "The Metric Mirage",
-          "jdNumber": "50.06",
+          "jdNumber": "50.05",
           "href": "case-studies/the-metric-mirage.html"
+        },
+        {
+          "slug": "case-studies/the-startup-pivot",
+          "title": "Case Study: The Startup That Wouldn't Pivot",
+          "jdNumber": "50.06",
+          "href": "case-studies/the-startup-pivot.html"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools & Techniques",
+      "range": "60-69",
+      "rangeStart": 60,
+      "pages": [
+        {
+          "slug": "tools/assumption-mapping",
+          "title": "Assumption Mapping",
+          "jdNumber": "60.01",
+          "href": "tools/assumption-mapping.html"
+        },
+        {
+          "slug": "tools/fishbone-diagram",
+          "title": "Fishbone Diagrams",
+          "jdNumber": "60.02",
+          "href": "tools/fishbone-diagram.html"
+        },
+        {
+          "slug": "tools/five-whys",
+          "title": "The Five Whys",
+          "jdNumber": "60.03",
+          "href": "tools/five-whys.html"
+        },
+        {
+          "slug": "tools/pareto-analysis",
+          "title": "Pareto Analysis",
+          "jdNumber": "60.04",
+          "href": "tools/pareto-analysis.html"
+        },
+        {
+          "slug": "tools/process-mapping",
+          "title": "Process Mapping",
+          "jdNumber": "60.05",
+          "href": "tools/process-mapping.html"
+        },
+        {
+          "slug": "tools/retrospective",
+          "title": "Retrospective",
+          "jdNumber": "60.06",
+          "href": "tools/retrospective.html"
+        },
+        {
+          "slug": "tools/time-boxing",
+          "title": "Time-Boxing",
+          "jdNumber": "60.07",
+          "href": "tools/time-boxing.html"
         }
       ]
     },
@@ -438,56 +456,6 @@
           "title": "Terminal Component",
           "jdNumber": "90.02",
           "href": "architecture/terminal-component.html"
-        }
-      ]
-    },
-    {
-      "id": "tools",
-      "title": "Tools & Techniques",
-      "range": "60-69",
-      "rangeStart": 60,
-      "pages": [
-        {
-          "slug": "tools/five-whys",
-          "title": "The Five Whys",
-          "jdNumber": "60.01",
-          "href": "tools/five-whys.html"
-        },
-        {
-          "slug": "tools/fishbone-diagram",
-          "title": "Fishbone Diagrams",
-          "jdNumber": "60.02",
-          "href": "tools/fishbone-diagram.html"
-        },
-        {
-          "slug": "tools/pareto-analysis",
-          "title": "Pareto Analysis",
-          "jdNumber": "60.03",
-          "href": "tools/pareto-analysis.html"
-        },
-        {
-          "slug": "tools/process-mapping",
-          "title": "Process Mapping",
-          "jdNumber": "60.04",
-          "href": "tools/process-mapping.html"
-        },
-        {
-          "slug": "tools/time-boxing",
-          "title": "Time-Boxing",
-          "jdNumber": "60.05",
-          "href": "tools/time-boxing.html"
-        },
-        {
-          "slug": "tools/assumption-mapping",
-          "title": "Assumption Mapping",
-          "jdNumber": "60.06",
-          "href": "tools/assumption-mapping.html"
-        },
-        {
-          "slug": "tools/retrospective",
-          "title": "Retrospective",
-          "jdNumber": "60.07",
-          "href": "tools/retrospective.html"
         }
       ]
     }

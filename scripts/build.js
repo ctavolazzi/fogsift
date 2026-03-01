@@ -412,9 +412,8 @@ function processHtml() {
     html = html.replace(/\{\{VERSION\}\}/g, VERSION);
 
     // Inject wiki content cards for homepage section
-    const wikiIndexPath2 = path.join(WIKI_SRC, 'index.json');
-    if (fs.existsSync(wikiIndexPath2)) {
-        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath2, 'utf8'));
+    {
+        const wikiIndex = buildWikiIndex();
         const totalPages = wikiIndex.categories.reduce((sum, cat) => sum + cat.pages.length, 0);
         const statsLine = `${totalPages} free articles. Concepts, frameworks, tools, field notes, and case studies.`;
         html = html.replace(/\{\{WIKI_STATS\}\}/g, statsLine);
@@ -473,9 +472,6 @@ function processHtml() {
                 </a>`
         ).join('\n                ');
         html = html.replace(/\{\{WIKI_CARDS\}\}/g, cardsHtml);
-    } else {
-        html = html.replace(/\{\{WIKI_STATS\}\}/g, 'Explore the knowledge base.');
-        html = html.replace(/\{\{WIKI_CARDS\}\}/g, '');
     }
 
     // Update lastmod in any inline schema
@@ -599,6 +595,50 @@ function extractDescription(markdown) {
     return 'Fogsift Wiki';
 }
 
+// Category definitions — source of truth for wiki nav structure.
+// Order here = order in nav sidebar and wiki index page.
+// New markdown files in these dirs are automatically discovered at build time.
+const WIKI_CATEGORIES = [
+    { id: 'concepts',      title: 'Concepts',               icon: 'lightbulb', dir: 'concepts' },
+    { id: 'frameworks',    title: 'Frameworks',             icon: 'compass',   dir: 'frameworks' },
+    { id: 'field-notes',   title: 'Field Notes',            icon: 'pencil',    dir: 'field-notes' },
+    { id: 'case-studies',  title: 'Case Studies',           icon: 'chart',     dir: 'case-studies' },
+    { id: 'tools',         title: 'Tools & Techniques',     icon: 'wrench',    dir: 'tools' },
+    { id: 'architecture',  title: 'Cognitive Architecture', icon: 'brain',     dir: 'architecture' },
+];
+
+/**
+ * Build wikiIndex dynamically from the filesystem.
+ * Replaces manual src/wiki/index.json editing — any .md file placed in a
+ * WIKI_CATEGORIES directory is automatically included in the nav after build.
+ * Files sort alphabetically within each category (numbered field notes sort
+ * correctly by natural filename order).
+ */
+function buildWikiIndex() {
+    const categories = [];
+    for (const catConfig of WIKI_CATEGORIES) {
+        const catDir = path.join(WIKI_SRC, catConfig.dir);
+        if (!fs.existsSync(catDir)) continue;
+
+        const files = fs.readdirSync(catDir)
+            .filter(f => f.endsWith('.md') && !f.startsWith('_'))
+            .sort();
+
+        const pages = files.map(file => {
+            const markdown = fs.readFileSync(path.join(catDir, file), 'utf8');
+            return {
+                slug: `${catConfig.dir}/${file.replace(/\.md$/, '')}`,
+                title: extractTitle(markdown),
+            };
+        });
+
+        if (pages.length > 0) {
+            categories.push({ id: catConfig.id, title: catConfig.title, icon: catConfig.icon, pages });
+        }
+    }
+    return { categories };
+}
+
 function generateWikiNav(wikiIndex, currentSlug = '', depth = 0) {
     const prefix = depth > 0 ? '../'.repeat(depth) : '';
     let nav = '';
@@ -703,7 +743,6 @@ function generateJDSitemap(wikiIndex, depth = 0) {
  * Called from build() function
  */
 function buildAPI() {
-    const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
     const articlesPath = path.join(SRC, 'content', 'articles.json');
     const apiDir = path.join(DIST, 'api');
     const wikiApiDir = path.join(apiDir, 'wiki');
@@ -715,9 +754,11 @@ function buildAPI() {
     const buildTimestamp = Date.now();
     let filesCreated = 0;
 
+    // Build wiki index once for all API routes
+    const wikiIndex = buildWikiIndex();
+
     // 1. Generate /api/wiki/index.json (TKT-x7k9-002)
-    if (fs.existsSync(wikiIndexPath)) {
-        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+    {
         const apiIndex = {
             ...wikiIndex,
             buildDate,
@@ -731,8 +772,7 @@ function buildAPI() {
     }
 
     // 2. Generate /api/wiki/sitemap.json (TKT-x7k9-003)
-    if (fs.existsSync(wikiIndexPath)) {
-        const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+    {
         const sitemapData = {
             title: 'Fogsift Wiki Sitemap',
             buildDate,
@@ -955,21 +995,15 @@ function escapeHtml(text) {
 }
 
 function buildWiki() {
-    const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
     const pageTemplatePath = path.join(SRC, 'wiki-template.html');
     const indexTemplatePath = path.join(SRC, 'wiki-index-template.html');
-
-    if (!fs.existsSync(wikiIndexPath)) {
-        console.log('  ⚠ No wiki/index.json found, skipping wiki build');
-        return 0;
-    }
 
     if (!fs.existsSync(pageTemplatePath)) {
         console.log('  ⚠ No wiki-template.html found, skipping wiki build');
         return 0;
     }
 
-    const wikiIndex = JSON.parse(fs.readFileSync(wikiIndexPath, 'utf8'));
+    const wikiIndex = buildWikiIndex();
     const pageTemplate = fs.readFileSync(pageTemplatePath, 'utf8');
     const indexTemplate = fs.existsSync(indexTemplatePath)
         ? fs.readFileSync(indexTemplatePath, 'utf8')
