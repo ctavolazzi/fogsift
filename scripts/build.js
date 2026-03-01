@@ -989,6 +989,11 @@ function buildWiki() {
         const title = extractTitle(markdown);
         const description = extractDescription(markdown);
 
+        // Reading time estimate (200 wpm average)
+        const wordCount = markdown.replace(/[#*_`\[\]()>]/g, '').split(/\s+/).filter(Boolean).length;
+        const readMins = Math.max(1, Math.round(wordCount / 200));
+        const readTime = `${readMins} min read`;
+
         // Calculate depth for relative paths
         const depth = slug.split('/').length - 1;
         const prefix = depth > 0 ? '../'.repeat(depth) : '';
@@ -1039,7 +1044,8 @@ function buildWiki() {
             .replace(/\{\{FAVICON_PATH\}\}/g, faviconPath)
             .replace(/\{\{CONTENT\}\}/g, htmlContent)
             .replace(/\{\{JD_SITEMAP\}\}/g, jdSitemap)
-            .replace(/\{\{BUILD_DATE\}\}/g, today);
+            .replace(/\{\{BUILD_DATE\}\}/g, today)
+            .replace(/\{\{READ_TIME\}\}/g, readTime);
 
 
         // Inject White Rabbit with correct path prefix for wiki depth
