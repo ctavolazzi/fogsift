@@ -678,29 +678,41 @@
     // ── Lazy init via IntersectionObserver ────────────────────────────────────
     var initialized = false;
 
+    function startScene() {
+        initialized = true;
+        var loadingEl = container.querySelector('.viz-loading');
+        if (loadingEl) loadingEl.remove();
+        canvas.style.display = 'block';
+        buildScene();
+        animate(0);
+        updateReducedMotionFallback();
+        themeObserver.observe(document.documentElement, {
+            attributes: true, attributeFilter: ['data-theme']
+        });
+        window.addEventListener('resize', onResize);
+    }
+
     var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting && !initialized) {
-                if (typeof THREE === 'undefined') {
-                    var loadEl = container.querySelector('.viz-loading');
-                    if (loadEl) loadEl.remove();
-                    var err = document.createElement('p');
-                    err.className = 'viz-fallback-msg';
-                    err.textContent = 'Visualization requires JavaScript.';
-                    container.insertBefore(err, canvas);
+                io.disconnect(); // only need one trigger
+                if (typeof THREE !== 'undefined') {
+                    startScene();
                     return;
                 }
-                initialized = true;
-                var loadingEl = container.querySelector('.viz-loading');
-                if (loadingEl) loadingEl.remove();
-                canvas.style.display = 'block';
-                buildScene();
-                animate(0);
-                updateReducedMotionFallback();
-                themeObserver.observe(document.documentElement, {
-                    attributes: true, attributeFilter: ['data-theme']
-                });
-                window.addEventListener('resize', onResize);
+                // Dynamically load three.min.js only when the section is visible
+                var s = document.createElement('script');
+                s.src = 'three.min.js';
+                s.onload = startScene;
+                s.onerror = function () {
+                    var err = document.createElement('p');
+                    err.className = 'viz-fallback-msg';
+                    err.textContent = 'Visualization could not be loaded.';
+                    var loadEl = container.querySelector('.viz-loading');
+                    if (loadEl) loadEl.remove();
+                    container.insertBefore(err, canvas);
+                };
+                document.head.appendChild(s);
             }
         });
     }, { threshold: 0.1 });

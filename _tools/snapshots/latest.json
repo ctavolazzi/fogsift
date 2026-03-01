@@ -1,40 +1,28 @@
 {
-  "generated": "2026-03-01T08:11:24.428Z",
+  "generated": "2026-03-01T11:48:22.581Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
     "branch": "claude/fogsift-engine-lkdbO",
     "status": [
-      "M _tools/snapshots/context-brief.md",
-      " M _tools/snapshots/latest.json",
-      " M dist/api/articles.json",
-      " M dist/api/meta.json",
-      " M dist/api/wiki/index.json",
-      " M dist/api/wiki/sitemap.json",
-      " M scripts/build.js",
-      " M tests/report.json",
-      " M tests/report.txt",
-      "?? dist/engine.html",
-      "?? dist/engine.js",
-      "?? src/engine.html",
-      "?? src/js/engine.js"
+      "M _tools/snapshots/context-brief.md"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "d795410 chore: update test reports",
+      "9853503 feat: contact form, LAB nav link, ESLint fix",
+      "f2f35c9 feat: add experimental lab page with three interactive diagnostic tools",
+      "c91ed56 feat: add FogSift Engine page and build integration",
       "d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa",
       "679dcaf fix: accessibility and keyboard interaction improvements",
       "055e547 fix: resolve HTML validation errors in index.html",
       "38dcdda fix: resolve HTML validation, ESLint, and broken link failures",
       "ee4c299 chore: update session snapshots and test reports",
-      "97b120c feat: interactive sandbox terminal with honey pot detection",
-      "aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal",
-      "10e4771 feat: replace memory system with canonical L1/L2 implementation",
-      "41e6698 chore: update auto-generated session snapshots",
-      "8e861ca feat: add FastAPI memory system (fogsift-api)"
+      "97b120c feat: interactive sandbox terminal with honey pot detection"
     ],
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:43679/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:45254/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -259,9 +247,15 @@
       },
       {
         "path": "js/engine.js",
-        "size": 43488,
-        "modified": "2026-03-01T06:41:59.000Z",
-        "lines": 1058
+        "size": 43765,
+        "modified": "2026-03-01T08:42:12.000Z",
+        "lines": 1064
+      },
+      {
+        "path": "js/experimental.js",
+        "size": 22870,
+        "modified": "2026-03-01T08:38:32.000Z",
+        "lines": 609
       },
       {
         "path": "js/hero-panels.js",
@@ -405,9 +399,9 @@
       },
       {
         "path": "contact.html",
-        "size": 13999,
-        "modified": "2026-02-28T22:34:25.000Z",
-        "lines": 240
+        "size": 23972,
+        "modified": "2026-03-01T08:43:48.000Z",
+        "lines": 446
       },
       {
         "path": "content/handout_branded.html",
@@ -423,9 +417,15 @@
       },
       {
         "path": "engine.html",
-        "size": 33990,
-        "modified": "2026-03-01T06:52:52.000Z",
+        "size": 34018,
+        "modified": "2026-03-01T08:21:47.000Z",
         "lines": 727
+      },
+      {
+        "path": "experimental.html",
+        "size": 31083,
+        "modified": "2026-03-01T08:29:43.000Z",
+        "lines": 747
       },
       {
         "path": "faq.html",
@@ -1201,23 +1201,23 @@
   },
   "build": {
     "exists": true,
-    "htmlPageCount": 80,
+    "htmlPageCount": 81,
     "keyFileSizes": {
       "styles.css": 203935,
       "app.js": 83639,
       "theme-init.js": 661,
-      "search-index.json": 331887,
-      "index.html": 78313
+      "search-index.json": 332296,
+      "index.html": 78505
     },
-    "totalFiles": 136
+    "totalFiles": 138
   },
   "tests": {
-    "timestamp": "2026-03-01T06:49:18.040Z",
+    "timestamp": "2026-03-01T08:41:40.986Z",
     "summary": {
-      "total": 122,
-      "passed": 110,
-      "failed": 1,
-      "warned": 11
+      "total": 123,
+      "passed": 113,
+      "failed": 0,
+      "warned": 10
     },
     "suiteNames": [
       {
@@ -1228,15 +1228,15 @@
       },
       {
         "name": "HTML Validation",
-        "passed": 79,
-        "failed": 1,
+        "passed": 81,
+        "failed": 0,
         "warned": 0
       },
       {
         "name": "ESLint (Source JS)",
-        "passed": 0,
+        "passed": 1,
         "failed": 0,
-        "warned": 1
+        "warned": 0
       },
       {
         "name": "Accessibility (pa11y WCAG2AA)",
@@ -1329,18 +1329,18 @@
   "summary": {
     "version": "0.2.0",
     "branch": "claude/fogsift-engine-lkdbO",
-    "uncommittedFiles": 13,
+    "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,
-    "srcJsFiles": 28,
-    "srcHtmlFiles": 30,
-    "srcTotalLines": 32605,
-    "builtPages": 80,
+    "srcJsFiles": 29,
+    "srcHtmlFiles": 31,
+    "srcTotalLines": 34173,
+    "builtPages": 81,
     "wikiPages": 47,
-    "testsPassed": 110,
-    "testsFailed": 1,
-    "testsWarned": 11,
+    "testsPassed": 113,
+    "testsFailed": 0,
+    "testsWarned": 10,
     "toolsCount": 6,
     "journalEntries": 13
   }

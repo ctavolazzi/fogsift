@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T08:41:40.986Z
+Generated: 2026-03-01T12:05:39.479Z
 ============================================================
 
 SUMMARY
   Total:    123
-  Passed:   113
+  Passed:   114
   Failed:   0
-  Warnings: 10
-  Pass rate: 91.9%
+  Warnings: 9
+  Pass rate: 92.7%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -139,11 +139,11 @@ SUMMARY
   [PASS] Index has 60 entries
   [PASS] 60/60 entries have valid structure
   [PASS] 60/60 index URLs resolve to files
-  [WARN] Index size: 322.8KB
+  [PASS] Index size: 57.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 8.11MB
-  [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
+  [PASS] Total dist/ size: 7.29MB
+  [WARN] 1 file(s) over 500KB — three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
   [PASS] manifest.json present

@@ -1090,12 +1090,15 @@ function extractSearchContent(html) {
     const mainMatch = html.match(/<main[^>]*>([\s\S]*?)<\/main>/i);
     const mainHtml = mainMatch ? mainMatch[1] : '';
 
-    // Extract headings
+    // Extract headings — use backreference \1 so closing tag matches opening level,
+    // and non-greedy [\s\S]*? so the pattern doesn't span multiple headings.
     const headings = [];
-    const headingRegex = /<h[1-6][^>]*>([^<]+(?:<[^>]+>[^<]*)*)<\/h[1-6]>/gi;
+    const headingRegex = /<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi;
     let hMatch;
     while ((hMatch = headingRegex.exec(mainHtml)) !== null) {
-        headings.push(stripHtmlTags(hMatch[1]));
+        const text = stripHtmlTags(hMatch[2]).trim();
+        if (text && text.length <= 150) headings.push(text);
+        if (headings.length >= 12) break; // cap at 12 headings per page
     }
 
     // Get text content from main, strip tags

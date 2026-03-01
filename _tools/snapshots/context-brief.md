@@ -1,5 +1,5 @@
 # FogSift Context Brief
-Generated: 2026-03-01T08:11:24.336Z
+Generated: 2026-03-01T11:48:22.503Z
 
 ## Quick Status
 | Metric | Value |
@@ -8,26 +8,22 @@ Generated: 2026-03-01T08:11:24.336Z
 | Branch | claude/fogsift-engine-lkdbO |
 | Last release | none |
 | Commits since release | 0 |
-| Uncommitted files | 13 |
+| Uncommitted files | 0 |
 | Unpushed commits | 0 |
-| Built pages | 80 |
+| Built pages | 81 |
 | Wiki pages | 47 |
-| Source: 22 CSS, 26 JS | dist: 199.2KB CSS, 81.7KB JS |
+| Source: 22 CSS, 27 JS | dist: 199.2KB CSS, 81.7KB JS |
 
 ## Test Results
-110 pass / 1 fail / 11 warn (90.2%)
+113 pass / 0 fail / 10 warn (91.9%)
 Lighthouse: Perf ? | A11y ? | BP ? | SEO ?
 
-## Uncommitted Changes
-Modified: tools/snapshots/context-brief.md, _tools/snapshots/latest.json, dist/api/articles.json, dist/api/meta.json, dist/api/wiki/index.json, dist/api/wiki/sitemap.json, scripts/build.js, tests/report.json, tests/report.txt
-Untracked: dist/engine.html, dist/engine.js, src/engine.html, src/js/engine.js
-
 ## Recent Commits
+- d795410 chore: update test reports
+- 9853503 feat: contact form, LAB nav link, ESLint fix
+- f2f35c9 feat: add experimental lab page with three interactive diagnostic tools
+- c91ed56 feat: add FogSift Engine page and build integration
 - d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa
-- 679dcaf fix: accessibility and keyboard interaction improvements
-- 055e547 fix: resolve HTML validation errors in index.html
-- 38dcdda fix: resolve HTML validation, ESLint, and broken link failures
-- ee4c299 chore: update session snapshots and test reports
 
 ## Development Infrastructure
 | Port | Tool | Status |
@@ -50,7 +46,7 @@ Untracked: dist/engine.html, dist/engine.js, src/engine.html, src/js/engine.js
 - `TECH_DEBT.md` — Known issues and priorities
 - `_AI_Journal/` — AI development notes and reflections
 - `tests/report.json` — Latest test results
-- `scripts/build.js` — Build system (57KB)
+- `scripts/build.js` — Build system (58KB)
 
 ## Architecture Cheat Sheet
 - Build: `node scripts/build.js` → template replacement, CSS concat, JS minify via esbuild
