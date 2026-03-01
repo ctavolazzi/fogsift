@@ -73,7 +73,8 @@
         { "slug": "field-notes/012-analysis-paralysis", "title": "Analysis Paralysis" },
         { "slug": "field-notes/013-expertise-trap", "title": "The Expertise Trap" },
         { "slug": "field-notes/014-reorg-trap", "title": "The Reorg Trap" },
-        { "slug": "field-notes/015-messenger-problem", "title": "The Messenger Problem" }
+        { "slug": "field-notes/015-messenger-problem", "title": "The Messenger Problem" },
+        { "slug": "field-notes/016-handoff-problem", "title": "The Handoff Problem" }
       ]
     },
     {

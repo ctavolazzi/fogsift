@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:16:15.413Z",
-  "buildTimestamp": 1772370975413,
+  "buildDate": "2026-03-01T13:22:44.539Z",
+  "buildTimestamp": 1772371364539,
   "categories": [
     {
       "id": "docs",
@@ -308,6 +308,12 @@
           "title": "The Messenger Problem",
           "jdNumber": "40.15",
           "href": "field-notes/015-messenger-problem.html"
+        },
+        {
+          "slug": "field-notes/016-handoff-problem",
+          "title": "The Handoff Problem",
+          "jdNumber": "40.16",
+          "href": "field-notes/016-handoff-problem.html"
         }
       ]
     },
