@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 13:35:31 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:37:04 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>The Adjacent Problem</title>
+      <link>https://fogsift.com/wiki/field-notes/020-the-adjacent-problem.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/020-the-adjacent-problem.html</guid>
+      <description>*Organizations routinely solve the problem next to the real problem. The adjacent solution is easier to access, feels productive, and rarely fixes the thing tha</description>
+      <pubDate>Sun, 01 Mar 2026 13:36:41 GMT</pubDate>
+    </item>
     <item>
       <title>The Metric Mirage</title>
       <link>https://fogsift.com/wiki/case-studies/the-metric-mirage.html</link>

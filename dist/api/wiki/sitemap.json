@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:35:31.162Z",
-  "buildTimestamp": 1772372131162,
+  "buildDate": "2026-03-01T13:37:04.309Z",
+  "buildTimestamp": 1772372224309,
   "categories": [
     {
       "id": "docs",
@@ -362,6 +362,12 @@
           "title": "The Proxy Trap",
           "jdNumber": "40.19",
           "href": "field-notes/019-the-proxy-trap.html"
+        },
+        {
+          "slug": "field-notes/020-the-adjacent-problem",
+          "title": "The Adjacent Problem",
+          "jdNumber": "40.20",
+          "href": "field-notes/020-the-adjacent-problem.html"
         }
       ]
     },

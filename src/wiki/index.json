@@ -82,7 +82,8 @@
         { "slug": "field-notes/016-handoff-problem", "title": "The Handoff Problem" },
         { "slug": "field-notes/017-hero-dependency", "title": "The Hero Dependency" },
         { "slug": "field-notes/018-permission-debt", "title": "Permission Debt" },
-        { "slug": "field-notes/019-the-proxy-trap", "title": "The Proxy Trap" }
+        { "slug": "field-notes/019-the-proxy-trap", "title": "The Proxy Trap" },
+        { "slug": "field-notes/020-the-adjacent-problem", "title": "The Adjacent Problem" }
       ]
     },
     {
