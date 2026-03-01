@@ -38,7 +38,7 @@ const NAV_LINKS = [
     { href: 'offers.html', label: 'OFFERS' },
     { href: 'queue.html', label: 'QUEUE' },
     { href: 'wiki/index.html', label: 'WIKI' },
-    { href: 'portfolio.html', label: 'PORTFOLIO' },
+    { href: 'portfolio.html', label: 'PROJECTS' },
     { href: 'faq.html', label: 'FAQ' },
     { href: 'contact.html', label: 'CONTACT' },
 ];
@@ -152,7 +152,7 @@ const FOOTER_LINKS = [
     { href: 'offers.html', label: 'Offers' },
     { href: 'queue.html', label: 'Queue' },
     { href: 'faq.html', label: 'FAQ' },
-    { href: 'portfolio.html', label: 'Portfolio' },
+    { href: 'portfolio.html', label: 'Projects' },
     { href: 'wiki/index.html', label: 'Wiki' },
     { href: 'contact.html', label: 'Contact' },
     { href: 'privacy.html', label: 'Privacy' },
@@ -273,6 +273,7 @@ const JS_FILES = [
     'src/js/debug.js',    // TKT-x7k9-008: Debug logging
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
     'src/js/monte.js',    // Three card monte hero easter egg
+    'src/js/tabs.js',     // Accessible tab-switching component
     'src/js/search.js',   // Client-side search/filter
     'src/js/cookie-consent.js', // GDPR/CCPA cookie consent banner
     'src/js/svg-components.js', // SVG animations, scroll triggers, rotary encoder

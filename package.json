@@ -38,13 +38,13 @@
   "author": "Christopher Tavolazzi",
   "license": "UNLICENSED",
   "dependencies": {
-    "marked": "^15.0.4"
+    "marked": "^15.0.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
     "browser-sync": "^3.0.4",
     "chokidar-cli": "^3.0.0",
-    "esbuild": "^0.27.2",
+    "esbuild": "^0.27.3",
     "eslint": "^9.39.2",
     "globals": "^16.5.0",
     "html-validate": "^10.7.0",
