@@ -659,6 +659,8 @@ function showBottomSheet(nodeId) {
   const sheet = document.getElementById('bottom-sheet');
   if (!sheet) return;
   sheet.style.transform = 'translateY(0)';
+  sheet.setAttribute('aria-hidden', 'false');
+  sheet.querySelectorAll('button').forEach(btn => btn.removeAttribute('tabindex'));
   const centerBtn = document.getElementById('center-btn');
   if (centerBtn) centerBtn.style.transform = 'translateY(-50%)';
   renderBottomSheetContent();
@@ -666,7 +668,11 @@ function showBottomSheet(nodeId) {
 
 function hideBottomSheet() {
   const sheet = document.getElementById('bottom-sheet');
-  if (sheet) sheet.style.transform = 'translateY(100%)';
+  if (sheet) {
+    sheet.style.transform = 'translateY(100%)';
+    sheet.setAttribute('aria-hidden', 'true');
+    sheet.querySelectorAll('button').forEach(btn => btn.setAttribute('tabindex', '-1'));
+  }
   const centerBtn = document.getElementById('center-btn');
   if (centerBtn) centerBtn.style.transform = '';
 }
