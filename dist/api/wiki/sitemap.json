@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-03-01T13:22:44.539Z",
-  "buildTimestamp": 1772371364539,
+  "buildDate": "2026-03-01T13:25:21.671Z",
+  "buildTimestamp": 1772371521671,
   "categories": [
     {
       "id": "docs",
@@ -142,6 +142,12 @@
           "title": "Anchoring Bias",
           "jdNumber": "20.17",
           "href": "concepts/anchoring-bias.html"
+        },
+        {
+          "slug": "concepts/availability-bias",
+          "title": "Availability Bias",
+          "jdNumber": "20.18",
+          "href": "concepts/availability-bias.html"
         }
       ]
     },

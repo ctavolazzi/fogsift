@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Field Note 011: Vanishing Context | Fogsift Wiki</title>
-    <meta name="description" content="*The most expensive thing that leaves when someone quits isn't their skills. It's what they knew that nobody wrote down.*">
+    <title>Availability Bias | Fogsift Wiki</title>
+    <meta name="description" content="*We judge probability by how easily examples come to mind — not by how often they actually occur.*">
     <meta name="author" content="Christopher Tavolazzi">
     <meta name="theme-color" content="#f5f0e6">
-    <link rel="canonical" href="https://fogsift.com/wiki/field-notes/011-vanishing-context">
+    <link rel="canonical" href="https://fogsift.com/wiki/concepts/availability-bias">
 
     <link rel="manifest" href="../../manifest.json">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <meta property="og:title" content="Field Note 011: Vanishing Context | Fogsift Wiki">
-    <meta property="og:description" content="*The most expensive thing that leaves when someone quits isn't their skills. It's what they knew that nobody wrote down.*">
+    <meta property="og:title" content="Availability Bias | Fogsift Wiki">
+    <meta property="og:description" content="*We judge probability by how easily examples come to mind — not by how often they actually occur.*">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="https://fogsift.com/wiki/field-notes/011-vanishing-context">
+    <meta property="og:url" content="https://fogsift.com/wiki/concepts/availability-bias">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
 
     <link rel="icon" type="image/png" href="../../favicon.png">
@@ -171,7 +171,7 @@
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
                 <li class="wiki-breadcrumb__item"><a href="../index.html" class="wiki-breadcrumb__link">WIKI</a></li>
                 <li class="wiki-breadcrumb__item wiki-breadcrumb__separator" aria-hidden="true">/</li>
-                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">VANISHING CONTEXT</span></li>
+                <li class="wiki-breadcrumb__item"><span class="wiki-breadcrumb__item--current" aria-current="page">AVAILABILITY BIAS</span></li>
             </ol>
         </nav>
 
@@ -214,7 +214,7 @@
     <li><a href="../concepts/regression-to-mean.html">Regression to the Mean</a></li>
     <li><a href="../concepts/dunning-kruger.html">Dunning-Kruger Effect</a></li>
     <li><a href="../concepts/anchoring-bias.html">Anchoring Bias</a></li>
-    <li><a href="../concepts/availability-bias.html">Availability Bias</a></li>
+    <li><a href="../concepts/availability-bias.html" class="active">Availability Bias</a></li>
   </ul>
 </div>
 <div class="wiki-nav-category">
@@ -245,7 +245,7 @@
     <li><a href="../field-notes/008-sunk-cost-trap.html">The Sunk Cost Trap</a></li>
     <li><a href="../field-notes/009-scope-creep.html">Scope Creep</a></li>
     <li><a href="../field-notes/010-communication-overhead.html">Communication Overhead</a></li>
-    <li><a href="../field-notes/011-vanishing-context.html" class="active">Vanishing Context</a></li>
+    <li><a href="../field-notes/011-vanishing-context.html">Vanishing Context</a></li>
     <li><a href="../field-notes/012-analysis-paralysis.html">Analysis Paralysis</a></li>
     <li><a href="../field-notes/013-expertise-trap.html">The Expertise Trap</a></li>
     <li><a href="../field-notes/014-reorg-trap.html">The Reorg Trap</a></li>
@@ -289,52 +289,56 @@
         <!-- Main Content -->
         <main class="wiki-main" role="main">
             <article class="wiki-article">
-                <h1>Field Note 011: Vanishing Context</h1>
-<p><em>The most expensive thing that leaves when someone quits isn&#39;t their skills. It&#39;s what they knew that nobody wrote down.</em></p>
+                <h1>Availability Bias</h1>
+<p><em>We judge probability by how easily examples come to mind — not by how often they actually occur.</em></p>
 <hr>
-<h2>The Pattern</h2>
-<p>Someone resigns. You schedule the exit interview. You get their login credentials, their project files, their contact list.</p>
-<p>What you don&#39;t get is the thing that made them effective: the accumulated context. The reason the integration with Vendor X is configured that specific way. The history behind the policy nobody questions. Why the client in sector three gets different pricing. What &quot;just handle it like last time&quot; actually means.</p>
-<p>This context didn&#39;t live in any system. It lived in a person&#39;s head — and now it&#39;s walking out the door.</p>
-<p>This is <strong>vanishing context</strong>: institutional knowledge that exists nowhere except in the memory of the person who built it.</p>
+<h2>The Principle</h2>
+<p>Availability bias (also called the availability heuristic) is the tendency to estimate the likelihood of events based on how quickly relevant examples spring to mind. Vivid, recent, or emotionally significant events are more &quot;available&quot; to memory, so they feel more probable — even when base rates say otherwise.</p>
+<p>Tversky and Kahneman identified this heuristic in 1973. The core observation: when asked to estimate how common or probable something is, people substitute a simpler question — <em>how easily can I recall an example?</em> — and answer that instead.</p>
+<p>This substitution is often reasonable. Frequent events do tend to leave more memory traces. But the heuristic misfires systematically when memorability diverges from frequency.</p>
 <hr>
-<h2>Why It&#39;s Worse Than It Looks</h2>
-<p>The immediate cost is obvious: onboarding time, mistakes, re-learning. But the second-order damage is subtler.</p>
-<p><strong>Silent process drift.</strong> New people, lacking context, make reasonable-sounding decisions that slowly diverge from the original intent. No individual change looks wrong. The drift only becomes visible months later — by which point multiple people have built on the wrong foundation.</p>
-<p><strong>Decision debt.</strong> Every undocumented decision that holds becomes a trap for whoever inherits it. &quot;We don&#39;t do it that way&quot; is uttered with conviction by someone who has no idea why.</p>
-<p><strong>Fragile single points.</strong> When context is concentrated in one person, that person becomes a bottleneck — not because they&#39;re doing it deliberately, but because the organization has quietly made them the only safe path through certain decisions.</p>
+<h2>Why Memory Misleads Probability Estimates</h2>
+<p><strong>Recency.</strong> Events that happened recently are easier to recall than equally significant events from the past. A data breach last month feels more likely to recur than one that happened three years ago — even if the frequency of breaches hasn&#39;t changed.</p>
+<p><strong>Vividness.</strong> Events that are dramatic, emotional, or specific are more memorable than routine, statistical ones. A single account of a catastrophic failure stays in memory longer than a dataset showing the actual rate of catastrophic failures.</p>
+<p><strong>Coverage.</strong> Heavily covered events feel more common. If the news reports extensively on one type of risk, that risk becomes cognitively available regardless of its actual prevalence. Plane crashes receive vastly more coverage per fatality than car crashes, which is why people systematically overestimate the relative danger of flying.</p>
+<p><strong>Personal experience.</strong> Events we&#39;ve experienced firsthand are more available than events we&#39;ve only heard about. An entrepreneur who survived a market downturn weighs that risk differently than one who hasn&#39;t.</p>
+<p><strong>Social amplification.</strong> In groups, the same vivid stories get retold, which means the events in those stories become increasingly available to everyone in the group — while base rates remain invisible.</p>
 <hr>
-<h2>Common Sources</h2>
+<h2>Organizational Manifestations</h2>
+<p><strong>Risk mispricing after events.</strong> Organizations dramatically increase investment in preventing the last disaster. After a major fraud, internal controls are tightened everywhere. After a major outage, redundancy is added everywhere. The risks that haven&#39;t occurred recently are underweighted.</p>
+<p><strong>Strategy bias toward recent experience.</strong> Leaders who experienced a recession make conservative capital allocation decisions long after the conditions that produced the recession have changed. Leaders who haven&#39;t experienced a recession may be insufficiently cautious.</p>
+<p><strong>Overweighting visible problems.</strong> In a meeting, the problem that someone raised vividly last week crowds out the more serious problem that was presented as a quiet data point two months ago. The vivid story is available; the data point is not.</p>
+<p><strong>Vendor and partner selection.</strong> Decision-makers tend to select vendors they have direct experience with or whose names they frequently encounter — regardless of whether those vendors are objectively superior for the task.</p>
+<p><strong>Hiring patterns.</strong> If a company&#39;s last bad hire came from a particular background (e.g., startup experience, specific school), that background becomes cognitively associated with poor hiring outcomes. The availability of the bad outcome distorts subsequent hiring decisions beyond what the evidence warrants.</p>
+<p><strong>Performance evaluation.</strong> Recent performance is disproportionately available at review time. An employee who had one excellent week before annual review is often evaluated more highly than one who performed consistently well all year but had a mediocre last week.</p>
+<hr>
+<h2>The Base Rate Gap</h2>
+<p>The failure mode behind availability bias is the substitution of a different question for the actual question:</p>
 <ul>
-<li><strong>Workarounds nobody documented</strong> — hacks that became standard practice</li>
-<li><strong>Vendor relationship history</strong> — what went wrong, who to actually call</li>
-<li><strong>Client-specific accommodations</strong> — informal agreements, sensitivities, past friction</li>
-<li><strong>Technical debt rationale</strong> — why the &quot;wrong&quot; approach was chosen and why it&#39;s actually correct given the constraints</li>
-<li><strong>Failure history</strong> — what was tried before and why it didn&#39;t work</li>
-<li><strong>Informal power maps</strong> — who actually makes decisions vs. who&#39;s nominally responsible</li>
+<li><strong>Actual question:</strong> What is the true probability of X?</li>
+<li><strong>Substituted question:</strong> How easily can I recall examples of X?</li>
 </ul>
+<p>The actual question requires base rate information — how often X actually occurs across a reference class. Base rates are dry, statistical, and easy to ignore. Vivid examples are engaging, concrete, and easy to recall.</p>
+<p>Kahneman and Tversky&#39;s inside view / outside view distinction describes this: the inside view draws on the specific, vivid details of the current situation; the outside view consults the base rate across similar situations. Availability bias is a symptom of over-relying on the inside view.</p>
 <hr>
-<h2>The Diagnostic Question</h2>
-<p>Ask yourself: <em>If the three people with the longest tenure all left this month, what would we not know how to do?</em></p>
-<p>Not skills. Not processes that are documented. The things where institutional knowledge is the only thing making them work.</p>
-<p>If the answer comes back as a long list — or if you find yourself saying &quot;we&#39;d figure it out&quot; without conviction — you have a vanishing context problem.</p>
+<h2>Where Availability Bias Does Useful Work</h2>
+<p>Not all availability-based reasoning is wrong. The heuristic exists because it usually works:</p>
+<ul>
+<li>Things that happen frequently do leave stronger memory traces</li>
+<li>Personal experience is often legitimately informative about likely outcomes</li>
+<li>Domain experts develop intuitions that are partly availability-based and are genuinely accurate within their domain</li>
+</ul>
+<p>The problem isn&#39;t that people use availability — it&#39;s that they use it without correcting for the known ways it misfires.</p>
 <hr>
-<h2>Mitigation Approaches</h2>
-<p><strong>Context interviews, not just exit interviews.</strong> The standard exit interview asks where someone&#39;s going and what would have kept them. A context interview asks: <em>What do you know that&#39;s not written anywhere? What would surprise your replacement?</em></p>
-<p><strong>Decision logs.</strong> Not meeting notes, not action items — logs of <em>why</em>. &quot;We chose Option B because Option A failed in 2022 due to...&quot; This is what doesn&#39;t get documented by default.</p>
-<p><strong>Named context owners.</strong> For any process or relationship where institutional knowledge is the primary risk, name the owner and a backup. Make the context visible, even if it&#39;s not fully documented.</p>
-<p><strong>Overlap hiring.</strong> When possible, hire the replacement before the departure. Not just for handoff meetings — for the kind of informal &quot;hey, how do you usually handle this?&quot; conversations that transfer knowledge no document would capture.</p>
+<h2>Countermeasures</h2>
+<p><strong>Explicitly seek base rates.</strong> Before relying on recalled examples, ask: what is the actual historical frequency of this type of event? Base rates are corrective; they force comparison against the outside view.</p>
+<p><strong>Name the vivid case.</strong> When you notice you&#39;re reasoning from a specific, memorable example, make it explicit: &quot;I&#39;m thinking about this because of [specific event]. Is that case representative, or is it memorable because it was unusual?&quot;</p>
+<p><strong>Seek disconfirming examples.</strong> The antidote to availability of positive cases is active retrieval of counter-cases. &quot;What are examples of this type of thing going badly?&quot;</p>
+<p><strong>Standardize evaluations.</strong> When making repeated judgments (performance reviews, credit decisions, vendor selection), use structured rubrics that force consideration of dimensions beyond what&#39;s most salient. Structure reduces the influence of whatever happens to be most available.</p>
+<p><strong>Slow down after major events.</strong> In the aftermath of a vivid event, decision-making is most distorted. Major outages, fraud discoveries, market crashes — the period immediately following is the highest-risk time for availability-biased policy changes. Deliberate cooling periods reduce this effect.</p>
+<p><strong>Track actual frequencies.</strong> Organizations that maintain systematic records of outcomes are less susceptible to availability distortion than those that rely on anecdote and memory. Data systems that surface base rates at the moment of decision-making are particularly valuable.</p>
 <hr>
-<h2>What Not To Do</h2>
-<p><strong>Don&#39;t try to document everything.</strong> You can&#39;t. The attempt creates busywork without capturing the nuance. Focus on the highest-risk context — the knowledge whose absence would cause the worst silent failures.</p>
-<p><strong>Don&#39;t treat knowledge bases as the answer.</strong> A knowledge base that nobody updates is noise. A knowledge base that&#39;s one person&#39;s project becomes yet another knowledge dependency.</p>
-<p><strong>Don&#39;t assume the knowledge transfer happened.</strong> &quot;We did an overlap period&quot; doesn&#39;t mean the context transferred. Ask the new person what surprised them. That&#39;s where the gaps are.</p>
-<hr>
-<h2>The Underlying Dynamic</h2>
-<p>Vanishing context is a structural problem, not a personnel problem. Organizations don&#39;t lose context because people are careless — they lose it because the incentives all point toward getting work done, not toward documenting why.</p>
-<p>Fixing it requires treating context documentation as a first-class work product, not an administrative afterthought.</p>
-<hr>
-<p><em>Related: <a href="../field-notes/007-documentation-debt.html">Tribal Knowledge and the Documentation Debt</a>, <a href="../concepts/root-cause.html">Root Cause Analysis</a>, <a href="../concepts/systems-thinking.html">Systems Thinking</a></em></p>
+<p><em>Related: <a href="./cognitive-biases.html">Cognitive Biases</a>, <a href="./confirmation-bias.html">Confirmation Bias</a>, <a href="./survivorship-bias.html">Survivorship Bias</a>, <a href="./anchoring-bias.html">Anchoring Bias</a>, <a href="./planning-fallacy.html">Planning Fallacy</a></em></p>
 
             </article>
 
@@ -342,7 +346,7 @@
                 <div class="wiki-article-footer__meta">
                     <span>Updated: 2026-03-01</span>
                     <span aria-hidden="true">&middot;</span>
-                    <span>4 min read</span>
+                    <span>5 min read</span>
                 </div>
                 <nav class="wiki-article-footer__nav" aria-label="Wiki navigation">
                     <a href="../index.html">

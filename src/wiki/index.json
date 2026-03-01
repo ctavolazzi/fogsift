@@ -34,7 +34,8 @@
         { "slug": "concepts/loss-aversion", "title": "Loss Aversion" },
         { "slug": "concepts/regression-to-mean", "title": "Regression to the Mean" },
         { "slug": "concepts/dunning-kruger", "title": "Dunning-Kruger Effect" },
-        { "slug": "concepts/anchoring-bias", "title": "Anchoring Bias" }
+        { "slug": "concepts/anchoring-bias", "title": "Anchoring Bias" },
+        { "slug": "concepts/availability-bias", "title": "Availability Bias" }
       ]
     },
     {

@@ -97,6 +97,10 @@
         {
           "slug": "concepts/anchoring-bias",
           "title": "Anchoring Bias"
+        },
+        {
+          "slug": "concepts/availability-bias",
+          "title": "Availability Bias"
         }
       ]
     },
@@ -296,6 +300,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:22:44.539Z",
-  "buildTimestamp": 1772371364539
+  "buildDate": "2026-03-01T13:25:21.671Z",
+  "buildTimestamp": 1772371521671
 }
