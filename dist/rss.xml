@@ -5,13 +5,20 @@
     <link>https://fogsift.com/wiki/index.html</link>
     <description>Straight answers to complicated questions. Concepts, frameworks, tools, and field notes from FogSift.</description>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Mar 2026 12:59:30 GMT</lastBuildDate>
+    <lastBuildDate>Sun, 01 Mar 2026 13:00:35 GMT</lastBuildDate>
     <atom:link href="https://fogsift.com/rss.xml" rel="self" type="application/rss+xml"/>
     <image>
       <url>https://fogsift.com/assets/logo.png</url>
       <title>FogSift — Knowledge Base</title>
       <link>https://fogsift.com/wiki/index.html</link>
     </image>
+    <item>
+      <title>Field Note 013: The Expertise Trap</title>
+      <link>https://fogsift.com/wiki/field-notes/013-expertise-trap.html</link>
+      <guid isPermaLink="true">https://fogsift.com/wiki/field-notes/013-expertise-trap.html</guid>
+      <description>*When you hire an expert, you&apos;re not just hiring their knowledge. You&apos;re hiring their pattern library — and the problems they don&apos;t see because those patterns d</description>
+      <pubDate>Sun, 01 Mar 2026 13:00:27 GMT</pubDate>
+    </item>
     <item>
       <title>Force Field Analysis</title>
       <link>https://fogsift.com/wiki/frameworks/force-field-analysis.html</link>
