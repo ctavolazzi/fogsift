@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T05:04:13.790Z
+Generated: 2026-03-01T05:13:11.136Z
 ============================================================
 
 SUMMARY
@@ -22,7 +22,7 @@ SUMMARY
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
   [PASS] HTML pages built: 79 — Found 79 HTML files
-  [PASS] styles.css size: 203.0KB
+  [PASS] styles.css size: 206.0KB
   [PASS] app.js size: 82.6KB
 
 ── HTML Validation ──
@@ -137,7 +137,7 @@ SUMMARY
   [PASS] Index has 60 entries
   [PASS] 60/60 entries have valid structure
   [PASS] 60/60 index URLs resolve to files
-  [WARN] Index size: 325.4KB
+  [WARN] Index size: 326.1KB
 
 ── Asset Audit ──
   [PASS] Total dist/ size: 7.96MB
