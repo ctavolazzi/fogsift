@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-02-24T05:42:39.631Z",
+  "timestamp": "2026-03-01T04:44:13.093Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,17 +60,17 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 77",
+          "test": "HTML pages built: 79",
           "status": "pass",
-          "detail": "Found 77 HTML files"
+          "detail": "Found 79 HTML files"
         },
         {
-          "test": "styles.css size: 188.6KB",
+          "test": "styles.css size: 199.2KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 65.7KB",
+          "test": "app.js size: 81.7KB",
           "status": "pass",
           "detail": ""
         }
@@ -229,6 +229,16 @@
         },
         {
           "test": "vision.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/architecture/memory-system.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "wiki/architecture/terminal-component.html",
           "status": "pass",
           "detail": ""
         },
@@ -468,7 +478,7 @@
           "detail": ""
         }
       ],
-      "passed": 77,
+      "passed": 79,
       "failed": 0,
       "warned": 0
     },
@@ -476,14 +486,14 @@
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "ESLint warnings only",
-          "status": "warn",
-          "detail": "1 warning(s)"
+          "test": "All JS files pass ESLint",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
+      "passed": 1,
       "failed": 0,
-      "warned": 1
+      "warned": 0
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
@@ -491,37 +501,37 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "33 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "about.html",
           "status": "warn",
-          "detail": "5 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "offers.html",
           "status": "warn",
-          "detail": "21 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "faq.html",
           "status": "warn",
-          "detail": "10 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "contact.html",
           "status": "warn",
-          "detail": "12 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "queue.html",
           "status": "warn",
-          "detail": "17 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         },
         {
           "test": "portfolio.html",
           "status": "warn",
-          "detail": "10 a11y issue(s)"
+          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
         }
       ],
       "passed": 0,
@@ -532,40 +542,20 @@
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Performance: 49",
-          "status": "fail",
-          "detail": ""
-        },
-        {
-          "test": "Accessibility: 88",
+          "test": "Lighthouse execution",
           "status": "warn",
-          "detail": ""
-        },
-        {
-          "test": "Best Practices: 81",
-          "status": "warn",
-          "detail": ""
-        },
-        {
-          "test": "SEO: 100",
-          "status": "pass",
-          "detail": ""
-        },
-        {
-          "test": "Lighthouse report generated",
-          "status": "pass",
-          "detail": "{\"performance\":49,\"accessibility\":88,\"best-practices\":81,\"seo\":100}"
+          "detail": "Chrome/Chromium not found"
         }
       ],
-      "passed": 2,
-      "failed": 1,
-      "warned": 2
+      "passed": 0,
+      "failed": 0,
+      "warned": 1
     },
     {
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 6241 internal links valid",
+          "test": "All 6713 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -588,22 +578,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 58 entries",
+          "test": "Index has 60 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "58/58 entries have valid structure",
+          "test": "60/60 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "58/58 index URLs resolve to files",
+          "test": "60/60 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 305.6KB",
+          "test": "Index size: 322.4KB",
           "status": "warn",
           "detail": ""
         }
@@ -616,7 +606,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.85MB",
+          "test": "Total dist/ size: 7.94MB",
           "status": "pass",
           "detail": ""
         },
@@ -690,9 +680,9 @@
     }
   ],
   "summary": {
-    "total": 123,
-    "passed": 110,
-    "failed": 1,
-    "warned": 12
+    "total": 121,
+    "passed": 111,
+    "failed": 0,
+    "warned": 10
   }
 }

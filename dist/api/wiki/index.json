@@ -182,6 +182,21 @@
       ]
     },
     {
+      "id": "architecture",
+      "title": "Cognitive Architecture",
+      "icon": "layers",
+      "pages": [
+        {
+          "slug": "architecture/memory-system",
+          "title": "Memory System"
+        },
+        {
+          "slug": "architecture/terminal-component",
+          "title": "Terminal Component"
+        }
+      ]
+    },
+    {
       "id": "tools",
       "title": "Tools & Techniques",
       "icon": "wrench",
@@ -217,6 +232,6 @@
       ]
     }
   ],
-  "buildDate": "2026-02-24T06:20:03.577Z",
-  "buildTimestamp": 1771914003577
+  "buildDate": "2026-03-01T04:43:52.607Z",
+  "buildTimestamp": 1772340232607
 }

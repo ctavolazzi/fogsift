@@ -1,7 +1,7 @@
 {
   "title": "Fogsift Wiki Sitemap",
-  "buildDate": "2026-02-24T06:20:03.577Z",
-  "buildTimestamp": 1771914003577,
+  "buildDate": "2026-03-01T04:43:52.607Z",
+  "buildTimestamp": 1772340232607,
   "categories": [
     {
       "id": "docs",
@@ -256,6 +256,26 @@
           "title": "The Data Migration Disaster",
           "jdNumber": "50.05",
           "href": "case-studies/the-data-migration.html"
+        }
+      ]
+    },
+    {
+      "id": "architecture",
+      "title": "Cognitive Architecture",
+      "range": "90-99",
+      "rangeStart": 90,
+      "pages": [
+        {
+          "slug": "architecture/memory-system",
+          "title": "Memory System",
+          "jdNumber": "90.01",
+          "href": "architecture/memory-system.html"
+        },
+        {
+          "slug": "architecture/terminal-component",
+          "title": "Terminal Component",
+          "jdNumber": "90.02",
+          "href": "architecture/terminal-component.html"
         }
       ]
     },

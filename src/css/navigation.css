@@ -586,9 +586,12 @@
     transition: all var(--snap);
 }
 
-.search-close-btn:hover {
+.search-close-btn:hover,
+.search-close-btn:focus-visible {
     color: var(--ink);
     background: rgba(74, 44, 42, 0.08);
+    outline: var(--focus-ring-width) solid var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
 }
 
 /* Context bar */

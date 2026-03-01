@@ -166,7 +166,7 @@
                 <h1 id="hero-heading" class="headline">We work on the weird ones.<span class="hero-emojis"><span class="hero-emoji-char">🌲</span><span class="hero-emoji-char">🔭</span><span class="hero-emoji-char">🎸</span></span></h1>
                 <p class="hero-prompt"><span>Something eating up your</span> <span class="rotating-highlight"><span data-words='["time?", "budget?", "margins?", "roadmap?", "data?", "supply chain?"]'>time?</span></span></p>
                 <p class="hero-grid-label">We work on</p>
-                <div class="hero-grid" aria-label="What we work on" aria-live="polite">
+                <div class="hero-grid" role="region" aria-label="What we work on" aria-live="polite">
                     <div class="hero-panel" data-idx="0">
                         <div class="hero-panel__inner">
                             <span class="hero-panel__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
@@ -362,8 +362,8 @@
 
             <!-- Industry tabs -->
             <div class="viz-tabs-wrap">
-            <button class="viz-tabs-caret viz-tabs-caret--left" aria-label="Scroll tabs left" hidden>&#x2039;</button>
-            <button class="viz-tabs-caret viz-tabs-caret--right" aria-label="Scroll tabs right">&#x203A;</button>
+            <button type="button" class="viz-tabs-caret viz-tabs-caret--left" aria-label="Scroll tabs left" hidden>&#x2039;</button>
+            <button type="button" class="viz-tabs-caret viz-tabs-caret--right" aria-label="Scroll tabs right">&#x203A;</button>
             <div class="viz-tabs" role="tablist" aria-label="Industry supply chain views">
                 <button type="button" class="viz-tab viz-tab--active" role="tab" aria-selected="true" aria-controls="supply-chain-container" data-industry="ops-logistics">
                     <span class="viz-tab-icon" aria-hidden="true">&#x1F4E6;</span>
@@ -426,7 +426,7 @@
             </p>
 
             <div class="pricing-cards">
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')" role="button" tabindex="0" aria-label="Read more about Inventory Count Mismatch">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('inventory')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('inventory')}" role="button" tabindex="0" aria-label="Read more about Inventory Count Mismatch">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Operations</span>
                     <h4>"Our inventory counts never match."</h4>
                     <p>Two systems were rounding differently. Align the rules, fix the feed, move on.</p>
@@ -434,7 +434,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')" role="button" tabindex="0" aria-label="Read more about Tuesday Crashes">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('tuesday')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('tuesday')}" role="button" tabindex="0" aria-label="Read more about Tuesday Crashes">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Technical</span>
                     <h4>"Our app crashes every Tuesday."</h4>
                     <p>Weekly cron job collided with peak traffic. Move it to 3 AM and the problem disappears.</p>
@@ -442,7 +442,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')" role="button" tabindex="0" aria-label="Read more about Build vs. Buy Decision">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('buildbuy')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('buildbuy')}" role="button" tabindex="0" aria-label="Read more about Build vs. Buy Decision">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Strategy</span>
                     <h4>"Build it or buy it?"</h4>
                     <p>Mapped hidden costs and timing risk. Recommendation: buy now, migrate later.</p>
@@ -450,7 +450,7 @@
                     <span class="example-expand" aria-hidden="true">Read more →</span>
                 </article>
 
-                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')" role="button" tabindex="0" aria-label="Read more about Stalled Signups">
+                <article class="pricing-card example-card" style="text-align: left; cursor: pointer;" onclick="ExampleModal.open('signups')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();ExampleModal.open('signups')}" role="button" tabindex="0" aria-label="Read more about Stalled Signups">
                     <span class="mono" style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: var(--letter-wide); color: var(--muted); display: block; margin-bottom: var(--space-xs);">Marketing</span>
                     <h4>"Signups stalled."</h4>
                     <p>Walked the funnel live. Fixed the top three friction points during the session.</p>

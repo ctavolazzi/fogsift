@@ -1,13 +1,13 @@
 FOGSIFT TEST REPORT
-Generated: 2026-02-24T05:42:39.631Z
+Generated: 2026-03-01T04:44:13.093Z
 ============================================================
 
 SUMMARY
-  Total:    123
-  Passed:   110
-  Failed:   1
-  Warnings: 12
-  Pass rate: 89.4%
+  Total:    121
+  Passed:   111
+  Failed:   0
+  Warnings: 10
+  Pass rate: 91.7%
 
 ── Build Verification ──
   [PASS] dist/ directory exists
@@ -21,9 +21,9 @@ SUMMARY
   [PASS] dist/sitemap.xml exists
   [PASS] dist/404.html exists
   [PASS] dist/search-index.json exists
-  [PASS] HTML pages built: 77 — Found 77 HTML files
-  [PASS] styles.css size: 188.6KB
-  [PASS] app.js size: 65.7KB
+  [PASS] HTML pages built: 79 — Found 79 HTML files
+  [PASS] styles.css size: 199.2KB
+  [PASS] app.js size: 81.7KB
 
 ── HTML Validation ──
   [PASS] 404.html
@@ -56,6 +56,8 @@ SUMMARY
   [PASS] system-status.html
   [PASS] terms.html
   [PASS] vision.html
+  [PASS] wiki/architecture/memory-system.html
+  [PASS] wiki/architecture/terminal-component.html
   [PASS] wiki/case-studies/communication-breakdown.html
   [PASS] wiki/case-studies/manufacturing-throughput.html
   [PASS] wiki/case-studies/the-data-migration.html
@@ -105,37 +107,40 @@ SUMMARY
   [PASS] your-data.html
 
 ── ESLint (Source JS) ──
-  [WARN] ESLint warnings only — 1 warning(s)
+  [PASS] All JS files pass ESLint
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — 33 a11y issue(s)
-  [WARN] about.html — 5 a11y issue(s)
-  [WARN] offers.html — 21 a11y issue(s)
-  [WARN] faq.html — 10 a11y issue(s)
-  [WARN] contact.html — 12 a11y issue(s)
-  [WARN] queue.html — 17 a11y issue(s)
-  [WARN] portfolio.html — 10 a11y issue(s)
+  [WARN] index.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] about.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] offers.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] faq.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] contact.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] queue.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
+  [WARN] portfolio.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
+ 1. you did
 
 ── Lighthouse ──
-  [FAIL] Performance: 49
-  [WARN] Accessibility: 88
-  [WARN] Best Practices: 81
-  [PASS] SEO: 100
-  [PASS] Lighthouse report generated — {"performance":49,"accessibility":88,"best-practices":81,"seo":100}
+  [WARN] Lighthouse execution — Chrome/Chromium not found
 
 ── Internal Link Integrity ──
-  [PASS] All 6241 internal links valid
+  [PASS] All 6713 internal links valid
 
 ── Search Index ──
   [PASS] search-index.json is valid JSON
   [PASS] Index is an array
-  [PASS] Index has 58 entries
-  [PASS] 58/58 entries have valid structure
-  [PASS] 58/58 index URLs resolve to files
-  [WARN] Index size: 305.6KB
+  [PASS] Index has 60 entries
+  [PASS] 60/60 entries have valid structure
+  [PASS] 60/60 index URLs resolve to files
+  [WARN] Index size: 322.4KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 7.85MB
+  [PASS] Total dist/ size: 7.94MB
   [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present
@@ -151,4 +156,4 @@ SUMMARY
   [PASS] Permissions-Policy
 
 ============================================================
-VERDICT: NOT READY — 1 failure(s)
+VERDICT: READY TO DEPLOY
