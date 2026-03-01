@@ -915,6 +915,55 @@
             </div>
         </section>
 
+        <!-- Section Divider -->
+        <div class="section-divider" aria-hidden="true"></div>
+
+        <!-- ========================================
+             NEWSLETTER CAPTURE
+             ======================================== -->
+        <section class="section" aria-labelledby="newsletter-heading" id="newsletter">
+            <div style="max-width:520px; margin:0 auto; text-align:center;">
+                <p style="font-size:0.65rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-text-muted,var(--muted)); margin-bottom:0.75rem;">STAY IN THE LOOP</p>
+                <h2 id="newsletter-heading" style="font-size:clamp(1.4rem,3vw,2rem); font-weight:900; margin-bottom:0.75rem; line-height:1.2;">
+                    Diagnostic thinking,<br>delivered occasionally.
+                </h2>
+                <p style="font-size:0.9rem; color:var(--color-text-muted,var(--muted)); line-height:1.6; margin-bottom:1.75rem;">
+                    Field notes, case breakdowns, and frameworks for making hard decisions less hard.
+                    No pitch, no filler. Unsubscribe whenever.
+                </p>
+
+                <form id="newsletter-form" aria-label="Newsletter signup" novalidate style="display:flex; gap:0.5rem; max-width:420px; margin:0 auto;">
+                    <div style="flex:1; position:relative;">
+                        <label for="nl-email" class="sr-only">Your email address</label>
+                        <input type="email" id="nl-email" name="email"
+                               placeholder="you@company.com"
+                               autocomplete="email" required maxlength="120"
+                               aria-required="true" aria-describedby="nl-msg"
+                               style="
+                                   width:100%; padding:0.75rem 1rem;
+                                   border:1px solid var(--color-border,var(--border));
+                                   border-radius:0.75rem;
+                                   font-size:0.9rem;
+                                   color:var(--color-text,var(--fg));
+                                   background:var(--color-surface,var(--bg-surface,#fff));
+                                   outline:none; box-sizing:border-box;
+                                   transition:border-color 0.2s;
+                               ">
+                    </div>
+                    <button type="submit" id="nl-submit" style="
+                        padding:0.75rem 1.25rem;
+                        background:var(--color-accent,#4f46e5);
+                        color:#fff; border:none; border-radius:0.75rem;
+                        font-size:0.85rem; font-weight:700; cursor:pointer;
+                        white-space:nowrap; transition:opacity 0.2s;
+                        flex-shrink:0;
+                    ">Subscribe</button>
+                </form>
+
+                <p id="nl-msg" style="margin-top:0.75rem; font-size:0.78rem; min-height:1.2em;" aria-live="polite"></p>
+            </div>
+        </section>
+
         {{FOOTER}}
 
     </main>
@@ -987,6 +1036,53 @@
 
     <!-- Supply chain visualization — three.min.js injected dynamically only when section scrolls into view -->
     <script src="supply-chain-sim.js" defer></script>
+
+    <!-- Newsletter signup -->
+    <script>
+    (function () {
+        var form    = document.getElementById('newsletter-form');
+        var emailEl = document.getElementById('nl-email');
+        var msgEl   = document.getElementById('nl-msg');
+        var btn     = document.getElementById('nl-submit');
+        if (!form) return;
+
+        function setMsg(text, color) {
+            if (msgEl) { msgEl.textContent = text; msgEl.style.color = color || 'var(--color-text-muted,var(--muted))'; }
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var email = emailEl ? emailEl.value.trim() : '';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                setMsg('Please enter a valid email address.', '#ef4444');
+                emailEl && emailEl.focus();
+                return;
+            }
+            if (btn) { btn.disabled = true; btn.textContent = 'Subscribing…'; }
+            setMsg('');
+
+            fetch('/api/newsletter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email: email, source: 'homepage' }),
+            })
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                if (data.success) {
+                    setMsg('You\'re in. Talk soon.', '#10b981');
+                    form.style.display = 'none';
+                } else {
+                    setMsg(data.error || 'Something went wrong. Try again?', '#ef4444');
+                    if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+                }
+            })
+            .catch(function () {
+                setMsg('Network error. Try again?', '#ef4444');
+                if (btn) { btn.disabled = false; btn.textContent = 'Subscribe'; }
+            });
+        });
+    })();
+    </script>
 
     <!-- Sticky CTA bar — appears after scrolling past the hero -->
     <div id="sticky-cta" role="complementary" aria-label="Get started with Fogsift" style="
