@@ -38,7 +38,8 @@
         { "slug": "concepts/availability-bias", "title": "Availability Bias" },
         { "slug": "concepts/status-quo-bias", "title": "Status Quo Bias" },
         { "slug": "concepts/halo-effect", "title": "The Halo Effect" },
-        { "slug": "concepts/base-rate-neglect", "title": "Base Rate Neglect" }
+        { "slug": "concepts/base-rate-neglect", "title": "Base Rate Neglect" },
+        { "slug": "concepts/inversion", "title": "Inversion" }
       ]
     },
     {

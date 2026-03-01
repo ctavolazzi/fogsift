@@ -113,6 +113,10 @@
         {
           "slug": "concepts/base-rate-neglect",
           "title": "Base Rate Neglect"
+        },
+        {
+          "slug": "concepts/inversion",
+          "title": "Inversion"
         }
       ]
     },
@@ -336,6 +340,6 @@
       ]
     }
   ],
-  "buildDate": "2026-03-01T13:37:04.309Z",
-  "buildTimestamp": 1772372224309
+  "buildDate": "2026-03-01T13:38:26.214Z",
+  "buildTimestamp": 1772372306214
 }
