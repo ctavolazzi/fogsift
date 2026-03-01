@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T12:18:17.100Z",
+  "timestamp": "2026-03-01T12:29:31.966Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,9 +60,9 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 82",
+          "test": "HTML pages built: 83",
           "status": "pass",
-          "detail": "Found 82 HTML files"
+          "detail": "Found 83 HTML files"
         },
         {
           "test": "styles.css size: 199.2KB",
@@ -418,6 +418,11 @@
           "detail": ""
         },
         {
+          "test": "wiki/frameworks/pre-mortem.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "wiki/frameworks/prioritization-matrix.html",
           "status": "pass",
           "detail": ""
@@ -493,7 +498,7 @@
           "detail": ""
         }
       ],
-      "passed": 82,
+      "passed": 83,
       "failed": 0,
       "warned": 0
     },
@@ -570,13 +575,13 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "3 broken links out of 7057",
-          "status": "fail",
-          "detail": "wiki/field-notes/011-vanishing-context.html → ../field-notes/007-documentation-debt; wiki/field-notes/011-vanishing-context.html → ../concepts/root-cause; wiki/field-notes/011-vanishing-context.html → ../concepts/systems-thinking"
+          "test": "All 7305 internal links valid",
+          "status": "pass",
+          "detail": ""
         }
       ],
-      "passed": 0,
-      "failed": 1,
+      "passed": 1,
+      "failed": 0,
       "warned": 0
     },
     {
@@ -593,22 +598,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 61 entries",
+          "test": "Index has 63 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "61/61 entries have valid structure",
+          "test": "63/63 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "61/61 index URLs resolve to files",
+          "test": "63/63 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 58.4KB",
+          "test": "Index size: 60.4KB",
           "status": "pass",
           "detail": ""
         }
@@ -621,7 +626,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 7.33MB",
+          "test": "Total dist/ size: 7.41MB",
           "status": "pass",
           "detail": ""
         },
@@ -695,9 +700,9 @@
     }
   ],
   "summary": {
-    "total": 124,
-    "passed": 114,
-    "failed": 1,
+    "total": 125,
+    "passed": 116,
+    "failed": 0,
     "warned": 9
   }
 }
