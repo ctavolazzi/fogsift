@@ -1,25 +1,15 @@
 {
-  "generated": "2026-03-01T08:11:24.428Z",
+  "generated": "2026-03-02T00:05:47.920Z",
   "generator": "project-snapshot.js v1.0",
   "git": {
-    "branch": "claude/fogsift-engine-lkdbO",
+    "branch": "claude/explore-doc-to-lora-7qB1j",
     "status": [
-      "M _tools/snapshots/context-brief.md",
-      " M _tools/snapshots/latest.json",
-      " M dist/api/articles.json",
-      " M dist/api/meta.json",
-      " M dist/api/wiki/index.json",
-      " M dist/api/wiki/sitemap.json",
-      " M scripts/build.js",
-      " M tests/report.json",
-      " M tests/report.txt",
-      "?? dist/engine.html",
-      "?? dist/engine.js",
-      "?? src/engine.html",
-      "?? src/js/engine.js"
+      "M _tools/snapshots/context-brief.md"
     ],
     "unpushed": 0,
     "recentCommits": [
+      "e14d9ab Merge pull request #22 from ctavolazzi/claude/fogsift-engine-lkdbO",
+      "c91ed56 feat: add FogSift Engine page and build integration",
       "d06e1d7 Merge pull request #21 from ctavolazzi/claude/setup-fastapi-memory-nqvQa",
       "679dcaf fix: accessibility and keyboard interaction improvements",
       "055e547 fix: resolve HTML validation errors in index.html",
@@ -27,14 +17,12 @@
       "ee4c299 chore: update session snapshots and test reports",
       "97b120c feat: interactive sandbox terminal with honey pot detection",
       "aaffcb6 feat: memory system v2 — hardening, tests, wiki architecture page + CRT terminal",
-      "10e4771 feat: replace memory system with canonical L1/L2 implementation",
-      "41e6698 chore: update auto-generated session snapshots",
-      "8e861ca feat: add FastAPI memory system (fogsift-api)"
+      "10e4771 feat: replace memory system with canonical L1/L2 implementation"
     ],
     "tags": [],
     "lastTag": "none",
     "commitsSinceTag": 0,
-    "remoteUrl": "http://local_proxy@127.0.0.1:43679/git/ctavolazzi/fogsift"
+    "remoteUrl": "http://local_proxy@127.0.0.1:19042/git/ctavolazzi/fogsift"
   },
   "package": {
     "name": "fogsift",
@@ -90,133 +78,133 @@
       {
         "path": "css/aurora-theme.css",
         "size": 17857,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 625
       },
       {
         "path": "css/barbie-theme.css",
         "size": 7265,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 265
       },
       {
         "path": "css/base.css",
         "size": 8426,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 406
       },
       {
         "path": "css/camo-theme.css",
         "size": 6906,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 210
       },
       {
         "path": "css/components.css",
         "size": 65945,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 2984
       },
       {
         "path": "css/ferrofluid.css",
         "size": 11152,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 442
       },
       {
         "path": "css/industrial-theme.css",
         "size": 15179,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 498
       },
       {
         "path": "css/lava-blob.css",
         "size": 5078,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 219
       },
       {
         "path": "css/matrix-theme.css",
         "size": 12586,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 496
       },
       {
         "path": "css/mobile.css",
         "size": 13688,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 631
       },
       {
         "path": "css/navigation.css",
         "size": 22908,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 965
       },
       {
         "path": "css/ocean-theme.css",
         "size": 8291,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 311
       },
       {
         "path": "css/pipboy-theme.css",
         "size": 6456,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 269
       },
       {
         "path": "css/rivendell-theme.css",
         "size": 7332,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 269
       },
       {
         "path": "css/sky-theme.css",
         "size": 8496,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 327
       },
       {
         "path": "css/sleep.css",
         "size": 25294,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1053
       },
       {
         "path": "css/svg-components.css",
         "size": 24704,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 921
       },
       {
         "path": "css/synthwave-theme.css",
         "size": 8089,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 305
       },
       {
         "path": "css/t800-theme.css",
         "size": 7202,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 292
       },
       {
         "path": "css/terminal.css",
         "size": 9566,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 411
       },
       {
         "path": "css/tokens.css",
         "size": 22514,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 721
       },
       {
         "path": "css/wiki.css",
         "size": 15883,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 726
       }
     ],
@@ -224,169 +212,169 @@
       {
         "path": "js/_archived/achievement.js",
         "size": 8038,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 190
       },
       {
         "path": "js/_archived/queue-widget.js",
         "size": 9344,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 335
       },
       {
         "path": "js/cache.js",
         "size": 6407,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 207
       },
       {
         "path": "js/cookie-consent.js",
         "size": 3297,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 99
       },
       {
         "path": "js/copy-page-text.js",
         "size": 3141,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 98
       },
       {
         "path": "js/debug.js",
         "size": 5934,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 193
       },
       {
         "path": "js/engine.js",
         "size": 43488,
-        "modified": "2026-03-01T06:41:59.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1058
       },
       {
         "path": "js/hero-panels.js",
         "size": 9921,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 102
       },
       {
         "path": "js/main.js",
         "size": 14170,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 304
       },
       {
         "path": "js/matrix-rain.js",
         "size": 5114,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 168
       },
       {
         "path": "js/modal.js",
         "size": 4120,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 118
       },
       {
         "path": "js/monte.js",
         "size": 16128,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 508
       },
       {
         "path": "js/nav.js",
         "size": 2056,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 56
       },
       {
         "path": "js/queue-ui.js",
         "size": 15413,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 428
       },
       {
         "path": "js/search.js",
         "size": 16298,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 411
       },
       {
         "path": "js/sleep.js",
         "size": 25109,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 697
       },
       {
         "path": "js/supply-chain-sim.js",
         "size": 39686,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 755
       },
       {
         "path": "js/svg-components.js",
         "size": 8217,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 209
       },
       {
         "path": "js/terminal-demo.js",
         "size": 15206,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 346
       },
       {
         "path": "js/terminal-interactive.js",
         "size": 11704,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 348
       },
       {
         "path": "js/theme-init.js",
         "size": 661,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 28
       },
       {
         "path": "js/theme.js",
         "size": 21432,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 709
       },
       {
         "path": "js/toast.js",
         "size": 3461,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 98
       },
       {
         "path": "js/white-rabbit.js",
         "size": 21238,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 465
       },
       {
         "path": "js/wiki-api.js",
         "size": 3660,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 127
       },
       {
         "path": "js/wiki-nav.js",
         "size": 2218,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 62
       },
       {
         "path": "sw.js",
         "size": 5088,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 148
       },
       {
         "path": "vendor/three.min.js",
         "size": 613429,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 7
       }
     ],
@@ -394,181 +382,181 @@
       {
         "path": "404.html",
         "size": 2225,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 56
       },
       {
         "path": "about.html",
         "size": 7859,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 169
       },
       {
         "path": "contact.html",
         "size": 13999,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 240
       },
       {
         "path": "content/handout_branded.html",
         "size": 8148,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 323
       },
       {
         "path": "disclaimer.html",
         "size": 4018,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 73
       },
       {
         "path": "engine.html",
         "size": 33990,
-        "modified": "2026-03-01T06:52:52.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 727
       },
       {
         "path": "faq.html",
         "size": 13970,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 310
       },
       {
         "path": "ferrofluid-demo.html",
         "size": 12276,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 383
       },
       {
         "path": "gallery.html",
         "size": 18389,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 523
       },
       {
         "path": "hi.html",
         "size": 9130,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 297
       },
       {
         "path": "index.html",
         "size": 62824,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 993
       },
       {
         "path": "join.html",
         "size": 13011,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 212
       },
       {
         "path": "keepers-log.html",
         "size": 15832,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 455
       },
       {
         "path": "lava-demo.html",
         "size": 10264,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 341
       },
       {
         "path": "offers.html",
         "size": 18215,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 319
       },
       {
         "path": "offline.html",
         "size": 2780,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 81
       },
       {
         "path": "paperbin-saas.html",
         "size": 18265,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 471
       },
       {
         "path": "portfolio.html",
         "size": 19988,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 321
       },
       {
         "path": "privacy.html",
         "size": 3513,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 78
       },
       {
         "path": "process.html",
         "size": 7111,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 153
       },
       {
         "path": "queue-item-template.html",
         "size": 7997,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 248
       },
       {
         "path": "queue.html",
         "size": 24675,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 693
       },
       {
         "path": "shouse.html",
         "size": 40736,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 916
       },
       {
         "path": "svg-components-demo.html",
         "size": 35751,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 688
       },
       {
         "path": "system-status.html",
         "size": 14817,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 483
       },
       {
         "path": "terms.html",
         "size": 7484,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 143
       },
       {
         "path": "vision.html",
         "size": 7956,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 166
       },
       {
         "path": "wiki-index-template.html",
         "size": 3069,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 71
       },
       {
         "path": "wiki-template.html",
         "size": 4057,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 92
       },
       {
         "path": "your-data.html",
         "size": 60169,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 960
       }
     ],
@@ -576,625 +564,625 @@
       {
         "path": ".well-known/security.txt",
         "size": 733,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 25
       },
       {
         "path": "FS-Default-Image-Circle.png",
         "size": 139352,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 526
       },
       {
         "path": "FS-Default-Image-Circle_250x250px.png",
         "size": 80341,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 395
       },
       {
         "path": "FS-Default-Image-Circle_500x500px.png",
         "size": 139352,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 526
       },
       {
         "path": "_headers",
         "size": 2047,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 52
       },
       {
         "path": "assets/.DS_Store",
         "size": 6148,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 3
       },
       {
         "path": "assets/FogSift-Banner-Large.PNG",
         "size": 361554,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1932
       },
       {
         "path": "assets/FogSift-Fancy-Logo_500x500px.png",
         "size": 82901,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 293
       },
       {
         "path": "assets/Move-The-Needle-Computer-Pixel-Art-Square-1024x1024px.png",
         "size": 457264,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 2018
       },
       {
         "path": "assets/badge-orange-line.png",
         "size": 406893,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1666
       },
       {
         "path": "assets/badge-owner.png",
         "size": 385489,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1468
       },
       {
         "path": "assets/badge-profile.png",
         "size": 389336,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1727
       },
       {
         "path": "assets/icon-512.png",
         "size": 316656,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1382
       },
       {
         "path": "assets/johnny_autoseed_site_screenshot.png",
         "size": 146875,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 505
       },
       {
         "path": "assets/johnny_autoseed_site_screenshot.webp",
         "size": 66480,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 240
       },
       {
         "path": "assets/logo-01.png",
         "size": 321518,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1384
       },
       {
         "path": "assets/logo-color-transparent.png",
         "size": 111390,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 399
       },
       {
         "path": "assets/logo-color.png",
         "size": 300350,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1289
       },
       {
         "path": "assets/logo-mono.png",
         "size": 335567,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1389
       },
       {
         "path": "assets/logo-patch.png",
         "size": 83106,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 310
       },
       {
         "path": "content/articles.json",
         "size": 1110,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 33
       },
       {
         "path": "content/fogsift_services.md",
         "size": 2576,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 67
       },
       {
         "path": "content/handout_content.md",
         "size": 2032,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 32
       },
       {
         "path": "content/how_to_talk_to_ai.md",
         "size": 4747,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 169
       },
       {
         "path": "content/queue.json",
         "size": 4432,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 115
       },
       {
         "path": "content/site-data.json",
         "size": 5817,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 163
       },
       {
         "path": "content/status.json",
         "size": 1910,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 96
       },
       {
         "path": "content/testimonials.json",
         "size": 1645,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 53
       },
       {
         "path": "favicon.png",
         "size": 4078,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 15
       },
       {
         "path": "images/.DS_Store",
         "size": 6148,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 4
       },
       {
         "path": "images/portfolio/.DS_Store",
         "size": 8196,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 1
       },
       {
         "path": "images/portfolio/TMGotcha-Banner-Image.jpg",
         "size": 156802,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 684
       },
       {
         "path": "images/portfolio/TMGotcha-Build-Cycle-Banner.jpg",
         "size": 119403,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 489
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Concept-Art.jpg",
         "size": 233528,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 865
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Pepper-Ghost-Concept-Art.jpeg",
         "size": 83856,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 416
       },
       {
         "path": "images/portfolio/TMGotcha-Cube-Wall-Grid-Concept-Art.jpeg",
         "size": 88509,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 324
       },
       {
         "path": "images/portfolio/TMGotcha-Hardware-Concept-Art.jpg",
         "size": 146422,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 688
       },
       {
         "path": "images/portfolio/TMGotcha-Idle-Desktop-Demo-Concept.jpeg",
         "size": 62689,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 219
       },
       {
         "path": "images/portfolio/TMGotcha-Limited-Editions.jpeg",
         "size": 119862,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 429
       },
       {
         "path": "images/portfolio/TMGotcha-Main-Advert-Image.jpg",
         "size": 205118,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 811
       },
       {
         "path": "images/portfolio/TMGotcha-Premium-Limited-Edition-Concept-Art.jpeg",
         "size": 147741,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 460
       },
       {
         "path": "images/portfolio/TMGotcha-Product-Grid-Cycle-Concept.jpeg",
         "size": 103124,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 367
       },
       {
         "path": "images/portfolio/TMGotcha-Starter-Expansion-Cube-Minifigure-Concept.jpg",
         "size": 191515,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 816
       },
       {
         "path": "images/portfolio/TMGotcha-Toy-Editions-Banner.jpg",
         "size": 195930,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 881
       },
       {
         "path": "images/portfolio/TMGotya-Box-Concept.jpeg",
         "size": 69137,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 295
       },
       {
         "path": "images/portfolio/WAFT-PFP-DEFAULT_125x125px.png",
         "size": 15334,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 87
       },
       {
         "path": "images/portfolio/WAFT-PFP-DEFAULT_500x500px.png",
         "size": 131529,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 564
       },
       {
         "path": "images/portfolio/WAFT-PFP-DEFAULT_50x50px.png",
         "size": 5276,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 60
       },
       {
         "path": "images/portfolio/WAFT_Profile_Default.png",
         "size": 229143,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 725
       },
       {
         "path": "images/portfolio/fogsift-logo-transparent-rectangle.png",
         "size": 111390,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 399
       },
       {
         "path": "images/portfolio/pixel-tiles.jpg",
         "size": 131529,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 564
       },
       {
         "path": "images/team/christopher-badge.webp",
         "size": 9794,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 36
       },
       {
         "path": "manifest.json",
         "size": 591,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 28
       },
       {
         "path": "og-image.png",
         "size": 88537,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 365
       },
       {
         "path": "robots.txt",
         "size": 250,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 17
       },
       {
         "path": "sitemap.xml",
         "size": 8324,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 257
       },
       {
         "path": "wiki/architecture/memory-system.md",
         "size": 7451,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 179
       },
       {
         "path": "wiki/architecture/terminal-component.md",
         "size": 5814,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 107
       },
       {
         "path": "wiki/case-studies/communication-breakdown.md",
         "size": 5130,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 153
       },
       {
         "path": "wiki/case-studies/manufacturing-throughput.md",
         "size": 5091,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 152
       },
       {
         "path": "wiki/case-studies/the-data-migration.md",
         "size": 6217,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 124
       },
       {
         "path": "wiki/case-studies/the-invisible-process.md",
         "size": 5568,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 174
       },
       {
         "path": "wiki/case-studies/the-startup-pivot.md",
         "size": 5435,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 114
       },
       {
         "path": "wiki/concepts/cognitive-biases.md",
         "size": 5730,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 175
       },
       {
         "path": "wiki/concepts/compounding.md",
         "size": 4810,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 102
       },
       {
         "path": "wiki/concepts/first-principles.md",
         "size": 4145,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 90
       },
       {
         "path": "wiki/concepts/mental-models.md",
         "size": 4490,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 123
       },
       {
         "path": "wiki/concepts/opportunity-cost.md",
         "size": 4171,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 91
       },
       {
         "path": "wiki/concepts/root-cause.md",
         "size": 1863,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 54
       },
       {
         "path": "wiki/concepts/second-order-effects.md",
         "size": 5423,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 157
       },
       {
         "path": "wiki/concepts/signal-vs-noise.md",
         "size": 4912,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 157
       },
       {
         "path": "wiki/concepts/survivorship-bias.md",
         "size": 4731,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 88
       },
       {
         "path": "wiki/concepts/systems-thinking.md",
         "size": 5358,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 145
       },
       {
         "path": "wiki/content-creation-pipeline.md",
         "size": 4079,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 77
       },
       {
         "path": "wiki/creative-pipeline.md",
         "size": 4167,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 79
       },
       {
         "path": "wiki/diagnostic-process.md",
         "size": 3282,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 109
       },
       {
         "path": "wiki/faq.md",
         "size": 3828,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 98
       },
       {
         "path": "wiki/field-notes/001-map-territory.md",
         "size": 1310,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 41
       },
       {
         "path": "wiki/field-notes/002-precision-accuracy.md",
         "size": 1890,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 59
       },
       {
         "path": "wiki/field-notes/003-entropy.md",
         "size": 1652,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 53
       },
       {
         "path": "wiki/field-notes/004-bottlenecks.md",
         "size": 3140,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 76
       },
       {
         "path": "wiki/field-notes/005-tribal-knowledge.md",
         "size": 3665,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 96
       },
       {
         "path": "wiki/field-notes/006-incentive-alignment.md",
         "size": 4572,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 134
       },
       {
         "path": "wiki/field-notes/007-documentation-debt.md",
         "size": 4114,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 125
       },
       {
         "path": "wiki/field-notes/008-sunk-cost-trap.md",
         "size": 4355,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 91
       },
       {
         "path": "wiki/field-notes/009-scope-creep.md",
         "size": 4242,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 91
       },
       {
         "path": "wiki/field-notes/010-communication-overhead.md",
         "size": 4816,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 104
       },
       {
         "path": "wiki/frameworks/constraint-mapping.md",
         "size": 4365,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 166
       },
       {
         "path": "wiki/frameworks/decision-matrix.md",
         "size": 4268,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 132
       },
       {
         "path": "wiki/frameworks/feedback-loops.md",
         "size": 4976,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 165
       },
       {
         "path": "wiki/frameworks/prioritization-matrix.md",
         "size": 4947,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 120
       },
       {
         "path": "wiki/frameworks/risk-assessment.md",
         "size": 5148,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 135
       },
       {
         "path": "wiki/frameworks/swot-analysis.md",
         "size": 4953,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 115
       },
       {
         "path": "wiki/frameworks/trace-protocol.md",
         "size": 4182,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 139
       },
       {
         "path": "wiki/getting-started.md",
         "size": 4214,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 85
       },
       {
         "path": "wiki/how-we-work.md",
         "size": 1942,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 58
       },
       {
         "path": "wiki/index.json",
         "size": 4597,
-        "modified": "2026-03-01T06:23:24.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 101
       },
       {
         "path": "wiki/tools/assumption-mapping.md",
         "size": 5771,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 140
       },
       {
         "path": "wiki/tools/fishbone-diagram.md",
         "size": 5704,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 155
       },
       {
         "path": "wiki/tools/five-whys.md",
         "size": 3833,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 118
       },
       {
         "path": "wiki/tools/pareto-analysis.md",
         "size": 4931,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 154
       },
       {
         "path": "wiki/tools/process-mapping.md",
         "size": 5761,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 192
       },
       {
         "path": "wiki/tools/retrospective.md",
         "size": 5624,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 145
       },
       {
         "path": "wiki/tools/time-boxing.md",
         "size": 4868,
-        "modified": "2026-02-28T22:34:25.000Z",
+        "modified": "2026-03-02T00:05:29.000Z",
         "lines": 112
       }
     ]
@@ -1328,8 +1316,8 @@
   },
   "summary": {
     "version": "0.2.0",
-    "branch": "claude/fogsift-engine-lkdbO",
-    "uncommittedFiles": 13,
+    "branch": "claude/explore-doc-to-lora-7qB1j",
+    "uncommittedFiles": 1,
     "unpushedCommits": 0,
     "commitsSinceRelease": 0,
     "srcCssFiles": 22,
