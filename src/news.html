@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News | Fogsift</title>
+    <meta name="description" content="Live global intelligence feed — seismic activity, tech news, and weather on an interactive map. 100% client-side, no tracking.">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://fogsift.com/news">
+
+    <meta property="og:title" content="FogSift News — Live Global Intelligence">
+    <meta property="og:description" content="Seismic activity, tech news, and weather on an interactive map. No tracking, no accounts.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://fogsift.com/news">
+    <meta property="og:image" content="https://fogsift.com/og-image.png">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "FogSift News",
+      "description": "Live global intelligence feed with interactive map",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Fogsift",
+        "url": "https://fogsift.com"
+      }
+    }
+    </script>
+
+    <!-- Theme detection -->
+    {{THEME_INIT}}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@400;500;700;900&family=JetBrains+Mono:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="leaflet.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div id="mobile-overlay" class="mobile-overlay" onclick="Nav.toggleMobile()" aria-hidden="true"></div>
+
+    {{NAV_HEADER}}
+
+    <main class="frame" id="main-content">
+
+        <!-- Hero -->
+        <section class="section" aria-labelledby="news-heading" style="padding-bottom: 0;">
+            <h1 id="news-heading" class="section-label">LIVE INTELLIGENCE FEED</h1>
+            <p style="max-width: 65ch; margin: 0 auto var(--space-sm); color: var(--muted); text-align: center;">
+                Seismic activity, tech signals, and weather — plotted on a live map. All data from free, public APIs.
+            </p>
+        </section>
+
+        <!-- Status Bar + Tags -->
+        <section class="section" style="padding-top: var(--space-sm); padding-bottom: 0;">
+            <div class="news-status">
+                <span><span class="news-status-dot ok" id="news-dot"></span> Last update: <span id="news-last-update">--</span></span>
+                <span>Auto-refresh: 5 min</span>
+                <button class="news-refresh-btn" onclick="FogNews.refresh()">Refresh</button>
+            </div>
+            <div class="news-tags" role="group" aria-label="Filter by category">
+                <button class="news-tag active" data-tag="seismic" onclick="FogNews.toggleTag(this)">Seismic</button>
+                <button class="news-tag active" data-tag="natural" onclick="FogNews.toggleTag(this)">Natural Events</button>
+                <button class="news-tag active" data-tag="news" onclick="FogNews.toggleTag(this)">Headlines</button>
+                <button class="news-tag active" data-tag="tech" onclick="FogNews.toggleTag(this)">Tech</button>
+                <button class="news-tag active" data-tag="weather" onclick="FogNews.toggleTag(this)">Weather</button>
+            </div>
+        </section>
+
+        <!-- Map -->
+        <section class="section" style="padding-top: var(--space-sm);">
+            <div class="news-map-wrap">
+                <div id="news-map" style="height: 100%; width: 100%;"></div>
+            </div>
+
+            <!-- Data Panels -->
+            <div class="news-panels">
+
+                <!-- Seismic Activity -->
+                <div class="news-panel" id="panel-seismic">
+                    <h2>Seismic Activity <span class="news-panel-count" id="quake-count">--</span></h2>
+                    <div id="quake-list">
+                        <p class="news-loading">Loading earthquakes...</p>
+                    </div>
+                </div>
+
+                <!-- NASA Natural Events -->
+                <div class="news-panel" id="panel-natural">
+                    <h2>Natural Events <span class="news-panel-count" id="eonet-count">--</span></h2>
+                    <div id="eonet-list">
+                        <p class="news-loading">Loading NASA EONET...</p>
+                    </div>
+                </div>
+
+                <!-- Headlines -->
+                <div class="news-panel news-panel-full" id="panel-news">
+                    <h2>Headlines <span class="news-panel-count" id="news-count">--</span></h2>
+                    <div class="news-category-tabs" id="news-cat-tabs"></div>
+                    <div id="news-list">
+                        <p class="news-loading">Loading headlines...</p>
+                    </div>
+                </div>
+
+                <!-- Tech Feed -->
+                <div class="news-panel" id="panel-tech">
+                    <h2>Tech Signals <span class="news-panel-count" id="hn-count">--</span></h2>
+                    <div id="hn-list">
+                        <p class="news-loading">Loading stories...</p>
+                    </div>
+                </div>
+
+                <!-- Weather -->
+                <div class="news-panel" id="panel-weather">
+                    <h2>Local Weather <span class="news-panel-count" id="weather-source">Open-Meteo</span></h2>
+                    <div id="weather-data">
+                        <p class="news-loading">Fetching weather...</p>
+                    </div>
+                </div>
+
+                <!-- Sources & Transparency -->
+                <div class="news-panel">
+                    <h2>Sources & Transparency</h2>
+                    <div style="font-size: var(--text-sm); line-height: 1.8;">
+                        <p style="margin-bottom: var(--space-sm);">All data on this page comes from free, public APIs. Nothing is stored, tracked, or sent to our servers.</p>
+                        <div class="weather-grid" style="gap: 0.5rem var(--space-md);">
+                            <span class="weather-label">Seismic</span>
+                            <span><a href="https://earthquake.usgs.gov" target="_blank" rel="noopener">USGS Earthquake Hazards</a></span>
+                            <span class="weather-label">Natural</span>
+                            <span><a href="https://eonet.gsfc.nasa.gov" target="_blank" rel="noopener">NASA EONET (wildfires, storms, volcanoes)</a></span>
+                            <span class="weather-label">Headlines</span>
+                            <span><a href="https://ok.surf" target="_blank" rel="noopener">OkSurf (Google News aggregation)</a></span>
+                            <span class="weather-label">Tech</span>
+                            <span><a href="https://news.ycombinator.com" target="_blank" rel="noopener">Hacker News API</a></span>
+                            <span class="weather-label">Weather</span>
+                            <span><a href="https://open-meteo.com" target="_blank" rel="noopener">Open-Meteo (free, no key)</a></span>
+                            <span class="weather-label">Map</span>
+                            <span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></span>
+                        </div>
+                        <p style="margin-top: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted);">
+                            Built with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>. <a href="https://github.com/ctavolazzi/fogsift" target="_blank" rel="noopener">View source</a>.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    {{FOOTER}}
+
+    <script src="app.js" defer></script>
+    <script src="leaflet.min.js" defer></script>
+    <script>
+    /* ============================================
+       FOGSIFT NEWS ENGINE v0.2
+       100% client-side. No tracking. No keys.
+       ============================================ */
+    var FogNews = (function() {
+        'use strict';
+
+        var map = null;
+        var quakeLayer = null;
+        var eonetLayer = null;
+        var activeTags = { seismic: true, natural: true, news: true, tech: true, weather: true };
+        var activeNewsCat = 'Science';
+
+        // ── Cached Fetch (localStorage + TTL) ────────
+        function cachedFetch(url, ttlMinutes) {
+            var key = 'fn_cache_' + url;
+            try {
+                var cached = localStorage.getItem(key);
+                if (cached) {
+                    var parsed = JSON.parse(cached);
+                    if (parsed.expiry > Date.now()) {
+                        return Promise.resolve(parsed.data);
+                    }
+                    localStorage.removeItem(key);
+                }
+            } catch(e) { /* cache miss */ }
+
+            return fetch(url, { signal: AbortSignal.timeout(10000) })
+                .then(function(r) {
+                    if (!r.ok) throw new Error('HTTP ' + r.status);
+                    return r.json();
+                })
+                .then(function(data) {
+                    try {
+                        localStorage.setItem(key, JSON.stringify({
+                            data: data,
+                            expiry: Date.now() + (ttlMinutes * 60 * 1000)
+                        }));
+                    } catch(e) { /* storage full */ }
+                    return data;
+                });
+        }
+
+        // ── Time Ago ─────────────────────────────────
+        function timeAgo(ts) {
+            var diff = Date.now() - ts;
+            var mins = Math.floor(diff / 60000);
+            if (mins < 1) return 'just now';
+            if (mins < 60) return mins + 'm ago';
+            var hrs = Math.floor(mins / 60);
+            if (hrs < 24) return hrs + 'h ago';
+            return Math.floor(hrs / 24) + 'd ago';
+        }
+
+        // ── Escape HTML ──────────────────────────────
+        function esc(str) {
+            var d = document.createElement('div');
+            d.textContent = str || '';
+            return d.innerHTML;
+        }
+
+        // ── Map Init ─────────────────────────────────
+        function initMap() {
+            if (typeof L === 'undefined') {
+                // Leaflet not loaded yet, retry
+                setTimeout(initMap, 200);
+                return;
+            }
+
+            map = L.map('news-map', {
+                center: [25, 0],
+                zoom: 2,
+                minZoom: 2,
+                maxZoom: 12,
+                zoomControl: true,
+                attributionControl: true
+            });
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+                maxZoom: 18
+            }).addTo(map);
+
+            quakeLayer = L.layerGroup().addTo(map);
+            eonetLayer = L.layerGroup().addTo(map);
+        }
+
+        // ── Earthquakes ──────────────────────────────
+        function loadEarthquakes() {
+            var el = document.getElementById('quake-list');
+            var countEl = document.getElementById('quake-count');
+
+            return cachedFetch(
+                'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&limit=20&orderby=time&minmagnitude=4',
+                5
+            ).then(function(data) {
+                var quakes = (data.features || []);
+                countEl.textContent = 'M4+ | ' + quakes.length;
+
+                if (!quakes.length) {
+                    el.innerHTML = '<p class="news-loading">No recent M4+ earthquakes</p>';
+                    return;
+                }
+
+                // Sidebar list
+                el.innerHTML = quakes.map(function(q) {
+                    var mag = q.properties.mag;
+                    var cls = mag >= 6 ? 'high' : mag >= 5 ? 'med' : 'low';
+                    return '<div class="quake-item">' +
+                        '<span class="quake-mag ' + cls + '">' + mag.toFixed(1) + '</span>' +
+                        '<span class="quake-place">' + esc(q.properties.place) + '</span>' +
+                        '<span class="quake-time">' + timeAgo(q.properties.time) + '</span>' +
+                        '</div>';
+                }).join('');
+
+                // Map markers
+                if (quakeLayer) {
+                    quakeLayer.clearLayers();
+                    quakes.forEach(function(q) {
+                        var coords = q.geometry.coordinates;
+                        var mag = q.properties.mag;
+                        var color = mag >= 6 ? '#dc2626' : mag >= 5 ? '#d97706' : '#059669';
+                        var radius = Math.max(mag * 3, 6);
+
+                        L.circleMarker([coords[1], coords[0]], {
+                            radius: radius,
+                            fillColor: color,
+                            color: '#4a2c2a',
+                            weight: 1.5,
+                            opacity: 0.9,
+                            fillOpacity: 0.6
+                        })
+                        .bindPopup(
+                            '<strong>M' + mag.toFixed(1) + '</strong><br>' +
+                            esc(q.properties.place) + '<br>' +
+                            '<span style="font-size:0.75rem;color:#7a6b5d;">' + timeAgo(q.properties.time) + ' | depth: ' + coords[2].toFixed(0) + ' km</span>' +
+                            (q.properties.url ? '<br><a href="' + q.properties.url + '" target="_blank" rel="noopener" style="font-size:0.75rem;">USGS details</a>' : '')
+                        )
+                        .addTo(quakeLayer);
+                    });
+                }
+            }).catch(function(err) {
+                el.innerHTML = '<p class="news-error">Earthquake data unavailable: ' + esc(err.message) + '</p>';
+            });
+        }
+
+        // ── Hacker News ──────────────────────────────
+        function loadHackerNews() {
+            var el = document.getElementById('hn-list');
+            var countEl = document.getElementById('hn-count');
+
+            return cachedFetch(
+                'https://hacker-news.firebaseio.com/v0/topstories.json',
+                5
+            ).then(function(ids) {
+                var top15 = (ids || []).slice(0, 15);
+                return Promise.all(top15.map(function(id) {
+                    return cachedFetch('https://hacker-news.firebaseio.com/v0/item/' + id + '.json', 5);
+                }));
+            }).then(function(stories) {
+                stories = stories.filter(function(s) { return s && s.title; });
+                countEl.textContent = 'TOP ' + stories.length;
+
+                el.innerHTML = stories.map(function(s) {
+                    var link = s.url || ('https://news.ycombinator.com/item?id=' + s.id);
+                    var hnLink = 'https://news.ycombinator.com/item?id=' + s.id;
+                    return '<div class="feed-item">' +
+                        '<a href="' + esc(link) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a>' +
+                        '<div class="feed-meta">' + (s.score || 0) + ' pts | ' +
+                        '<a href="' + hnLink + '" target="_blank" rel="noopener" style="color:inherit;">' + (s.descendants || 0) + ' comments</a>' +
+                        '</div></div>';
+                }).join('');
+            }).catch(function(err) {
+                el.innerHTML = '<p class="news-error">HN unavailable: ' + esc(err.message) + '</p>';
+            });
+        }
+
+        // ── Weather (Open-Meteo) ─────────────────────
+        function loadWeather() {
+            var el = document.getElementById('weather-data');
+
+            // Default to NYC — geolocation blocked by Permissions-Policy
+            // v0.3: use IP-based location from an allowed API
+            var lat = 40.7;
+            var lon = -74.0;
+
+            return cachedFetch(
+                'https://api.open-meteo.com/v1/forecast?latitude=' + lat +
+                '&longitude=' + lon +
+                '&current=temperature_2m,relative_humidity_2m,wind_speed_10m,weather_code' +
+                '&temperature_unit=fahrenheit&wind_speed_unit=mph',
+                15
+            ).then(function(data) {
+                if (!data.current) throw new Error('No current weather data');
+
+                var c = data.current;
+                var desc = weatherCodeToText(c.weather_code);
+
+                el.innerHTML =
+                    '<div class="weather-grid">' +
+                    '<span class="weather-label">Conditions</span><span class="weather-value">' + desc + '</span>' +
+                    '<span class="weather-label">Temperature</span><span class="weather-value">' + Math.round(c.temperature_2m) + '&deg;F</span>' +
+                    '<span class="weather-label">Humidity</span><span class="weather-value">' + c.relative_humidity_2m + '%</span>' +
+                    '<span class="weather-label">Wind</span><span class="weather-value">' + Math.round(c.wind_speed_10m) + ' mph</span>' +
+                    '</div>';
+            }).catch(function(err) {
+                el.innerHTML = '<p class="news-error">Weather unavailable: ' + esc(err.message) + '</p>';
+            });
+        }
+
+        // WMO weather code → human text
+        function weatherCodeToText(code) {
+            var codes = {
+                0: 'Clear sky', 1: 'Mainly clear', 2: 'Partly cloudy', 3: 'Overcast',
+                45: 'Foggy', 48: 'Depositing rime fog',
+                51: 'Light drizzle', 53: 'Moderate drizzle', 55: 'Dense drizzle',
+                61: 'Slight rain', 63: 'Moderate rain', 65: 'Heavy rain',
+                71: 'Slight snow', 73: 'Moderate snow', 75: 'Heavy snow',
+                77: 'Snow grains', 80: 'Slight rain showers', 81: 'Moderate rain showers',
+                82: 'Violent rain showers', 85: 'Slight snow showers', 86: 'Heavy snow showers',
+                95: 'Thunderstorm', 96: 'Thunderstorm + slight hail', 99: 'Thunderstorm + heavy hail'
+            };
+            return codes[code] || 'Code ' + code;
+        }
+
+        // ── NASA EONET (Natural Events) ──────────────
+        function loadEONET() {
+            var el = document.getElementById('eonet-list');
+            var countEl = document.getElementById('eonet-count');
+
+            return cachedFetch(
+                'https://eonet.gsfc.nasa.gov/api/v3/events?status=open&limit=20',
+                10
+            ).then(function(data) {
+                var events = (data.events || []);
+                countEl.textContent = 'LIVE | ' + events.length;
+
+                if (!events.length) {
+                    el.innerHTML = '<p class="news-loading">No active natural events</p>';
+                    return;
+                }
+
+                // Sidebar list
+                el.innerHTML = events.map(function(e) {
+                    var cat = e.categories && e.categories[0] ? e.categories[0].title : 'Unknown';
+                    var catClass = cat === 'Wildfires' ? 'high' : cat === 'Volcanoes' ? 'high' : cat === 'Severe Storms' ? 'med' : 'low';
+                    return '<div class="quake-item">' +
+                        '<span class="quake-mag ' + catClass + '" style="font-size:0.65rem;min-width:4.5rem;">' + esc(cat) + '</span>' +
+                        '<span class="quake-place">' + esc(e.title) + '</span>' +
+                        '</div>';
+                }).join('');
+
+                // Map markers
+                if (eonetLayer) {
+                    eonetLayer.clearLayers();
+                    events.forEach(function(e) {
+                        if (!e.geometry || !e.geometry.length) return;
+                        var geo = e.geometry[e.geometry.length - 1]; // latest position
+                        var coords = geo.coordinates;
+                        if (!coords || coords.length < 2) return;
+
+                        var cat = e.categories && e.categories[0] ? e.categories[0].title : '';
+                        var color = cat === 'Wildfires' ? '#dc2626' : cat === 'Volcanoes' ? '#9333ea' : cat === 'Severe Storms' ? '#2563eb' : '#d97706';
+                        var icon = cat === 'Wildfires' ? '🔥' : cat === 'Volcanoes' ? '🌋' : cat === 'Severe Storms' ? '🌀' : cat === 'Icebergs' ? '🧊' : '⚠';
+
+                        L.marker([coords[1], coords[0]], {
+                            icon: L.divIcon({
+                                html: '<span style="font-size:1.3rem;">' + icon + '</span>',
+                                className: '',
+                                iconSize: [24, 24],
+                                iconAnchor: [12, 12]
+                            })
+                        })
+                        .bindPopup(
+                            '<strong>' + esc(e.title) + '</strong><br>' +
+                            '<span style="font-size:0.75rem;color:#7a6b5d;">' + esc(cat) + '</span>' +
+                            (e.sources && e.sources[0] ? '<br><a href="' + e.sources[0].url + '" target="_blank" rel="noopener" style="font-size:0.75rem;">Source</a>' : '')
+                        )
+                        .addTo(eonetLayer);
+                    });
+                }
+            }).catch(function(err) {
+                el.innerHTML = '<p class="news-error">NASA EONET unavailable: ' + esc(err.message) + '</p>';
+            });
+        }
+
+        // ── OkSurf Headlines ─────────────────────────
+        var newsData = {};
+
+        function loadHeadlines() {
+            var el = document.getElementById('news-list');
+            var countEl = document.getElementById('news-count');
+            var tabsEl = document.getElementById('news-cat-tabs');
+
+            return cachedFetch('https://ok.surf/api/v1/cors/news-feed', 10)
+            .then(function(data) {
+                newsData = data;
+                var categories = Object.keys(data);
+                var totalItems = categories.reduce(function(n, k) { return n + (data[k] || []).length; }, 0);
+                countEl.textContent = totalItems + ' stories';
+
+                // Render category tabs
+                tabsEl.innerHTML = categories.map(function(cat) {
+                    var cls = cat === activeNewsCat ? 'news-tag active' : 'news-tag';
+                    return '<button class="' + cls + '" onclick="FogNews.switchNewsCat(\'' + esc(cat) + '\')">' + esc(cat) + '</button>';
+                }).join('');
+
+                renderNewsCat(activeNewsCat);
+            }).catch(function(err) {
+                el.innerHTML = '<p class="news-error">Headlines unavailable: ' + esc(err.message) + '</p>';
+            });
+        }
+
+        function renderNewsCat(cat) {
+            activeNewsCat = cat;
+            var el = document.getElementById('news-list');
+            var items = newsData[cat] || [];
+
+            if (!items.length) {
+                el.innerHTML = '<p class="news-loading">No stories in ' + esc(cat) + '</p>';
+                return;
+            }
+
+            el.innerHTML = items.slice(0, 12).map(function(item) {
+                return '<div class="feed-item">' +
+                    '<a href="' + esc(item.link) + '" target="_blank" rel="noopener">' + esc(item.title) + '</a>' +
+                    '<div class="feed-meta">' + esc(item.source || '') + '</div>' +
+                    '</div>';
+            }).join('');
+
+            // Update tab active states
+            var tabs = document.querySelectorAll('#news-cat-tabs .news-tag');
+            tabs.forEach(function(t) { t.classList.toggle('active', t.textContent === cat); });
+        }
+
+        function switchNewsCat(cat) {
+            renderNewsCat(cat);
+        }
+
+        // ── Tag Filtering ────────────────────────────
+        function toggleTag(btn) {
+            var tag = btn.getAttribute('data-tag');
+            activeTags[tag] = !activeTags[tag];
+            btn.classList.toggle('active', activeTags[tag]);
+
+            // Toggle panel visibility
+            var panelMap = { seismic: 'panel-seismic', natural: 'panel-natural', news: 'panel-news', tech: 'panel-tech', weather: 'panel-weather' };
+            var panel = document.getElementById(panelMap[tag]);
+            if (panel) panel.style.display = activeTags[tag] ? '' : 'none';
+
+            // Toggle map layers
+            var layerMap = { seismic: quakeLayer, natural: eonetLayer };
+            var layer = layerMap[tag];
+            if (layer && map) {
+                if (activeTags[tag]) map.addLayer(layer);
+                else map.removeLayer(layer);
+            }
+        }
+
+        // ── Refresh All ──────────────────────────────
+        function refresh() {
+            document.getElementById('news-last-update').textContent = new Date().toLocaleTimeString();
+            var dot = document.getElementById('news-dot');
+            dot.className = 'news-status-dot ok';
+
+            Promise.all([
+                loadEarthquakes(),
+                loadEONET(),
+                loadHeadlines(),
+                loadHackerNews(),
+                loadWeather()
+            ]).catch(function() {
+                dot.className = 'news-status-dot err';
+            });
+        }
+
+        // ── Boot ─────────────────────────────────────
+        function boot() {
+            initMap();
+            refresh();
+            setInterval(refresh, 5 * 60 * 1000);
+        }
+
+        if (document.readyState !== 'loading') boot();
+        else document.addEventListener('DOMContentLoaded', boot);
+
+        return { refresh: refresh, toggleTag: toggleTag, switchNewsCat: switchNewsCat };
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+/* ============================================
+   FOGSIFT NEWS — Page-specific styles
+   Uses design tokens from tokens.css
+   ============================================ */
+
+/* ── Map Container ──────────────────────────── */
+.news-map-wrap {
+    position: relative;
+    width: 100%;
+    height: 380px;
+    border: 2px solid var(--chocolate);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: var(--space-lg);
+    background: var(--canvas);
+}
+
+.news-map-wrap .leaflet-container {
+    height: 100%;
+    width: 100%;
+    font-family: var(--font-body);
+}
+
+/* Override Leaflet popup to match FogSift */
+.leaflet-popup-content-wrapper {
+    background: var(--paper) !important;
+    color: var(--ink) !important;
+    border: 2px solid var(--chocolate) !important;
+    border-radius: var(--radius) !important;
+    box-shadow: 3px 3px 0 var(--chocolate) !important;
+    font-family: var(--font-body) !important;
+}
+
+.leaflet-popup-tip {
+    background: var(--paper) !important;
+    border: 1px solid var(--chocolate) !important;
+}
+
+.leaflet-popup-content {
+    margin: 0.75rem 1rem !important;
+    font-size: var(--text-sm) !important;
+    line-height: 1.5 !important;
+}
+
+/* Override Leaflet controls */
+.leaflet-control-zoom a {
+    background: var(--paper) !important;
+    color: var(--chocolate) !important;
+    border-color: var(--line) !important;
+}
+
+.leaflet-control-zoom a:hover {
+    background: var(--cream) !important;
+    color: var(--burnt-orange) !important;
+}
+
+.leaflet-control-attribution {
+    background: rgba(245, 240, 230, 0.85) !important;
+    font-size: 0.6rem !important;
+}
+
+/* ── Status Bar ─────────────────────────────── */
+.news-status {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0;
+    margin-bottom: var(--space-md);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+}
+
+.news-status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+}
+
+.news-status-dot.ok { background: var(--success); }
+.news-status-dot.err { background: var(--error); }
+
+.news-refresh-btn {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    background: var(--chocolate);
+    color: var(--cream);
+    border: 2px solid var(--chocolate);
+    padding: 0.3rem 0.8rem;
+    cursor: pointer;
+    border-radius: var(--radius);
+}
+
+.news-refresh-btn:hover {
+    background: var(--burnt-orange);
+    border-color: var(--burnt-orange);
+}
+
+/* ── Tag Filter Bar ─────────────────────────── */
+.news-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-md);
+}
+
+.news-tag {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.3rem 0.7rem;
+    border: 2px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--cream);
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.news-tag:hover {
+    border-color: var(--burnt-orange);
+    color: var(--burnt-orange);
+}
+
+.news-tag.active {
+    background: var(--chocolate);
+    color: var(--cream);
+    border-color: var(--chocolate);
+}
+
+.news-tag[data-tag="seismic"].active { background: var(--error); border-color: var(--error); }
+.news-tag[data-tag="natural"].active { background: #9333ea; border-color: #9333ea; }
+.news-tag[data-tag="news"].active { background: var(--chocolate); border-color: var(--chocolate); }
+.news-tag[data-tag="tech"].active { background: var(--burnt-orange); border-color: var(--burnt-orange); }
+.news-tag[data-tag="weather"].active { background: var(--info); border-color: var(--info); }
+
+/* ── News Category Tabs ─────────────────────── */
+.news-category-tabs {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 1px solid var(--line);
+}
+
+/* ── Panel Grid ─────────────────────────────── */
+.news-panels {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+}
+
+@media (max-width: 700px) {
+    .news-panels { grid-template-columns: 1fr; }
+    .news-map-wrap { height: 280px; }
+}
+
+.news-panel {
+    background: var(--paper);
+    border: 2px solid var(--chocolate);
+    border-radius: var(--radius);
+    padding: var(--space-md);
+    box-shadow: 3px 3px 0 rgba(74, 44, 42, 0.15);
+}
+
+.news-panel-full {
+    grid-column: 1 / -1;
+}
+
+.news-panel h2 {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--muted);
+    border-bottom: 2px solid var(--line);
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.news-panel-count {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    background: var(--burnt-orange);
+    color: var(--cream);
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+}
+
+/* ── Earthquake Items ───────────────────────── */
+.quake-item {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: var(--text-sm);
+}
+
+.quake-item:last-child { border-bottom: none; }
+
+.quake-mag {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-sm);
+    min-width: 3.2rem;
+    text-align: center;
+    padding: 0.15rem 0.3rem;
+    border-radius: 3px;
+    border: 2px solid;
+}
+
+.quake-mag.high { background: #fecaca; color: var(--error); border-color: var(--error); }
+.quake-mag.med  { background: #fef3c7; color: var(--warning); border-color: var(--warning); }
+.quake-mag.low  { background: #d1fae5; color: var(--success); border-color: var(--success); }
+
+.quake-place { flex: 1; line-height: 1.4; }
+
+.quake-time {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+/* ── News / Feed Items ──────────────────────── */
+.feed-item {
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--line);
+}
+
+.feed-item:last-child { border-bottom: none; }
+
+.feed-item a {
+    color: var(--ink);
+    text-decoration: none;
+    font-size: var(--text-sm);
+    font-weight: 600;
+    line-height: 1.4;
+    display: block;
+}
+
+.feed-item a:hover { color: var(--burnt-orange); }
+
+.feed-item .feed-meta {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+}
+
+/* ── Weather Card ───────────────────────────── */
+.weather-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.3rem var(--space-sm);
+    font-size: var(--text-sm);
+}
+
+.weather-label {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.weather-value {
+    font-weight: 600;
+}
+
+/* ── Loading / Error States ─────────────────── */
+.news-loading {
+    color: var(--muted);
+    font-style: italic;
+    font-size: var(--text-sm);
+    padding: var(--space-sm) 0;
+}
+
+.news-error {
+    color: var(--error);
+    font-size: var(--text-sm);
+    padding: var(--space-sm) 0;
+}

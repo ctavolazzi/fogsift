@@ -22,7 +22,7 @@
 
   # Content Security Policy
   # connect-src includes all external APIs used by your-data.html
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://solarpunkstation.com https://covers.openlibrary.org; connect-src 'self' https://cloudflareinsights.com https://ipapi.co https://api.wheretheiss.at https://uselessfacts.jsph.pl https://en.wikipedia.org https://restcountries.com https://openlibrary.org https://api.coingecko.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.pexels.com https://solarpunkstation.com https://covers.openlibrary.org https://*.tile.openstreetmap.org https://encrypted-tbn2.gstatic.com; connect-src 'self' https://cloudflareinsights.com https://ipapi.co https://api.wheretheiss.at https://uselessfacts.jsph.pl https://en.wikipedia.org https://restcountries.com https://openlibrary.org https://api.coingecko.com https://earthquake.usgs.gov https://hacker-news.firebaseio.com https://api.open-meteo.com https://eonet.gsfc.nasa.gov https://ok.surf; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests
 
 # Cache static assets aggressively (immutable = fingerprinted/versioned)
 /assets/*

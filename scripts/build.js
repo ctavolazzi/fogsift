@@ -35,6 +35,7 @@ function generateThemeInitScript(prefix = '') {
 // Navigation partial - single source of truth for site navigation
 // Order: conversion-focused flow from offers → queue → learn → connect
 const NAV_LINKS = [
+    { href: 'news.html', label: 'NEWS' },
     { href: 'about.html', label: 'ABOUT' },
     { href: 'offers.html', label: 'OFFERS' },
     { href: 'queue.html', label: 'QUEUE' },
@@ -259,10 +260,12 @@ const CSS_FILES = [
     'src/css/sleep.css',            // Sleep mode animations (easter egg)
     'src/css/wiki.css',             // Wiki page styles
     'src/css/terminal.css',         // CRT phosphor terminal exhibit component
+    'src/css/news.css',             // News page — map, panels, feeds
     'src/css/mobile.css',           // Mobile-first overrides - must be last
 ];
 
 const JS_FILES = [
+    'src/js/projects-data.js', // Shared project metadata for modal + detail page
     'src/js/toast.js',
     'src/js/copy-page-text.js', // Copy page text functionality
     'src/js/theme.js',
@@ -275,6 +278,7 @@ const JS_FILES = [
     'src/js/wiki-api.js', // TKT-x7k9-004: Wiki API client
     'src/js/monte.js',    // Three card monte hero easter egg
     'src/js/tabs.js',     // Accessible tab-switching component
+    'src/js/projects-flow.js', // Projects modal + detail flow
     'src/js/search.js',   // Client-side search/filter
     'src/js/cookie-consent.js', // GDPR/CCPA cookie consent banner
     'src/js/svg-components.js', // SVG animations, scroll triggers, rotary encoder
@@ -307,6 +311,9 @@ const STATIC_ASSETS = [
     // Security files
     { src: 'src/_headers', dest: '_headers' },
     { src: 'src/.well-known/security.txt', dest: '.well-known/security.txt' },
+    // Leaflet — vendored for news page map
+    { src: 'src/vendor/leaflet.min.js',         dest: 'leaflet.min.js' },
+    { src: 'src/vendor/leaflet.css',            dest: 'leaflet.css' },
     // Supply chain visualization — served as static files, not bundled
     { src: 'src/vendor/three.min.js',           dest: 'three.min.js' },
     { src: 'src/js/supply-chain-sim.js',        dest: 'supply-chain-sim.js' },
@@ -695,11 +702,21 @@ function generateJDSitemap(wikiIndex, depth = 0) {
 function buildAPI() {
     const wikiIndexPath = path.join(WIKI_SRC, 'index.json');
     const articlesPath = path.join(SRC, 'content', 'articles.json');
+    const empiricaCognitivePath = path.join(SRC, 'content', 'empirica-cognitive-tests.json');
+    const realmTopologyPath = path.join(SRC, 'content', 'realm-topology.json');
+    const appsContentDir = path.join(SRC, 'content', 'apps');
+    const appsIndexPath = path.join(appsContentDir, 'index.json');
     const apiDir = path.join(DIST, 'api');
     const wikiApiDir = path.join(apiDir, 'wiki');
+    const empiricaApiDir = path.join(apiDir, 'empirica');
+    const realmsApiDir = path.join(apiDir, 'realms');
+    const appsApiDir = path.join(apiDir, 'apps');
 
     // Ensure API directories exist
     ensureDir(wikiApiDir);
+    ensureDir(empiricaApiDir);
+    ensureDir(realmsApiDir);
+    ensureDir(appsApiDir);
 
     const buildDate = new Date().toISOString();
     const buildTimestamp = Date.now();
@@ -778,6 +795,71 @@ function buildAPI() {
         JSON.stringify(meta, null, 2)
     );
     filesCreated++;
+
+    // 5. Generate /api/empirica/cognitive-tests.json
+    if (fs.existsSync(empiricaCognitivePath)) {
+        const cognitive = JSON.parse(fs.readFileSync(empiricaCognitivePath, 'utf8'));
+        const apiCognitive = {
+            ...cognitive,
+            buildDate,
+            buildTimestamp
+        };
+        fs.writeFileSync(
+            path.join(empiricaApiDir, 'cognitive-tests.json'),
+            JSON.stringify(apiCognitive, null, 2)
+        );
+        filesCreated++;
+    }
+
+    // 6. Generate /api/realms/topology.json
+    if (fs.existsSync(realmTopologyPath)) {
+        const topology = JSON.parse(fs.readFileSync(realmTopologyPath, 'utf8'));
+        const apiTopology = {
+            ...topology,
+            buildDate,
+            buildTimestamp
+        };
+        fs.writeFileSync(
+            path.join(realmsApiDir, 'topology.json'),
+            JSON.stringify(apiTopology, null, 2)
+        );
+        filesCreated++;
+    }
+
+    // 7. Generate /api/apps/index.json and /api/apps/*.json manifests
+    if (fs.existsSync(appsIndexPath)) {
+        const appsIndex = JSON.parse(fs.readFileSync(appsIndexPath, 'utf8'));
+        const apiAppsIndex = {
+            ...appsIndex,
+            buildDate,
+            buildTimestamp
+        };
+        fs.writeFileSync(
+            path.join(appsApiDir, 'index.json'),
+            JSON.stringify(apiAppsIndex, null, 2)
+        );
+        filesCreated++;
+    }
+
+    if (fs.existsSync(appsContentDir)) {
+        const appManifests = fs.readdirSync(appsContentDir)
+            .filter((filename) => filename.endsWith('.json') && filename !== 'index.json');
+
+        appManifests.forEach((filename) => {
+            const fullPath = path.join(appsContentDir, filename);
+            const appManifest = JSON.parse(fs.readFileSync(fullPath, 'utf8'));
+            const apiManifest = {
+                ...appManifest,
+                buildDate,
+                buildTimestamp
+            };
+            fs.writeFileSync(
+                path.join(appsApiDir, filename),
+                JSON.stringify(apiManifest, null, 2)
+            );
+            filesCreated++;
+        });
+    }
 
     return filesCreated;
 }
@@ -1114,12 +1196,14 @@ function buildSearchIndex() {
         { file: 'queue.html', url: 'queue.html', category: 'Queue' },
         { file: 'faq.html', url: 'faq.html', category: 'FAQ' },
         { file: 'portfolio.html', url: 'portfolio.html', category: 'Portfolio' },
+        { file: 'project.html', url: 'project.html', category: 'Portfolio' },
         { file: 'contact.html', url: 'contact.html', category: 'Contact' },
         { file: 'vision.html', url: 'vision.html', category: 'Vision' },
         { file: 'terms.html', url: 'terms.html', category: 'Legal' },
         { file: 'privacy.html', url: 'privacy.html', category: 'Legal' },
         { file: 'disclaimer.html', url: 'disclaimer.html', category: 'Legal' },
         { file: 'your-data.html', url: 'your-data.html', category: 'Privacy' },
+        { file: 'news.html', url: 'news.html', category: 'News' },
     ];
 
     // Index main pages from dist (after they've been built)
@@ -1311,6 +1395,12 @@ async function build() {
     }
     if (processSimpleHtml('workflow-engine.html')) {
         console.log('  ✓ dist/workflow-engine.html (processed)');
+    }
+    if (processSimpleHtml('project.html')) {
+        console.log('  ✓ dist/project.html (processed)');
+    }
+    if (processSimpleHtml('news.html')) {
+        console.log('  ✓ dist/news.html (processed)');
     }
 
     // Future pages (uncomment when implemented):
