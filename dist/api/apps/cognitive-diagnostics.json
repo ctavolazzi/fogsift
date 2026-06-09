@@ -1,0 +1,31 @@
+{
+  "id": "cognitive-diagnostics",
+  "label": "Cognitive Diagnostics",
+  "description": "Empirica cognitive suite playback and Oracle recommendation surface.",
+  "icon": "brain",
+  "entrypoint": "/workflow-engine?cognitive=1",
+  "actions": [
+    {
+      "id": "open-cognitive-overlay",
+      "label": "Open Cognitive Overlay",
+      "href": "/workflow-engine?cognitive=1",
+      "method": "GET"
+    },
+    {
+      "id": "open-cognitive-api",
+      "label": "Open Cognitive API",
+      "href": "/api/empirica/cognitive-tests.json",
+      "method": "GET"
+    }
+  ],
+  "checks": [
+    {
+      "id": "cognitive-api",
+      "label": "Cognitive API available",
+      "endpoint": "/api/empirica/cognitive-tests.json",
+      "expectedStatus": 200
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

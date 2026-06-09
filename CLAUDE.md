@@ -12,6 +12,22 @@ Vanilla HTML/CSS/JS — no frameworks, by design.
 - **Deploy:** `wrangler pages deploy dist --project-name fogsift`
 - **Image compression:** `node scripts/compress-images.js`
 
+## Localhost 5050 Routing Policy
+
+All local development work must route through `http://localhost:5050` as the primary local control plane.
+
+- Treat `:5050` as the canonical local base URL for app and API verification.
+- Use `/api/*` endpoints from the static API layer documented in `_docs/20-29_development/architecture_category/architecture.02_api_endpoints.md`.
+- Prefer extending existing `scripts/`, `build.js`, and `dist/api/*` workflows before introducing new local servers.
+- If an auxiliary service is required (for example, `fogsift-api/`), it must integrate with and be validated from the `:5050` workflow.
+- All new docs, commands, and workflow notes should reference `http://localhost:5050` first.
+
+### Hard-Gate Rule
+
+- No implementation task starts until it has a CivicOS representation on `http://localhost:5050`.
+- Normal flow is: represent -> execute -> verify -> log.
+- If a temporary override is required, include reason, scope, expiry, and a required postmortem entry in `_work_efforts/devlog.md`.
+
 ## Session Startup
 A `SessionStart` hook runs `.claude/hooks/startup.sh` automatically. It executes:
 1. `health-check.js` — structural pass/fail checks (<1s)
@@ -54,3 +70,26 @@ node _tools/scripts/health-check.js && node _tools/scripts/context-brief.js && n
 | 5030 | Component Library |
 | 5065 | Test Suite Viewer |
 | 8788 | Wrangler dev (Cloudflare Functions) |
+
+## Empirica Reliability (Required)
+
+When using Empirica in FogSift, use this runbook before deeper automation:
+
+1. `empirica --version`
+2. `empirica project-init --non-interactive --output json`
+3. `empirica project-switch fogsift --output json`
+4. `empirica project-bootstrap --output json`
+5. `npm run test:empirica:cognitive`
+
+If session creation fails with a project-path resolver error, use:
+```bash
+pip uninstall -y empirica empirica-mcp
+pip install empirica==1.5.9 empirica-mcp
+```
+
+Then rerun the reliability sequence above.
+
+If Empirica CLI crashes with `badly formed help string` on Python 3.14, use local editable fallback:
+```bash
+python3 -m pip install -e /Users/ctavolazzi/Code/active/empirica
+```

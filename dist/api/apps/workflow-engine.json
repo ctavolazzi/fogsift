@@ -1,0 +1,31 @@
+{
+  "id": "workflow-engine",
+  "label": "Workflow Engine",
+  "description": "Interactive execution graph with realm and cognitive overlays.",
+  "icon": "workflow",
+  "entrypoint": "/workflow-engine",
+  "actions": [
+    {
+      "id": "open-engine",
+      "label": "Open Workflow Engine",
+      "href": "/workflow-engine",
+      "method": "GET"
+    },
+    {
+      "id": "open-engine-realm-overlay",
+      "label": "Open Engine With Realm Topology",
+      "href": "/workflow-engine?realms=1",
+      "method": "GET"
+    }
+  ],
+  "checks": [
+    {
+      "id": "realm-topology",
+      "label": "Realm topology available",
+      "endpoint": "/api/realms/topology.json",
+      "expectedStatus": 200
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

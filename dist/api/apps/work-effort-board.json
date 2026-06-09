@@ -1,0 +1,33 @@
+{
+  "id": "work-effort-board",
+  "label": "Work-Effort Board",
+  "description": "Operational board for active work efforts, ticket status, and devlog checkpoints.",
+  "icon": "kanban",
+  "entrypoint": "/api/apps/work-effort-board.json",
+  "actions": [
+    {
+      "id": "open-devlog",
+      "label": "Open Devlog",
+      "href": "/api/apps/work-effort-board.json",
+      "method": "GET"
+    }
+  ],
+  "checks": [
+    {
+      "id": "apps-registry-available",
+      "label": "App registry namespace available",
+      "endpoint": "/api/apps/index.json",
+      "expectedStatus": 200
+    }
+  ],
+  "dataSources": [
+    {
+      "id": "devlog",
+      "type": "file",
+      "path": "_work_efforts/devlog.md",
+      "note": "Rendered by CivicOS adapter layer"
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

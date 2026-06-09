@@ -2,7 +2,7 @@
 id: architecture.02
 title: API Endpoint Schema
 created: 2025-12-27T22:55:00-08:00
-updated: 2025-12-27T22:55:00-08:00
+updated: 2026-03-01T11:32:00-08:00
 links:
   - '[[architecture_category_index]]'
   - '[[architecture.01_site_architecture_overview]]'
@@ -174,6 +174,208 @@ interface SiteMeta {
   "buildTimestamp": 1735365300000
 }
 ```
+
+---
+
+### GET /api/empirica/cognitive-tests.json
+
+Empirica cognitive diagnostics and workflow-engine visualization payload.
+
+**Response:**
+```typescript
+interface EmpiricaCognitiveReport {
+  generatedAt: string | null;
+  project: string;
+  projectPath: string;
+  status: 'healthy' | 'degraded' | 'uninitialized' | 'error';
+  summary: {
+    total: number;
+    pass: number;
+    fail: number;
+    warn: number;
+  };
+  tests: CognitiveTest[];
+  graph: {
+    nodes: GraphNode[];
+    edges: GraphEdge[];
+  };
+  oracleRecommendation: string;
+}
+
+interface CognitiveTest {
+  name: string;
+  command: string;
+  status: 'pass' | 'fail' | 'warn';
+  detail: string;
+}
+
+interface GraphNode {
+  id: string;
+  type: string; // Maps to workflow-engine node type
+  label: string;
+  status: 'pass' | 'fail' | 'warn';
+  x: number;
+  y: number;
+}
+
+interface GraphEdge {
+  id: string;
+  source: string;
+  target: string;
+}
+```
+
+**Generation flow:**
+```bash
+npm run test:empirica:cognitive
+node scripts/build.js
+```
+
+---
+
+### GET /api/realms/topology.json
+
+Realm/room topology payload for workflow-engine interop on localhost `:5050`.
+
+**Response:**
+```typescript
+interface RealmTopology {
+  title: string;
+  description: string;
+  version: string;
+  nodes: RealmNode[];
+  edges: RealmEdge[];
+  buildDate: string;
+  buildTimestamp: number;
+}
+
+interface RealmNode {
+  id: string;
+  type: string; // Prefer existing workflow-engine node types
+  label: string;
+  port?: number;
+  x: number;
+  y: number;
+}
+
+interface RealmEdge {
+  id: string;
+  source: string;
+  target: string;
+  label?: string;
+}
+```
+
+**Example Response:**
+```json
+{
+  "title": "Realm Topology",
+  "description": "Interop topology for localhost:5050 control plane and external realm systems.",
+  "version": "1.0.0",
+  "nodes": [
+    { "id": "control_5050", "type": "trigger", "label": "Control Plane :5050", "port": 5050, "x": 80, "y": 40 },
+    { "id": "agentchattr_8300", "type": "agent", "label": "AgentChattr :8300", "port": 8300, "x": -180, "y": 260 }
+  ],
+  "edges": [
+    { "id": "re1", "source": "control_5050", "target": "agentchattr_8300", "label": "dispatch" }
+  ],
+  "buildDate": "2026-03-01T18:48:00.000Z",
+  "buildTimestamp": 1772390880000
+}
+```
+
+**Generation flow:**
+```bash
+node scripts/build.js
+```
+
+---
+
+### GET /api/apps/index.json
+
+App registry index used by CivicOS to discover development surfaces and manifest locations.
+
+**Response:**
+```typescript
+interface AppsRegistry {
+  title: string;
+  description: string;
+  version: string;
+  apps: RegistryApp[];
+  buildDate: string;
+  buildTimestamp: number;
+}
+
+interface RegistryApp {
+  id: string;
+  label: string;
+  manifest: string; // /api/apps/<id>.json
+  category: string;
+}
+```
+
+**Example Response:**
+```json
+{
+  "title": "CivicOS App Registry",
+  "description": "Registry of development surfaces exposed through localhost:5050.",
+  "version": "1.0.0",
+  "apps": [
+    {
+      "id": "workflow-engine",
+      "label": "Workflow Engine",
+      "manifest": "/api/apps/workflow-engine.json",
+      "category": "execution"
+    }
+  ],
+  "buildDate": "2026-03-01T19:20:00.000Z",
+  "buildTimestamp": 1772392800000
+}
+```
+
+---
+
+### GET /api/apps/<id>.json
+
+App manifest contract for each CivicOS-visible development surface.
+
+**Response:**
+```typescript
+interface AppManifest {
+  id: string;
+  label: string;
+  description: string;
+  icon: string;
+  entrypoint: string;
+  actions: ManifestAction[];
+  checks: ManifestCheck[];
+  buildDate: string;
+  buildTimestamp: number;
+}
+
+interface ManifestAction {
+  id: string;
+  label: string;
+  href: string;
+  method: 'GET' | 'POST';
+}
+
+interface ManifestCheck {
+  id: string;
+  label: string;
+  endpoint: string;
+  expectedStatus: number;
+}
+```
+
+**Generation flow:**
+```bash
+node scripts/build.js
+```
+
+Source files:
+- `src/content/apps/index.json`
+- `src/content/apps/*.json`
 
 ---
 

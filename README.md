@@ -73,6 +73,17 @@ That's it. `npm start` launches The Lighthouse — FogSift's full development su
 npm start                    # Full suite — site + all dev tools
 npm run start:site           # Site only (skip helper servers)
 npm start -- --skip-tests    # Skip test suite for faster boot
+npm run test:empirica:cognitive  # Empirica cognitive diagnostics
+```
+
+### Empirica Cognitive Visualization
+
+Run the suite, rebuild, then open:
+
+```bash
+npm run test:empirica:cognitive
+node scripts/build.js
+open http://localhost:5050/workflow-engine?cognitive=1
 ```
 
 ---

@@ -1,0 +1,39 @@
+{
+  "title": "CivicOS App Registry",
+  "description": "Registry of development surfaces exposed through localhost:5050.",
+  "version": "1.0.0",
+  "apps": [
+    {
+      "id": "build-status",
+      "label": "Build Status",
+      "manifest": "/api/apps/build-status.json",
+      "category": "operations"
+    },
+    {
+      "id": "api-explorer",
+      "label": "API Explorer",
+      "manifest": "/api/apps/api-explorer.json",
+      "category": "operations"
+    },
+    {
+      "id": "workflow-engine",
+      "label": "Workflow Engine",
+      "manifest": "/api/apps/workflow-engine.json",
+      "category": "execution"
+    },
+    {
+      "id": "cognitive-diagnostics",
+      "label": "Cognitive Diagnostics",
+      "manifest": "/api/apps/cognitive-diagnostics.json",
+      "category": "diagnostics"
+    },
+    {
+      "id": "work-effort-board",
+      "label": "Work-Effort Board",
+      "manifest": "/api/apps/work-effort-board.json",
+      "category": "governance"
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

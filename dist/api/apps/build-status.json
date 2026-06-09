@@ -1,0 +1,25 @@
+{
+  "id": "build-status",
+  "label": "Build Status",
+  "description": "Shows static build metadata and generated artifact freshness.",
+  "icon": "gauge",
+  "entrypoint": "/api/meta.json",
+  "actions": [
+    {
+      "id": "open-meta",
+      "label": "Open Build Metadata",
+      "href": "/api/meta.json",
+      "method": "GET"
+    }
+  ],
+  "checks": [
+    {
+      "id": "meta-available",
+      "label": "Build metadata available",
+      "endpoint": "/api/meta.json",
+      "expectedStatus": 200
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

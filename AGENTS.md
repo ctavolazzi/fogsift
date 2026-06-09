@@ -8,6 +8,25 @@ FogSift is a web application for cutting through noise and finding signal. This 
 **Location:** `/Users/ctavolazzi/Code/fogsift`
 **Stack:** HTML, CSS, JavaScript (vanilla)
 
+## Localhost 5050 First Rule
+
+For this repository, route all additional development work through `http://localhost:5050`.
+
+- Primary local URL: `http://localhost:5050`
+- Primary local API base: `http://localhost:5050/api/`
+- Existing static API contract is documented in `_docs/20-29_development/architecture_category/architecture.02_api_endpoints.md`
+- Before adding new runtime components, check whether the requirement can be satisfied by existing `dist/api/*`, `scripts/build.js`, and current dev server behavior.
+- If additional services are introduced (for example from `fogsift-api/`), document how they map back into the `:5050` development flow.
+
+### Hard-Gate Governance
+
+- Canonical gate: no task is considered started until it is represented in CivicOS on `http://localhost:5050`.
+- Required lifecycle: represent task in CivicOS -> execute via CivicOS-linked tools -> verify on CivicOS dashboards -> log outcome in work effort/devlog.
+- Exception protocol:
+  1. mark `temporary_override` with reason and expiry window,
+  2. proceed only for the scoped action,
+  3. add a postmortem note to `_work_efforts/devlog.md` before closing the ticket.
+
 ---
 
 ## Directory Structure
@@ -309,6 +328,15 @@ return result.json();
 3. ⏸️ Before any destructive operation (delete, overwrite)
 4. ⏸️ Before deploying to production
 
+### CivicOS Preflight Block
+
+Before implementation begins, execution is blocked unless all are true:
+1. Task is represented in CivicOS on `http://localhost:5050`.
+2. Target API/workflow surface resolves through `:5050` (`/api/*`, `/api/realms/*`, `/api/apps/*` as applicable).
+3. Work effort and devlog entry exist for the task.
+
+If any item is missing, stop and complete setup before writing code.
+
 ---
 
 ## Troubleshooting
@@ -366,6 +394,23 @@ return result.json();
 │  Work:       _work_efforts/                                    │
 │                                                                  │
 └─────────────────────────────────────────────────────────────────┘
+```
+
+## Empirica + Oracle Commands (FogSift)
+
+Use these project-local command docs for repeatable runs:
+
+- `.cursor/commands/empirica.md` — bootstrap + cognitive test run
+- `.cursor/commands/oracle.md` — Oracle-style decision summary from cognitive report
+
+Empirica cognitive suite command:
+```bash
+npm run test:empirica:cognitive
+```
+
+Visualization endpoint for workflow engine:
+```text
+/api/empirica/cognitive-tests.json
 ```
 
 ---

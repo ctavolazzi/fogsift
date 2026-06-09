@@ -15,6 +15,9 @@ node_modules/
 # Playwright
 .playwright-mcp/
 
+# Empirica session data (generated, not source)
+.empirica/
+
 # Logs
 *.log
 npm-debug.log*

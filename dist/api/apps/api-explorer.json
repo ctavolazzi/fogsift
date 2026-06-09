@@ -1,0 +1,37 @@
+{
+  "id": "api-explorer",
+  "label": "API Explorer",
+  "description": "Discovers and validates static API namespaces served through localhost:5050.",
+  "icon": "search",
+  "entrypoint": "/api/apps/index.json",
+  "actions": [
+    {
+      "id": "open-wiki-index",
+      "label": "Open Wiki Index API",
+      "href": "/api/wiki/index.json",
+      "method": "GET"
+    },
+    {
+      "id": "open-realm-topology",
+      "label": "Open Realm Topology API",
+      "href": "/api/realms/topology.json",
+      "method": "GET"
+    }
+  ],
+  "checks": [
+    {
+      "id": "apps-registry",
+      "label": "App registry available",
+      "endpoint": "/api/apps/index.json",
+      "expectedStatus": 200
+    },
+    {
+      "id": "wiki-index",
+      "label": "Wiki API available",
+      "endpoint": "/api/wiki/index.json",
+      "expectedStatus": 200
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}

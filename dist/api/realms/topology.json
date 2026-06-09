@@ -1,0 +1,93 @@
+{
+  "title": "Realm Topology",
+  "description": "Interop topology for localhost:5050 control plane and external realm systems.",
+  "version": "1.0.0",
+  "nodes": [
+    {
+      "id": "control_5050",
+      "type": "trigger",
+      "label": "Control Plane :5050",
+      "port": 5050,
+      "x": 80,
+      "y": 40
+    },
+    {
+      "id": "agentchattr_8300",
+      "type": "agent",
+      "label": "AgentChattr :8300",
+      "port": 8300,
+      "x": -180,
+      "y": 260
+    },
+    {
+      "id": "realm_db_8200",
+      "type": "memory",
+      "label": "Realm DB :8200",
+      "port": 8200,
+      "x": 80,
+      "y": 260
+    },
+    {
+      "id": "realm_api_8201",
+      "type": "tool",
+      "label": "Realm API :8201",
+      "port": 8201,
+      "x": 340,
+      "y": 260
+    },
+    {
+      "id": "interop_gate",
+      "type": "checkpoint",
+      "label": "Interop Gate",
+      "x": 80,
+      "y": 480
+    },
+    {
+      "id": "workflow_engine",
+      "type": "output",
+      "label": "Workflow Engine",
+      "x": 80,
+      "y": 700
+    }
+  ],
+  "edges": [
+    {
+      "id": "re1",
+      "source": "control_5050",
+      "target": "agentchattr_8300",
+      "label": "dispatch"
+    },
+    {
+      "id": "re2",
+      "source": "control_5050",
+      "target": "realm_api_8201",
+      "label": "api_call"
+    },
+    {
+      "id": "re3",
+      "source": "agentchattr_8300",
+      "target": "realm_db_8200",
+      "label": "persist"
+    },
+    {
+      "id": "re4",
+      "source": "realm_api_8201",
+      "target": "realm_db_8200",
+      "label": "query"
+    },
+    {
+      "id": "re5",
+      "source": "realm_db_8200",
+      "target": "interop_gate",
+      "label": "state"
+    },
+    {
+      "id": "re6",
+      "source": "interop_gate",
+      "target": "workflow_engine",
+      "label": "render"
+    }
+  ],
+  "buildDate": "2026-04-02T02:30:46.840Z",
+  "buildTimestamp": 1775097046840
+}
