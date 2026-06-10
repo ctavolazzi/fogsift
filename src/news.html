@@ -47,13 +47,27 @@
 
     <main class="frame" id="main-content">
 
-        <!-- Hero -->
-        <section class="section" aria-labelledby="news-heading" style="padding-bottom: 0;">
-            <h1 id="news-heading" class="section-label">LIVE INTELLIGENCE FEED</h1>
-            <p style="max-width: 65ch; margin: 0 auto var(--space-sm); color: var(--muted); text-align: center;">
-                Seismic activity, tech signals, and weather — plotted on a live map. All data from free, public APIs.
+        <!-- Masthead -->
+        <header class="news-masthead" aria-labelledby="news-heading">
+            <div class="news-masthead-rule"></div>
+            <h1 id="news-heading" class="news-masthead-title">The FogSift Dispatch</h1>
+            <p class="news-masthead-edition">
+                <span id="news-edition-date"></span>
+                <span class="news-edition-sep">&bull;</span>
+                <span>Live Global Intelligence</span>
+                <span class="news-edition-sep">&bull;</span>
+                <span>All Data from Public APIs</span>
             </p>
-        </section>
+            <div class="news-masthead-rule"></div>
+        </header>
+
+        <!-- Breaking Ticker -->
+        <div class="news-ticker" role="marquee" aria-live="polite" aria-label="Breaking alerts">
+            <span class="news-ticker-label">LIVE</span>
+            <div class="news-ticker-track">
+                <span class="news-ticker-content" id="news-ticker-text">Loading alerts...</span>
+            </div>
+        </div>
 
         <!-- Status Bar + Tags -->
         <section class="section" style="padding-top: var(--space-sm); padding-bottom: 0;">
@@ -71,62 +85,78 @@
             </div>
         </section>
 
-        <!-- Map -->
-        <section class="section" style="padding-top: var(--space-sm);">
-            <div class="news-map-wrap">
-                <div id="news-map" style="height: 100%; width: 100%;"></div>
-            </div>
+        <!-- Lead Story -->
+        <article class="news-lead" id="news-lead" aria-label="Lead story">
+            <span class="news-section-label">TOP STORY</span>
+            <h2 class="news-lead-headline"><a id="lead-headline-link" href="#" target="_blank" rel="noopener">Loading top story...</a></h2>
+            <p class="news-lead-source" id="lead-source"></p>
+        </article>
 
-            <!-- Data Panels -->
+        <!-- Main Content Grid -->
+        <section class="section" style="padding-top: 0;">
             <div class="news-panels">
 
-                <!-- Seismic Activity -->
-                <div class="news-panel" id="panel-seismic">
-                    <h2>Seismic Activity <span class="news-panel-count" id="quake-count">--</span></h2>
-                    <div id="quake-list">
-                        <p class="news-loading">Loading earthquakes...</p>
-                    </div>
-                </div>
-
-                <!-- NASA Natural Events -->
-                <div class="news-panel" id="panel-natural">
-                    <h2>Natural Events <span class="news-panel-count" id="eonet-count">--</span></h2>
-                    <div id="eonet-list">
-                        <p class="news-loading">Loading NASA EONET...</p>
-                    </div>
-                </div>
-
-                <!-- Headlines -->
-                <div class="news-panel news-panel-full" id="panel-news">
-                    <h2>Headlines <span class="news-panel-count" id="news-count">--</span></h2>
+                <!-- MAIN COLUMN: Headlines -->
+                <div class="news-panel news-panel-main" id="panel-news">
+                    <div class="news-section-divider"><span class="news-section-label">HEADLINES</span></div>
                     <div class="news-category-tabs" id="news-cat-tabs"></div>
-                    <div id="news-list">
+                    <div class="news-headlines-grid" id="news-list">
                         <p class="news-loading">Loading headlines...</p>
                     </div>
+                    <span class="news-panel-count" id="news-count" style="display:none;">--</span>
                 </div>
 
-                <!-- Tech Feed -->
-                <div class="news-panel" id="panel-tech">
+                <!-- SIDEBAR: Seismic + Weather + Natural stacked -->
+                <aside class="news-sidebar">
+                    <div class="news-panel" id="panel-seismic">
+                        <div class="news-section-divider"><span class="news-section-label">SEISMIC</span></div>
+                        <h2>Seismic Activity <span class="news-panel-count" id="quake-count">--</span></h2>
+                        <div id="quake-list">
+                            <p class="news-loading">Loading earthquakes...</p>
+                        </div>
+                    </div>
+
+                    <div class="news-panel" id="panel-weather">
+                        <div class="news-section-divider"><span class="news-section-label">WEATHER</span></div>
+                        <h2>Local Weather <span class="news-panel-count" id="weather-source">Open-Meteo</span></h2>
+                        <div id="weather-data">
+                            <p class="news-loading">Fetching weather...</p>
+                        </div>
+                    </div>
+
+                    <div class="news-panel" id="panel-natural">
+                        <div class="news-section-divider"><span class="news-section-label">NATURAL EVENTS</span></div>
+                        <h2>Natural Events <span class="news-panel-count" id="eonet-count">--</span></h2>
+                        <div id="eonet-list">
+                            <p class="news-loading">Loading NASA EONET...</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- FULL-WIDTH: Tech Feed -->
+                <div class="news-panel news-panel-full" id="panel-tech">
+                    <div class="news-section-divider"><span class="news-section-label">TECH</span></div>
                     <h2>Tech Signals <span class="news-panel-count" id="hn-count">--</span></h2>
-                    <div id="hn-list">
+                    <div class="news-tech-grid" id="hn-list">
                         <p class="news-loading">Loading stories...</p>
                     </div>
                 </div>
 
-                <!-- Weather -->
-                <div class="news-panel" id="panel-weather">
-                    <h2>Local Weather <span class="news-panel-count" id="weather-source">Open-Meteo</span></h2>
-                    <div id="weather-data">
-                        <p class="news-loading">Fetching weather...</p>
+                <!-- FULL-WIDTH: Global View — Map -->
+                <div class="news-panel news-panel-full news-panel-map" id="panel-map">
+                    <div class="news-section-divider"><span class="news-section-label">GLOBAL VIEW</span></div>
+                    <div class="news-map-wrap">
+                        <div id="news-map" style="height: 100%; width: 100%;"></div>
                     </div>
                 </div>
 
                 <!-- Sources & Transparency -->
-                <div class="news-panel">
+                <div class="news-panel news-panel-full news-panel-sources">
+                    <div class="news-section-divider"><span class="news-section-label">TRANSPARENCY</span></div>
                     <h2>Sources & Transparency</h2>
-                    <div style="font-size: var(--text-sm); line-height: 1.8;">
-                        <p style="margin-bottom: var(--space-sm);">All data on this page comes from free, public APIs. Nothing is stored, tracked, or sent to our servers.</p>
-                        <div class="weather-grid" style="gap: 0.5rem var(--space-md);">
+                    <div class="news-sources-content">
+                        <p>All data on this page comes from free, public APIs. Nothing is stored, tracked, or sent to our servers.</p>
+                        <div class="news-sources-grid">
                             <span class="weather-label">Seismic</span>
                             <span><a href="https://earthquake.usgs.gov" target="_blank" rel="noopener">USGS Earthquake Hazards</a></span>
                             <span class="weather-label">Natural</span>
@@ -140,7 +170,7 @@
                             <span class="weather-label">Map</span>
                             <span><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></span>
                         </div>
-                        <p style="margin-top: var(--space-sm); font-family: var(--font-mono); font-size: var(--text-xs); color: var(--muted);">
+                        <p class="news-sources-credit">
                             Built with <a href="https://claude.ai/claude-code" target="_blank" rel="noopener">Claude Code</a>. <a href="https://github.com/ctavolazzi/fogsift" target="_blank" rel="noopener">View source</a>.
                         </p>
                     </div>
@@ -479,8 +509,20 @@
                 return;
             }
 
-            el.innerHTML = items.slice(0, 12).map(function(item) {
-                return '<div class="feed-item">' +
+            // First item becomes the lead story
+            var lead = items[0];
+            var leadLink = document.getElementById('lead-headline-link');
+            var leadSource = document.getElementById('lead-source');
+            if (leadLink && lead) {
+                leadLink.href = lead.link || '#';
+                leadLink.textContent = lead.title || 'Breaking News';
+                leadSource.textContent = lead.source || '';
+            }
+
+            // Remaining items fill the grid
+            el.innerHTML = items.slice(1, 13).map(function(item, i) {
+                var sizeClass = i < 2 ? ' feed-item-secondary' : i < 4 ? ' feed-item-tertiary' : '';
+                return '<div class="feed-item' + sizeClass + '">' +
                     '<a href="' + esc(item.link) + '" target="_blank" rel="noopener">' + esc(item.title) + '</a>' +
                     '<div class="feed-meta">' + esc(item.source || '') + '</div>' +
                     '</div>';
@@ -515,6 +557,29 @@
             }
         }
 
+        // ── Ticker ───────────────────────────────────
+        function updateTicker() {
+            var items = [];
+            var quakeEls = document.querySelectorAll('#quake-list .quake-item');
+            quakeEls.forEach(function(el) {
+                var mag = el.querySelector('.quake-mag');
+                var place = el.querySelector('.quake-place');
+                if (mag && place) items.push('SEISMIC M' + mag.textContent.trim() + ' — ' + place.textContent.trim());
+            });
+            var eonetEls = document.querySelectorAll('#eonet-list .quake-item');
+            eonetEls.forEach(function(el) {
+                var cat = el.querySelector('.quake-mag');
+                var title = el.querySelector('.quake-place');
+                if (cat && title) items.push(cat.textContent.trim().toUpperCase() + ' — ' + title.textContent.trim());
+            });
+            var ticker = document.getElementById('news-ticker-text');
+            if (ticker && items.length) {
+                ticker.textContent = items.join('  ///  ');
+            } else if (ticker) {
+                ticker.textContent = 'All systems nominal — no active alerts';
+            }
+        }
+
         // ── Refresh All ──────────────────────────────
         function refresh() {
             document.getElementById('news-last-update').textContent = new Date().toLocaleTimeString();
@@ -527,13 +592,22 @@
                 loadHeadlines(),
                 loadHackerNews(),
                 loadWeather()
-            ]).catch(function() {
+            ]).then(function() {
+                updateTicker();
+            }).catch(function() {
                 dot.className = 'news-status-dot err';
             });
         }
 
         // ── Boot ─────────────────────────────────────
         function boot() {
+            // Set edition date
+            var dateEl = document.getElementById('news-edition-date');
+            if (dateEl) {
+                dateEl.textContent = new Date().toLocaleDateString('en-US', {
+                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+                });
+            }
             initMap();
             refresh();
             setInterval(refresh, 5 * 60 * 1000);

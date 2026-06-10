@@ -236,6 +236,9 @@ function App() {
   const [activeTab, setActiveTab] = useState('context');
   const [configMode, setConfigMode] = useState('form');
   const [textInput, setTextInput] = useState('');
+  const [cognitiveReport, setCognitiveReport] = useState(null);
+  const [realmTopologyReport, setRealmTopologyReport] = useState(null);
+  const [appRegistryReport, setAppRegistryReport] = useState(null);
 
   // Canvas State
   const [view, setView] = useState({ x: 0, y: 0, scale: 0.5 });
@@ -413,6 +416,20 @@ function App() {
     }
   }, [gameMode]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('cognitive') === '1') {
+      loadCognitiveVisualization();
+    }
+    if (params.get('realms') === '1') {
+      loadRealmTopology();
+    }
+    if (params.get('apps') === '1') {
+      loadAppRegistry();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   // --- HANDLERS ---
   const addNode = (type) => {
     const id = `n_${Date.now()}`;
@@ -425,6 +442,117 @@ function App() {
     setNodeData(prev => ({ ...prev, [id]: { config: dna, context: [] } }));
     setNodes(prev => [...prev, newNode]);
     setShowAddMenu(false);
+  };
+
+  const loadCognitiveVisualization = async () => {
+    try {
+      const res = await fetch('/api/empirica/cognitive-tests.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+      const graphNodes = (data.graph?.nodes || []).map((n) => ({
+        id: n.id,
+        type: NODE_TYPES[n.type] ? n.type : 'tool',
+        label: n.label || n.id,
+        x: Number.isFinite(n.x) ? n.x : 0,
+        y: Number.isFinite(n.y) ? n.y : 0,
+      }));
+      const graphEdges = (data.graph?.edges || []).map((e) => ({
+        id: e.id,
+        source: e.source,
+        target: e.target,
+      }));
+
+      if (graphNodes.length > 0) {
+        setNodes(graphNodes);
+        setEdges(graphEdges);
+        setNodeData({});
+        setSelectedNodeId(null);
+        setSignals([]);
+        setIsRunning(false);
+        setGameMode('sandbox');
+        setView({ scale: 0.8, x: window.innerWidth / 2 - 180, y: 120 });
+      }
+      setCognitiveReport(data);
+    } catch (err) {
+      setCognitiveReport({
+        status: 'error',
+        oracleRecommendation: `Failed to load cognitive report: ${err.message}`,
+        summary: { total: 0, pass: 0, fail: 0, warn: 0 },
+      });
+    }
+  };
+
+  const loadRealmTopology = async () => {
+    try {
+      const res = await fetch('/api/realms/topology.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      const graphNodes = (data.nodes || []).map((n) => ({
+        id: n.id,
+        type: NODE_TYPES[n.type] ? n.type : 'tool',
+        label: n.label || n.id,
+        x: Number.isFinite(n.x) ? n.x : 0,
+        y: Number.isFinite(n.y) ? n.y : 0,
+      }));
+      const graphEdges = (data.edges || []).map((e) => ({
+        id: e.id,
+        source: e.source,
+        target: e.target,
+        label: e.label,
+      }));
+
+      if (graphNodes.length > 0) {
+        setNodes(graphNodes);
+        setEdges(graphEdges);
+        setNodeData({});
+        setSelectedNodeId(null);
+        setSignals([]);
+        setIsRunning(false);
+        setGameMode('sandbox');
+        setView({ scale: 0.8, x: window.innerWidth / 2 - 180, y: 120 });
+      }
+
+      setRealmTopologyReport({
+        status: 'ok',
+        title: data.title || 'Realm Topology',
+        summary: {
+          nodes: graphNodes.length,
+          edges: graphEdges.length,
+        }
+      });
+    } catch (err) {
+      setRealmTopologyReport({
+        status: 'error',
+        title: 'Realm Topology',
+        summary: { nodes: 0, edges: 0 },
+        detail: `Failed to load realm topology: ${err.message}`
+      });
+    }
+  };
+
+  const loadAppRegistry = async () => {
+    try {
+      const res = await fetch('/api/apps/index.json', { cache: 'no-store' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const data = await res.json();
+
+      setAppRegistryReport({
+        status: 'ok',
+        title: data.title || 'App Registry',
+        summary: {
+          apps: Array.isArray(data.apps) ? data.apps.length : 0,
+          version: data.version || 'unknown',
+        },
+      });
+    } catch (err) {
+      setAppRegistryReport({
+        status: 'error',
+        title: 'App Registry',
+        summary: { apps: 0, version: 'unknown' },
+        detail: `Failed to load app registry: ${err.message}`,
+      });
+    }
   };
 
   const updateNodeConfig = (id, newConfig) => {
@@ -576,6 +704,24 @@ function App() {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            onClick={loadRealmTopology}
+            className="px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-500/50 hover:bg-cyan-500/30 transition-colors"
+          >
+            Load Realm Topology
+          </button>
+          <button
+            onClick={loadAppRegistry}
+            className="px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-500/50 hover:bg-emerald-500/30 transition-colors"
+          >
+            Load App Registry
+          </button>
+          <button
+            onClick={loadCognitiveVisualization}
+            className="px-3 py-2 rounded-full text-[10px] font-bold uppercase tracking-wider bg-violet-500/20 text-violet-300 border border-violet-500/50 hover:bg-violet-500/30 transition-colors"
+          >
+            Load Cognitive Graph
+          </button>
           <a href="/" className="text-[10px] text-slate-500 hover:text-slate-300 transition-colors font-mono mr-2">
             ← fogsift.com
           </a>
@@ -600,6 +746,49 @@ function App() {
           </button>
         </div>
       </div>
+
+      {cognitiveReport && (
+        <div className="absolute top-20 right-4 z-30 w-80 bg-[#0f172a]/90 border border-violet-500/30 rounded-2xl p-4 shadow-2xl backdrop-blur-xl hud-element pointer-events-auto">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-violet-300 mb-2">Empirica Cognitive Suite</h3>
+          <p className="text-[11px] text-slate-300 mb-3">
+            Status: <span className="font-bold">{String(cognitiveReport.status || 'unknown').toUpperCase()}</span>
+          </p>
+          <p className="text-[11px] text-slate-400 mb-3">
+            Tests: {cognitiveReport.summary?.total || 0} | Pass {cognitiveReport.summary?.pass || 0} | Fail {cognitiveReport.summary?.fail || 0} | Warn {cognitiveReport.summary?.warn || 0}
+          </p>
+          <p className="text-[11px] text-slate-300 leading-relaxed">{cognitiveReport.oracleRecommendation || 'No Oracle recommendation available.'}</p>
+        </div>
+      )}
+
+      {realmTopologyReport && (
+        <div className="absolute top-56 right-4 z-30 w-80 bg-[#0f172a]/90 border border-cyan-500/30 rounded-2xl p-4 shadow-2xl backdrop-blur-xl hud-element pointer-events-auto">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-cyan-300 mb-2">Realm Topology</h3>
+          <p className="text-[11px] text-slate-300 mb-3">
+            Status: <span className="font-bold">{String(realmTopologyReport.status || 'unknown').toUpperCase()}</span>
+          </p>
+          <p className="text-[11px] text-slate-400 mb-3">
+            Nodes: {realmTopologyReport.summary?.nodes || 0} | Edges: {realmTopologyReport.summary?.edges || 0}
+          </p>
+          {realmTopologyReport.detail && (
+            <p className="text-[11px] text-slate-300 leading-relaxed">{realmTopologyReport.detail}</p>
+          )}
+        </div>
+      )}
+
+      {appRegistryReport && (
+        <div className="absolute top-[28rem] right-4 z-30 w-80 bg-[#0f172a]/90 border border-emerald-500/30 rounded-2xl p-4 shadow-2xl backdrop-blur-xl hud-element pointer-events-auto">
+          <h3 className="text-xs font-bold uppercase tracking-widest text-emerald-300 mb-2">App Registry</h3>
+          <p className="text-[11px] text-slate-300 mb-3">
+            Status: <span className="font-bold">{String(appRegistryReport.status || 'unknown').toUpperCase()}</span>
+          </p>
+          <p className="text-[11px] text-slate-400 mb-3">
+            Apps: {appRegistryReport.summary?.apps || 0} | Version: {appRegistryReport.summary?.version || 'unknown'}
+          </p>
+          {appRegistryReport.detail && (
+            <p className="text-[11px] text-slate-300 leading-relaxed">{appRegistryReport.detail}</p>
+          )}
+        </div>
+      )}
 
       {/* ======== SVG CANVAS ENGINE ======== */}
       <div

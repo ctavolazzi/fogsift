@@ -23,6 +23,7 @@ export default [
         ExampleModal: "readonly",
         THREE: "readonly",
         SvgComponents: "readonly",
+        ProjectsFlow: "readonly",
         WhiteRabbit: "readonly",
         Cache: "readonly"
       }
@@ -31,7 +32,7 @@ export default [
       "no-unused-vars": ["warn", {
         "argsIgnorePattern": "^_",
         "caughtErrorsIgnorePattern": "^_",
-        "varsIgnorePattern": "^(Toast|Theme|ThemePicker|Modal|Nav|App|ExampleModal|SleepMode|CookieConsent|Debug|SiteSearch|CopyPageText|MatrixRain|QueueUI|Cache|WhiteRabbit|SvgComponents)$"
+        "varsIgnorePattern": "^(Toast|Theme|ThemePicker|Modal|Nav|App|ExampleModal|SleepMode|CookieConsent|Debug|SiteSearch|CopyPageText|MatrixRain|QueueUI|Cache|WhiteRabbit|SvgComponents|ProjectsFlow)$"
       }],
       "no-undef": "error",
       "no-empty": "warn",

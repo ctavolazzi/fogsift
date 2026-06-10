@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T06:34:39.230Z",
+  "timestamp": "2026-06-09T20:44:42.598Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -60,17 +60,17 @@
           "detail": ""
         },
         {
-          "test": "HTML pages built: 80",
+          "test": "HTML pages built: 82",
           "status": "pass",
-          "detail": "Found 80 HTML files"
+          "detail": "Found 82 HTML files"
         },
         {
-          "test": "styles.css size: 199.2KB",
+          "test": "styles.css size: 216.7KB",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "app.js size: 81.7KB",
+          "test": "app.js size: 95.3KB",
           "status": "pass",
           "detail": ""
         }
@@ -133,6 +133,11 @@
           "detail": ""
         },
         {
+          "test": "news.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
           "test": "offers.html",
           "status": "pass",
           "detail": ""
@@ -159,6 +164,11 @@
         },
         {
           "test": "process.html",
+          "status": "pass",
+          "detail": ""
+        },
+        {
+          "test": "project.html",
           "status": "pass",
           "detail": ""
         },
@@ -219,8 +229,8 @@
         },
         {
           "test": "system-status.html",
-          "status": "pass",
-          "detail": ""
+          "status": "fail",
+          "detail": "1 error(s), 0 warning(s)"
         },
         {
           "test": "terms.html",
@@ -483,73 +493,43 @@
           "detail": ""
         }
       ],
-      "passed": 80,
-      "failed": 0,
+      "passed": 81,
+      "failed": 1,
       "warned": 0
     },
     {
       "name": "ESLint (Source JS)",
       "tests": [
         {
-          "test": "All JS files pass ESLint",
-          "status": "pass",
-          "detail": ""
+          "test": "ESLint execution",
+          "status": "warn",
+          "detail": "Could not parse ESLint output"
         }
       ],
-      "passed": 1,
+      "passed": 0,
       "failed": 0,
-      "warned": 0
+      "warned": 1
     },
     {
       "name": "Accessibility (pa11y WCAG2AA)",
       "tests": [
         {
-          "test": "index.html",
+          "test": "pa11y module",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "about.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "offers.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "faq.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "contact.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "queue.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
-        },
-        {
-          "test": "portfolio.html",
-          "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "Could not load pa11y"
         }
       ],
       "passed": 0,
       "failed": 0,
-      "warned": 7
+      "warned": 1
     },
     {
       "name": "Lighthouse",
       "tests": [
         {
-          "test": "Lighthouse execution",
+          "test": "Lighthouse module",
           "status": "warn",
-          "detail": "Chrome/Chromium not found"
+          "detail": "Could not load lighthouse"
         }
       ],
       "passed": 0,
@@ -560,7 +540,7 @@
       "name": "Internal Link Integrity",
       "tests": [
         {
-          "test": "All 6718 internal links valid",
+          "test": "All 6940 internal links valid",
           "status": "pass",
           "detail": ""
         }
@@ -583,22 +563,22 @@
           "detail": ""
         },
         {
-          "test": "Index has 60 entries",
+          "test": "Index has 62 entries",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "60/60 entries have valid structure",
+          "test": "62/62 entries have valid structure",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "60/60 index URLs resolve to files",
+          "test": "62/62 index URLs resolve to files",
           "status": "pass",
           "detail": ""
         },
         {
-          "test": "Index size: 322.4KB",
+          "test": "Index size: 328.0KB",
           "status": "warn",
           "detail": ""
         }
@@ -611,7 +591,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 8.18MB",
+          "test": "Total dist/ size: 8.42MB",
           "status": "pass",
           "detail": ""
         },
@@ -685,9 +665,9 @@
     }
   ],
   "summary": {
-    "total": 122,
+    "total": 118,
     "passed": 112,
-    "failed": 0,
-    "warned": 10
+    "failed": 1,
+    "warned": 5
   }
 }

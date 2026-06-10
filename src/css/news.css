@@ -1,18 +1,184 @@
 /* ============================================
-   FOGSIFT NEWS — Page-specific styles
+   FOGSIFT NEWS — The FogSift Dispatch
+   Newspaper-style layout with editorial hierarchy
    Uses design tokens from tokens.css
    ============================================ */
+
+/* ── Masthead ──────────────────────────────── */
+.news-masthead {
+    text-align: center;
+    padding: var(--space-md) 0 0;
+}
+
+.news-masthead-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+    margin: var(--space-xs) 0;
+}
+
+.news-masthead-edition {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--muted);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.news-edition-sep {
+    color: var(--line);
+}
+
+.news-masthead-rule {
+    height: 3px;
+    background: var(--chocolate);
+    margin: var(--space-xs) 0;
+}
+
+.news-masthead-rule:last-child {
+    height: 1px;
+    margin-top: 4px;
+}
+
+/* ── Breaking Ticker ───────────────────────── */
+.news-ticker {
+    display: flex;
+    align-items: center;
+    background: var(--chocolate);
+    color: var(--cream);
+    padding: 0.4rem var(--space-md);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: var(--space-sm);
+    border-radius: var(--radius);
+}
+
+.news-ticker-label {
+    background: var(--error);
+    color: var(--cream);
+    padding: 0.15rem 0.6rem;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-right: var(--space-sm);
+    flex-shrink: 0;
+    animation: ticker-pulse 2s ease-in-out infinite;
+}
+
+@keyframes ticker-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.news-ticker-track {
+    overflow: hidden;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.news-ticker-content {
+    display: inline-block;
+    animation: ticker-scroll 35s linear infinite;
+    padding-left: 100%;
+}
+
+@keyframes ticker-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .news-ticker-content { animation: none; padding-left: 0; }
+    .news-ticker-label { animation: none; }
+}
+
+/* ── Lead Story ────────────────────────────── */
+.news-lead {
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    border-bottom: 3px solid var(--chocolate);
+    margin-bottom: var(--space-md);
+}
+
+.news-lead .news-section-label {
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+}
+
+.news-lead-headline {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    max-width: 30ch;
+    margin: var(--space-sm) auto;
+}
+
+.news-lead-headline a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.news-lead-headline a:hover {
+    color: var(--burnt-orange);
+}
+
+.news-lead-source {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    margin-top: var(--space-xs);
+}
+
+/* ── Section Dividers ──────────────────────── */
+.news-section-divider {
+    border-top: 2px solid var(--chocolate);
+    padding-top: var(--space-xs);
+    margin-bottom: var(--space-sm);
+}
+
+.news-section-label {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: var(--letter-wide);
+    color: var(--burnt-orange);
+    background: var(--paper);
+    padding: 0.1rem 0.5rem;
+    border: 2px solid var(--burnt-orange);
+    border-radius: 3px;
+}
 
 /* ── Map Container ──────────────────────────── */
 .news-map-wrap {
     position: relative;
     width: 100%;
-    height: 380px;
+    height: 320px;
     border: 2px solid var(--chocolate);
     border-radius: var(--radius);
     overflow: hidden;
-    margin-bottom: var(--space-lg);
     background: var(--canvas);
+}
+
+.news-panel-map {
+    border: none;
+    box-shadow: none;
+    padding: var(--space-sm) 0;
+    background: transparent;
 }
 
 .news-map-wrap .leaflet-container {
@@ -67,7 +233,7 @@
     flex-wrap: wrap;
     gap: var(--space-sm);
     padding: var(--space-sm) 0;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
     font-family: var(--font-mono);
     font-size: var(--text-xs);
     color: var(--muted);
@@ -109,7 +275,7 @@
     display: flex;
     gap: 0.4rem;
     flex-wrap: wrap;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-sm);
 }
 
 .news-tag {
@@ -153,24 +319,32 @@
     border-bottom: 1px solid var(--line);
 }
 
-/* ── Panel Grid ─────────────────────────────── */
+/* ── Panel Grid — Newspaper Layout ─────────── */
 .news-panels {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-md) var(--space-lg);
+    position: relative;
 }
 
-@media (max-width: 700px) {
-    .news-panels { grid-template-columns: 1fr; }
-    .news-map-wrap { height: 280px; }
+/* Vertical column rule */
+.news-panels::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(66.66% - var(--space-lg) / 2 + var(--space-md) / 2);
+    width: 1px;
+    background: var(--line);
+    pointer-events: none;
 }
 
 .news-panel {
     background: var(--paper);
-    border: 2px solid var(--chocolate);
-    border-radius: var(--radius);
-    padding: var(--space-md);
-    box-shadow: 3px 3px 0 rgba(74, 44, 42, 0.15);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
 }
 
 .news-panel-full {
@@ -178,12 +352,13 @@
 }
 
 .news-panel h2 {
-    font-family: var(--font-mono);
-    font-size: var(--text-sm);
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: var(--letter-wide);
-    color: var(--muted);
-    border-bottom: 2px solid var(--line);
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    border-bottom: 3px double var(--chocolate);
     padding-bottom: var(--space-xs);
     margin-bottom: var(--space-sm);
     display: flex;
@@ -193,11 +368,33 @@
 
 .news-panel-count {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     background: var(--burnt-orange);
     color: var(--cream);
     padding: 0.1rem 0.5rem;
     border-radius: 3px;
+}
+
+/* ── Headlines Grid — Varied Typography ────── */
+.news-headlines-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm) var(--space-md);
+}
+
+/* Secondary leads — items 1-2 */
+.feed-item-secondary a {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem) !important;
+    font-weight: 600 !important;
+    line-height: 1.25 !important;
+}
+
+/* Tertiary stories — items 3-4 */
+.feed-item-tertiary a {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    line-height: 1.3 !important;
 }
 
 /* ── Earthquake Items ───────────────────────── */
@@ -238,7 +435,7 @@
 
 /* ── News / Feed Items ──────────────────────── */
 .feed-item {
-    padding: 0.4rem 0;
+    padding: 0.5rem 0;
     border-bottom: 1px solid var(--line);
 }
 
@@ -257,9 +454,11 @@
 
 .feed-item .feed-meta {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.6rem;
     color: var(--muted);
     margin-top: 0.15rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 /* ── Weather Card ───────────────────────────── */
@@ -293,4 +492,17 @@
     color: var(--error);
     font-size: var(--text-sm);
     padding: var(--space-sm) 0;
+}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width: 700px) {
+    .news-panels {
+        grid-template-columns: 1fr;
+    }
+    .news-panels::after { display: none; }
+    .news-map-wrap { height: 240px; }
+    .news-headlines-grid { grid-template-columns: 1fr; }
+    .news-lead-headline { font-size: 1.6rem; }
+    .news-masthead-title { font-size: 2rem; }
+    .news-ticker { font-size: 0.65rem; }
 }

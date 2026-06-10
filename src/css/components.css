@@ -3074,6 +3074,17 @@ footer {
     color: inherit;
 }
 
+.project-clickable,
+.now-card.project-clickable,
+.portfolio-card.project-clickable {
+    cursor: pointer;
+}
+
+.project-clickable:focus-visible {
+    outline: var(--focus-ring-width) solid var(--focus-ring);
+    outline-offset: var(--focus-ring-offset);
+}
+
 .project-tag {
     font-family: var(--font-mono);
     font-size: var(--text-xs);
@@ -3258,6 +3269,131 @@ footer {
     max-width: 52ch;
     margin: 0 auto var(--space-lg);
     line-height: 1.65;
+}
+
+/* ═══════════════════════════════════════════
+   PROJECT MODAL + DETAIL PAGE
+   ═══════════════════════════════════════════ */
+
+.project-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 5200;
+    background: rgba(74, 44, 42, 0.86);
+    padding: var(--space-md);
+    align-items: center;
+    justify-content: center;
+}
+
+.project-modal.open {
+    display: flex;
+}
+
+.project-modal-content {
+    background: var(--paper);
+    border: var(--border-width) solid var(--chocolate);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-elevated);
+    width: min(980px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 1.4fr;
+    position: relative;
+}
+
+.project-modal-visual {
+    background: var(--cream);
+    border-right: 1px solid var(--line);
+    min-height: 280px;
+}
+
+.project-modal-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-modal-body {
+    padding: var(--space-lg);
+}
+
+.project-modal-tag {
+    font-family: var(--font-mono);
+    color: var(--burnt-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: var(--text-xs);
+    margin: 0 0 var(--space-sm);
+}
+
+.project-modal-highlights {
+    margin: var(--space-sm) 0 var(--space-md);
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+.project-detail-hero {
+    text-align: center;
+}
+
+.project-detail-kicker {
+    font-family: var(--font-mono);
+    color: var(--burnt-orange);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: var(--space-sm);
+}
+
+.project-detail-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+.project-detail-layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 1.3fr;
+    gap: var(--space-lg);
+}
+
+.project-detail-visual img {
+    width: 100%;
+    border-radius: var(--radius-lg);
+    border: var(--border-width) solid var(--line);
+    display: block;
+}
+
+.project-detail-content p {
+    color: var(--muted);
+    margin-bottom: var(--space-md);
+}
+
+.project-detail-highlights {
+    margin: 0;
+    padding-left: 18px;
+    color: var(--muted);
+}
+
+.project-detail-highlights li {
+    margin-bottom: 6px;
+}
+
+@media (max-width: 900px) {
+    .project-modal-content,
+    .project-detail-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .project-modal-visual {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        min-height: 200px;
+    }
 }
 
 /* Quick-jump pill nav */

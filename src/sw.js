@@ -73,6 +73,9 @@ self.addEventListener('fetch', event => {
     // Only handle same-origin + GET requests
     if (request.method !== 'GET') return;
 
+    // Skip BrowserSync dev-server paths — prevents 503 spam when dev server is off
+    if (url.pathname.startsWith('/browser-sync/')) return;
+
     // Always bypass external domains
     if (url.origin !== self.location.origin) {
         if (BYPASS_PATTERNS.some(p => p.test(request.url))) return;

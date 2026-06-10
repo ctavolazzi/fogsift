@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-03-01T19:34:24.413Z",
+  "project": "fogsift",
+  "projectPath": "/Users/ctavolazzi/Code/fogsift",
+  "status": "healthy",
+  "summary": {
+    "total": 8,
+    "pass": 6,
+    "fail": 0,
+    "warn": 2
+  },
+  "tests": [
+    {
+      "name": "Empirica CLI available",
+      "command": "empirica --version",
+      "status": "pass",
+      "detail": "empirica 1.5.9\nPython 3.14.3\nInstall: /Users/ctavolazzi/Code/active/empirica"
+    },
+    {
+      "name": "Empirica install source check",
+      "command": "empirica --version",
+      "status": "warn",
+      "detail": "Editable/local source detected at /Users/ctavolazzi/Code/active/empirica. If session-create fails, reinstall from PyPI/upstream."
+    },
+    {
+      "name": "Project init in repo",
+      "command": "empirica project-init --non-interactive --output json",
+      "status": "warn",
+      "detail": "{\n  \"ok\": false,\n  \"error\": \"Empirica already initialized in this repo\",\n  \"hint\": \"Use --force to reinitialize\"\n}"
+    },
+    {
+      "name": "Project switch",
+      "command": "empirica project-switch fogsift --output json",
+      "status": "pass",
+      "detail": "{\n  \"ok\": true,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"project_name\": \"fogsift\",\n  \"folder_name\": \"fogsift\",\n  \"project_path\": \"/Users/ctavolazzi/Code/fogsift\",\n  \"stats\": {\n    \"findings\": 0,\n    \"unknowns\": 0,\n    \"goals\": 0\n  },\n  \"next_steps\": [\n    \"Run PREFLIGHT to start a measured transaction\",\n    \"Investigate before acting \\u2014 log findings and unknowns\",\n    \"CHECK when ready, POSTFLIGHT when complete\"\n  ],\n  \"postflight_result\": null,\n  \"attached_session\": null,\n  \"bootstrap_result\": {\n    \"ok\": true,\n    \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n    \"breadcrumbs\": {\n      \"findings\": [],\n      \"unknowns\": [],\n      \"dead_ends\": [],\n      \"mistakes_to_avoid\": [],\n      \"reference_docs\": [],\n      \"incomplete_work\": [],\n      \"goals\": [],\n      \"dependency_graph\": {\n        \"packages\": [],\n        \"hotspots\": [],\n        \"external_deps\": [\n          \"fastapi\",\n          \"fogsift_memory_system\",\n          \"pydantic\",\n          \"pytest\",\n          \"uvicorn\",\n          \"waft\"\n        ],\n        \"entry_points\": [\n          \"_worktree_pr22_fix.fogsift-api.example_app\",\n          \"_worktree_pr22_fix.scripts.generate_fogsift_pdf\",\n          \"_worktree_pr22_fix.scripts.generate_handout_pdf\",\n          \"fogsift-api.example_app\",\n          \"scripts.generate_fogsift_pdf\",\n          \"scripts.generate_handout_pdf\"\n        ],\n        \"module_count\": 34\n      },\n      \"git_status\": {\n        \"current_branch\": \"main\",\n        \"uncommitted_changes\": 52,\n        \"untracked_files\": 32,\n        \"recent_commits\": [\n          \"e9533e8 Merge branch 'claude/workflow-visualization-engine-2qxSs' into main\",\n          \"59ccd52 chore: update session snapshots, API metadata, and test reports\",\n          \"a3cf543 feat: add workflow visualization engine page\"\n        ]\n      },\n      \"project\": {\n        \"id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n        \"name\": \"fogsift\",\n        \"description\": null,\n        \"status\": \"active\",\n        \"repos\": [\n          \"https://github.com/ctavolazzi/fogsift.git\"\n        ],\n        \"total_sessions\": 0\n      },\n      \"last_activity\": {\n        \"summary\": \"Last activity: 1772352121.694481\",\n        \"next_focus\": \"Continue with incomplete work and unknown resolutions\"\n      },\n      \"health_score\": {\n        \"health_score\": 0.0,\n        \"trend\": \"Not enough data\",\n        \"components\": {}\n      }\n    }\n  },\n  \"preflight_result\": {\n    \"needed\": true,\n    \"note\": \"Submit PREFLIGHT with your own vector self-assessment to open a transaction.\"\n  }\n}"
+    },
+    {
+      "name": "Project bootstrap",
+      "command": "empirica project-bootstrap --output json",
+      "status": "pass",
+      "detail": "{\n  \"ok\": true,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"breadcrumbs\": {\n    \"findings\": [],\n    \"unknowns\": [],\n    \"dead_ends\": [],\n    \"mistakes_to_avoid\": [],\n    \"reference_docs\": [],\n    \"incomplete_work\": [],\n    \"goals\": [],\n    \"dependency_graph\": {\n      \"packages\": [],\n      \"hotspots\": [],\n      \"external_deps\": [\n        \"fastapi\",\n        \"fogsift_memory_system\",\n        \"pydantic\",\n        \"pytest\",\n        \"uvicorn\",\n        \"waft\"\n      ],\n      \"entry_points\": [\n        \"_worktree_pr22_fix.fogsift-api.example_app\",\n        \"_worktree_pr22_fix.scripts.generate_fogsift_pdf\",\n        \"_worktree_pr22_fix.scripts.generate_handout_pdf\",\n        \"fogsift-api.example_app\",\n        \"scripts.generate_fogsift_pdf\",\n        \"scripts.generate_handout_pdf\"\n      ],\n      \"module_count\": 34\n    },\n    \"git_status\": {\n      \"current_branch\": \"main\",\n      \"uncommitted_changes\": 52,\n      \"untracked_files\": 32,\n      \"recent_commits\": [\n        \"e9533e8 Merge branch 'claude/workflow-visualization-engine-2qxSs' into main\",\n        \"59ccd52 chore: update session snapshots, API metadata, and test reports\",\n        \"a3cf543 feat: add workflow visualization engine page\"\n      ]\n    },\n    \"project\": {\n      \"id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n      \"name\": \"fogsift\",\n      \"description\": null,\n      \"status\": \"active\",\n      \"repos\": [\n        \"https://github.com/ctavolazzi/fogsift.git\"\n      ],\n      \"total_sessions\": 0\n    },\n    \"last_activity\": {\n      \"summary\": \"Last activity: 1772352121.694481\",\n      \"next_focus\": \"Continue with incomplete work and unknown resolutions\"\n    },\n    \"health_score\": {\n      \"health_score\": 0.0,\n      \"trend\": \"Not enough data\",\n      \"components\": {}\n    }\n  }\n}"
+    },
+    {
+      "name": "Workspace overview",
+      "command": "empirica workspace-overview --output json",
+      "status": "pass",
+      "detail": "{\n  \"ok\": true,\n  \"workspace_stats\": {\n    \"total_projects\": 1,\n    \"total_sessions\": 1,\n    \"active_sessions\": 1,\n    \"avg_know\": 0.5,\n    \"avg_uncertainty\": 0.5\n  },\n  \"total_projects\": 1,\n  \"projects\": [\n    {\n      \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n      \"name\": \"fogsift\",\n      \"description\": null,\n      \"status\": \"active\",\n      \"total_sessions\": 0,\n      \"last_activity\": 1772352121.694481,\n      \"epistemic_state\": {\n        \"know\": 0.5,\n        \"uncertainty\": 0.5\n      },\n      \"findings_count\": 0,\n      \"unknowns_count\": 0,\n      \"dead_ends_count\": 0,\n      \"dead_end_ratio\": 0.0,\n      \"health_score\": 0.5\n    }\n  ]\n}"
+    },
+    {
+      "name": "Assess state",
+      "command": "empirica assess-state --output json --turtle",
+      "status": "pass",
+      "detail": "{\"ok\": true, \"state\": {\"timestamp\": \"2026-03-01T19:34:46.116674+00:00\", \"vectors\": {}, \"has_session\": false, \"has_checkpoint\": false, \"prompt_context\": false}, \"session_id\": null, \"timestamp\": \"2026-03-01T19:34:46.116674+00:00\"}\n\n======================================================================\n🐢 TURTLE STACK REPORT (Recursive Grounding Check)\n======================================================================\n\n  🐢 [LAYER 0: USER INTENT] -> 🌓 EMERGENT\n     Score: 0.50 | Context=0.50, Signal=0.50\n     ⚡ Caution: USER INTENT may need investigation\n\n  🐢 [LAYER 1: NOETIC GRASP] -> 🌓 EMERGENT\n     Score: 0.50 | Know=0.50, Clarity=0.50, Coherence=0.50\n     ⚡ Caution: NOETIC GRASP may need investigation\n\n  🐢 [LAYER 2: PRAXIC PATH] -> 🌓 EMERGENT\n     Score: 0.50 | Do=0.50, State=0.50, Change=0.50\n     ⚡ Caution: PRAXIC PATH may need investigation\n\n  🐢 [LAYER 3: EPISTEMIC SAFETY] -> 🌓 EMERGENT\n     Score: 0.50 | Uncertainty=0.50 (inverted), Engagement=0.50\n     ⚡ Caution: EPISTEMIC SAFETY may need investigation\n\n----------------------------------------------------------------------\nSTATUS: 🌓 [EMERGENT] - PROCEED WITH CAUTION\n        Observer is forming. Consider CHECK before praxic action.\n======================================================================"
+    },
+    {
+      "name": "Session create",
+      "command": "empirica session-create --ai-id claude-code --output json",
+      "status": "pass",
+      "detail": "{\n  \"ok\": true,\n  \"session_id\": \"d0df5112-e415-43d7-9bba-83da31c17edf\",\n  \"ai_id\": \"claude-code\",\n  \"user_id\": null,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"parent_session_id\": null,\n  \"auto_init_performed\": false,\n  \"message\": \"Session created successfully\",\n  \"lifecycle\": {\n    \"auto_closed_sessions\": [\n      {\n        \"session_id\": \"184cf77e-6c0d-4bc2-84ea-3c03eeabc2f7\",\n        \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\"\n      }\n    ],\n    \"cross_project_warnings\": []\n  }\n}"
+    }
+  ],
+  "graph": {
+    "nodes": [
+      {
+        "id": "cog_1",
+        "type": "tool",
+        "label": "Empirica CLI available",
+        "status": "pass",
+        "detail": "empirica 1.5.9\nPython 3.14.3\nInstall: /Users/ctavolazzi/Code/active/empirica",
+        "x": 0,
+        "y": 0
+      },
+      {
+        "id": "cog_2",
+        "type": "checkpoint",
+        "label": "Empirica install source check",
+        "status": "warn",
+        "detail": "Editable/local source detected at /Users/ctavolazzi/Code/active/empirica. If session-create fails, reinstall from PyPI/upstream.",
+        "x": 260,
+        "y": 0
+      },
+      {
+        "id": "cog_3",
+        "type": "checkpoint",
+        "label": "Project init in repo",
+        "status": "warn",
+        "detail": "{\n  \"ok\": false,\n  \"error\": \"Empirica already initialized in this repo\",\n  \"hint\": \"Use --force to reinitialize\"\n}",
+        "x": 520,
+        "y": 0
+      },
+      {
+        "id": "cog_4",
+        "type": "tool",
+        "label": "Project switch",
+        "status": "pass",
+        "detail": "{\n  \"ok\": true,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"project_name\": \"fogsift\",\n  \"folder_name\": \"fogsift\",\n  \"project_path\": \"/Users/ctavolazzi/Code/fogsift\",\n  \"stats\": {\n    \"findings\": 0,\n    \"unknowns\": 0,\n    \"goals\": 0\n  },\n  \"next_steps\": [\n    \"Run PREFLIGHT to start a measured transaction\",\n    \"Investigate before acting \\u2014 log findings and unknowns\",\n    \"CHECK when ready, POSTFLIGHT when complete\"\n  ],\n  \"postflight_result\": null,\n  \"attached_session\": null,\n  \"bootstrap_result\": {\n    \"ok\": true,\n    \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n    \"breadcrumbs\": {\n      \"findings\": [],\n      \"unknowns\": [],\n      \"dead_ends\": [],\n      \"mistakes_to_avoid\": [],\n      \"reference_docs\": [],\n      \"incomplete_work\": [],\n      \"goals\": [],\n      \"dependency_graph\": {\n        \"packages\": [],\n        \"hotspots\": [],\n        \"external_deps\": [\n          \"fastapi\",\n          \"fogsift_memory_system\",\n          \"pydantic\",\n          \"pytest\",\n          \"uvicorn\",\n          \"waft\"\n        ],\n        \"entry_points\": [\n          \"_worktree_pr22_fix.fogsift-api.example_app\",\n          \"_worktree_pr22_fix.scripts.generate_fogsift_pdf\",\n          \"_worktree_pr22_fix.scripts.generate_handout_pdf\",\n          \"fogsift-api.example_app\",\n          \"scripts.generate_fogsift_pdf\",\n          \"scripts.generate_handout_pdf\"\n        ],\n        \"module_count\": 34\n      },\n      \"git_status\": {\n        \"current_branch\": \"main\",\n        \"uncommitted_changes\": 52,\n        \"untracked_files\": 32,\n        \"recent_commits\": [\n          \"e9533e8 Merge branch 'claude/workflow-visualization-engine-2qxSs' into main\",\n          \"59ccd52 chore: update session snapshots, API metadata, and test reports\",\n          \"a3cf543 feat: add workflow visualization engine page\"\n        ]\n      },\n      \"project\": {\n        \"id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n        \"name\": \"fogsift\",\n        \"description\": null,\n        \"status\": \"active\",\n        \"repos\": [\n          \"https://github.com/ctavolazzi/fogsift.git\"\n        ],\n        \"total_sessions\": 0\n      },\n      \"last_activity\": {\n        \"summary\": \"Last activity: 1772352121.694481\",\n        \"next_focus\": \"Continue with incomplete work and unknown resolutions\"\n      },\n      \"health_score\": {\n        \"health_score\": 0.0,\n        \"trend\": \"Not enough data\",\n        \"components\": {}\n      }\n    }\n  },\n  \"preflight_result\": {\n    \"needed\": true,\n    \"note\": \"Submit PREFLIGHT with your own vector self-assessment to open a transaction.\"\n  }\n}",
+        "x": 780,
+        "y": 0
+      },
+      {
+        "id": "cog_5",
+        "type": "tool",
+        "label": "Project bootstrap",
+        "status": "pass",
+        "detail": "{\n  \"ok\": true,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"breadcrumbs\": {\n    \"findings\": [],\n    \"unknowns\": [],\n    \"dead_ends\": [],\n    \"mistakes_to_avoid\": [],\n    \"reference_docs\": [],\n    \"incomplete_work\": [],\n    \"goals\": [],\n    \"dependency_graph\": {\n      \"packages\": [],\n      \"hotspots\": [],\n      \"external_deps\": [\n        \"fastapi\",\n        \"fogsift_memory_system\",\n        \"pydantic\",\n        \"pytest\",\n        \"uvicorn\",\n        \"waft\"\n      ],\n      \"entry_points\": [\n        \"_worktree_pr22_fix.fogsift-api.example_app\",\n        \"_worktree_pr22_fix.scripts.generate_fogsift_pdf\",\n        \"_worktree_pr22_fix.scripts.generate_handout_pdf\",\n        \"fogsift-api.example_app\",\n        \"scripts.generate_fogsift_pdf\",\n        \"scripts.generate_handout_pdf\"\n      ],\n      \"module_count\": 34\n    },\n    \"git_status\": {\n      \"current_branch\": \"main\",\n      \"uncommitted_changes\": 52,\n      \"untracked_files\": 32,\n      \"recent_commits\": [\n        \"e9533e8 Merge branch 'claude/workflow-visualization-engine-2qxSs' into main\",\n        \"59ccd52 chore: update session snapshots, API metadata, and test reports\",\n        \"a3cf543 feat: add workflow visualization engine page\"\n      ]\n    },\n    \"project\": {\n      \"id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n      \"name\": \"fogsift\",\n      \"description\": null,\n      \"status\": \"active\",\n      \"repos\": [\n        \"https://github.com/ctavolazzi/fogsift.git\"\n      ],\n      \"total_sessions\": 0\n    },\n    \"last_activity\": {\n      \"summary\": \"Last activity: 1772352121.694481\",\n      \"next_focus\": \"Continue with incomplete work and unknown resolutions\"\n    },\n    \"health_score\": {\n      \"health_score\": 0.0,\n      \"trend\": \"Not enough data\",\n      \"components\": {}\n    }\n  }\n}",
+        "x": 0,
+        "y": 190
+      },
+      {
+        "id": "cog_6",
+        "type": "tool",
+        "label": "Workspace overview",
+        "status": "pass",
+        "detail": "{\n  \"ok\": true,\n  \"workspace_stats\": {\n    \"total_projects\": 1,\n    \"total_sessions\": 1,\n    \"active_sessions\": 1,\n    \"avg_know\": 0.5,\n    \"avg_uncertainty\": 0.5\n  },\n  \"total_projects\": 1,\n  \"projects\": [\n    {\n      \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n      \"name\": \"fogsift\",\n      \"description\": null,\n      \"status\": \"active\",\n      \"total_sessions\": 0,\n      \"last_activity\": 1772352121.694481,\n      \"epistemic_state\": {\n        \"know\": 0.5,\n        \"uncertainty\": 0.5\n      },\n      \"findings_count\": 0,\n      \"unknowns_count\": 0,\n      \"dead_ends_count\": 0,\n      \"dead_end_ratio\": 0.0,\n      \"health_score\": 0.5\n    }\n  ]\n}",
+        "x": 260,
+        "y": 190
+      },
+      {
+        "id": "cog_7",
+        "type": "tool",
+        "label": "Assess state",
+        "status": "pass",
+        "detail": "{\"ok\": true, \"state\": {\"timestamp\": \"2026-03-01T19:34:46.116674+00:00\", \"vectors\": {}, \"has_session\": false, \"has_checkpoint\": false, \"prompt_context\": false}, \"session_id\": null, \"timestamp\": \"2026-03-01T19:34:46.116674+00:00\"}\n\n======================================================================\n🐢 TURTLE STACK REPORT (Recursive Grounding Check)\n======================================================================\n\n  🐢 [LAYER 0: USER INTENT] -> 🌓 EMERGENT\n     Score: 0.50 | Context=0.50, Signal=0.50\n     ⚡ Caution: USER INTENT may need investigation\n\n  🐢 [LAYER 1: NOETIC GRASP] -> 🌓 EMERGENT\n     Score: 0.50 | Know=0.50, Clarity=0.50, Coherence=0.50\n     ⚡ Caution: NOETIC GRASP may need investigation\n\n  🐢 [LAYER 2: PRAXIC PATH] -> 🌓 EMERGENT\n     Score: 0.50 | Do=0.50, State=0.50, Change=0.50\n     ⚡ Caution: PRAXIC PATH may need investigation\n\n  🐢 [LAYER 3: EPISTEMIC SAFETY] -> 🌓 EMERGENT\n     Score: 0.50 | Uncertainty=0.50 (inverted), Engagement=0.50\n     ⚡ Caution: EPISTEMIC SAFETY may need investigation\n\n----------------------------------------------------------------------\nSTATUS: 🌓 [EMERGENT] - PROCEED WITH CAUTION\n        Observer is forming. Consider CHECK before praxic action.\n======================================================================",
+        "x": 520,
+        "y": 190
+      },
+      {
+        "id": "cog_8",
+        "type": "tool",
+        "label": "Session create",
+        "status": "pass",
+        "detail": "{\n  \"ok\": true,\n  \"session_id\": \"d0df5112-e415-43d7-9bba-83da31c17edf\",\n  \"ai_id\": \"claude-code\",\n  \"user_id\": null,\n  \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\",\n  \"parent_session_id\": null,\n  \"auto_init_performed\": false,\n  \"message\": \"Session created successfully\",\n  \"lifecycle\": {\n    \"auto_closed_sessions\": [\n      {\n        \"session_id\": \"184cf77e-6c0d-4bc2-84ea-3c03eeabc2f7\",\n        \"project_id\": \"cae07737-6991-4977-b5ac-dd655046712a\"\n      }\n    ],\n    \"cross_project_warnings\": []\n  }\n}",
+        "x": 780,
+        "y": 190
+      }
+    ],
+    "edges": [
+      {
+        "id": "cog_edge_1",
+        "source": "cog_1",
+        "target": "cog_2"
+      },
+      {
+        "id": "cog_edge_2",
+        "source": "cog_2",
+        "target": "cog_3"
+      },
+      {
+        "id": "cog_edge_3",
+        "source": "cog_3",
+        "target": "cog_4"
+      },
+      {
+        "id": "cog_edge_4",
+        "source": "cog_4",
+        "target": "cog_5"
+      },
+      {
+        "id": "cog_edge_5",
+        "source": "cog_5",
+        "target": "cog_6"
+      },
+      {
+        "id": "cog_edge_6",
+        "source": "cog_6",
+        "target": "cog_7"
+      },
+      {
+        "id": "cog_edge_7",
+        "source": "cog_7",
+        "target": "cog_8"
+      }
+    ]
+  },
+  "oracleRecommendation": "Safe to run cognitive visualization playback in workflow engine."
+}
