@@ -1,6 +1,6 @@
 # FogSift
 
-**Straight answers to complicated questions.**
+**Clear answers to good questions.**
 
 A diagnostic consulting site built with vanilla HTML/CSS/JS — no frameworks, no bundlers, just a clean build script and a dev suite called **The Lighthouse**.
 

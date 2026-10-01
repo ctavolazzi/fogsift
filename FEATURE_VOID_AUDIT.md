@@ -1,3 +1,5 @@
+> **Superseded (2026-10-01):** the target audience and positioning in this document no longer apply. Current business context is in `_strategy/README.md` and `_strategy/DECISIONS.md`. Kept as history.
+
 # FogSift Feature Void Audit
 
 **Date:** December 27, 2025

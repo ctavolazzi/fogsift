@@ -1,5 +1,5 @@
 FOGSIFT TEST REPORT
-Generated: 2026-03-01T06:49:18.040Z
+Generated: 2026-10-01T21:25:52.868Z
 ============================================================
 
 SUMMARY
@@ -30,7 +30,7 @@ SUMMARY
   [PASS] about.html
   [PASS] contact.html
   [PASS] disclaimer.html
-  [FAIL] engine.html — 3 error(s), 15 warning(s)
+  [FAIL] engine.html — 2 error(s), 15 warning(s)
   [PASS] faq.html
   [PASS] gallery.html
   [PASS] hi.html
@@ -111,20 +111,34 @@ SUMMARY
   [WARN] ESLint warnings only — 1 warning(s)
 
 ── Accessibility (pa11y WCAG2AA) ──
-  [WARN] index.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] about.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] offers.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] faq.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] contact.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] queue.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
-  [WARN] portfolio.html — pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either
- 1. you did
+  [WARN] index.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5390:5390:1001/212644.2
+  [WARN] about.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5397:5397:1001/212644.3
+  [WARN] offers.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5404:5404:1001/212644.3
+  [WARN] faq.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5411:5411:1001/212644.3
+  [WARN] contact.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5418:5418:1001/212644.4
+  [WARN] queue.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5425:5425:1001/212644.4
+  [WARN] portfolio.html — pa11y error: Failed to launch the browser process:  Code: 1
+
+stderr:
+[5432:5432:1001/212644.4
 
 ── Lighthouse ──
   [WARN] Lighthouse execution — Chrome/Chromium not found
@@ -138,10 +152,10 @@ SUMMARY
   [PASS] Index has 60 entries
   [PASS] 60/60 entries have valid structure
   [PASS] 60/60 index URLs resolve to files
-  [WARN] Index size: 322.4KB
+  [WARN] Index size: 320.6KB
 
 ── Asset Audit ──
-  [PASS] Total dist/ size: 8.02MB
+  [PASS] Total dist/ size: 8.01MB
   [WARN] 2 file(s) over 500KB — assets/johnny_autoseed_site_screenshot.png: 577.9KB; three.min.js: 599.1KB
   [PASS] assets/logo.png present
   [PASS] images/team/christopher-badge.webp present

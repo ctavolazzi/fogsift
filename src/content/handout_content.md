@@ -28,4 +28,4 @@ The second outcome is "I know people," which means the issue is outside our lane
 
 The third outcome is "This is sick," which means the idea is strong and you should do it, with a clear approach spelled out.
 
-Join at ko-fi.com/fogsift, email christopher@fogsift.com for questions, or visit fogsift.com for context and examples.
+Join at ko-fi.com/fogsift, email fogsift@gmail.com for questions, or visit fogsift.com for context and examples.

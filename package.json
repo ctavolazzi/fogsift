@@ -1,7 +1,7 @@
 {
   "name": "fogsift",
   "version": "0.2.0",
-  "description": "Straight answers to complicated questions",
+  "description": "Clear answers to good questions",
   "private": true,
   "scripts": {
     "start": "node scripts/dev-start.js",

@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-01T06:49:18.040Z",
+  "timestamp": "2026-10-01T21:25:52.868Z",
   "suites": [
     {
       "name": "Build Verification",
@@ -105,7 +105,7 @@
         {
           "test": "engine.html",
           "status": "fail",
-          "detail": "3 error(s), 15 warning(s)"
+          "detail": "2 error(s), 15 warning(s)"
         },
         {
           "test": "faq.html",
@@ -506,37 +506,37 @@
         {
           "test": "index.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5390:5390:1001/212644.2"
         },
         {
           "test": "about.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5397:5397:1001/212644.3"
         },
         {
           "test": "offers.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5404:5404:1001/212644.3"
         },
         {
           "test": "faq.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5411:5411:1001/212644.3"
         },
         {
           "test": "contact.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5418:5418:1001/212644.4"
         },
         {
           "test": "queue.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5425:5425:1001/212644.4"
         },
         {
           "test": "portfolio.html",
           "status": "warn",
-          "detail": "pa11y error: Could not find Chrome (ver. 145.0.7632.46). This can occur if either\n 1. you did"
+          "detail": "pa11y error: Failed to launch the browser process:  Code: 1\n\nstderr:\n[5432:5432:1001/212644.4"
         }
       ],
       "passed": 0,
@@ -598,7 +598,7 @@
           "detail": ""
         },
         {
-          "test": "Index size: 322.4KB",
+          "test": "Index size: 320.6KB",
           "status": "warn",
           "detail": ""
         }
@@ -611,7 +611,7 @@
       "name": "Asset Audit",
       "tests": [
         {
-          "test": "Total dist/ size: 8.02MB",
+          "test": "Total dist/ size: 8.01MB",
           "status": "pass",
           "detail": ""
         },
