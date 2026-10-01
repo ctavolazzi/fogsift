@@ -5,7 +5,88 @@
 
 ---
 
-## 0. The one-paragraph version
+## The pivot (added later the same day)
+
+After the first draft, the direction changed. Read this section first; the sections below it are still accurate as a map of what exists, but the priority order is different now.
+
+### What FogSift is
+
+FogSift sifts the fog. It tells you what is worth your time and what is not. The content is demos, product showcases, "did you know you could do this," rundowns, breakthroughs, and listicles. Screen recordings of software doing the thing, a small face in the corner, a straight verdict, a link. FogSift earns a commission when you buy through that link, and says so out loud every time.
+
+The brand is the sifter, not the person. Christopher's personality, history and inner life stay out of it. The face in the corner is a presenter, not a confession.
+
+### The brand position, in one line
+
+**Everything on the internet is an ad. Ours tells you it is.**
+
+That line does three jobs. It makes the disclosure the FTC requires into a brand asset instead of fine print. It keeps the one trait from the original voice that still matters (honesty) while dropping the one that got burned (vulnerability). And it is a filter: FogSift only links what it would actually use, because the moment it links junk the line stops being true.
+
+### Decisions, settled
+
+| Decision | Answer | Why |
+|---|---|---|
+| Email | **fogsift@gmail.com** | Chosen. Replaces info@, christopher@ and newsletter@ everywhere. |
+| Pronoun | **"we"** | "I don't want to put my personality into this." The brand speaks, not the founder. |
+| Tagline | **"Clear answers to good questions"** | Already live in all five places on the site. "Good questions" fits "is this worth my time?" The dev docs said "Straight answers to complicated questions"; they now match the site. |
+
+### Three-day plan, with honest timing
+
+The hard truth first: affiliate commissions are tracked within hours but **paid in 30 to 60 days**. In three days you can have the machine running and the first commissions on the board. Cash in hand in three days comes from exactly one place you already have: Ko-fi, which pays out on request. So the three days are about getting the pipeline live, and the $20 queue (reframed below) is the only same-week cash.
+
+**Day 1: Sign up and set up.**
+- Apply to PartnerStack (reviews in a few business days, $5 payout minimum, monthly, 90-day cookie) and Impact ($10 minimum, varies by brand). Apply directly to the programs below that have their own portals.
+- Shortlist for a "what's worth your time" software channel, with published terms as of this writing (verify each before you record):
+  - Notion: 50% recurring for 12 months (via PartnerStack)
+  - Make.com: 35% for 12 months, payout at $100 and 3 paying referrals
+  - Descript: 30% recurring for 12 months, easy approval
+  - Jasper, Pictory: 30% recurring
+  - ElevenLabs: 22% of payments for 12 months, 90-day cookie
+  - Canva Pro: $36 per signup (via Impact)
+  - Zapier: no public program right now; skip
+  - Amazon Associates for hardware: needs 3 sales in 180 days to stay in, pays net-60. Fine for FarmBot-adjacent gear later; not a three-day play.
+- Instant-approval networks (ClickBank, Digistore24) exist, but their catalog is mostly the kind of product that would break the brand line. Avoid.
+- Write the standard disclosure once and reuse it: verbal in the first 30 seconds ("FogSift earns a commission if you buy through the links below"), first line of the description, and the YouTube "paid promotion" toggle on. All three, every video. The FTC treats affiliate links as a material connection, and "clear and conspicuous" means not buried below a fold or saved for the end.
+
+**Day 2: Record three videos.**
+Format that fits the brand and is fast to produce: one tool, one real task, screen recording, face in corner, a verdict in the last 30 seconds (worth it / not worth it / worth it only if). Eight to twelve minutes. No intro longer than one sentence. Titles in the "did you know" and "X vs Y" and "5 things" shapes you described.
+
+Pick the three from tools you already use daily, so the demo is real and the opinion is earned. Record all three before editing any.
+
+**Day 3: Publish, link, and point the site at it.**
+- Publish one per day starting day 3 (three days of uploads looks like a channel; three in one hour looks like a dump).
+- Every description: disclosure line, the link, a one-line verdict, and "Want us to sift something for you? $20, link below."
+- Homepage primary CTA becomes "Watch" to the channel. It already is; keep it.
+
+### What the $20 offer becomes
+
+The queue does not go away. It gets reframed to fit the sifter: **"Should we use this?" for $20.** Someone names a tool, a stack, a vendor, or a decision. FogSift spends up to an hour, records the sifting, and sends back a verdict video. Same price, same Ko-fi rail, same webhook, and now every paid submission is also exactly the kind of content the channel runs on. It is the only thing on this list that puts money in the account this week.
+
+The $500 Deep Dive and the contracted Big Work stay as they are. They are not what the channel sells; they are what a few viewers will ask for after the channel earns trust.
+
+### YouTube Shopping, for later
+
+YouTube's own affiliate program (tag products directly in videos and Shorts) now opens at 500 subscribers plus Partner Program membership. It is a reason to hit the 500-subscriber early-access tier. Not a three-day item.
+
+### What this means for the site
+
+Done in this branch: one email everywhere, tagline aligned, fictional testimonials and the fake stat cards removed from the homepage and about page.
+
+Next, in order, once the first videos exist:
+1. Reframe the $20 offer on all eight pages as "Should we use this?" with the single spec from Section 1 (one hour, video + one-page verdict, public by default, 2 per day).
+2. Replace the joke queue with real "should we use this" submissions.
+3. Trim the personal bio on the homepage and about page to a presenter's bio (what FogSift does, not where Christopher has lived). The founder stays named; the life story goes.
+4. Add a "Links and disclosure" page: how FogSift makes money, in plain words. It is the brand line as a page, and the FTC will want it anyway.
+
+### Pivot sources
+
+- [PartnerStack affiliate program review 2026](https://www.way2earning.com/2026/08/partnerstack-affiliate-program/) and [affiliate networks for creators 2026](https://adamconnell.me/affiliate-marketing-networks/)
+- [Best AI affiliate programs 2026 (Rewardful)](https://www.rewardful.com/articles/the-best-affiliate-programs-for-ai-tools), [by creator type (OutlierKit)](https://outlierkit.com/resources/best-ai-tools-affiliate-programs/), [Make affiliate program](https://www.make.com/en/affiliate), [Zapier affiliate program status](https://getreditus.com/affiliate-programs/zapier)
+- [FTC disclosure for YouTube sponsorships 2026](https://ytcalculators.com/blog/ftc-disclosure-youtube-sponsorships/), [YouTube FTC disclosure rules, exact wording](https://fluxnote.io/guides/youtube-ftc-disclosure-rules-2026), [FTC affiliate disclosure compliance guide](https://www.legalforge.app/blog/ftc-affiliate-disclosure-compliance)
+- [YouTube Shopping expansion to 500 subscribers (YouTube blog)](https://blog.youtube/creator-and-artist-stories/youtube-shopping-expansion-500-subscribers/)
+
+---
+
+## 0. The one-paragraph version (original draft)
 
 You do not have an options problem. You have a consistency problem. FogSift already has a product ($20 video response), a payment rail (Ko-fi plus a working webhook), an upsell ($500 Deep Dive), a real high-ticket skill (C-suite supply chain and ops consulting), and a content engine (the queue becomes YouTube videos). What is stopping money is that the site tells five different stories about the deliverable, four about capacity, three about privacy, uses two taglines and four email addresses, shows a joke queue (Godzilla, Mothman, a Roomba) as if it were real, and displays placeholder testimonials from executives who do not exist. Fix the story, run the $20 offer for real, and sell the big work through your network while the channel grows.
 

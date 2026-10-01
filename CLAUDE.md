@@ -1,7 +1,7 @@
 # FogSift — Claude Code Instructions
 
 ## What This Is
-Diagnostic consulting site for FogSift ("Straight answers to complicated questions").
+Diagnostic consulting site for FogSift ("Clear answers to good questions").
 Live at https://fogsift.com. Deployed on Cloudflare Pages.
 
 ## Stack
