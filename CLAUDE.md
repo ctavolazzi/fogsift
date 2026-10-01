@@ -1,4 +1,4 @@
-# FogSift — Claude Code Instructions
+# FogSift: Claude Code Instructions
 
 ## What This Is
 Website for FogSift ("Clear answers to good questions"), an independent research practice proven on YouTube.
@@ -17,7 +17,7 @@ Non-negotiables from that folder:
 - The owner does not use em dashes. Use commas, periods, colons, or parentheses in all copy and docs.
 
 ## Stack
-Vanilla HTML/CSS/JS — no frameworks, by design.
+Vanilla HTML/CSS/JS: no frameworks, by design.
 - **Build:** `node scripts/build.js` → output to `dist/`
 - **Dev server:** `npx browser-sync start --server dist --port 5050`
 - **Test:** `npm test` (9 suites, ~116 tests)
@@ -26,9 +26,9 @@ Vanilla HTML/CSS/JS — no frameworks, by design.
 
 ## Session Startup
 A `SessionStart` hook runs `.claude/hooks/startup.sh` automatically. It executes:
-1. `health-check.js` — structural pass/fail checks (<1s)
-2. `context-brief.js` — markdown state summary (<2s)
-3. `project-snapshot.js` — full JSON snapshot (2-5s)
+1. `health-check.js`: structural pass/fail checks (<1s)
+2. `context-brief.js`: markdown state summary (<2s)
+3. `project-snapshot.js`: full JSON snapshot (2-5s)
 
 Read the output. It tells you the current state of the project: version, test results, recent commits, pending issues, and what to work on next.
 
@@ -48,16 +48,16 @@ node _tools/scripts/health-check.js && node _tools/scripts/context-brief.js && n
 ## Key Rules
 - Always rebuild (`node scripts/build.js`) after changing source files
 - Run `npm test` before committing to verify nothing broke
-- `dist/` is tracked in git — commit rebuilt dist with source changes
-- Cloudflare redirects `.html` to clean URLs (308 redirect) — use clean URLs in links
-- The build script is monolithic but reliable — don't split it
+- `dist/` is tracked in git: commit rebuilt dist with source changes
+- Cloudflare redirects `.html` to clean URLs (308 redirect): use clean URLs in links
+- The build script is monolithic but reliable: don't split it
 
 ## Key Docs
-- `_strategy/` — business context, decisions, roadmap, brick log (read first)
-- `_tools/ai-field-manual.md` — detailed workflow patterns and process docs
-- `TECH_DEBT.md` — known issues and priorities
-- `FEATURE_VOID_AUDIT.md` — missing features, prioritized
-- `_AI_Journal/` — AI dev notes, reflections, FogSift lore
+- `_strategy/`: business context, decisions, roadmap, brick log (read first)
+- `_tools/ai-field-manual.md`: detailed workflow patterns and process docs
+- `TECH_DEBT.md`: known issues and priorities
+- `FEATURE_VOID_AUDIT.md`: missing features, prioritized
+- `_AI_Journal/`: AI dev notes, reflections, FogSift lore
 
 ## Port System
 | Port | Service |

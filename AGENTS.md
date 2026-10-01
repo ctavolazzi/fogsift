@@ -1,4 +1,4 @@
-# AGENTS.md — FogSift
+# AGENTS.md: FogSift
 
 ## Project Overview
 
