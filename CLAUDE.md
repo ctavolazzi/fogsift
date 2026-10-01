@@ -1,8 +1,20 @@
 # FogSift — Claude Code Instructions
 
 ## What This Is
-Diagnostic consulting site for FogSift ("Clear answers to good questions").
+Website for FogSift ("Clear answers to good questions"), an independent research practice proven on YouTube.
 Live at https://fogsift.com. Deployed on Cloudflare Pages.
+
+## Business Context (read before touching customer-facing copy)
+The strategy lives in `_strategy/`. Start with `_strategy/README.md` (the business in ten lines), then `_strategy/BRICK_LOG.md` (what is next). Decisions and their reasons are in `_strategy/DECISIONS.md`; add a dated entry whenever one is made.
+
+Non-negotiables from that folder:
+- The brand is the sifter, not the person. Lore and personal history stay off research, tutoring, sift, briefs, how-we-make-money, about, contact.
+- Prices live only in `src/content/site-data.json`. A price in HTML is a bug.
+- Nothing on the site claims what it cannot show. No invented stats or quotes.
+- Teach first. No hype, no scarcity, no "you should buy this." Verdicts may be "no."
+- One email: `fogsift@gmail.com`. Pronoun: "we."
+- Work in bricks: one brick, one PR, one sitting. Update `_strategy/BRICK_LOG.md` in the same PR.
+- The owner does not use em dashes. Use commas, periods, colons, or parentheses in all copy and docs.
 
 ## Stack
 Vanilla HTML/CSS/JS — no frameworks, by design.
@@ -41,6 +53,7 @@ node _tools/scripts/health-check.js && node _tools/scripts/context-brief.js && n
 - The build script is monolithic but reliable — don't split it
 
 ## Key Docs
+- `_strategy/` — business context, decisions, roadmap, brick log (read first)
 - `_tools/ai-field-manual.md` — detailed workflow patterns and process docs
 - `TECH_DEBT.md` — known issues and priorities
 - `FEATURE_VOID_AUDIT.md` — missing features, prioritized

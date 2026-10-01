@@ -1,7 +1,7 @@
 # FogSift Website Roadmap: One Brick at a Time
 
 **Date:** 2026-10-01
-**Reads with:** `FOGSIFT_BUSINESS_BRIEF.md` (what exists), `FOGSIFT_CHANNEL_PLAN.md` (how the channel works). This document is the build order for the website, and the website is the back office for the business described in those two.
+**Reads with:** `BUSINESS_BRIEF.md` (what exists), `CHANNEL_PLAN.md` (how the channel works). This document is the build order for the website, and the website is the back office for the business described in those two.
 
 ---
 

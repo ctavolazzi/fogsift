@@ -159,7 +159,10 @@ ln(`6. Full snapshot: \`node _tools/scripts/project-snapshot.js\``);
 ln();
 
 ln(`## Key Files to Read First`);
-ln(`- \`V0.1.0-RELEASE-PLAN.md\` — Current release plan`);
+ln(`- \`_strategy/README.md\` — The business in ten lines (read first)`);
+ln(`- \`_strategy/BRICK_LOG.md\` — Which brick is next`);
+ln(`- \`_strategy/DECISIONS.md\` — Why things are the way they are`);
+ln(`- \`V0.1.0-RELEASE-PLAN.md\` — Older release plan (audience section superseded by _strategy)`);
 ln(`- \`TECH_DEBT.md\` — Known issues and priorities`);
 ln(`- \`_AI_Journal/\` — AI development notes and reflections`);
 ln(`- \`tests/report.json\` — Latest test results`);

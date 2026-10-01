@@ -1,7 +1,7 @@
 # FogSift Channel Plan: Teach First, Get Paid Anyway
 
 **Date:** 2026-10-01
-**Companion to:** `FOGSIFT_BUSINESS_BRIEF.md` (what exists, what the pieces are). This document is the operating plan for the YouTube channel as the primary revenue vessel.
+**Companion to:** `BUSINESS_BRIEF.md` (what exists, what the pieces are). This document is the operating plan for the YouTube channel as the primary revenue vessel.
 
 ---
 
@@ -173,4 +173,4 @@ You said you do not need anyone to like you. Fine. The format does not require t
 - [YouTube sponsorship rates 2026 by niche and size (OutlierKit)](https://outlierkit.com/resources/youtube-sponsorship-rates/), [rates by channel size (1of10)](https://1of10.com/blog/youtube-sponsorship-rates/), [how small channels get sponsorships](https://outlierkit.com/resources/how-to-get-youtube-sponsorships/)
 - [YouTube Shopping expansion to 500 subscribers](https://blog.youtube/creator-and-artist-stories/youtube-shopping-expansion-500-subscribers/)
 - [YouTube Partner Program requirements 2026 and the 2027 change](https://iamcreator.io/blog/youtube-monetization-requirements-2026)
-- Affiliate program terms and FTC disclosure rules: see the pivot section of `FOGSIFT_BUSINESS_BRIEF.md`.
+- Affiliate program terms and FTC disclosure rules: see the pivot section of `BUSINESS_BRIEF.md`.

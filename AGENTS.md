@@ -2,7 +2,9 @@
 
 ## Project Overview
 
-FogSift is a web application for cutting through noise and finding signal. This document provides AI agent instructions for working with this project.
+FogSift is the website for an independent research practice proven on YouTube ("Clear answers to good questions"). This document provides AI agent instructions for working with this project.
+
+**Business context first:** read `_strategy/README.md`, then `_strategy/BRICK_LOG.md`. Decisions and reasons are in `_strategy/DECISIONS.md`. `CLAUDE.md` lists the non-negotiables.
 
 **Repository:** `fogsift`
 **Location:** `/Users/ctavolazzi/Code/fogsift`
