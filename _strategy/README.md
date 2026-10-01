@@ -4,6 +4,8 @@ Read this folder before touching anything customer-facing. It is the business co
 
 ## The business in ten lines
 
+> **Focus (latest decision):** FogSift does research and presents it, and that is all. See the top entry of `DECISIONS.md`. Where lines below mention lessons or tutoring, the latest decision wins.
+
 1. FogSift is an **independent research practice** with a public body of work on YouTube.
 2. The channel publishes **Research Briefs**: a real question, deep research, a clear answer in 10 to 15 minutes. Each is a free sample of the paid work.
 3. Paid work: **Research Week $2,500** (40 hours, one question, written brief + video walkthrough), **Research Sprint $1,000** (2 days), **tutoring $75/hr** (half-day $275).

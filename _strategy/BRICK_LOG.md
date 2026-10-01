@@ -22,7 +22,7 @@ The build order lives in `WEBSITE_ROADMAP.md`. This file tracks where we are. Up
 ## Phase 2: The three doors
 
 - [ ] 2.1 `/research`
-- [ ] 2.2 `/tutoring`
+- [ ] 2.2 `/tutoring` (ON HOLD: owner decided the business is research only; reopen only if tutoring returns as teaching research methods)
 - [ ] 2.3 Scheduler + payment path (needs owner: Cal.com account; Ko-fi vs Stripe for big tickets)
 - [ ] 2.4 Homepage rebuilt around three doors
 - [ ] 2.5 Nav and footer

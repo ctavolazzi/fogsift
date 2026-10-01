@@ -4,6 +4,20 @@ Newest first. One entry per decision. Record the decision, the reason, and what 
 
 ---
 
+## 2026-10-01: The work is research, presented. That is the whole business.
+
+**Decision:** FogSift does research and presents it. The owner's words: "I really truly just want to do research. It's my truest passion. I'll research and present my research and that's it." Every offer, page and video is research or the presentation of research. Teaching tool-lessons, affiliate demos and general tutoring are no longer part of the plan unless the owner reopens them.
+**Why:** Research is what the owner loves and does best, and a business built on work they love is the one they can sustain. It also sharpens the proof: a channel of published Research Briefs shows the exact skill clients would pay for.
+**What it changes:**
+- The channel is Research Briefs only. The 12-lesson tool syllabus in `CHANNEL_PLAN.md` is superseded.
+- Affiliate links are optional and secondary; never a reason to choose a topic.
+- Offers: Research Week ($2,500), Research Sprint ($1,000), and the $20 "Sift This" queue (a question handed in, a short researched answer back). Hourly pricing stays as the rate basis for scoping.
+- `/tutoring` (Brick 2.2) is on hold. If tutoring returns, it should be framed as teaching research methods.
+**Open question for the owner:** whether to keep any paid 1:1 session at all (for example "walk me through your findings"), or sell only finished research.
+**Replaces:** the "teach first" lesson syllabus and the tutoring tier from the entries below, which remain as history.
+
+---
+
 ## 2026-10-01: The business is research for hire, proven on YouTube
 
 **Decision:** FogSift sells research (Research Week $2,500, Research Sprint $1,000), tutoring ($75/hr, half-day $275), and the $20 "Sift This" queue. The channel publishes Research Briefs as free samples of the paid work. Affiliate income is secondary.
