@@ -1,0 +1,57 @@
+{
+  "meta": {
+    "prices_verified": false,
+    "store": "PLACEHOLDER STORE",
+    "city": "YOUR CITY",
+    "date": "2026-10-01",
+    "notes": "Prices are placeholder US estimates. Replace each price with your receipt price, set prices_verified to true, then re-render. Nutrition is per package, from USDA FoodData Central (SR Legacy) values. Rankings, totals and charts are all computed from this file."
+  },
+  "foods": [
+    { "id": "lentils",  "name": "Dried lentils",      "short": "Lentils",      "pkg": "1 lb bag",       "grams": 454,  "price": 1.79, "kcal": 1597, "protein": 111.7, "veg": false },
+    { "id": "pinto",    "name": "Dried pinto beans",  "short": "Pinto beans",  "pkg": "2 lb bag",       "grams": 907,  "price": 2.79, "kcal": 3150, "protein": 194.0, "veg": false },
+    { "id": "rice",     "name": "White rice",         "short": "Rice",         "pkg": "5 lb bag",       "grams": 2268, "price": 5.49, "kcal": 8278, "protein": 161.7, "veg": false },
+    { "id": "oats",     "name": "Rolled oats",        "short": "Oats",         "pkg": "42 oz canister", "grams": 1191, "price": 4.99, "kcal": 4514, "protein": 157.0, "veg": false },
+    { "id": "eggs",     "name": "Large eggs",         "short": "Eggs",         "pkg": "1 dozen",        "grams": 600,  "price": 3.49, "kcal": 864,  "protein": 75.6,  "veg": false },
+    { "id": "sardines", "name": "Canned sardines",    "short": "Sardines",     "pkg": "3.75 oz can",    "grams": 92,   "price": 1.69, "kcal": 190,  "protein": 22.0,  "veg": false },
+    { "id": "pb",       "name": "Peanut butter",      "short": "Peanut butter","pkg": "16 oz jar",      "grams": 454,  "price": 2.79, "kcal": 2690, "protein": 99.0,  "veg": false },
+    { "id": "potatoes", "name": "Russet potatoes",    "short": "Potatoes",     "pkg": "5 lb bag",       "grams": 2268, "price": 4.49, "kcal": 1792, "protein": 48.5,  "veg": false },
+    { "id": "milk",     "name": "Whole milk",         "short": "Milk",         "pkg": "1 gallon",       "grams": 3899, "price": 3.89, "kcal": 2384, "protein": 123.0, "veg": false },
+    { "id": "cabbage",  "name": "Green cabbage",      "short": "Cabbage",      "pkg": "2 lb head",      "grams": 907,  "price": 1.78, "kcal": 227,  "protein": 11.6,  "veg": true },
+    { "id": "spinach",  "name": "Frozen spinach",     "short": "Spinach",      "pkg": "12 oz bag",      "grams": 340,  "price": 1.49, "kcal": 99,   "protein": 12.3,  "veg": true }
+  ],
+  "menu": [
+    { "meal": "Breakfast", "items": [
+      { "id": "oats", "grams": 80,  "label": "Oats, 1 cup dry" },
+      { "id": "pb",   "grams": 32,  "label": "Peanut butter, 2 tbsp" },
+      { "id": "eggs", "grams": 100, "label": "Eggs, 2" },
+      { "id": "milk", "grams": 244, "label": "Milk, 1 cup" }
+    ]},
+    { "meal": "Lunch", "items": [
+      { "id": "lentils", "grams": 100, "label": "Lentils, 1/2 cup dry" },
+      { "id": "rice",    "grams": 75,  "label": "Rice, 1/3 cup dry" },
+      { "id": "spinach", "grams": 85,  "label": "Spinach, 1/4 bag" }
+    ]},
+    { "meal": "Dinner", "items": [
+      { "id": "potatoes", "grams": 300, "label": "Potatoes, 2 medium" },
+      { "id": "sardines", "grams": 92,  "label": "Sardines, 1 can" },
+      { "id": "cabbage",  "grams": 150, "label": "Cabbage, 2 cups" }
+    ]},
+    { "meal": "Snack", "items": [
+      { "id": "milk", "grams": 244, "label": "Milk, 1 cup" },
+      { "id": "pb",   "grams": 32,  "label": "Peanut butter, 2 tbsp" }
+    ]}
+  ],
+  "nutrients": [
+    { "name": "Fiber",     "foods": ["lentils", "pinto", "oats", "potatoes", "spinach"] },
+    { "name": "Omega-3",   "foods": ["sardines"] },
+    { "name": "B12",       "foods": ["eggs", "sardines", "milk"] },
+    { "name": "Vitamin D", "foods": ["sardines", "milk"] },
+    { "name": "Calcium",   "foods": ["sardines", "milk"] },
+    { "name": "Iron",      "foods": ["lentils", "pinto", "oats", "spinach"] },
+    { "name": "Folate",    "foods": ["lentils", "pinto", "spinach"] },
+    { "name": "Potassium", "foods": ["lentils", "pinto", "potatoes"] },
+    { "name": "Vitamin C", "foods": ["potatoes", "cabbage"] },
+    { "name": "Vitamin K", "foods": ["spinach", "cabbage"] },
+    { "name": "Choline",   "foods": ["eggs"] }
+  ]
+}

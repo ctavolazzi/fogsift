@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>FogSift 001 Thumbnails</title>
+<style>
+@font-face { font-family: 'Outfit'; font-weight: 100 900; src: url(fonts/Outfit-latin.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(fonts/JetBrainsMono-latin.woff2) format('woff2'); }
+@font-face { font-family: 'Typewriter'; font-weight: 700; src: url(../_casefile/fonts/FreeMonoBold.ttf); }
+:root {
+  --cream: #f5f0e6; --paper: #fbf8f1; --choc: #4a2c2a; --deep: #1c1110;
+  --orange: #e07b3c; --rust: #c2410c; --red: #d42a1e; --gold: #fbbf24; --hl: rgb(247, 223, 92);
+}
+html, body { margin: 0; background: #222; }
+.thumb { position: relative; width: 1280px; height: 720px; overflow: hidden; font-family: 'Outfit', sans-serif; }
+.abs { position: absolute; }
+.grain { position: absolute; inset: 0; opacity: .08; mix-blend-mode: overlay; pointer-events: none; }
+.slam { font-weight: 900; line-height: .86; letter-spacing: -.03em; }
+.draft { position: absolute; left: 0; bottom: 0; background: rgba(212,42,30,.92); color: #fff; font: 800 20px 'JetBrains Mono', monospace; letter-spacing: .08em; padding: 8px 16px; }
+.receipt { background: var(--paper); color: #2a2220; font: 600 30px 'JetBrains Mono', monospace; padding: 34px 38px 44px; box-shadow: 0 30px 60px rgba(0,0,0,.55); }
+.receipt .row { display: flex; justify-content: space-between; gap: 40px; line-height: 50px; }
+.receipt hr { border: 0; border-top: 3px dashed #8a7d6f; margin: 10px 0; }
+</style>
+</head>
+<body>
+<div id="out"></div>
+<script>
+'use strict';
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') el.className = v; else if (k === 'style') Object.assign(el.style, v);
+    else if (k === 'text') el.textContent = v; else if (k === 'html') el.innerHTML = v; else el.setAttribute(k, v);
+  }
+  for (const c of kids) el.append(c);
+  return el;
+}
+const at = (p, x, y, attrs = {}, ...kids) => { const el = h('div', attrs, ...kids); el.classList.add('abs'); el.style.left = x + 'px'; el.style.top = y + 'px'; p.append(el); return el; };
+function grainURL() {
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const g = c.getContext('2d'), img = g.createImageData(256, 256); let s = 7;
+  for (let i = 0; i < img.data.length; i += 4) { s = (s * 1664525 + 1013904223) >>> 0; const v = s / 4294967296 * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+  g.putImageData(img, 0, 0); return c.toDataURL();
+}
+
+function metrics(D) {
+  const F = {}; for (const f of D.foods) F[f.id] = f;
+  const meals = D.menu.map(m => ({ meal: m.meal, cost: m.items.reduce((a, i) => a + F[i.id].price * i.grams / F[i.id].grams, 0) }));
+  const cost = meals.reduce((a, m) => a + m.cost, 0);
+  return { meals, cost, week: cost * 7 };
+}
+const money = v => '$' + v.toFixed(2);
+
+function frame(D, bg) {
+  const t = h('div', { class: 'thumb', style: { background: bg } });
+  return t;
+}
+function finish(t, D, G) {
+  t.append(h('div', { class: 'grain', style: { backgroundImage: `url(${G})` } }));
+  if (!D.meta.prices_verified) t.append(h('div', { class: 'draft', text: 'DRAFT · EST. PRICES' }));
+  return t;
+}
+
+/* A: the number. Giant daily cost + the receipt that proves it, circled in red marker. */
+function variantA(D, M, G) {
+  const t = frame(D, 'radial-gradient(ellipse at 35% 45%, #4a2a24 0%, #1c1110 75%)');
+  const big = at(t, 40, 120, { class: 'slam', text: money(M.cost), style: { fontSize: '250px', color: 'var(--cream)', textShadow: '12px 12px 0 var(--orange)', transform: 'rotate(-4deg)' } });
+  at(t, 70, 400, { class: 'slam', text: 'A DAY.', style: { fontSize: '150px', color: 'var(--orange)', transform: 'rotate(-4deg)' } });
+  const r = at(t, 850, 60, { class: 'receipt', style: { transform: 'rotate(5deg)', width: '390px', boxSizing: 'border-box' } });
+  r.append(h('div', { text: 'ONE DAY OF FOOD', style: { textAlign: 'center', fontWeight: 800 } }), h('hr'));
+  for (const m of M.meals) r.append(h('div', { class: 'row' }, h('span', { text: m.meal.toUpperCase() }), h('span', { text: money(m.cost) })));
+  r.append(h('hr'));
+  const tot = h('div', { class: 'row', style: { fontWeight: 800, fontSize: '36px', position: 'relative' } }, h('span', { text: 'TOTAL' }), h('span', { text: money(M.cost) }));
+  r.append(tot);
+  // hand-drawn marker loop around the total
+  tot.append(h('div', { html: `<svg width="250" height="110" viewBox="0 0 250 110" style="position:absolute;right:-40px;top:-30px;overflow:visible"><path d="M30 60 C 10 20, 120 2, 200 12 C 260 20, 250 85, 170 95 C 100 104, 20 96, 22 58 C 24 30, 90 18, 150 16" fill="none" stroke="#d42a1e" stroke-width="9" stroke-linecap="round"/></svg>` }));
+  return finish(t, D, G);
+}
+
+/* B: the twist. A highlighted line from the research file, stamped WRONG. */
+function variantB(D, M, G) {
+  const t = frame(D, '#0f1216');
+  const paper = at(t, 70, 60, { style: { width: '1140px', height: '440px', background: '#e8e4d8', transform: 'rotate(-2deg)', boxShadow: '0 30px 70px rgba(0,0,0,.7)', padding: '50px 64px', boxSizing: 'border-box', color: '#2a2826' } });
+  paper.innerHTML = `<div style="font:700 44px/1.4 Typewriter,monospace;opacity:.85">eggs, sardines, spinach...</div>
+    <div style="font:700 150px/1.1 Typewriter,monospace;margin-top:30px;letter-spacing:-.02em"><span style="background:var(--hl);padding:0 14px">should</span><br><span style="background:var(--hl);padding:0 14px">be cut.</span></div>`;
+  at(t, 760, 340, { text: 'WRONG.', style: { font: '700 104px Typewriter, monospace', color: 'var(--red)', border: '12px solid var(--red)', padding: '0 36px 8px', transform: 'rotate(-7deg)', background: 'rgba(15,18,22,.2)', letterSpacing: '.04em' } });
+  return finish(t, D, G);
+}
+
+/* C: the week. Bigger, rounder number on a loud background. */
+function variantC(D, M, G) {
+  const t = frame(D, 'radial-gradient(ellipse at 40% 45%, #f08a48 0%, #e07b3c 45%, #b9541f 100%)');
+  at(t, 60, 40, { class: 'slam', text: '$' + Math.round(M.week), style: { fontSize: '420px', color: 'var(--cream)', textShadow: '14px 14px 0 var(--choc)', transform: 'rotate(-3deg)' } });
+  at(t, 80, 450, { class: 'slam', text: 'A WEEK.', style: { fontSize: '170px', color: 'var(--choc)', transform: 'rotate(-3deg)' } });
+  // stack of three tags: what you get for it
+  const tags = ['ALL MEALS', 'REAL FOOD', 'NO RAMEN'];
+  tags.forEach((txt, i) => at(t, 830, 120 + i * 150, { text: txt, style: { background: i === 2 ? 'var(--choc)' : 'var(--cream)', color: i === 2 ? 'var(--cream)' : 'var(--choc)', font: '900 62px Outfit', padding: '14px 30px', borderRadius: '14px', border: '6px solid var(--choc)', boxShadow: '8px 8px 0 var(--choc)', transform: `rotate(${[3, -2, 4][i]}deg)` } }));
+  return finish(t, D, G);
+}
+
+async function boot() {
+  const D = window.DATA || await (await fetch('data.json')).json();
+  const M = metrics(D), G = grainURL();
+  await document.fonts.load('900 100px Outfit'); await document.fonts.load('700 50px Typewriter'); await document.fonts.load('600 30px "JetBrains Mono"');
+  const out = document.getElementById('out');
+  const make = { a: variantA, b: variantB, c: variantC };
+  const only = new URLSearchParams(location.search).get('v');
+  for (const [k, fn] of Object.entries(make)) {
+    if (only && only !== k) continue;
+    const t = fn(D, M, G); t.id = 'thumb-' + k; out.append(t);
+    if (!only) out.append(h('div', { style: { height: '20px' } }));
+  }
+  window.READY = true;
+}
+boot();
+</script>
+</body>
+</html>

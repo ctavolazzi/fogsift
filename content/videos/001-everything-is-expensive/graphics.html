@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FogSift 001 Graphics</title>
+<style>
+@font-face { font-family: 'Outfit'; font-weight: 100 900; src: url(fonts/Outfit-latin.woff2) format('woff2'); }
+@font-face { font-family: 'JetBrains Mono'; font-weight: 100 800; src: url(fonts/JetBrainsMono-latin.woff2) format('woff2'); }
+
+:root {
+  --cream: #f5f0e6;
+  --cream-2: #e8e0d0;
+  --paper: #fbf8f1;
+  --choc: #4a2c2a;
+  --choc-2: #6b4423;
+  --choc-deep: #1c1110;
+  --choc-mid: #2b1a18;
+  --orange: #e07b3c;
+  --rust: #c2410c;
+  --teal: #0d9488;
+  --gold: #fbbf24;
+  --red: #dc2626;
+  --line: #d4c4a8;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Outfit', system-ui, sans-serif;
+}
+html, body { margin: 0; height: 100%; background: #0b0807; overflow: hidden; }
+html.alpha, html.alpha body { background: transparent; }
+#stage {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden;
+  transform-origin: 0 0; font-family: var(--sans); color: var(--choc);
+}
+.layer { position: absolute; inset: 0; }
+.abs { position: absolute; }
+.mono { font-family: var(--mono); }
+.nowrap { white-space: nowrap; }
+.center-x { left: 0; right: 0; text-align: center; }
+
+/* backgrounds */
+.bg-dark { background: radial-gradient(ellipse at 50% 40%, #3a2320 0%, var(--choc-deep) 70%); }
+.bg-light {
+  background-color: var(--cream);
+  background-image:
+    linear-gradient(rgba(74,44,42,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74,44,42,.07) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.bg-orange { background: radial-gradient(ellipse at 50% 45%, #f08a48 0%, var(--orange) 45%, #c9622a 100%); }
+.vignette { background: radial-gradient(ellipse at 50% 50%, transparent 55%, rgba(0,0,0,.35) 100%); pointer-events: none; }
+.grain { opacity: .07; mix-blend-mode: overlay; pointer-events: none; }
+
+.badge {
+  position: absolute; right: 36px; top: 30px; padding: 8px 14px; border-radius: 6px;
+  font: 600 18px var(--mono); letter-spacing: .06em; color: #fff; background: rgba(220,38,38,.85);
+}
+.bug { position: absolute; left: 40px; bottom: 30px; font: 800 22px var(--mono); letter-spacing: .3em; opacity: .55; }
+
+/* shared pieces */
+.label { font: 700 30px var(--mono); letter-spacing: .25em; text-transform: uppercase; color: var(--orange); }
+.slam { font-weight: 900; line-height: .9; letter-spacing: -.02em; }
+.chip {
+  display: inline-block; padding: 18px 34px; border-radius: 999px; border: 5px solid var(--choc);
+  background: var(--paper); font: 900 64px var(--sans); color: var(--choc); box-shadow: 8px 8px 0 var(--choc);
+}
+.stamp {
+  border: 10px solid var(--red); color: var(--red); padding: 14px 34px; border-radius: 14px;
+  font: 900 92px var(--sans); letter-spacing: .02em; background: rgba(245,240,230,.8);
+}
+.receipt {
+  width: 600px; background: var(--paper); color: #2a2220; padding: 40px 44px 46px; box-shadow: 0 40px 80px rgba(0,0,0,.5);
+  font: 500 27px var(--mono); clip-path: polygon(0 0,100% 0,100% 100%,97% 98.6%,94% 100%,91% 98.6%,88% 100%,85% 98.6%,82% 100%,79% 98.6%,76% 100%,73% 98.6%,70% 100%,67% 98.6%,64% 100%,61% 98.6%,58% 100%,55% 98.6%,52% 100%,49% 98.6%,46% 100%,43% 98.6%,40% 100%,37% 98.6%,34% 100%,31% 98.6%,28% 100%,25% 98.6%,22% 100%,19% 98.6%,16% 100%,13% 98.6%,10% 100%,7% 98.6%,4% 100%,0 98.6%);
+}
+.receipt .row { display: flex; justify-content: space-between; line-height: 46px; }
+.receipt .hd { text-align: center; line-height: 36px; }
+.receipt hr { border: 0; border-top: 3px dashed #8a7d6f; margin: 14px 0; }
+
+.card {
+  background: var(--paper); border: 5px solid var(--choc); border-radius: 22px; box-shadow: 12px 12px 0 var(--choc);
+}
+.bar-track { background: rgba(74,44,42,.12); border-radius: 10px; height: 38px; overflow: hidden; }
+.bar-fill { background: var(--orange); height: 100%; width: 0; border-radius: 10px; }
+
+/* preview controls */
+#ui {
+  position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 12px; align-items: center; padding: 10px 16px;
+  background: rgba(0,0,0,.8); color: #eee; font: 14px system-ui; z-index: 10;
+}
+#ui input[type=range] { flex: 1; }
+#ui select, #ui button { font: 14px system-ui; }
+body.render #ui { display: none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="ui">
+  <select id="sel"></select>
+  <button id="play">Pause</button>
+  <input id="scrub" type="range" min="0" max="1000" value="0">
+  <span id="clock" class="mono">0.00</span>
+</div>
+<script>
+'use strict';
+/* ============ math + easing ============ */
+const W = 1920, H = 1080;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, p) => a + (b - a) * p;
+const E = {
+  lin: p => p,
+  out: p => 1 - Math.pow(1 - p, 3),
+  in: p => p * p * p,
+  inOut: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+  expo: p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p),
+  back: p => { const c1 = 1.9, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); },
+};
+// progress of an animation that starts at a and lasts d seconds
+const k = (t, a, d, e = E.out) => e(clamp((t - a) / d));
+const money = v => '$' + v.toFixed(2);
+const int = v => Math.round(v).toLocaleString('en-US');
+const one = v => (Math.round(v * 10) / 10).toFixed(1);
+
+function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
+
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [key, v] of Object.entries(attrs)) {
+    if (key === 'class') el.className = v;
+    else if (key === 'style') Object.assign(el.style, v);
+    else if (key === 'text') el.textContent = v;
+    else if (key === 'html') el.innerHTML = v;
+    else el.setAttribute(key, v);
+  }
+  for (const c of kids) el.append(c);
+  return el;
+}
+const at = (parent, x, y, attrs = {}, ...kids) => {
+  const el = h('div', attrs, ...kids);
+  el.classList.add('abs');
+  el.style.left = x + 'px'; el.style.top = y + 'px';
+  parent.append(el);
+  return el;
+};
+
+// set transform/opacity from a few numbers
+function tf(el, { x = 0, y = 0, s = 1, sx, sy, r = 0, o = 1, blur = 0 } = {}) {
+  el.style.transform = `translate(${x}px,${y}px) rotate(${r}deg) scale(${sx ?? s},${sy ?? s})`;
+  el.style.opacity = o;
+  el.style.filter = blur > .05 ? `blur(${blur}px)` : 'none';
+}
+// "slam in": oversized and blurred, snaps to rest
+function slam(el, t, t0, { from = 2.4, d = .2, r = 0, x = 0, y = 0 } = {}) {
+  const p = k(t, t0, d, E.out);
+  tf(el, { x, y, r, s: lerp(from, 1, p), o: k(t, t0, .06, E.lin), blur: (1 - p) * 14 });
+}
+// slide in from an offset
+function slide(el, t, t0, { dx = 0, dy = 60, d = .35, e = E.expo, r = 0, s = 1 } = {}) {
+  const p = k(t, t0, d, e);
+  tf(el, { x: dx * (1 - p), y: dy * (1 - p), r, s, o: k(t, t0, d * .5, E.lin) });
+}
+// decaying camera shake, summed over all impacts
+function shake(t, hits, amp = 16, d = .35) {
+  let x = 0, y = 0;
+  for (const t0 of hits) {
+    const p = (t - t0) / d;
+    if (p < 0 || p > 1) continue;
+    const a = Math.pow(1 - p, 2) * amp;
+    x += Math.sin((t - t0) * 93 + t0) * a;
+    y += Math.cos((t - t0) * 121 + t0 * 2) * a;
+  }
+  return { x, y };
+}
+const countTo = (t, t0, d, v) => v * k(t, t0, d, E.out);
+
+/* ============ data ============ */
+let D, F, M;
+function compute(data) {
+  D = data;
+  F = {};
+  for (const f of D.foods) F[f.id] = { ...f, kpd: f.kcal / f.price, ppd: f.protein / f.price };
+  const meals = D.menu.map(m => {
+    const items = m.items.map(i => {
+      const f = F[i.id], r = i.grams / f.grams;
+      return { ...i, food: f, cost: f.price * r, kcal: f.kcal * r, protein: f.protein * r };
+    });
+    const sum = key => items.reduce((a, i) => a + i[key], 0);
+    return { meal: m.meal, items, cost: sum('cost'), kcal: sum('kcal'), protein: sum('protein') };
+  });
+  const sum = key => meals.reduce((a, m) => a + m[key], 0);
+  const menuIds = new Set(meals.flatMap(m => m.items.map(i => i.id)));
+  const covered = D.nutrients.filter(n => n.foods.some(id => menuIds.has(id))).length;
+  const median = arr => { const s = [...arr].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+  const all = Object.values(F);
+  const medK = median(all.map(f => f.kpd)), medP = median(all.map(f => f.ppd));
+  const losers = all.filter(f => f.kpd < medK && f.ppd < medP).map(f => f.id);
+  const loserOnly = D.nutrients.filter(n => n.foods.length && n.foods.every(id => losers.includes(id))).map(n => n.name);
+  M = {
+    meals, cost: sum('cost'), kcal: sum('kcal'), protein: sum('protein'),
+    covered, nutrientCount: D.nutrients.length,
+    haul: D.foods.reduce((a, f) => a + f.price, 0),
+    proteinRank: all.filter(f => !f.veg).sort((a, b) => b.ppd - a.ppd),
+    kcalRank: [...all].sort((a, b) => b.kpd - a.kpd),
+    medK, medP, losers, loserOnly,
+  };
+}
+
+/* ============ shared scene chrome ============ */
+let grainURL = null;
+function makeGrain() {
+  const c = document.createElement('canvas'); c.width = c.height = 256;
+  const g = c.getContext('2d'), img = g.createImageData(256, 256), r = rng(7);
+  for (let i = 0; i < img.data.length; i += 4) { const v = r() * 255; img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = 255; }
+  g.putImageData(img, 0, 0);
+  grainURL = c.toDataURL();
+}
+
+function chrome(root, bg, { badge = true, bug = true } = {}) {
+  root.append(h('div', { class: 'layer bg-' + bg }));
+  const cam = h('div', { class: 'layer' });
+  root.append(cam);
+  root.append(h('div', { class: 'layer vignette' }));
+  const grain = h('div', { class: 'layer grain', style: { backgroundImage: `url(${grainURL})`, inset: '-256px' } });
+  root.append(grain);
+  if (bug) root.append(h('div', { class: 'bug', text: 'FOGSIFT', style: { color: bg === 'light' ? 'var(--choc)' : 'var(--cream)' } }));
+  if (badge && !D.meta.prices_verified) root.append(h('div', { class: 'badge', text: 'EST. PRICES · NOT YET VERIFIED' }));
+  return { cam, grain };
+}
+function tickGrain(grain, t) {
+  const f = Math.floor(t * 24), r = rng(f * 31 + 3);
+  grain.style.transform = `translate(${Math.floor(r() * 256)}px,${Math.floor(r() * 256)}px)`;
+}
+
+/* ============ scenes ============ */
+const SCENES = [];
+const scene = s => SCENES.push(s);
+
+/* 01 cold open: receipt -> daily cost slam */
+scene({
+  id: '01_hook_receipt', dur: 7,
+  build(root) {
+    const { cam, grain } = chrome(root, 'dark');
+    this.grain = grain; this.cam = cam;
+    const rc = at(cam, 660, 70, { class: 'receipt' });
+    rc.append(h('div', { class: 'hd', html: `<b>${D.meta.store}</b>` }));
+    rc.append(h('div', { class: 'hd', text: `${D.meta.city} · ${D.meta.date}`, style: { fontSize: '22px', opacity: .7 } }));
+    rc.append(h('hr'));
+    this.rows = D.foods.map(f => {
+      const row = h('div', { class: 'row' }, h('span', { text: f.short.toUpperCase() }), h('span', { text: money(f.price) }));
+      rc.append(row); return row;
+    });
+    rc.append(h('hr'));
+    this.total = h('div', { class: 'row', style: { fontWeight: 800, fontSize: '34px' } }, h('span', { text: 'TOTAL' }), h('span', { text: money(M.haul) }));
+    rc.append(this.total);
+    this.rc = rc;
+
+    this.big = at(cam, 0, 300, { class: 'slam center-x', style: { fontSize: '330px', color: 'var(--cream)', textShadow: '14px 14px 0 var(--orange)' }, text: money(M.cost) });
+    this.per = at(cam, 0, 640, { class: 'label center-x', style: { fontSize: '54px', color: 'var(--orange)' }, text: 'PER DAY' });
+    this.stats = at(cam, 0, 740, { class: 'center-x', style: { font: '700 50px var(--sans)', color: 'var(--cream)' }, text: `${int(M.kcal)} calories · ${Math.round(M.protein)}g protein` });
+    this.hits = [3.55];
+  },
+  cues() {
+    return [[0, 'whoosh'], ...this.rows.map((_, i) => [.45 + i * .17, 'tick']), [2.45, 'cash'], [3.35, 'whoosh'], [3.55, 'hit'], [4.3, 'pop'], [4.7, 'pop']];
+  },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, this.hits, 22);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    const push = k(t, 3.35, .4, E.inOut);
+    const pIn = k(t, 0, .55, E.expo);
+    tf(this.rc, { y: lerp(1000, 0, pIn), r: lerp(-6, -2, pIn), s: lerp(1, .82, push), o: lerp(1, .22, push), blur: push * 7 });
+    this.rows.forEach((row, i) => { row.style.opacity = k(t, .45 + i * .17, .1, E.lin); });
+    tf(this.total, { s: lerp(1.4, 1, k(t, 2.45, .2)), o: k(t, 2.45, .05, E.lin) });
+    slam(this.big, t, 3.55, { from: 3, d: .22 });
+    slide(this.per, t, 4.3, { dy: 40 });
+    slide(this.stats, t, 4.7, { dy: 40 });
+  },
+});
+
+/* 02 title card */
+scene({
+  id: '02_title', dur: 3.6,
+  build(root) {
+    const { cam, grain } = chrome(root, 'orange', { badge: false });
+    this.grain = grain; this.cam = cam;
+    const words = [
+      ['EVERYTHING', 190, 'var(--choc)', null, -2],
+      ['IS', 120, 'var(--choc)', null, 0],
+      ['F*CKING', 250, 'var(--cream)', 'var(--choc)', 2],
+      ['EXPENSIVE.', 200, 'var(--choc)', null, -1],
+    ];
+    const ys = [70, 290, 410, 700];
+    this.words = words.map(([w, size, color, bg, r], i) => {
+      const wrap = at(cam, 0, ys[i], { class: 'center-x' });
+      const el = h('span', { class: 'slam', text: w, style: { display: 'inline-block', fontSize: size + 'px', color, background: bg || 'none', padding: bg ? '0 36px 18px' : '0', borderRadius: '18px' } });
+      wrap.append(el);
+      return { el, r };
+    });
+    this.times = [.05, .4, .75, 1.2];
+    this.sticker = at(cam, 1430, 860, { style: { background: 'var(--cream)', color: 'var(--choc)', border: '5px solid var(--choc)', borderRadius: '14px', padding: '12px 24px', font: '800 34px var(--mono)', boxShadow: '8px 8px 0 var(--choc)' }, text: 'FOGSIFT · EP. 001' });
+  },
+  cues() { return [[.05, 'hit'], [.4, 'pop'], [.75, 'hit'], [1.2, 'hit'], [2.0, 'whoosh']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [.75, 1.2], 20);
+    // slow push-in keeps the frame alive while held
+    const push = lerp(1, 1.05, k(t, 0, 3.6, E.lin));
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px) scale(${push})`;
+    this.words.forEach(({ el, r }, i) => slam(el, t, this.times[i], { r, from: 2.6 }));
+    const p = k(t, 2.0, .45, E.back);
+    tf(this.sticker, { r: lerp(40, -6, p), s: lerp(.2, 1, p), o: k(t, 2.0, .08, E.lin) });
+  },
+});
+
+/* 03 the formula */
+scene({
+  id: '03_formula', dur: 8,
+  build(root) {
+    const { cam, grain } = chrome(root, 'light');
+    this.grain = grain; this.cam = cam;
+    this.lbl = at(cam, 0, 120, { class: 'label center-x', text: 'THE FORMULA' });
+    const row = at(cam, 0, 300, { class: 'center-x', style: { display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '30px' } });
+    this.chips = ['PROTEIN', 'MICRONUTRIENTS', 'CALORIES'].map((w, i) => {
+      const c = h('span', { class: 'chip', text: w });
+      if (i) row.append(h('span', { class: 'slam plus', text: '+', style: { fontSize: '90px', color: 'var(--orange)' } }));
+      row.append(c); return c;
+    });
+    this.plus = [...row.querySelectorAll('.plus')];
+    this.bar = at(cam, 260, 480, { style: { width: '1400px', height: '14px', background: 'var(--choc)', borderRadius: '7px', transformOrigin: '0 50%' } });
+    this.den = at(cam, 0, 530, { class: 'slam center-x', style: { fontSize: '170px', color: 'var(--choc)' }, html: '<span style="color:var(--orange)">$</span>DOLLARS' });
+    this.sub = at(cam, 0, 760, { class: 'center-x', style: { font: '600 52px var(--sans)', color: 'var(--choc-2)' }, text: 'Solve for all three. Per dollar.' });
+    this.stamp = at(cam, 1180, 760, { class: 'stamp nowrap', text: 'NO EMPTY CALORIES' });
+  },
+  cues() { return [[0, 'whoosh'], [.4, 'pop'], [1.2, 'pop'], [2.0, 'pop'], [2.8, 'whoosh'], [3.4, 'hit'], [4.6, 'whoosh'], [5.8, 'hit']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [3.4, 5.8], 14);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.lbl, t, 0, { dy: -40 });
+    this.chips.forEach((c, i) => { const p = k(t, .4 + i * .8, .4, E.back); tf(c, { s: lerp(.3, 1, p), o: k(t, .4 + i * .8, .08, E.lin), r: (1 - p) * (i % 2 ? 8 : -8) }); });
+    this.plus.forEach((p, i) => { p.style.opacity = k(t, 1.1 + i * .8, .1, E.lin); });
+    this.bar.style.transform = `scaleX(${k(t, 2.8, .45, E.inOut)})`;
+    slam(this.den, t, 3.4, { from: 2 });
+    slide(this.sub, t, 4.6, { dy: 40 });
+    // the stamp must sit in front of the subtitle: fade the subtitle as it lands
+    this.sub.style.opacity = Math.min(+this.sub.style.opacity, 1 - .75 * k(t, 5.8, .2));
+    slam(this.stamp, t, 5.8, { from: 3, r: -8, d: .16 });
+  },
+});
+
+/* bumpers: short full-screen chapter cards (pattern interrupts) */
+function bumper(id, label, l1, l2, sub, bg = 'dark') {
+  scene({
+    id, dur: 2.8,
+    build(root) {
+      const { cam, grain } = chrome(root, bg, { badge: false });
+      this.grain = grain; this.cam = cam;
+      const ink = bg === 'dark' ? 'var(--cream)' : 'var(--choc)';
+      this.lbl = at(cam, 0, 250, { class: 'label center-x', text: label, style: { fontSize: '40px', color: bg === 'orange' ? 'var(--choc)' : 'var(--orange)' } });
+      this.l1 = at(cam, 0, 320, { class: 'slam center-x', text: l1, style: { fontSize: '230px', color: ink } });
+      this.l2 = at(cam, 0, 530, { class: 'slam center-x', text: l2, style: { fontSize: '230px', color: bg === 'orange' ? 'var(--cream)' : 'var(--orange)' } });
+      this.sub = at(cam, 0, 800, { class: 'center-x', text: sub || '', style: { font: '600 48px var(--sans)', color: ink, opacity: .85 } });
+    },
+    cues() { return [[0, 'whoosh'], [.25, 'hit'], [.55, 'hit'], ...(sub ? [[1.1, 'pop']] : [])]; },
+    update(t) {
+      tickGrain(this.grain, t);
+      const sh = shake(t, [.25, .55], 18);
+      this.cam.style.transform = `translate(${sh.x}px,${sh.y}px) scale(${lerp(1, 1.04, k(t, 0, 2.8, E.lin))})`;
+      slide(this.lbl, t, 0, { dy: -50 });
+      slam(this.l1, t, .25);
+      slam(this.l2, t, .55);
+      slide(this.sub, t, 1.1, { dy: 40 });
+      // exit: everything punches out in the last frames so the cut feels fast
+      const out = k(t, 2.55, .25, E.in);
+      if (out > 0) this.cam.style.opacity = 1 - out;
+    },
+  });
+}
+
+/* 05 countdown: protein per dollar */
+scene({
+  id: '05_rank_protein', dur: 24,
+  build(root) {
+    const { cam, grain } = chrome(root, 'light');
+    this.grain = grain; this.cam = cam;
+    const list = M.proteinRank, n = list.length;
+    this.n = n;
+    // reveal order: last place first, #1 held back behind a drumroll
+    this.starts = list.map((_, rank) => rank === 0 ? .3 + (n - 1) * 2.3 + .9 : .3 + (n - 1 - rank) * 2.3);
+    this.hdr = at(cam, 1000, 70, { class: 'label', text: 'PROTEIN PER $1' });
+    const max = list[0].ppd;
+    this.rows = list.map((f, rank) => {
+      const y = 140 + rank * 96;
+      const row = at(cam, 1000, y, { style: { width: '820px', height: '80px', display: 'flex', alignItems: 'center', gap: '18px' } });
+      const num = h('div', { text: '#' + (rank + 1), style: { width: '86px', font: '900 46px var(--sans)', color: rank === 0 ? 'var(--rust)' : 'var(--choc)' } });
+      const body = h('div', { style: { flex: 1, position: 'relative' } });
+      const name = h('div', { text: f.short, style: { font: '800 32px var(--sans)', marginBottom: '6px' } });
+      const track = h('div', { class: 'bar-track' });
+      const fill = h('div', { class: 'bar-fill', style: { background: rank === 0 ? 'var(--gold)' : 'var(--orange)' } });
+      track.append(fill);
+      const val = h('div', { class: 'mono', style: { position: 'absolute', right: '14px', top: '44px', font: '800 26px var(--mono)', color: 'var(--choc)' } });
+      body.append(name, track, val);
+      const q = h('div', { text: '???', style: { position: 'absolute', left: '104px', top: '6px', font: '800 32px var(--mono)', color: 'var(--choc)', opacity: .25 } });
+      row.append(num, body, q);
+      return { row, num, name, fill, val, q, f, w: f.ppd / max };
+    });
+    // big left card, one per item
+    this.cards = list.map((f, rank) => {
+      const c = at(cam, 90, 170, { class: 'card', style: { width: '800px', height: '760px', padding: '50px 56px', boxSizing: 'border-box', background: rank === 0 ? '#fff6dc' : 'var(--paper)' } });
+      c.append(h('div', { text: '#' + (rank + 1), class: 'slam', style: { fontSize: '210px', color: rank === 0 ? 'var(--rust)' : 'var(--orange)' } }));
+      c.append(h('div', { text: f.name, class: 'slam', style: { fontSize: '84px', marginTop: '20px' } }));
+      c.append(h('div', { class: 'mono', text: `${f.pkg} · ${money(f.price)}`, style: { fontSize: '34px', marginTop: '22px', color: 'var(--choc-2)' } }));
+      const big = h('div', { class: 'slam', style: { fontSize: '150px', marginTop: '60px', color: 'var(--choc)' } });
+      c.append(big);
+      c.append(h('div', { text: 'grams of protein per $1', style: { font: '700 40px var(--sans)', color: 'var(--choc-2)' } }));
+      return { c, big, f };
+    });
+    // confetti for the #1 reveal
+    const r = rng(42);
+    this.bits = Array.from({ length: 40 }, () => {
+      const el = at(cam, 1420, 180, { style: { width: '14px', height: '26px', borderRadius: '3px', background: ['var(--gold)', 'var(--orange)', 'var(--teal)', 'var(--rust)'][Math.floor(r() * 4)] } });
+      return { el, vx: (r() - .5) * 1900, vy: -500 - r() * 900, spin: (r() - .5) * 1400 };
+    });
+  },
+  cues() {
+    const c = [[0, 'whoosh']];
+    this.starts.forEach((s, rank) => {
+      if (rank === 0) c.push([s - .9, 'riser'], [s, 'hit'], [s + .25, 'cash']);
+      else c.push([s, 'whoosh'], [s + .12, 'pop'], [s + .4, 'tick']);
+    });
+    return c;
+  },
+  update(t) {
+    tickGrain(this.grain, t);
+    const s1 = this.starts[0];
+    const sh = shake(t, [s1], 26);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.hdr, t, 0, { dy: -30 });
+    this.rows.forEach((R, rank) => {
+      const s = this.starts[rank];
+      const rowIn = k(t, .05 + rank * .04, .3, E.out);
+      R.row.style.opacity = rowIn;
+      const rev = k(t, s + .1, .35, E.expo);
+      R.name.style.opacity = rev; R.val.style.opacity = rev;
+      R.q.style.opacity = .25 * (1 - rev);
+      // the #1 slot pulses while everything else is revealed
+      if (rank === 0 && t < s) { const p = k(t, s - .9, .9, E.lin); R.q.style.opacity = .25 + .6 * Math.abs(Math.sin(p * Math.PI * 4)); }
+      R.fill.style.width = (R.w * 100 * k(t, s + .35, .6, E.out)) + '%';
+      R.val.textContent = one(countTo(t, s + .35, .6, R.f.ppd)) + ' g';
+      tf(R.num, { s: lerp(1.5, 1, k(t, s + .1, .25)), o: lerp(.3, 1, k(t, s + .1, .1, E.lin)) });
+    });
+    this.cards.forEach((C, rank) => {
+      const s = this.starts[rank];
+      // a card leaves when the next reveal begins (next reveal = rank-1)
+      const next = rank > 0 ? this.starts[rank - 1] : 99;
+      const pin = k(t, s, .4, E.expo), pout = k(t, next - .2, .3, E.in);
+      tf(C.c, { x: lerp(-900, 0, pin), y: lerp(0, -80, pout), r: lerp(-6, rank === 0 ? -1.5 : 0, pin), o: (t >= s ? 1 : 0) * (1 - pout), s: rank === 0 ? lerp(1.15, 1, k(t, s, .3)) : 1 });
+      C.big.textContent = one(countTo(t, s + .2, .8, C.f.ppd));
+    });
+    const dt = t - s1;
+    this.bits.forEach(b => {
+      if (dt < 0) { b.el.style.opacity = 0; return; }
+      const x = b.vx * dt, y = b.vy * dt + 1300 * dt * dt;
+      tf(b.el, { x, y, r: b.spin * dt, o: clamp(1.6 - dt) });
+    });
+  },
+});
+
+/* 07 calories per dollar */
+scene({
+  id: '07_rank_calories', dur: 7,
+  build(root) {
+    const { cam, grain } = chrome(root, 'dark');
+    this.grain = grain; this.cam = cam;
+    this.hdr = at(cam, 120, 70, { class: 'label', text: 'CALORIES PER $1' });
+    const list = M.kcalRank, max = list[0].kpd;
+    this.rows = list.map((f, i) => {
+      const y = 150 + i * 76;
+      const row = at(cam, 120, y, { style: { width: '1680px', height: '62px', display: 'flex', alignItems: 'center', gap: '24px' } });
+      const name = h('div', { text: f.short, style: { width: '300px', font: '800 36px var(--sans)', color: 'var(--cream)', textAlign: 'right' } });
+      const track = h('div', { style: { flex: 1, height: '48px', position: 'relative' } });
+      const fill = h('div', { style: { height: '100%', width: '0', background: f.veg ? 'var(--teal)' : 'var(--orange)', borderRadius: '8px' } });
+      const val = h('div', { class: 'mono', style: { position: 'absolute', top: '6px', font: '800 30px var(--mono)', color: 'var(--cream)', whiteSpace: 'nowrap' } });
+      track.append(fill, val);
+      row.append(name, track);
+      return { row, fill, val, f, w: f.kpd / max };
+    });
+    const top = list[0];
+    this.callout = at(cam, 1060, 820, { class: 'card', style: { padding: '26px 40px', background: 'var(--gold)', borderColor: 'var(--choc)', font: '900 54px var(--sans)', color: 'var(--choc)' }, text: `${top.short}: ${int(top.kpd)} cal for $1` });
+  },
+  cues() { return [[0, 'whoosh'], ...this.rows.map((_, i) => [.3 + i * .12, 'tick']), [2.6, 'hit'], [2.6, 'cash']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [2.6], 14);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.hdr, t, 0, { dy: -30 });
+    this.rows.forEach((R, i) => {
+      const s = .3 + i * .12, p = k(t, s, .8, E.expo);
+      R.row.style.opacity = k(t, s - .1, .2, E.lin);
+      R.fill.style.width = (R.w * 82 * p) + '%';
+      R.val.style.left = `calc(${R.w * 82 * p}% + 16px)`;
+      R.val.textContent = int(countTo(t, s, .8, R.f.kpd));
+      R.fill.style.boxShadow = i === 0 ? `0 0 0 ${6 * k(t, 2.6, .2)}px var(--gold)` : 'none';
+    });
+    const p = k(t, 2.6, .4, E.back);
+    tf(this.callout, { s: lerp(.4, 1, p), o: k(t, 2.6, .08, E.lin), r: lerp(10, -2, p) });
+  },
+});
+
+/* 09 the catch: scatter plot */
+scene({
+  id: '09_catch_scatter', dur: 10,
+  build(root) {
+    const { cam, grain } = chrome(root, 'light');
+    this.grain = grain; this.cam = cam;
+    const P = { x0: 230, y0: 940, w: 1560, h: 620 };
+    this.P = P;
+    const all = Object.values(F);
+    // square-root axes spread out the cheap-but-weak cluster near the origin; ticks show real values
+    const mx = Math.sqrt(Math.max(...all.map(f => f.kpd)) * 1.1), my = Math.sqrt(Math.max(...all.map(f => f.ppd)) * 1.12);
+    const X = v => P.x0 + Math.sqrt(v) / mx * P.w, Y = v => P.y0 - Math.sqrt(v) / my * P.h;
+    this.hdr = at(cam, 120, 60, { class: 'label', text: 'THE CATCH' });
+    this.cap = at(cam, 120, 110, { class: 'slam', style: { fontSize: '72px' }, text: 'By the math alone, cut these.' });
+    this.cap2 = at(cam, 120, 110, { class: 'slam', style: { fontSize: '72px', color: 'var(--rust)' }, text: 'The math is missing something.' });
+    this.ticks = [];
+    for (const v of [100, 250, 500, 1000, 1500]) {
+      this.ticks.push(at(cam, X(v) - 60, P.y0 + 16, { class: 'mono', text: int(v), style: { width: '120px', textAlign: 'center', fontSize: '24px', opacity: .7 } }));
+      this.ticks.push(at(cam, X(v) - 1, P.y0 - P.h, { style: { width: '2px', height: P.h + 'px', background: 'rgba(74,44,42,.12)' } }));
+    }
+    for (const v of [10, 25, 50]) {
+      this.ticks.push(at(cam, P.x0 - 90, Y(v) - 15, { class: 'mono', text: v + 'g', style: { width: '74px', textAlign: 'right', fontSize: '24px', opacity: .7 } }));
+      this.ticks.push(at(cam, P.x0, Y(v) - 1, { style: { width: P.w + 'px', height: '2px', background: 'rgba(74,44,42,.12)' } }));
+    }
+    this.xa = at(cam, P.x0, P.y0, { style: { width: P.w + 'px', height: '6px', background: 'var(--choc)', transformOrigin: '0 50%' } });
+    this.ya = at(cam, P.x0, P.y0 - P.h, { style: { width: '6px', height: P.h + 'px', background: 'var(--choc)', transformOrigin: '50% 100%' } });
+    this.xl = at(cam, P.x0 + P.w - 520, P.y0 + 50, { class: 'mono', style: { fontSize: '28px', width: '520px', textAlign: 'right', fontWeight: 800 }, text: 'CALORIES PER $1  →' });
+    this.yl = at(cam, P.x0 + 24, P.y0 - P.h - 6, { class: 'mono', style: { fontSize: '28px', fontWeight: 800 }, text: '↑ PROTEIN PER $1' });
+    this.zone = at(cam, P.x0 + 6, Y(M.medP), { style: { width: (X(M.medK) - P.x0 - 6) + 'px', height: (P.y0 - Y(M.medP)) + 'px', background: 'rgba(220,38,38,.12)', border: '5px dashed var(--red)', boxSizing: 'border-box', borderRadius: '10px' } });
+    this.zone.append(h('div', { class: 'mono', text: 'LOSES ON BOTH', style: { position: 'absolute', left: '0', top: '-46px', font: '800 30px var(--mono)', color: 'var(--red)', whiteSpace: 'nowrap' } }));
+    // labels: start to the right of each dot, then nudge apart vertically
+    const pts = all.map(f => ({ f, x: X(f.kpd), y: Y(f.ppd), lx: X(f.kpd) + 26, ly: Y(f.ppd) - 20, lw: f.short.length * 18 + 10 }));
+    pts.sort((a, b) => a.ly - b.ly);
+    for (let pass = 0; pass < 30; pass++) {
+      for (let i = 0; i < pts.length; i++) for (let j = i + 1; j < pts.length; j++) {
+        const a = pts[i], b = pts[j];
+        if (a.lx < b.lx + b.lw && b.lx < a.lx + a.lw && Math.abs(a.ly - b.ly) < 40) {
+          const push = (40 - Math.abs(a.ly - b.ly)) / 2 + .5;
+          if (a.ly <= b.ly) { a.ly -= push; b.ly += push; } else { a.ly += push; b.ly -= push; }
+        }
+      }
+    }
+    this.pts = pts.map((p, i) => {
+      const dot = at(cam, p.x - 16, p.y - 16, { style: { width: '32px', height: '32px', borderRadius: '50%', background: p.f.veg ? 'var(--teal)' : 'var(--orange)', border: '4px solid var(--choc)', boxSizing: 'border-box' } });
+      const lab = at(cam, p.lx, p.ly, { style: { font: '800 32px var(--sans)', whiteSpace: 'nowrap' }, text: p.f.short });
+      return { ...p, dot, lab, loser: M.losers.includes(p.f.id), i };
+    });
+    this.order = [...this.pts].sort((a, b) => a.x - b.x);
+  },
+  cues() { return [[0, 'whoosh'], [.2, 'whoosh'], ...this.order.map((_, i) => [.9 + i * .12, 'pop']), [4.0, 'whoosh'], [4.4, 'tick'], [5.2, 'pop'], [7.6, 'glitch'], [7.7, 'hit']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [7.7], 18);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.hdr, t, 0, { dy: -30 });
+    this.xa.style.transform = `scaleX(${k(t, .2, .5, E.inOut)})`;
+    this.ya.style.transform = `scaleY(${k(t, .2, .5, E.inOut)})`;
+    this.xl.style.opacity = this.yl.style.opacity = k(t, .6, .3, E.lin);
+    this.ticks.forEach(el => { el.style.opacity = Math.min(.7, k(t, .5, .4, E.lin)); });
+    this.order.forEach((p, i) => {
+      const s = .9 + i * .12, pp = k(t, s, .35, E.back);
+      tf(p.dot, { s: pp, o: k(t, s, .05, E.lin) });
+      p.lab.style.opacity = k(t, s + .1, .2, E.lin);
+      const red = p.loser ? k(t, 4.4, .25, E.lin) : 0;
+      p.dot.style.background = red > .5 ? 'var(--red)' : (p.f.veg ? 'var(--teal)' : 'var(--orange)');
+      p.lab.style.color = red > .5 ? 'var(--red)' : 'var(--choc)';
+      if (p.loser && t > 4.4) p.dot.style.transform += ` scale(${1 + .25 * Math.sin(clamp((t - 4.4) / .3) * Math.PI)})`;
+    });
+    const zp = k(t, 4.0, .45, E.expo);
+    tf(this.zone, { o: zp, s: lerp(.85, 1, zp) });
+    this.zone.style.transformOrigin = '0 100%';
+    // caption swap with a quick glitch
+    const g = t >= 7.6 && t < 7.8;
+    slide(this.cap, t, 5.2, { dy: 30 });
+    if (t >= 7.6) this.cap.style.opacity = g ? (Math.floor(t * 60) % 2) : 0;
+    this.cap2.style.opacity = t >= 7.7 ? 1 : 0;
+    this.cap2.style.transform = g ? `translate(${(Math.floor(t * 90) % 3 - 1) * 14}px,0) skewX(-8deg)` : 'none';
+  },
+});
+
+/* 10 nutrient coverage grid */
+scene({
+  id: '10_nutrient_grid', dur: 9,
+  build(root) {
+    const { cam, grain } = chrome(root, 'dark');
+    this.grain = grain; this.cam = cam;
+    const foods = D.foods, nuts = D.nutrients;
+    const x0 = 430, y0 = 330, cw = 122, rh = 58;
+    this.hdr = at(cam, 120, 60, { class: 'label', text: 'WHAT THE MATH MISSED' });
+    this.cap = at(cam, 120, 110, { class: 'slam', style: { fontSize: '64px', color: 'var(--cream)' }, html: `Only the "losers" cover <span style="color:var(--gold)">${M.loserOnly.length}</span> of these.` });
+    this.bands = foods.map((f, c) => at(cam, x0 + c * cw + 6, y0 - 150, { style: { width: (cw - 12) + 'px', height: (nuts.length * rh + 160) + 'px', borderRadius: '14px', background: 'rgba(224,123,60,.22)', border: '3px solid var(--orange)', boxSizing: 'border-box', opacity: 0, display: M.losers.includes(f.id) ? 'block' : 'none' } }));
+    this.rowBands = nuts.map((n, r) => at(cam, 110, y0 + r * rh + 2, { style: { width: (x0 - 110 + foods.length * cw) + 'px', height: (rh - 4) + 'px', borderRadius: '10px', background: 'rgba(251,191,36,.18)', opacity: 0, display: M.loserOnly.includes(n.name) ? 'block' : 'none' } }));
+    this.heads = foods.map((f, c) => at(cam, x0 + c * cw + cw / 2 - 10, y0 - 22, { text: f.short, style: { font: '700 28px var(--sans)', color: 'var(--cream)', whiteSpace: 'nowrap', transform: 'rotate(-40deg)', transformOrigin: '0 100%' } }));
+    this.rows = nuts.map((n, r) => {
+      const lab = at(cam, 130, y0 + r * rh + 8, { text: n.name, style: { font: '700 34px var(--sans)', color: 'var(--cream)', width: '280px' } });
+      const dots = foods.map((f, c) => {
+        const has = n.foods.includes(f.id);
+        return at(cam, x0 + c * cw + cw / 2 - 16, y0 + r * rh + 13, { style: { width: '32px', height: '32px', borderRadius: '50%', background: has ? 'var(--orange)' : 'transparent', border: has ? 'none' : '3px solid rgba(245,240,230,.18)', boxSizing: 'border-box' } });
+      });
+      return { lab, dots, hi: M.loserOnly.includes(n.name) };
+    });
+  },
+  cues() { return [[0, 'whoosh'], ...this.rows.map((_, r) => [.4 + r * .18, 'tick']), [3.4, 'whoosh'], [4.2, 'hit'], [4.9, 'pop']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [4.2], 12);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.hdr, t, 0, { dy: -30 });
+    this.heads.forEach((el, c) => { el.style.opacity = k(t, .1 + c * .03, .2, E.lin); });
+    this.rows.forEach((R, r) => {
+      const s = .4 + r * .18;
+      slide(R.lab, t, s, { dx: -60, dy: 0 });
+      R.dots.forEach((d, c) => tf(d, { s: k(t, s + c * .015, .25, E.back), o: k(t, s + c * .015, .05, E.lin) }));
+      if (R.hi) R.lab.style.color = t > 4.2 ? 'var(--gold)' : 'var(--cream)';
+    });
+    this.bands.forEach(b => { b.style.opacity = k(t, 3.4, .4, E.lin); });
+    this.rowBands.forEach(b => { b.style.opacity = k(t, 4.2, .2, E.lin); });
+    slide(this.cap, t, 4.9, { dy: 30 });
+  },
+});
+
+/* 11 a full day, built meal by meal */
+scene({
+  id: '11_day_build', dur: 11.5,
+  build(root) {
+    const { cam, grain } = chrome(root, 'light');
+    this.grain = grain; this.cam = cam;
+    this.hdr = at(cam, 110, 60, { class: 'label', text: 'ONE FULL DAY' });
+    this.ctr = at(cam, 110, 110, { class: 'slam', style: { fontSize: '96px', display: 'flex', gap: '60px', alignItems: 'baseline' } });
+    this.cCost = h('span', { style: { color: 'var(--rust)' } });
+    this.cK = h('span', { style: { fontSize: '56px' } });
+    this.cP = h('span', { style: { fontSize: '56px' } });
+    this.ctr.append(this.cCost, this.cK, this.cP);
+    this.events = []; // [time, cost, kcal, protein]
+    this.cards = M.meals.map((m, i) => {
+      const s = .5 + i * 2.5;
+      const card = at(cam, 110 + i * 435, 290, { class: 'card', style: { width: '395px', height: '660px', overflow: 'hidden' } });
+      card.append(h('div', { text: m.meal.toUpperCase(), style: { background: 'var(--choc)', color: 'var(--cream)', font: '800 38px var(--mono)', padding: '20px 26px', letterSpacing: '.08em' } }));
+      const items = m.items.map((it, j) => {
+        const row = h('div', { style: { padding: '18px 26px 0' } },
+          h('div', { text: it.label, style: { font: '700 32px var(--sans)', lineHeight: '1.1' } }),
+          h('div', { class: 'mono', text: money(it.cost), style: { fontSize: '30px', color: 'var(--rust)', marginTop: '4px' } }));
+        card.append(row);
+        const ts = s + .45 + j * .32;
+        this.events.push([ts, it.cost, it.kcal, it.protein]);
+        return { row, ts };
+      });
+      const sub = h('div', { style: { position: 'absolute', left: 0, right: 0, bottom: 0, padding: '20px 26px', background: 'var(--cream-2)', borderTop: '4px solid var(--choc)', display: 'flex', justifyContent: 'space-between', font: '900 40px var(--sans)' } },
+        h('span', { text: 'MEAL' }), h('span', { text: money(m.cost), style: { color: 'var(--rust)' } }));
+      card.append(sub);
+      return { card, items, sub, s, subT: s + .45 + m.items.length * .32 + .1 };
+    });
+  },
+  cues() {
+    const c = [];
+    this.cards.forEach(C => { c.push([C.s, 'whoosh']); C.items.forEach(it => c.push([it.ts, 'tick'])); c.push([C.subT, 'cash']); });
+    return c;
+  },
+  update(t) {
+    tickGrain(this.grain, t);
+    slide(this.hdr, t, 0, { dy: -30 });
+    let cost = 0, kc = 0, pr = 0;
+    for (const [ts, c, kk, p] of this.events) { const q = k(t, ts, .3, E.out); cost += c * q; kc += kk * q; pr += p * q; }
+    this.cCost.textContent = money(cost);
+    this.cK.textContent = int(kc) + ' cal';
+    this.cP.textContent = Math.round(pr) + 'g protein';
+    this.ctr.style.opacity = k(t, .2, .3, E.lin);
+    this.cards.forEach(C => {
+      slide(C.card, t, C.s, { dy: 700, d: .5 });
+      C.items.forEach(it => slide(it.row, t, it.ts, { dx: 40, dy: 0, d: .25 }));
+      const p = k(t, C.subT, .3, E.back);
+      tf(C.sub, { y: lerp(100, 0, p), o: k(t, C.subT, .05, E.lin) });
+    });
+  },
+});
+
+/* 12 the total */
+scene({
+  id: '12_day_total', dur: 6.5,
+  build(root) {
+    const { cam, grain } = chrome(root, 'dark');
+    this.grain = grain; this.cam = cam;
+    this.lbl = at(cam, 0, 90, { class: 'label center-x', text: 'ONE DAY OF FOOD', style: { fontSize: '44px' } });
+    this.big = at(cam, 0, 160, { class: 'slam center-x', style: { fontSize: '300px', color: 'var(--cream)', textShadow: '14px 14px 0 var(--orange)' }, text: money(M.cost) });
+    const chips = [`${int(M.kcal)} calories`, `${Math.round(M.protein)}g protein`, `${M.covered}/${M.nutrientCount} nutrients covered`];
+    const row = at(cam, 0, 500, { class: 'center-x', style: { display: 'flex', justifyContent: 'center', gap: '30px' } });
+    this.chips = chips.map(c => { const el = h('span', { class: 'chip', text: c, style: { fontSize: '50px' } }); row.append(el); return el; });
+    const row2 = at(cam, 0, 720, { class: 'center-x', style: { display: 'flex', justifyContent: 'center', gap: '120px', color: 'var(--cream)' } });
+    const mk = (lab) => { const box = h('div', {}); const v = h('div', { class: 'slam', style: { fontSize: '130px', color: 'var(--gold)' } }); box.append(h('div', { class: 'label', text: lab, style: { color: 'var(--cream)', opacity: .7 } }), v); row2.append(box); return { box, v }; };
+    this.week = mk('PER WEEK'); this.month = mk('PER MONTH');
+  },
+  cues() { return [[0, 'whoosh'], [.3, 'hit'], [1.0, 'pop'], [1.25, 'pop'], [1.5, 'pop'], [2.6, 'whoosh'], [3.1, 'cash'], [3.5, 'whoosh'], [4.0, 'cash']]; },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [.3], 22);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slide(this.lbl, t, 0, { dy: -40 });
+    slam(this.big, t, .3, { from: 3 });
+    this.chips.forEach((c, i) => { const p = k(t, 1 + i * .25, .35, E.back); tf(c, { s: lerp(.3, 1, p), o: k(t, 1 + i * .25, .06, E.lin) }); });
+    slide(this.week.box, t, 2.6, { dy: 60 });
+    slide(this.month.box, t, 3.5, { dy: 60 });
+    this.week.v.textContent = money(countTo(t, 2.6, .5, M.cost * 7));
+    this.month.v.textContent = money(countTo(t, 3.5, .5, M.cost * 30));
+  },
+});
+
+/* 13 call to action */
+scene({
+  id: '13_cta', dur: 8,
+  build(root) {
+    const { cam, grain } = chrome(root, 'orange', { badge: false });
+    this.grain = grain; this.cam = cam;
+    this.l1 = at(cam, 0, 90, { class: 'slam center-x', text: 'What else is', style: { fontSize: '150px', color: 'var(--choc)' } });
+    this.l2 = at(cam, 0, 240, { class: 'slam center-x', text: 'too expensive?', style: { fontSize: '190px', color: 'var(--cream)', textShadow: '10px 10px 0 var(--choc)' } });
+    this.box = at(cam, 360, 520, { class: 'card', style: { width: '1200px', height: '150px', display: 'flex', alignItems: 'center', gap: '28px', padding: '0 36px', boxSizing: 'border-box' } });
+    this.box.append(h('div', { style: { width: '80px', height: '80px', borderRadius: '50%', background: 'var(--teal)', flex: 'none' } }));
+    this.typed = h('div', { style: { font: '600 56px var(--sans)', color: 'var(--choc)', whiteSpace: 'nowrap' } });
+    this.box.append(this.typed);
+    this.out = at(cam, 0, 780, { class: 'slam center-x', style: { fontSize: '86px', color: 'var(--choc)' }, text: 'Comment it. I research it next.' });
+    this.logo = at(cam, 0, 920, { class: 'center-x', style: { font: '800 44px var(--mono)', letterSpacing: '.4em', color: 'var(--cream)' }, text: 'FOGSIFT' });
+    // typing script: [phrase, start]
+    this.phrases = [['rent', 1.8], ['car insurance', 2.9], ['baby formula', 4.3]];
+  },
+  cues() {
+    const c = [[0, 'whoosh'], [.2, 'hit'], [.5, 'hit'], [1.3, 'whoosh']];
+    this.phrases.forEach(([w, s]) => { for (let i = 0; i < w.length; i++) c.push([s + i * .06, 'type']); });
+    c.push([5.8, 'hit'], [6.4, 'pop']);
+    return c;
+  },
+  textAt(t) {
+    let txt = '';
+    this.phrases.forEach(([w, s], i) => {
+      const next = this.phrases[i + 1]?.[1] ?? 99;
+      if (t < s) return;
+      const typed = Math.min(w.length, Math.floor((t - s) / .06) + 1);
+      // delete just before the next phrase starts
+      const del = next - .35;
+      const left = t > del ? Math.max(0, typed - Math.floor((t - del) / .03)) : typed;
+      if (t < next) txt = w.slice(0, left);
+    });
+    return txt;
+  },
+  update(t) {
+    tickGrain(this.grain, t);
+    const sh = shake(t, [.2, .5, 5.8], 16);
+    this.cam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+    slam(this.l1, t, .2);
+    slam(this.l2, t, .5, { r: -2 });
+    slide(this.box, t, 1.3, { dy: 120 });
+    const txt = this.textAt(t);
+    const caret = Math.floor(t * 2.5) % 2 ? '|' : ' ';
+    this.typed.textContent = txt ? txt + caret : (t > 1.3 ? 'Add a comment...' : '');
+    this.typed.style.opacity = txt ? 1 : .45;
+    slam(this.out, t, 5.8, { from: 1.8 });
+    slide(this.logo, t, 6.4, { dy: 30 });
+  },
+});
+
+/* overlays: price tag lower thirds, transparent background */
+function priceTag(f) {
+  scene({
+    id: 'ov_tag_' + f.id, dur: 4.2, alpha: true,
+    build(root) {
+      this.cam = h('div', { class: 'layer' }); root.append(this.cam);
+      const est = D.meta.prices_verified ? '' : ' <span style="font-size:20px;opacity:.6">EST.</span>';
+      const card = at(this.cam, 80, 790, { class: 'card', style: { width: '900px', height: '190px', display: 'flex', overflow: 'hidden', boxShadow: '10px 10px 0 var(--choc)' } });
+      this.stripe = h('div', { style: { width: '26px', background: 'var(--orange)', flex: 'none', transformOrigin: '50% 100%' } });
+      const left = h('div', { style: { padding: '24px 30px', flex: 1 } });
+      this.name = h('div', { class: 'slam', text: f.name, style: { fontSize: '64px' } });
+      this.sub = h('div', { class: 'mono', html: `${f.pkg} · ${money(f.price)}${est}`, style: { fontSize: '32px', marginTop: '18px', color: 'var(--choc-2)' } });
+      left.append(this.name, this.sub);
+      const right = h('div', { style: { width: '270px', background: 'var(--choc)', color: 'var(--cream)', padding: '26px 28px', boxSizing: 'border-box', flex: 'none' } });
+      this.metric = h('div', { class: 'slam', style: { fontSize: '62px', color: 'var(--gold)' } });
+      right.append(this.metric, h('div', { text: 'g protein per $1', style: { font: '700 24px var(--sans)', marginTop: '8px' } }),
+        h('div', { class: 'mono', text: `${int(f.kpd)} cal per $1`, style: { fontSize: '22px', marginTop: '14px', opacity: .8 } }));
+      card.append(this.stripe, left, right);
+      this.card = card; this.f = f;
+    },
+    cues() { return [[0, 'whoosh'], [.35, 'pop'], [3.6, 'whoosh']]; },
+    update(t) {
+      const pin = k(t, 0, .45, E.expo), pout = k(t, 3.6, .4, E.in);
+      tf(this.card, { x: lerp(-1050, 0, pin) - 1050 * pout });
+      this.stripe.style.transform = `scaleY(${k(t, .1, .3, E.out)})`;
+      slide(this.name, t, .2, { dx: -40, dy: 0 });
+      slide(this.sub, t, .35, { dx: -40, dy: 0 });
+      this.metric.textContent = one(countTo(t, .35, .7, this.f.ppd));
+    },
+  });
+}
+
+/* ============ boot + timeline ============ */
+// bumpers and tags depend on computed data, so they register after boot.
+// Scene ids sort into edit order.
+function buildList() {
+  const keep = SCENES.splice(0);
+  const byId = Object.fromEntries(keep.map(s => [s.id, s]));
+  bumper('04_round1_bumper', 'ROUND 1', 'PROTEIN', 'PER DOLLAR', `${M.proteinRank.length} staples ranked. #1 is last.`);
+  bumper('06_round2_bumper', 'ROUND 2', 'CALORIES', 'PER DOLLAR', 'What actually fills you up.');
+  bumper('08_catch_bumper', 'WAIT', "THERE'S", 'A CATCH.', '', 'orange');
+  D.foods.forEach(f => priceTag(F[f.id]));
+  const extra = SCENES.splice(0);
+  for (const s of [...keep, ...extra]) byId[s.id] = s;
+  return Object.values(byId).sort((a, b) => a.id.localeCompare(b.id));
+}
+
+let LIST = [], current = null;
+const stage = document.getElementById('stage');
+
+function loadScene(id) {
+  const s = LIST.find(x => x.id === id);
+  stage.innerHTML = '';
+  const root = h('div', { class: 'layer' });
+  stage.append(root);
+  s.build(root);
+  current = s;
+  document.documentElement.classList.toggle('alpha', !!s.alpha);
+  if (s.alpha && !RENDER) stage.style.background = 'repeating-conic-gradient(#555 0 25%, #777 0 50%) 0 0/40px 40px';
+  else stage.style.background = 'transparent';
+  s.update(0);
+  return { id: s.id, dur: s.dur, alpha: !!s.alpha, cues: s.cues() };
+}
+function renderAt(t) { current.update(t); }
+
+const RENDER = new URLSearchParams(location.search).has('render');
+if (RENDER) document.body.classList.add('render');
+
+async function boot() {
+  const data = window.DATA || await (await fetch('data.json')).json();
+  compute(data);
+  makeGrain();
+  LIST = buildList();
+  window.SCENE_LIST = LIST.map(s => ({ id: s.id, dur: s.dur, alpha: !!s.alpha }));
+  window.loadScene = loadScene;
+  window.renderAt = renderAt;
+  window.METRICS = M;
+  await document.fonts.ready;
+  if (RENDER) { window.READY = true; return; }
+  preview();
+}
+
+function preview() {
+  const sel = document.getElementById('sel'), scrub = document.getElementById('scrub'), clock = document.getElementById('clock'), btn = document.getElementById('play');
+  LIST.forEach(s => sel.append(h('option', { value: s.id, text: `${s.id} (${s.dur}s)` })));
+  const fit = () => { const s = Math.min(innerWidth / W, (innerHeight - 50) / H); stage.style.transform = `scale(${s})`; };
+  addEventListener('resize', fit); fit();
+  let t = 0, playing = true, last = performance.now();
+  const go = id => { loadScene(id); t = 0; };
+  sel.onchange = () => go(sel.value);
+  btn.onclick = () => { playing = !playing; btn.textContent = playing ? 'Pause' : 'Play'; };
+  scrub.oninput = () => { t = scrub.value / 1000 * current.dur; playing = false; btn.textContent = 'Play'; };
+  const hash = location.hash.slice(1);
+  go(LIST.some(s => s.id === hash) ? hash : LIST[0].id);
+  sel.value = current.id;
+  (function loop(now) {
+    const dt = (now - last) / 1000; last = now;
+    if (playing) { t += dt; if (t > current.dur) t = 0; }
+    current.update(t);
+    scrub.value = t / current.dur * 1000;
+    clock.textContent = t.toFixed(2);
+    requestAnimationFrame(loop);
+  })(last);
+}
+boot();
+</script>
+</body>
+</html>
