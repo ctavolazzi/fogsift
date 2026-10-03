@@ -1,0 +1,41 @@
+{
+  "_notes": "Script for the case-file short. Text in {braces} is filled from data.json, so the page always matches the main episode's numbers. Times are seconds. Record the VO lines in vo.md to these marks, or move the marks to fit your read.",
+  "id": "casefile_001_should_be_cut",
+  "dur": 40.5,
+  "document": {
+    "header": [
+      "FOGSIFT RESEARCH FILE 001",
+      "SUBJECT: LOWEST-COST COMPLETE DIET",
+      "DATE: {meta.date}     PRICES: {meta.store}, {meta.city}"
+    ],
+    "draftLine": "STATUS: DRAFT. PRICES ESTIMATED, NOT YET VERIFIED.",
+    "paragraphs": [
+      "1.   Objective. To determine the lowest-cost daily diet that meets protein, micronutrient and calorie needs, using shelf prices and USDA nutrient data for {count} staple foods.",
+      "2.   Findings. Ranked by cost alone, dried pinto beans returned {pinto.ppd} g of protein per dollar. Canned sardines returned {sardines.ppd} g. White rice returned {rice.kpd} calories per dollar. On cost-per-nutrient math alone, {losers} should be cut from the list.",
+      "3.   However, those {loserCount} foods are the only items on the list supplying {loserOnly}. Removing them saves money and leaves the diet incomplete. A full day including them was assembled for {day.cost}, providing {day.kcal} calories and {day.protein} g of protein.",
+      "4.   Conclusion. The cheapest calories are not the cheapest nutrition."
+    ],
+    "end": 21.0,
+    "highlights": [
+      { "text": "dried pinto beans returned {pinto.ppd} g of protein per dollar", "at": 1.2, "dur": 1.8 },
+      { "text": "Canned sardines returned {sardines.ppd} g", "at": 4.6, "dur": 1.2 },
+      { "text": "{losers} should be cut from the list", "at": 7.6, "dur": 2.2 },
+      { "text": "are the only items on the list supplying {loserOnly}", "at": 11.8, "dur": 2.4 },
+      { "text": "assembled for {day.cost}", "at": 16.2, "dur": 0.9 },
+      { "text": "The cheapest calories are not the cheapest nutrition.", "at": 18.4, "dur": 1.7 }
+    ]
+  },
+  "board": {
+    "start": 21.0,
+    "quote": { "text": "“SHOULD BE CUT”", "at": 21.4 },
+    "tags": { "items": "{losersUpper}", "at": 23.2, "every": 0.7 },
+    "attribution": { "text": "FOGSIFT RESEARCH FILE 001, PAGE 1 —", "at": 27.0 },
+    "stamp": { "text": "WRONG.", "at": 28.6 },
+    "smallStamps": { "items": "{loserOnlyUpper}", "at": 30.0, "every": 0.55 }
+  },
+  "outro": {
+    "start": 34.4,
+    "card": { "text": "That's one line from page 1.", "at": 34.8 },
+    "tag": { "text": "THE FULL FILE + EVERY RECEIPT: LINKS BELOW", "at": 37.0 }
+  }
+}

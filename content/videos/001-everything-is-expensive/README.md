@@ -8,6 +8,7 @@ Data-driven motion graphics for "Everything Is F*cking Expensive". Every number 
 | `graphics.html` | All scenes. Open it through a local server to preview and scrub |
 | `render.mjs` | Renders every scene to video with synced sound effects |
 | `EDIT_PLAN.md` | Where each clip goes in the edit, with VO lines |
+| `casefile.json`, `casefile-vo.md` | The 40s case-file short ("Should Be Cut") and its VO script, rendered with `../_casefile/casefile.html` |
 | `fonts/` | Outfit and JetBrains Mono (SIL OFL) |
 
 ## Preview

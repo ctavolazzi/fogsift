@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FogSift Case File</title>
+<style>
+@font-face { font-family: 'Typewriter'; font-weight: 400; src: url(fonts/FreeMono.ttf); }
+@font-face { font-family: 'Typewriter'; font-weight: 700; src: url(fonts/FreeMonoBold.ttf); }
+
+:root {
+  --ink: #2a2826;
+  --paper: #e8e4d8;
+  --hl: rgb(247, 223, 92);
+  --board: #0f1216;
+  --board-2: #1c1f23;
+  --card: #efebe1;
+  --tag: #3c4857;
+  --stamp: #b3261e;
+  --tw: 'Typewriter', 'Courier New', monospace;
+}
+html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+#stage { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; transform-origin: 0 0; background: #000; font-family: var(--tw); }
+.layer { position: absolute; inset: 0; }
+.abs { position: absolute; }
+
+/* the document */
+#world { position: absolute; left: 0; top: 0; transform-origin: 0 0; }
+.page {
+  position: relative; width: 1500px; box-sizing: border-box; padding: 120px 150px 620px;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.35), transparent 60%),
+    radial-gradient(ellipse at 80% 90%, rgba(120,100,60,.18), transparent 55%),
+    var(--paper);
+  color: var(--ink); font: 700 34px/1.78 var(--tw); letter-spacing: .03em;
+  filter: blur(.45px) contrast(1.08);
+}
+.page .hdr { font-size: 32px; line-height: 1.6; white-space: pre-wrap; }
+.page .draft { color: #8c2a20; }
+.page p { margin: 0 0 54px; text-align: left; }
+.page .rule { border-top: 3px solid rgba(42,40,38,.75); margin: 30px 0 50px; }
+.page .c { display: inline; }
+.hls { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: multiply; }
+.hl { position: absolute; background: var(--hl); border-radius: 3px; transform-origin: 0 50%; }
+.scan { pointer-events: none; }
+.vig { background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(0,0,0,.55) 78%, rgba(0,0,0,.92) 100%); pointer-events: none; }
+.grain { opacity: .11; mix-blend-mode: overlay; pointer-events: none; }
+
+/* the board */
+.card { background: var(--card); color: #1d1c1a; font: 700 64px var(--tw); letter-spacing: .12em; padding: 30px 60px; white-space: pre; box-shadow: 0 14px 40px rgba(0,0,0,.6); }
+.tag { background: var(--tag); color: #e9e6de; font: 700 30px var(--tw); letter-spacing: .14em; padding: 20px 32px; white-space: nowrap; box-shadow: 0 8px 22px rgba(0,0,0,.5); }
+.attr { color: rgba(205,205,205,.42); font: 400 24px var(--tw); letter-spacing: .38em; white-space: pre; }
+.stamp { color: var(--stamp); border: 8px solid var(--stamp); font: 700 110px var(--tw); letter-spacing: .1em; padding: 6px 44px 10px; white-space: nowrap; border-radius: 4px; }
+.stamp.sm { font-size: 46px; border-width: 5px; padding: 4px 22px 6px; }
+.outro-card { background: var(--card); color: #1d1c1a; font: 700 52px var(--tw); letter-spacing: .04em; padding: 30px 54px; white-space: pre; box-shadow: 0 14px 40px rgba(0,0,0,.6); }
+.outro-tag { color: #c2362c; border: 4px solid #c2362c; font: 700 30px var(--tw); letter-spacing: .12em; padding: 8px 22px; white-space: nowrap; }
+.badge { position: absolute; right: 30px; top: 26px; padding: 8px 14px; border-radius: 6px; font: 700 18px var(--tw); letter-spacing: .06em; color: #fff; background: rgba(179,38,30,.9); }
+
+#ui { position: fixed; left: 0; right: 0; bottom: 0; display: flex; gap: 12px; align-items: center; padding: 10px 16px; background: rgba(0,0,0,.8); color: #eee; font: 14px system-ui; z-index: 10; }
+#ui input[type=range] { flex: 1; }
+body.render #ui { display: none; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="ui"><button id="play">Pause</button><input id="scrub" type="range" min="0" max="1000" value="0"><span id="clock">0.00</span></div>
+<script>
+'use strict';
+const W = 1920, H = 1080;
+const clamp = (x, a = 0, b = 1) => Math.min(b, Math.max(a, x));
+const lerp = (a, b, p) => a + (b - a) * p;
+const E = {
+  lin: p => p,
+  out: p => 1 - Math.pow(1 - p, 3),
+  inOut: p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2,
+};
+const k = (t, a, d, e = E.out) => e(clamp((t - a) / d));
+function rng(seed) { let s = seed >>> 0; return () => ((s = (s * 1664525 + 1013904223) >>> 0) / 4294967296); }
+function h(tag, attrs = {}, ...kids) {
+  const el = document.createElement(tag);
+  for (const [key, v] of Object.entries(attrs)) {
+    if (key === 'class') el.className = v;
+    else if (key === 'style') Object.assign(el.style, v);
+    else if (key === 'text') el.textContent = v;
+    else el.setAttribute(key, v);
+  }
+  for (const c of kids) el.append(c);
+  return el;
+}
+const at = (parent, x, y, attrs = {}, ...kids) => {
+  const el = h('div', attrs, ...kids);
+  el.classList.add('abs');
+  el.style.left = x + 'px'; el.style.top = y + 'px';
+  parent.append(el); return el;
+};
+function tf(el, { x = 0, y = 0, s = 1, r = 0, o = 1 } = {}) {
+  el.style.transform = `translate(${x}px,${y}px) rotate(${r}deg) scale(${s})`;
+  el.style.opacity = o;
+}
+function shake(t, hits, amp, d = .3) {
+  let x = 0, y = 0;
+  for (const t0 of hits) {
+    const p = (t - t0) / d;
+    if (p < 0 || p > 1) continue;
+    const a = Math.pow(1 - p, 2) * amp;
+    x += Math.sin((t - t0) * 90 + t0) * a; y += Math.cos((t - t0) * 117 + t0) * a;
+  }
+  return { x, y };
+}
+
+/* ---------- fill {placeholders} from the episode's data.json ---------- */
+function vars(D) {
+  const F = {};
+  for (const f of D.foods) F[f.id] = { ...f, kpd: f.kcal / f.price, ppd: f.protein / f.price };
+  const all = Object.values(F);
+  const median = arr => { const s = [...arr].sort((a, b) => a - b); return s[Math.floor(s.length / 2)]; };
+  const medK = median(all.map(f => f.kpd)), medP = median(all.map(f => f.ppd));
+  const losers = all.filter(f => f.kpd < medK && f.ppd < medP);
+  const loserOnly = D.nutrients.filter(n => n.foods.length && n.foods.every(id => losers.some(l => l.id === id))).map(n => n.name);
+  let cost = 0, kcal = 0, protein = 0;
+  for (const m of D.menu) for (const i of m.items) { const f = F[i.id], r = i.grams / f.grams; cost += f.price * r; kcal += f.kcal * r; protein += f.protein * r; }
+  const list = a => a.length < 2 ? a.join('') : a.slice(0, -1).join(', ') + ' and ' + a[a.length - 1];
+  const nutName = n => n.replace(/^Vitamin/, 'vitamin').replace(/^Omega/, 'omega').replace(/^Choline/, 'choline');
+  const v = {
+    'meta.date': D.meta.date, 'meta.store': D.meta.store, 'meta.city': D.meta.city,
+    count: String(D.foods.length),
+    losers: list(losers.map(f => f.short.toLowerCase())),
+    losersUpper: losers.map(f => f.short.toUpperCase()),
+    loserCount: ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight'][losers.length] ?? String(losers.length),
+    loserOnly: list(loserOnly.map(nutName)),
+    loserOnlyUpper: loserOnly.map(n => n.toUpperCase() + '.'),
+    'day.cost': '$' + cost.toFixed(2), 'day.kcal': Math.round(kcal).toLocaleString('en-US'), 'day.protein': String(Math.round(protein)),
+  };
+  for (const f of all) { v[f.id + '.ppd'] = f.ppd.toFixed(1); v[f.id + '.kpd'] = Math.round(f.kpd).toLocaleString('en-US'); }
+  return v;
+}
+function fill(x, V) {
+  if (typeof x === 'string') {
+    const whole = x.match(/^\{([\w.]+)\}$/);
+    if (whole && Array.isArray(V[whole[1]])) return V[whole[1]];
+    return x.replace(/\{([\w.]+)\}/g, (m, key) => key in V ? V[key] : m);
+  }
+  if (Array.isArray(x)) return x.map(y => fill(y, V));
+  if (x && typeof x === 'object') return Object.fromEntries(Object.entries(x).map(([key, y]) => [key, fill(y, V)]));
+  return x;
+}
+
+/* ---------- textures ---------- */
+function noiseURL(seed, size, fn) {
+  const c = document.createElement('canvas'); c.width = c.height = size;
+  const g = c.getContext('2d'), img = g.createImageData(size, size), r = rng(seed);
+  for (let i = 0; i < img.data.length; i += 4) { const [v, a] = fn(r); img.data[i] = img.data[i + 1] = img.data[i + 2] = v; img.data[i + 3] = a; }
+  g.putImageData(img, 0, 0);
+  return c.toDataURL();
+}
+let GRAIN, WORN;
+
+/* ---------- the scene ---------- */
+const S = {
+  build(root, C, D) {
+    this.C = C;
+    const doc = C.document;
+
+    // --- document layer
+    this.docLayer = h('div', { class: 'layer' }); root.append(this.docLayer);
+    this.world = h('div', { id: 'world' }); this.docLayer.append(this.world);
+    const page = h('div', { class: 'page' }); this.world.append(page);
+    for (const line of doc.header) page.append(h('div', { class: 'hdr', text: line }));
+    if (!D.meta.prices_verified && doc.draftLine) page.append(h('div', { class: 'hdr draft', text: doc.draftLine }));
+    page.append(h('div', { class: 'rule' }));
+    // every character is its own span so ink density varies like a real typewriter
+    const r = rng(1953), chars = [];
+    let fullText = '';
+    for (const para of doc.paragraphs) {
+      const p = h('p');
+      for (const ch of para) {
+        const s = h('span', { class: 'c', text: ch });
+        s.style.opacity = (0.7 + r() * 0.3).toFixed(2);
+        if (r() < .25) s.style.position = 'relative', s.style.top = ((r() - .5) * 1.6).toFixed(1) + 'px';
+        p.append(s); chars.push(s);
+      }
+      page.append(p);
+      fullText += para;
+    }
+    this.page = page;
+    const hls = h('div', { class: 'hls' }); page.append(hls);
+
+    // measure in page coordinates (offsets ignore any preview scaling)
+    this.pageW = page.offsetWidth; this.pageH = page.offsetHeight;
+    const box = el => ({ left: el.offsetLeft, top: el.offsetTop, right: el.offsetLeft + el.offsetWidth });
+    this.hls = doc.highlights.map((hl, i) => {
+      const idx = fullText.indexOf(hl.text);
+      if (idx < 0) throw new Error('Highlight text not found on page: ' + hl.text);
+      const lines = [];
+      for (let j = idx; j < idx + hl.text.length; j++) {
+        const b = box(chars[j]);
+        if (chars[j].style.top) b.top -= parseFloat(chars[j].style.top);
+        let L = lines.find(l => Math.abs(l.top - b.top) < 10);
+        if (!L) { L = { top: b.top, left: b.left, right: b.right, n: 0 }; lines.push(L); }
+        L.left = Math.min(L.left, b.left); L.right = Math.max(L.right, b.right); L.n++;
+      }
+      const total = lines.reduce((a, l) => a + l.n, 0);
+      let acc = 0;
+      const rr = rng(i * 7 + 3);
+      for (const l of lines) {
+        l.from = acc / total; acc += l.n; l.to = acc / total;
+        l.el = h('div', { class: 'hl', style: { left: (l.left - 6) + 'px', top: (l.top + 3 + (rr() - .5) * 4) + 'px', width: (l.right - l.left + 12) + 'px', height: '46px' } });
+        hls.append(l.el);
+      }
+      const cy = lines.reduce((a, l) => a + l.top, 0) / lines.length + 30;
+      const cx = (Math.min(...lines.map(l => l.left)) + Math.max(...lines.map(l => l.right))) / 2;
+      return { ...hl, lines, cx, cy };
+    });
+    // camera stops: the header first, then each highlight
+    this.cams = [{ at: -1, cx: this.pageW / 2, cy: 330, s: 1.32 }, ...this.hls.map((hl, i) => ({ at: hl.at, cx: lerp(this.pageW / 2, hl.cx, .35), cy: hl.cy, s: 1.38 + (i % 2) * .06 }))];
+    this.docLayer.append(h('div', { class: 'layer scan', style: { background: 'linear-gradient(90deg, rgba(0,0,0,.9), transparent 9%, transparent 91%, rgba(0,0,0,.9))' } }));
+
+    // --- board layer
+    const board = h('div', { class: 'layer', style: { background: 'var(--board)' } });
+    root.append(board); this.board = board;
+    this.bcam = h('div', { class: 'layer' }); board.append(this.bcam);
+    const center = (el, y) => { const w = h('div', { class: 'abs', style: { left: 0, right: 0, top: y + 'px', display: 'flex', justifyContent: 'center', gap: '44px' } }); w.append(...[].concat(el)); this.bcam.append(w); return w; };
+    this.quote = h('div', { class: 'card' }); center(this.quote, 150);
+    this.tags = C.board.tags.items.map(t => h('div', { class: 'tag', text: t })); center(this.tags, 390);
+    this.attr = h('div', { class: 'attr' }); center(this.attr, 540);
+    this.stamp = h('div', { class: 'stamp', text: C.board.stamp.text }); center(this.stamp, 610);
+    this.smalls = C.board.smallStamps.items.map(t => h('div', { class: 'stamp sm', text: t })); center(this.smalls, 860);
+    for (const el of [this.stamp, ...this.smalls]) { el.style.maskImage = el.style.webkitMaskImage = `url(${WORN})`; el.style.maskSize = el.style.webkitMaskSize = '300px'; }
+
+    // --- outro layer
+    const out = h('div', { class: 'layer', style: { background: 'var(--board-2)' } });
+    root.append(out); this.outro = out;
+    this.ocard = h('div', { class: 'outro-card' });
+    this.otag = h('div', { class: 'outro-tag', text: C.outro.tag.text });
+    const ow = h('div', { class: 'abs', style: { left: 0, right: 0, top: '430px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '34px' } });
+    ow.append(this.ocard, this.otag); out.append(ow);
+
+    // --- frame-wide texture
+    this.vig = h('div', { class: 'layer vig' }); root.append(this.vig);
+    this.grain = h('div', { class: 'layer grain', style: { backgroundImage: `url(${GRAIN})`, inset: '-256px' } }); root.append(this.grain);
+    if (!D.meta.prices_verified) root.append(h('div', { class: 'badge', text: 'EST. PRICES · NOT YET VERIFIED' }));
+  },
+
+  typed(text, t, t0, per = .07) {
+    if (t < t0) return '';
+    const n = Math.min(text.length, Math.floor((t - t0) / per) + 1);
+    return text.slice(0, n) + (n < text.length ? '_' : '');
+  },
+
+  cues() {
+    const C = this.C, c = [[0, 'bed', C.dur]];
+    for (const hl of this.hls) { c.push([hl.at, 'marker', Math.min(hl.dur, 1.4)]); if (hl.dur > 1.6) c.push([hl.at + hl.dur * .55, 'marker', hl.dur * .45]); }
+    c.push([C.board.start, 'cut']);
+    const B = C.board;
+    for (let i = 0; i < B.quote.text.length; i++) if (B.quote.text[i] !== ' ') c.push([B.quote.at + i * .07, 'key']);
+    B.tags.items.forEach((_, i) => c.push([B.tags.at + i * B.tags.every, 'tagpop']));
+    c.push([B.stamp.at, 'stamp']);
+    B.smallStamps.items.forEach((_, i) => c.push([B.smallStamps.at + i * B.smallStamps.every, 'stampsm']));
+    c.push([C.outro.start, 'cut']);
+    const O = C.outro;
+    for (let i = 0; i < O.card.text.length; i++) if (O.card.text[i] !== ' ') c.push([O.card.at + i * .05, 'key']);
+    c.push([O.tag.at, 'stampsm']);
+    return c;
+  },
+
+  update(t) {
+    const C = this.C, B = C.board, O = C.outro;
+    const g = rng(Math.floor(t * 24) * 31 + 3);
+    this.grain.style.transform = `translate(${Math.floor(g() * 256)}px,${Math.floor(g() * 256)}px)`;
+    const phase = t < B.start ? 0 : t < O.start ? 1 : 2;
+    this.docLayer.style.display = phase === 0 ? 'block' : 'none';
+    this.board.style.display = phase === 1 ? 'block' : 'none';
+    this.outro.style.display = phase === 2 ? 'block' : 'none';
+    this.vig.style.opacity = phase === 0 ? 1 : .55;
+
+    if (phase === 0) {
+      // camera glides to each highlight a beat before it starts, with a slow push the whole time
+      let cam = this.cams[0];
+      for (let i = 1; i < this.cams.length; i++) {
+        const a = this.cams[i - 1], b = this.cams[i];
+        const p = k(t, b.at - 1.0, .9, E.inOut);
+        if (t >= b.at - 1.0) cam = { cx: lerp(a.cx, b.cx, p), cy: lerp(a.cy, b.cy, p), s: lerp(a.s, b.s, p) };
+      }
+      const s = cam.s * (1 + t * .004);
+      const r = Math.sin(t * .35) * .35;
+      this.world.style.transform = `translate(${W / 2}px,${H / 2}px) rotate(${r}deg) scale(${s}) translate(${-cam.cx}px,${-cam.cy}px)`;
+      for (const hl of this.hls) {
+        const p = k(t, hl.at, hl.dur, E.lin);
+        for (const l of hl.lines) l.el.style.transform = `scaleX(${clamp((p - l.from) / (l.to - l.from))})`;
+      }
+    }
+
+    if (phase === 1) {
+      const sh = shake(t, [B.stamp.at, ...B.smallStamps.items.map((_, i) => B.smallStamps.at + i * B.smallStamps.every)], 9);
+      this.bcam.style.transform = `translate(${sh.x}px,${sh.y}px)`;
+      const q = this.typed(B.quote.text, t, B.quote.at);
+      this.quote.textContent = q; this.quote.style.opacity = q ? 1 : 0;
+      this.tags.forEach((el, i) => { const t0 = B.tags.at + i * B.tags.every; tf(el, { s: lerp(1.2, 1, k(t, t0, .18)), o: k(t, t0, .05, E.lin) }); });
+      this.attr.textContent = this.typed(B.attribution.text, t, B.attribution.at, .022).replace(/_$/, '');
+      const st = (el, t0, r, big) => { const p = k(t, t0, .12, E.out); tf(el, { s: lerp(big ? 1.9 : 1.6, 1, p), r, o: k(t, t0, .04, E.lin) * .92 }); };
+      st(this.stamp, B.stamp.at, -2.5, true);
+      this.smalls.forEach((el, i) => st(el, B.smallStamps.at + i * B.smallStamps.every, [-2, 1.5, -1, 2.2][i % 4]));
+    }
+
+    if (phase === 2) {
+      const q = this.typed(O.card.text, t, O.card.at, .05);
+      this.ocard.textContent = q || ' '; this.ocard.style.opacity = q ? 1 : 0;
+      const p = k(t, O.tag.at, .12);
+      tf(this.otag, { s: lerp(1.5, 1, p), r: 1, o: k(t, O.tag.at, .04, E.lin) });
+    }
+  },
+};
+
+/* ---------- boot ---------- */
+const stage = document.getElementById('stage');
+const RENDER = new URLSearchParams(location.search).has('render');
+if (RENDER) document.body.classList.add('render');
+let current;
+
+async function boot() {
+  const q = new URLSearchParams(location.search);
+  const D = window.DATA || await (await fetch(q.get('data') || '../001-everything-is-expensive/data.json')).json();
+  const raw = window.CASE || await (await fetch(q.get('case') || '../001-everything-is-expensive/casefile.json')).json();
+  const C = fill(raw, vars(D));
+  GRAIN = noiseURL(7, 256, r => [r() * 255, 255]);
+  // worn-ink mask: mostly solid with speckled gaps
+  WORN = noiseURL(11, 300, r => [0, r() < .14 ? Math.floor(r() * 120) : 255]);
+  await document.fonts.load('700 34px Typewriter');
+  await document.fonts.ready;
+  const scene = { id: C.id, dur: C.dur, alpha: false };
+  window.SCENE_LIST = [scene];
+  window.METRICS = { cost: parseFloat(vars(D)['day.cost'].slice(1)), kcal: 0, protein: 0 };
+  window.loadScene = () => {
+    stage.innerHTML = '';
+    const root = h('div', { class: 'layer' }); stage.append(root);
+    S.build(root, C, D); S.update(0); current = S;
+    return { ...scene, cues: S.cues() };
+  };
+  window.renderAt = t => S.update(t);
+  if (RENDER) { window.READY = true; return; }
+  window.loadScene();
+  const scrub = document.getElementById('scrub'), clock = document.getElementById('clock'), btn = document.getElementById('play');
+  const fit = () => { stage.style.transform = `scale(${Math.min(innerWidth / W, (innerHeight - 50) / H)})`; };
+  addEventListener('resize', fit); fit();
+  let t = 0, playing = true, last = performance.now();
+  btn.onclick = () => { playing = !playing; btn.textContent = playing ? 'Pause' : 'Play'; };
+  scrub.oninput = () => { t = scrub.value / 1000 * C.dur; playing = false; btn.textContent = 'Play'; };
+  (function loop(now) {
+    if (playing) { t += (now - last) / 1000; if (t > C.dur) t = 0; }
+    last = now; S.update(t); scrub.value = t / C.dur * 1000; clock.textContent = t.toFixed(2);
+    requestAnimationFrame(loop);
+  })(last);
+}
+boot();
+</script>
+</body>
+</html>

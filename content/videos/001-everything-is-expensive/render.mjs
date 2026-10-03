@@ -79,6 +79,65 @@ const SFX = {
       return (Math.sin(ph) * .25 + lp * .6) * Math.pow(p, 2) * .7;
     });
   },
+  // case-file sounds
+  key() {
+    const r = rng(29);
+    let lp = 0;
+    return mono(RATE * .09, (i, t) => {
+      lp += (r() - lp) * .6;
+      const clack = lp * Math.exp(-t * 180) * .5;
+      const thunk = Math.sin(2 * Math.PI * 140 * t) * Math.exp(-t * 60) * .35;
+      return clack + thunk;
+    });
+  },
+  marker(d = 1) {
+    // felt tip dragged across paper: band-limited noise with a slight wobble
+    const r = rng(31);
+    let a = 0, b = 0;
+    return mono(RATE * d, (i, t) => {
+      const x = r(); a += (x - a) * .25; b += (a - b) * .25;
+      const env = Math.min(1, t / .04) * Math.min(1, (d - t) / .08);
+      return (a - b) * 2.2 * env * (.75 + .25 * Math.sin(t * 38)) * .35;
+    });
+  },
+  stamp() {
+    const r = rng(41);
+    let ph = 0, lp = 0;
+    return mono(RATE * .5, (i, t) => {
+      ph += 2 * Math.PI * (55 + 60 * Math.exp(-t * 30)) / RATE;
+      lp += (r() - lp) * .3;
+      return Math.tanh((Math.sin(ph) * Math.exp(-t * 11) * 1.1 + lp * Math.exp(-t * 90) * 1.2)) * .75;
+    });
+  },
+  stampsm() {
+    const r = rng(43);
+    let ph = 0, lp = 0;
+    return mono(RATE * .3, (i, t) => {
+      ph += 2 * Math.PI * (90 + 70 * Math.exp(-t * 35)) / RATE;
+      lp += (r() - lp) * .35;
+      return (Math.sin(ph) * Math.exp(-t * 16) * .6 + lp * Math.exp(-t * 110) * .8) * .6;
+    });
+  },
+  tagpop() {
+    const r = rng(47);
+    return mono(RATE * .06, (i, t) => r() * Math.exp(-t * 120) * .3 + Math.sin(2 * Math.PI * 520 * t) * Math.exp(-t * 70) * .15);
+  },
+  cut() {
+    const r = rng(53);
+    let lp = 0;
+    return mono(RATE * .25, (i, t) => { lp += (r() - lp) * .08; return lp * Math.exp(-t * 14) * .9; });
+  },
+  bed(d = 30) {
+    // low room tone + a quiet minor drone under the whole short
+    const r = rng(59);
+    let lp = 0;
+    return mono(RATE * d, (i, t) => {
+      lp += (r() - lp) * .01;
+      const env = Math.min(1, t / 1.5) * Math.min(1, (d - t) / 1.5);
+      const drone = Math.sin(2 * Math.PI * 55 * t) * .5 + Math.sin(2 * Math.PI * 65.4 * t) * .3 + Math.sin(2 * Math.PI * 82.4 * t) * .2;
+      return (lp * 1.2 + drone * .06 * (.8 + .2 * Math.sin(t * .7))) * env * .5;
+    });
+  },
   glitch() {
     const r = rng(17);
     return mono(RATE * .2, (i, t) => (Math.floor(t * 60) % 2 ? Math.sign(Math.sin(2 * Math.PI * 220 * t)) * .18 : r() * .25) * (1 - t / .2));
@@ -91,12 +150,12 @@ function mono(n, fn) {
   return [a, a];
 }
 const SFX_CACHE = {};
-const sfx = name => (SFX_CACHE[name] ??= SFX[name]());
+const sfx = (name, d) => (SFX_CACHE[name + ':' + (d ?? '')] ??= SFX[name](d));
 
 function mixCues(cues, dur) {
   const n = Math.ceil(dur * RATE), L = new Float32Array(n), R = new Float32Array(n);
-  for (const [t, name] of cues) {
-    const [a, b] = sfx(name), o = Math.round(t * RATE);
+  for (const [t, name, d] of cues) {
+    const [a, b] = sfx(name, d), o = Math.round(t * RATE);
     for (let i = 0; i < a.length && o + i < n; i++) { L[o + i] += a[i]; R[o + i] += b[i]; }
   }
   return [L, R];
@@ -121,11 +180,14 @@ function ffmpeg(args, input) {
   });
 }
 
-async function renderScene(page, s, stills) {
+async function renderScene(page, s, stills, stillsAt) {
   const info = await page.evaluate(id => window.loadScene(id), s.id);
   if (stills) {
-    await page.evaluate(t => window.renderAt(t), info.dur * .7);
-    await page.screenshot({ path: join(OUT, 'stills', s.id + '.png'), omitBackground: info.alpha });
+    for (const t of stillsAt.length ? stillsAt : [info.dur * .7]) {
+      await page.evaluate(t => window.renderAt(t), t);
+      const name = stillsAt.length ? `${s.id}@${t}` : s.id;
+      await page.screenshot({ path: join(OUT, 'stills', name + '.png'), omitBackground: info.alpha });
+    }
     return;
   }
   const frames = Math.round(info.dur * FPS);
@@ -155,18 +217,22 @@ async function renderScene(page, s, stills) {
 
 async function main() {
   const args = process.argv.slice(2);
-  const stills = args.includes('--stills');
+  const opt = name => { const i = args.indexOf(name); return i >= 0 ? args.splice(i, 2)[1] : null; };
+  const html = opt('--html') || 'graphics.html', casePath = opt('--case');
+  const stillsAt = (opt('--stills-at') || '').split(',').filter(Boolean).map(Number);
+  const stills = args.includes('--stills') || stillsAt.length > 0;
   const filters = args.filter(a => !a.startsWith('--'));
   mkdirSync(join(OUT, stills ? 'stills' : 'sfx'), { recursive: true });
 
   const data = JSON.parse(readFileSync(join(HERE, 'data.json'), 'utf8'));
   const { chromium } = await loadPlaywright();
   const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePath: process.env.CHROMIUM_PATH } : {});
-  const url = pathToFileURL(join(HERE, 'graphics.html')).href + '?render=1';
+  const url = pathToFileURL(join(HERE, html)).href + '?render=1';
+  const kase = casePath ? JSON.parse(readFileSync(join(HERE, casePath), 'utf8')) : null;
 
   const open = async () => {
     const page = await browser.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: 1 });
-    await page.addInitScript(d => { window.DATA = d; }, data);
+    await page.addInitScript(([d, c]) => { window.DATA = d; if (c) window.CASE = c; }, [data, kase]);
     await page.goto(url);
     await page.waitForFunction(() => window.READY === true);
     return page;
@@ -177,21 +243,21 @@ async function main() {
   const resume = args.includes('--resume');
   const todo = all.filter(s => (!filters.length || filters.some(f => s.id.includes(f))) && !(resume && !stills && existsSync(outFile(s))));
   const metrics = await first.evaluate(() => window.METRICS);
-  console.log(`Day: $${metrics.cost.toFixed(2)} · ${Math.round(metrics.kcal)} cal · ${Math.round(metrics.protein)}g protein`);
+  console.log(`Day: $${metrics.cost.toFixed(2)}` + (metrics.kcal ? ` · ${Math.round(metrics.kcal)} cal · ${Math.round(metrics.protein)}g protein` : ''));
   if (!data.meta.prices_verified) console.log('Note: prices_verified is false, so clips carry an EST. PRICES badge.');
   console.log(`Rendering ${todo.length} scene(s)${stills ? ' as stills' : ''}...`);
 
   const workers = Math.max(1, Math.min(todo.length, Math.floor(cpus().length / 2), 4));
   const pages = [first, ...await Promise.all(Array.from({ length: workers - 1 }, open))];
   const queue = [...todo];
-  await Promise.all(pages.map(async page => { let s; while ((s = queue.shift())) await renderScene(page, s, stills); }));
+  await Promise.all(pages.map(async page => { let s; while ((s = queue.shift())) await renderScene(page, s, stills, stillsAt); }));
   await browser.close();
   if (stills) return;
 
-  for (const name of Object.keys(SFX)) wav(join(OUT, 'sfx', name + '.wav'), sfx(name));
+  for (const name of Object.keys(SFX)) if (name !== 'bed') wav(join(OUT, 'sfx', name + '.wav'), sfx(name));
 
   // review reel: every full-screen clip in edit order
-  if (all.every(s => s.alpha || existsSync(outFile(s)))) {
+  if (html === 'graphics.html' && all.every(s => s.alpha || existsSync(outFile(s)))) {
     const list = join(OUT, '.reel.txt');
     writeFileSync(list, all.filter(s => !s.alpha).map(s => `file '${s.id}.mp4'`).join('\n'));
     await ffmpeg(['-f', 'concat', '-safe', '0', '-i', list, '-c', 'copy', join(OUT, '00_graphics_reel.mp4')]);
