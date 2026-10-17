@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About | Fogsift</title>
-    <meta name="description" content="Meet Christopher Tavolazzi - the expert researcher behind Fogsift. Software developer, former realtor, journalist, author, and Eagle Scout.">
+    <meta name="description" content="Christopher Tavolazzi presents FogSift research. Software developer.">
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="canonical" href="https://fogsift.com/about">
 
     <meta property="og:title" content="About Fogsift">
-    <meta property="og:description" content="Meet Christopher Tavolazzi - software developer, former realtor, journalist, author, and Eagle Scout.">
+    <meta property="og:description" content="Christopher Tavolazzi presents FogSift research. Software developer.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://fogsift.com/about">
     <meta property="og:image" content="https://fogsift.com/og-image.png">
@@ -28,7 +28,7 @@
           "name": "Fogsift",
           "url": "https://fogsift.com"
         },
-        "description": "Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout."
+        "description": "Software developer. Presents FogSift research."
       }
     }
     </script>
@@ -183,52 +183,8 @@
                 <div class="about-info">
                     <h2 class="about-name">Christopher Tavolazzi</h2>
                     <span class="about-role" id="about-role">Founder &amp; FogSift Operator</span>
-                    <p class="about-bio">Software developer. Former realtor, brewery tour guide, journalist, author, and Eagle Scout. He's lived in a van across America's national parks and played music on three continents. Whatever you're stuck on, he can probably find someone who knows how to fix it.</p>
+                    <p class="about-bio">Software developer. Presents FogSift research on camera. Whatever you're stuck on, he can probably find someone who knows how to fix it.</p>
                 </div>
-            </div>
-        </section>
-
-        <div class="section-divider" aria-hidden="true"></div>
-
-        <section class="section section-testimonials" aria-labelledby="testimonials-heading">
-            <h2 id="testimonials-heading" class="section-label">WHAT CLIENTS SAY</h2>
-
-            <div class="testimonials-grid">
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"We spent six months treating symptoms before FogSift traced the problem to its source. One conversation changed our entire approach."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Operations Director</span>
-                                <span class="author-title">Manufacturing Company</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"Clear, direct, no fluff. Christopher asked the questions we should have been asking ourselves. Worth every dollar."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Founder &amp; CEO</span>
-                                <span class="author-title">Tech Startup</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
-
-                <article class="testimonial-card">
-                    <blockquote>
-                        <p class="testimonial-quote">"Most consultants tell you what you want to hear. This one told us what we needed to hear. Saved us from a costly mistake."</p>
-                        <footer class="testimonial-author">
-                            <cite>
-                                <span class="author-name">Project Manager</span>
-                                <span class="author-title">Construction Firm</span>
-                            </cite>
-                        </footer>
-                    </blockquote>
-                </article>
             </div>
         </section>
 
@@ -238,9 +194,9 @@
             <h2 id="volunteer-heading" class="section-label">VOLUNTEER WITH US</h2>
             <p>FogSift is growing. We're looking for volunteers who want to help research, write, produce videos, or contribute in ways we haven't thought of yet.</p>
             <p style="color: var(--muted); font-size: var(--text-sm);">No formal requirements. Just curiosity and follow-through.</p>
-            <a href="mailto:christopher@fogsift.com?subject=Volunteering%20with%20FogSift" class="cta-button" style="margin-top: var(--space-md);">Get in Touch</a>
+            <a href="mailto:fogsift@gmail.com?subject=Volunteering%20with%20FogSift" class="cta-button" style="margin-top: var(--space-md);">Get in Touch</a>
             <p style="margin-top: var(--space-sm); font-size: var(--text-sm); color: var(--muted);">
-                Email <a href="mailto:christopher@fogsift.com">christopher@fogsift.com</a>
+                Email <a href="mailto:fogsift@gmail.com">fogsift@gmail.com</a>
             </p>
         </section>
 
@@ -285,38 +241,6 @@
     </main>
 
     <script src="app.js" defer></script>
-    <script>
-    // Easter egg: click the role title to cycle through Christopher's many hats
-    (function() {
-        var roles = [
-            'Founder & FogSift Operator',
-            'Software Developer',
-            'Former Realtor',
-            'Brewery Tour Guide',
-            'Journalist',
-            'Author',
-            'Eagle Scout',
-            'Van Dweller',
-            'Multi-Continental Musician',
-            'Professional Problem Finder',
-            'Signal > Noise Enthusiast'
-        ];
-        var idx = 0;
-        var el = document.getElementById('about-role');
-        if (!el) return;
-        el.style.cursor = 'pointer';
-        el.title = 'Click to see more roles';
-        el.addEventListener('click', function() {
-            idx = (idx + 1) % roles.length;
-            el.style.transition = 'opacity 0.15s';
-            el.style.opacity = '0';
-            setTimeout(function() {
-                el.textContent = roles[idx];
-                el.style.opacity = '1';
-            }, 150);
-        });
-    })();
-    </script>
 
     <!-- 🐰 White Rabbit debugger — silent by default, activate with ?debug=rabbit -->
     <script src="white-rabbit.js" defer></script>
