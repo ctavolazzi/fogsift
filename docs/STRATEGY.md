@@ -113,7 +113,7 @@ Needs an audience first.
 
 | Step | Tier | Price | What | Benchmark | Status |
 |---|---|---|---|---|---|
-| 1 | Research Briefs | Free | Public, anonymized briefs and videos; the field guide PDF free for an email (it is $5 today). | The proof the site lacks; feeds every paid tier. | Proposed |
+| 1 | Research Briefs | Free | Public, anonymized briefs and videos; the field guide PDF free for an email (it is $5 today). Case File 001 is ready to publish: the owner’s own nine-project portfolio review, already researched and sourced. | The proof the site lacks; feeds every paid tier. | Proposed |
 | 2 | Sift This | $20 | One short question, answered in public; capped at 2 a week. Replaces the $20 Queue Response. | The price of a month of ChatGPT Plus. | Proposed |
 | 3 | Research Sprint | $1,000 | About 16 hours over two days; $1,250 after three sales. Absorbs the $500 Deep Dive. | Upwork’s expert band puts 16 hours at $960 to $1,920. | Proposed |
 | 4 | Research Week | $2,500 | 40 hours on one question, with a forwardable brief; $3,500 after three sales. | $62.50 an hour, the floor of Upwork’s expert band; fractional consultants average $141 to $181; IBISWorld charges $2,850 for a generic report. | Proposed |
@@ -131,7 +131,7 @@ Needs an audience first.
 | Date | Milestone | Target |
 |---|---|---|
 | 2026-11-01 | One site | One price table and one set of terms; real storage IDs; analytics on |
-| 2026-11-22 | Briefs | 3 Research Briefs published, 100% of claims sourced |
+| 2026-11-22 | Briefs | 3 Research Briefs published, 100% of claims sourced; the first is Case File 001, the nine-project review |
 | 2026-12-13 | First sales | 10 paid Sifts; 20 network emails sent |
 | 2027-01-10 | Sprints | 2 Research Sprints delivered ($2,000) |
 | 2027-01-31 | Go or no-go | 1 Research Week sold; 150 email subscribers; 6 briefs live |
