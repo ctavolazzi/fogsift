@@ -1,5 +1,7 @@
 # FogSift
 
+**Strategy (October 2026):** [docs/STRATEGY.md](docs/STRATEGY.md) sets out who this is for, the offer and pricing, the 90-day plan and the open decisions.
+
 **Straight answers to complicated questions.**
 
 A diagnostic consulting site built with vanilla HTML/CSS/JS — no frameworks, no bundlers, just a clean build script and a dev suite called **The Lighthouse**.
